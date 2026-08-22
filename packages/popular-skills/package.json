@@ -1,1 +1,29 @@
-{"name": "@deepseek-ai/dsh-popular-skills", "version": "1.0.0", "description": "25+ Claude Code-style slash commands and skills for DSH (DeepSeek Harness). Includes code review, testing, git workflow, debugging, security scanning, refactoring, and Gauntlet-Loop quality pattern.", "type": "module", "main": "src/index.ts", "types": "src/index.ts", "exports": {".": {"import": "./src/index.ts"}}, "scripts": {"test": "vitest run", "lint": "oxlint ."}, "dependencies": {"@deepseek-ai/cordis": "workspace:*", "@deepseek-ai/dsh-agent": "workspace:*", "@deepseek-ai/dsh-commands": "workspace:*", "@deepseek-ai/dsh-session": "workspace:*"}, "devDependencies": {"@deepseek-ai/dsh-typert-protocol": "workspace:*", "@vitest/runner": "^4.1.8", "oxlint": "1.76.0", "typescript": "^6.0.3", "vitest": "^4.1.8"}, "peerDependencies": {"@deepseek-ai/cordis": ">=0.1.0", "@deepseek-ai/dsh-commands": ">=0.1.0"}, "keywords": ["dsh", "deepseek-harness", "skills", "commands", "claude-code", "gauntlet-loop", "code-review", "testing", "git-workflow", "debugging", "security"], "author": "DSH Community", "license": "MIT", "repository": {"type": "git", "url": "https://github.com/deepseek-ai/deepseek-harness.git", "directory": "packages/popular-skills"}, "dsh": {"skill": true, "category": "productivity", "tags": ["popular", "claude-code", "gauntlet", "quality"]}}
+{
+  "name": "@deepseek-ai/dsh-popular-skills",
+  "version": "1.0.0",
+  "description": "25+ Claude Code-style slash commands for DSH. I-WIN, MAD, BYOK, code review, testing, debugging, security.",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": { "types": "./lib/types/index.d.ts", "default": "./lib/index.js" },
+    "./invariant": { "types": "./lib/types/invariant.d.ts", "default": "./lib/invariant.js" },
+    "./startup": { "types": "./lib/types/startup.d.ts", "default": "./lib/startup.js" },
+    "./package.json": "./package.json"
+  },
+  "files": ["lib/**/*.js", "lib/types/**/*.d.ts"],
+  "scripts": { "test": "vitest run", "lint": "oxlint ." },
+  "dependencies": {
+    "@deepseek-ai/cordis": "workspace:*",
+    "@deepseek-ai/dsh-agent": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.8"
+  },
+  "keywords": ["dsh", "skills", "i-win", "mad", "byok", "code-review", "debugging"],
+  "author": "Origin Labs AI",
+  "license": "MIT",
+  "repository": {"type": "git", "url": "https://github.com/origin-labs-ai/DSH-Enhanced.git"},
+  "dsh": {"skill": true, "category": "productivity"}
+}
