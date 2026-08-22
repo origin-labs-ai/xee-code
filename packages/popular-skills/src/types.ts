@@ -68,7 +68,7 @@ export type IWINStrategy = 'persistent' | 'adaptive' | 'aggressive' | 'collabora
 
 export interface IWINProgress {
   iteration: number
-  status: 'running' | 'stuck' | 'progressing' | 'complete'
+  status: 'running' | 'stuck' | 'progressing' | 'complete' | 'paused'
   currentApproach: string
   attempts: string[]
   nextStrategy?: string

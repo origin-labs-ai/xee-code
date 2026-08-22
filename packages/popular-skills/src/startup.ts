@@ -96,5 +96,4 @@ function initBYOKSystem(): void {
   console.log('   → Bring Your Own Key: Support any API provider')
 }
 
-export type { StartupConfig, ModelBehaviorConfig }
 export { DEFAULT_BEHAVIOR }
