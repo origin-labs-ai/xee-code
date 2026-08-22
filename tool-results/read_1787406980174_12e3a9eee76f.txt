@@ -1,0 +1,1042 @@
+     1→/**
+     2→ * Local filesystem skill provider.
+     3→ *
+     4→ * This package is one implementation of the `ctx.skills` provider registry. It
+     5→ * discovers directory-bundle and flat Markdown skills from project, custom, and
+     6→ * user roots, parses YAML frontmatter, and loads bodies through `ctx.fs` when a
+     7→ * filesystem service is present.
+     8→ *
+     9→ * @module @deepseek-ai/dsh-skill-filesystem
+    10→ */
+    11→
+    12→import { access, lstat, readdir, readFile, stat } from 'node:fs/promises'
+    13→import { unwatchFile, watchFile, type Stats } from 'node:fs'
+    14→import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path'
+    15→import { homedir } from 'node:os'
+    16→import type { Context } from '@deepseek-ai/cordis'
+    17→import chokidar from 'chokidar'
+    18→import z from '@deepseek-ai/schemastery'
+    19→import type Schema from '@deepseek-ai/schemastery'
+    20→import { parse as parseYaml } from 'yaml'
+    21→import type { FileSystem, FsDirEntry, FsTarget } from '@deepseek-ai/dsh-fs'
+    22→import { canonicalizeWatchPath, resolveDshHome } from '@deepseek-ai/dsh-home-paths'
+    23→import {
+    24→  BUNDLED_SKILL_RANK,
+    25→  isSkillName,
+    26→  type SkillCandidate,
+    27→  type SkillDefinition,
+    28→  type SkillInvocationPolicy,
+    29→  type SkillLookupOptions,
+    30→  type SkillProvider,
+    31→  type SkillProviderControl,
+    32→  type SkillProviderObservation,
+    33→  type SkillSource,
+    34→} from '@deepseek-ai/dsh-skill'
+    35→
+    36→const PROJECT_DSH_RANK = 100
+    37→const PROJECT_AGENTS_RANK = 200
+    38→const CUSTOM_RANK = 300
+    39→const USER_DSH_RANK = 400
+    40→const USER_AGENTS_RANK = 500
+    41→const DEFAULT_WATCH_STABILITY_THRESHOLD_MS = 200
+    42→const DEFAULT_WATCH_POLL_INTERVAL_MS = 100
+    43→const DEFAULT_WATCH_MAX_PROJECTS = 128
+    44→
+    45→export const name = 'skill-filesystem'
+    46→export const inject = ['skills']
+    47→
+    48→/** Local filesystem skill provider configuration. */
+    49→export interface Config {
+    50→  /** Unique provider name. Defaults to `local`. */
+    51→  providerName?: string
+    52→  /** Whether project and user roots are included around custom roots. */
+    53→  includeDefaultRoots?: boolean
+    54→  /** DeepSeek Harness config root. Defaults to `$DSH_HOME` or `~/.dsh`. */
+    55→  dshHome?: string
+    56→  /** Shared agent config root. Defaults to `$DSH_AGENTS_HOME` or `~/.agents`. */
+    57→  agentsHome?: string
+    58→  /** Additional skill roots scanned after project roots and before user roots. */
+    59→  customSkillDirs?: string[]
+    60→  /** Whether host-local skill roots are watched for catalog changes. */
+    61→  watch?: boolean
+    62→  /** Whether Chokidar uses polling instead of native filesystem events. */
+    63→  watchUsePolling?: boolean
+    64→  /** Milliseconds a changed skill entry must remain stable before it is observed. */
+    65→  watchStabilityThresholdMs?: number
+    66→  /** Milliseconds between Chokidar stability or polling probes. */
+    67→  watchPollIntervalMs?: number
+    68→  /** Maximum distinct project roots whose skill directories remain watched. */
+    69→  watchMaxProjects?: number
+    70→  /** Whether watched symbolic links follow their target files. */
+    71→  watchFollowSymlinks?: boolean
+    72→  /** Bundled skill root; defaults to `$DSH_BUNDLED_SKILL_DIR` when default roots are included, otherwise mounts none. */
+    73→  bundledSkillDir?: string
+    74→}
+    75→
+    76→export const Config: Schema<Config> = z.object({
+    77→  providerName: z.string().min(1).default('filesystem'),
+    78→  includeDefaultRoots: z.boolean().default(true),
+    79→  dshHome: z.string(),
+    80→  agentsHome: z.string(),
+    81→  customSkillDirs: z.array(z.string()).default([]),
+    82→  watch: z.boolean().default(true),
+    83→  watchUsePolling: z.boolean().default(false),
+    84→  watchStabilityThresholdMs: z.number().default(DEFAULT_WATCH_STABILITY_THRESHOLD_MS),
+    85→  watchPollIntervalMs: z.number().default(DEFAULT_WATCH_POLL_INTERVAL_MS),
+    86→  watchMaxProjects: z.number().default(DEFAULT_WATCH_MAX_PROJECTS),
+    87→  watchFollowSymlinks: z.boolean().default(true),
+    88→  bundledSkillDir: z.string(),
+    89→})
+    90→
+    91→interface SkillRoot {
+    92→  path: string
+    93→  source: SkillSource
+    94→  rank: number
+    95→  skipSystem?: boolean
+    96→  projectRoot?: string
+    97→  trustedHost?: boolean
+    98→}
+    99→
+   100→interface SkillRootEntry {
+   101→  name: string
+   102→  type: 'directory' | 'file' | 'other'
+   103→  path: string
+   104→}
+   105→
+   106→interface ParsedSkill {
+   107→  name: string
+   108→  description: string
+   109→  whenToUse?: string
+   110→  invocation: SkillInvocationPolicy
+   111→  metadata?: Record<string, unknown>
+   112→  content: string
+   113→}
+   114→
+   115→interface LocalLocator {
+   116→  path: string
+   117→  directory: string
+   118→}
+   119→
+   120→interface ResolvedWatchConfig {
+   121→  enabled: boolean
+   122→  usePolling: boolean
+   123→  stabilityThresholdMs: number
+   124→  pollIntervalMs: number
+   125→  maxProjects: number
+   126→  followSymlinks: boolean
+   127→}
+   128→
+   129→/** Register the local filesystem skill provider on `ctx.skills`. */
+   130→export function apply(ctx: Context, config: Config = {}): void {
+   131→  let provider!: FileSystemSkillProvider
+   132→  ctx.skills.registerProvider((control) => {
+   133→    provider = new FileSystemSkillProvider(ctx, control, config)
+   134→    return provider
+   135→  })
+   136→  ctx.effect(function* () {
+   137→    yield async () => { await provider.dispose() }
+   138→  }, 'skill-filesystem watcher')
+   139→  ctx.on('fs/observed', (target, _observation, actor) => {
+   140→    if (mutationToolName(actor) === undefined) return
+   141→    provider.observeHostMutation(target.displayPath)
+   142→  })
+   143→}
+   144→
+   145→/** Provider that maps local project/user skill roots into `ctx.skills`. */
+   146→export class FileSystemSkillProvider implements SkillProvider {
+   147→  readonly name: string
+   148→  private readonly includeDefaultRoots: boolean
+   149→  private readonly dshHome: string
+   150→  private readonly agentsHome: string
+   151→  private readonly customSkillDirs: string[]
+   152→  private readonly watchManager: SkillWatchManager
+   153→  private readonly bundledSkillDir: string | undefined
+   154→  private disposal: Promise<void> | undefined
+   155→
+   156→  constructor(
+   157→    private readonly ctx: Context,
+   158→    control: SkillProviderControl,
+   159→    config: Config = {},
+   160→  ) {
+   161→    this.name = config.providerName ?? 'filesystem'
+   162→    this.includeDefaultRoots = config.includeDefaultRoots ?? true
+   163→    this.dshHome = resolveDshHome(config.dshHome)
+   164→    this.agentsHome = resolve(config.agentsHome ?? process.env.DSH_AGENTS_HOME ?? join(homedir(), '.agents'))
+   165→    this.customSkillDirs = (config.customSkillDirs ?? []).map(root => resolve(root))
+   166→    this.watchManager = new SkillWatchManager(ctx, control.invalidate, resolveWatchConfig(config))
+   167→    control.signal.addEventListener('abort', () => { void this.dispose() }, { once: true })
+   168→    // The environment bundled root is a default root: an isolated provider
+   169→    // must see only its explicit roots, or every such provider would
+   170→    // re-discover the app's bundled skills under its own provider name.
+   171→    const bundledSkillDir = config.bundledSkillDir
+   172→      ?? (this.includeDefaultRoots ? process.env.DSH_BUNDLED_SKILL_DIR : undefined)
+   173→    this.bundledSkillDir = bundledSkillDir === undefined ? undefined : resolve(bundledSkillDir)
+   174→  }
+   175→
+   176→  /**
+   177→   * Discover local skill summaries for a cwd-sensitive workspace.
+   178→   * @param options - lookup options; `cwd` selects the project roots to scan.
+   179→   * @returns local provider candidates with stable root ranks; watcher startup
+   180→   *   failure returns readable candidates as an incomplete observation.
+   181→   */
+   182→  async list(options: SkillLookupOptions): Promise<SkillCandidate[] | SkillProviderObservation> {
+   183→    const roots = await this.roots(options.cwd)
+   184→    let complete = true
+   185→    try {
+   186→      await this.watchManager.observeRoots(roots)
+   187→    } catch (error) {
+   188→      if (this.disposal !== undefined) throw error
+   189→      complete = false
+   190→    }
+   191→    const candidates: SkillCandidate[] = []
+   192→    for (const root of roots) {
+   193→      for (const skill of await discoverRoot(root, this.ctx, this.name)) {
+   194→        candidates.push(skill)
+   195→      }
+   196→    }
+   197→    return complete ? candidates : { candidates, complete }
+   198→  }
+   199→
+   200→  /**
+   201→   * Load a complete local skill body from the candidate's file locator.
+   202→   * @param candidate - the winning candidate returned by this provider.
+   203→   * @param options - lookup options whose signal cancels filesystem reads.
+   204→   * @returns the full local skill, or `undefined` if the file disappeared.
+   205→   */
+   206→  async get(candidate: SkillCandidate, options: SkillLookupOptions): Promise<SkillDefinition | undefined> {
+   207→    const locator = candidate.locator as LocalLocator
+   208→    const parsed = await parseSkillFile(locator.path, this.ctx, options.signal, candidate.source === 'bundled')
+   209→    if (parsed === undefined) return undefined
+   210→    return {
+   211→      name: parsed.name,
+   212→      description: parsed.description,
+   213→      ...parsed.whenToUse !== undefined ? { whenToUse: parsed.whenToUse } : {},
+   214→      invocation: parsed.invocation,
+   215→      source: candidate.source,
+   216→      provider: this.name,
+   217→      resourceBase: { kind: 'directory', path: locator.directory },
+   218→      path: locator.path,
+   219→      ...parsed.metadata !== undefined ? { metadata: parsed.metadata } : {},
+   220→      content: parsed.content,
+   221→    }
+   222→  }
+   223→
+   224→  /**
+   225→   * Invalidate this provider synchronously after a first-party filesystem mutation.
+   226→   * @param path - host display path observed after a model-facing write or edit.
+   227→   */
+   228→  observeHostMutation(path: string): void {
+   229→    this.watchManager.observeHostMutation(path)
+   230→  }
+   231→
+   232→  /**
+   233→   * Close every host watcher and contain late filesystem callbacks.
+   234→   * @returns a shared promise that settles when every watcher reaches quiescence.
+   235→   */
+   236→  dispose(): Promise<void> {
+   237→    this.disposal ??= this.watchManager.dispose()
+   238→    return this.disposal
+   239→  }
+   240→
+   241→  private async roots(cwd: string | undefined): Promise<SkillRoot[]> {
+   242→    const roots: SkillRoot[] = []
+   243→    if (this.includeDefaultRoots && cwd !== undefined) {
+   244→      const projectRoot = await findProjectRoot(resolve(cwd), optionalFileSystem(this.ctx))
+   245→      roots.push(
+   246→        { path: join(projectRoot, '.dsh/skills'), source: 'project-dsh', rank: PROJECT_DSH_RANK, projectRoot },
+   247→        { path: join(projectRoot, '.agents/skills'), source: 'project-agents', rank: PROJECT_AGENTS_RANK, projectRoot },
+   248→      )
+   249→    }
+   250→    roots.push(...this.customSkillDirs.map(path => ({ path, source: 'custom' as const, rank: CUSTOM_RANK })))
+   251→    if (this.includeDefaultRoots) {
+   252→      roots.push(
+   253→        { path: join(this.dshHome, 'skills'), source: 'user-dsh', rank: USER_DSH_RANK, skipSystem: true },
+   254→        { path: join(this.agentsHome, 'skills'), source: 'user-agents', rank: USER_AGENTS_RANK },
+   255→      )
+   256→    }
+   257→    if (this.bundledSkillDir !== undefined) {
+   258→      roots.push({ path: this.bundledSkillDir, source: 'bundled', rank: BUNDLED_SKILL_RANK, trustedHost: true })
+   259→    }
+   260→    return roots
+   261→  }
+   262→}
+   263→
+   264→type SkillWatchEvent = 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir'
+   265→
+   266→type RootWatchMode =
+   267→  | { kind: 'root'; anchor: string }
+   268→  | { kind: 'ancestor'; anchor: string; nextPath: string }
+   269→
+   270→interface RootWatchState {
+   271→  root: SkillRoot
+   272→  owners: Set<string>
+   273→  watcher: WatchHandle | undefined
+   274→  opening: Promise<void> | undefined
+   275→  unhealthy: boolean
+   276→}
+   277→
+   278→interface WatchHandle {
+   279→  mode: RootWatchMode
+   280→  close(): Promise<void> | void
+   281→}
+   282→
+   283→/** Owns bounded host watchers while discovery and reads remain on the filesystem service. */
+   284→class SkillWatchManager {
+   285→  private readonly roots = new Map<string, RootWatchState>()
+   286→  private readonly projects = new Map<string, Set<string>>()
+   287→  private readonly lifecycle = new AbortController()
+   288→  private closing = false
+   289→  private invalidationQueued = false
+   290→
+   291→  constructor(
+   292→    private readonly ctx: Context,
+   293→    private readonly invalidate: () => void,
+   294→    private readonly config: ResolvedWatchConfig,
+   295→  ) {}
+   296→
+   297→  async observeRoots(roots: readonly SkillRoot[]): Promise<void> {
+   298→    if (this.closing) return
+   299→    const projectRoots = new Map<string, SkillRoot[]>()
+   300→    const pending: Promise<void>[] = []
+   301→    for (const root of roots) {
+   302→      if (root.projectRoot === undefined) {
+   303→        pending.push(this.retainRoot(root, `shared:${root.path}`))
+   304→        continue
+   305→      }
+   306→      const grouped = projectRoots.get(root.projectRoot) ?? []
+   307→      grouped.push(root)
+   308→      projectRoots.set(root.projectRoot, grouped)
+   309→    }
+   310→    for (const [projectRoot, grouped] of projectRoots) {
+   311→      const owner = `project:${projectRoot}`
+   312→      this.projects.delete(projectRoot)
+   313→      const paths = new Set(grouped.map(root => root.path))
+   314→      this.projects.set(projectRoot, paths)
+   315→      for (const root of grouped) pending.push(this.retainRoot(root, owner))
+   316→    }
+   317→    let evictedProject = false
+   318→    while (this.projects.size > this.config.maxProjects) {
+   319→      const oldest = this.projects.entries().next()
+   320→      /* v8 ignore next -- the loop condition proves one project exists. */
+   321→      if (oldest.done) break
+   322→      const [projectRoot, paths] = oldest.value
+   323→      this.projects.delete(projectRoot)
+   324→      const owner = `project:${projectRoot}`
+   325→      for (const path of paths) pending.push(this.releaseRoot(path, owner))
+   326→      evictedProject = true
+   327→    }
+   328→    await Promise.all(pending)
+   329→    if (evictedProject) this.invalidate()
+   330→  }
+   331→
+   332→  observeHostMutation(path: string): void {
+   333→    if (this.closing) return
+   334→    const normalized = resolve(path)
+   335→    if (![...this.roots.values()].some(state => isPotentialSkillPath(state.root, normalized))) return
+   336→    this.invalidate()
+   337→  }
+   338→
+   339→  async dispose(): Promise<void> {
+   340→    this.closing = true
+   341→    this.lifecycle.abort(new Error('skill-filesystem watcher disposed'))
+   342→    const states = [...this.roots.values()]
+   343→    this.roots.clear()
+   344→    this.projects.clear()
+   345→    await Promise.all(states.map(async (state) => {
+   346→      await settleWatcherOpening(state.opening)
+   347→      const watcher = state.watcher
+   348→      state.watcher = undefined
+   349→      if (watcher !== undefined) await this.closeWatcher(watcher)
+   350→    }))
+   351→  }
+   352→
+   353→  private async retainRoot(root: SkillRoot, owner: string): Promise<void> {
+   354→    let state = this.roots.get(root.path)
+   355→    if (state === undefined) {
+   356→      state = { root, owners: new Set(), watcher: undefined, opening: undefined, unhealthy: true }
+   357→      this.roots.set(root.path, state)
+   358→    }
+   359→    state.owners.add(owner)
+   360→    if (this.config.enabled) await this.ensureWatcher(state)
+   361→  }
+   362→
+   363→  private async releaseRoot(path: string, owner: string): Promise<void> {
+   364→    const state = this.roots.get(path)
+   365→    /* v8 ignore next -- Concurrent cwd observations can evict the same shared root before this release settles. */
+   366→    if (state === undefined) return
+   367→    state.owners.delete(owner)
+   368→    if (state.owners.size > 0) return
+   369→    this.roots.delete(path)
+   370→    await settleWatcherOpening(state.opening)
+   371→    const watcher = state.watcher
+   372→    state.watcher = undefined
+   373→    if (watcher !== undefined) await this.closeWatcher(watcher)
+   374→  }
+   375→
+   376→  private ensureWatcher(state: RootWatchState): Promise<void> {
+   377→    /* v8 ignore next -- A scheduled rewatch can reach this guard only when teardown wins its await. */
+   378→    if (this.closing || !this.config.enabled) return Promise.resolve()
+   379→    if (state.opening !== undefined) return state.opening
+   380→    const opening = this.ensureCurrentWatcher(state)
+   381→    state.opening = opening
+   382→    void opening.then(
+   383→      () => {
+   384→        state.opening = undefined
+   385→      },
+   386→      () => {
+   387→        state.opening = undefined
+   388→      },
+   389→    )
+   390→    return opening
+   391→  }
+   392→
+   393→  private async ensureCurrentWatcher(state: RootWatchState): Promise<void> {
+   394→    const watcher = state.watcher
+   395→    if (watcher !== undefined && !state.unhealthy) {
+   396→      const current = await resolveRootWatchMode(state.root.path, this.config.followSymlinks)
+   397→      // A child unlink can publish an empty catalog before root unlinkDir arrives.
+   398→      // Discovery therefore revalidates the retained handle independently.
+   399→      // oxlint-disable-next-line typescript/no-unnecessary-condition -- watcher callbacks can mark unhealthy while the probe awaits
+   400→      if (!state.unhealthy && sameWatchMode(watcher.mode, current)) return
+   401→    }
+   402→    await this.replaceWatcher(state)
+   403→  }
+   404→
+   405→  private async replaceWatcher(state: RootWatchState): Promise<void> {
+   406→    const previous = state.watcher
+   407→    state.watcher = undefined
+   408→    if (previous !== undefined) await this.closeWatcher(previous)
+   409→    /* v8 ignore next -- Teardown can win while an unhealthy watcher is still closing. */
+   410→    if (this.closing || state.owners.size === 0) return
+   411→    try {
+   412→      const watcher = await this.openStableWatcher(state)
+   413→      /* v8 ignore next -- The loop returns no handle only when teardown wins between awaited probes. */
+   414→      if (watcher === undefined) return
+   415→      /* v8 ignore start -- Post-open teardown is timing-dependent; the disposal race has an explicit integration test. */
+   416→      // oxlint-disable-next-line typescript/no-unnecessary-condition -- teardown can race awaited watcher startup
+   417→      if (this.closing || state.owners.size === 0) {
+   418→        await this.closeWatcher(watcher)
+   419→        return
+   420→      }
+   421→      /* v8 ignore stop */
+   422→      state.watcher = watcher
+   423→      state.unhealthy = false
+   424→    } catch (error) {
+   425→      // oxlint-disable-next-line typescript/no-unnecessary-condition -- teardown can race awaited watcher startup
+   426→      if (!this.closing) {
+   427→        state.unhealthy = true
+   428→        this.ctx.logger.warn(`skill-filesystem: failed to watch ${state.root.path}: ${errorMessage(error)}`)
+   429→      }
+   430→      throw error
+   431→    }
+   432→  }
+   433→
+   434→  // TODO(file-watch-service): Extract Chokidar and missing-root observation below into a Cordis
+   435→  // service; keep skill filtering and invalidation here.
+   436→  private async openStableWatcher(state: RootWatchState): Promise<WatchHandle | undefined> {
+   437→    while (!this.closing && state.owners.size > 0) {
+   438→      const mode = await resolveRootWatchMode(state.root.path, this.config.followSymlinks)
+   439→      const watcher = mode.kind === 'ancestor'
+   440→        ? this.openAncestorWatcher(state, mode)
+   441→        : await this.openRootWatcher(state, mode)
+   442→      const current = await resolveRootWatchMode(state.root.path, this.config.followSymlinks)
+   443→      /* v8 ignore else -- A host path transition between the two probes is timing-dependent. */
+   444→      if (sameWatchMode(mode, current)) return watcher
+   445→      /* v8 ignore next -- Covered by the same host path transition guard. */
+   446→      await this.closeWatcher(watcher)
+   447→    }
+   448→    /* v8 ignore next -- The loop exits only when teardown wins between awaited probes. */
+   449→    return undefined
+   450→  }
+   451→
+   452→  private openAncestorWatcher(state: RootWatchState, mode: Extract<RootWatchMode, { kind: 'ancestor' }>): WatchHandle {
+   453→    const listener = (_current: Stats, _previous: Stats): void => {
+   454→      void this.handleAncestorWatchEvent(state, mode)
+   455→    }
+   456→    watchFile(mode.nextPath, {
+   457→      persistent: false,
+   458→      interval: this.config.pollIntervalMs,
+   459→    }, listener)
+   460→    return {
+   461→      mode,
+   462→      close() {
+   463→        unwatchFile(mode.nextPath, listener)
+   464→      },
+   465→    }
+   466→  }
+   467→
+   468→  private async handleAncestorWatchEvent(
+   469→    state: RootWatchState,
+   470→    mode: Extract<RootWatchMode, { kind: 'ancestor' }>,
+   471→  ): Promise<void> {
+   472→    let current: RootWatchMode
+   473→    try {
+   474→      current = await resolveRootWatchMode(state.root.path, this.config.followSymlinks)
+   475→    } catch (error) {
+   476→      /* v8 ignore start -- Non-absence stat failures need a platform permission or I/O fault. */
+   477→      if (!this.closing && state.owners.size > 0) this.handleWatcherError(state, error)
+   478→      return
+   479→      /* v8 ignore stop */
+   480→    }
+   481→    if (this.closing || state.owners.size === 0 || sameWatchMode(mode, current)) return
+   482→    this.queueInvalidation()
+   483→    state.unhealthy = true
+   484→    this.scheduleRewatch(state)
+   485→  }
+   486→
+   487→  private async openRootWatcher(state: RootWatchState, mode: Extract<RootWatchMode, { kind: 'root' }>): Promise<WatchHandle> {
+   488→    const watcher = chokidar.watch(mode.anchor, {
+   489→      // Chokidar owns late native fs.watch errors only for persistent watchers;
+   490→      // this provider's effect explicitly closes every handle at teardown.
+   491→      persistent: true,
+   492→      ignoreInitial: true,
+   493→      depth: 1,
+   494→      followSymlinks: this.config.followSymlinks,
+   495→      atomic: true,
+   496→      awaitWriteFinish: {
+   497→        stabilityThreshold: this.config.stabilityThresholdMs,
+   498→        pollInterval: this.config.pollIntervalMs,
+   499→      },
+   500→      usePolling: this.config.usePolling,
+   501→      interval: this.config.pollIntervalMs,
+   502→    })
+   503→    const handle: WatchHandle = {
+   504→      mode,
+   505→      close: () => watcher.close(),
+   506→    }
+   507→    let ready = false
+   508→    const readiness = Promise.withResolvers<undefined>()
+   509→    const signal = this.lifecycle.signal
+   510→    if (signal.aborted) {
+   511→      await this.closeWatcher(handle)
+   512→      signal.throwIfAborted()
+   513→    }
+   514→    const onAbort = (): void => { readiness.reject(signal.reason) }
+   515→    signal.addEventListener('abort', onAbort, { once: true })
+   516→    const onError = (error: unknown): void => {
+   517→      if (!ready) {
+   518→        readiness.reject(error)
+   519→        return
+   520→      }
+   521→      this.handleWatcherError(state, error)
+   522→    }
+   523→    watcher.on('error', onError)
+   524→    watcher.once('ready', () => {
+   525→      ready = true
+   526→      readiness.resolve(undefined)
+   527→    })
+   528→    for (const event of ['add', 'addDir', 'change', 'unlink', 'unlinkDir'] as const) {
+   529→      watcher.on(event, (path) => { this.handleWatchEvent(state, mode, event, path) })
+   530→    }
+   531→    try {
+   532→      await readiness.promise
+   533→    } catch (error) {
+   534→      await this.closeWatcher(handle)
+   535→      throw error
+   536→    } finally {
+   537→      signal.removeEventListener('abort', onAbort)
+   538→    }
+   539→    return handle
+   540→  }
+   541→
+   542→  private handleWatchEvent(
+   543→    state: RootWatchState,
+   544→    mode: Extract<RootWatchMode, { kind: 'root' }>,
+   545→    event: SkillWatchEvent,
+   546→    path: string,
+   547→  ): void {
+   548→    const target = resolve(path)
+   549→    if (this.closing || !isRelevantWatchEvent({ ...state.root, path: mode.anchor }, event, target)) return
+   550→    this.queueInvalidation()
+   551→    if (target === mode.anchor && event === 'unlinkDir') {
+   552→      state.unhealthy = true
+   553→      this.scheduleRewatch(state)
+   554→    }
+   555→  }
+   556→
+   557→  private handleWatcherError(state: RootWatchState, error: unknown): void {
+   558→    if (this.closing) return
+   559→    this.ctx.logger.warn(`skill-filesystem: watcher for ${state.root.path} failed: ${errorMessage(error)}`)
+   560→    state.unhealthy = true
+   561→    this.queueInvalidation()
+   562→    this.scheduleRewatch(state)
+   563→  }
+   564→
+   565→  private scheduleRewatch(state: RootWatchState): void {
+   566→    const currentOpening = state.opening ?? Promise.resolve()
+   567→    void (async () => {
+   568→      await settleWatcherOpening(currentOpening)
+   569→      try {
+   570→        await this.ensureWatcher(state)
+   571→      } catch {
+   572→        // Watch startup logged the retry failure; the next incomplete discovery retries it again.
+   573→        return
+   574→      }
+   575→      this.queueInvalidation()
+   576→    })()
+   577→  }
+   578→
+   579→  private queueInvalidation(): void {
+   580→    if (this.closing || this.invalidationQueued) return
+   581→    this.invalidationQueued = true
+   582→    queueMicrotask(() => {
+   583→      this.invalidationQueued = false
+   584→      /* v8 ignore next -- Effect teardown can win this queued microtask before provider disposal emits. */
+   585→      if (this.closing) return
+   586→      this.invalidate()
+   587→    })
+   588→  }
+   589→
+   590→  private async closeWatcher(watcher: WatchHandle): Promise<void> {
+   591→    try {
+   592→      await watcher.close()
+   593→    } catch (error) {
+   594→      this.ctx.logger.warn(`skill-filesystem: failed to close watcher: ${errorMessage(error)}`)
+   595→    }
+   596→  }
+   597→}
+   598→
+   599→async function settleWatcherOpening(opening: Promise<void> | undefined): Promise<void> {
+   600→  if (opening === undefined) return
+   601→  try {
+   602→    await opening
+   603→  } catch {
+   604→    // Watch startup already logged the underlying failure; teardown only contains it.
+   605→  }
+   606→}
+   607→
+   608→function resolveWatchConfig(config: Config): ResolvedWatchConfig {
+   609→  const stabilityThresholdMs = config.watchStabilityThresholdMs ?? DEFAULT_WATCH_STABILITY_THRESHOLD_MS
+   610→  const pollIntervalMs = config.watchPollIntervalMs ?? DEFAULT_WATCH_POLL_INTERVAL_MS
+   611→  const maxProjects = config.watchMaxProjects ?? DEFAULT_WATCH_MAX_PROJECTS
+   612→  assertPositiveInteger('watchStabilityThresholdMs', stabilityThresholdMs)
+   613→  assertPositiveInteger('watchPollIntervalMs', pollIntervalMs)
+   614→  assertPositiveInteger('watchMaxProjects', maxProjects)
+   615→  return {
+   616→    enabled: config.watch ?? true,
+   617→    usePolling: config.watchUsePolling ?? false,
+   618→    stabilityThresholdMs,
+   619→    pollIntervalMs,
+   620→    maxProjects,
+   621→    followSymlinks: config.watchFollowSymlinks ?? true,
+   622→  }
+   623→}
+   624→
+   625→async function resolveRootWatchMode(root: string, followSymlinks: boolean): Promise<RootWatchMode> {
+   626→  let candidate = root
+   627→  while (true) {
+   628→    try {
+   629→      const info = await stat(candidate)
+   630→      if (info.isDirectory()) {
+   631→        const preserveRootLink = candidate === root
+   632→          && !followSymlinks
+   633→          && (await lstat(candidate)).isSymbolicLink()
+   634→        const anchor = preserveRootLink ? resolve(candidate) : await canonicalizeWatchPath(candidate)
+   635→        if (candidate === root) return { kind: 'root', anchor }
+   636→        const firstSegment = relative(candidate, root).split(sep)[0]
+   637→        /* v8 ignore next -- candidate is a strict ancestor of root. */
+   638→        if (firstSegment === undefined || firstSegment.length === 0) return { kind: 'root', anchor }
+   639→        return { kind: 'ancestor', anchor, nextPath: join(anchor, firstSegment) }
+   640→      }
+   641→    } catch (error) {
+   642→      /* v8 ignore next -- Non-absence stat failures are platform/permission-specific and propagate as incomplete discovery. */
+   643→      if (!isAbsentPathError(error)) throw error
+   644→    }
+   645→    const parent = dirname(candidate)
+   646→    /* v8 ignore next -- Traversal reaches the existing filesystem root before this fallback. */
+   647→    if (parent === candidate) return { kind: 'ancestor', anchor: candidate, nextPath: root }
+   648→    candidate = parent
+   649→  }
+   650→}
+   651→
+   652→function sameWatchMode(left: RootWatchMode, right: RootWatchMode): boolean {
+   653→  return left.kind === right.kind
+   654→    && left.anchor === right.anchor
+   655→    && (left.kind === 'root' || (right.kind === 'ancestor' && left.nextPath === right.nextPath))
+   656→}
+   657→
+   658→function isRelevantWatchEvent(
+   659→  root: SkillRoot,
+   660→  event: SkillWatchEvent,
+   661→  path: string,
+   662→): boolean {
+   663→  const segments = containedSegments(root.path, path)
+   664→  if (segments === undefined) return false
+   665→  if (segments.length === 0) return event === 'addDir' || event === 'unlinkDir'
+   666→  if (root.skipSystem === true && segments[0] === '.system') return false
+   667→  if (segments.length === 1) {
+   668→    if (event === 'addDir' || event === 'unlinkDir') return true
+   669→    return segments[0]?.endsWith('.md') === true
+   670→  }
+   671→  return segments.length === 2
+   672→    && segments[1] === 'SKILL.md'
+   673→    && event !== 'addDir'
+   674→    && event !== 'unlinkDir'
+   675→}
+   676→
+   677→function isPotentialSkillPath(root: SkillRoot, path: string): boolean {
+   678→  const segments = containedSegments(root.path, path)
+   679→  if (segments === undefined || segments.length === 0 || segments.length > 2) return false
+   680→  if (root.skipSystem === true && segments[0] === '.system') return false
+   681→  return segments.length === 1
+   682→    ? segments[0]?.endsWith('.md') === true
+   683→    : segments[1] === 'SKILL.md'
+   684→}
+   685→
+   686→function containedSegments(root: string, path: string): string[] | undefined {
+   687→  const child = relative(root, path)
+   688→  if (child.length === 0) return []
+   689→  if (child === '..' || child.startsWith(`..${sep}`) || isAbsolute(child)) return undefined
+   690→  return child.split(sep)
+   691→}
+   692→
+   693→function mutationToolName(actor: object | undefined): 'edit' | 'write' | undefined {
+   694→  if (actor === undefined || !('name' in actor)) return undefined
+   695→  const value = actor.name
+   696→  return value === 'edit' || value === 'write' ? value : undefined
+   697→}
+   698→
+   699→function assertPositiveInteger(field: string, value: number): void {
+   700→  if (!Number.isInteger(value) || value < 1) {
+   701→    throw new TypeError(`skill-filesystem: ${field} must be a positive integer`)
+   702→  }
+   703→}
+   704→
+   705→function isAbsentPathError(error: unknown): boolean {
+   706→  return hasErrorCode(error, 'ENOENT') || hasErrorCode(error, 'ENOTDIR')
+   707→}
+   708→
+   709→function isAbsentSkillPathError(error: unknown): boolean {
+   710→  return isAbsentPathError(error)
+   711→    || hasErrorCode(error, 'FS_NOT_FOUND')
+   712→    || hasErrorCode(error, 'FS_NOT_DIRECTORY')
+   713→}
+   714→
+   715→function hasErrorCode(error: unknown, code: string): boolean {
+   716→  return typeof error === 'object' && error !== null && 'code' in error && error.code === code
+   717→}
+   718→
+   719→async function discoverRoot(root: SkillRoot, ctx: Context, provider: string): Promise<SkillCandidate[]> {
+   720→  const skills: SkillCandidate[] = []
+   721→  const entries = await listSkillRootEntries(root, ctx)
+   722→  for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name))) {
+   723→    if (root.skipSystem && entry.name === '.system') continue
+   724→    const locator = entry.type === 'directory'
+   725→      ? { path: join(entry.path, 'SKILL.md'), directory: entry.path }
+   726→      : entry.type === 'file' && entry.name.endsWith('.md')
+   727→        ? { path: entry.path, directory: root.path }
+   728→        : undefined
+   729→    if (locator === undefined) continue
+   730→    const parsed = await parseSkillFile(locator.path, ctx, undefined, root.trustedHost === true)
+   731→    if (parsed === undefined) continue
+   732→    skills.push({
+   733→      name: parsed.name,
+   734→      description: parsed.description,
+   735→      ...parsed.whenToUse !== undefined ? { whenToUse: parsed.whenToUse } : {},
+   736→      invocation: parsed.invocation,
+   737→      provider,
+   738→      source: root.source,
+   739→      rank: root.rank,
+   740→      locator,
+   741→      resourceBase: { kind: 'directory', path: locator.directory },
+   742→      path: locator.path,
+   743→      ...parsed.metadata !== undefined ? { metadata: parsed.metadata } : {},
+   744→    })
+   745→  }
+   746→  return skills
+   747→}
+   748→
+   749→async function listSkillRootEntries(root: SkillRoot, ctx: Context): Promise<SkillRootEntry[]> {
+   750→  const fs = optionalFileSystem(ctx)
+   751→  if (fs !== undefined && root.trustedHost !== true) return await listSkillRootEntriesFromFileSystem(root, fs)
+   752→  return await listSkillRootEntriesFromNode(root, ctx)
+   753→}
+   754→
+   755→async function listSkillRootEntriesFromFileSystem(root: SkillRoot, fs: FileSystem): Promise<SkillRootEntry[]> {
+   756→  try {
+   757→    return (await fsListDir(fs, root.path)).map(entryFromFs)
+   758→  } catch (error) {
+   759→    if (isAbsentSkillPathError(error)) return []
+   760→    throw error
+   761→  }
+   762→}
+   763→
+   764→async function fsListDir(fs: FileSystem, path: string): Promise<FsDirEntry[]> {
+   765→  const target = await fs.resolve(path)
+   766→  return await fs.listDir(target)
+   767→}
+   768→
+   769→function entryFromFs(entry: FsDirEntry): SkillRootEntry {
+   770→  return { name: entry.name, type: entry.type, path: entry.target.displayPath }
+   771→}
+   772→
+   773→async function listSkillRootEntriesFromNode(root: SkillRoot, ctx: Context): Promise<SkillRootEntry[]> {
+   774→  let entries
+   775→  try {
+   776→    entries = await readdir(root.path, { withFileTypes: true, encoding: 'utf8' })
+   777→  } catch (error) {
+   778→    /* v8 ignore else -- Native non-absence directory failures are provider-dependent; the ctx.fs path pins incomplete discovery. */
+   779→    if (isAbsentSkillPathError(error)) return []
+   780→    /* v8 ignore next -- Same native error branch as above. */
+   781→    throw error
+   782→  }
+   783→
+   784→  const result: SkillRootEntry[] = []
+   785→  for (const entry of entries) {
+   786→    const path = join(root.path, entry.name)
+   787→    const type = await nodeEntryKind(path, entry, ctx)
+   788→    result.push({ name: entry.name, type: type ?? 'other', path })
+   789→  }
+   790→  return result
+   791→}
+   792→
+   793→async function parseSkillFile(path: string, ctx: Context, signal?: AbortSignal, trustedHost = false): Promise<ParsedSkill | undefined> {
+   794→  const raw = await readSkillText(ctx, path, signal, trustedHost)
+   795→  signal?.throwIfAborted()
+   796→  if (raw === undefined) {
+   797→    return undefined
+   798→  }
+   799→  let parsed
+   800→  try {
+   801→    parsed = parseFrontmatter(raw)
+   802→  } catch (error) {
+   803→    ctx.logger.warn(`skill file ${path} ignored: invalid YAML frontmatter: ${errorMessage(error)}`)
+   804→    return undefined
+   805→  }
+   806→  if (!parsed) {
+   807→    ctx.logger.warn(`skill file ${path} ignored: missing YAML frontmatter`)
+   808→    return undefined
+   809→  }
+   810→  const name = stringField(parsed.data, 'name')
+   811→  const description = stringField(parsed.data, 'description')
+   812→  if (name === undefined || description === undefined) {
+   813→    ctx.logger.warn(`skill file ${path} ignored: frontmatter requires name and description`)
+   814→    return undefined
+   815→  }
+   816→  if (!isSkillName(name)) {
+   817→    ctx.logger.warn(`skill file ${path} ignored: invalid skill name "${name}"`)
+   818→    return undefined
+   819→  }
+   820→  let invocation
+   821→  try {
+   822→    invocation = parseInvocationPolicy(parsed.data)
+   823→  } catch (error) {
+   824→    ctx.logger.warn(`skill file ${path} ignored: invalid invocation frontmatter: ${errorMessage(error)}`)
+   825→    return undefined
+   826→  }
+   827→  return {
+   828→    name,
+   829→    description,
+   830→    ...optionalString(parsed.data, 'whenToUse'),
+   831→    invocation,
+   832→    ...optionalMetadata(parsed.data),
+   833→    content: parsed.body.trim(),
+   834→  }
+   835→}
+   836→
+   837→function optionalFileSystem(ctx: Context): FileSystem | undefined {
+   838→  return ctx.get('fs')
+   839→}
+   840→
+   841→async function readSkillText(ctx: Context, path: string, signal?: AbortSignal, trustedHost = false): Promise<string | undefined> {
+   842→  signal?.throwIfAborted()
+   843→  const fs = optionalFileSystem(ctx)
+   844→  if (fs !== undefined && !trustedHost) {
+   845→    return await readSkillTextFromFileSystem(ctx, fs, path, signal)
+   846→  }
+   847→  try {
+   848→    return await readFile(path, { encoding: 'utf8', signal })
+   849→  } catch (error) {
+   850→    signal?.throwIfAborted()
+   851→    if (isAbsentSkillPathError(error)) return undefined
+   852→    throw error
+   853→  }
+   854→}
+   855→
+   856→async function readSkillTextFromFileSystem(ctx: Context, fs: FileSystem, path: string, signal?: AbortSignal): Promise<string | undefined> {
+   857→  // A missing or temporarily inaccessible skill file is not fatal to discovery.
+   858→  signal?.throwIfAborted()
+   859→  let target
+   860→  try {
+   861→    target = await fs.resolve(path)
+   862→  } catch (error) {
+   863→    if (isAbsentSkillPathError(error)) return undefined
+   864→    throw error
+   865→  }
+   866→  signal?.throwIfAborted()
+   867→  let info
+   868→  try {
+   869→    info = await fs.stat(target, signal)
+   870→  } catch (error) {
+   871→    signal?.throwIfAborted()
+   872→    if (isAbsentSkillPathError(error)) return undefined
+   873→    throw error
+   874→  }
+   875→  if (info === undefined || info.type !== 'file') return undefined
+   876→  try {
+   877→    return await fs.readText(target, signal)
+   878→  } catch (error) {
+   879→    signal?.throwIfAborted()
+   880→    if (isAbsentSkillPathError(error)) return undefined
+   881→    if (!hasErrorCode(error, 'FS_NOT_TEXT')) throw error
+   882→    ctx.logger.warn(`skill file ${path} ignored: ${fsReadErrorMessage(target, error)}`)
+   883→    return undefined
+   884→  }
+   885→}
+   886→
+   887→function fsReadErrorMessage(target: FsTarget, error: unknown): string {
+   888→  return `failed to read text file at ${target.displayPath}: ${errorMessage(error)}`
+   889→}
+   890→
+   891→async function nodeEntryKind(fullPath: string, entry: { isDirectory(): boolean; isFile(): boolean; isSymbolicLink(): boolean }, ctx: Context): Promise<'directory' | 'file' | undefined> {
+   892→  if (entry.isDirectory()) return 'directory'
+   893→  if (entry.isFile()) return 'file'
+   894→  /* v8 ignore next -- Non-file directory entries such as FIFOs are platform-specific and intentionally skipped. */
+   895→  if (!entry.isSymbolicLink()) return undefined
+   896→  try {
+   897→    const info = await stat(fullPath)
+   898→    if (info.isDirectory()) return 'directory'
+   899→    /* v8 ignore else -- the special-file symlink branch relies on POSIX /dev/null. */
+   900→    if (info.isFile()) return 'file'
+   901→    /* v8 ignore next -- The special-file symlink fixture relies on POSIX /dev/null. */
+   902→    return undefined
+   903→  } catch (error) {
+   904→    ctx.logger.warn(`skill entry ${fullPath} ignored: failed to follow symbolic link: ${errorMessage(error)}`)
+   905→    return undefined
+   906→  }
+   907→}
+   908→
+   909→function parseFrontmatter(raw: string): { data: Record<string, unknown>; body: string } | undefined {
+   910→  const firstLineEnd = raw.indexOf('\n')
+   911→  if (firstLineEnd < 0) return undefined
+   912→  const firstLine = raw.slice(0, firstLineEnd).replace(/\r$/, '')
+   913→  if (firstLine !== '---') return undefined
+   914→  const start = firstLineEnd + 1
+   915→  const closing = findClosingFrontmatter(raw, start)
+   916→  if (closing === undefined) return undefined
+   917→  const yaml = raw.slice(start, closing.start)
+   918→  const parsed = parseYaml(yaml) as unknown
+   919→  if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) return undefined
+   920→  return { data: parsed as Record<string, unknown>, body: raw.slice(closing.bodyStart) }
+   921→}
+   922→
+   923→function findClosingFrontmatter(raw: string, start: number): { start: number; bodyStart: number } | undefined {
+   924→  let lineStart = start
+   925→  while (lineStart <= raw.length) {
+   926→    const nextNewline = raw.indexOf('\n', lineStart)
+   927→    const lineEnd = nextNewline < 0 ? raw.length : nextNewline
+   928→    const line = raw.slice(lineStart, lineEnd).replace(/\r$/, '')
+   929→    if (line === '---') {
+   930→      return { start: lineStart, bodyStart: nextNewline < 0 ? raw.length : nextNewline + 1 }
+   931→    }
+   932→    if (nextNewline < 0) return undefined
+   933→    lineStart = nextNewline + 1
+   934→  }
+   935→}
+   936→
+   937→async function findProjectRoot(cwd: string, fs: FileSystem | undefined): Promise<string> {
+   938→  let current = cwd
+   939→  while (true) {
+   940→    if (await pathExists(join(current, '.git'), fs)) {
+   941→      return current
+   942→    }
+   943→    const parent = dirname(current)
+   944→    if (parent === current) return cwd
+   945→    current = parent
+   946→  }
+   947→}
+   948→
+   949→async function pathExists(path: string, fs: FileSystem | undefined): Promise<boolean> {
+   950→  if (fs !== undefined) {
+   951→    return await pathExistsInFileSystem(path, fs)
+   952→  }
+   953→  return await pathExistsInNode(path)
+   954→}
+   955→
+   956→async function pathExistsInFileSystem(path: string, fs: FileSystem): Promise<boolean> {
+   957→  let target
+   958→  try {
+   959→    target = await fs.resolve(path)
+   960→  } catch {
+   961→    // A backend may reject or hide this candidate; continue walking upward.
+   962→    return false
+   963→  }
+   964→  try {
+   965→    return await fs.stat(target) !== undefined
+   966→  } catch {
+   967→    // Transient stat failures make only this git-root candidate unusable.
+   968→    return false
+   969→  }
+   970→}
+   971→
+   972→async function pathExistsInNode(path: string): Promise<boolean> {
+   973→  try {
+   974→    await access(path)
+   975→    return true
+   976→  } catch {
+   977→    // Missing host paths are expected while walking toward the filesystem root.
+   978→    return false
+   979→  }
+   980→}
+   981→
+   982→function stringField(data: Record<string, unknown>, key: string): string | undefined {
+   983→  const value = data[key]
+   984→  return typeof value === 'string' && value.length > 0 ? value : undefined
+   985→}
+   986→
+   987→function optionalString(data: Record<string, unknown>, key: string): { [K in typeof key]?: string } {
+   988→  const value = data[key]
+   989→  return typeof value === 'string' && value.length > 0 ? { [key]: value } : {}
+   990→}
+   991→
+   992→function parseInvocationPolicy(data: Record<string, unknown>): SkillInvocationPolicy {
+   993→  rejectLegacyInvocationKey(data, 'disableModelInvocation', 'disable-model-invocation')
+   994→  rejectLegacyInvocationKey(data, 'modelInvocable', 'disable-model-invocation')
+   995→  rejectLegacyInvocationKey(data, 'userInvocable', 'user-invocable')
+   996→  const disableModelInvocation = frontmatterBoolean(data, 'disable-model-invocation')
+   997→  const userInvocable = frontmatterBoolean(data, 'user-invocable')
+   998→  return {
+   999→    modelInvocable: disableModelInvocation !== true,
+  1000→    userInvocable: userInvocable !== false,
+  1001→  }
+  1002→}
+  1003→
+  1004→function rejectLegacyInvocationKey(data: Record<string, unknown>, legacy: string, canonical: string): void {
+  1005→  if (Object.hasOwn(data, legacy)) {
+  1006→    throw new Error(`frontmatter field "${legacy}" is unsupported; use "${canonical}"`)
+  1007→  }
+  1008→}
+  1009→
+  1010→function frontmatterBoolean(data: Record<string, unknown>, key: string): boolean | undefined {
+  1011→  if (!Object.hasOwn(data, key)) return undefined
+  1012→  const value = data[key]
+  1013→  if (typeof value === 'boolean') return value
+  1014→  if (value === 1 || value === '1') return true
+  1015→  if (value === 0 || value === '0') return false
+  1016→  if (typeof value === 'string') {
+  1017→    switch (value.toLowerCase()) {
+  1018→      case 'true':
+  1019→      case 'yes':
+  1020→      case 'on':
+  1021→        return true
+  1022→      case 'false':
+  1023→      case 'no':
+  1024→      case 'off':
+  1025→        return false
+  1026→    }
+  1027→  }
+  1028→  throw new TypeError(`frontmatter field "${key}" must be a boolean`)
+  1029→}
+  1030→
+  1031→function optionalMetadata(data: Record<string, unknown>): { metadata?: Record<string, unknown> } {
+  1032→  const value = data.metadata
+  1033→  if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+  1034→    return { metadata: value as Record<string, unknown> }
+  1035→  }
+  1036→  return {}
+  1037→}
+  1038→
+  1039→function errorMessage(error: unknown): string {
+  1040→  return String(error)
+  1041→}
+  1042→
