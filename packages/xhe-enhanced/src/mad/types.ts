@@ -122,9 +122,14 @@ export interface AgentConstraints {
 }
 
 export type AgentRole = 
-  | 'builder'
+  | 'lead'
+  | 'contributor'
   | 'critic'
   | 'verifier'
+  | 'synthesizer'
+  | 'devil_advocate'
+  | 'red_team'
+  | 'builder'
   | 'architect'
   | 'debugger'
   | 'tester'
@@ -1614,4 +1619,360 @@ export type {
   RuleCategory,
   VerificationStatus as GODVerificationStatus,
   MADPhase
+}
+
+// ============================================================================
+// Additional Types for Advanced Implementation (v2.0.0-advanced)
+// ============================================================================
+
+/** Updated GOD State for state machine */
+export type GODStateV2 = 
+  | 'IDLE'
+  | 'INITIALIZING'
+  | 'READY'
+  | 'PLANNING'
+  | 'BUILDING'
+  | 'DEBUGGING'
+  | 'DISCUSSING'
+  | 'ARBITRATING'
+  | 'VERIFYING'
+  | 'GAUNTLET'
+  | 'PRODUCTION_SWEEP'
+  | 'FINALIZING'
+  | 'COMPLETE'
+  | 'ERROR'
+  | 'SHUTTING_DOWN'
+
+/** Updated Stop Policy for discussion coordinator */
+export type StopPolicyV2 = 
+  | 'fixed-rounds'
+  | 'context-clear'
+  | 'consensus'
+  | 'budget-exhausted'
+
+/** Warm Memory Entry (for Memory Fabric) */
+export interface WarmMemoryEntry {
+  id: string
+  contentHash: string
+  content: string
+  type: string
+  metadata?: any
+  storedAt: number
+  lastAccessed: number
+  accessCount: number
+  tags: string[]
+  sizeBytes: number
+}
+
+/** Hot Context Item */
+export interface HotContextItem {
+  id: string
+  content: string
+  type: string
+  metadata?: any
+  addedAt: number
+  accessCount: number
+}
+
+/** Updated Hot Context */
+export interface HotContextV2 {
+  activeItems: HotContextItem[]
+  currentTaskId: string
+  contextWindow: Record<string, any>
+  maxSize: number
+  lastAccessed: number
+}
+
+/** Updated Warm Memory Stats */
+export interface WarmMemoryStats {
+  totalEntries: number
+  totalSizeBytes: number
+  indexedTerms: number
+}
+
+/** Updated Cold Archive Entry */
+export interface ColdArchiveEntry {
+  contentHash: string
+  originalId: string
+  content: string
+  compressed: boolean
+  archivedAt: number
+  reason: string
+  sizeBytes: number
+}
+
+/** Updated Cold Archive Stats */
+export interface ColdArchiveStats {
+  totalEntries: number
+  totalSizeBytes: number
+}
+
+/** Updated Memory Fabric Interface */
+export interface MemoryFabricV2 {
+  hot: HotContextV2
+  warmStats: WarmMemoryStats
+  coldStats: ColdArchiveStats
+}
+
+/** Knowledge Graph for Discussion Bus */
+export interface KnowledgeGraph {
+  claims: ClaimNode[]
+  evidence: EvidenceNode[]
+  edges: KnowledgeEdge[]
+}
+
+/** Skill Manifest for Skill Manager */
+export interface SkillManifest {
+  id: string
+  name: string
+  version: string
+  category: string
+  description: string
+  capabilities: string[]
+  dependencies?: string[]
+  tags?: string[]
+}
+
+/** Audit Log Entry */
+export interface AuditLogEntry {
+  id: string
+  type: string
+  details: string
+  timestamp: number
+  severity?: 'info' | 'warning' | 'error' | 'critical'
+}
+
+/** Replay Session */
+export interface ReplaySession {
+  id: string
+  checkpointId: string
+  startedAt: number
+  status: 'running' | 'completed' | 'stopped'
+  actionsReplayed: number
+  currentState: any
+  modifications: Map<string, any>
+  lastActionAt?: number
+  completedAt?: number
+}
+
+/** Telemetry Event */
+export interface TelemetryEvent {
+  type: string
+  subtype?: string
+  agentId?: string
+  taskId?: string
+  metricName?: string
+  metricValue?: number
+  details?: any
+  timestamp: number
+}
+
+/** Core Rule Violation with round info */
+export interface CoreRuleViolationV2 extends CoreRuleViolation {
+  round?: number
+  remediation: string
+}
+
+/** Gauntlet Round Result */
+export interface GauntletRoundV2 {
+  roundNumber: number
+  artifactHash: string
+  barHash: string
+  criticDecision: 'artifact' | 'bar' | 'tie'
+  criticFeedback: {
+    winner: 'artifact' | 'bar' | 'tie'
+    feedback: string
+    biggestGap: string
+  }
+  conformancePassed: boolean
+  conformanceIssues: string[]
+  improvements?: number
+  duration: number
+  regressionChecked: { passed: boolean; regressions: string[] }
+}
+
+/** Production Finding with agent attribution */
+export interface ProductionFindingV2 extends ProductionFinding {
+  agent: string
+}
+
+/** Routing Decision with alternatives */
+export interface RoutingDecisionV2 {
+  modelId: string
+  providerId: string
+  confidence: number
+  reasoning: string
+  alternatives: Array<{ modelId: string; confidence: number }>
+  costEstimate: number
+  latencyEstimate: number
+}
+
+/** Cost Summary V2 with phase breakdown */
+export interface CostSummaryV2 {
+  totalCost: number
+  budgetAllocated: number
+  budgetRemaining: number
+  utilization: number
+  entries: number
+  byAgent: Record<string, number>
+  byModel: Record<string, number>
+  byPhase: Record<string, number>
+  forecast: { estimated: number; confidence: 'high' | 'medium' | 'low' }
+}
+
+/** Discussion Bus State V2 with participants and violations */
+export interface DiscussionBusStateV2 {
+  isActive: boolean
+  currentRound: number
+  totalRounds: number
+  participants: Array<{ agentId: string; role: string; hasSpoken: boolean }>
+  knowledgeGraph: KnowledgeGraph
+  convergenceHistory: ConvergenceMetrics[]
+  ruleViolations: CoreRuleViolationV2[]
+}
+
+/** Final Report V2 with all advanced features */
+export interface FinalReportV2 {
+  taskId: string
+  status: 'COMPLETED' | 'PARTIAL' | 'FAILED' | 'TIMEOUT' | 'BUDGET_EXHAUSTED'
+  result: {
+    output: string
+    confidence: number
+    sources: Array<{ id: string; content: string }>
+  }
+  discussion?: {
+    rounds: number
+    finalState: DiscussionBusStateV2
+    claims: ClaimNode[]
+    evidence: EvidenceNode[]
+  }
+  verification?: VerificationResult
+  gauntlet?: GauntletResult
+  productionGate?: ProductionGateResult
+  cost: CostSummaryV2
+  telemetry: {
+    totalTime: number
+    agentUtilization: number
+    modelUsage: Array<{ model: string; cost: number }>
+    memoryUsage: ReturnType<MemoryFabricManager['getStats']>
+  }
+  timestamp: number
+}
+
+/** Type imports for god-runtime components */
+export type MemoryFabricManager = import('../mad/core/god-runtime').MemoryFabricManager
+export type StateManager = import('../mad/core/god-runtime').StateManager
+export type ModelRouter = import('../mad/core/god-runtime').ModelRouter
+export type Scheduler = import('../mad/core/god-runtime').Scheduler
+export type DiscussionCoordinator = import('../mad/core/god-runtime').DiscussionCoordinator
+export type Arbiter = import('../mad/core/god-runtime').Arbiter
+export type VerificationEngine = import('../mad/core/god-runtime').VerificationEngine
+export type PolicyAgentTreeManager = import('../mad/core/god-runtime').PolicyAgentTreeManager
+export type SkillManager = import('../mad/core/god-runtime').SkillManager
+export type TelemetryManager = import('../mad/core/god-runtime').TelemetryManager
+export type AuditReplayManager = import('../mad/core/god-runtime').AuditReplayManager
+export type CostIntelligenceManager = import('../mad/core/god-runtime').CostIntelligenceManager
+export type GauntletLoop = import('../mad/core/god-runtime').GauntletLoop
+export type ProductionReadinessSweep = import('../mad/core/god-runtime').ProductionReadinessSweep
+
+// Default configurations
+export const VERIFICATION_LEVELS = {
+  MICRO: 'micro' as const,
+  GENERAL: 'general' as const,
+  ADVERSARIAL: 'adversarial' as const
+}
+
+export const GAUNTLET_DEFAULT_CONFIG: GauntletConfig = {
+  enabled: true,
+  maxRounds: 20,
+  budget: {
+    maxRounds: 20,
+    maxTimeMs: 300000, // 5 minutes
+    maxCost: 50
+  },
+  stopConditions: {
+    barMet: true,
+    marginalCollapseRounds: 3,
+    userStop: true,
+    regressionFailure: true
+  },
+  requireConformance: true,
+  requireRegressionCheck: true,
+  freezeBar: true
+}
+
+export const PRODUCTION_SWEEP_DEFAULT_CONFIG: ProductionSweepConfig = {
+  enabled: true,
+  agents: {
+    qualityQA: { enabled: true, severityThreshold: 'warning' },
+    linter: { enabled: true, checkTODOs: true, checkDebugCode: true },
+    stressTest: { enabled: true, testEdgeCases: true, testRaceConditions: false },
+    uxReview: { enabled: true, simulateWorkflows: true }
+  },
+  maxSweeps: 5,
+  blockingSeverities: ['error', 'critical'],
+  autoRemediate: false
+}
+
+export const STOP_POLICIES_V2: Record<StopPolicyV2, string> = {
+  'fixed-rounds': 'Stop after a fixed number of rounds',
+  'context-clear': 'Stop when context is clear and stable',
+  'consensus': 'Stop when consensus threshold is reached',
+  'budget-exhausted': 'Continue until budget is exhausted (external control)'
+}
+
+export const CORE_RULES: Array<{
+  id: string
+  name: string
+  description: string
+}> = [
+  { id: 'RULE_1', name: 'Consensus ≠ Correctness', description: 'High agreement does not guarantee truth' },
+  { id: 'RULE_2', name: 'Confidence Must Be Earned', description: 'Confidence must be proportional to evidence' },
+  { id: 'RULE_3', name: 'Independent Reasoning First', description: 'Form opinions before seeing others' },
+  { id: 'RULE_4', name: 'Evidence Required for Claims', description: 'Factual claims need supporting evidence' },
+  { id: 'RULE_5', name: 'Challenge Aggressively', description: 'Actively seek flaws in reasoning' },
+  { id: 'RULE_6', name: 'Counterexample Search', description: 'Search for disconfirming evidence' },
+  { id: 'RULE_7', name: 'No Fake Claims', description: 'Never invent results or citations' },
+  { id: 'RULE_8', name: 'Explicit Uncertainty', description: 'State when uncertain' },
+  { id: 'RULE_9', name: 'Fresh Critics Required', description: 'Use unbiased agents for verification' },
+  { id: 'RULE_10', name: 'Observe Anomalies', description: 'Flag unusual patterns' },
+  { id: 'RULE_11', name: 'User Premise Checking', description: 'Verify assumptions' },
+  { id: 'RULE_12', name: 'Preserve Knowledge', description: 'Record decisions and outcomes' },
+  { id: 'RULE_13', name: 'Load Only What Is Needed', description: 'Minimize context to relevant info' },
+  { id: 'RULE_14', name: 'Own Failures', description: 'Acknowledge mistakes openly' },
+  { id: 'RULE_15', name: 'Never Confuse Confidence with Truth', description: 'High confidence ≠ correctness' }
+]
+
+export const MAD_PHASES_V2: Record<MADPhase, string> = {
+  'idle': 'System idle, waiting for task',
+  'initializing': 'Setting up runtime',
+  'observation': 'Observing initial conditions',
+  'decomposition': 'Breaking down task',
+  'routing': 'Assigning to models',
+  'discussion': 'Multi-agent discussion active',
+  'verification': 'Verifying outputs',
+  'gauntlet': 'Running quality gauntlet',
+  'production_sweep': 'Production readiness sweep',
+  'finalizing': 'Generating final report',
+  'complete': 'Task complete',
+  'error': 'Error state',
+  'cancelled': 'Task cancelled'
+}
+
+export const GOD_STATES_V2: Record<GODStateV2, string> = {
+  'IDLE': 'Runtime idle',
+  'INITIALIZING': 'Initializing components',
+  'READY': 'Ready for tasks',
+  'PLANNING': 'In planning mode',
+  'BUILDING': 'In building mode',
+  'DEBUGGING': 'In debugging mode',
+  'DISCUSSING': 'Discussion in progress',
+  'ARBITRATING': 'Arbitrating conflicts',
+  'VERIFYING': 'Verification in progress',
+  'GAUNTLET': 'Gauntlet loop running',
+  'PRODUCTION_SWEEP': 'Production sweep running',
+  'FINALIZING': 'Finalizing results',
+  'COMPLETE': 'Task complete',
+  'ERROR': 'Error state',
+  'SHUTTING_DOWN': 'Shutting down'
 }
