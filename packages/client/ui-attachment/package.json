@@ -49,13 +49,13 @@
     "@deepseek-ai/cordis": "workspace:^",
     "@origin-ai/xhe-invariants": "workspace:^",
     "@types/react": "~18.3.1",
-    "@types/react-dom": "~18.3.0",
+    "@types/react-dom": "~19.2.3",
     "@origin-ai/xhe-client-runtime": "workspace:^",
     "@origin-ai/xhe-client-ui-conversation": "workspace:^",
     "@origin-ai/xhe-client-ui-primitives": "workspace:^",
     "@origin-ai/xhe-client-ui-slots": "workspace:^",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "^19.2.8",
     "@origin-ai/xhe-attachment": "workspace:^"
   },
   "files": [
