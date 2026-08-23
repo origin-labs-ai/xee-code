@@ -1,17 +1,21 @@
 /**
- * XH Enhanced - Main Entry Point
+ * Xee Harness Enhanced (XHE) - Main Entry Point
  * 
  * Complete integration of:
  * - I-WIN (Infinity Win Loop) - Never give up system
- * - M.A.D (Multi-Agent Discussion) - GOD AGENT coordinating sub-agents
+ * - M.A.D (Multi-Agent Deployment) - GOD Runtime with advanced orchestration
  * - BYOK (Bring Your Own Key) - Multi-provider key manager with multi-key support
  * - 25+ Slash Commands (Claude Code style)
  * - Fuzzy Autocomplete System
  * - Token Optimization (Lazy Loading)
  * - Model Behavior Invariants (No excuses, balanced aggression)
  * - Web UI Components
+ * - Gauntlet Loop - Quality enforcement system
+ * - Production Readiness Sweep - Pre-deployment validation
  * 
- * @module @origin-labs-ai/xh-enhanced
+ * @origin-ai/xhe
+ * Also known as: XeeCode, XCode
+ * Fork of: DSH/SeepSeek Harness
  */
 
 // Import core subsystems
@@ -22,8 +26,23 @@ import { startup, DEFAULT_BEHAVIOR } from './startup'
 export { IWINEngine, createIWIN, iwinExecute } from './iwin'
 export type { IWINTask, IWINTaskContext, IWINResult, IWINStats, Approach } from './iwin'
 
+// M.A.D System - Both Basic (MADEngine) and Advanced (GOD Runtime)
 export { MADEngine, createMAD, madDiscuss } from './mad'
-export type { MADResult } from './mad'
+export type { MADResult, MADConfig, MAgentConfig, AgentRole } from './mad'
+
+// Advanced GOD Runtime (TRANSCRIPT.md implementation)
+export { GODRuntime, createXHE, xheExecute } from './mad'
+export type { 
+  GodRuntime, GODRuntimeConfig, TaskSpecification, FinalReport,
+  VerificationResult, GauntletResult, ProductionGateResult
+} from './mad'
+
+// Re-export advanced types
+export type {
+  XHEIdentity, ProviderCredential, AgentConfig, ActiveAgent,
+  DiscussionRound, ClaimNode, EvidenceNode, MemoryFabric,
+  VerificationConfig, GauntletConfig, ProductionSweepConfig
+} from './mad'
 
 export { BYOKEngine, createBYOK } from './byok'
 export type { KeyInfo, KeyHealthResult, BudgetStatus, UsageAnalytics, ExportedBYOKConfig } from './byok'
@@ -59,7 +78,7 @@ export { startup, DEFAULT_BEHAVIOR }
 // Plugin Metadata
 // ============================================================================
 
-export const name = 'xh-enhanced'
+export const name = '@origin-ai/xhe'
 export const inject = ['commands', 'skills']
 
 // ============================================================================
@@ -67,26 +86,29 @@ export const inject = ['commands', 'skills']
 // ============================================================================
 
 export const VERSION = '2.0.0'
-export const DESCRIPTION = 'DSH Enhanced: I-WIN, M.A.D, BYOK, 25+ commands, fuzzy autocomplete, token optimization'
+export const DESCRIPTION = 'Xee Harness Enhanced (XHE): I-WIN, M.A.D GOD Runtime, BYOK, Gauntlet Loop, Production Sweep — fork of DSH/SeepSeek Harness'
 
 // ============================================================================
 // Main Setup Function
 // ============================================================================
 
-export interface DSHEnhancedConfig {
+export interface XHEConfig {
   enableIWIN?: boolean
   enableMAD?: boolean
+  enableGODRuntime?: boolean  // Advanced M.A.D mode
   enableBYOK?: boolean
   enableCommands?: boolean
   enableAutocomplete?: boolean
   enableTokenOptimization?: boolean
+  enableGauntletLoop?: boolean
+  enableProductionSweep?: boolean
   modelBehavior?: import('./startup').ModelBehaviorConfig
 }
 
-export async function setupDSHEnhanced(config: DSHEnhancedConfig = {}): Promise<void> {
+export async function setupXHE(config: XHEConfig = {}): Promise<void> {
   console.log('╔═══════════════════════════════════════════════════╗')
-  console.log('║     🚀 XH ENHANCED INITIALIZING                 ║')
-  console.log('║     I-WIN | M.A.D | BYOK | COMMANDS             ║')
+  console.log('║     🚀 XEE HARNESS ENHANCED INITIALIZING         ║')
+  console.log('║     I-WIN | M.A.D | GOD Runtime | BYOK          ║')
   console.log('╚═══════════════════════════════════════════════════╝')
   
   // Initialize model behavior rules first
@@ -100,7 +122,7 @@ export async function setupDSHEnhanced(config: DSHEnhancedConfig = {}): Promise<
   // Initialize optional features
   if (config.enableCommands !== false) {
     console.log('\n📜 Registering slash commands...')
-    registerCommands({} as any) // Context would be injected by Cordis
+    registerCommands({} as any)
   }
 
   if (config.enableAutocomplete !== false) {
@@ -113,11 +135,18 @@ export async function setupDSHEnhanced(config: DSHEnhancedConfig = {}): Promise<
     initTokenOptimizer({})
   }
 
-  console.log('\n✅ XH Enhanced initialized successfully!')
+  // Initialize advanced features if enabled
+  if (config.enableGODRuntime || config.enableGauntletLoop || config.enableProductionSweep) {
+    console.log('\n🏛️ Initializing Advanced M.A.D Systems...')
+    console.log('   GOD Runtime | Gauntlet Loop | Production Sweep')
+  }
+
+  console.log('\n✅ Xee Harness Enhanced initialized successfully!')
   console.log(`   Version: ${VERSION}`)
   console.log(`   Features: I-WIN (${config.enableIWIN !== false ? 'ON' : 'OFF'}), ` +
               `M.A.D (${config.enableMAD !== false ? 'ON' : 'OFF'}), ` +
-              `BYOK (${config.enableBYOK !== false ? 'ON' : 'OFF'})`)
+              `BYOK (${config.enableBYOK !== false ? 'OFF'}), ` +
+              `GOD Runtime (${config.enableGODRuntime ? 'ON' : 'OFF'})`)
 }
 
 // ============================================================================
@@ -142,7 +171,7 @@ export async function iwinTask<T>(
 }
 
 /**
- * Quick start M.A.D discussion
+ * Quick start M.A.D discussion (Basic)
  */
 export async function madTask(
   task: string,
@@ -151,6 +180,17 @@ export async function madTask(
   const { madDiscuss } = await import('./mad')
   const result = await madDiscuss(task, mode)
   return result.finalDecision
+}
+
+/**
+ * Quick start Advanced M.A.D (GOD Runtime) - Uses TRANSCRIPT.md architecture
+ */
+export async function xheTask(
+  task: string,
+  mode: 'PLAN' | 'BUILD' | 'DEBUG' = 'PLAN'
+): Promise<import('./mad').FinalReport> {
+  const { xheExecute } = await import('./mad')
+  return xheExecute(task, mode)
 }
 
 /**
@@ -194,8 +234,14 @@ export default {
   name,
   VERSION,
   DESCRIPTION,
-  setup: setupDSHEnhanced,
+  setup: setupXHE,
   iwin: { engine: () => import('./iwin'), task: iwinTask },
-  mad: { engine: () => import('./mad'), task: madTask },
-  byok: { engine: () => import('./byok'), setup: setupBYOK }
+  mad: { 
+    basic: { engine: () => import('./mad'), task: madTask }, 
+    advanced: { engine: () => import('./mad/core/god-runtime'), task: xheTask }
+  },
+  byok: { engine: () => import('./byok'), setup: setupBYOK },
+  // Aliases for convenience
+  xeeCode: { engine: () => import('./mad/core/god-runtime'), task: xheTask },
+  xCode: { engine: () => import('./mad/core/god-runtime'), task: xheTask }
 }

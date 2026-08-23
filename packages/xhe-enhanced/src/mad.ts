@@ -573,3 +573,51 @@ export async function madDiscuss(
   const engine = createMAD({ mode, ...options })
   return engine.discuss(task)
 }
+
+// ============================================================================
+// Advanced M.A.D - GOD Runtime Integration (TRANSCRIPT.md)
+// ============================================================================
+
+// Re-export from the advanced GOD Runtime implementation
+export { GODRuntime, createXHE, xheExecute } from './mad/core/god-runtime'
+export type {
+  GodRuntime,
+  GODRuntimeConfig,
+  TaskSpecification,
+  TaskGraph,
+  TaskNode,
+  TaskEdge,
+  ModelAssignment,
+  VerificationStatus,
+  FinalReport,
+  XHEIdentity,
+  ProviderCredential,
+  AgentConfig as AdvancedAgentConfig,
+  ActiveAgent as AdvancedActiveAgent,
+  DiscussionRound as AdvancedDiscussionRound,
+  ClaimNode,
+  EvidenceNode,
+  MemoryFabric,
+  VerificationConfig,
+  VerificationResult,
+  GauntletConfig,
+  GauntletResult,
+  ProductionSweepConfig,
+  ProductionGateResult,
+  MADMode,
+  MADResult as AdvancedMADResult
+} from './mad/core/god-runtime'
+
+// Re-export types from mad/types.ts for convenience
+export { XHE_IDENTITY } from './mad/types'
+export type {
+  AgentRole,
+  MessageType,
+  StopPolicy,
+  ConvergenceMetrics,
+  ClaimStatus,
+  EvidenceType,
+  EdgeRelation,
+  VerificationLevel,
+  BarSource
+} from './mad/types'
