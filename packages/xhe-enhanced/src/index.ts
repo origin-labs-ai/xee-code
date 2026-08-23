@@ -4,17 +4,29 @@
  * Complete integration of:
  * - I-WIN (Infinity Win Loop) - Never give up system
  * - M.A.D (Multi-Agent Deployment) - GOD Runtime with advanced orchestration
+ *   - 12 Core Components (State Manager, Model Router, Scheduler, etc.)
+ *   - Discussion Bus with adversarial debate
+ *   - Memory Fabric (HOT/WARM/COLD)
+ *   - Verification Engine (3 layers: Micro/General/Adversarial)
+ *   - Gauntlet Loop (Quality enforcement)
+ *   - Production Readiness Sweep
+ *   - 15 Core Rules enforcement
+ *   - Cost Intelligence system
+ *   - Adaptive Routing formula
  * - BYOK (Bring Your Own Key) - Multi-provider key manager with multi-key support
  * - 25+ Slash Commands (Claude Code style)
  * - Fuzzy Autocomplete System
  * - Token Optimization (Lazy Loading)
  * - Model Behavior Invariants (No excuses, balanced aggression)
  * - Web UI Components
- * - Gauntlet Loop - Quality enforcement system
- * - Production Readiness Sweep - Pre-deployment validation
  * 
  * @origin-ai/xhe
- * Also known as: XeeCode, XCode
+ * @version 2.0.0
+ * 
+ * Also known as:
+ * - XeeCode / XCode
+ * - Xee Harness Enhanced
+ * 
  * Fork of: DSH/SeepSeek Harness
  */
 
@@ -26,23 +38,77 @@ import { startup, DEFAULT_BEHAVIOR } from './startup'
 export { IWINEngine, createIWIN, iwinExecute } from './iwin'
 export type { IWINTask, IWINTaskContext, IWINResult, IWINStats, Approach } from './iwin'
 
-// M.A.D System - Both Basic (MADEngine) and Advanced (GOD Runtime)
-export { MADEngine, createMAD, madDiscuss } from './mad'
-export type { MADResult, MADConfig, MAgentConfig, AgentRole } from './mad'
+// ============================================================================
+// M.A.D System - Complete Integration (Basic + Advanced)
+// ============================================================================
 
-// Advanced GOD Runtime (TRANSCRIPT.md implementation)
-export { GODRuntime, createXHE, xheExecute } from './mad'
-export type { 
-  GodRuntime, GODRuntimeConfig, TaskSpecification, FinalReport,
-  VerificationResult, GauntletResult, ProductionGateResult
-} from './mad'
-
-// Re-export advanced types
+// Basic M.A.D Engine (Quick start, simpler API)
+export { MADEngine, createMAD, createAdvancedMAD, madDiscuss, madDiscussAdvanced } from './mad'
 export type {
-  XHEIdentity, ProviderCredential, AgentConfig, ActiveAgent,
-  DiscussionRound, ClaimNode, EvidenceNode, MemoryFabric,
-  VerificationConfig, GauntletConfig, ProductionSweepConfig
+  MADConfig,
+  MAgentConfig,
+  AgentRole,
+  AgentMessage,
+  DiscussionRound,
+  MADResult,
+  MessageMetadata
 } from './mad'
+
+// Advanced GOD Runtime (Full TRANSCRIPT.md implementation)
+export { GODRuntime, createGODRuntime, xheExecute } from './mad/core/god-runtime'
+export type {
+  GodRuntime,
+  GODRuntimeConfig,
+  TaskSpecification,
+  FinalReport,
+  VerificationResult,
+  GauntletResult,
+  ProductionGateResult,
+  ClaimNode,
+  EvidenceNode,
+  KnowledgeEdge,
+  MemoryFabric,
+  HotContext,
+  WarmMemory,
+  ColdArchive,
+  VerificationConfig,
+  GauntletConfig,
+  ProductionSweepConfig,
+  CostSummary,
+  CoreRuleViolation,
+  RoutingDecision,
+  AgentPerformance as AdvancedAgentPerformance,
+  MADMode,
+  ProviderCredential,
+  StopPolicy,
+  ConvergenceMetrics,
+  CoreRule,
+  XHEIdentity,
+  ActiveAgent as AdvancedActiveAgent,
+  AgentConfig as AdvancedAgentConfig,
+  GODState,
+  MADPhase,
+  Artifact,
+  SignOff
+} from './mad/core/god-runtime'
+
+// Re-export types from mad/types for convenience
+export { XHE_IDENTITY, MAD_CORE_RULES } from './mad/types'
+export type {
+  ModelCapability,
+  MessageType,
+  ClaimStatus,
+  EvidenceType,
+  EdgeRelation,
+  VerificationLevel,
+  VerificationCheckType,
+  BarSource,
+  RuleCategory,
+  TelemetryRun,
+  TelemetryAgent,
+  TelemetryTask,
+  // ... add more as needed
+} from './mad/types'
 
 export { BYOKEngine, createBYOK } from './byok'
 export type { KeyInfo, KeyHealthResult, BudgetStatus, UsageAnalytics, ExportedBYOKConfig } from './byok'
@@ -59,9 +125,6 @@ export type {
   SkillCategory,
   FuzzyMatchResult,
   TokenStats,
-  MADConfig,
-  MAgentConfig,
-  AgentRole,
   IWINConfig,
   IWINStrategy,
   IWINProgress,
@@ -86,23 +149,34 @@ export const inject = ['commands', 'skills']
 // ============================================================================
 
 export const VERSION = '2.0.0'
-export const DESCRIPTION = 'Xee Harness Enhanced (XHE): I-WIN, M.A.D GOD Runtime, BYOK, Gauntlet Loop, Production Sweep — fork of DSH/SeepSeek Harness'
+export const DESCRIPTION = 'Xee Harness Enhanced (XHE): I-WIN, M.A.D GOD Runtime (12 components), BYOK, Gauntlet Loop, Production Sweep, 15 Core Rules — fork of DSH/SeepSeek Harness'
 
 // ============================================================================
 // Main Setup Function
 // ============================================================================
 
 export interface XHEConfig {
+  // Basic features
   enableIWIN?: boolean
   enableMAD?: boolean
-  enableGODRuntime?: boolean  // Advanced M.A.D mode
   enableBYOK?: boolean
   enableCommands?: boolean
   enableAutocomplete?: boolean
   enableTokenOptimization?: boolean
-  enableGauntletLoop?: boolean
-  enableProductionSweep?: boolean
+  
+  // Advanced M.A.D features
+  enableGODRuntime?: boolean      // Use advanced GOD Runtime instead of basic MAD
+  enableDiscussionBus?: boolean   // Enable adversarial discussion bus
+  enableVerificationEngine?: boolean // Enable 3-layer verification
+  enableGauntletLoop?: boolean    // Enable quality gauntlet
+  enableProductionSweep?: boolean // Enable production readiness checks
+  enableCostIntelligence?: boolean // Enable cost optimization
+  enableAdaptiveRouting?: boolean // Enable smart model routing
+  
+  // Configuration
   modelBehavior?: import('./startup').ModelBehaviorConfig
+  godRuntimeConfig?: Partial<GODRuntimeConfig>
+  madConfig?: Partial<MADConfig>
 }
 
 export async function setupXHE(config: XHEConfig = {}): Promise<void> {
@@ -136,17 +210,31 @@ export async function setupXHE(config: XHEConfig = {}): Promise<void> {
   }
 
   // Initialize advanced features if enabled
-  if (config.enableGODRuntime || config.enableGauntletLoop || config.enableProductionSweep) {
+  const advancedFeatures = []
+  if (config.enableGODRuntime || config.enableDiscussionBus || config.enableVerificationEngine ||
+      config.enableGauntletLoop || config.enableProductionSweep || config.enableCostIntelligence ||
+      config.enableAdaptiveRouting) {
     console.log('\n🏛️ Initializing Advanced M.A.D Systems...')
-    console.log('   GOD Runtime | Gauntlet Loop | Production Sweep')
+    
+    if (config.enableGODRuntime) advancedFeatures.push('GOD Runtime')
+    if (config.enableDiscussionBus) advancedFeatures.push('Discussion Bus')
+    if (config.enableVerificationEngine) advancedFeatures.push('Verification Engine (3-layer)')
+    if (config.enableGauntletLoop) advancedFeatures.push('Gauntlet Loop')
+    if (config.enableProductionSweep) advancedFeatures.push('Production Sweep')
+    if (config.enableCostIntelligence) advancedFeatures.push('Cost Intelligence')
+    if (config.enableAdaptiveRouting) advancedFeatures.push('Adaptive Routing')
+    
+    console.log(`   Enabled: ${advancedFeatures.join(', ')}`)
   }
 
   console.log('\n✅ Xee Harness Enhanced initialized successfully!')
   console.log(`   Version: ${VERSION}`)
-  console.log(`   Features: I-WIN (${config.enableIWIN !== false ? 'ON' : 'OFF'}), ` +
-              `M.A.D (${config.enableMAD !== false ? 'ON' : 'OFF'}), ` +
-              `BYOK (${config.enableBYOK !== false ? 'OFF'}), ` +
-              `GOD Runtime (${config.enableGODRuntime ? 'ON' : 'OFF'})`)
+  console.log(`   Features:`)
+  console.log(`     - I-WIN: ${config.enableIWIN !== false ? 'ON' : 'OFF'}`)
+  console.log(`     - M.A.D: ${config.enableMAD !== false ? 'ON' : 'OFF'}`)
+  console.log(`     - BYOK: ${config.enableBYOK !== false ? 'ON' : 'OFF'}`)
+  console.log(`     - GOD Runtime: ${config.enableGODRuntime ? 'ON' : 'OFF'}`)
+  console.log(`     - Advanced Systems: ${advancedFeatures.length > 0 ? `${advancedFeatures.length} modules` : 'NONE'}`)
 }
 
 // ============================================================================
@@ -171,33 +259,33 @@ export async function iwinTask<T>(
 }
 
 /**
- * Quick start M.A.D discussion (Basic)
+ * Quick start Basic M.A.D discussion (simple API)
  */
 export async function madTask(
   task: string,
-  mode: 'plan' | 'build' | 'debug' = 'plan'
-): Promise<string> {
+  mode: 'plan' | 'build' | 'debug' = 'plan',
+  options?: Partial<MADConfig>
+): Promise<MADResult> {
   const { madDiscuss } = await import('./mad')
-  const result = await madDiscuss(task, mode)
-  return result.finalDecision
+  return madDiscuss(task, mode, options)
 }
 
 /**
- * Quick start Advanced M.A.D (GOD Runtime) - Uses TRANSCRIPT.md architecture
+ * Quick start Advanced M.A.D (GOD Runtime) - Uses TRANSCRIPT architecture
  */
 export async function xheTask(
   task: string,
-  mode: 'PLAN' | 'BUILD' | 'DEBUG' = 'PLAN'
-): Promise<import('./mad').FinalReport> {
-  const { xheExecute } = await import('./mad')
-  return xheExecute(task, mode)
+  mode: 'PLAN' | 'BUILD' | 'DEBUG' = 'PLAN',
+  options?: Partial<GODRuntimeConfig>
+): Promise<FinalReport> {
+  const { xheExecute } = await import('./mad/core/god-runtime')
+  return xheExecute(task, mode, options)
 }
 
 /**
  * Quick start BYOK with default configuration
  */
 export function setupBYOK(): import('./byok').BYOKEngine {
-  // Dynamic import to avoid circular dependency issues
   return import('./byok').then(({ createBYOK }) => 
     createBYOK({
       budget: { daily: 50, monthly: 500 },
