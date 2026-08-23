@@ -3,9 +3,7 @@
 Status: implemented
 Archived: 2026-08-07
 
-English | [中文](2026-07-28-dsh-native-typescript-source-launch.zh.md)
-
-> The Node-native launch vector is superseded by [dsh source launch through the tsx ESM hook](2026-07-29-dsh-source-launch-tsx-esm.md): Node 26.0.0 removed `--experimental-transform-types`, and the paths loader described here is deleted. The Cordis-config declaration gate (`verify-cordis-config`), the app-boot fail-loud plugin diagnostic, and the vendored `import type` marks remain current.
+> The Node-native launch vector is superseded by [dsh source launch through the tsx ESM hook](2026-07-29-xhe-source-launch-tsx-esm.md): Node 26.0.0 removed `--experimental-transform-types`, and the paths loader described here is deleted. The Cordis-config declaration gate (`verify-cordis-config`), the app-boot fail-loud plugin diagnostic, and the vendored `import type` marks remain current.
 
 ## Problem
 
@@ -25,7 +23,7 @@ Source imports are redirected only when the target package is either the nearest
 
 `verify-cordis-config` performs a one-way completeness check on the resolver manifest: every bare plugin package in a configuration must appear in the corresponding manifest's `dependencies`, while the manifest may contain extra dependencies not referenced by that configuration. The root `AGENTS.md` makes updating the configuration and dependencies together a standing rule.
 
-After the Loader settles, the shared `dsh-app-boot` checks every enabled entry that has no fiber and rejects startup with `plugin(s) failed to load: ...; Cordis startup failed because these plugin(s) could not be resolved`, listing all failed plugins. This diagnostic lives at the app layer and does not change the vendored Loader's startup behavior.
+After the Loader settles, the shared `xhe-app-boot` checks every enabled entry that has no fiber and rejects startup with `plugin(s) failed to load: ...; Cordis startup failed because these plugin(s) could not be resolved`, listing all failed plugins. This diagnostic lives at the app layer and does not change the vendored Loader's startup behavior.
 
 Node-compatible TypeScript is part of this source-launch contract. Vendored Cordis, Loader, Include, HMR, and Schemastery mark erased imports with `import type`. Schemastery uses a native ESM default export and declares `type: module`; its `.mjs` and `.cjs` build outputs retain the existing ESM-default and callable-`require()` behavior. These divergences are recorded in `vendor/README.md`; no runtime behavior is added to the vendored frameworks.
 

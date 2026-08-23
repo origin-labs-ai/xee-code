@@ -60,9 +60,9 @@ headerCell.borders = { bottom: { style: BorderStyle.SINGLE, size: 2, color: "000
 **Symptom**: Font size doesn't match expected Chinese size name.
 
 **Fix**: Use the correct half-point value. `size` in docx-js is in half-points:
-- Wu Hao 五号 = 10.5pt → `size: 21`
-- Xiao Si 小四 = 12pt → `size: 24`
-- Si Hao 四号 = 14pt → `size: 28`
+- Wu Hao  = 10.5pt → `size: 21`
+- Xiao Si  = 12pt → `size: 24`
+- Si Hao  = 14pt → `size: 28`
 
 See SKILL.md for complete conversion table.
 
@@ -90,7 +90,7 @@ shading: { type: ShadingType.CLEAR, fill: "F1F5F9" }
 ```python
 from matplotlib.font_manager import FontProperties
 zh_font = FontProperties(fname="/path/to/SimHei.ttf")
-plt.title("中文标题", fontproperties=zh_font)
+plt.title("", fontproperties=zh_font)
 plt.rcParams["axes.unicode_minus"] = False
 ```
 
@@ -132,19 +132,19 @@ children: [new Paragraph({ children: [new PageBreak()] })]
 
 ## Bug: Quotation marks break JavaScript syntax — ⚠️ #1 MOST COMMON BUG
 
-**This is the single most frequent code generation error.** Chinese text routinely uses curly quotes `""` for emphasis, proper nouns, and event names (e.g., "双11", "前低后高", "618"大促). These MUST be Unicode-escaped — bare curly quotes silently break JS syntax.
+**This is the single most frequent code generation error.** Chinese text routinely uses curly quotes `""` for emphasis, proper nouns, and event names (e.g., "11", "", "618"). These MUST be Unicode-escaped — bare curly quotes silently break JS syntax.
 
 **Rule: scan ALL Chinese text for `""''` and replace with `\u201c \u201d \u2018 \u2019` BEFORE writing the string.**
 
 ```js
 // ❌ WRONG — curly quotes in Chinese text break syntax (extremely common)
-para("行业增速呈现"前低后高"的态势，在"618"大促拉动下增长。")
-"他说"你好""       // \u201c \u201d
+para("""，"618"。")
+""""       // \u201c \u201d
 'It's a test'      // \u2019
 
 // ✅ CORRECT — Unicode escapes for ALL curly quotes
-para("行业增速呈现\u201c前低后高\u201d的态势，在\u201c618\u201d大促拉动下增长。")
-"他说\u201c你好\u201d"
+para("\u201c\u201d，\u201c618\u201d。")
+"\u201c\u201d"
 "It\u2019s a test"
 
 // ✅ Straight quotes: escape or use alternate delimiters

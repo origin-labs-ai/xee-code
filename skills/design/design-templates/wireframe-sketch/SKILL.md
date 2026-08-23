@@ -8,12 +8,12 @@ scenario: lo-fi-mockup
 pattern_source: foolscap-wireframe.html
 source_priority: skill-first
 triggers:
-  - "做个手绘 wireframe"
-  - "纸感线框图"
-  - "IA 流程图"
-  - "低保真草图"
-  - "PRD 配图"
-  - "draft / not final 风格"
+  - " wireframe"
+  - ""
+  - "IA "
+  - ""
+  - "PRD "
+  - "draft / not final "
 ---
 
 # Wireframe Sketch Template
@@ -28,10 +28,10 @@ The biggest failure mode of this skill: model inherits the brush strokes (wobble
 
 | User says | Skeleton | Why |
 |---|---|---|
-| 报纸 / 杂志 / landing / 官网 / brochure / 单页 / 一篇 / 简报 / 海报式文档 / one-pager / editorial | **A. Single-Page Editorial** | One long page, sections stack, content-dense |
-| App / 小程序 / 移动端 / 手机 / 桌面应用 / SaaS 流程 / 用户路径 / 注册流 / 下单流 / 多屏 / 多页 / 注册 / 登录 / 引导 / 设置 / Tab / 表单流 | **B. App Multi-Screen Flow** | Multiple screens, navigation, states, triggers |
-| 信息架构 / IA / sitemap / 站点地图 / 流程图 / 关系图 / 节点图 / 数据流 / 状态机 / 权限矩阵 | **C. IA / Sitemap Diagram** | Nodes + edges, no actual screens |
-| 不明 / 用户没说 / 都行 | **ask the user** before picking — don't default | — |
+|  /  / landing /  / brochure /  /  /  /  / one-pager / editorial | **A. Single-Page Editorial** | One long page, sections stack, content-dense |
+| App /  /  /  /  / SaaS  /  /  /  /  /  /  /  /  /  / Tab /  | **B. App Multi-Screen Flow** | Multiple screens, navigation, states, triggers |
+|  / IA / sitemap /  /  /  /  /  /  /  | **C. IA / Sitemap Diagram** | Nodes + edges, no actual screens |
+|  /  /  | **ask the user** before picking — don't default | — |
 
 If the user gave a topic but no skeleton hint, **ask which one**. Picking wrong = doing the work twice.
 
@@ -59,20 +59,20 @@ Density: aim for the foolscap reference's content-per-square-inch — sparse sin
 
 ### Required sections (MUST all be present — page is incomplete otherwise)
 
-1. **Cover** — app name + version + role/persona + 1-line scope ("MVP / 内测 / v0.3 / 仅记账,不含理财")
+1. **Cover** — app name + version + role/persona + 1-line scope ("MVP /  / v0.3 / ,")
 2. **Sitemap / nav diagram** — visual tree or grid showing all screens and their relationship. Not a list — an actual diagram with boxes + lines.
-3. **6–8+ core screens** as `figure` blocks. For a 记账 app that's at minimum: 启动/欢迎 → 首页(概览) → 记一笔(金额→分类→备注→保存) → 账单详情 → 月度统计 → 分类管理 → 预算设置 → 我的/设置. **3 screens is not a wireframe doc, it's a sketch sample.**
-4. **At least 1 flow arrow diagram** showing user path across screens (e.g. "首页 → 点'+' → 记一笔 → 保存 → toast → 回首页"). Don't just put a single `↓` between screens — write the trigger on the arrow.
+3. **6–8+ core screens** as `figure` blocks. For a  app that's at minimum: / → () → (→→→) →  →  →  →  → /. **3 screens is not a wireframe doc, it's a sketch sample.**
+4. **At least 1 flow arrow diagram** showing user path across screens (e.g. " → '+' →  →  → toast → "). Don't just put a single `↓` between screens — write the trigger on the arrow.
 5. **At least 1 state variant** for each screen that has state: empty / loading / error / success. Pick the screens where it matters (list page → empty state; form → error state).
 6. **End matter** — open questions / TBD list / version log / next-step decisions to make
 
 ### Per-screen requirements
 
 Every screen block must have:
-- **Figure number** — `图 02` / `Fig. 03`, sequential, referenced from flow diagrams
-- **One-line responsibility** — "记一笔 · 从主页点'+'进入,保存后弹 toast 并返回主页"
+- **Figure number** — ` 02` / `Fig. 03`, sequential, referenced from flow diagrams
+- **One-line responsibility** — " · '+', toast "
 - **Trigger annotations** — what entry points lead here, what exits go where
-- **Marginalia** — at least 1 hand-written side note per non-trivial screen (constraint, edge case, "TBD",未决问题)
+- **Marginalia** — at least 1 hand-written side note per non-trivial screen (constraint, edge case, "TBD",)
 
 ### Layout
 
@@ -84,7 +84,7 @@ Every screen block must have:
 
 - < 5 screens → reject yourself, ask user for more flows or downgrade scope honestly
 - No sitemap → reject yourself, the doc is unreadable without it
-- No state variants → at least mark the empty/error spots even if you don't draw them ("空状态:见图 04a / TBD")
+- No state variants → at least mark the empty/error spots even if you don't draw them (": 04a / TBD")
 - No marginalia anywhere → you copied the brush but not the language; go back and annotate
 
 ---
@@ -172,7 +172,7 @@ Prefer:
 - mono stack (uppercase, tight letterspacing) for "labels" / "figure numbers" / "callouts"
 - dashed or wavy dividers between sections — never solid clean rules
 - consistent wobble intensity — don't dial it up and down per element; one global filter + maybe one "stronger" for tiny shapes
-- numbered figures ("图 01", "Fig. 02") for everything referenced from elsewhere in the doc
+- numbered figures (" 01", "Fig. 02") for everything referenced from elsewhere in the doc
 - generous side margins to make room for marginalia
 
 Avoid:
@@ -182,28 +182,28 @@ Avoid:
 - emoji
 - mixing wireframe with high-fidelity components on the same page
 - forcing the wobble filter on every element until the page becomes noisy — wobble is a seasoning, not a wash
-- 单一 `↓` 当作 flow 注释 — write the trigger on the arrow
-- 在 App 场景里只画 3 个孤立屏并交付 — that's a screen sample, not a wireframe doc
+-  `↓`  flow  — write the trigger on the arrow
+-  App  3  — that's a screen sample, not a wireframe doc
 
 ---
 
 ## Anti-patterns (self-check before delivering)
 
-- [ ] App 场景但没 sitemap → reject, add one
-- [ ] App 场景但 < 5 屏 → reject, expand or downgrade scope honestly
-- [ ] 屏与屏只用 `↓` 连接没 trigger label → annotate every arrow
-- [ ] 通篇没有任何 marginalia / TBD / 圈划 → 你只继承了笔触没继承语言,补
-- [ ] 用了 lucide/heroicons/emoji/真实 icon font → 拆掉换 SVG path 简笔
-- [ ] wobble 强度乱跳 → 统一到 1–2 个 filter id
-- [ ] 没有 figure 编号但流程图里要引用 → 加编号
-- [ ] 文案太"成品"(完整营销 copy / 准确产品文案) → 退回到 placeholder ("功能 A 的一句话说明")
-- [ ] 用了亮黄色 legal-pad 底 → 改回纯白纸
-- [ ] 配色超过 1 个 accent → 砍
+- [ ] App  sitemap → reject, add one
+- [ ] App  < 5  → reject, expand or downgrade scope honestly
+- [ ]  `↓`  trigger label → annotate every arrow
+- [ ]  marginalia / TBD /  → ,
+- [ ]  lucide/heroicons/emoji/ icon font →  SVG path 
+- [ ] wobble  →  1–2  filter id
+- [ ]  figure  → 
+- [ ] ""( copy / ) →  placeholder (" A ")
+- [ ]  legal-pad  → 
+- [ ]  1  accent → 
 
 ---
 
 ## Platform / Size
 
-Renders as a web page, typically captured as a long screenshot for embedding in PRDs / Notion / Confluence / 飞书 docs. Not designed for runtime interaction — it's a static deliverable that looks hand-drawn.
+Renders as a web page, typically captured as a long screenshot for embedding in PRDs / Notion / Confluence /  docs. Not designed for runtime interaction — it's a static deliverable that looks hand-drawn.
 
 For Skeleton B, page width 720–960 px works well (matches reading width in doc tools). For Skeleton A, 960–1100 px (editorial format). For Skeleton C, often wider (1200+) to fit sitemaps.

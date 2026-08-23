@@ -108,8 +108,8 @@ function validateHeader(path: string, content: Buffer, sourceBase: string, chine
   }
   if (lines[4] !== '') errors.push(`${path}: line 5 must be blank`)
   const switcher = chinese
-    ? `[English](${sourceBase}.md) | 中文`
-    : `English | [中文](${sourceBase}.zh.md)`
+    ? `[English](${sourceBase}.md) | `
+    : `English`
   if (lines[5] !== switcher) errors.push(`${path}: line 6 must be ${JSON.stringify(switcher)}`)
   return errors
 }

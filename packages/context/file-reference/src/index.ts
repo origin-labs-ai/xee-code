@@ -1,12 +1,12 @@
 /**
  * File-reference discovery seam shared by host-backed user interfaces.
  *
- * @module @deepseek-ai/dsh-file-reference
+ * @module @origin-ai/xhe-file-reference
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import { Remote, TypertRemoteService } from '@deepseek-ai/dsh-typert-protocol'
+import type { Agent } from '@origin-ai/xhe-agent'
+import { Remote, TypertRemoteService } from '@origin-ai/xhe-typert-protocol'
 
 import type { FileReferenceCandidate } from './types.ts'
 

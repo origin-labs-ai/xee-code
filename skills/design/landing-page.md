@@ -20,12 +20,12 @@ default_for:
   - agency homepage
   - studio homepage
   - pricing page
-  - 产品落地页
-  - 产品官网
-  - SaaS 主页
-  - 官网
-  - waitlist 页
-  - 定价页
+  - 
+  - 
+  - SaaS 
+  - 
+  - waitlist 
+  - 
 fidelity: high
 ---
 
@@ -41,7 +41,7 @@ This file gives landing-page judgment, not a full rulebook. It plugs into the ma
 
 ## Route elsewhere if
 
-person / body-of-work showcase → `portfolio.md` · product UI / dashboard / app flow / clickable demo / “做一个 XX 的 demo” → `prototype.md` · single-task calculator/generator/checker → `web-tool.md` · linear reading / newsletter / editorial → `content-page.md` · information exploration / data story → `info-interactive.md` · social image / product brief image / report summary image / poster / cover / long-image → `social-card.md` · slides / pitch deck → `deck.md`
+person / body-of-work showcase → `portfolio.md` · product UI / dashboard / app flow / clickable demo / “ XX  demo” → `prototype.md` · single-task calculator/generator/checker → `web-tool.md` · linear reading / newsletter / editorial → `content-page.md` · information exploration / data story → `info-interactive.md` · social image / product brief image / report summary image / poster / cover / long-image → `social-card.md` · slides / pitch deck → `deck.md`
 
 Studio/agency sites can be both portfolio and landing page — lead with the dominant intent: selling a service (clear offer, pricing/contact CTA, capability framing) → landing page; showing work and personality (case-led grid, project depth, distinctive voice) → `portfolio.md`.
 

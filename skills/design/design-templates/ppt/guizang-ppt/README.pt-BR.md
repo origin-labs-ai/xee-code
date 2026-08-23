@@ -1,11 +1,11 @@
 # Magazine Web PPT · Skill de PPT estilo revista eletrônica em web
 
 > 🌏 **English version: [README.en.md](./README.en.md)**
-> 🌏 **中文版: [README.md](./README.md)**
+> 🌏 **: [README.md](./README.md)**
 
 Uma skill do [Claude Code / Claude Agent Skills](https://agentskills.io/) para gerar **PPTs HTML em arquivo único com swipe horizontal**. O tom visual é "**revista eletrônica × tinta digital**" — como se a *Monocle* tivesse colado código.
 
-> Destilada por [歸藏](https://x.com/op7418) em palestras presenciais como "Empresa de uma pessoa só: a organização dobrada pela IA" e "Uma nova forma de trabalhar"; cada armadilha que ele já pisou virou linha em `checklist.md`.
+> Destilada por [](https://x.com/op7418) em palestras presenciais como "Empresa de uma pessoa só: a organização dobrada pela IA" e "Uma nova forma de trabalhar"; cada armadilha que ele já pisou virou linha em `checklist.md`.
 
 ![Demonstração do Magazine Web PPT](https://github.com/user-attachments/assets/5dc316a2-401c-4e37-9123-ea081b6ae470)
 
@@ -69,15 +69,15 @@ Detalhes em [`SKILL.md`](./SKILL.md).
 
 ```
 magazine-web-ppt/
-├── SKILL.md              ← Skill 主文件:工作流、原则、常见错误
-├── README.md             ← 本文件
+├── SKILL.md              ← Skill :、、
+├── README.md             ← 
 ├── assets/
-│   └── template.html     ← 完整可运行的种子 HTML(CSS + WebGL + 翻页 JS 全配好)
+│   └── template.html     ←  HTML(CSS + WebGL +  JS )
 └── references/
-    ├── components.md     ← 组件手册(字体、色、网格、图标、callout、stat、pipeline)
-    ├── layouts.md        ← 10 种页面布局骨架(可直接粘贴)
-    ├── themes.md         ← 5 套主题色预设(只能选不能自定义)
-    └── checklist.md      ← 质量检查清单(P0 / P1 / P2 / P3 分级)
+    ├── components.md     ← (、、、、callout、stat、pipeline)
+    ├── layouts.md        ← 10 ()
+    ├── themes.md         ← 5 ()
+    └── checklist.md      ← (P0 / P1 / P2 / P3 )
 ```
 
 ## Paletas predefinidas
@@ -106,7 +106,7 @@ Para trocar a paleta basta substituir as 6 linhas de variáveis dentro do `:root
 
 - Diagramação da revista [*Monocle*](https://monocle.com)
 - "Thin Harness, Fat Skills" do Garry Tan (YC)
-- Série de PPTs de palestras presenciais do 歸藏
+- Série de PPTs de palestras presenciais do 
 
 ## Contribuindo
 

@@ -3,19 +3,19 @@ import { join, posix } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it } from 'vitest'
-import { Inbox } from '@deepseek-ai/dsh-agent'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import { runLoaderSmoke } from '@deepseek-ai/dsh-loader-smoke'
+import { Inbox } from '@origin-ai/xhe-agent'
+import type { Agent } from '@origin-ai/xhe-agent'
+import { runLoaderSmoke } from '@origin-ai/xhe-loader-smoke'
 import {
   FileNotFoundError,
   Sandbox,
   SandboxNotFoundError,
-} from '@deepseek-ai/dsh-e2b'
-import TerminalSessionService, { TerminalSessionId } from '@deepseek-ai/dsh-terminal'
-import { BashTerminalBackend } from '@deepseek-ai/dsh-terminal-bash'
-import SandboxPolicyService from '@deepseek-ai/dsh-sandbox-policy'
-import { Session, SessionId } from '@deepseek-ai/dsh-session'
-import E2BSubprocessRuntime from '@deepseek-ai/dsh-subprocess-e2b'
+} from '@origin-ai/xhe-e2b'
+import TerminalSessionService, { TerminalSessionId } from '@origin-ai/xhe-terminal'
+import { BashTerminalBackend } from '@origin-ai/xhe-terminal-bash'
+import SandboxPolicyService from '@origin-ai/xhe-sandbox-policy'
+import { Session, SessionId } from '@origin-ai/xhe-session'
+import E2BSubprocessRuntime from '@origin-ai/xhe-subprocess-e2b'
 
 const fixtureRoot = fileURLToPath(new URL('../../../../examples/headless-agent/tests/fixtures/e2b/e2b/', import.meta.url))
 const binScript = join(fixtureRoot, 'bin.ts')
@@ -28,13 +28,13 @@ describe.skipIf(!process.env.E2B_API_KEY)('E2B live Loader composition', () => {
     if (apiKey === undefined) throw new Error('E2B_API_KEY disappeared before the PTY environment test')
     const sandbox = await Sandbox.create({
       apiKey,
-      envs: { NPM_TOKEN: 'sentinel-secret', DSH_STALE: 'sentinel-stale', KEEP: 'visible' },
+      envs: { NPM_TOKEN: 'sentinel-secret', XHE_STALE: 'sentinel-stale', KEEP: 'visible' },
       timeoutMs: 60_000,
       secure: true,
       lifecycle: { onTimeout: 'kill' },
     })
     try {
-      const profileLeakPath = '/home/user/dsh-e2b-bootstrap-profile-leak'
+      const profileLeakPath = '/home/user/xhe-e2b-bootstrap-profile-leak'
       const hostileProfile = [
         'if [[ "${NPM_TOKEN-}" == "sentinel-secret" ]]; then',
         `  printf leaked > ${profileLeakPath}`,
@@ -49,7 +49,7 @@ describe.skipIf(!process.env.E2B_API_KEY)('E2B live Loader composition', () => {
       const ctx = new Context()
       ctx.provide('e2b', {
         cwd: '/home/user',
-        runtimeRoot: '/home/user/.dsh-e2b',
+        runtimeRoot: '/home/user/.xhe-e2b',
         getSandbox: async () => sandbox,
       } as never)
       const sandboxPolicyFiber = await ctx.plugin(SandboxPolicyService, {
@@ -105,7 +105,7 @@ describe.skipIf(!process.env.E2B_API_KEY)('E2B live Loader composition', () => {
       })
       const session = await backend.spawn({ sessionId: TerminalSessionId('env'), owner, type: 'shell' })
       const result = await session.startSend({
-        text: "printf 'NPM=<%s> DSH=<%s> KEEP=<%s>\\n' \"$NPM_TOKEN\" \"$DSH_STALE\" \"$KEEP\"",
+        text: "printf 'NPM=<%s> DSH=<%s> KEEP=<%s>\\n' \"$NPM_TOKEN\" \"$XHE_STALE\" \"$KEEP\"",
         submit: true,
       }).done
       expect(result.viewport).toContain('NPM=<> DSH=<> KEEP=<visible>')
@@ -125,7 +125,7 @@ describe.skipIf(!process.env.E2B_API_KEY)('E2B live Loader composition', () => {
   it('runs FS, Bash, PTY, and LSP in one sandbox and deletes it', async () => {
     const { stdout, stderr } = await runLoaderSmoke({
       label: 'E2B composition',
-      tempDirPrefix: 'dsh-e2b-composition-',
+      tempDirPrefix: 'xhe-e2b-composition-',
       binScript,
       libBinScript: binScript,
       configPath,
@@ -166,7 +166,7 @@ describe.skipIf(!process.env.E2B_API_KEY)('E2B live Loader composition', () => {
     const terminalMotd = (output.terminal as { motd: string }).motd
     expect(terminalMotd.length).toBeGreaterThan(0)
     expect(terminalMotd).not.toContain('exec /bin/bash')
-    expect(terminalMotd).not.toContain('.dsh-e2b/terminals/')
+    expect(terminalMotd).not.toContain('.xhe-e2b/terminals/')
     expect((output.terminal as { echo: { viewport: string } }).echo.viewport).toContain('PTY-你好')
     expect((output.terminal as { scrollback: string }).scrollback).toContain('PTY-你好')
     expect((output.terminal as { signal: { targetPgid: number } }).signal.targetPgid).toBeGreaterThan(0)

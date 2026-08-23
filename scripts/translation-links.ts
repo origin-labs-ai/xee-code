@@ -77,7 +77,7 @@ export function languageSwitcherLinkOffset(
     const end = node.position.end.offset
     if (start === undefined || end === undefined) continue
     const authored = markdown.slice(start, end)
-    if (!/^(?:English \| \[中文\]\([^\n]+\)|\[English\]\([^\n]+\) \| 中文)$/.test(authored)) continue
+    if (!/^(?:English \| \[\]\([^\n]+\)|\[English\]\([^\n]+\) \| )$/.test(authored)) continue
     const links = node.children.filter((child): child is Extract<Nodes, { type: 'link' }> => child.type === 'link')
     if (links.length === 1 && accepted.has(links[0]?.url ?? '')) {
       return links[0]?.position?.start.offset
@@ -307,7 +307,7 @@ export function normalizeTranslationMarkdownLinks(
   visitResolvedDocumentLinks(markdown, context, skipTargets, (_node, destination, resolved) => {
     replacements.push(replacementFor(
       destination,
-      `dsh-translation-target:${resolved.pair.source}${resolved.suffix}`,
+      `xhe-translation-target:${resolved.pair.source}${resolved.suffix}`,
     ))
   })
   return applyReplacements(markdown, replacements)
@@ -324,5 +324,5 @@ export function semanticTranslationLinkNodeTarget(
   const resolved = resolveTranslationLink(node.url, context, destination.url)
   return resolved === undefined
     ? destination.url
-    : `dsh-translation-target:${resolved.pair.source}${resolved.suffix}`
+    : `xhe-translation-target:${resolved.pair.source}${resolved.suffix}`
 }

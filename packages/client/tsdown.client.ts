@@ -24,9 +24,9 @@ import { clientBuildEnvironmentDefines } from '../../scripts/client-build-enviro
  * (which requires @tsdown/css). The suffix matters: tsdown's guard matches ids
  * ending in `.css`, so the virtual id must not.
  */
-const CSS_VIRTUAL_PREFIX = '\0dsh-css:'
-const GLOBAL_CSS_VIRTUAL_PREFIX = '\0dsh-global-css:'
-const INLINE_CSS_VIRTUAL_PREFIX = '\0dsh-inline-css:'
+const CSS_VIRTUAL_PREFIX = '\0xhe-css:'
+const GLOBAL_CSS_VIRTUAL_PREFIX = '\0xhe-global-css:'
+const INLINE_CSS_VIRTUAL_PREFIX = '\0xhe-inline-css:'
 const CSS_VIRTUAL_SUFFIX = '.mjs'
 const INLINE_CSS_QUERY = '?inline'
 
@@ -58,7 +58,7 @@ function styleInjectionModule(
  * Everything else under @deepseek-ai/* is either a module-table entry
  * (external) or a leak the purity gate rejects.
  */
-export const INLINE_SAFE = /^@deepseek-ai\/dsh-(host-apiproxy|file-reference|session|llm|tools|brand)(\/|$)/
+export const INLINE_SAFE = /^@deepseek-ai\/xhe-(host-apiproxy|file-reference|session|llm|tools|brand)(\/|$)/
 
 /**
  * Vendored framework libraries: rescoped into @deepseek-ai, so the gate below
@@ -69,7 +69,7 @@ export const INLINE_SAFE = /^@deepseek-ai\/dsh-(host-apiproxy|file-reference|ses
 const VENDORED_LIBRARY = /^@deepseek-ai\/(cosmokit|schemastery)(\/|$)/
 
 /** Generated descriptor/codec contribution with no shared runtime identity. */
-const GENERATED_REMOTE = /^@deepseek-ai\/dsh-[a-z0-9]+(?:-[a-z0-9]+)*\/remote$/
+const GENERATED_REMOTE = /^@deepseek-ai\/xhe-[a-z0-9]+(?:-[a-z0-9]+)*\/remote$/
 
 /**
  * Workspace mode replaces an empty config array with the root defaults. A
@@ -110,7 +110,7 @@ export function clientBundle(
 ): BuildFaceConfig {
   const lib = clientLibraryConfig(id, libEntry, options.lib)
   return ({ env }) => {
-    const face = buildFace(env?.DSH_BUILD_FACE)
+    const face = buildFace(env?.XHE_BUILD_FACE)
     const clientEntry = face === undefined ? 'src/client/index.ts' : 'lib/types/client/index.js'
     const client = clientConfig(id, clientEntry)
     const node = [lib, ...(options.companions ?? [])]
@@ -189,7 +189,7 @@ export function clientLibrary(id: string, libEntry: readonly string[]): BuildFac
  * @returns ENV-selected tsdown config for the Client build face.
  */
 export function clientOnly(configs: readonly UserConfig[]): BuildFaceConfig {
-  return ({ env }) => buildFace(env?.DSH_BUILD_FACE) === 'host'
+  return ({ env }) => buildFace(env?.XHE_BUILD_FACE) === 'host'
     ? [SKIP_WORKSPACE_BUILD]
     : [...configs]
 }
@@ -209,7 +209,7 @@ type BuildFaceConfig = (inlineConfig: Pick<UserConfig, 'env'>) => UserConfig[]
 
 function buildFace(value: unknown): BuildFace {
   if (value === undefined || value === 'host' || value === 'client') return value
-  throw new Error(`tsdown: --env.DSH_BUILD_FACE must be host or client, received ${String(value)}`)
+  throw new Error(`tsdown: --env.XHE_BUILD_FACE must be host or client, received ${String(value)}`)
 }
 
 function clientLibraryConfig(
@@ -286,7 +286,7 @@ function staticLinkedConfig(id: string, entry: string, outputName = basename(ent
       // inputs, so each tsc map is handed over as that module's map and
       // composed into the bundle map; without it frames stop at the emitted
       // lib/types JavaScript instead of reaching the TSX.
-      name: 'dsh-tsc-sourcemap',
+      name: 'xhe-tsc-sourcemap',
       async load(id: string) {
         if (!id.includes(TYPES_MARKER) || !id.endsWith('.js') || !existsSync(`${id}.map`)) return null
         const code = await readFile(id, 'utf8')
@@ -295,7 +295,7 @@ function staticLinkedConfig(id: string, entry: string, outputName = basename(ent
     }, {
       // Contract 4. The import survives verbatim and the sheet lands beside the
       // JavaScript, so the shell's CSS Modules pipeline sees a real stylesheet.
-      name: 'dsh-css-asset',
+      name: 'xhe-css-asset',
       async resolveId(this: AssetEmitter, source: string, importer: string | undefined) {
         if (!source.endsWith('.css') || importer === undefined) return null
         const { file, fileName } = stylesheetAsset(source, importer)
@@ -483,7 +483,7 @@ function clientConfig(id: string, entry: string): UserConfig {
       // cross-plugin value import either inlines a duplicate runtime instance
       // or requires a specifier the module table cannot answer for this package.
       // Cross-plugin collaboration goes through cordis services instead.
-      name: 'dsh-client-bundle-purity',
+      name: 'xhe-client-bundle-purity',
       resolveId(source: string) {
         if (!source.startsWith('@deepseek-ai/')) return null
         if (isRequested(source)) return null // requested module-table row: external wins
@@ -496,7 +496,7 @@ function clientConfig(id: string, entry: string): UserConfig {
         )
       },
     }, {
-      name: 'dsh-css-modules-inline',
+      name: 'xhe-css-modules-inline',
       resolveId(source: string, importer: string | undefined) {
         if (!source.endsWith('.module.css')) return null
         const abs = importer !== undefined ? sourceAssetPath(source, importer) : source
@@ -521,7 +521,7 @@ function clientConfig(id: string, entry: string): UserConfig {
         return styleInjectionModule(id, fileId, code.toString(), classMap)
       },
     }, {
-      name: 'dsh-css-text-inline',
+      name: 'xhe-css-text-inline',
       resolveId(source: string, importer: string | undefined) {
         if (!source.endsWith(`.css${INLINE_CSS_QUERY}`)) return null
         const stylesheet = source.slice(0, -INLINE_CSS_QUERY.length)
@@ -537,7 +537,7 @@ function clientConfig(id: string, entry: string): UserConfig {
         return `export default ${JSON.stringify(code.toString())};`
       },
     }, {
-      name: 'dsh-css-global-inline',
+      name: 'xhe-css-global-inline',
       resolveId(source: string, importer: string | undefined) {
         if (!source.endsWith('.css') || source.endsWith('.module.css')) return null
         const abs = importer !== undefined ? sourceAssetPath(source, importer) : source
@@ -570,7 +570,7 @@ function clientConfig(id: string, entry: string): UserConfig {
 const TYPES_MARKER = `${sep}lib${sep}types${sep}`
 
 /** Plugin name carrying contract 1, and the marker that identifies a statically linked config. */
-const STATIC_LINKED_PLUGIN = 'dsh-static-linked-external'
+const STATIC_LINKED_PLUGIN = 'xhe-static-linked-external'
 
 /** Path segment a package's sources hang under, and the root emitted assets mirror. */
 const SOURCE_MARKER = `${sep}src${sep}`

@@ -7,7 +7,7 @@ import { createElement, useLayoutEffect, useState, type ReactNode } from 'react'
 import { flushSync } from 'react-dom'
 import { createRoot, hydrateRoot, type Root } from 'react-dom/client'
 import type { Context } from '@deepseek-ai/cordis'
-import type { SnapshotSelectorHook } from '@deepseek-ai/dsh-client-ui-slots'
+import type { SnapshotSelectorHook } from '@origin-ai/xhe-client-ui-slots'
 import { createSlotRenderer } from './scoped-slots.tsx'
 import { buildRenderApp } from './app.tsx'
 
@@ -17,7 +17,7 @@ export type UseSession<Snap extends object = object> = SnapshotSelectorHook<Snap
 export type {
   ChainRenderOpts, HostObservable, RenderOpts, SessionProvideInfo, SnapshotSelectorHook,
   SlotRenderer, SlotRendererHost, StoreInstanceLike,
-} from '@deepseek-ai/dsh-client-ui-slots'
+} from '@origin-ai/xhe-client-ui-slots'
 export type { SessionProviderProps } from './session-provider.tsx'
 
 /** Mount operation exposed to the framework-free boot kernel. */
@@ -52,14 +52,14 @@ function BootHandoff(props: { app: () => ReactNode; boot: BootSnapshot }): React
   if (ready) return props.app()
   return createElement('div', {
     className: props.boot.className,
-    'data-dsh-boot': '',
+    'data-xhe-boot': '',
     dangerouslySetInnerHTML: { __html: props.boot.html },
   })
 }
 
 /** Mount React while preserving the framework-free boot DOM through hydration. */
 function mountApp(container: HTMLElement, app: () => ReactNode): Root {
-  const boot = container.querySelector<HTMLElement>(':scope > [data-dsh-boot]')
+  const boot = container.querySelector<HTMLElement>(':scope > [data-xhe-boot]')
   if (boot !== null) {
     return hydrateRoot(container, createElement(BootHandoff, {
       app,

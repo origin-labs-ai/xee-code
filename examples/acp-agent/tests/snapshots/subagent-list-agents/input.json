@@ -12,7 +12,7 @@
     },
     {
       "op": "waitForFile",
-      "path": ".dsh-snapshot-subagent-settled"
+      "path": ".xhe-snapshot-subagent-settled"
     },
     {
       "op": "waitForTurnStart",

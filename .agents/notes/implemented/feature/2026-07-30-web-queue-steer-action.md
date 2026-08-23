@@ -2,8 +2,6 @@
 
 Status: implemented
 
-English | [中文](2026-07-30-web-queue-steer-action.zh.md)
-
 ## Problem
 
 The Web composer originally queued every Enter submission while an agent ran. QueueDock already gives each pending message an addressable row, and the durable transcript already renders consumed steer events as user-style bubbles, but Web had neither an action connecting those two surfaces nor a direct composer gesture for choosing current-turn steering.
@@ -14,13 +12,13 @@ Implementing the row action as a client-side delete followed by `session.prompt(
 
 ### Product contract
 
-Each non-editing ordinary-session QueueDock row exposes the upward-arrow action as “插话发送”. The action is enabled only while the session reports a running agent; mixed-content messages remain eligible because steering forwards the complete immutable `UserMessage` rather than the row's text projection. An addressed subagent keeps its Queue projection read-only because its continuation transport does not expose queue mutation.
+Each non-editing ordinary-session QueueDock row exposes the upward-arrow action as “”. The action is enabled only while the session reports a running agent; mixed-content messages remain eligible because steering forwards the complete immutable `UserMessage` rather than the row's text projection. An addressed subagent keeps its Queue projection read-only because its continuation transport does not expose queue mutation.
 
 Activating the action requests strict current-turn steering for that exact `InboxItemId`. Success removes the Queue row through the authoritative Host snapshot and immediately projects the same pending steering after the `Deep diving...` running-status row; that bubble offers Copy but no Fork because the message has no durable event sequence yet. Once AgentLoop drains it, the existing durable `user/message` event takes over the same user-style bubble and restores its clock, Copy, and Fork without a separate durable presentation path.
 
 The running bit is only an interaction hint. AgentLoop's `acceptsNextStep` value is authoritative at the synchronous mutation boundary. If that window has closed, the operation leaves the Queue occurrence unchanged and returns a typed `steer-unavailable` error, after which the original waking occurrence proceeds through Queue. If the driver already claimed the occurrence, it returns the existing `queue-item-not-found` error and independent-turn delivery is already underway. The UI treats both races as converged Queue delivery without a failure notice; transport and unknown errors still surface.
 
-The composer uses a separate best-effort contract for newly typed input. While the addressed session is idle, Enter and Cmd/Ctrl+Enter both perform an ordinary Queue send. While a primary session is running, a General Settings preference assigns plain Enter to Queue (the default) or Steer, and Cmd/Ctrl+Enter performs the other behavior; Shift+Enter inserts a newline. An addressed subagent keeps both gestures on its Queue-only continuation transport. The Host settings document persists the preference across Web origins sharing one DSH home, and it affects only the steer-capable busy-state gesture pair. If a direct composer Steer misses the current next-step window, AgentLoop automatically admits it as the next waking Queue turn and the Web does not report a failure.
+The composer uses a separate best-effort contract for newly typed input. While the addressed session is idle, Enter and Cmd/Ctrl+Enter both perform an ordinary Queue send. While a primary session is running, a General Settings preference assigns plain Enter to Queue (the default) or Steer, and Cmd/Ctrl+Enter performs the other behavior; Shift+Enter inserts a newline. An addressed subagent keeps both gestures on its Queue-only continuation transport. The Host settings document persists the preference across Web origins sharing one XHE home, and it affects only the steer-capable busy-state gesture pair. If a direct composer Steer misses the current next-step window, AgentLoop automatically admits it as the next waking Queue turn and the Web does not report a failure.
 
 ### Agent and lifecycle boundary
 

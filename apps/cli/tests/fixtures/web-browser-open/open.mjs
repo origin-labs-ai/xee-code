@@ -27,15 +27,15 @@ export default async function open(url) {
   console.log(`dsh browser-open: ${JSON.stringify({
     url,
     status: response.status,
-    bootManifest: html.includes('__DSH_BOOT__'),
+    bootManifest: html.includes('__XHE_BOOT__'),
     apiKeyPresent: process.env.DEEPSEEK_API_KEY !== undefined,
-    dshHomePresent: process.env.DSH_HOME !== undefined,
+    dshHomePresent: process.env.XHE_HOME !== undefined,
   })}`)
   // The Windows launcher writes the server-exit marker only while its helper
   // remains alive, so the assembled test detects an early helper exit.
   const launcher = spawn(process.execPath, [
     '--eval', handoffProbe,
-    '--', join(process.cwd(), `.dsh-browser-open-${process.ppid}`), String(process.pid),
+    '--', join(process.cwd(), `.xhe-browser-open-${process.ppid}`), String(process.pid),
   ], { stdio: 'ignore' })
   launcher.unref()
   return launcher

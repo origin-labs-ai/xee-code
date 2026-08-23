@@ -3,9 +3,9 @@ import { mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@deepseek-ai/cordis'
-import { AttachmentId, ImageVariantId } from '@deepseek-ai/dsh-attachment'
-import type { AttachmentStore, ImageAttachmentRef, RequestImageAttachment } from '@deepseek-ai/dsh-attachment'
-import { createLaunchEnvironmentSnapshot } from '@deepseek-ai/dsh-launch-environment'
+import { AttachmentId, ImageVariantId } from '@origin-ai/xhe-attachment'
+import type { AttachmentStore, ImageAttachmentRef, RequestImageAttachment } from '@origin-ai/xhe-attachment'
+import { createLaunchEnvironmentSnapshot } from '@origin-ai/xhe-launch-environment'
 import LlmRuntime, { CallId, createUserMessage,
   CONTEXT_WINDOW_EXCEEDED_CODE,
   LlmError,
@@ -13,12 +13,12 @@ import LlmRuntime, { CallId, createUserMessage,
   QUOTA_EXCEEDED_CODE,
   ReasoningEffortId,
   userAgent,
-} from '@deepseek-ai/dsh-llm'
-import { MAX_TIMER_DELAY_MS } from '@deepseek-ai/dsh-timeout'
-import { getOrCreateAnonymousUserId, type AnonymousUserId } from '@deepseek-ai/dsh-anonymous-user-id'
-import { SessionId } from '@deepseek-ai/dsh-session'
-import * as LlmDeepSeek from '@deepseek-ai/dsh-llm-deepseek'
-import { DeepSeekAdapter, resolveAdapterOptions } from '@deepseek-ai/dsh-llm-deepseek'
+} from '@origin-ai/xhe-llm'
+import { MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
+import { getOrCreateAnonymousUserId, type AnonymousUserId } from '@origin-ai/xhe-anonymous-user-id'
+import { SessionId } from '@origin-ai/xhe-session'
+import * as LlmDeepSeek from '@origin-ai/xhe-llm-deepseek'
+import { DeepSeekAdapter, resolveAdapterOptions } from '@origin-ai/xhe-llm-deepseek'
 import { httpErrorCode, resolveRequestImagePolicy } from '../src/adapter.ts'
 import { assemble } from './assemble.ts'
 import { closeMockServers, mockServer, textEvents } from './mock-server.ts'
@@ -28,8 +28,8 @@ const TEST_USER_ID = '00000000-0000-4000-8000-000000000001' as AnonymousUserId
 let testHome: string
 
 beforeEach(() => {
-  testHome = mkdtempSync(join(tmpdir(), 'dsh-llm-deepseek-'))
-  vi.stubEnv('DSH_HOME', testHome)
+  testHome = mkdtempSync(join(tmpdir(), 'xhe-llm-deepseek-'))
+  vi.stubEnv('XHE_HOME', testHome)
 })
 
 afterEach(async () => {
@@ -176,12 +176,12 @@ describe('DeepSeekAdapter against a mock server', () => {
     })
     // App attribution and DeepSeek request identity are independent wire facts.
     expect(server.headers[0]?.['user-agent']).toBe(userAgent())
-    expect(server.headers[0]?.['x-deepseek-harness-user-id']).toBe(getOrCreateAnonymousUserId())
-    expect(server.headers[0]).not.toHaveProperty('x-deepseek-harness-session-id')
+    expect(server.headers[0]?.['x-xhe-user-id']).toBe(getOrCreateAnonymousUserId())
+    expect(server.headers[0]).not.toHaveProperty('x-xhe-session-id')
     expect(server.headers[0]).not.toHaveProperty('http-referer')
     expect(server.headers[0]).not.toHaveProperty('x-openrouter-title')
     expect(server.headers[0]).not.toHaveProperty('x-openrouter-categories')
-    expect(server.headers[0]).not.toHaveProperty('x-deepseek-harness-compact')
+    expect(server.headers[0]).not.toHaveProperty('x-xhe-compact')
   })
 
   it('uploads a durable image once and sends only its Files API id to the vision model', async () => {
@@ -221,7 +221,7 @@ describe('DeepSeekAdapter against a mock server', () => {
     expect(server.fileRequests).toEqual([{
       method: 'POST',
       path: '/files',
-      filename: `dsh-${'a'.repeat(16)}-${'b'.repeat(8)}.png`,
+      filename: `xhe-${'a'.repeat(16)}-${'b'.repeat(8)}.png`,
       bytes: 3,
     }])
     expect(signalSeen[0]).toBeInstanceOf(AbortSignal)
@@ -529,7 +529,7 @@ describe('DeepSeekAdapter against a mock server', () => {
       { messages: [{ content: [expect.objectContaining({ type: 'text' }), { file_id: 'file-api-1' }] }] },
       { messages: [{ content: [expect.objectContaining({ type: 'text' }), { file_id: 'file-api-1' }] }] },
     ])
-    expect(server.headers[1]?.['x-deepseek-harness-compact']).toBe('1')
+    expect(server.headers[1]?.['x-xhe-compact']).toBe('1')
   })
 
   it('explains a provider rejection of a normalized image and retains the raw response as cause', async () => {
@@ -952,8 +952,8 @@ describe('DeepSeekAdapter against a mock server', () => {
       sessionId: SessionId('child-session'),
     })
 
-    expect(server.headers[0]?.['x-deepseek-harness-session-id']).toBe('child-session')
-    expect(server.headers[0]?.['x-deepseek-harness-user-id']).toBe(getOrCreateAnonymousUserId())
+    expect(server.headers[0]?.['x-xhe-session-id']).toBe('child-session')
+    expect(server.headers[0]?.['x-xhe-user-id']).toBe(getOrCreateAnonymousUserId())
   })
 
   it('marks the auxiliary compaction call on the wire', async () => {
@@ -969,7 +969,7 @@ describe('DeepSeekAdapter against a mock server', () => {
       purpose: 'compaction',
     })
 
-    expect(server.headers[0]?.['x-deepseek-harness-compact']).toBe('1')
+    expect(server.headers[0]?.['x-xhe-compact']).toBe('1')
   })
 
   it('switches dynamically from the configured low default through off to max', async () => {

@@ -1,14 +1,14 @@
 {
-  "name": "@deepseek-ai/dsh-subagent-dsh-sdk",
-  "description": "Out-of-process SDK subagent backend: drives a child DeepSeek Harness runtime subprocess over stdio JSON-RPC through the TypeScript SDK client",
+  "name": "@origin-ai/xhe-subagent-xhe-sdk",
+  "description": "Out-of-process SDK subagent backend: drives a child Xee Harness Enhanced runtime subprocess over stdio JSON-RPC through the TypeScript SDK client",
   "version": "0.1.1-rc.2",
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
-    "directory": "packages/subagent/subagent-dsh-sdk"
+    "url": "git+https://github.com/deepseek-ai/xhe.git",
+    "directory": "packages/subagent/subagent-xhe-sdk"
   },
   "type": "module",
   "main": "lib/index.js",
@@ -32,13 +32,13 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/dsh-agent": "workspace:^",
-    "@deepseek-ai/dsh-invariants": "workspace:^",
-    "@deepseek-ai/dsh-llm": "workspace:^",
-    "@deepseek-ai/dsh-sdk-client": "workspace:^",
-    "@deepseek-ai/dsh-session": "workspace:^",
-    "@deepseek-ai/dsh-subagent": "workspace:^",
-    "@deepseek-ai/dsh-subprocess": "workspace:^",
+    "@origin-ai/xhe-agent": "workspace:^",
+    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/xhe-llm": "workspace:^",
+    "@origin-ai/xhe-sdk-client": "workspace:^",
+    "@origin-ai/xhe-session": "workspace:^",
+    "@origin-ai/xhe-subagent": "workspace:^",
+    "@origin-ai/xhe-subprocess": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "dependencies": {
@@ -46,15 +46,15 @@
   },
   "devDependencies": {
     "@deepseek-ai/cordis-plugin-loader": "workspace:^",
-    "@deepseek-ai/dsh-agent": "workspace:^",
-    "@deepseek-ai/dsh-invariants": "workspace:^",
-    "@deepseek-ai/dsh-llm": "workspace:^",
-    "@deepseek-ai/dsh-loader-smoke": "workspace:^",
-    "@deepseek-ai/dsh-sdk-client": "workspace:^",
-    "@deepseek-ai/dsh-sdk-protocol": "workspace:^",
-    "@deepseek-ai/dsh-session": "workspace:^",
-    "@deepseek-ai/dsh-subagent": "workspace:^",
-    "@deepseek-ai/dsh-subprocess": "workspace:^",
+    "@origin-ai/xhe-agent": "workspace:^",
+    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/xhe-llm": "workspace:^",
+    "@origin-ai/xhe-loader-smoke": "workspace:^",
+    "@origin-ai/xhe-sdk-client": "workspace:^",
+    "@origin-ai/xhe-sdk-protocol": "workspace:^",
+    "@origin-ai/xhe-session": "workspace:^",
+    "@origin-ai/xhe-subagent": "workspace:^",
+    "@origin-ai/xhe-subprocess": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

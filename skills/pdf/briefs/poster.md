@@ -1,6 +1,6 @@
 # Poster Scene Rules — Creative Pipeline (Poster-Specific Constraints)
 
-> When poster / 海报 / 传单 / flyer / 宣传页 keywords are detected, load these rules on top of `creative-fixed-canvas.md`.
+> When poster /  /  / flyer /  keywords are detected, load these rules on top of `creative-fixed-canvas.md`.
 > These rules take priority over `creative-fixed-canvas.md` generic rules; in case of conflict, this file prevails.
 >
 > **Positioning**: This is a scene-layer patch on `creative-fixed-canvas.md` (the generic Creative pipeline) — only covers poster-specific constraints, does not repeat generic rules.
@@ -202,23 +202,23 @@ LLMs naturally tend to "classify information → put each category in a box → 
 ```html
 <!-- ❌ Wrong: card wall -->
 <div class="card" style="background:rgba(255,255,255,0.5); border-radius:12px; border:1px solid #ddd;">
-  <h3>📅 展期</h3>
+  <h3>📅 </h3>
   <p>7.15 — 8.30</p>
 </div>
 <div class="card" style="background:rgba(255,255,255,0.5); border-radius:12px; border:1px solid #ddd;">
-  <h3>📍 地点</h3>
-  <p>城市艺术中心</p>
+  <h3>📍 </h3>
+  <p></p>
 </div>
 
 <!-- ✅ Correct: pure typography, no borders -->
 <div class="info-row" style="display:flex; gap:48px;">
   <div>
-    <div style="font-size:10px; letter-spacing:3px; opacity:0.45;">展期</div>
+    <div style="font-size:10px; letter-spacing:3px; opacity:0.45;"></div>
     <div style="font-size:20px; font-weight:700;">7.15 — 8.30</div>
   </div>
   <div>
-    <div style="font-size:10px; letter-spacing:3px; opacity:0.45;">地点</div>
-    <div style="font-size:20px; font-weight:700;">城市艺术中心</div>
+    <div style="font-size:10px; letter-spacing:3px; opacity:0.45;"></div>
+    <div style="font-size:20px; font-weight:700;"></div>
   </div>
 </div>
 ```
@@ -553,7 +553,7 @@ html, body { margin: 0; padding: 0; background: var(--c-bg); }
 
   <!-- City 1 -->
   <div class="city-section">
-    <h2>南京</h2>
+    <h2></h2>
     <div class="items-row"> ... attractions ... </div>
     <div class="food-row"> ... food ... </div>
   </div>

@@ -3,8 +3,6 @@
 Status: implemented
 Archived: 2026-08-03
 
-English | [中文](2026-07-28-dsh-meta-source-workspace.zh.md)
-
 ## Problem
 
 `dsh` treats the invoking directory as the workspace, which is what makes it useful on arbitrary projects. Working on dsh itself therefore means `cd`-ing to the checkout first — and the checkout is not a memorable path: the source install keeps it under a container directory as a timestamped staging worktree (`~/.dsh/source/staging-<timestamp>`) behind a `current` symlink, so the target moves on every upgrade. The agent is already *told* where its source lives by the `harness:source` prompt section, and the `cordis` toolset can modify that runtime, but the human still had to locate the directory by hand to start a session there.
@@ -37,6 +35,6 @@ The mode was verified interactively instead. Launched from `$HOME`, a `pwd` tool
 
 ## Consequences
 
-Starting a session on dsh's own source is `dsh meta --experimental` from anywhere (or bare `dsh meta` under `DSH_EXPERIMENTAL=1`), and the workspace is guaranteed to be the same checkout the model is told about. The command always starts fresh; an ordinary `dsh --resume <id>` later restores the session and enters its persisted workspace.
+Starting a session on dsh's own source is `dsh meta --experimental` from anywhere (or bare `dsh meta` under `XHE_EXPERIMENTAL=1`), and the workspace is guaranteed to be the same checkout the model is told about. The command always starts fresh; an ordinary `dsh --resume <id>` later restores the session and enters its persisted workspace.
 
 `runTui` gains an optional third parameter, so the workspace override is visible at the one function that owns TUI composition rather than hidden in a second copy of it.

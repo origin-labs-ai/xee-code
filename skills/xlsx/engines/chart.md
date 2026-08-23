@@ -50,12 +50,12 @@ When user doesn't specify chart type, auto-select:
 
 | Header patterns | Suggested chart |
 |----------------|-----------------|
-| Date, Month, Quarter, Year, 月, 季度, 年 | Line / Area |
-| Category, Type, Product, Region, 类别, 产品 | Bar |
-| Percentage, Share, %, 占比, 份额 | Pie / Donut |
-| Budget + Actual, 预算 + 实际 | Clustered Bar |
-| Revenue + Cost + Profit, 收入 + 成本 + 利润 | Stacked Bar / Combo |
-| Growth, Change, Δ, 增长, 变化 | Line with markers |
+| Date, Month, Quarter, Year, , ,  | Line / Area |
+| Category, Type, Product, Region, ,  | Bar |
+| Percentage, Share, %, ,  | Pie / Donut |
+| Budget + Actual,  +  | Clustered Bar |
+| Revenue + Cost + Profit,  +  +  | Stacked Bar / Combo |
+| Growth, Change, Δ, ,  | Line with markers |
 
 ---
 

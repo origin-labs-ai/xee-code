@@ -1,6 +1,6 @@
 # Map Component (.map-block)
 
-Use when the content has **spatial relationships**: a travel route, store locations, walking tour, neighborhood overview, store-vs-store comparison by district, before/after relocation. Single coordinates ("我在北京") don't need a map.
+Use when the content has **spatial relationships**: a travel route, store locations, walking tour, neighborhood overview, store-vs-store comparison by district, before/after relocation. Single coordinates ("") don't need a map.
 
 Both seeds ship `.map-block` + `.map-pin` + `.map-legend` classes. The same markup works in either; only the style-locked tones differ.
 
@@ -71,14 +71,14 @@ Hand-drawn-style vector map drawn into a `viewBox="0 0 100 100"` SVG. Best for e
   <!-- pins overlay: % coords relative to .map-block -->
   <div class="map-pin" style="left:32%; top:48%;">
     <div class="dot"></div><div class="line"></div>
-    <div class="card"><div class="name">大昭寺</div><span class="meta">DAY 1</span></div>
+    <div class="card"><div class="name"></div><span class="meta">DAY 1</span></div>
   </div>
   <div class="map-pin accent" style="left:62%; top:38%;">
     <div class="dot"></div><div class="line"></div>
-    <div class="card"><div class="name">布达拉宫</div><span class="meta">DAY 2 · 18:40 SUNSET</span></div>
+    <div class="card"><div class="name"></div><span class="meta">DAY 2 · 18:40 SUNSET</span></div>
   </div>
 
-  <div class="map-legend">LHASA · 拉萨城关 · 1:8K</div>
+  <div class="map-legend">LHASA ·  · 1:8K</div>
 </div>
 ```
 
@@ -107,7 +107,7 @@ The `.map-pin` element uses `left:X%; top:Y%;` to anchor on its centre. The card
 ```html
 <div class="map-pin left" style="left:78%; top:30%;">
   <div class="dot"></div><div class="line"></div>
-  <div class="card"><div class="name">车公庄</div><span class="meta">START</span></div>
+  <div class="card"><div class="name"></div><span class="meta">START</span></div>
 </div>
 ```
 

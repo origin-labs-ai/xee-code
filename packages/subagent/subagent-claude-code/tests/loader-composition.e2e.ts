@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest'
 import {
   LOADER_SMOKE_TEST_TIMEOUT_MS,
   runLoaderSmoke,
-} from '@deepseek-ai/dsh-loader-smoke'
+} from '@origin-ai/xhe-loader-smoke'
 
 const fixtureDir = fileURLToPath(new URL(
   '../../../../examples/acp-agent/tests/fixtures/subagent/subagent-claude-code/',
@@ -26,7 +26,7 @@ describe('product-provider public Loader composition', () => {
   it('loads the Bundle default, two named Claude instances, their tools, and Codex without starting either product', async () => {
     const { stdout, stderr } = await runLoaderSmoke({
       label: 'product-provider Loader composition',
-      tempDirPrefix: 'dsh-product-provider-loader-',
+      tempDirPrefix: 'xhe-product-provider-loader-',
       binScript: driver,
       libBinScript: driver,
       configPath,

@@ -188,7 +188,7 @@ export async function analyzeStock(
   try {
     const completion = await zai.chat.completions.create({
       messages: [
-        { role: "system", content: `你是一位资深${MARKET_LABEL[data.market]}股票分析师。数据缺失标"暂缺"，严禁捏造。乖离率>5%不得建议买入。结论四选一：强烈买入/买入/观望/卖出。输出语言：中文。` },
+        { role: "system", content: `你是一位资深${MARKET_LABEL[data.market]}股票分析师。数据缺失标"暂缺"，严禁捏造。乖离率>5%不得建议买入。结论四选一：强烈买入/买入/观望/卖出。输出语言：。` },
         { role: "user", content: userPrompt },
       ],
       thinking: { type: "disabled" },
@@ -247,7 +247,7 @@ export async function analyzeChartImage(
 
     const completion = await zai.chat.completions.create({
       messages: [
-        { role: "system", content: "你是技术分析专家，擅长K线形态识别。请用中文回答。" },
+        { role: "system", content: "你是技术分析专家，擅长K线形态识别。请用回答。" },
         {
           role: "user",
           content: [

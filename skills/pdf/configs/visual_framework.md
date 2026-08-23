@@ -14,7 +14,7 @@ Non-template design system. This file is the LLM's thinking framework — not a 
 
 > **When in doubt, remove. Never add.**
 
-A document looks "cheap" or "土" when it has too many competing visual elements. The cure is always subtraction, never rearrangement.
+A document looks "cheap" or "" when it has too many competing visual elements. The cure is always subtraction, never rearrangement.
 
 **Red flags that a design is gaudy:**
 - More than 3 decorative elements on a single body page
@@ -30,7 +30,7 @@ A document looks "cheap" or "土" when it has too many competing visual elements
 
 > **ABSOLUTE PROHIBITION: Do NOT embed stock photos, clipart, watercolor illustrations, AI-generated images (flowers, patterns, borders, frames, ornaments), or any decorative raster/vector artwork into PDF documents.**
 
-This is the #1 source of "cheap" / "土" / "婚庆风" design. Examples of what is BANNED:
+This is the #1 source of "cheap" / "" / "" design. Examples of what is BANNED:
 - ✘ Watercolor flowers / roses / floral corners / vine borders
 - ✘ Gold/metallic decorative frames or borders
 - ✘ Stock photo backgrounds (landscapes, textures, marble)

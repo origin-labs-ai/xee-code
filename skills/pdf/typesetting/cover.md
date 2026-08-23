@@ -524,7 +524,7 @@ Cover background = Pure white / very light gray / primary at 5-8% opacity
 **Content slots (all templates):**
 | Slot | Required | Example |
 |------|----------|---------|
-| `label` | Optional | `RESEARCH PAPER`, `博士论文` |
+| `label` | Optional | `RESEARCH PAPER`, `` |
 | `title` | **Required** | Paper title (auto-wrap, max 3 lines) |
 | `subtitle` | Optional | Subtitle or abstract excerpt |
 | `authors` | **Required** | Author name(s) |
@@ -720,19 +720,19 @@ Cover background = Pure white / very light gray / primary at 5-8% opacity
 │  ┌─────────────────────────────┐  │
 │  │                             │  │
 │  │   INSTITUTION NAME           │  │  ← y = 12%, serif 28-34pt Bold
-│  │   (校名/机构名)                │  │
+│  │   (/)                │  │
 │  │                             │  │
 │  │   ━━━━━━━━━━━━━━━━━━━━  │  │  ← thick divider (2pt)
 │  │                             │  │
 │  │   DOCUMENT TYPE              │  │  ← y = 30%, 20-24pt
-│  │   (开题报告/毕业论文/申报书)    │  │
+│  │   (//)    │  │
 │  │                             │  │
 │  │   TITLE                     │  │  ← y = 40%, serif 26-30pt Bold
-│  │   (论文题目)                   │  │    max 3 lines, centered
+│  │   ()                   │  │    max 3 lines, centered
 │  │                             │  │
 │  │   Field: _______________    │  │  ← y = 58-78%, structured fields
 │  │   Field: _______________    │  │    left-label + underline value
-│  │   Field: _______________    │  │    e.g. 姓名、学号、导师、院系、日期
+│  │   Field: _______________    │  │    e.g. 、、、、
 │  │   Field: _______________    │  │
 │  │   Field: _______________    │  │
 │  │                             │  │
@@ -743,16 +743,16 @@ Cover background = Pure white / very light gray / primary at 5-8% opacity
 ││ = 2.5pt black border, inset 5% from page edge
 ```
 
-**Best for:** Thesis proposals (开题报告), dissertations, institutional reports, government documents, any formal submission with structured metadata fields
+**Best for:** Thesis proposals (), dissertations, institutional reports, government documents, any formal submission with structured metadata fields
 
 **Content slots:**
 | Slot | Required | Example |
 |------|----------|---------|
-| `institution` | **Required** | "北京大学", "Massachusetts Institute of Technology" |
-| `doc_type` | Optional | "开题报告", "Thesis Proposal", "毕业设计" |
+| `institution` | **Required** | "", "Massachusetts Institute of Technology" |
+| `doc_type` | Optional | "", "Thesis Proposal", "" |
 | `title` | **Required** | Paper/document title (auto-wrap, max 3 lines) |
-| `fields` | Optional | Array of `{label, value}` pairs. Common: 姓名/Name, 学号/ID, 导师/Advisor, 院系/Department, 专业/Major |
-| `date` | Optional | "2026年4月", "April 2026" |
+| `fields` | Optional | Array of `{label, value}` pairs. Common: /Name, /ID, /Advisor, /Department, /Major |
+| `date` | Optional | "20264", "April 2026" |
 
 **HTML structure:**
 ```html
@@ -880,9 +880,9 @@ Cover background = Pure white / very light gray / primary at 5-8% opacity
 1. **Border frame**: 2.5pt solid black, inset ~5% from all page edges (40px left/right, 56px top/bottom on A4 at 96dpi). This is the defining visual element.
 2. **Institution name**: Centered, serif, 28-34pt Bold, letter-spacing 4-6px. For CJK names, use wider letter-spacing (6px). For Latin names, use standard (3px).
 3. **Thick divider**: 2pt solid line, 70% width, separates institution from content below.
-4. **Document type**: 20-24pt, lighter weight than institution name, letter-spacing 3-4px. This slot differentiates document categories (e.g. "开题报告" / "Thesis Proposal" / "毕业论文" / "Graduation Design").
+4. **Document type**: 20-24pt, lighter weight than institution name, letter-spacing 3-4px. This slot differentiates document categories (e.g. "" / "Thesis Proposal" / "" / "Graduation Design").
 5. **Title**: Serif, 26-30pt Bold, max 3 lines, centered. Auto-wrap at 520px width.
-6. **Structured fields**: Left-aligned label + centered underline value. Label width fixed by longest label in the set. 3-7 field rows supported. Common fields: Name/姓名, Student ID/学号, Advisor/导师, Department/院系, Major/专业.
+6. **Structured fields**: Left-aligned label + centered underline value. Label width fixed by longest label in the set. 3-7 field rows supported. Common fields: Name/, Student ID/, Advisor/, Department/, Major/.
 7. **Date**: Centered at bottom, 14pt, letter-spacing 2px.
 
 **Field auto-detection:**

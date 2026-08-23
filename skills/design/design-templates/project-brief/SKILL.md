@@ -5,14 +5,14 @@ visibility: public
 mode: template
 carrier: long-form-article
 scenario: weekly-digest
-pattern_source: 清言周报-VOL18-notebook.html
+pattern_source: -VOL18-notebook.html
 source_priority: skill-first
 triggers:
-  - "做个 notebook 周报"
-  - "AI 团队周报"
-  - "胶带便签风周报"
-  - "笔记本拼贴报告"
-  - "活页夹周报"
+  - " notebook "
+  - "AI "
+  - ""
+  - ""
+  - ""
 ---
 
 # Project Brief Template
@@ -21,7 +21,7 @@ Use this template for **weekly / periodic digests** that should feel like a hand
 
 ## Use When
 
-- The artifact is a **recurring digest** (周报 / VOL.NN / Issue N) with multiple grouped entries.
+- The artifact is a **recurring digest** ( / VOL.NN / Issue N) with multiple grouped entries.
 - Sections include: new features, optimizations, bug fixes, links, notes — i.e. a changelog-shaped narrative.
 - The voice is product-team or editorial-team-internal, not corporate.
 - The deliverable will be exported / shared as a high-res image or PDF, not just a scrolling page.
@@ -35,7 +35,7 @@ Use this template for **weekly / periodic digests** that should feel like a hand
 
 ## Required Reading
 
-Read this `SKILL.md` first. Do **not** read `清言周报-VOL18-notebook.html` by default.
+Read this `SKILL.md` first. Do **not** read `-VOL18-notebook.html` by default.
 
 Read the pattern only when you need concrete geometry — spiral hole spacing, tape angle and deckle, binder-clip placement, receipt-grid pattern, the 31px ruled baseline. Extract patterns; do not copy placeholder issue numbers, dates, feature names, or class names wholesale.
 

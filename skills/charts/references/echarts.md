@@ -114,7 +114,7 @@ function cleanAxis(theme) {
 
 ```javascript
 const option = {
-  ...baseOption(THEME, 'Q3 收入环比增长 47%', '各季度收入对比（万元）'),
+  ...baseOption(THEME, 'Q3  47%', '（）'),
   xAxis: { type: 'category', data: ['Q1','Q2','Q3','Q4'], ...cleanAxis(THEME) },
   yAxis: { type: 'value', ...cleanAxis(THEME) },
   series: [{
@@ -143,7 +143,7 @@ const option = {
 
 ```javascript
 const option = {
-  ...baseOption(THEME, '2024 年增长持续加速'),
+  ...baseOption(THEME, '2024 '),
   legend: { right: 40, top: 20, textStyle: { color: '#6B7280', fontSize: 10 } },
   xAxis: { type: 'category', data: months, boundaryGap: false, ...cleanAxis(THEME) },
   yAxis: { type: 'value', ...cleanAxis(THEME) },
@@ -176,7 +176,7 @@ const option = {
 ```javascript
 // Dark theme
 const option = {
-  ...baseOption(DARK, 'BTC/USDT 日K线'),
+  ...baseOption(DARK, 'BTC/USDT K'),
   xAxis: { type: 'category', data: dates, ...cleanAxis(DARK) },
   yAxis: { type: 'value', scale: true, ...cleanAxis(DARK) },
   dataZoom: [
@@ -213,7 +213,7 @@ const option = {
 
 ```javascript
 const option = {
-  ...baseOption(THEME, '产品线收入分布'),
+  ...baseOption(THEME, ''),
   grid: [{ left: 60, right: '55%', top: 80, bottom: 50 }],
   xAxis: [{ type: 'value', gridIndex: 0, ...cleanAxis(THEME) }],
   yAxis: [{ type: 'category', data: products, gridIndex: 0, ...cleanAxis(THEME) }],
@@ -238,7 +238,7 @@ const option = {
 ```javascript
 // ⚠️ Key: grid areas precisely defined, no overlap, maintain safety margins
 const option = {
-  ...baseOption(THEME, '数据全景仪表盘'),
+  ...baseOption(THEME, ''),
   grid: [
     // Top-left: bar chart
     { left: '5%', right: '55%', top: '12%', bottom: '55%' },
@@ -318,7 +318,7 @@ const option = {
 
 ```javascript
 const option = {
-  ...baseOption(THEME, '团队能力评估'),
+  ...baseOption(THEME, ''),
   radar: {
     indicator: dims.map(d => ({ name: d, max: 100 })),
     axisName: { color: '#6B7280', fontSize: 10 },
@@ -416,21 +416,21 @@ const option = {
 
 ```javascript
 const treeData = {
-  name: '中心主题',
+  name: '',
   children: [
     {
-      name: '分支A',
+      name: 'A',
       children: [
-        { name: '叶子1' },
-        { name: '叶子2' },
-        { name: '叶子3', children: [{ name: '更深叶子' }] }
+        { name: '1' },
+        { name: '2' },
+        { name: '3', children: [{ name: '' }] }
       ]
     },
     {
-      name: '分支B',
+      name: 'B',
       children: [
-        { name: '叶子4' },
-        { name: '叶子5' }
+        { name: '4' },
+        { name: '5' }
       ]
     }
   ]
@@ -585,9 +585,9 @@ const option = {
 
 ```javascript
 const categories = [
-  { name: '核心系统', itemStyle: { color: '#3B82F6' } },
-  { name: '数据层', itemStyle: { color: '#10B981' } },
-  { name: '应用层', itemStyle: { color: '#F59E0B' } },
+  { name: '', itemStyle: { color: '#3B82F6' } },
+  { name: '', itemStyle: { color: '#10B981' } },
+  { name: '', itemStyle: { color: '#F59E0B' } },
 ];
 
 const nodes = [
@@ -616,18 +616,18 @@ const option = {
     type: 'graph',
     layout: 'none',  // Fixed layout, positions determined by x/y
     data: [
-      { name: '开始', x: 300, y: 50, symbolSize: 40, 
+      { name: '', x: 300, y: 50, symbolSize: 40, 
         itemStyle: { color: '#EFF6FF', borderColor: '#3B82F6', borderWidth: 2 } },
-      { name: '处理', x: 300, y: 200, symbolSize: 35 },
-      { name: '判断', x: 300, y: 350, symbolSize: 35,
+      { name: '', x: 300, y: 200, symbolSize: 35 },
+      { name: '', x: 300, y: 350, symbolSize: 35,
         symbol: 'diamond',
         itemStyle: { color: '#FFF7ED', borderColor: '#F59E0B', borderWidth: 2 } },
-      { name: '结束', x: 300, y: 500, symbolSize: 40 },
+      { name: '', x: 300, y: 500, symbolSize: 40 },
     ],
     links: [
-      { source: '开始', target: '处理' },
-      { source: '处理', target: '判断' },
-      { source: '判断', target: '结束', label: { show: true, formatter: '通过' } },
+      { source: '', target: '' },
+      { source: '', target: '' },
+      { source: '', target: '', label: { show: true, formatter: '' } },
     ],
     lineStyle: { color: '#94A3B8', width: 2, curveness: 0 },
     edgeSymbol: ['', 'arrow'],

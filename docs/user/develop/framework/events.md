@@ -1,7 +1,5 @@
 # Event system
 
-English | [中文](events.zh.md)
-
 Events are the core communication mechanism between Cordis plugins. Harness uses them extensively for loosely coupled extension points.
 
 ## Basic use
@@ -122,7 +120,7 @@ This plugin logs tool calls and results:
 
 ```ts
 import type { Context } from '@deepseek-ai/cordis'
-import '@deepseek-ai/dsh-tools'
+import '@origin-ai/xhe-tools'
 
 export const name = 'tool-logger'
 

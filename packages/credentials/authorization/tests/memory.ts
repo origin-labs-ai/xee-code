@@ -1,4 +1,4 @@
-import { CredentialProvider } from '@deepseek-ai/dsh-credentials'
+import { CredentialProvider } from '@origin-ai/xhe-credentials'
 import type {
   CredentialInfo,
   CredentialKey,
@@ -7,7 +7,7 @@ import type {
   CredentialRecordInfo,
   CredentialRef,
   ResolvedCredential,
-} from '@deepseek-ai/dsh-credentials'
+} from '@origin-ai/xhe-credentials'
 
 /**
  * In-memory credentials provider for the authorization suite. Only the record

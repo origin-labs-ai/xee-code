@@ -2,17 +2,17 @@
  * Shared mounting for the services required before tests load the concrete
  * agent loop. The caller retains ownership of the context, loop, adapters,
  * optional plugins, and teardown.
- * @module @deepseek-ai/dsh-agent-loop-testkit
+ * @module @origin-ai/xhe-agent-loop-testkit
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import LlmRuntime from '@deepseek-ai/dsh-llm'
-import SessionStore from '@deepseek-ai/dsh-session'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import type { Config as SystemPromptConfig } from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime from '@deepseek-ai/dsh-tools'
-import type { Config as ToolRuntimeConfig } from '@deepseek-ai/dsh-tools'
+import AgentRegistry from '@origin-ai/xhe-agent'
+import LlmRuntime from '@origin-ai/xhe-llm'
+import SessionStore from '@origin-ai/xhe-session'
+import SystemPrompt from '@origin-ai/xhe-system-prompt'
+import type { Config as SystemPromptConfig } from '@origin-ai/xhe-system-prompt'
+import ToolRuntime from '@origin-ai/xhe-tools'
+import type { Config as ToolRuntimeConfig } from '@origin-ai/xhe-tools'
 
 /** Configuration forwarded to the prerequisite service plugins. */
 export interface AgentLoopTestDependenciesOptions {

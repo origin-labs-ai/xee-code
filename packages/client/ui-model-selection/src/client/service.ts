@@ -6,7 +6,7 @@
  *
  * Per-session storage follows the client service pattern (InputTriggerService /
  * CommandUiRuntime): a lazy service-internal map whose entry is deleted by the
- * owning scope's disposer. The host `dsh-scope` ScopedLayers registry does
+ * owning scope's disposer. The host `xhe-scope` ScopedLayers registry does
  * does not belong here: it derives scope from the host carrier mechanism
  * (object-keyed), while client scopes tag contexts with branded SessionId
  * strings, and it models global+shadow named registries — this is a
@@ -14,8 +14,8 @@
  */
 import { Service } from '@deepseek-ai/cordis'
 import type { Context } from '@deepseek-ai/cordis'
-import type { ConnectionHandle, SessionId } from '@deepseek-ai/dsh-api-remotes/client'
-import type { SessionRuntime } from '@deepseek-ai/dsh-client-runtime/client'
+import type { ConnectionHandle, SessionId } from '@origin-ai/xhe-api-remotes/client'
+import type { SessionRuntime } from '@origin-ai/xhe-client-runtime/client'
 import { ModelDirectory } from './directory.ts'
 
 declare module '@deepseek-ai/cordis' {

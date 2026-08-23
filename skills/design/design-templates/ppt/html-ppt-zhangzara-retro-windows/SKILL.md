@@ -1,6 +1,6 @@
 ---
 name: html-ppt-zhangzara-retro-windows
-description: Retro Windows — Windows 95 chrome：灰色标题栏 / MS Sans Serif / 像素字体 / 满满怀旧。任何应该感觉有意为之地怀旧的 deck：retro gaming / Y2K 美学品牌 / 90 年代风格创作者作品集 / 技术史 talk / 故意 tongue-in-cheek 的 deck。
+description: Retro Windows — Windows 95 chrome： / MS Sans Serif /  / 。 deck：retro gaming / Y2K  / 90  /  talk /  tongue-in-cheek  deck。
 visibility: public
 mode: template
 carrier: deck
@@ -8,9 +8,9 @@ scenario: marketing
 pattern_source: pattern.html
 source_priority: skill-first
 triggers:
-  - "做个 Windows 95 风 deck"
-  - "做个 Y2K 复古 PPT"
-  - "做个 90 年代怀旧风"
+  - " Windows 95  deck"
+  - " Y2K  PPT"
+  - " 90 "
   - "retro-windows"
   - "zhangzara-retro-windows"
   - "Retro Windows"

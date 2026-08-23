@@ -6,10 +6,10 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import Include from '@deepseek-ai/cordis-plugin-include'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import CommandRuntime from '@deepseek-ai/dsh-commands'
-import SessionStore, { SessionId } from '@deepseek-ai/dsh-session'
-import * as SessionLogDownload from '@deepseek-ai/dsh-session-log-export'
+import type { Agent } from '@origin-ai/xhe-agent'
+import CommandRuntime from '@origin-ai/xhe-commands'
+import SessionStore, { SessionId } from '@origin-ai/xhe-session'
+import * as SessionLogDownload from '@origin-ai/xhe-session-log-export'
 
 let root: string | undefined
 let context: Context | undefined
@@ -23,12 +23,12 @@ afterEach(async () => {
 
 describe('session-log-download real Loader composition', () => {
   it('discovers and executes /export through the assembled command plane', async () => {
-    root = await mkdtemp(join(tmpdir(), 'dsh-session-export-loader-'))
+    root = await mkdtemp(join(tmpdir(), 'xhe-session-export-loader-'))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@deepseek-ai/dsh-session'",
-      "- name: '@deepseek-ai/dsh-commands'",
-      "- name: '@deepseek-ai/dsh-session-log-export'",
+      "- name: '@origin-ai/xhe-session'",
+      "- name: '@origin-ai/xhe-commands'",
+      "- name: '@origin-ai/xhe-session-log-export'",
       '',
     ].join('\n'))
 
@@ -37,9 +37,9 @@ describe('session-log-download real Loader composition', () => {
     await context.plugin(Loader)
     context.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
-      ['@deepseek-ai/dsh-session', SessionStore],
-      ['@deepseek-ai/dsh-commands', CommandRuntime],
-      ['@deepseek-ai/dsh-session-log-export', SessionLogDownload],
+      ['@origin-ai/xhe-session', SessionStore],
+      ['@origin-ai/xhe-commands', CommandRuntime],
+      ['@origin-ai/xhe-session-log-export', SessionLogDownload],
     ])
     context.loader.internal = {
       version: 'v2',

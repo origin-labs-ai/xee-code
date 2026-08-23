@@ -18,7 +18,7 @@
  * disposed by then, and the release that wakes the parent's own settlement
  * watcher has already run. See {@link SubagentContinuationManager.notifySettlement}.
  *
- * @module @deepseek-ai/dsh-subagent
+ * @module @origin-ai/xhe-subagent
  */
 
 import { randomUUID } from 'node:crypto'
@@ -29,13 +29,13 @@ import type {
   AgentOptions,
   AgentSetupCommit,
   CreateAgentOptions,
-} from '@deepseek-ai/dsh-agent'
-import { boundContextSummary, createUserMessage, errorChain } from '@deepseek-ai/dsh-llm'
-import type { ContentBlock, MessageId, MessageSource } from '@deepseek-ai/dsh-llm'
-import { SessionId } from '@deepseek-ai/dsh-session'
-import type { SessionEvent } from '@deepseek-ai/dsh-session'
-import type { SessionPersistence } from '@deepseek-ai/dsh-session-persistence'
-import type { ToolRestriction } from '@deepseek-ai/dsh-tools'
+} from '@origin-ai/xhe-agent'
+import { boundContextSummary, createUserMessage, errorChain } from '@origin-ai/xhe-llm'
+import type { ContentBlock, MessageId, MessageSource } from '@origin-ai/xhe-llm'
+import { SessionId } from '@origin-ai/xhe-session'
+import type { SessionEvent } from '@origin-ai/xhe-session'
+import type { SessionPersistence } from '@origin-ai/xhe-session-persistence'
+import type { ToolRestriction } from '@origin-ai/xhe-tools'
 import { foldSubagentDescriptor, snapshotSubagentDescriptor } from './descriptor.ts'
 import type { SubagentDescriptorData } from './descriptor.ts'
 import {
@@ -89,7 +89,7 @@ export interface SubagentSettledMessageSource {
   readonly senderSessionId: SessionId
 }
 
-declare module '@deepseek-ai/dsh-llm' {
+declare module '@origin-ai/xhe-llm' {
   interface MessageSourceMap {
     coordinator: CoordinatorMessageSource
     'subagent-report': SubagentReportMessageSource
@@ -1533,7 +1533,7 @@ export class SubagentContinuationManager {
     const persistence = this.ctx.get('sessionPersistence')
     if (persistence === undefined) {
       throw new SubagentError(
-        'continuable subagents require session persistence (load a dsh-session-persistence backend)',
+        'continuable subagents require session persistence (load a xhe-session-persistence backend)',
         'PERSISTENCE_UNAVAILABLE',
       )
     }

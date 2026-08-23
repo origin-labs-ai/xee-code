@@ -1,6 +1,6 @@
 ---
 name: social-card-swiss
-description: Swiss 网格 / 系统派社交卡 — 精确 / 系统化 / 技术感 / 方法论调性。卡角色含 system 封面 / numbered method / 对比 before-after / KPI tower / 横条 mini-chart / 截图解释 / 证据墙 / 收尾 checklist。用于 framework / checklist / 工具说明 / AI workflow / 产品更新 / KPI 总结。触发："做个方法卡 / 框架卡 / 工具拆解卡 / AI 工具卡 / 系统派结构卡"。NOT 情绪 / 文学 / 图主导卡，NOT 软生活 pastel 风。
+description: Swiss  /  —  /  /  / 。 system  / numbered method /  before-after / KPI tower /  mini-chart /  /  /  checklist。 framework / checklist /  / AI workflow /  / KPI 。：" /  /  / AI  / "。NOT  /  / ，NOT  pastel 。
 visibility: public
 mode: template
 carrier: fixed-image
@@ -8,13 +8,13 @@ scenario: social-content
 pattern_source: pattern.html
 source_priority: skill-first
 triggers:
-  - "做个方法卡"
-  - "框架卡"
-  - "工具拆解卡"
-  - "AI 工具卡"
-  - "系统派卡"
-  - "结构化知识卡"
-  - "Swiss 网格卡"
+  - ""
+  - ""
+  - ""
+  - "AI "
+  - ""
+  - ""
+  - "Swiss "
 related_patterns: social-card-data-kpi, social-card-screenshot-explainer
 ---
 

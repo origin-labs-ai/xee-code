@@ -38,7 +38,7 @@ Warm, editorial, print-leaning document system. A calm parchment background, a s
 
 - **Visual style:** editorial, formal, print-leaning, warm, content-first
 - **Typography scale:** 12/14/16/18/22/26/36
-- **Typography fonts:** primary=LXGW WenKai Screen (霞鹜文楷, Chinese), display=Charter (English serif), mono=JetBrains Mono
+- **Typography fonts:** primary=LXGW WenKai Screen (, Chinese), display=Charter (English serif), mono=JetBrains Mono
 - **Typography weights:** 400, 500 (no synthetic bold; weight 500 carries headings)
 - **Color palette:** parchment surface, near-black/olive/stone ink tiers, single ink-blue accent
 - **Spacing scale:** 6/12/16/24/32/48

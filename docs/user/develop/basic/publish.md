@@ -1,17 +1,15 @@
 # Package and install a plugin
 
-English | [中文](publish.zh.md)
-
 The previous tutorials loaded a local plugin through a `--patch` overlay. This tutorial packages it as an installable **bundle**, installs it into a **profile** with `dsh plugin add`, and explains the layer order that determines the composed configuration. It assumes the `dsh` CLI is installed. Complete [plugin configuration](./config.md) first.
 
-To use a fresh source checkout instead, complete the [run-from-source section](../../../../README.md#run-from-source), keep this tutorial's `hello-plugin` directory at the repository root, and run the remaining `dsh ...` commands from there as `pnpm dsh ...`. See [source execution](../../../../apps/cli/reference/README.md#source-execution) for build and launcher behavior.
+To use a fresh source checkout instead, complete the [run-from-source section](../../../../README.md#run-from-source), keep this tutorial's `hello-plugin` directory at the repository root, and run the remaining `dsh ...` commands from there as `pnpm xhe ...`. See [source execution](../../../../apps/cli/reference/README.md#source-execution) for build and launcher behavior.
 
 ## Two concepts, two manifests
 
 Installation is built on two concepts. Both are described by a `package.json`, but they carry different kinds of manifest under the `dsh` key, and they answer different questions:
 
 - A **bundle** is an npm package that ships a configuration layer. Its manifest declares `dsh.bundle`, answering "what does this package contribute?": a patch file that inserts or overrides plugin rows.
-- A **profile** is a directory under `$DSH_HOME/profiles/<name>` describing one runnable composition. Its manifest declares `dsh.profile`, answering "which bundles compose this setup, in what order?".
+- A **profile** is a directory under `$XHE_HOME/profiles/<name>` describing one runnable composition. Its manifest declares `dsh.profile`, answering "which bundles compose this setup, in what order?".
 
 A bundle is what you author and distribute; a profile is what a user boots with `dsh --profile <name>`. Nothing is both.
 
@@ -34,12 +32,12 @@ Create `hello-plugin/package.json`:
 
 ```json
 {
-  "name": "dsh-hello-plugin",
+  "name": "xhe-hello-plugin",
   "version": "0.1.0",
   "type": "module",
   "main": "index.js",
   "files": ["index.js", "cordis.patch.yml"],
-  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+  "xhe": { "bundle": { "patch": "./cordis.patch.yml" } }
 }
 ```
 
@@ -58,7 +56,7 @@ Create `hello-plugin/cordis.patch.yml`. The patch is a YAML array like the `--pa
 ```yaml
 - insert:
     - id: hello
-      name: dsh-hello-plugin
+      name: xhe-hello-plugin
 ```
 
 A package without the `dsh.bundle` declaration still installs, but only as a plain dependency: `dsh plugin` prints a warning and activates no layer. Use that package format for a library that plugin packages import rather than a plugin users enable.
@@ -80,20 +78,20 @@ You never write a profile manifest by hand: `dsh plugin` creates and maintains i
 dsh plugin --profile demo add ./hello-plugin
 ```
 
-The first use initializes the profile (with `@deepseek-ai/dsh-base` as its first bundle), pnpm links the checkout, and `dsh` appends the bundle to `dsh.profile.bundles` because the package declares `dsh.bundle`:
+The first use initializes the profile (with `@origin-ai/xhe-base` as its first bundle), pnpm links the checkout, and `dsh` appends the bundle to `dsh.profile.bundles` because the package declares `dsh.bundle`:
 
 ```json
 {
-  "name": "dsh-profile-demo",
+  "name": "xhe-profile-demo",
   "private": true,
   "dependencies": {
-    "dsh-hello-plugin": "link:/path/to/hello-plugin"
+    "xhe-hello-plugin": "link:/path/to/hello-plugin"
   },
-  "dsh": {
+  "xhe": {
     "profile": {
       "bundles": [
-        "@deepseek-ai/dsh-base",
-        "dsh-hello-plugin"
+        "@origin-ai/xhe-base",
+        "xhe-hello-plugin"
       ]
     }
   }
@@ -103,29 +101,29 @@ The first use initializes the profile (with `@deepseek-ai/dsh-base` as its first
 Verify the layer without booting, then boot:
 
 ```sh
-dsh --profile demo --dump-config   # shows a "# == dsh-hello-plugin" layer
+dsh --profile demo --dump-config   # shows a "# == xhe-hello-plugin" layer
 dsh --profile demo
 ```
 
-`dsh plugin --profile demo remove dsh-hello-plugin` removes both the dependency and the layer.
+`dsh plugin --profile demo remove xhe-hello-plugin` removes both the dependency and the layer.
 
 ## The loading order
 
 The effective configuration composes over an empty root by applying, in order:
 
-1. Each bundle patch named in the profile's `dsh.profile.bundles` list, in list order — `@deepseek-ai/dsh-base` first, then each installed bundle in the order it was added.
+1. Each bundle patch named in the profile's `dsh.profile.bundles` list, in list order — `@origin-ai/xhe-base` first, then each installed bundle in the order it was added.
 2. The profile's own `cordis.patch.yml`.
-3. The home-level `$DSH_HOME/cordis.patch.yml` — machine-local preferences shared by every profile.
+3. The home-level `$XHE_HOME/cordis.patch.yml` — machine-local preferences shared by every profile.
 4. Each `--patch <path>` overlay, in argv order.
 
 App arguments are not another patch layer. A surface bundle can resolve them through an ordinary app-owned service, described below.
 
 Later layers win per row, and a patch replaces a row's entire `config` value rather than deep-merging keys. Two consequences for bundle authors:
 
-- Your patch can override rows from earlier layers by `id` — the same way [the `dsh-web-app` bundle](../../../../packages/bundle/web-app/cordis.patch.yml) overrides `dsh-base` rows — but must restate every key the row needs, not just the changed one.
+- Your patch can override rows from earlier layers by `id` — the same way [the `xhe-web-app` bundle](../../../../packages/bundle/web-app/cordis.patch.yml) overrides `xhe-base` rows — but must restate every key the row needs, not just the changed one.
 - Users can override your rows in their profile's `cordis.patch.yml` without touching your package, so prefer configuration defaults users are likely to keep and let the schema carry the rest.
 
-In-box bundle names always resolve from the dsh installation itself; pnpm manages only out-of-tree packages, so your bundle can rely on `@deepseek-ai/dsh-base` being present and current.
+In-box bundle names always resolve from the dsh installation itself; pnpm manages only out-of-tree packages, so your bundle can rely on `@origin-ai/xhe-base` being present and current.
 
 ## Give a surface bundle its own command line
 
@@ -133,10 +131,10 @@ A bundle that defines a runnable app mounts an ordinary provider plugin:
 
 ```yaml
 - id: hello-startup
-  name: 'dsh-hello-plugin/startup'
+  name: 'xhe-hello-plugin/startup'
 ```
 
-The plugin exports `inject = ['cmdlineArgs']`, calls `parseCmdline` from [`@deepseek-ai/dsh-cmdline`](../../../../packages/boot/cmdline/README.md) with its own commander program, and provides its app-owned service from the program's action. The launcher hands every plugin the same immutable arguments after launcher flags, so app-specific flags need no launcher change and multiple plugins may parse the snapshot. The Loader row needs no launcher marker or special kind.
+The plugin exports `inject = ['cmdlineArgs']`, calls `parseCmdline` from [`@origin-ai/xhe-cmdline`](../../../../packages/boot/cmdline/README.md) with its own commander program, and provides its app-owned service from the program's action. The launcher hands every plugin the same immutable arguments after launcher flags, so app-specific flags need no launcher change and multiple plugins may parse the snapshot. The Loader row needs no launcher marker or special kind.
 
 Rows configured by those arguments inject the provider's service and read it from their own `!!js` options, with the deployment value beside it as the fallback:
 
@@ -160,12 +158,12 @@ dsh plugin --profile demo add github:you/hello-plugin
 
 But a git install fetches **sources, not built artifacts**: nothing runs your `build` script, so a TypeScript package arrives without its `lib/` output and fails to load. Two things must happen, one on each side:
 
-- **The author** ships a `prepare` script — pnpm runs it after a git install — that builds the published entry points from source, self-contained: it must not assume dev-only context such as a sibling monorepo checkout. [turtle-ui](https://github.com/deepseek-harness/turtle-ui) is a working example: its `prepare` runs a dedicated tsdown config that transpiles `src/` without project references or type checking.
+- **The author** ships a `prepare` script — pnpm runs it after a git install — that builds the published entry points from source, self-contained: it must not assume dev-only context such as a sibling monorepo checkout. [turtle-ui](https://github.com/xhe/turtle-ui) is a working example: its `prepare` runs a dedicated tsdown config that transpiles `src/` without project references or type checking.
 - **The user** allowlists the build. pnpm ≥10 refuses to run a git dependency's `prepare` script until it is explicitly allowed, so the first `add` fails; `dsh` points at the fix — copy the exact package key pnpm printed into the profile's `pnpm-workspace.yaml`:
 
   ```yaml
   allowBuilds:
-    dsh-hello-plugin: true
+    xhe-hello-plugin: true
   ```
 
   and re-run the `add`.

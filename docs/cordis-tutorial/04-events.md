@@ -1,7 +1,5 @@
 # 4. Events
 
-English | [中文](04-events.zh.md)
-
 Services support direct calls; **events** let a plugin announce something without knowing which plugins listen. The harness uses events for interactions such as tool results, model requests, and approval decisions.
 
 ## Declare, emit, listen
@@ -141,4 +139,4 @@ The harness uses waterfalls for decisions that cooperating plugins may wrap or a
 
 Next: [Configuration](05-config.md) — plugin options from `cordis.yml`.
 
-[![](https://img.shields.io/badge/powered_by-dsh-4D6BFE?style=flat-square&logo=deepseek&logoColor=white)](https://github.com/deepseek-ai/deepseek-harness)
+[![](https://img.shields.io/badge/powered_by-xhe-4D6BFE?style=flat-square&logo=deepseek&logoColor=white)](https://github.com/deepseek-ai/xhe)

@@ -123,7 +123,7 @@ When you need to annotate outliers, specific data points, or group names on a bo
 def box_annotated(df, x_col, y_col, title, annotations=None,
                   palette=None, save_path='box_annotated.png'):
     """
-    annotations: [{'x': 0, 'y': 45, 'text': '产线A 异常'}, ...]
+    annotations: [{'x': 0, 'y': 45, 'text': 'A '}, ...]
     """
     from adjustText import adjust_text
     

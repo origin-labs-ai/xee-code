@@ -104,7 +104,7 @@ async function exportToFormat(content: string, format: "pdf" | "word"): Promise<
     messages: [{
       role: "user",
       content: isPDF
-        ? `请创建一份 PDF 文档，内容是以下股票研报。要求：A4页面，中文字体，每只股票独立分页，结论用颜色标注，末尾附免责声明。\n\n${content}`
+        ? `请创建一份 PDF 文档，内容是以下股票研报。要求：A4页面，字体，每只股票独立分页，结论用颜色标注，末尾附免责声明。\n\n${content}`
         : `请创建一份 Word (.docx) 文档，内容是以下股票研报。要求：保留标题层级，每只股票独立分页，作战计划用表格，末尾附免责声明。\n\n${content}`,
     }],
     thinking: { type: "disabled" },

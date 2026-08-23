@@ -7,7 +7,7 @@
  * the binding update rules. The unit mapping, mechanical code splice, and
  * first-occurrence tracking follow the incremental-pipeline planner mechanics.
  * The CLI wrapper is `scripts/gen-translation-brief.ts`; the workflow that
- * consumes the briefing is `.agents/skills/dsh-translate-docs/SKILL.md`.
+ * consumes the briefing is `.agents/skills/xhe-translate-docs/SKILL.md`.
  */
 
 import type { Nodes } from 'mdast'
@@ -175,7 +175,7 @@ function replaceSpanTexts(markdown: string, spans: MarkdownSpan[], replacements:
 }
 
 function maskCodeSpans(markdown: string, spans: MarkdownSpan[]): string {
-  return replaceSpanTexts(markdown, spans, new Map(spans.map(span => [span.index, `DSH_TRANSLATION_CODE_${span.index}\n`])))
+  return replaceSpanTexts(markdown, spans, new Map(spans.map(span => [span.index, `XHE_TRANSLATION_CODE_${span.index}\n`])))
 }
 
 /**
@@ -491,7 +491,7 @@ export function renderTranslationBrief(input: TranslationBriefInput): string {
     out.push('')
     out.push('## Binding terminology rows matching this change (docs/i18n/terminology.md)')
     out.push('')
-    out.push('| English | 中文 | 首次出现 | 不要译作 | 备注 |')
+    out.push('| English |  | 首次出现 | 不要译作 | 备注 |')
     out.push('|---|---|---|---|---|')
     for (const row of input.terminology) out.push(row.line)
     out.push('')

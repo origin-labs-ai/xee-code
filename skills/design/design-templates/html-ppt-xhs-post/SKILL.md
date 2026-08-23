@@ -1,6 +1,6 @@
 ---
 name: html-ppt-xhs-post
-description: 小红书 (XHS) 3:4 vertical cover template — two voices: spring/lifestyle soft watercolor cover with Songti + ink-green accents, and bold editorial typography cover with cobalt-blue bands + folded-paper interior. Despite the "ppt" prefix in the path, these are fixed-image XHS covers, not slide decks.
+description:  (XHS) 3:4 vertical cover template — two voices: spring/lifestyle soft watercolor cover with Songti + ink-green accents, and bold editorial typography cover with cobalt-blue bands + folded-paper interior. Despite the "ppt" prefix in the path, these are fixed-image XHS covers, not slide decks.
 visibility: public
 mode: template
 carrier: fixed-image
@@ -8,16 +8,16 @@ scenario: social-content
 pattern_source: xhs-cover-spring.html, xhs-cover-typography.html
 source_priority: skill-first
 triggers:
-  - "做个小红书竖封面"
-  - "xhs 3:4 封面"
-  - "春日水彩封面"
-  - "钴蓝编辑感封面"
-  - "宋体 + 水墨封面"
+  - ""
+  - "xhs 3:4 "
+  - ""
+  - ""
+  - " + "
 ---
 
 # XHS Cover Template
 
-Use this template for **小红书 / RED 信息流封面图** at the standard 3:4 (1242×1660) portrait canvas. This is a fixed-image surface delivered as HTML-to-image, not a slide deck and not a WeChat cover.
+Use this template for ** / RED ** at the standard 3:4 (1242×1660) portrait canvas. This is a fixed-image surface delivered as HTML-to-image, not a slide deck and not a WeChat cover.
 
 This template ships two voices. Pick before building.
 
@@ -26,24 +26,24 @@ This template ships two voices. Pick before building.
 ### `xhs-cover-spring.html` — Soft seasonal lifestyle
 
 - Voice: meditative, slow-living, watercolor-paper, bilingual.
-- Use for: 春日 / 慢生活 / 治愈 / 旅行 / 食物 / 居家 / 冥想 / 节气 content.
+- Use for:  /  /  /  /  /  /  /  content.
 - Distinctive moves: mint→cream vertical gradient, Songti SC Chinese headline + Times New Roman italic English lead, ink-green (#2d4a3e) accents, hand-drawn SVG clouds / grass tufts, soft-glow photography.
 
 ### `xhs-cover-typography.html` — Bold editorial design
 
 - Voice: design-led, hashtag-as-mark, magazine-issue energy.
-- Use for: 设计 / 排版 / 创作工具 / 课程预告 / 沙龙活动 / 设计周刊 content.
+- Use for:  /  /  /  /  /  content.
 - Distinctive moves: cobalt-blue (#1652f0) top/bottom bands, cream "folded paper" interior with shadow fold, # prefix + chunky PingFang headline + Helvetica Neue Black numerics, rotated issue tag, angled photo strip.
 
 ## Use When
 
 - The artifact is an **XHS cover** at 3:4 portrait, optimized for the feed thumbnail context.
-- The user explicitly says 小红书 / XHS / RED / 封面.
+- The user explicitly says  / XHS / RED / .
 - The headline carries the card — photography supports, not dominates.
 
 ## Avoid When
 
-- The platform is WeChat 公众号 → use `wechat-cover-pair/` (different aspect, different reading distance).
+- The platform is WeChat  → use `wechat-cover-pair/` (different aspect, different reading distance).
 - The platform is Xiaohongshu but the content is a method / KPI / comparison card → use `social-card-swiss/`.
 - The content needs to be a reflective long-quote literary card → use `social-card-editorial/`.
 - The output is a deck or scrolling article — wrong carrier entirely.
@@ -75,8 +75,8 @@ Prefer:
 
 Avoid:
 
-- 塑料 stickers, emoji-pile decorations, 3D plastic badges (AI-slop)
-- 黑金 "premium" gradients (forbidden — see design aesthetic memory)
+-  stickers, emoji-pile decorations, 3D plastic badges (AI-slop)
+-  "premium" gradients (forbidden — see design aesthetic memory)
 - crowding the canvas with 4+ decorative elements
 - shrinking the headline to fit a long sentence — rewrite the sentence
 

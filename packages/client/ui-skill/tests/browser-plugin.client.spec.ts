@@ -15,11 +15,11 @@
  */
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import type { SessionId } from '@deepseek-ai/dsh-client-runtime/client'
-import { SlotRegistry } from '@deepseek-ai/dsh-client-runtime/client'
-import { InputTriggerService } from '@deepseek-ai/dsh-client-ui-input-trigger/client'
-import { TestRemote } from '@deepseek-ai/dsh-client-test-runtime'
-import type { ClientSessionContext, InputTriggerSource } from '@deepseek-ai/dsh-client-ui-input-trigger/client'
+import type { SessionId } from '@origin-ai/xhe-client-runtime/client'
+import { SlotRegistry } from '@origin-ai/xhe-client-runtime/client'
+import { InputTriggerService } from '@origin-ai/xhe-client-ui-input-trigger/client'
+import { TestRemote } from '@origin-ai/xhe-client-test-runtime'
+import type { ClientSessionContext, InputTriggerSource } from '@origin-ai/xhe-client-ui-input-trigger/client'
 import { apply, inject } from '../src/client/index.ts'
 import { SkillRow as SkillToolRow } from '../src/client/SkillRow.tsx'
 

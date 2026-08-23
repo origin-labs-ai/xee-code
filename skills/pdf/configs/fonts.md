@@ -28,7 +28,7 @@ This enables `font-variation-settings: 'wght' <value>` for smooth, non-discrete 
 
 ### Report Pipeline (ReportLab)
 
-ReportLab requires registered fonts. Primary Chinese font is **Noto Serif SC** (思源宋体, serif with sharp elegant strokes):
+ReportLab requires registered fonts. Primary Chinese font is **Noto Serif SC** (, serif with sharp elegant strokes):
 
 ```python
 from reportlab.pdfbase import pdfmetrics

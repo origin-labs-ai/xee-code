@@ -10,19 +10,19 @@ import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@deepseek-ai/cordis'
-import { CodeRuntime } from '@deepseek-ai/dsh-code-runtime'
-import type { CodeRunRequest, CodeRunResult } from '@deepseek-ai/dsh-code-runtime'
-import { CallId, LlmAdapter, LlmRuntime } from '@deepseek-ai/dsh-llm'
-import type { GenerateOptions, LlmModelInfo, LlmResolvedModelInfo, Message, StreamChunk } from '@deepseek-ai/dsh-llm'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime, { RUN_CODE_NAME } from '@deepseek-ai/dsh-tools'
-import type { Config as ToolConfig } from '@deepseek-ai/dsh-tools'
-import LocalFileSystem from '@deepseek-ai/dsh-fs-local'
-import * as FsPolicy from '@deepseek-ai/dsh-fs-observation-policy'
-import LocalAttachmentStore from '@deepseek-ai/dsh-attachment-local'
-import { AttachmentError, AttachmentId, AttachmentStore } from '@deepseek-ai/dsh-attachment'
-import type { ImageAttachmentLimits, ImageAttachmentRef, SaveImageAttachment, StoredImageAttachment } from '@deepseek-ai/dsh-attachment'
-import * as ToolFs from '@deepseek-ai/dsh-tool-fs'
+import { CodeRuntime } from '@origin-ai/xhe-code-runtime'
+import type { CodeRunRequest, CodeRunResult } from '@origin-ai/xhe-code-runtime'
+import { CallId, LlmAdapter, LlmRuntime } from '@origin-ai/xhe-llm'
+import type { GenerateOptions, LlmModelInfo, LlmResolvedModelInfo, Message, StreamChunk } from '@origin-ai/xhe-llm'
+import SystemPrompt from '@origin-ai/xhe-system-prompt'
+import ToolRuntime, { RUN_CODE_NAME } from '@origin-ai/xhe-tools'
+import type { Config as ToolConfig } from '@origin-ai/xhe-tools'
+import LocalFileSystem from '@origin-ai/xhe-fs-local'
+import * as FsPolicy from '@origin-ai/xhe-fs-observation-policy'
+import LocalAttachmentStore from '@origin-ai/xhe-attachment-local'
+import { AttachmentError, AttachmentId, AttachmentStore } from '@origin-ai/xhe-attachment'
+import type { ImageAttachmentLimits, ImageAttachmentRef, SaveImageAttachment, StoredImageAttachment } from '@origin-ai/xhe-attachment'
+import * as ToolFs from '@origin-ai/xhe-tool-fs'
 import {
   applyReadImageTool,
   formatImageReadOutput,
@@ -80,8 +80,8 @@ let dir: string
 let home: string
 
 beforeEach(async () => {
-  dir = await mkdtemp(join(tmpdir(), 'dsh-read-image-'))
-  home = await mkdtemp(join(tmpdir(), 'dsh-read-image-home-'))
+  dir = await mkdtemp(join(tmpdir(), 'xhe-read-image-'))
+  home = await mkdtemp(join(tmpdir(), 'xhe-read-image-home-'))
 })
 afterEach(async () => {
   await rm(dir, { recursive: true, force: true })

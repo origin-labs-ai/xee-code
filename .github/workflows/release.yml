@@ -4,7 +4,7 @@
 #
 # Pack runs without credentials on every pull request and master push, so a
 # pull request proves the whole publish set still packs. Publication is a manual
-# workflow_dispatch of release-publish.yml from a dsh-v* tag.
+# workflow_dispatch of release-publish.yml from a xhe-v* tag.
 name: Release (dsh)
 
 on:
@@ -23,7 +23,7 @@ concurrency:
 
 env:
   PRIMARY_NODE_VERSION: '24'
-  DSH_TELEMETRY_DISABLED: '1'
+  XHE_TELEMETRY_DISABLED: '1'
 
 jobs:
   pack:
@@ -79,7 +79,7 @@ jobs:
       - name: Pack the vendored framework for verification
         run: pnpm run release:pack --family vendor --out dist/npm-vendor
 
-      # dsh-sandbox-local declares the Landlock entry as a runtime dependency, so
+      # xhe-sandbox-local declares the Landlock entry as a runtime dependency, so
       # the verification needs its tarball. Its platform packages stay out: they
       # are optional, and building them needs a musl toolchain per architecture.
       - name: Pack the Landlock entry for verification
@@ -92,7 +92,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: dsh-npm-tarballs
+          name: xhe-npm-tarballs
           path: dist/npm/*
           if-no-files-found: error
           retention-days: 7

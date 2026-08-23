@@ -6,6 +6,6 @@ head:
       content: 0; url=./guide/quickstart
 ---
 
-# DeepSeek Harness
+# Xee Harness Enhanced
 
-English | [中文](index.zh.md)
+English

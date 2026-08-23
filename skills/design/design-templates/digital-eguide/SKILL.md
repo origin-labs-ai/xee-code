@@ -1,19 +1,19 @@
 ---
 name: digital-eguide
-description: Premium "digital e-guide" template family — two patterns sharing a metadata-rich, editorial-archive identity: an infinite 3D-canvas portfolio (case/) for designer 作品集, and a 12-slide horizontal field-notes carousel (social-carousel.html) for long-form knowledge series.
+description: Premium "digital e-guide" template family — two patterns sharing a metadata-rich, editorial-archive identity: an infinite 3D-canvas portfolio (case/) for designer , and a 12-slide horizontal field-notes carousel (social-carousel.html) for long-form knowledge series.
 visibility: public
 mode: template
 carrier: web-page
 scenario: portfolio-and-guide
-pattern_source: case（无限画布：作品集）/case/index.html, social-carousel.html
+pattern_source: case（：）/case/index.html, social-carousel.html
 source_priority: skill-first
 triggers:
-  - "做个 e-guide 电子手册"
-  - "3D 画布作品集"
-  - "field notes 横滚"
-  - "知识系列横滚"
-  - "高端作品集"
-  - "无限画布作品集"
+  - " e-guide "
+  - "3D "
+  - "field notes "
+  - ""
+  - ""
+  - ""
 ---
 
 # Digital E-Guide Template
@@ -24,12 +24,12 @@ This template ships two variants. Pick before building.
 
 ## Variants
 
-### `case/` — Infinite-canvas portfolio (作品集)
+### `case/` — Infinite-canvas portfolio ()
 
-> On-disk path: `case（无限画布：作品集）/case/index.html`
+> On-disk path: `case（：）/case/index.html`
 
 - A Miro-like 3D-cylindrical canvas of 18 tiles you drag, zoom, and click to open case detail pages.
-- Use for: designer 作品集, studio portfolio, photographer archive, case-study lobby.
+- Use for: designer , studio portfolio, photographer archive, case-study lobby.
 - Distinctive moves: Three.js-style cylindrical projection, drag inertia, gold/dark glass UI, hash-routed detail pages, "Works / About / Resume" nav.
 - Companion generator: see top-level `../vr-canvas/` template (modern frontmatter version).
 

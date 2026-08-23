@@ -48,7 +48,7 @@ describe('local attachment service', () => {
   })
 
   it('saves and reads through the service boundary', async () => {
-    const dshHome = await mkdtemp(join(tmpdir(), 'dsh-attachment-service-'))
+    const dshHome = await mkdtemp(join(tmpdir(), 'xhe-attachment-service-'))
     try {
       const service = new LocalAttachmentStore(new Context(), { dshHome })
       const data = Uint8Array.from(Buffer.from(
@@ -63,7 +63,7 @@ describe('local attachment service', () => {
   })
 
   it('commits a fully prepared image batch in input order', async () => {
-    const dshHome = await mkdtemp(join(tmpdir(), 'dsh-attachment-batch-success-'))
+    const dshHome = await mkdtemp(join(tmpdir(), 'xhe-attachment-batch-success-'))
     try {
       const service = new LocalAttachmentStore(new Context(), { dshHome })
       const first = new Uint8Array(await sharp({
@@ -87,7 +87,7 @@ describe('local attachment service', () => {
   })
 
   it.each([3, 4] as const)('admits a 16-bit %s-channel PNG as an 8-bit normalized object', async (channels) => {
-    const dshHome = await mkdtemp(join(tmpdir(), 'dsh-attachment-16-bit-'))
+    const dshHome = await mkdtemp(join(tmpdir(), 'xhe-attachment-16-bit-'))
     try {
       const service = new LocalAttachmentStore(new Context(), { dshHome })
       const source = new Uint8Array(await sharp({
@@ -106,7 +106,7 @@ describe('local attachment service', () => {
   })
 
   it('prepares every batch member before any write', async () => {
-    const dshHome = await mkdtemp(join(tmpdir(), 'dsh-attachment-batch-'))
+    const dshHome = await mkdtemp(join(tmpdir(), 'xhe-attachment-batch-'))
     try {
       const service = new LocalAttachmentStore(new Context(), { dshHome, normalizedImageMaxBytes: 1 })
       const valid = Uint8Array.from(Buffer.from(
@@ -124,7 +124,7 @@ describe('local attachment service', () => {
   })
 
   it('validates without persisting: a rejected image leaves no storage root behind', async () => {
-    const dshHome = await mkdtemp(join(tmpdir(), 'dsh-attachment-validate-'))
+    const dshHome = await mkdtemp(join(tmpdir(), 'xhe-attachment-validate-'))
     try {
       const service = new LocalAttachmentStore(new Context(), { dshHome })
       await expect(service.validateImage({ data: Uint8Array.of(1, 2, 3), mediaType: 'image/png' }))

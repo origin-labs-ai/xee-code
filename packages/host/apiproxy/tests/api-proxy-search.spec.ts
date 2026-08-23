@@ -7,19 +7,19 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import { stat } from 'node:fs/promises'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import { createUserMessage } from '@deepseek-ai/dsh-llm'
-import SessionStore from '@deepseek-ai/dsh-session'
-import type { SessionHeader, SessionId } from '@deepseek-ai/dsh-session'
-import UserQuestionService from '@deepseek-ai/dsh-user-questions'
+import AgentRegistry from '@origin-ai/xhe-agent'
+import { createUserMessage } from '@origin-ai/xhe-llm'
+import SessionStore from '@origin-ai/xhe-session'
+import type { SessionHeader, SessionId } from '@origin-ai/xhe-session'
+import UserQuestionService from '@origin-ai/xhe-user-questions'
 import {
   SessionQueryError,
   type SessionSearchHit,
   type SessionSearchRequest,
-} from '@deepseek-ai/dsh-session-query'
-import type { RpcRequest } from '@deepseek-ai/dsh-host-apiproxy/api'
-import { RpcId } from '@deepseek-ai/dsh-host-apiproxy/api'
-import { createApiProxy } from '@deepseek-ai/dsh-host-apiproxy'
+} from '@origin-ai/xhe-session-query'
+import type { RpcRequest } from '@origin-ai/xhe-host-apiproxy/api'
+import { RpcId } from '@origin-ai/xhe-host-apiproxy/api'
+import { createApiProxy } from '@origin-ai/xhe-host-apiproxy'
 
 vi.mock('node:fs/promises', async (importOriginal) => {
   const actual = await importOriginal<typeof import('node:fs/promises')>()

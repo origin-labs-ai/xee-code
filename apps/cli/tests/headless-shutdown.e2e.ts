@@ -4,7 +4,7 @@ import { join } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { execa } from 'execa'
 import { describe, expect, it } from 'vitest'
-import { LOADER_SMOKE_TEST_TIMEOUT_MS, resolveExampleLaunch } from '@deepseek-ai/dsh-loader-smoke'
+import { LOADER_SMOKE_TEST_TIMEOUT_MS, resolveExampleLaunch } from '@origin-ai/xhe-loader-smoke'
 
 const dshBinScript = fileURLToPath(new URL('../src/bin.ts', import.meta.url))
 const tsconfigPath = fileURLToPath(new URL('../../../tsconfig.json', import.meta.url))
@@ -22,7 +22,7 @@ if pid == 0:
     os.chdir(cwd)
     os.execvpe(node, [node, *json.loads(launch_args_json)], env)
 
-markers = [b"dsh-test: never-dispose ready", b"dsh-test: never-dispose started"]
+markers = [b"xhe-test: never-dispose ready", b"xhe-test: never-dispose started"]
 output = bytearray()
 marker_index = 0
 deadline = time.monotonic() + float(timeout_seconds)
@@ -62,7 +62,7 @@ if actual_exit != 130:
 `
 
 async function runHeadlessPtySmoke(): Promise<string> {
-  const cwd = await mkdtemp(join(tmpdir(), 'dsh-headless-shutdown-'))
+  const cwd = await mkdtemp(join(tmpdir(), 'xhe-headless-shutdown-'))
   try {
     const home = join(cwd, '.dsh')
     // Pre-initialize the headless profile with the never-dispose row in its
@@ -70,10 +70,10 @@ async function runHeadlessPtySmoke(): Promise<string> {
     const profileDir = join(home, 'profiles', 'headless')
     await mkdir(profileDir, { recursive: true })
     await writeFile(join(profileDir, 'package.json'), JSON.stringify({
-      name: 'dsh-profile-headless',
+      name: 'xhe-profile-headless',
       private: true,
       dependencies: {},
-      dsh: { profile: { bundles: ['@deepseek-ai/dsh-base', '@deepseek-ai/dsh-headless'] } },
+      dsh: { profile: { bundles: ['@origin-ai/xhe-base', '@origin-ai/xhe-headless'] } },
     }, undefined, 2))
     await writeFile(join(profileDir, 'cordis.patch.yml'), [
       '- insert:',
@@ -86,11 +86,11 @@ async function runHeadlessPtySmoke(): Promise<string> {
       configArgs: ['--profile', 'headless', 'never complete'],
       tsconfigPath,
       env: {
-        DSH_HOME: home,
-        DSH_AGENTS_HOME: join(cwd, '.agents'),
+        XHE_HOME: home,
+        XHE_AGENTS_HOME: join(cwd, '.agents'),
         DEEPSEEK_API_KEY: 'keyless-shutdown-no-call',
-        DSH_TELEMETRY_DISABLED: '1',
-        DSH_TEST_SHUTDOWN_ARM_FILE: join(cwd, 'shutdown-armed'),
+        XHE_TELEMETRY_DISABLED: '1',
+        XHE_TEST_SHUTDOWN_ARM_FILE: join(cwd, 'shutdown-armed'),
       },
     })
     const timeoutMs = 15_000
@@ -125,7 +125,7 @@ describe.skipIf(process.platform === 'win32')('headless process shutdown (real L
   it('lets a second Ctrl+C force exit while the first signal is draining', async () => {
     const output = await runHeadlessPtySmoke()
     expect(output).not.toContain('dsh: observing at ')
-    expect(output).toContain('dsh-test: never-dispose ready')
-    expect(output).toContain('dsh-test: never-dispose started')
+    expect(output).toContain('xhe-test: never-dispose ready')
+    expect(output).toContain('xhe-test: never-dispose started')
   }, LOADER_SMOKE_TEST_TIMEOUT_MS)
 })

@@ -1,15 +1,15 @@
 /**
  * Model-facing persistent `bash` tool over the owner-scoped PTY seam.
- * @module @deepseek-ai/dsh-tool-bash-persistent
+ * @module @origin-ai/xhe-tool-bash-persistent
  */
 
 import { randomUUID } from 'node:crypto'
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import type { TerminalReadResult, TerminalSessionId } from '@deepseek-ai/dsh-terminal'
-import { deadline, timeoutOf } from '@deepseek-ai/dsh-timeout'
-import { defineTool } from '@deepseek-ai/dsh-tools'
+import type { Agent } from '@origin-ai/xhe-agent'
+import type { TerminalReadResult, TerminalSessionId } from '@origin-ai/xhe-terminal'
+import { deadline, timeoutOf } from '@origin-ai/xhe-timeout'
+import { defineTool } from '@origin-ai/xhe-tools'
 
 // TODO: Replace the file-search advice; arbitrary command output need not come from a searchable file.
 const TRUNCATED_MESSAGE = '<response clipped><NOTE>To save on context only part of this file has been shown to you. You should retry this tool after you have searched inside the file with `grep -n` in order to find the line numbers of what you are looking for.</NOTE>'
@@ -61,8 +61,8 @@ function maybeTruncate(content: string, maxOutputChars: number, incomplete = fal
 function markers(): CommandMarkers {
   const nonce = randomUUID()
   return {
-    start: `__DSH_PERSISTENT_BASH_START_${nonce}__`,
-    end: `__DSH_PERSISTENT_BASH_END_${nonce}:`,
+    start: `__XHE_PERSISTENT_BASH_START_${nonce}__`,
+    end: `__XHE_PERSISTENT_BASH_END_${nonce}:`,
   }
 }
 

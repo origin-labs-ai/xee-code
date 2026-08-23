@@ -5,37 +5,37 @@
  * deployments still choose the LLM adapter, bash executor, and presentation.
  * The plugin intentionally exposes named exports only because Loader default
  * unwrapping would discard its `Config` schema (see docs/postmortem/0001).
- * @module @deepseek-ai/dsh-agent-spine-demo
+ * @module @origin-ai/xhe-agent-spine-demo
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import Timer from '@deepseek-ai/cordis-plugin-timer'
 import z from '@deepseek-ai/schemastery'
-import LlmRuntime from '@deepseek-ai/dsh-llm'
-import SessionStore from '@deepseek-ai/dsh-session'
-import SessionTitleService, { type Config as SessionTitleConfig } from '@deepseek-ai/dsh-session-title'
-import SystemPrompt, { type Config as SystemPromptConfig } from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime, { type Config as ToolsConfig } from '@deepseek-ai/dsh-tools'
-import SkillRegistry, { type Config as SkillRegistryConfig } from '@deepseek-ai/dsh-skill'
-import * as SkillFileSystem from '@deepseek-ai/dsh-skill-filesystem'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import GoalService, { type Config as GoalDomainConfig } from '@deepseek-ai/dsh-goal'
-import * as goalSession from '@deepseek-ai/dsh-goal-round-driver'
-import * as toolGoal from '@deepseek-ai/dsh-tool-goal'
-import LocalJobRegistry, { type Config as JobsConfig } from '@deepseek-ai/dsh-jobs-local'
-import InvariantRegistry, { type Config as InvariantConfig } from '@deepseek-ai/dsh-invariants'
-import * as sessionInvariant from '@deepseek-ai/dsh-session/invariant'
-import * as agentInvariant from '@deepseek-ai/dsh-agent/invariant'
-import * as scopeInvariant from '@deepseek-ai/dsh-scope/invariant'
-import * as agentLoopInvariant from '@deepseek-ai/dsh-agent-loop/invariant'
-import * as toolBash from '@deepseek-ai/dsh-tool-bash'
-import * as bashEnv from '@deepseek-ai/dsh-shell-env'
-import * as workspaceContext from '@deepseek-ai/dsh-agent-instructions'
-import * as toolSkill from '@deepseek-ai/dsh-tool-skill'
-import * as toolJobs from '@deepseek-ai/dsh-tool-jobs'
-import AgentLoop, { type Config as AgentLoopConfig } from '@deepseek-ai/dsh-agent-loop'
-import * as llmRetry from '@deepseek-ai/dsh-llm-retry'
-import { resolveDshHome } from '@deepseek-ai/dsh-home-paths'
+import LlmRuntime from '@origin-ai/xhe-llm'
+import SessionStore from '@origin-ai/xhe-session'
+import SessionTitleService, { type Config as SessionTitleConfig } from '@origin-ai/xhe-session-title'
+import SystemPrompt, { type Config as SystemPromptConfig } from '@origin-ai/xhe-system-prompt'
+import ToolRuntime, { type Config as ToolsConfig } from '@origin-ai/xhe-tools'
+import SkillRegistry, { type Config as SkillRegistryConfig } from '@origin-ai/xhe-skill'
+import * as SkillFileSystem from '@origin-ai/xhe-skill-filesystem'
+import AgentRegistry from '@origin-ai/xhe-agent'
+import GoalService, { type Config as GoalDomainConfig } from '@origin-ai/xhe-goal'
+import * as goalSession from '@origin-ai/xhe-goal-round-driver'
+import * as toolGoal from '@origin-ai/xhe-tool-goal'
+import LocalJobRegistry, { type Config as JobsConfig } from '@origin-ai/xhe-jobs-local'
+import InvariantRegistry, { type Config as InvariantConfig } from '@origin-ai/xhe-invariants'
+import * as sessionInvariant from '@origin-ai/xhe-session/invariant'
+import * as agentInvariant from '@origin-ai/xhe-agent/invariant'
+import * as scopeInvariant from '@origin-ai/xhe-scope/invariant'
+import * as agentLoopInvariant from '@origin-ai/xhe-agent-loop/invariant'
+import * as toolBash from '@origin-ai/xhe-tool-bash'
+import * as bashEnv from '@origin-ai/xhe-shell-env'
+import * as workspaceContext from '@origin-ai/xhe-agent-instructions'
+import * as toolSkill from '@origin-ai/xhe-tool-skill'
+import * as toolJobs from '@origin-ai/xhe-tool-jobs'
+import AgentLoop, { type Config as AgentLoopConfig } from '@origin-ai/xhe-agent-loop'
+import * as llmRetry from '@origin-ai/xhe-llm-retry'
+import { resolveDshHome } from '@origin-ai/xhe-home-paths'
 
 export const name = 'agent-spine-demo'
 
@@ -90,7 +90,7 @@ export interface GoalConfig {
  * `bash` name.
  */
 export interface Config {
-  /** The agent-loop `agents` list (see dsh-agent-loop's `Config`). */
+  /** The agent-loop `agents` list (see xhe-agent-loop's `Config`). */
   agents?: AgentLoopConfig['agents']
   /** Agent-loop concurrency cap; `1` is serial. */
   maxParallelToolCalls?: AgentLoopConfig['maxParallelToolCalls']
@@ -98,13 +98,13 @@ export interface Config {
   includeHarnessIdentity?: SystemPromptConfig['includeHarnessIdentity']
   /** Whether model history includes dynamic runtime-context snapshots (default true). */
   includeRuntimeContext?: SystemPromptConfig['includeRuntimeContext']
-  /** The deployment persona (see dsh-system-prompt's `Config`). */
+  /** The deployment persona (see xhe-system-prompt's `Config`). */
   persona?: SystemPromptConfig['persona']
-  /** The explicit model-facing tool order (see dsh-system-prompt's `Config`). */
+  /** The explicit model-facing tool order (see xhe-system-prompt's `Config`). */
   toolOrder?: SystemPromptConfig['toolOrder']
-  /** The tool registry's config — its presentation `mode` (see dsh-tools' `Config`). */
+  /** The tool registry's config — its presentation `mode` (see xhe-tools' `Config`). */
   tools?: ToolsConfig
-  /** DeepSeek Harness home directory shared by shell context and local skill discovery. */
+  /** Xee Harness Enhanced home directory shared by shell context and local skill discovery. */
   dshHome?: string
   /** Deterministic fallback and accepted-title limits; omission uses the bundle's example policy. */
   sessionTitle?: SessionTitleConfig

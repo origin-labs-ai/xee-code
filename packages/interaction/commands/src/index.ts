@@ -1,17 +1,17 @@
 /**
  * Plugin-owned human-command registry shared by interactive UI adapters.
- * @module @deepseek-ai/dsh-commands
+ * @module @origin-ai/xhe-commands
  */
 
 import { Context } from '@deepseek-ai/cordis'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import { AttachmentError, admitEncodedImages } from '@deepseek-ai/dsh-attachment'
-import type { EncodedImageAttachment } from '@deepseek-ai/dsh-attachment/types'
-import type { ImageBlock } from '@deepseek-ai/dsh-llm'
-import { NamedEntries, ScopedLayers } from '@deepseek-ai/dsh-scope'
-import type { ScopeKey, ScopeLayer } from '@deepseek-ai/dsh-scope'
-import type { Session, SessionEvent, SessionEventMap } from '@deepseek-ai/dsh-session'
-import { TypertRemoteService, Remote } from '@deepseek-ai/dsh-typert-protocol'
+import type { Agent } from '@origin-ai/xhe-agent'
+import { AttachmentError, admitEncodedImages } from '@origin-ai/xhe-attachment'
+import type { EncodedImageAttachment } from '@origin-ai/xhe-attachment/types'
+import type { ImageBlock } from '@origin-ai/xhe-llm'
+import { NamedEntries, ScopedLayers } from '@origin-ai/xhe-scope'
+import type { ScopeKey, ScopeLayer } from '@origin-ai/xhe-scope'
+import type { Session, SessionEvent, SessionEventMap } from '@origin-ai/xhe-session'
+import { TypertRemoteService, Remote } from '@origin-ai/xhe-typert-protocol'
 import { CommandId } from './brand.ts'
 import type {
   CommandDescriptor,

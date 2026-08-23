@@ -233,7 +233,7 @@ const palette = { primary:"#28201C", body:"#000000", secondary:"#6E6560", accent
 - Party information (black)
 - Signature block text (black)
 
-**The only exception** is red-header official documents (红头文件), which follow their own GB/T 9704 color rules. For standard contracts, NO colored text is permitted — no red, no accent color, no dark-blue-grey.
+**The only exception** is red-header official documents (), which follow their own GB/T 9704 color rules. For standard contracts, NO colored text is permitted — no red, no accent color, no dark-blue-grey.
 
 ```js
 // ✅ Contract title — always pure black
@@ -307,7 +307,7 @@ Article 2  Price and Payment
 Party A and Party B information MUST be laid out using a **borderless table** so that labels align vertically. Never use plain paragraphs with indentation — this causes misalignment between parties.
 
 ```js
-// ✅ Correct — borderless table ensures "统一社会信用代码：", "地址：", "法定代表人：" align
+// ✅ Correct — borderless table ensures "：", "：", "：" align
 function partyInfoBlock(partyLabel, partyName, fields) {
   // fields: [["Unified Social Credit Code", value], ["Address", value], ["Legal Representative", value]]
   const NB = { style: BorderStyle.NONE, size: 0, color: "FFFFFF" };
@@ -348,17 +348,17 @@ function partyInfoBlock(partyLabel, partyName, fields) {
 }
 
 // Usage:
-const partyAChildren = partyInfoBlock("Party A (甲方)", config.partyA?.name, [
-  ["Unified Social Credit Code (统一社会信用代码)", config.partyA?.creditCode],
-  ["Address (地址)", config.partyA?.address],
-  ["Legal Representative (法定代表人/负责人)", config.partyA?.legalRep],
+const partyAChildren = partyInfoBlock("Party A ()", config.partyA?.name, [
+  ["Unified Social Credit Code ()", config.partyA?.creditCode],
+  ["Address ()", config.partyA?.address],
+  ["Legal Representative (/)", config.partyA?.legalRep],
 ]);
 ```
 
 **Rules:**
 1. Party A and Party B info blocks must use the **same table column widths** — labels align across both blocks
 2. Use `safeText()` for all field values — never output `undefined`
-3. Label column width should accommodate the longest label (e.g., "统一社会信用代码")
+3. Label column width should accommodate the longest label (e.g., "")
 4. The indent (`margins.left: 420`) simulates sub-level nesting under the party name
 
 ---
@@ -390,8 +390,8 @@ function buildSignatureBlock(partyA, partyB) {
     rows: fields.map((label, i) => {
       const aVal = i === fields.length - 1 ? "【____/____/____】" : safeText(partyA?.[i], "");
       const bVal = i === fields.length - 1 ? "【____/____/____】" : safeText(partyB?.[i], "");
-      const displayA = i === 0 ? `Party A (甲方): ${aVal}` : `${label}: ${aVal}`;
-      const displayB = i === 0 ? `Party B (乙方): ${bVal}` : `${label}: ${bVal}`;
+      const displayA = i === 0 ? `Party A (): ${aVal}` : `${label}: ${aVal}`;
+      const displayB = i === 0 ? `Party B (): ${bVal}` : `${label}: ${bVal}`;
       return new TableRow({
         children: [
           new TableCell({ width: { size: 50, type: WidthType.PERCENTAGE }, borders: noBorders,

@@ -3,8 +3,8 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterAll, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import Storage, { storageBackendServiceKey } from '@deepseek-ai/dsh-storage'
-import InvariantRegistry from '@deepseek-ai/dsh-invariants'
+import Storage, { storageBackendServiceKey } from '@origin-ai/xhe-storage'
+import InvariantRegistry from '@origin-ai/xhe-invariants'
 import { runKvBackendContract } from '../../storage/tests/contract.ts'
 import { Config, JsonStorageBackend, apply } from '../src/index.ts'
 import * as InvariantCompanion from '../src/invariant.ts'
@@ -12,7 +12,7 @@ import * as InvariantCompanion from '../src/invariant.ts'
 const roots: string[] = []
 
 async function freshRoot(): Promise<string> {
-  const root = await mkdtemp(join(tmpdir(), 'dsh-storage-json-'))
+  const root = await mkdtemp(join(tmpdir(), 'xhe-storage-json-'))
   roots.push(root)
   return root
 }

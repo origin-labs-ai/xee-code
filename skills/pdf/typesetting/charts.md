@@ -79,7 +79,7 @@ When slice angle `< 15°` (or area share `< 5%`), force external labels:
 #### Strategy B: "Others" Grouping (Long-Tail Merge)
 
 Before data reaches the renderer, intercept and merge:
-- Threshold: slices `< 3%` → merge into a single "其他 (Others)" slice
+- Threshold: slices `< 3%` → merge into a single " (Others)" slice
 - If detail is needed, add a minimal table beside the chart showing the breakdown
 - This prevents 5+ tiny slivers from cluttering the chart
 
@@ -189,7 +189,7 @@ For points that must be highlighted:
 - **Main title**: Left-aligned above the chart, bold, 14-16pt
 - **Subtitle**: Below main title, regular weight, smaller (11-12pt), describes data source/period/units
 - Title and chart body must have clear visual separation (≥16px gap)
-- **⚠️ Caption vs Title rule**: When the chart has an external caption (figure caption / 图注, e.g. “图 1: XXX” below the chart), **do NOT add a title inside the chart** (`ax.set_title()`). The caption already serves as the chart’s identifier — an internal title would duplicate it and waste vertical space. Only add an internal title when the chart is standalone (no caption).
+- **⚠️ Caption vs Title rule**: When the chart has an external caption (figure caption / , e.g. “ 1: XXX” below the chart), **do NOT add a title inside the chart** (`ax.set_title()`). The caption already serves as the chart’s identifier — an internal title would duplicate it and waste vertical space. Only add an internal title when the chart is standalone (no caption).
 
 #### Legend Rules
 

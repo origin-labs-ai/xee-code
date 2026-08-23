@@ -1,13 +1,13 @@
 {
-  "name": "@deepseek-ai/dsh-attachment-local",
-  "description": "Private content-addressed DSH_HOME attachment storage",
+  "name": "@origin-ai/xhe-attachment-local",
+  "description": "Private content-addressed XHE_HOME attachment storage",
   "version": "0.1.1-rc.2",
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deepseek-ai/deepseek-harness.git",
+    "url": "git+https://github.com/deepseek-ai/xhe.git",
     "directory": "packages/attachment/attachment-local"
   },
   "type": "module",
@@ -22,9 +22,9 @@
   "files": ["lib/index.js", "lib/invariant.js", "lib/types/**/*.d.ts"],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/dsh-attachment": "workspace:^",
-    "@deepseek-ai/dsh-invariants": "workspace:^",
-    "@deepseek-ai/dsh-home-paths": "workspace:^",
+    "@origin-ai/xhe-attachment": "workspace:^",
+    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/xhe-home-paths": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "dependencies": {
@@ -32,9 +32,9 @@
     "sharp": "^0.35.3"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-attachment": "workspace:^",
-    "@deepseek-ai/dsh-invariants": "workspace:^",
-    "@deepseek-ai/dsh-home-paths": "workspace:^",
+    "@origin-ai/xhe-attachment": "workspace:^",
+    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/xhe-home-paths": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

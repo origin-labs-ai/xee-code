@@ -1,20 +1,20 @@
 /**
  * Tool-independent shell environment plugin: owns the `ctx.shellEnv` registry of
- * trusted, per-execution `DSH_*` variables consumed by the model-facing shell
- * tools (`dsh-tool-bash`, `dsh-tool-pwsh`). Built-in shell facts are owned by
+ * trusted, per-execution `XHE_*` variables consumed by the model-facing shell
+ * tools (`xhe-tool-bash`, `xhe-tool-pwsh`). Built-in shell facts are owned by
  * the registry itself while plugins can register additional, enumerable facts
  * with effect-scoped disposal.
  *
- * @module @deepseek-ai/dsh-shell-env
+ * @module @origin-ai/xhe-shell-env
  */
 
 import { Service, type Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { DSH_ENV_PREFIX } from '@deepseek-ai/dsh-shell'
-import type { DshEnvironment, DshEnvironmentKey } from '@deepseek-ai/dsh-shell'
-import { DSH_HOME_ENV, resolveDshHome } from '@deepseek-ai/dsh-home-paths'
-import type { ToolExecution } from '@deepseek-ai/dsh-tools'
-import type {} from '@deepseek-ai/dsh-session-persistence'
+import { XHE_ENV_PREFIX } from '@origin-ai/xhe-shell'
+import type { DshEnvironment, DshEnvironmentKey } from '@origin-ai/xhe-shell'
+import { XHE_HOME_ENV, resolveDshHome } from '@origin-ai/xhe-home-paths'
+import type { ToolExecution } from '@origin-ai/xhe-tools'
+import type {} from '@origin-ai/xhe-session-persistence'
 
 declare module '@deepseek-ai/cordis' {
   interface Context {
@@ -27,7 +27,7 @@ export const inject: string[] = []
 
 /** Plugin config (all optional — the built-in facts resolve without defaults). */
 export interface Config {
-  /** DeepSeek Harness home directory exposed as `DSH_HOME`; defaults to `$DSH_HOME` or `~/.dsh`. */
+  /** Xee Harness Enhanced home directory exposed as `XHE_HOME`; defaults to `$XHE_HOME` or `~/.dsh`. */
   dshHome?: string
 }
 
@@ -36,7 +36,7 @@ export const Config: z<Config> = z.object({
   dshHome: z.string(),
 })
 
-/** Model-visible metadata for one managed `DSH_*` environment variable. */
+/** Model-visible metadata for one managed `XHE_*` environment variable. */
 export interface BashEnvVariable {
   /** Concise description of the environment fact represented by the variable. */
   description: string
@@ -50,7 +50,7 @@ export interface BashEnvVariable {
 export interface BashEnvContributor {
   /** Stable contributor name used in diagnostics and duplicate detection. */
   name: string
-  /** Complete set of `DSH_*` keys this contributor may return. */
+  /** Complete set of `XHE_*` keys this contributor may return. */
   variables: Readonly<Record<DshEnvironmentKey, BashEnvVariable>>
   /**
    * Resolve this contributor's available values for one tool execution.
@@ -64,23 +64,23 @@ export interface BashEnvContributor {
 export interface BashEnvVariableInfo extends BashEnvVariable {
   /** Contributor that owns the variable. */
   contributor: string
-  /** Declared `DSH_*` environment variable name. */
+  /** Declared `XHE_*` environment variable name. */
   key: DshEnvironmentKey
 }
 
-const DSH_SHELL_KEY = `${DSH_ENV_PREFIX}SHELL` as const
-const DSH_SESSION_ID_KEY = `${DSH_ENV_PREFIX}SESSION_ID` as const
-const DSH_SESSION_JSONL_KEY = `${DSH_ENV_PREFIX}SESSION_JSONL` as const
+const XHE_SHELL_KEY = `${XHE_ENV_PREFIX}SHELL` as const
+const XHE_SESSION_ID_KEY = `${XHE_ENV_PREFIX}SESSION_ID` as const
+const XHE_SESSION_JSONL_KEY = `${XHE_ENV_PREFIX}SESSION_JSONL` as const
 const RESERVED_BASH_ENV_KEYS = new Set<DshEnvironmentKey>([
-  DSH_HOME_ENV,
-  DSH_SHELL_KEY,
-  DSH_SESSION_ID_KEY,
+  XHE_HOME_ENV,
+  XHE_SHELL_KEY,
+  XHE_SESSION_ID_KEY,
 ])
 const BASH_ENV_KEY_SUFFIX = /^[A-Z][A-Z0-9_]*$/
 
 /**
- * Registry (`ctx.shellEnv`) for trusted, per-execution `DSH_*` variables.
- * The namespace is rebuilt for every model shell call: ambient `DSH_*` values
+ * Registry (`ctx.shellEnv`) for trusted, per-execution `XHE_*` variables.
+ * The namespace is rebuilt for every model shell call: ambient `XHE_*` values
  * are discarded by the executor, then the registry's current snapshot is
  * injected. Built-in shell facts remain owned by the registry itself while
  * plugins can register additional, enumerable facts with effect-scoped
@@ -118,8 +118,8 @@ export class ShellEnvRegistry extends Service {
 
       const variables = Object.entries(contributor.variables) as [DshEnvironmentKey, BashEnvVariable][]
       for (const [key, variable] of variables) {
-        if (!key.startsWith(DSH_ENV_PREFIX)
-          || !BASH_ENV_KEY_SUFFIX.test(key.slice(DSH_ENV_PREFIX.length))) {
+        if (!key.startsWith(XHE_ENV_PREFIX)
+          || !BASH_ENV_KEY_SUFFIX.test(key.slice(XHE_ENV_PREFIX.length))) {
           throw new Error(`bash env contributor "${contributor.name}" declared invalid key "${key}"`)
         }
         if (RESERVED_BASH_ENV_KEYS.has(key)) {
@@ -145,17 +145,17 @@ export class ShellEnvRegistry extends Service {
   }
 
   /**
-   * Build the trusted `DSH_*` snapshot for one shell tool execution.
+   * Build the trusted `XHE_*` snapshot for one shell tool execution.
    * @param execution - the current tool execution.
    * @returns an immutable environment overlay containing built-ins and current contributions.
    */
   collect(execution: ToolExecution): DshEnvironment {
     const values: Record<DshEnvironmentKey, string> = {
-      [DSH_HOME_ENV]: this.dshHome,
-      [DSH_SHELL_KEY]: '1',
+      [XHE_HOME_ENV]: this.dshHome,
+      [XHE_SHELL_KEY]: '1',
     }
     if (execution.agent !== undefined) {
-      values[DSH_SESSION_ID_KEY] = execution.agent.session.header.id
+      values[XHE_SESSION_ID_KEY] = execution.agent.session.header.id
     }
 
     for (const contributor of [...this.contributors.values()].sort((left, right) => left.name.localeCompare(right.name))) {
@@ -194,7 +194,7 @@ export class ShellEnvRegistry extends Service {
 
 /**
  * Load the shell-env plugin: register the `ctx.shellEnv` service and the
- * shell-agnostic persistence contributor (`DSH_SESSION_JSONL`).
+ * shell-agnostic persistence contributor (`XHE_SESSION_JSONL`).
  * @param ctx - Cordis context that owns the service and registrations.
  * @param config - home-directory configuration for the built-in variables.
  */
@@ -203,7 +203,7 @@ export function apply(ctx: Context, config: Config = {}): void {
   registry.register({
     name: 'session-persistence',
     variables: {
-      [DSH_SESSION_JSONL_KEY]: {
+      [XHE_SESSION_JSONL_KEY]: {
         description: 'Absolute target path of the current session JSONL when the active persistence backend provides one.',
       },
     },
@@ -211,7 +211,7 @@ export function apply(ctx: Context, config: Config = {}): void {
       const agent = execution.agent
       if (agent === undefined) return {}
       const location = ctx.get('sessionPersistence')?.locate(agent.session.header)
-      return location?.kind === 'jsonl' ? { [DSH_SESSION_JSONL_KEY]: location.path } : {}
+      return location?.kind === 'jsonl' ? { [XHE_SESSION_JSONL_KEY]: location.path } : {}
     },
   })
 }

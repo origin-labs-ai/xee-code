@@ -1,13 +1,11 @@
-# dsh-atomic-write
+# xhe-atomic-write
 
-English | [中文](README.zh.md)
-
-Zero-dependency atomic file replacement shared by file-backed stores that must never leave partial, symlink-hijacked, or wider-than-intended content on disk — the user-settings document (`dsh-settings-file`) and the credentials store (`dsh-credentials-local`).
+Zero-dependency atomic file replacement shared by file-backed stores that must never leave partial, symlink-hijacked, or wider-than-intended content on disk — the user-settings document (`xhe-settings-file`) and the credentials store (`xhe-credentials-local`).
 
 ## Surface
 
 ```ts
-import { withFileLock, writeFileAtomic } from '@deepseek-ai/dsh-atomic-write'
+import { withFileLock, writeFileAtomic } from '@origin-ai/xhe-atomic-write'
 
 declare const text: string
 declare const render: (previous: string) => string

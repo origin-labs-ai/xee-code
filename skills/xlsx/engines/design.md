@@ -73,18 +73,18 @@ All theme headers use PRIMARY background + white text.
 
 | # | Style | Keyword Triggers | PRIMARY | Positioning |
 |---|------|-----------|---------|------|
-| 01 | **professional** | 正式/商务/汇报/默认 | `1B2A4A` deep blue | Universal default |
-| 02 | **warm** | 温暖/活力/热情 | `B85C1E` warm orange | Vibrant and impactful |
-| 03 | **elegant** | 极简/简约 | `2C2C2C` charcoal | High-end minimalist |
-| 04 | **creative** | 文艺/莫兰迪/设计感 | `6C5B7B` purple-gray | Artistic distinction |
-| 05 | **muji** | 无印/呼吸感/素净 | `2C2C2C` warm black | MUJI pencil-on-paper |
-| 06 | **aesop** | 沙岩/大地色/护肤 | `3D3229` earth brown | Premium skincare packaging |
-| 07 | **kinfolk** | 奶油/刊物/杂志/拿铁 | `5C524C` cocoa | Independent magazine aesthetic |
-| 08 | **celine** | 黑白/时装/冷冽/mono | `000000` pure black | Fashion house coldness |
-| 09 | **bottega** | 墨绿/深绿/森林/贵气 | `2D4A3E` dark green | Italian luxury restraint |
-| 10 | **chanel** | 米金/香奈儿/奶茶/高级 | `1C1917` ink | Champagne gold elegance |
-| 11 | **bloomberg** | 终端/深蓝/金融终端/工业/包豪斯 | `0D1B2A` deep space | Financial data aesthetic |
-| 12 | **original_blue** | 原始/经典蓝/传统蓝 | `1B2A4A` classic blue | Original blue-black scheme |
+| 01 | **professional** | /// | `1B2A4A` deep blue | Universal default |
+| 02 | **warm** | // | `B85C1E` warm orange | Vibrant and impactful |
+| 03 | **elegant** | / | `2C2C2C` charcoal | High-end minimalist |
+| 04 | **creative** | // | `6C5B7B` purple-gray | Artistic distinction |
+| 05 | **muji** | // | `2C2C2C` warm black | MUJI pencil-on-paper |
+| 06 | **aesop** | // | `3D3229` earth brown | Premium skincare packaging |
+| 07 | **kinfolk** | /// | `5C524C` cocoa | Independent magazine aesthetic |
+| 08 | **celine** | ///mono | `000000` pure black | Fashion house coldness |
+| 09 | **bottega** | /// | `2D4A3E` dark green | Italian luxury restraint |
+| 10 | **chanel** | /// | `1C1917` ink | Champagne gold elegance |
+| 11 | **bloomberg** | //// | `0D1B2A` deep space | Financial data aesthetic |
+| 12 | **original_blue** | // | `1B2A4A` classic blue | Original blue-black scheme |
 
 **Three-step matching logic (priority from high to low):**
 

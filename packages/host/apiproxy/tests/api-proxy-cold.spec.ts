@@ -9,23 +9,23 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import SessionStore from '@deepseek-ai/dsh-session'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import { TypertLookupFailure } from '@deepseek-ai/dsh-typert-protocol'
-import TypertRegistry from '@deepseek-ai/dsh-typert-registry'
-import { createUserMessage, MessageId } from '@deepseek-ai/dsh-llm'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import UserQuestionService from '@deepseek-ai/dsh-user-questions'
-import type { SessionEvent, SessionHeader, SessionId } from '@deepseek-ai/dsh-session'
+import SessionStore from '@origin-ai/xhe-session'
+import AgentRegistry from '@origin-ai/xhe-agent'
+import { TypertLookupFailure } from '@origin-ai/xhe-typert-protocol'
+import TypertRegistry from '@origin-ai/xhe-typert-registry'
+import { createUserMessage, MessageId } from '@origin-ai/xhe-llm'
+import type { Agent } from '@origin-ai/xhe-agent'
+import UserQuestionService from '@origin-ai/xhe-user-questions'
+import type { SessionEvent, SessionHeader, SessionId } from '@origin-ai/xhe-session'
 import {
   PersistenceCoordinator,
   SessionPersistenceRevision,
   type PersistenceBackend,
   type StoredPrefix,
-} from '@deepseek-ai/dsh-session-persistence'
-import type { RpcRequest } from '@deepseek-ai/dsh-host-apiproxy/api/rpc'
-import { RpcId } from '@deepseek-ai/dsh-host-apiproxy/api/rpc'
-import { createApiProxy } from '@deepseek-ai/dsh-host-apiproxy'
+} from '@origin-ai/xhe-session-persistence'
+import type { RpcRequest } from '@origin-ai/xhe-host-apiproxy/api/rpc'
+import { RpcId } from '@origin-ai/xhe-host-apiproxy/api/rpc'
+import { createApiProxy } from '@origin-ai/xhe-host-apiproxy'
 
 const sid = (id: string): SessionId => id as SessionId
 
@@ -43,7 +43,7 @@ describe('sessions.list cold merge', () => {
     const ctx = new Context()
     await ctx.plugin(SessionStore)
     await ctx.plugin(UserQuestionService)
-    const root = mkdtempSync(join(tmpdir(), 'dsh-cold-'))
+    const root = mkdtempSync(join(tmpdir(), 'xhe-cold-'))
     const smallPath = join(root, 'small.log')
     const largePath = join(root, 'large.log')
     writeFileSync(smallPath, 'x'.repeat(1024))
@@ -163,7 +163,7 @@ describe('sessions.list cold merge', () => {
     await ctx.plugin(UserQuestionService)
     await ctx.plugin(AgentRegistry)
     const meta = header('attached-during-probe', 100)
-    const root = mkdtempSync(join(tmpdir(), 'dsh-cold-race-'))
+    const root = mkdtempSync(join(tmpdir(), 'xhe-cold-race-'))
     const path = join(root, 'small.log')
     writeFileSync(path, 'x')
     const started = Promise.withResolvers<undefined>()
@@ -339,7 +339,7 @@ describe('Remote Agent and Session lookup policy', () => {
       inspect,
       locate: () => undefined,
     } as never)
-    const resumedSession = { id: sessionId, header: meta, events: [] } as unknown as import('@deepseek-ai/dsh-session').Session
+    const resumedSession = { id: sessionId, header: meta, events: [] } as unknown as import('@origin-ai/xhe-session').Session
     const resumedAgent = { id: sessionId, session: resumedSession, status: 'idle', ctx } as Agent
     const release = Promise.withResolvers<undefined>()
     const resume = vi.spyOn(ctx.agents, 'resume').mockImplementation(async () => {

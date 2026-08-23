@@ -98,7 +98,7 @@ function startMergeWithFakeNode(
   chmodSync(fakeNode, 0o755)
   git(fixture, [
     'config',
-    'merge.dsh-translation-pairing.driver',
+    'merge.xhe-translation-pairing.driver',
     `${shellQuote(driverLauncher)} %O %A %B %P`,
   ])
   return spawnSync('git', ['-C', fixture.root, 'merge', '--no-commit', 'master'], {
@@ -111,7 +111,7 @@ function startMergeWithFakeNode(
 }
 
 function createFixture(attributes = true): Fixture {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-translation-pairing-merge-'))
+  const root = mkdtempSync(join(tmpdir(), 'xhe-translation-pairing-merge-'))
   fixtures.push(root)
   const env: NodeJS.ProcessEnv = {
     ...process.env,
@@ -125,7 +125,7 @@ function createFixture(attributes = true): Fixture {
   }
   const fixture = { env, root }
   execFileSync('git', ['init', '--quiet', '--initial-branch=master', root], { env })
-  if (attributes) write(root, '.gitattributes', '*.i18n.yaml merge=dsh-translation-pairing\n')
+  if (attributes) write(root, '.gitattributes', '*.i18n.yaml merge=xhe-translation-pairing\n')
   return fixture
 }
 
@@ -141,8 +141,8 @@ function record(root: string, path: string, source: string, zh: string): string 
   return content
 }
 
-const baseSource = '# Guide\n\nEnglish | [中文](guide.zh.md)\n\nAlpha base.\n\nBeta base.\n'
-const baseZh = '# 指南\n\n[English](guide.md) | 中文\n\n甲基础。\n\n乙基础。\n'
+const baseSource = '# Guide\n\nEnglish\n\nAlpha base.\n\nBeta base.\n'
+const baseZh = '# 指南\n\n[English](guide.md) | \n\n甲基础。\n\n乙基础。\n'
 const currentSource = baseSource.replace('Alpha base.', 'Alpha current.')
 const currentZh = baseZh.replace('甲基础。', '甲当前。')
 const otherSource = baseSource.replace('Beta base.', 'Beta other.')
@@ -150,7 +150,7 @@ const otherZh = baseZh.replace('乙基础。', '乙对侧。')
 const mergedSource = currentSource.replace('Beta base.', 'Beta other.')
 const mergedZh = currentZh.replace('乙基础。', '乙对侧。')
 const generatedBaseSource = '# Module graph\n\nAlpha base.\n\nBeta base.\n'
-const generatedBaseZh = '# 模块图\n\n[English](module-graph.md) | 中文\n\n甲基础。\n\n乙基础。\n'
+const generatedBaseZh = '# 模块图\n\n[English](module-graph.md) | \n\n甲基础。\n\n乙基础。\n'
 const generatedCurrentSource = generatedBaseSource.replace('Alpha base.', 'Alpha current.')
 const generatedCurrentZh = generatedBaseZh.replace('甲基础。', '甲当前。')
 const generatedOtherSource = generatedBaseSource.replace('Beta base.', 'Beta other.')
@@ -370,7 +370,7 @@ describe('translation pairing merge composition', { timeout: 15_000 }, () => {
 
   it('rejects an authored source without an English language switcher', () => {
     const fixture = createFixture(false)
-    const source = baseSource.replace('English | [中文](guide.zh.md)\n\n', '')
+    const source = baseSource.replace('English\n\n', '')
     const ancestor = record(fixture.root, 'docs/guide.md', source, baseZh)
     const current = record(fixture.root, 'docs/guide.md', source, baseZh)
     const other = record(fixture.root, 'docs/guide.md', source, baseZh)
@@ -386,7 +386,7 @@ describe('translation pairing merge composition', { timeout: 15_000 }, () => {
 
   it('rejects generated Chinese content without its English backlink', () => {
     const fixture = createFixture(false)
-    const zh = generatedBaseZh.replace('[English](module-graph.md) | 中文\n\n', '')
+    const zh = generatedBaseZh.replace('[English](module-graph.md) | \n\n', '')
     const ancestor = record(fixture.root, 'docs/module-graph.md', generatedBaseSource, zh)
     const current = record(fixture.root, 'docs/module-graph.md', generatedBaseSource, zh)
     const other = record(fixture.root, 'docs/module-graph.md', generatedBaseSource, zh)
@@ -481,7 +481,7 @@ describe('translation pairing merge composition', { timeout: 15_000 }, () => {
     installFixtureRuntime(fixture.root)
     git(fixture, [
       'config',
-      'merge.dsh-translation-pairing.driver',
+      'merge.xhe-translation-pairing.driver',
       'scripts/merge-translation-pairing-driver.sh %O %A %B %P',
     ])
 
@@ -506,8 +506,8 @@ describe('translation pairing merge composition', { timeout: 15_000 }, () => {
     record(
       fixture.root,
       'docs/reference.md',
-      '# Reference\n\nEnglish | [中文](reference.zh.md)\n\nOverview.\n',
-      '# 参考\n\n[English](reference.md) | 中文\n\n概览。\n',
+      '# Reference\n\nEnglish\n\nOverview.\n',
+      '# 参考\n\n[English](reference.md) | \n\n概览。\n',
     )
     git(fixture, ['add', '.'])
     git(fixture, ['commit', '-m', 'other guide and target'])
@@ -515,7 +515,7 @@ describe('translation pairing merge composition', { timeout: 15_000 }, () => {
     installFixtureRuntime(fixture.root)
     git(fixture, [
       'config',
-      'merge.dsh-translation-pairing.driver',
+      'merge.xhe-translation-pairing.driver',
       'scripts/merge-translation-pairing-driver.sh %O %A %B %P',
     ])
 
@@ -603,7 +603,7 @@ describe('translation pairing merge composition', { timeout: 15_000 }, () => {
     installFixtureRuntime(fixture.root)
     git(fixture, [
       'config',
-      'merge.dsh-translation-pairing.driver',
+      'merge.xhe-translation-pairing.driver',
       'scripts/merge-translation-pairing-driver.sh %O %A %B %P',
     ])
     const hooks = join(fixture.root, 'hooks')

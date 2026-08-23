@@ -1,9 +1,9 @@
 {
-  "organization": "deepseek-harness",
-  "repository": "deepseek-harness",
+  "organization": "xhe",
+  "repository": "xhe",
   "projectNumber": 1,
-  "projectTitle": "DSH Issue Management",
-  "lifecycleActor": "dsh-issue-management",
+  "projectTitle": "XHE Issue Management",
+  "lifecycleActor": "xhe-issue-management",
   "priorityField": "Priority",
   "allowUnassignedOwner": true,
   "statuses": [

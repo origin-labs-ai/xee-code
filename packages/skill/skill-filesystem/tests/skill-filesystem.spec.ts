@@ -3,12 +3,12 @@ import { mkdir, readdir, readFile, rename, rm, stat, symlink, writeFile } from '
 import { dirname, join } from 'node:path'
 import { tmpdir } from 'node:os'
 import { Context } from '@deepseek-ai/cordis'
-import SkillRegistry from '@deepseek-ai/dsh-skill'
-import { FileSystem, FsError, FsVersion, type FsDirEntry, type FsEditOutcome, type FsEditRequest, type FsInfo, type FsPathInfo, type FsTarget, type FsWriteOutcome } from '@deepseek-ai/dsh-fs'
+import SkillRegistry from '@origin-ai/xhe-skill'
+import { FileSystem, FsError, FsVersion, type FsDirEntry, type FsEditOutcome, type FsEditRequest, type FsInfo, type FsPathInfo, type FsTarget, type FsWriteOutcome } from '@origin-ai/xhe-fs'
 import * as SkillFileSystem from '../src/index.ts'
 
 async function tempDir(name: string): Promise<string> {
-  return await import('node:fs/promises').then(fs => fs.mkdtemp(join(tmpdir(), `dsh-${name}-`)))
+  return await import('node:fs/promises').then(fs => fs.mkdtemp(join(tmpdir(), `xhe-${name}-`)))
 }
 
 async function writeSkill(root: string, name: string, description: string, body = 'Use the skill.'): Promise<void> {
@@ -160,7 +160,7 @@ async function waitFor<T>(read: () => Promise<T>, accept: (value: T) => boolean)
   }
 }
 
-describe('dsh-skill-filesystem plugin exports', () => {
+describe('xhe-skill-filesystem plugin exports', () => {
   it('declares stable plugin metadata', () => {
     expect(SkillFileSystem.name).toBe('skill-filesystem')
     expect(SkillFileSystem.inject).toEqual(['skills'])
@@ -816,15 +816,15 @@ describe('FileSystemSkillProvider', () => {
   })
 
   it('uses default home root resolution without exposing builtin skills', async () => {
-    const previousDshHome = process.env.DSH_HOME
-    const previousAgentsHome = process.env.DSH_AGENTS_HOME
-    const previousBundledSkillDir = process.env.DSH_BUNDLED_SKILL_DIR
+    const previousDshHome = process.env.XHE_HOME
+    const previousAgentsHome = process.env.XHE_AGENTS_HOME
+    const previousBundledSkillDir = process.env.XHE_BUNDLED_SKILL_DIR
     const envHome = await tempDir('skill-env-home')
     try {
-      process.env.DSH_HOME = join(envHome, '.dsh')
-      process.env.DSH_AGENTS_HOME = join(envHome, '.agents')
+      process.env.XHE_HOME = join(envHome, '.dsh')
+      process.env.XHE_AGENTS_HOME = join(envHome, '.agents')
       const bundled = join(envHome, 'bundled-skills')
-      process.env.DSH_BUNDLED_SKILL_DIR = bundled
+      process.env.XHE_BUNDLED_SKILL_DIR = bundled
       await writeSkill(join(envHome, '.dsh/skills'), 'env-skill', 'Env skill')
       await writeSkill(bundled, 'env-bundled-skill', 'Env bundled skill')
       const ctx = new Context()
@@ -848,34 +848,34 @@ describe('FileSystemSkillProvider', () => {
       expect((await isolated.skills.list()).map(skill => skill.name)).toEqual(['custom-isolated-skill'])
       await isolated.fiber.dispose()
 
-      process.env.DSH_HOME = join(envHome, 'empty-dsh')
-      delete process.env.DSH_BUNDLED_SKILL_DIR
-      process.env.DSH_AGENTS_HOME = join(envHome, 'empty-agents')
+      process.env.XHE_HOME = join(envHome, 'empty-dsh')
+      delete process.env.XHE_BUNDLED_SKILL_DIR
+      process.env.XHE_AGENTS_HOME = join(envHome, 'empty-agents')
       const empty = new Context()
       await empty.plugin(SkillRegistry)
       SkillFileSystem.apply(empty, { watch: false })
       expect(await empty.skills.list()).toEqual([])
 
-      delete process.env.DSH_AGENTS_HOME
+      delete process.env.XHE_AGENTS_HOME
       expect(new SkillFileSystem.FileSystemSkillProvider(empty, {
         signal: new AbortController().signal,
         invalidate() {},
       }, { dshHome: join(envHome, 'empty-dsh') }).name).toBe('filesystem')
     } finally {
       if (previousDshHome === undefined) {
-        delete process.env.DSH_HOME
+        delete process.env.XHE_HOME
       } else {
-        process.env.DSH_HOME = previousDshHome
+        process.env.XHE_HOME = previousDshHome
       }
       if (previousAgentsHome === undefined) {
-        delete process.env.DSH_AGENTS_HOME
+        delete process.env.XHE_AGENTS_HOME
       } else {
-        process.env.DSH_AGENTS_HOME = previousAgentsHome
+        process.env.XHE_AGENTS_HOME = previousAgentsHome
       }
       if (previousBundledSkillDir === undefined) {
-        delete process.env.DSH_BUNDLED_SKILL_DIR
+        delete process.env.XHE_BUNDLED_SKILL_DIR
       } else {
-        process.env.DSH_BUNDLED_SKILL_DIR = previousBundledSkillDir
+        process.env.XHE_BUNDLED_SKILL_DIR = previousBundledSkillDir
       }
     }
   })

@@ -223,7 +223,7 @@ styles: {
     document: {
       run: {
         font: { ascii: "Calibri", eastAsia: "Microsoft YaHei" },
-        size: 24, // Xiao Si 小四 12pt
+        size: 24, // Xiao Si  12pt
         color: palette.body,
       },
       paragraph: {
@@ -233,7 +233,7 @@ styles: {
     heading1: {
       run: {
         font: { ascii: "Calibri", eastAsia: "SimHei" },
-        size: 32, // San Hao 三号 16pt
+        size: 32, // San Hao  16pt
         bold: true,
         color: palette.primary,
       },
@@ -241,7 +241,7 @@ styles: {
     heading2: {
       run: {
         font: { ascii: "Calibri", eastAsia: "SimHei" },
-        size: 28, // Si Hao 四号 14pt
+        size: 28, // Si Hao  14pt
         bold: true,
         color: palette.primary,
       },
@@ -256,7 +256,7 @@ styles: {
 
 **Profile routing:** Profile A (Formal: report, academic, contract, exam) → Three-Line Table or Horizontal-Only Table. Profile B (Visual: resume, copywriting) → Zebra Stripe (preferred) or Horizontal-Only Table.
 
-### 1. Three-Line Table (三线表) — Academic
+### 1. Three-Line Table () — Academic
 
 Only three horizontal lines: top of table, bottom of header, bottom of table.
 
@@ -508,7 +508,7 @@ function selectCoverRecipe(docType, industry, titleLength) {
   // Academic
   if (docType === "academic") return { recipe: "R5", palette: "ACADEMIC" };
 
-  // Thesis proposal report (开题报告)
+  // Thesis proposal report ()
   if (docType === "proposal_report") return { recipe: "R5", palette: "ACADEMIC" };
 
   // Lesson plans — R6 editorial for arts/general, R4 for STEM
@@ -589,7 +589,7 @@ function applyLongTitleOverride(result, titleLength) {
 | Scene | Recipe | Default Palette | Special Requirements |
 |------|------|---------|----------|
 | academic thesis | R5 (Clean White) | ACADEMIC | School name + 2-col meta table with underlines, see academic.md |
-| thesis proposal report (开题报告) | R5 (Clean White) | ACADEMIC | Use `buildProposalCover()` from academic.md |
+| thesis proposal report () | R5 (Clean White) | ACADEMIC | Use `buildProposalCover()` from academic.md |
 | business report (general) | R1 (Pure Paragraph Left) | DS-1 Deep Sea | Auto-select palette by industry |
 | whitepaper | R2 (Double-Rule Frame) | CM-2 Blue Orange / IG-1 Ink Gold | — |
 | consulting report | R2 (Double-Rule Frame) | MIN-1 Warm Gold | — |
@@ -627,7 +627,7 @@ When the user does NOT specify an exact title, the model should craft a title wi
 
 **Title crafting rules (when model generates the title):**
 1. Prefer concise titles within the "comfortable" range
-2. If topic requires detail, split into title + subtitle (e.g., title="数字化转型战略研究" subtitle="——以某某企业为例")
+2. If topic requires detail, split into title + subtitle (e.g., title="" subtitle="——")
 3. Never exceed the "maximum" range unless user explicitly provides the full title
 
 ---
@@ -769,7 +769,7 @@ function calcTitleLayout(title, maxWidthTwips, preferredPt = 40, minPt = 24) {
  *
  * Rules:
  * 1. Prefer breaking after particles, punctuation, connectors, underscores, spaces
- * 2. Never split a compound word (e.g., "管理规范" must not become "管理规" + "范")
+ * 2. Never split a compound word (e.g., "" must not become "" + "")
  * 3. No single-character orphan on the last line — merge into previous line
  * 4. If no good break point found within 60-130% of charsPerLine, break at charsPerLine
  *
@@ -783,7 +783,7 @@ function splitTitleLines(title, charsPerLine) {
   // Characters that are safe break points (break AFTER these)
   const breakAfter = new Set([
     ...'，。、；：！？',              // CJK punctuation
-    ...'的与和及之在于为',            // CJK particles/prepositions
+    ...'',            // CJK particles/prepositions
     ...'-_—–·/',                     // connectors
     ...' \t',                         // whitespace
   ]);
@@ -1474,7 +1474,7 @@ function estimateTextWidth(text, pt) {
   return width;
 }
 // Use estimateTextWidth() in calcTitleLayout() instead of simple char count
-// to prevent mid-word breaks in mixed Chinese+English titles like "基于Transformer架构的..."
+// to prevent mid-word breaks in mixed Chinese+English titles like "Transformer..."
 
 // ── Meta info table ──
 
@@ -1503,7 +1503,7 @@ function calcR5MetaLayout(metaEntries, fontPt = 12) {
 //   - Value column: LEFT aligned, bottom border = fixed-length underline
 //   - Table alignment: CENTER (visually centered on page)
 function buildR5MetaTable(metaEntries) {
-  // metaEntries: [{ label: "学院", value: "计算机科学与技术学院" }, ...]
+  // metaEntries: [{ label: "", value: "" }, ...]
   const { tablePct, labelPct } = calcR5MetaLayout(metaEntries);
   const valuePct = 100 - labelPct;
   const bottomBorder = { style: BorderStyle.SINGLE, size: 4, color: "000000" };

@@ -2,10 +2,10 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup } from '@testing-library/react'
 import { Context } from '@deepseek-ai/cordis'
-import { SlotRegistry } from '@deepseek-ai/dsh-client-runtime/client'
-import { TestSessions, TestWorkspaces } from '@deepseek-ai/dsh-client-test-runtime'
-import type { Stabilizer } from '@deepseek-ai/dsh-client-test-runtime'
-import { apply as nodeApply } from '@deepseek-ai/dsh-client-ui-renderer'
+import { SlotRegistry } from '@origin-ai/xhe-client-runtime/client'
+import { TestSessions, TestWorkspaces } from '@origin-ai/xhe-client-test-runtime'
+import type { Stabilizer } from '@origin-ai/xhe-client-test-runtime'
+import { apply as nodeApply } from '@origin-ai/xhe-client-ui-renderer'
 import * as UiRenderer from '../src/client/index.ts'
 
 const mounted: (() => void)[] = []
@@ -55,7 +55,7 @@ describe('UI renderer plugin', () => {
     const { ctx, slots } = await bench()
     slots.register({ name: 'root' }, () => <div data-testid="root-probe" />)
     const el = container()
-    el.innerHTML = '<div class="boot" data-dsh-boot=""><div><div class="spinner" data-dsh-boot-spinner="" style="--dsh-boot-arc: 180deg"></div><div>Loading plugins…</div></div></div>'
+    el.innerHTML = '<div class="boot" data-xhe-boot=""><div><div class="spinner" data-xhe-boot-spinner="" style="--xhe-boot-arc: 180deg"></div><div>Loading plugins…</div></div></div>'
     const boot = el.firstElementChild
     const observer = new MutationObserver(() => {})
     observer.observe(el, { childList: true, subtree: true })

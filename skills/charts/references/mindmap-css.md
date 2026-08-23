@@ -17,18 +17,18 @@ Input: "How to work efficiently from home", branches include "Environment Setup"
     ↓
 Output:
 {
-  "root": "在家如何高效办公",
+  "root": "",
   "branches": [
     {
-      "label": "环境准备",
-      "children": ["独立工作区", "降噪耳机", "人体工学椅"]
+      "label": "",
+      "children": ["", "", ""]
     },
     {
-      "label": "时间管理",
+      "label": "",
       "children": [
-        { "label": "番茄工作法", "children": ["25分钟专注", "5分钟休息"] },
-        "日程规划",
-        "避免多任务"
+        { "label": "", "children": ["25", "5"] },
+        "",
+        ""
       ]
     },
     ...
@@ -50,7 +50,7 @@ Output:
 ### 1.3 Example Analysis
 
 ```
-Content: "产品经理核心技能", 6 L1 branches, max depth 3, total 35 nodes, max text length 12 chars
+Content: "", 6 L1 branches, max depth 3, total 35 nodes, max text length 12 chars
 → branchCount=6, maxDepth=3, totalNodes=35, maxTextLen=12
 → branchWeights=[8, 5, 7, 4, 6, 5]
 ```
@@ -587,28 +587,28 @@ Recommended branch color combos per intent:
 <body>
 <div id="mindmap" data-intent="professional">
   <div class="tree">
-    <div class="root-node">中心主题</div>
+    <div class="root-node"></div>
     <div class="branches">
 
       <div class="branch">
-        <div class="branch-node c-blue">一级分支A</div>
+        <div class="branch-node c-blue">A</div>
         <div class="children">
-          <div class="leaf">叶子1</div>
-          <div class="leaf">叶子2</div>
+          <div class="leaf">1</div>
+          <div class="leaf">2</div>
         </div>
       </div>
 
       <div class="branch">
-        <div class="branch-node c-green">一级分支B</div>
+        <div class="branch-node c-green">B</div>
         <div class="children">
           <div class="sub-branch">
-            <div class="sub-node c-green">二级有下级</div>
+            <div class="sub-node c-green"></div>
             <div class="children">
-              <div class="leaf">三级叶子1</div>
-              <div class="leaf">三级叶子2</div>
+              <div class="leaf">1</div>
+              <div class="leaf">2</div>
             </div>
           </div>
-          <div class="leaf">二级叶子</div>
+          <div class="leaf"></div>
         </div>
       </div>
 
@@ -668,24 +668,24 @@ Recommended branch color combos per intent:
     <!-- Left branches (allocated by balance_branches) -->
     <div class="left-branches">
       <div class="left-branch">
-        <div class="branch-node c-purple">分支D（放左边）</div>
+        <div class="branch-node c-purple">D（）</div>
         <div class="children">
-          <div class="leaf">叶子1</div>
-          <div class="leaf">叶子2</div>
+          <div class="leaf">1</div>
+          <div class="leaf">2</div>
         </div>
       </div>
       <!-- More left branches... -->
     </div>
 
-    <div class="root-node">中心主题</div>
+    <div class="root-node"></div>
 
     <!-- Right branches -->
     <div class="right-branches">
       <div class="right-branch">
-        <div class="branch-node c-blue">分支A（放右边）</div>
+        <div class="branch-node c-blue">A（）</div>
         <div class="children">
-          <div class="leaf">叶子1</div>
-          <div class="leaf">叶子2</div>
+          <div class="leaf">1</div>
+          <div class="leaf">2</div>
         </div>
       </div>
       <!-- More right branches... -->
@@ -774,17 +774,17 @@ Recommended branch color combos per intent:
 </head>
 <body>
 <div id="mindmap" data-intent="professional">
-  <div class="map-title">标题</div>
-  <div class="map-subtitle">副标题</div>
+  <div class="map-title"></div>
+  <div class="map-subtitle"></div>
   <div class="card-grid">
     <div class="card blue">
       <div class="card-header">
         <div class="card-icon">📋</div>
-        <div class="card-title">模块A</div>
+        <div class="card-title">A</div>
       </div>
       <ul class="card-items">
-        <li>条目1</li>
-        <li>条目2</li>
+        <li>1</li>
+        <li>2</li>
       </ul>
     </div>
     <!-- More cards... -->
@@ -853,27 +853,27 @@ Best for problem analysis, root cause tracing, quality management (Ishikawa diag
     <div class="spine">
       <div class="spine-line"></div>
       <div class="spine-head"></div>
-      <div class="result-node">问题/结果</div>
+      <div class="result-node">/</div>
     </div>
     <!-- Upper causes -->
     <div class="bone-branches" style="transform: translateY(calc(-50% - 20px));">
       <div class="bone">
         <div class="bone-items">
-          <div class="bone-item">子原因1</div>
-          <div class="bone-item">子原因2</div>
+          <div class="bone-item">1</div>
+          <div class="bone-item">2</div>
         </div>
         <div class="bone-line"></div>
-        <div class="bone-title" style="background:#EFF6FF;color:#1E40AF;border:1.5px solid #3B82F6;">原因类别A</div>
+        <div class="bone-title" style="background:#EFF6FF;color:#1E40AF;border:1.5px solid #3B82F6;">A</div>
       </div>
     </div>
     <!-- Lower causes -->
     <div class="bone-branches" style="transform: translateY(calc(-50% + 20px));">
       <div class="bone">
-        <div class="bone-title" style="background:#F0FDF4;color:#065F46;border:1.5px solid #10B981;">原因类别B</div>
+        <div class="bone-title" style="background:#F0FDF4;color:#065F46;border:1.5px solid #10B981;">B</div>
         <div class="bone-line"></div>
         <div class="bone-items">
-          <div class="bone-item">子原因1</div>
-          <div class="bone-item">子原因2</div>
+          <div class="bone-item">1</div>
+          <div class="bone-item">2</div>
         </div>
       </div>
     </div>

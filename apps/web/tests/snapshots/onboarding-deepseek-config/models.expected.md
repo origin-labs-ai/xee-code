@@ -1,85 +1,85 @@
-- dialog "设置":
+- dialog "":
   - navigation:
-    - text: 设置
-    - button "通用设置":
+    - text: 
+    - button "":
       - img
-      - text: 通用设置
-    - button "模型":
+      - text: 
+    - button "":
       - img
-      - text: 模型
-    - button "插件":
+      - text: 
+    - button "":
       - img
-      - text: 插件
-    - button "Agent 预设":
+      - text: 
+    - button "Agent ":
       - img
-      - text: Agent 预设
-  - button "打开配置文件"
-  - button "关闭":
+      - text: Agent 
+  - button ""
+  - button "":
     - img
-    - text: 关闭
-  - heading "模型" [level=2]
-  - paragraph: 填入各提供方的 API 密钥即可使用其模型。
+    - text: 
+  - heading "" [level=2]
+  - paragraph:  API 。
   - list:
     - listitem:
       - text: DeepSeek
-      - img "API 密钥已配置"
-      - button "编辑 DeepSeek (deepseek-official)": 编辑
-      - text: DeepSeek deepseek-official API 密钥
-      - textbox "API 密钥":
-        - /placeholder: 已配置——输入新值可替换
+      - img "API "
+      - button " DeepSeek (deepseek-official)": 
+      - text: DeepSeek deepseek-official API 
+      - textbox "API ":
+        - /placeholder: ——
       - group:
-        - text: 自定义设置 API 地址
-        - textbox "API 地址":
+        - text:  API 
+        - textbox "API ":
           - /placeholder: https://api.deepseek.com
-        - region "模型目录":
-          - text: 模型目录 已自定义模型目录
-          - button "恢复默认模型"
-          - textbox "模型 ID 1":
-            - /placeholder: 模型 ID
+        - region "":
+          - text:  
+          - button ""
+          - textbox " ID 1":
+            - /placeholder:  ID
             - text: deepseek-v4-pro
-          - textbox "显示名称 1":
-            - /placeholder: 显示名称
+          - textbox " 1":
+            - /placeholder: 
             - text: DeepSeek-V4-Pro
-          - button "容量 1":
+          - button " 1":
             - img
-          - button "删除模型 1":
+          - button " 1":
             - img
-          - textbox "模型 ID 2":
-            - /placeholder: 模型 ID
+          - textbox " ID 2":
+            - /placeholder:  ID
             - text: deepseek-v4-flash-vision-exp
-          - textbox "显示名称 2":
-            - /placeholder: 显示名称
+          - textbox " 2":
+            - /placeholder: 
             - text: DeepSeek-V4-Flash-Vision-Exp
-          - button "容量 2":
+          - button " 2":
             - img
-          - button "删除模型 2":
+          - button " 2":
             - img
-          - textbox "模型 ID 3":
-            - /placeholder: 模型 ID
+          - textbox " ID 3":
+            - /placeholder:  ID
             - text: private-preview
-          - textbox "显示名称 3":
-            - /placeholder: 显示名称
+          - textbox " 3":
+            - /placeholder: 
             - text: Private Preview
-          - button "容量 3" [expanded]:
+          - button " 3" [expanded]:
             - img
-          - button "删除模型 3":
+          - button " 3":
             - img
-          - text: 上下文窗口
-          - textbox "上下文窗口 3":
+          - text: 
+          - textbox " 3":
             - /placeholder: 1M
             - text: "131072"
-          - text: 最大输出 token 数
-          - textbox "最大输出 token 数 3":
+          - text:  token 
+          - textbox " token  3":
             - /placeholder: 256K
             - text: 64K
-          - button "添加模型":
+          - button "":
             - img
-            - text: 添加模型
-      - button "取消"
-      - button "保存"
-  - button "添加提供方":
+            - text: 
+      - button ""
+      - button ""
+  - button "":
     - img
-    - text: 添加提供方
-  - button "添加自定义提供方":
+    - text: 
+  - button "":
     - img
-    - text: 添加自定义提供方
+    - text: 

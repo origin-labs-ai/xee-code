@@ -1,38 +1,38 @@
-- dialog "设置":
+- dialog "":
   - navigation:
-    - text: 设置
-    - button "通用设置":
+    - text: 
+    - button "":
       - img
-      - text: 通用设置
-    - button "模型":
+      - text: 
+    - button "":
       - img
-      - text: 模型
-    - button "插件":
+      - text: 
+    - button "":
       - img
-      - text: 插件
-    - button "Agent 预设":
+      - text: 
+    - button "Agent ":
       - img
-      - text: Agent 预设
-  - button "打开配置文件"
-  - button "关闭":
+      - text: Agent 
+  - button ""
+  - button "":
     - img
-    - text: 关闭
-  - heading "插件" [level=2]
-  - paragraph: 配置和查看本部署已安装的插件。
-  - tablist "插件视图":
-    - tab "插件配置" [selected]
-    - tab "插件列表"
-  - tabpanel "插件配置":
+    - text: 
+  - heading "" [level=2]
+  - paragraph: 。
+  - tablist "":
+    - tab "" [selected]
+    - tab ""
+  - tabpanel "":
     - list:
       - listitem:
-        - 'button "展开设置: 终端"':
-          - text: 终端 限制 agent 运行的每一条命令。
+        - 'button ": "':
+          - text:   agent 。
           - img
       - listitem:
-        - 'button "展开设置: Agent 循环"':
-          - text: Agent 循环 Agent 如何派发工具调用。
+        - 'button ": Agent "':
+          - text: Agent  Agent 。
           - img
       - listitem:
-        - 'button "展开设置: 网页搜索"':
-          - text: 网页搜索 DeepSeek 搜索提供方。
+        - 'button ": "':
+          - text:  DeepSeek 。
           - img

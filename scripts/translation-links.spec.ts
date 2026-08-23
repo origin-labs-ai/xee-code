@@ -19,7 +19,7 @@ afterEach(() => {
 })
 
 function fixture(): string {
-  const root = mkdtempSync(join(tmpdir(), 'dsh-translation-links-'))
+  const root = mkdtempSync(join(tmpdir(), 'xhe-translation-links-'))
   roots.push(root)
   mkdirSync(join(root, 'docs/section'), { recursive: true })
   mkdirSync(join(root, 'packages'), { recursive: true })
@@ -136,7 +136,7 @@ describe('translation link locale validation', () => {
   it('exempts the language switcher target explicitly', () => {
     const root = fixture()
     expect(translationLinkLocaleViolations(
-      '# 指南\n\n[English](guide.md) | 中文\n',
+      '# 指南\n\n[English](guide.md) | \n',
       linkContext(root, 'docs/guide.zh.md'),
       ['guide.md'],
     )).toEqual([])
@@ -144,7 +144,7 @@ describe('translation link locale validation', () => {
 
   it('does not exempt an ordinary body link to the counterpart', () => {
     const root = fixture()
-    const markdown = '# 指南\n\n[English](guide.md) | 中文\n\n[正文](guide.md)\n'
+    const markdown = '# 指南\n\n[English](guide.md) | \n\n[正文](guide.md)\n'
     expect(translationLinkLocaleViolations(
       markdown,
       linkContext(root, 'docs/guide.zh.md'),
@@ -159,7 +159,7 @@ describe('translation link locale validation', () => {
       markdown,
       linkContext(root, 'docs/guide.zh.md'),
       ['guide.md'],
-    ).content).toBe('# 指南\n\n[English](guide.md) | 中文\n\n[正文](guide.zh.md)\n')
+    ).content).toBe('# 指南\n\n[English](guide.md) | \n\n[正文](guide.zh.md)\n')
   })
 
   it('uses the selected content plane for target existence without deriving scope from siblings', () => {

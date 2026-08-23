@@ -1,7 +1,7 @@
 /**
  * Framework-free boot page and failure report. It remains available when a
  * client plugin fails because React arrives only with the UI renderer.
- * @module @deepseek-ai/dsh-client-web/src/boot-page
+ * @module @origin-ai/xhe-client-web/src/boot-page
  */
 import type { LoaderEntryState } from './loader-status.ts'
 import css from './boot-page.module.css'
@@ -98,6 +98,6 @@ export class BootPage {
   /** Grow the rotating arc monotonically as loader entries activate. */
   private updateProgress(): void {
     const ratio = this.total === 0 ? 0 : Math.min(this.active.size / this.total, 1)
-    this.spinner.style.setProperty('--dsh-boot-arc', `${String(Math.round(72 + ratio * 216))}deg`)
+    this.spinner.style.setProperty('--xhe-boot-arc', `${String(Math.round(72 + ratio * 216))}deg`)
   }
 }

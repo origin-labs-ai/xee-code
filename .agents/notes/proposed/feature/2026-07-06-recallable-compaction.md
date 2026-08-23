@@ -2,8 +2,6 @@
 
 Status: proposed
 
-English | [中文](2026-07-06-recallable-compaction.zh.md)
-
 ## Problem
 
 Compaction is irreversible from the model's current context. The summary the model sees carries no reference to what it shadows — `shadowedRange` lives only on the log-only `compaction/summary` event — and no tool lets the model read a shadowed span back. Whatever the summarizer drops is unavailable to the model, even though the append-only log holds every byte. Repeated compaction compounds this: the head checkpoint is rewritten every pass, so the request prefix takes a full prompt-cache miss each time, and earlier summaries are re-summarized generation after generation.
@@ -41,12 +39,12 @@ An inflation guard bounds the whole pass: if the post-compaction size is not str
 
 ### The recall tools
 
-A new package `@deepseek-ai/dsh-tool-recall` (consumer-only, over the `dsh-session` and `dsh-compaction` vocabularies) registers two model-facing tools:
+A new package `@origin-ai/xhe-tool-recall` (consumer-only, over the `xhe-session` and `xhe-compaction` vocabularies) registers two model-facing tools:
 
 - `history_read(checkpoint, offset?)` — renders the shadowed span of any checkpoint in the log, including superseded ones, as `User:`/`Assistant:`/`Tool result:` transcript, paginated by a configured budget with a continuation cursor.
 - `history_search(query, checkpoint?, limit?)` — case-insensitive literal scan over every shadowed span; returns snippets with checkpoint ids and coverage metadata (`scanned`/`matched`/`truncated`). The zero-match hint notes the scan is literal and points at direct `history_read` of a plausible checkpoint.
 
-Both read `exec.agent.session.events` (the tool-todo access pattern; non-agent callers rejected), render only surface-type message events, and return ordinary `tool/result`s — recalled bytes land at the context tail, logged, so reconstructability holds with no special casing. There is no new storage and no sidecar index: the session log stores the content, `compaction/summary.shadowedRange` and `shadowedSeqs` identify what each checkpoint replaced, and the tools read both. The tool schemas and the package's one system-prompt section are static strings; checkpoint ids reach the model only through footers. The transcript renderer moves from `compaction-basic` into `dsh-session`, shared by summarizer and tools.
+Both read `exec.agent.session.events` (the tool-todo access pattern; non-agent callers rejected), render only surface-type message events, and return ordinary `tool/result`s — recalled bytes land at the context tail, logged, so reconstructability holds with no special casing. There is no new storage and no sidecar index: the session log stores the content, `compaction/summary.shadowedRange` and `shadowedSeqs` identify what each checkpoint replaced, and the tools read both. The tool schemas and the package's one system-prompt section are static strings; checkpoint ids reach the model only through footers. The transcript renderer moves from `compaction-basic` into `xhe-session`, shared by summarizer and tools.
 
 ### Cache and cost
 
@@ -54,7 +52,7 @@ The request prefix after a pass is `[system][stubs…][state][tail]`. Frozen stu
 
 ### Packaging
 
-The design ships as a new backend `dsh-compact-recallable` on the existing `ctx.compaction` seam, enabled by default in the shipped example configs; `compaction-basic` remains as the reference implementation and the seam's design twin, in the pattern of the paired LLM adapters. The seam JSDoc's "at most one auto-generated checkpoint, always at the head" clause is relaxed to name both backend behaviors.
+The design ships as a new backend `xhe-compact-recallable` on the existing `ctx.compaction` seam, enabled by default in the shipped example configs; `compaction-basic` remains as the reference implementation and the seam's design twin, in the pattern of the paired LLM adapters. The seam JSDoc's "at most one auto-generated checkpoint, always at the head" clause is relaxed to name both backend behaviors.
 
 ### Relation to in-flight work
 

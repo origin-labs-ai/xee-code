@@ -2,8 +2,6 @@
 
 Status: implemented
 
-English | [中文](2026-07-30-web-transcript-log-ordered-projection.zh.md)
-
 ## Problem
 
 The browser client built its conversation from the model-visible surface: `FoldAdapter` ran the core `SurfaceManager` over the history window and read `surface.nodes`. A successful compaction replaces a surface range with one checkpoint node, so the moment that replacement landed the web flow collapsed every message it shadowed into a single dim context row — conversation the user had already read. Nothing was lost from the log; the defect was entirely in the projection, and [the terminal and the host gateway were fixed the same way](2026-07-29-human-transcript-append-origin.md) while the browser was left for this change.
@@ -28,12 +26,12 @@ The explicit event reference matters because manual compaction permits durable c
 
 Recognition needs all three conditions, as in the terminal: `event.type === 'user/message'`, the compaction seam's checkpoint plugin source, **and** `isReplacementSurfaceEvent(event)`. A plugin-sourced `user/message` that *appends* is injected context — a session-reference card — not a compaction.
 
-What is unreachable from a `packages/client/*` program is `dsh-compaction`'s **root**, not the package. The root reaches `dsh-session`'s root, whose cordis `Context` merge declares the host `sessions: SessionStore` against the client's `sessions: ISessions` — `TS2717`, the one-program-per-side rule in [development.md](../../../../docs/development.md#typescript-project-layout) — and that holds for a type-only import too, because the collision is a compiler fact rather than a bundler one.
+What is unreachable from a `packages/client/*` program is `xhe-compaction`'s **root**, not the package. The root reaches `xhe-session`'s root, whose cordis `Context` merge declares the host `sessions: SessionStore` against the client's `sessions: ISessions` — `TS2717`, the one-program-per-side rule in [development.md](../../../../docs/development.md#typescript-project-layout) — and that holds for a type-only import too, because the collision is a compiler fact rather than a bundler one.
 
-The repo's answer to exactly this is a cordis-free leaf subpath, and this change adds one: `COMPACT_CHECKPOINT_SOURCE` and `isCompactCheckpointSource` now live in `packages/compaction/compaction/src/checkpoint.ts`, which imports no cordis and augments no module (the `dsh-commands/brand` / `dsh-llm/message` shape), and the root re-exports both so every host-side consumer — the terminal's chat helpers, `dsh-session-reference`'s projection — is unchanged. The adapter pins its literal to that declaration with a type-only import:
+The repo's answer to exactly this is a cordis-free leaf subpath, and this change adds one: `COMPACT_CHECKPOINT_SOURCE` and `isCompactCheckpointSource` now live in `packages/compaction/compaction/src/checkpoint.ts`, which imports no cordis and augments no module (the `xhe-commands/brand` / `xhe-llm/message` shape), and the root re-exports both so every host-side consumer — the terminal's chat helpers, `xhe-session-reference`'s projection — is unchanged. The adapter pins its literal to that declaration with a type-only import:
 
 ```ts
-import type { CompactionCheckpointSource } from '@deepseek-ai/dsh-compaction/checkpoint'
+import type { CompactionCheckpointSource } from '@origin-ai/xhe-compaction/checkpoint'
 const COMPACT_PLUGIN: CompactionCheckpointSource['plugin'] = 'compact'
 ```
 
@@ -49,7 +47,7 @@ The unmerged manual-compaction-queueing branch fixes the same interleaving bug b
 
 ## Alternatives considered
 
-**Value-import the predicate** from the new leaf and add `dsh-compaction` to the client `INLINE_SAFE` allowlist. Rejected: the client needs the plugin id, not the predicate — a type is enough, and an erased import never reaches the purity gate, so nothing has to be admitted to it. The allowlist would only matter for a value import, and there it is a poor trade: `INLINE_SAFE` matches on specifier *prefix*, so admitting the package admits its cordis-importing root along with the leaf.
+**Value-import the predicate** from the new leaf and add `xhe-compaction` to the client `INLINE_SAFE` allowlist. Rejected: the client needs the plugin id, not the predicate — a type is enough, and an erased import never reaches the purity gate, so nothing has to be admitted to it. The allowlist would only matter for a value import, and there it is a poor trade: `INLINE_SAFE` matches on specifier *prefix*, so admitting the package admits its cordis-importing root along with the leaf.
 
 **A bare shape rule** — any replacement `user/message` is a compaction. Rejected: correct today only because compaction is the sole producer of replacement `user/message`s, with nothing to catch it if that changes. The pinning spec costs one file and removes exactly that risk.
 

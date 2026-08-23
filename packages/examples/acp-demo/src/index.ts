@@ -1,29 +1,29 @@
 /**
  * The ACP automation server app: the default agent spine
- * ({@link @deepseek-ai/dsh-agent-spine-demo}), JSONL session persistence, and
- * the {@link @deepseek-ai/dsh-acp} bridge. The app owns those plugins through one
+ * ({@link @origin-ai/xhe-agent-spine-demo}), JSONL session persistence, and
+ * the {@link @origin-ai/xhe-acp} bridge. The app owns those plugins through one
  * ordered lifecycle so ACP sessions quiesce before persistence detaches. It
  * writes nothing to stdout.
  * It pre-creates no agents and leaves adapters, executors, and optional tools to
  * the leaf, which must likewise avoid stdout loggers. Named exports are
  * required so Loader retains this plugin's `Config` schema (see
  * docs/postmortem/0001).
- * @module @deepseek-ai/dsh-acp-demo
+ * @module @origin-ai/xhe-acp-demo
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import { join } from 'node:path'
 import z from '@deepseek-ai/schemastery'
-import * as acp from '@deepseek-ai/dsh-acp'
-import * as agentCore from '@deepseek-ai/dsh-agent-spine-demo'
-import * as workspaceContext from '@deepseek-ai/dsh-agent-instructions'
-import ToolRuntime, { type Config as ToolsConfig } from '@deepseek-ai/dsh-tools'
+import * as acp from '@origin-ai/xhe-acp'
+import * as agentCore from '@origin-ai/xhe-agent-spine-demo'
+import * as workspaceContext from '@origin-ai/xhe-agent-instructions'
+import ToolRuntime, { type Config as ToolsConfig } from '@origin-ai/xhe-tools'
 import JsonlSessionPersistence, {
   JsonlCompressionSchema,
   type JsonlCompression,
-} from '@deepseek-ai/dsh-session-persistence-jsonl'
-import * as sessionCheckpointPolicy from '@deepseek-ai/dsh-session-checkpoint-policy'
-import SqliteSessionQueryEngine from '@deepseek-ai/dsh-session-query-sqlite'
+} from '@origin-ai/xhe-session-persistence-jsonl'
+import * as sessionCheckpointPolicy from '@origin-ai/xhe-session-checkpoint-policy'
+import SqliteSessionQueryEngine from '@origin-ai/xhe-session-query-sqlite'
 
 export const name = 'acp-demo'
 const DEFAULT_PERSISTENCE_ROOT = './.sessions'
@@ -45,11 +45,11 @@ export interface Config {
   maxParallelToolCalls?: number
   /** Deployment persona (the system-prompt plugin's `persona` config). */
   persona?: string
-  /** Explicit model-facing tool order (the system-prompt plugin's `toolOrder` config; see dsh-system-prompt). */
+  /** Explicit model-facing tool order (the system-prompt plugin's `toolOrder` config; see xhe-system-prompt). */
   toolOrder?: string[]
-  /** Tool-registry config — its presentation `mode` (forwarded through agent-spine-demo; see dsh-tools). */
+  /** Tool-registry config — its presentation `mode` (forwarded through agent-spine-demo; see xhe-tools). */
   tools?: ToolsConfig
-  /** DeepSeek Harness home directory exposed to bash and used for local skill discovery. */
+  /** Xee Harness Enhanced home directory exposed to bash and used for local skill discovery. */
   dshHome?: string
   /** Fallback session-title limits forwarded through agent-spine-demo. */
   sessionTitle?: NonNullable<agentCore.Config['sessionTitle']>
@@ -82,7 +82,7 @@ export const Config: z<Config> = z.object({
   maxParallelToolCalls: z.number().step(1).min(1),
   persona: z.string(),
   // The array default is forced to undefined: ABSENT means "lexicographic
-  // order" (the owning dsh-system-prompt schema does the same), while
+  // order" (the owning xhe-system-prompt schema does the same), while
   // schemastery's native [] default would read as an invalid configured list.
   toolOrder: z.array(z.string()).default(undefined as unknown as string[]),
   tools: ToolRuntime.Config,

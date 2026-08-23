@@ -1,7 +1,5 @@
 # 3. Services
 
-English | [中文](03-services.zh.md)
-
 A **service** is a named capability one plugin provides and other plugins consume through `ctx`. In the harness, `ctx.tools`, `ctx.llm`, and `ctx.agents` are services. A consumer names the capability, such as `'tools'`, rather than importing its provider, so configuration can select a provider without changing the consumer.
 
 ## Provide a service
@@ -75,7 +73,7 @@ Swap the two lines in `cordis.yml` and rerun: same output. Try removing `./greet
 
 `inject` is not a one-shot boot check. If a required service disappears while the app runs — its provider was unloaded or hot-replaced — every dependent plugin is unloaded too, and loads again when the service returns. Combined with effects ([chapter 2](02-lifecycle-and-effects.md)), this prevents a running consumer from retaining a reference to an unavailable service: its own registrations are unwound when the dependency disappears.
 
-This is also why service replacement works in config: unload the `dsh-bash-local` entry, mount a different `shell` provider, and every plugin injecting `'shell'` cleanly restarts against the new implementation.
+This is also why service replacement works in config: unload the `xhe-bash-local` entry, mount a different `shell` provider, and every plugin injecting `'shell'` cleanly restarts against the new implementation.
 
 ## Optional dependencies
 
@@ -95,4 +93,4 @@ Service names live in one flat namespace per application. Prefix or namespace yo
 
 Next: [Events](04-events.md) — communication without a shared service.
 
-[![](https://img.shields.io/badge/powered_by-dsh-4D6BFE?style=flat-square&logo=deepseek&logoColor=white)](https://github.com/deepseek-ai/deepseek-harness)
+[![](https://img.shields.io/badge/powered_by-xhe-4D6BFE?style=flat-square&logo=deepseek&logoColor=white)](https://github.com/deepseek-ai/xhe)

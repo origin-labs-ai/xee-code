@@ -1,126 +1,105 @@
-# DSH-Enhanced 🚀
+# Xee Harness Enhanced (XHE) 🚀
 
-**DeepSeek Harness Enhanced** - The Ultimate AI Coding Agent Platform
+**Xee Harness Enhanced** — The Ultimate AI Coding Agent Platform
 
 > *"A harness just made to win!"*
 
-English | [中文](README.zh.md)
+Forked from [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (internally referred to as DSH). Public branding is **Xee Harness Enhanced (XHE)** — packages are `@origin-ai/xhe-*` and the CLI is `xhe`.
 
-## What is DSH-Enhanced?
+## What is XHE?
 
-DSH-Enhanced is a **supercharged fork** of [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) by **Origin Labs AI**. It includes:
+XHE is a **plugin-based agent harness** built on [Cordis](https://github.com/cordiverse/cordis) — everything is a plugin. This fork adds TRANSCRIPT-specified enhancements (GOD runtime, MAD discussion, memory fabric, verification, gauntlet/production sweep and more) on top of the upstream harness.
 
-### ✨ Core Features from DeepSeek Harness
-- **Plugin Architecture**: Everything is a plugin, powered by [Cordis](https://github.com/cordiverse/cordis)
-- **Web UI**: Full-featured browser-based interface
-- **CLI**: Powerful command-line interface
-- **Multi-Agent Support**: Advanced agent orchestration
+### Core Features (from upstream)
 
-### 🔥 DSH-Enhanced Exclusive Features
+- **Plugin Architecture** — everything is a plugin, powered by Cordis
+- **Web UI** — browser-based interface
+- **CLI (`xhe`)** — profile-based launcher with patch-layer bundles
+- **Multi-agent support** — session, tools, subagents and more
 
-#### 1. **Enhanced Gauntlet-Loop (Never-Give-Up Mode)** 
-- Infinite iteration capability - runs for **weeks if needed**
+### XHE Exclusive Features
+
+#### 1. Enhanced Gauntlet-Loop (Never-Give-Up Mode)
+
 - Builder-Critic pattern with blind evaluation
-- **NEVER says "impossible"** - keeps trying until success
-- Automatic strategy switching when stuck
-- Progress persistence across sessions
+- Automatic strategy switching and progress persistence
 
-#### 2. **Fuzzy Autocomplete for Slash Commands**
+#### 2. Fuzzy Autocomplete for Slash Commands
+
 - IDE-style autocomplete as you type `/`
-- Closest match suggestions in real-time
-- Fuzzy matching algorithm (like VS Code/Cursor)
-- Command discovery and learning
+- Fuzzy matching like VS Code/Cursor
 
-#### 3. **Token-Efficient Lazy Loading**
-- Skills are **NOT loaded into system prompt**
-- Activates ONLY on explicit slash command invocation
-- Saves **thousands of tokens** per session
-- Claude Code style efficiency
+#### 3. Token-Efficient Lazy Loading
 
-#### 4. **All Popular GitHub Skills Included**
-- `/review` - Comprehensive code review
-- `/test` - Test generation & execution  
-- `/commit` - Smart git workflow
-- `/debug` - Intelligent debugging
-- `/security` - Security scanning
-- `/refactor` - Code refactoring
-- `/gauntlet` - Quality assurance loops
-- `/uiux` - Frontend development
-- And **25+ more commands**!
+- Skills activate only on explicit slash command invocation
+- Saves thousands of tokens per session
 
-#### 5. **Universal Visibility**
-- Works in **Web UI**, **CLI**, **VS Code**, **JetBrains**
-- All DSH interfaces supported
-- Consistent experience everywhere
+#### 4. 25+ Slash Commands
+
+- `/review`, `/test`, `/commit`, `/debug`, `/security`, `/refactor`, `/gauntlet`, `/help` and more
 
 ## Quick Start
 
-### Run from npm (Recommended)
+### Run from npm
+
 ```sh
-npx @origin-labs-ai/dsh-enhanced web
+npx @origin-ai/xhe web
 ```
 
 ### Run from Source
+
 ```sh
-git clone https://github.com/origin-labs-ai/DSH-Enhanced.git
-cd DSH-Enhanced
+git clone https://github.com/origin-labs-ai/xhe.git
+cd xhe
 pnpm install
 pnpm run build
-pnpm dsh web
+pnpm xhe web
 ```
 
 The Web UI starts at `http://127.0.0.1:3080` by default.
 
-## Available Slash Commands
+## CLI
 
-Type `/` in any interface to see available commands:
+| Command                         | Purpose                                         |
+| ------------------------------- | ----------------------------------------------- |
+| `xhe --profile <name>`          | Boot profile under `$XHE_HOME/profiles/<name>`  |
+| `xhe --profile headless "task"` | Single persisted session, print answer and exit |
+| `xhe web`                       | Alias of `--profile web`                        |
 
-| Command | Description |
-|---------|-------------|
-| `/review` | Deep code review with suggestions |
-| `/test` | Generate & run tests |
-| `/commit` | Smart git commits |
-| `/debug` | Debug issues intelligently |
-| `/security` | Scan for vulnerabilities |
-| `/refactor` | Improve code quality |
-| `/gauntlet` | Run quality assurance loop |
-| `/help` | Show all commands |
+Full launcher details live in [apps/cli/README.md](apps/cli/README.md).
 
-## Architecture
+## Project Layout
 
 ```
-DSH-Enhanced/
-├── packages/
-│   ├── popular-skills/     # ← NEW: 25+ slash commands
-│   ├── core/               # Core DSH functionality
-│   ├── host/               # Web server & API
-│   └── extensions/         # Cordis plugins
-├── .agents/skills/
-│   └── dsh-popular-skills/ # ← NEW: Skill definitions
-├── apps/                   # Applications
-└── website/                # Documentation
+vendor/    Vendored Cordis source
+packages/  @origin-ai/xhe-* workspaces
+apps/      CLI (xhe) and web frontend
+XHE/       Xee Harness Enhanced — TRANSCRIPT enhancement layer (MAD/GOD/memory/verifier)
+docs/      Architecture and subsystem docs
+website/   VitePress site
 ```
 
-## Developer Preview
+`XHE/` is the **Xee Harness Enhanced** enhancement layer referenced as `X_HARNESS` / `X-HARNESS` / `X HARNESS` in TRANSCRIPT (where `X` means `Xee`).
 
-⚠️ Based on DeepSeek Harness (currently in developer preview). Rapid iteration ongoing.
+## Development
 
-## Community & Support
+```sh
+pnpm install
+pnpm run build
+pnpm run test
+pnpm run typecheck
+```
 
-- **GitHub Issues**: [Report bugs](https://github.com/origin-labs-ai/DSH-Enhanced/issues)
-- **Discussions**: [Join conversation](https://github.com/origin-labs-ai/DSH-Enhanced/discussions)
-- **Original DSH Discord**: [DeepSeek community](https://discord.gg/Ycq5dCaS4)
+Key gates: `pnpm run verify-mermaid`, `pnpm run doc-sync`, `pnpm run hygiene`.
 
 ## Contributing
 
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-**Star the repo** if you find it useful! ⭐
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-[MIT](LICENSE) - Based on DeepSeek Harness, enhanced by Origin Labs AI.
+[MIT](LICENSE) — Based on DeepSeek Harness, enhanced as Xee Harness Enhanced by Origin AI.
 
----
+***
 
-**Built with ❤️ by Origin Labs AI** | Powered by [DeepSeek](https://deepseek.com)
+**Built by Origin AI** | Powered by the XHE community

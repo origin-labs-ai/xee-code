@@ -1,14 +1,14 @@
 /**
  * Vocabulary for the spill storage Service Definition. Types only — the abstract service
  * lives in `./index.ts`, implementations in sibling packages
- * (`@deepseek-ai/dsh-spill-local` first).
+ * (`@origin-ai/xhe-spill-local` first).
  *
- * @module @deepseek-ai/dsh-spill/types
+ * @module @origin-ai/xhe-spill/types
  */
 
-import type { Branded } from '@deepseek-ai/dsh-brand'
-import type { CallId } from '@deepseek-ai/dsh-llm'
-import type { SessionId } from '@deepseek-ai/dsh-session'
+import type { Branded } from '@origin-ai/xhe-brand'
+import type { CallId } from '@origin-ai/xhe-llm'
+import type { SessionId } from '@origin-ai/xhe-session'
 
 /**
  * Opaque model-facing handle for one spilled artifact. A local backend may use a

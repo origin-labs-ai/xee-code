@@ -1,7 +1,5 @@
 # Services and dependencies
 
-English | [中文](service.zh.md)
-
 A service is a capability one plugin exposes to other plugins. `inject` declares the services a plugin requires.
 
 ## What is a service?
@@ -119,7 +117,7 @@ This prevents a plugin from calling a service that no longer exists.
   isolate:
     shell: true
   config:
-    - name: '@deepseek-ai/dsh-bash-local'
+    - name: '@origin-ai/xhe-bash-local'
       config:
         timeoutMs: 5000
     - name: './src/plugin-a.ts'
@@ -130,7 +128,7 @@ This prevents a plugin from calling a service that no longer exists.
   isolate:
     shell: true
   config:
-    - name: '@deepseek-ai/dsh-bash-local'
+    - name: '@origin-ai/xhe-bash-local'
       config:
         timeoutMs: 60000
     - name: './src/plugin-b.ts'

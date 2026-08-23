@@ -1,17 +1,17 @@
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import LlmRuntime, { createUserMessage, CallId, isAgentLoopRequest, LlmAdapter  } from '@deepseek-ai/dsh-llm'
-import type { FinishReason, GenerateOptions, StreamChunk } from '@deepseek-ai/dsh-llm'
-import SessionStore, { SessionId } from '@deepseek-ai/dsh-session'
-import { SessionTitleProviderId } from '@deepseek-ai/dsh-session-title'
-import type { SessionTitleProviderRequest } from '@deepseek-ai/dsh-session-title'
-import { MAX_TIMER_DELAY_MS } from '@deepseek-ai/dsh-timeout'
+import LlmRuntime, { createUserMessage, CallId, isAgentLoopRequest, LlmAdapter  } from '@origin-ai/xhe-llm'
+import type { FinishReason, GenerateOptions, StreamChunk } from '@origin-ai/xhe-llm'
+import SessionStore, { SessionId } from '@origin-ai/xhe-session'
+import { SessionTitleProviderId } from '@origin-ai/xhe-session-title'
+import type { SessionTitleProviderRequest } from '@origin-ai/xhe-session-title'
+import { MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
 import {
   generateSessionTitleWithLlm,
   resolveSessionTitleLlmConfig,
   SESSION_TITLE_TIMEOUT_CODE,
-} from '@deepseek-ai/dsh-session-title-llm'
-import type { SessionTitleLlmConfig } from '@deepseek-ai/dsh-session-title-llm'
+} from '@origin-ai/xhe-session-title-llm'
+import type { SessionTitleLlmConfig } from '@origin-ai/xhe-session-title-llm'
 
 class RecordingAdapter extends LlmAdapter {
   readonly requests: GenerateOptions[] = []

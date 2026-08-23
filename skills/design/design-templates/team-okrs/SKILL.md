@@ -8,12 +8,12 @@ scenario: internal-tool
 pattern_source: activity-stream.html
 source_priority: skill-first
 triggers:
-  - "做个团队 OKR 看板"
-  - "sprint 状态页"
-  - "团队周会 dashboard"
-  - "活动流看板"
-  - "team this week 页"
-  - "里程碑追踪页"
+  - " OKR "
+  - "sprint "
+  - " dashboard"
+  - ""
+  - "team this week "
+  - ""
 ---
 
 # Team OKRs Template

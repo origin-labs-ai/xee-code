@@ -208,8 +208,8 @@ I. General matters
 
 Original Chinese numbering:
 ```
-一、General matters
-  （一）Sub-items
+、General matters
+  （）Sub-items
     1. Specific points
       （1）Detail supplements
 ```
@@ -244,9 +244,9 @@ Original Chinese numbering:
 1. Document types requiring signatures should have issuing body name and date
 2. Not all types mechanically require signatures (minutes typically do not)
 3. Formal document dates must use Chinese numeral format with proper "〇" character
-   - Example: March 31, 2026 → 二〇二六年三月三十一日
+   - Example: March 31, 2026 → 〇
 4. Document numbers use tortoiseshell brackets "〔〕" (not square brackets "[]")
-   - Example: X政发〔2026〕1号
+   - Example: X〔2026〕1
 5. Date format must be consistent throughout
 
 ---
@@ -290,9 +290,9 @@ page: { size: { width: 11906, height: 16838 }, margin: { top: 2098, bottom: 1984
 | Document title | STXiaoBiaoSong / SimSun Bold | Er Hao 22pt (size: 44) | Centered |
 
 **Font fallback for STXiaoBiaoSong:** This font is not installed by default on all systems. WPS ships FZXiaoBiaoSong-S13 instead. Use this fallback chain:
-- Preferred: `STXiaoBiaoSong` (华文小标宋)
-- Fallback 1: `FZXiaoBiaoSong-S13` (方正小标宋, available in WPS)
-- Fallback 2: `SimSun` with Bold (宋体加粗, universally available)
+- Preferred: `STXiaoBiaoSong` ()
+- Fallback 1: `FZXiaoBiaoSong-S13` (, available in WPS)
+- Fallback 2: `SimSun` with Bold (, universally available)
 
 In code, set primary font and note the fallback:
 ```js
@@ -402,7 +402,7 @@ In addition to universal checks (see `references/common-rules.md`):
 - [ ] Title is accurate, specific, document type clear (not vague)
 - [ ] Addressee, attachments, signature, colophon used appropriately
 - [ ] Closing phrase matches document type
-- [ ] Body hierarchy strictly follows: 一、(Level 1) →（一）(Level 2) → 1. (Level 3) →（1）(Level 4)
+- [ ] Body hierarchy strictly follows: 、(Level 1) →（）(Level 2) → 1. (Level 3) →（1）(Level 4)
 - [ ] No Markdown headings/lists/bold/italic mixed in
 - [ ] Meeting minutes not incorrectly given standard document signature and colophon
 - [ ] Date uses Chinese numerals with proper "〇" character

@@ -1,6 +1,6 @@
 ---
 name: social-card-quote
-description: 一句话主导的社交卡 — 论点 / 引言 / 原则 / 关键问句 / 一句话洞察占满版心，配 source / 章节标签 / 边注 / 三个锚点。必须按语义断行（不靠自动 wrap），至少一个锚点防止 floating。触发："做个引言卡 / 论点卡 / 金句卡 / 原则卡 / hero 问句卡"。NOT 长段落伪装成引言，NOT 空洞鸡汤口号，NOT 居中文字无任何锚点结构。
+description:  —  /  /  /  / ， source /  /  / 。（ wrap）， floating。：" /  /  /  / hero "。NOT ，NOT ，NOT 。
 visibility: public
 mode: template
 carrier: fixed-image
@@ -8,13 +8,13 @@ scenario: social-content
 pattern_source: pattern.html
 source_priority: skill-first
 triggers:
-  - "做个引言卡"
-  - "论点卡"
-  - "金句卡"
-  - "原则卡"
-  - "hero 问句卡"
-  - "一句话卡"
-  - "书摘卡"
+  - ""
+  - ""
+  - ""
+  - ""
+  - "hero "
+  - ""
+  - ""
 related_patterns: social-card-editorial
 ---
 

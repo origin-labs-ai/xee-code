@@ -1,20 +1,20 @@
-import { createUserMessage } from '@deepseek-ai/dsh-llm'
+import { createUserMessage } from '@origin-ai/xhe-llm'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { SessionId, type SessionEvent } from '@deepseek-ai/dsh-session'
-import JsonlSessionPersistence from '@deepseek-ai/dsh-session-persistence-jsonl'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import AgentLoop from '@deepseek-ai/dsh-agent-loop'
-import { mountAgentLoopTestDependencies } from '@deepseek-ai/dsh-agent-loop-testkit'
-import LocalJobRegistry from '@deepseek-ai/dsh-jobs-local'
-import * as ToolTasks from '@deepseek-ai/dsh-tool-jobs'
-import { LocalBashExecutor } from '@deepseek-ai/dsh-bash-local'
-import LocalSubprocessRuntime from '@deepseek-ai/dsh-subprocess-local'
-import * as ToolBash from '@deepseek-ai/dsh-tool-bash'
-import * as BashEnvPlugin from '@deepseek-ai/dsh-shell-env'
+import { SessionId, type SessionEvent } from '@origin-ai/xhe-session'
+import JsonlSessionPersistence from '@origin-ai/xhe-session-persistence-jsonl'
+import type { Agent } from '@origin-ai/xhe-agent'
+import AgentLoop from '@origin-ai/xhe-agent-loop'
+import { mountAgentLoopTestDependencies } from '@origin-ai/xhe-agent-loop-testkit'
+import LocalJobRegistry from '@origin-ai/xhe-jobs-local'
+import * as ToolTasks from '@origin-ai/xhe-tool-jobs'
+import { LocalBashExecutor } from '@origin-ai/xhe-bash-local'
+import LocalSubprocessRuntime from '@origin-ai/xhe-subprocess-local'
+import * as ToolBash from '@origin-ai/xhe-tool-bash'
+import * as BashEnvPlugin from '@origin-ai/xhe-shell-env'
 import { MockAdapter, textResponse, toolCallResponse } from '../../../core/agent-loop/tests/mock-adapter.ts'
 
 /**
@@ -94,13 +94,13 @@ async function pollUntil(predicate: () => boolean, timeoutMs = 5_000): Promise<v
 
 describe('bash tool through the agent loop', () => {
   it('first-turn bash receives session identity before the lazy JSONL file materializes', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-bash-session-env-'))
+    const root = mkdtempSync(join(tmpdir(), 'xhe-bash-session-env-'))
     dirs.push(root)
-    const dshHome = join(root, 'dsh-home')
-    vi.stubEnv('DSH_STALE_PARENT', 'stale')
+    const dshHome = join(root, 'xhe-home')
+    vi.stubEnv('XHE_STALE_PARENT', 'stale')
     const adapter = new MockAdapter([
       toolCallResponse('call-1', 'bash', {
-        command: 'printf \'%s\\n%s\\n%s\\n%s\\n%s\\n\' "$DSH_HOME" "$DSH_SHELL" "$DSH_SESSION_ID" "$DSH_SESSION_JSONL" "${DSH_STALE_PARENT-unset}"; if [ -e "$DSH_SESSION_JSONL" ]; then printf \'present\\n\'; else printf \'absent\\n\'; fi',
+        command: 'printf \'%s\\n%s\\n%s\\n%s\\n%s\\n\' "$XHE_HOME" "$XHE_SHELL" "$XHE_SESSION_ID" "$XHE_SESSION_JSONL" "${XHE_STALE_PARENT-unset}"; if [ -e "$XHE_SESSION_JSONL" ]; then printf \'present\\n\'; else printf \'absent\\n\'; fi',
         description: 'inspect session environment',
       }),
       textResponse('Session environment inspected.'),
@@ -181,7 +181,7 @@ describe('bash tool through the agent loop', () => {
     // claim, which folds the notice into a turn whose scripted reply is final:
     // the turn then closes with an empty next-step inbox and the collection
     // entries are never reached.
-    const dir = mkdtempSync(join(tmpdir(), 'dsh-bg-'))
+    const dir = mkdtempSync(join(tmpdir(), 'xhe-bg-'))
     dirs.push(dir)
     const sentinel = join(dir, 'release')
     // The job id is deterministic (a fresh LocalJobRegistry counts per kind from 1),

@@ -1,6 +1,4 @@
-# @deepseek-ai/dsh-client-test-runtime
-
-English | [中文](README.zh.md)
+# @origin-ai/xhe-client-test-runtime
 
 jsdom slot test runtime for client feature specs: a real Cordis `Context`, the production `SlotRegistry` and UI renderer, assembled around typed session/workspace doubles. Feature suites exercise declaration, registration, scope, store, inject, rendering, updates, and disposal without hand-building the machinery per suite — and without a second implementation of any production logic.
 
@@ -20,5 +18,5 @@ None; this package neither assembles nor sends a provider request.
 
 ## Known Limitations and Deferred Work
 
-- **Consumed through repository source aliases only.** Specs resolve the package through tsconfig `paths` to `src`; the built `lib/` artifact re-exports `@deepseek-ai/dsh-client-runtime/client`, whose bundle is a browser loader script with no Node ESM exports, so `lib/index.js` is not importable under plain Node. Every consumer is an in-repository Vitest suite; there is no Node-compatible runtime entry.
+- **Consumed through repository source aliases only.** Specs resolve the package through tsconfig `paths` to `src`; the built `lib/` artifact re-exports `@origin-ai/xhe-client-runtime/client`, whose bundle is a browser loader script with no Node ESM exports, so `lib/index.js` is not importable under plain Node. Every consumer is an in-repository Vitest suite; there is no Node-compatible runtime entry.
 - **Conversation snapshots are fixture data, not replayed history.** `updateSnapshot` writes the snapshot store directly; the wire-to-snapshot computation stays covered by the runtime package's own tests and the replay e2e. A fixture can therefore express states the production projection would never produce.

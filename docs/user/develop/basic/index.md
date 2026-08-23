@@ -1,7 +1,5 @@
 # Your first plugin
 
-English | [中文](index.zh.md)
-
 This tutorial creates a minimal Harness plugin and loads it into the Web UI. Start from a repository checkout that has completed the [run-from-source path](../../../../README.md#run-from-source).
 
 ## Create a local project
@@ -45,12 +43,12 @@ export function apply(ctx: Context) {
 
 ## Register it in cordis.yml
 
-Run `pwd` from the repository root, then create `scratch-plugin/cordis.yml` as a Web overlay that inserts the local plugin. Replace `/absolute/path/to/deepseek-harness` below with the printed path:
+Run `pwd` from the repository root, then create `scratch-plugin/cordis.yml` as a Web overlay that inserts the local plugin. Replace `/absolute/path/to/xhe` below with the printed path:
 
 ```yaml
 - insert:
     - id: hello
-      name: '/absolute/path/to/deepseek-harness/scratch-plugin/src/my-plugin.ts'
+      name: '/absolute/path/to/xhe/scratch-plugin/src/my-plugin.ts'
 ```
 
 The plugin path must be absolute. A patch file contributes configuration but does not change the profile directory from which the loader resolves module paths.
@@ -58,7 +56,7 @@ The plugin path must be absolute. A patch file contributes configuration but doe
 Start the Web UI with that overlay:
 
 ```sh
-pnpm dsh web --patch ./scratch-plugin/cordis.yml
+pnpm xhe web --patch ./scratch-plugin/cordis.yml
 ```
 
 Open `http://127.0.0.1:3080`. The terminal prints `[hello-plugin] plugin loaded!` during startup.

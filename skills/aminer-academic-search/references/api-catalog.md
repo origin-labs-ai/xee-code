@@ -241,7 +241,7 @@ curl -X POST \
   -H 'Authorization: ${AMINER_API_KEY}' \
   -H 'X-Platform: openclaw' \
   -d '{
-    "query": "大模型比较新的高引论文",
+    "query": "",
     "query_type": "auto",
     "sort": "balanced",
     "year_from": 2024,
@@ -888,10 +888,10 @@ curl -X POST \
 
 | Field | Description |
 |--------|------|
-| 一级 | Primary institution name |
-| 一级ID | Primary institution ID |
-| 二级 | Secondary institution name |
-| 二级ID | Secondary institution ID |
+|  | Primary institution name |
+| ID | Primary institution ID |
+|  | Secondary institution name |
+| ID | Secondary institution ID |
 | Total / total | Total count |
 
 **curl Example:**

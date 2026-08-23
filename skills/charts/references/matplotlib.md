@@ -304,7 +304,7 @@ def donut(labels, values, title, center_text=None,
     if center_text:
         ax.text(0, 0.06, str(center_text), ha='center', va='center',
                 fontsize=28, fontweight='bold', color=G900)
-        ax.text(0, -0.1, '总计', ha='center', va='center', fontsize=11, color=G500)
+        ax.text(0, -0.1, '', ha='center', va='center', fontsize=11, color=G500)
     
     ax.legend(wedges, labels, loc='center left',
               bbox_to_anchor=(1, 0.5), fontsize=10)
@@ -392,7 +392,7 @@ def heatmap(data, row_labels, col_labels, title,
 ```python
 def kpi_cards(metrics, save_path='kpi.png'):
     """
-    metrics: [{'label': '总收入', 'value': '12.8M', 
+    metrics: [{'label': '', 'value': '12.8M', 
                'change': '+23%', 'positive': True}, ...]
     """
     from matplotlib.patches import FancyBboxPatch

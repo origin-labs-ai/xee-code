@@ -22,15 +22,15 @@ default_for:
   - release note
   - changelog article
   - reading page
-  - 内容页
-  - 文章页
-  - 长文页面
-  - 公众号文章
-  - 公众号长文
-  - 报告页面
-  - 白皮书页面
-  - 案例拆解
-  - 发布说明
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
 fidelity: high
 ---
 
@@ -131,7 +131,7 @@ Build hierarchy through a system:
 
 Avoid the generic hierarchy of “large H1 + medium H2 + plain paragraphs” with no editorial devices.
 
-A page that is only title + paragraphs + a few cards is the flat failure mode, even if it reads fine. Commit to visible rhythm: alternate dense reading zones with lighter pause zones (quote, figure, data insert, divider), and pick at least one editorial device below so the page has a memory point — don't ship an even, paragraph-after-paragraph wall. For Chinese content specifically, actively use the **表现力手法** in `horizontal-craft/chinese-typography.md` (oversized title contrast, weight contrast, drop-cap/opening ritual, vertical-in-horizontal title/quote, pulled-out 金句 blocks) so the typography itself carries character — not just correct, but expressive. Keep it in service of reading, not decoration.
+A page that is only title + paragraphs + a few cards is the flat failure mode, even if it reads fine. Commit to visible rhythm: alternate dense reading zones with lighter pause zones (quote, figure, data insert, divider), and pick at least one editorial device below so the page has a memory point — don't ship an even, paragraph-after-paragraph wall. For Chinese content specifically, actively use the **** in `horizontal-craft/chinese-typography.md` (oversized title contrast, weight contrast, drop-cap/opening ritual, vertical-in-horizontal title/quote, pulled-out  blocks) so the typography itself carries character — not just correct, but expressive. Keep it in service of reading, not decoration.
 
 ### 3. Choose one editorial device
 

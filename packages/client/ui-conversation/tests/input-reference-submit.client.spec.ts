@@ -4,13 +4,13 @@
  * accepted prompt.
  */
 import { describe, expect, it, vi } from 'vitest'
-import type { ClientContext } from '@deepseek-ai/dsh-client-runtime/client'
-import type { InputTriggerController, SubmitOutcome } from '@deepseek-ai/dsh-client-ui-input-trigger/client'
+import type { ClientContext } from '@origin-ai/xhe-client-runtime/client'
+import type { InputTriggerController, SubmitOutcome } from '@origin-ai/xhe-client-ui-input-trigger/client'
 import { SessionInputShell } from '../src/client/input/facade.ts'
 import type { DraftAttachmentId } from '../src/client/input/contract.ts'
 
-const mention = '@[Research](dsh-session:InNvdXJjZSI)'
-const spacedMention = '@[Research notes](dsh-session:InNvdXJjZSI)'
+const mention = '@[Research](xhe-session:InNvdXJjZSI)'
+const spacedMention = '@[Research notes](xhe-session:InNvdXJjZSI)'
 const commandImages = {
   serialize: () => Promise.resolve([]),
   release: () => {},

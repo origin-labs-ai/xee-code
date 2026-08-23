@@ -8,18 +8,18 @@ scenario: video-showcase
 pattern_source: video-shortform.html
 source_priority: skill-first
 triggers:
-  - "做个相机 HUD mockup"
-  - "包视频的相机取景框"
-  - "LUT 预览页"
-  - "cinematographer 作品包装"
-  - "滤镜审片页"
+  - " HUD mockup"
+  - ""
+  - "LUT "
+  - "cinematographer "
+  - ""
 ---
 
 # Video Shortform Template
 
 Camera-HUD mockup that **wraps a real piece of footage** with pro-camera (RED / ARRI / Blackmagic / Sony Cine-flavored) viewfinder chrome and lets the user audition 8 film-emulation looks against it.
 
-This template is **not** a TikTok / Reels / 视频号 / 抖音 social mockup, **not** a storyboard, **not** a shot list, **not** a 分镜 / 脚本 document, **not** a vertical-video ad poster.
+This template is **not** a TikTok / Reels /  /  social mockup, **not** a storyboard, **not** a shot list, **not** a  /  document, **not** a vertical-video ad poster.
 
 ---
 
@@ -31,26 +31,26 @@ Trigger words that mean **this skill is wrong** and you should refuse:
 
 | User says | What they actually want | Correct response |
 |---|---|---|
-| 短视频脚本 / 视频脚本 / script doc | shot-by-shot text with VO / timing | refuse, suggest a doc template or `wireframe-sketch` |
-| 分镜 / storyboard / shot list | frame-by-frame thumbnails + descriptions | refuse, suggest a storyboard layout |
-| 短视频封面 / 视频封面 / video cover | static image / social card | refuse, suggest `social-card-*` skills |
-| 视频号/抖音/小红书视频卡 | feed-style mockup with profile/likes/comments | refuse, suggest a social card |
-| 视频海报 / video poster | static print-style poster | refuse, suggest `social-card-image-led` |
-| 调色 demo / LUT 预览 / 滤镜对比 / cinematographer portfolio / camera-app demo / 拍摄取景器 / viewfinder | ✅ this is the right skill | proceed |
+|  /  / script doc | shot-by-shot text with VO / timing | refuse, suggest a doc template or `wireframe-sketch` |
+|  / storyboard / shot list | frame-by-frame thumbnails + descriptions | refuse, suggest a storyboard layout |
+|  /  / video cover | static image / social card | refuse, suggest `social-card-*` skills |
+| // | feed-style mockup with profile/likes/comments | refuse, suggest a social card |
+|  / video poster | static print-style poster | refuse, suggest `social-card-image-led` |
+|  demo / LUT  /  / cinematographer portfolio / camera-app demo /  / viewfinder | ✅ this is the right skill | proceed |
 
-If the user's words straddle "脚本 / 拍摄 HUD" ambiguity, **stop and ask**:
-> "你要的是 (a) 拍摄取景器 HUD wrap 一段真视频做调色/镜头展示,还是 (b) 视频脚本/分镜的文档?这个 skill 只做 (a),(b) 我会换别的 skill 来做。"
+If the user's words straddle " /  HUD" ambiguity, **stop and ask**:
+> " (a)  HUD wrap /, (b) /? skill  (a),(b)  skill 。"
 
 Don't guess. Wrong skill = full rewrite.
 
 ### Gate 2 — Where is the video coming from?
 
-**The chrome wraps a real `<video>`. A `<div>` with `[视频画面]` text inside is not acceptable** — that's what B48 did and the whole point of this template was lost.
+**The chrome wraps a real `<video>`. A `<div>` with `[]` text inside is not acceptable** — that's what B48 did and the whole point of this template was lost.
 
 Decision tree:
 
 1. **User gave a video file / URL** → use it directly in `<video src="...">`
-2. **User gave nothing but is OK with sample footage** → pick ONE from the Hotlink List below, paste the URL into `<video src>`, add a one-liner "示例素材:Big Buck Bunny / 公共测试视频,替换为自己的素材后效果一致"
+2. **User gave nothing but is OK with sample footage** → pick ONE from the Hotlink List below, paste the URL into `<video src>`, add a one-liner ":Big Buck Bunny / ,"
 3. **User wants offline / self-contained** → `curl -L -o sample.mp4 <hotlink>` into the case folder, then `<video src="sample.mp4">`
 4. **Unclear** → stop and ask which of 1/2/3 they want
 
@@ -145,7 +145,7 @@ Optional but encouraged: REC pulse (red dot blinks at 1Hz when "recording"), foc
 - [ ] Accent color is anything other than `#ff3b30` (e.g. green, teal, blue) → revert
 - [ ] HUD numerics are static strings (timecode, ISO, battery) → make them live
 - [ ] Filter wheel has no interaction (no scroll/arrow/click handler) → wire it up
-- [ ] Script / 镜头 / VO / 旁白 text block layered on top → wrong skill, refuse the job at Gate 1
+- [ ] Script /  / VO /  text block layered on top → wrong skill, refuse the job at Gate 1
 - [ ] Social UI (profile, likes, captions, music attribution) → wrong skill, refuse
 - [ ] Centered Play/Pause button → this is a viewfinder, kill it
 - [ ] More than one accent color → revert to record-red only

@@ -89,8 +89,8 @@ Short-title rule:
 Example:
 
 ```text
-Long: 开源了一个 Skill，让 AI 接管你屏幕边那张便签纸
-Square: AI 接管便签纸
+Long:  Skill， AI 
+Square: AI 
 ```
 
 Naming:

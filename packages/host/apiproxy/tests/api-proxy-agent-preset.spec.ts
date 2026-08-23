@@ -9,17 +9,17 @@ import { mkdtempSync, realpathSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@deepseek-ai/cordis'
-import AgentRegistry, { type AgentFactory } from '@deepseek-ai/dsh-agent'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import SessionStore, { SessionId, type Session } from '@deepseek-ai/dsh-session'
-import UserQuestionService from '@deepseek-ai/dsh-user-questions'
+import AgentRegistry, { type AgentFactory } from '@origin-ai/xhe-agent'
+import type { Agent } from '@origin-ai/xhe-agent'
+import SessionStore, { SessionId, type Session } from '@origin-ai/xhe-session'
+import UserQuestionService from '@origin-ai/xhe-user-questions'
 import { RpcId, type RpcRequest } from '../src/api/rpc.ts'
 import type { HostFrame } from '../src/api/events.ts'
 import {
   InvalidPresetIdError, PresetExistsError, resolveSessionPreset, UnknownPresetError,
-} from '@deepseek-ai/dsh-agent-presets'
-import type {} from '@deepseek-ai/dsh-agent-presets/types'
-import { GoalId } from '@deepseek-ai/dsh-goal'
+} from '@origin-ai/xhe-agent-presets'
+import type {} from '@origin-ai/xhe-agent-presets/types'
+import { GoalId } from '@origin-ai/xhe-goal'
 import { createApiProxy } from '../src/api-proxy.ts'
 import { describe, expect, it } from 'vitest'
 
@@ -106,7 +106,7 @@ async function harness(
   persistence?: unknown,
   options: { userIds?: readonly string[]; defaults?: Record<string, unknown> } = {},
 ) {
-  const cwd = realpathSync(mkdtempSync(join(tmpdir(), 'dsh-apiproxy-preset-')))
+  const cwd = realpathSync(mkdtempSync(join(tmpdir(), 'xhe-apiproxy-preset-')))
   const ctx = new Context()
   await ctx.plugin(SessionStore)
   await ctx.plugin(AgentRegistry)

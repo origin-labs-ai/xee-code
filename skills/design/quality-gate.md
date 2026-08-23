@@ -1,6 +1,6 @@
 ---
 name: quality-gate
-description: Final blocking delivery gate for generated or major-edited design artifacts. A short blocking core (must-pass every time) plus on-demand detail checks (only the relevant ones) and non-blocking polish. Run as a checklist, not a passive reference. Triggers on "质量检查", "交付检查", "delivery check", "design QA", "compliance check", or whenever an artifact is about to be handed off.
+description: Final blocking delivery gate for generated or major-edited design artifacts. A short blocking core (must-pass every time) plus on-demand detail checks (only the relevant ones) and non-blocking polish. Run as a checklist, not a passive reference. Triggers on "", "", "delivery check", "design QA", "compliance check", or whenever an artifact is about to be handed off.
 mode: quality-gate
 platform: any
 scenario: delivery-quality
@@ -11,8 +11,8 @@ default_for:
   - design QA
   - delivery check
   - compliance check
-  - 交付检查
-  - 质量检查
+  - 
+  - 
 fidelity: system
 ---
 
@@ -36,7 +36,7 @@ This gate has three tiers — run them in order:
 
 ## TIER 1 — Blocking core (must pass, every time)
 
-These are交付事故级 failures: the artifact reaches the user broken, off-target, dishonest, or visibly cheap. Check all of them on every delivery — this list is short on purpose so it actually gets run.
+These are failures: the artifact reaches the user broken, off-target, dishonest, or visibly cheap. Check all of them on every delivery — this list is short on purpose so it actually gets run.
 
 ```text
 [ ] 1. Right artifact type / carrier — matches what the user asked for
@@ -173,10 +173,10 @@ The blocking items above point to these short clarifications:
 
 ---
 
-## 交付（门禁内部跑，不向用户念清单）
+## （，）
 
-质量门禁是**内部动作**——跑它，但**不要把检查清单逐条汇报给用户**（不要输出 pass/fail 表、不要列「①产物类型 pass ②相关 pass…」）。这和输出纪律一致：用户要的是做好的产物，不是质检过程。
+****——，****（ pass/fail 、「① pass ② pass…」）。：，。
 
-- 默认：检查通过就**直接交付产物**，不附任何门禁清单 / 汇总表。
-- 仅当确实**修复了**某个问题、或有**用户该知道的非阻塞提示**（如「项目图用了占位，建议你发真实图替换」）时，用**一句自然的话**说明，而不是念清单。
-- 绝不在产物里嵌入 compliance 注释块。
+- ：****， / 。
+- ****、****（「，」），****，。
+-  compliance 。

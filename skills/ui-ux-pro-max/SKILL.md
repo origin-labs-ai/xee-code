@@ -12,7 +12,7 @@ Ask only what you must to avoid wrong work:
 - Goal and constraints: conversion, speed, brand vibe, accessibility level (WCAG AA?)
 - What you have: screenshot, Figma, repo, URL, user journey
 
-If the user says "全部都要" (design + UX + code + design system), treat it as four deliverables and ship in that order.
+If the user says "" (design + UX + code + design system), treat it as four deliverables and ship in that order.
 
 ## 2) Produce Deliverables (pick what fits)
 Always be concrete: name components, states, spacing, typography, and interactions.

@@ -166,7 +166,7 @@ When industry is unspecified, use default warm neutral palette. This aligns with
 - **NO cover page / NO TOC**
 - **Target: 1 page** (2 pages max for senior roles)
 - **Compact spacing**: `line: 276` (1.15x)
-- All templates use **bilingual section headings** (e.g., "Work Experience 工作经历")
+- All templates use **bilingual section headings** (e.g., "Work Experience ")
 
 ---
 

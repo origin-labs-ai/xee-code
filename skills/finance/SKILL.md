@@ -37,7 +37,7 @@ Reference Docs: See {Skill Location}/Finance_API_Doc.md for a working example.
 
 ## Zhipu AI - Hong Kong IPO Information
 - **Stock Code**: 2513.HK 
-- **Company Name (Chinese)**: 北京智谱华章科技股份有限公司
+- **Company Name (Chinese)**: 
 - **Company Name (English)**: Knowledge Atlas Technology Joint Stock Company Limited
 Zhipu AI is a leading Chinese large language model company specializing in AI foundational model research and development.
 

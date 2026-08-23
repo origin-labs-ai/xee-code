@@ -8,13 +8,13 @@ import { pathToFileURL } from 'node:url'
 import { runInNewContext } from 'node:vm'
 import { Context } from '@deepseek-ai/cordis'
 import { afterEach, describe, expect, it } from 'vitest'
-import { renderIndexInjections, type WebServer, type WebRoute } from '@deepseek-ai/dsh-host-webserver'
+import { renderIndexInjections, type WebServer, type WebRoute } from '@origin-ai/xhe-host-webserver'
 import * as modulesClient from '../src/client/index.ts'
 import { ClientModuleRegistry, bootInjections, orderByModuleGraph } from '../src/index.ts'
 import type { ClientModuleLoaderTarget, WebBootEntry, WebBootGraph } from '../src/client/index.ts'
 
-const MODULES_ID = '@deepseek-ai/dsh-client-modules'
-const RUNTIME_ID = '@deepseek-ai/dsh-client-runtime'
+const MODULES_ID = '@origin-ai/xhe-client-modules'
+const RUNTIME_ID = '@origin-ai/xhe-client-runtime'
 
 let root: string | undefined
 
@@ -28,7 +28,7 @@ function writePackage(
   packageName: string,
   metadata: Record<string, unknown> = { dsh: { client: { platform: 'web' } } },
 ): string {
-  root ??= realpathSync(mkdtempSync(join(tmpdir(), 'dsh-client-modules-')))
+  root ??= realpathSync(mkdtempSync(join(tmpdir(), 'xhe-client-modules-')))
   const pkgRoot = join(root, 'node_modules', ...packageName.split('/'))
   const clientPath = join(pkgRoot, 'lib', 'client.js')
   mkdirSync(pkgRoot, { recursive: true })
@@ -110,7 +110,7 @@ describe('HTML bootstrap facade', () => {
     const facadeAt = html.indexOf('window.__ModuleLoader__=')
     const modulesAt = html.indexOf('<script src="/plugins/modules.js?rev=m"></script>')
     const runtimeAt = html.indexOf('<script src="/plugins/runtime.js?rev=r"></script>')
-    const graphAt = html.indexOf('globalThis["__DSH_BOOT__"] = ')
+    const graphAt = html.indexOf('globalThis["__XHE_BOOT__"] = ')
     const entryAt = html.indexOf('<script type="module" src="/index.js"></script>')
     expect([facadeAt, modulesAt, runtimeAt, graphAt, entryAt]).toEqual([...new Set([
       facadeAt, modulesAt, runtimeAt, graphAt, entryAt,

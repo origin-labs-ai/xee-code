@@ -4,17 +4,17 @@ import { homedir } from 'node:os'
 import { basename, join } from 'node:path'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { SandboxBashExecutor } from '@deepseek-ai/dsh-bash-sandbox'
-import LocalSubprocessRuntime from '@deepseek-ai/dsh-subprocess-local'
-import * as FsPolicy from '@deepseek-ai/dsh-fs-observation-policy'
-import SandboxedFileSystem from '@deepseek-ai/dsh-fs-sandbox'
-import { CallId } from '@deepseek-ai/dsh-llm'
-import { LocalSandboxProvider } from '@deepseek-ai/dsh-sandbox-local'
-import { bwrapProfileArgs, seatbeltProfileArgs } from '@deepseek-ai/dsh-sandbox-local/src/profiles.ts'
-import SandboxPolicyService from '@deepseek-ai/dsh-sandbox-policy'
-import { SessionId } from '@deepseek-ai/dsh-session'
-import * as ToolFs from '@deepseek-ai/dsh-tool-fs'
-import type { ToolResult } from '@deepseek-ai/dsh-tools'
+import { SandboxBashExecutor } from '@origin-ai/xhe-bash-sandbox'
+import LocalSubprocessRuntime from '@origin-ai/xhe-subprocess-local'
+import * as FsPolicy from '@origin-ai/xhe-fs-observation-policy'
+import SandboxedFileSystem from '@origin-ai/xhe-fs-sandbox'
+import { CallId } from '@origin-ai/xhe-llm'
+import { LocalSandboxProvider } from '@origin-ai/xhe-sandbox-local'
+import { bwrapProfileArgs, seatbeltProfileArgs } from '@origin-ai/xhe-sandbox-local/src/profiles.ts'
+import SandboxPolicyService from '@origin-ai/xhe-sandbox-policy'
+import { SessionId } from '@origin-ai/xhe-session'
+import * as ToolFs from '@origin-ai/xhe-tool-fs'
+import type { ToolResult } from '@origin-ai/xhe-tools'
 import { launcherPath } from '@deepseek-ai/node-addon-landlock-run'
 import * as agentSpine from '../src/index.ts'
 
@@ -30,7 +30,7 @@ let projectB: string
 const tempDirs: string[] = []
 
 async function projectDir(label: string): Promise<string> {
-  const dir = await mkdtemp(join(homedir(), `dsh-${label}-`))
+  const dir = await mkdtemp(join(homedir(), `xhe-${label}-`))
   tempDirs.push(dir)
   return dir
 }

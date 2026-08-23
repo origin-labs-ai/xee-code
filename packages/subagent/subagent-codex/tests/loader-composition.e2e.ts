@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest'
 import {
   LOADER_SMOKE_TEST_TIMEOUT_MS,
   runLoaderSmoke,
-} from '@deepseek-ai/dsh-loader-smoke'
+} from '@origin-ai/xhe-loader-smoke'
 
 const fixtureDir = fileURLToPath(new URL(
   '../../../../examples/acp-agent/tests/fixtures/subagent/subagent-codex/',
@@ -26,7 +26,7 @@ describe('Codex provider public Loader composition', () => {
   it('loads the Bundle default, two named instances, their tools, and job controls without starting Codex', async () => {
     const { stdout, stderr } = await runLoaderSmoke({
       label: 'subagent-codex Loader composition',
-      tempDirPrefix: 'dsh-subagent-codex-loader-',
+      tempDirPrefix: 'xhe-subagent-codex-loader-',
       binScript: driver,
       libBinScript: driver,
       configPath,

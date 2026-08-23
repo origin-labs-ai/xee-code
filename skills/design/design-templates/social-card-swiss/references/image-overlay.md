@@ -69,7 +69,7 @@ Whether or not you applied a tint:
 
 ## Rule 2 — Place text away from subject / face zones
 
-Posters in 旅行 / 游戏 / 影视 / 穿搭 / 美食 frequently use a real photo as the hero. The photo has a subject — a face, a hand, a product, a peak. Text that overlaps the subject reads as graffiti, not editorial.
+Posters in  /  /  /  /  frequently use a real photo as the hero. The photo has a subject — a face, a hand, a product, a peak. Text that overlaps the subject reads as graffiti, not editorial.
 
 ### Subject zone discovery — multimodal first
 

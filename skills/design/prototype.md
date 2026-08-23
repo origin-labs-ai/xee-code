@@ -1,6 +1,6 @@
 ---
 name: Prototype Skill
-description: Design HTML-based product prototypes, product/feature demos (any "做一个 XX 的 demo" / interactive demo request), app flows, web app mockups, dashboards, and interactive product concepts. By default produces TWO separate files: a working interactive prototype (clickable, states complete) AND a standalone interaction flow diagram (core task wiring, key screens, main transitions).
+description: Design HTML-based product prototypes, product/feature demos (any " XX  demo" / interactive demo request), app flows, web app mockups, dashboards, and interactive product concepts. By default produces TWO separate files: a working interactive prototype (clickable, states complete) AND a standalone interaction flow diagram (core task wiring, key screens, main transitions).
 mode: prototype
 platform: responsive-web
 scenario: product
@@ -21,12 +21,12 @@ default_for:
   - product demo
   - feature demo
   - interactive demo
-  - 产品 demo
-  - 功能 demo
-  - 做一个 demo
-  - 演示
-  - 功能演示
-  - 可交互演示
+  -  demo
+  -  demo
+  -  demo
+  - 
+  - 
+  - 
   - UX proposal
   - product design proposal
   - interaction design
@@ -92,7 +92,7 @@ The normal successful flow of each core task must work end-to-end BEFORE error/e
 ### 2.2 Every interactive-looking element must respond
 
 - **Core path**: real JS response (navigate, toggle, submit, feedback). Core-path elements MUST NOT use toast as a substitute for real implementation.
-- **Off core path**: call `showToast('功能暂未开放')` (or contextual equivalent). A CSS class toggle alone (e.g. sidebar `.active` swap) with no visible content change does NOT count — pair it with a toast or a content area update.
+- **Off core path**: call `showToast('')` (or contextual equivalent). A CSS class toggle alone (e.g. sidebar `.active` swap) with no visible content change does NOT count — pair it with a toast or a content area update.
 - **Visually non-interactive**: reduced opacity + `cursor: default` + no hover effect. Only for elements clearly outside scope.
 - **Forbidden**: dead controls that look active with no response.
 
@@ -207,7 +207,7 @@ When admin/dashboard/B2B without explicit scope: filter bar · data table with s
 
 **CRITICAL — exact class names and structure below are LOCKED. Do NOT rename, abbreviate, or substitute:**
 - `.flow-node` → `.flow-node__title` + `.flow-node-visual` + `.flow-node__note`
-- `.flow-node__title` content = **page name** (e.g. "餐厅列表页"), NEVER "Screen A", "Step 1", or step numbers
+- `.flow-node__title` content = **page name** (e.g. ""), NEVER "Screen A", "Step 1", or step numbers
 - `.flow-node-visual` = mini-screen with phone chrome (status bar, content, tab bar), NOT desktop window dots
 - `.flow-arrow` between every pair of adjacent nodes, with `.flow-arrow__label` describing the trigger — NEVER omit
 
@@ -219,20 +219,20 @@ When admin/dashboard/B2B without explicit scope: filter bar · data table with s
 
 ```
 flow.html
-├── h1.flow-page-title（左对齐）—— "产品名 · 核心任务流程"
+├── h1.flow-page-title（）—— " · "
 │
-├── section.flow-task（每条任务流）
-│   ├── h2.flow-task-title（左对齐）—— "任务1：申请换班和审批"
-│   ├── p.flow-task-subtitle（左对齐，灰色）—— "发起换班 → 被换人确认 → 老板审批 → 排班更新"
+├── section.flow-task（）
+│   ├── h2.flow-task-title（）—— "1："
+│   ├── p.flow-task-subtitle（，）—— " →  →  → "
 │   │
-│   └── div.flow-row（节点横向排列，不换行）
+│   └── div.flow-row（，）
 │       ├── div.flow-node
-│       │   ├── p.flow-node__title —— 页面名称（如"换班申请页"，不是步骤序号）
-│       │   ├── div.flow-node-visual —— mini-screen（固定尺寸，设备边框）
-│       │   └── p.flow-node__note —— 操作引起的关键变化（2-3行，可分点）
+│       │   ├── p.flow-node__title —— （""，）
+│       │   ├── div.flow-node-visual —— mini-screen（，）
+│       │   └── p.flow-node__note —— （2-3，）
 │       │
-│       ├── [箭头 + label]
-│       └── div.flow-node（下一个节点）
+│       ├── [ + label]
+│       └── div.flow-node（）
 ```
 
 **Layout rules:**
@@ -279,19 +279,19 @@ Flow canvas is **completely independent** from prototype visual style.
 
 | Element | Content | Example |
 |---------|---------|---------|
-| **flow-task-title** | 任务名称 | "任务1：快速分账" |
-| **flow-task-subtitle** | 步骤流程串联 | "添加成员 → 拍票录入 → 勾选分摊 → 一键清算" |
-| **flow-node__title** | 该节点对应的**页面名称** | "团队创建页"、"排班总览"、"换班申请页" |
-| **flow-node__note** | 操作引起的页面关键变化，2-3行 | "选择要换的班次和目标同事；填写原因；点击'提交申请'进入待确认状态" |
+| **flow-task-title** |  | "1：" |
+| **flow-task-subtitle** |  | " →  →  → " |
+| **flow-node__title** | **** | ""、""、"" |
+| **flow-node__note** | ，2-3 | "；；''" |
 
-- **flow-node__title 是页面名称**，不是步骤编号（不要写"1. 创建团队"，而是"团队创建页"）
-- **flow-node__note 要具体**：描述用户做什么操作 → 页面怎么变化（如出现弹窗、展开面板、跳转新页），可以用分号或换行分点
+- **flow-node__title **，（"1. "，""）
+- **flow-node__note **： → （、、），
 
 ### 4.6 Node sizing (fixed per platform)
 
 | Platform | Viewport | Node size (w × h) |
 |----------|----------|-------------------|
-| Mobile app / 小程序 | 390×844 | **220 × 476 px** |
+| Mobile app /  | 390×844 | **220 × 476 px** |
 | Mobile small | 375×812 | **210 × 454 px** |
 | Desktop web | 1440×900 | **640 × 400 px** |
 | Dashboard | 1440×1024 | **640 × 456 px** |
@@ -322,7 +322,7 @@ Flow canvas is **completely independent** from prototype visual style.
 | Target | Rule |
 |--------|------|
 | Structural regions | 100% present |
-| Flow-critical details | 100% accurate — labels, position, visual weight of CTAs/tabs/fields. **Buttons/CTAs must show real text** (e.g. "提交申请", "保存"), not blank colored blocks |
+| Flow-critical details | 100% accurate — labels, position, visual weight of CTAs/tabs/fields. **Buttons/CTAs must show real text** (e.g. "", ""), not blank colored blocks |
 | Non-critical details | Simplified (fewer items, placeholder blocks, abbreviated text) |
 
 **Forbidden**: text-only cards, gray-bar-only placeholders, abstract boxes, pure text nodes with no visual reconstruction.
@@ -345,20 +345,20 @@ Flow canvas is **completely independent** from prototype visual style.
 
 ```html
 <div class="flow-node" data-flow-node="screen-name">
-  <p class="flow-node__title">换班申请页</p>
+  <p class="flow-node__title"></p>
   <div class="flow-node-visual">
     <div class="mini-status-bar"><span>9:41</span><span>···</span></div>
-    <div class="mini-header"><span class="mini-page-title">申请换班</span></div>
+    <div class="mini-header"><span class="mini-page-title"></span></div>
     <div class="mini-content">
       <div class="mini-form-field"></div>
       <div class="mini-form-field"></div>
-      <div class="mini-button">提交申请</div>
+      <div class="mini-button"></div>
     </div>
     <div class="mini-tab-bar">
-      <span class="active">排班</span><span>消息</span><span>我的</span>
+      <span class="active"></span><span></span><span></span>
     </div>
   </div>
-  <p class="flow-node__note">选择要换的班次和目标同事；填写换班原因；点击'提交申请'后进入待确认状态</p>
+  <p class="flow-node__note">；；''</p>
 </div>
 ```
 
@@ -415,7 +415,7 @@ Flow canvas is **completely independent** from prototype visual style.
 
   <!-- Arrow between nodes: flex item, self-aligns via height -->
   <div class="flow-arrow">
-    <div class="flow-arrow__label">点击'提交申请'</div>
+    <div class="flow-arrow__label">''</div>
     <svg width="48" height="16" viewBox="0 0 48 16">
       <path d="M0 8 L38 8" stroke="#999" stroke-width="1.5" fill="none"/>
       <path d="M36 4 L42 8 L36 12" stroke="#999" stroke-width="1.5" fill="none"/>
@@ -444,7 +444,7 @@ Flow canvas is **completely independent** from prototype visual style.
 
 **Height rule:** `.flow-arrow { height }` = flow-node-visual height from §4.6 size table. Add `padding-top` equal to the space taken by `flow-node__title` above the visual, so the arrow SVG vertically centers on the mini-screen.
 
-- **Arrow labels are mandatory** — every arrow must have a `.flow-arrow__label` describing what user action or event triggers the transition (e.g. "点击'提交'", "审批通过", "系统检测冲突").
+- **Arrow labels are mandatory** — every arrow must have a `.flow-arrow__label` describing what user action or event triggers the transition (e.g. "''", "", "").
 - Bezier curves for branching; straight lines for single-branch.
 - Line style: solid = happy path; dashed = alternate/return.
 - **Arrows scroll with nodes** — they are flex children of flow-row, so they scroll together naturally.

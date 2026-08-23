@@ -1,6 +1,6 @@
 ---
 name: social-carousel
-description: 小红书选辑 / anthology 横滚社交模板 — 8 张竖卡连续 auto-scroll snap loop，每张几何裁切 mask（拱 / 椭 / 半穹顶 / 斜）+ 宋体标题 + 一个 SVG 装饰符号 + 角部期号元数据。用于摄影系列 / 艺术指导 / mood reel / 品牌瞬间集 (6-10 帧)。触发："做个 anthology 选辑 / 横滚画廊 / mood reel / 摄影系列展 / 第 0X 辑封面集"。NOT 教程类（用 digital-eguide），NOT < 4 张系列，NOT 文字密集卡（横滚速度藏文字）。
+description:  / anthology  — 8  auto-scroll snap loop， mask（ /  /  / ）+  +  SVG  + 。 /  / mood reel /  (6-10 )。：" anthology  /  / mood reel /  /  0X "。NOT （ digital-eguide），NOT < 4 ，NOT （）。
 visibility: public
 mode: template
 carrier: fixed-image
@@ -8,12 +8,12 @@ scenario: social-content
 pattern_source: scroll-gallery.html
 source_priority: skill-first
 triggers:
-  - "做个 anthology 选辑"
-  - "横滚画廊"
+  - " anthology "
+  - ""
   - "mood reel"
-  - "摄影系列展"
-  - "第 0X 辑封面集"
-  - "auto-scroll 卡集"
+  - ""
+  - " 0X "
+  - "auto-scroll "
 related_patterns: social-card-image-led, digital-eguide
 ---
 
@@ -25,8 +25,8 @@ Distinct from `digital-eguide/social-carousel.html` (12-frame field-notes guide 
 
 ## Use When
 
-- The user wants to publish a **series / anthology / 选辑 / collection** — photography, art direction, branding moments, mood reel.
-- Each card carries one image + a short serif title + a volume number (第 0X 辑).
+- The user wants to publish a **series / anthology /  / collection** — photography, art direction, branding moments, mood reel.
+- Each card carries one image + a short serif title + a volume number ( 0X ).
 - The viewing context is browsing / pause / browse — not step-by-step instruction.
 - The output is a fixed-image set (HTML-to-image) or an embedded auto-scrolling strip.
 
@@ -70,7 +70,7 @@ Avoid:
 - mixing portrait + landscape card aspects randomly
 - adding step numbers (this is not a tutorial)
 - decorative gradients behind images — the mask is the decoration
-- 黑金 / neon palettes — the template's identity is editorial / warm
+-  / neon palettes — the template's identity is editorial / warm
 
 ## Platform / Size
 

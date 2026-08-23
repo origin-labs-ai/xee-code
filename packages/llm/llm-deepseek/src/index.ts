@@ -8,18 +8,18 @@
  * anything, while an in-flight stream keeps the facts it started with. The
  * one registration-captured fact — the retry policy — re-registers the route
  * in place when it changes.
- * @module @deepseek-ai/dsh-llm-deepseek
+ * @module @origin-ai/xhe-llm-deepseek
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { assertUsableApiKey, LlmError, resolveRetryPolicy, RetryPolicySchema } from '@deepseek-ai/dsh-llm'
-import type { ModelModality, RetryPolicyConfig } from '@deepseek-ai/dsh-llm'
-import { credentialRef } from '@deepseek-ai/dsh-credentials'
-import { launchEnvironmentOf, type LaunchEnvironmentSnapshot } from '@deepseek-ai/dsh-launch-environment'
-import { deepEqualJson, installSettingsSection, settingsNamespace } from '@deepseek-ai/dsh-settings'
-import { MAX_TIMER_DELAY_MS } from '@deepseek-ai/dsh-timeout'
-import { getOrCreateAnonymousUserId, type AnonymousUserId } from '@deepseek-ai/dsh-anonymous-user-id'
+import { assertUsableApiKey, LlmError, resolveRetryPolicy, RetryPolicySchema } from '@origin-ai/xhe-llm'
+import type { ModelModality, RetryPolicyConfig } from '@origin-ai/xhe-llm'
+import { credentialRef } from '@origin-ai/xhe-credentials'
+import { launchEnvironmentOf, type LaunchEnvironmentSnapshot } from '@origin-ai/xhe-launch-environment'
+import { deepEqualJson, installSettingsSection, settingsNamespace } from '@origin-ai/xhe-settings'
+import { MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
+import { getOrCreateAnonymousUserId, type AnonymousUserId } from '@origin-ai/xhe-anonymous-user-id'
 import {
   DEFAULT_CONTEXT_WINDOW,
   DEFAULT_FILE_EXPIRY_SECONDS,

@@ -25,9 +25,9 @@ try {
   const document = read('docs/i18n/translation-prompt.md')
   const terminology = read('docs/i18n/terminology.md')
   const examplePaths = [
-    ['README.md', 'README.zh.md'],
+    ['README.md', 'README.md'],
     ['docs/development.md', 'docs/development.zh.md'],
-    ['docs/i18n/README.md', 'docs/i18n/README.zh.md'],
+    ['docs/i18n/README.md', 'docs/i18n/README.md'],
     ['docs/i18n/translation-rules.md', 'docs/i18n/translation-rules.zh.md'],
     [
       '.agents/notes/implemented/process/2026-07-02-bilingual-docs-and-pairing-gate.md',
@@ -78,7 +78,7 @@ try {
     '',
     '# 快照说明',
     '',
-    '[English](snapshot-note.md) | 中文',
+    '[English](snapshot-note.md) | ',
     '',
   ].join('\n')
   if (!consumed.final.startsWith(expectedFinalPrefix)) {

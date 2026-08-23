@@ -97,7 +97,7 @@ describe('markdown spans', () => {
 
 describe('mechanical code updates', () => {
   const en = '# T\n\nProse.\n\n```sh\nrun one\n```\n'
-  const zh = '# T\n\n中文。\n\n```sh\nrun one\n```\n'
+  const zh = '# T\n\n。\n\n```sh\nrun one\n```\n'
 
   it('splices a fence-only edit into the counterpart', () => {
     const edited = en.replace('run one', 'run two')
@@ -121,7 +121,7 @@ describe('mechanical code updates', () => {
 })
 
 const TERMINOLOGY = [
-  '| English | 中文 | 首次出现 | 不要译作 | 备注 |',
+  '| English |  | 首次出现 | 不要译作 | 备注 |',
   '|---|---|---|---|---|',
   '| agent | agent | agent（智能体） | 智能体 | |',
   '| session log | 会话日志 | | 会话记录 | |',

@@ -274,26 +274,26 @@ def content_sanitize(text: str) -> str:
 
 ---
 
-## Step 3.5: NUMBERING — 正文才是第一章 (MANDATORY)
+## Step 3.5: NUMBERING —  (MANDATORY)
 
-> ⚠️ **封面、目录、摘要、前言都不是章节。正文第一节 = 第一章/Chapter 1，永远。** Outline 的 `index` 是排序序号，不是章节号。混淆两者会导致文档从“第三章”或“第四章”开始。
+> ⚠️ **、、、。 = /Chapter 1，。** Outline  `index` ，。“”“”。
 
-**写代码前必须输出编号映射表：**
+**：**
 
 ```
 | Outline Index | Type    | Chapter # | Title            |
 |---------------|---------|-----------|------------------|
-| 1             | cover   | —         | 封面               |
-| 2             | toc     | —         | 目录               |
-| 3             | content | 第一章    | 概要               |
-| 4             | content | 第二章    | 引言               |
+| 1             | cover   | —         |                |
+| 2             | toc     | —         |                |
+| 3             | content |     |                |
+| 4             | content |     |                |
 | ...           | ...     | ...       | ...              |
 ```
 
-**铁律：**
-- cover/toc/back_cover/摘要/前言 → 无编号
-- 第一个 content 节点 = 第一章，永远从 1 开始
-- `page_title()` 必须用此表的章节号，不是 Outline `index`
+**：**
+- cover/toc/back_cover// → 
+-  content  = ， 1 
+- `page_title()` ， Outline `index`
 
 ---
 
@@ -312,13 +312,13 @@ Three rules for safe character handling in ReportLab PDFs:
 **d) canvas.drawString / drawRightString CJK font rule (MANDATORY)**: `install_font_fallback()` only works on `Paragraph()` objects. It does NOT affect `canvas.drawString()` / `canvas.drawRightString()` / `canvas.drawCentredString()`. If the text passed to any `canvas.draw*String()` call contains CJK characters (Chinese/Japanese/Korean), you **MUST** call `canvas.setFont('NotoSerifSC', size)` (or another registered CJK font) before drawing. Using FreeSerif / Helvetica / Times for CJK canvas text = garbled output.
 
 ```python
-# ❌ WRONG — FreeSerif has no CJK glyphs, '科大讯飞' will be garbled
+# ❌ WRONG — FreeSerif has no CJK glyphs, '' will be garbled
 canvas.setFont('FreeSerif-Italic', 8)
-canvas.drawRightString(x, y, 'SZSE: 002230  ·  科大讯飞')
+canvas.drawRightString(x, y, 'SZSE: 002230  ·  ')
 
 # ✅ CORRECT — use CJK font for mixed text
 canvas.setFont('NotoSerifSC', 8)
-canvas.drawRightString(x, y, 'SZSE: 002230  ·  科大讯飞')
+canvas.drawRightString(x, y, 'SZSE: 002230  ·  ')
 
 # ✅ ALSO CORRECT — pure English text can use FreeSerif
 canvas.setFont('FreeSerif-Italic', 8)
@@ -386,7 +386,7 @@ Paragraph('When ∠ A = 90°, AB ⊥ AC and ΔABC ≅ ΔDEF', body_style)
 **Encoding safety - before writing ANY content text:**
 > "Does this string contain Japanese kana (の, が, は etc.) or rare Unicode symbols?"
 > If YES → REPLACE with safe plain Chinese equivalents. Japanese kana (Hiragana U+3040-U+309F, Katakana U+30A0-U+30FF) frequently corrupt to U+FFFD (�) when code passes through LLM output, heredoc, or terminal encoding layers.
-> Common safe replacements: `活の真鲷`→`活缔真鲷`, `盐烤の鲭鱼`→`盐烤鲭鱼`, `烤の鸡串`→`炭烤鸡串`.
+> Common safe replacements: `の`→``, `の`→``, `の`→``.
 > If the character is genuinely needed, verify it survives a full write→read round-trip with `open(file, encoding='utf-8')`.
 
 ---
@@ -485,9 +485,9 @@ en_style = ParagraphStyle(name="EN", fontName="FreeSerif", fontSize=10.5, leadin
 cn_style = ParagraphStyle(name="CN", fontName="NotoSerifSC", fontSize=10.5, leading=18, wordWrap='CJK')
 
 Paragraph('MySQL、PostgreSQL、Redis', en_style)           # ✅ CJK comma auto-fallback to NotoSerifSC
-Paragraph('Beijing (北京) has 21M people', en_style)       # ✅ CJK chars auto-fallback
-Paragraph('价格:¥2,200~5,800/月', en_style)               # ✅ all CJK chars handled
-Paragraph('《巴黎协定》签署于2015年', en_style)               # ✅ CJK book title marks handled
+Paragraph('Beijing () has 21M people', en_style)       # ✅ CJK chars auto-fallback
+Paragraph(':¥2,200~5,800/', en_style)               # ✅ all CJK chars handled
+Paragraph('《》2015', en_style)               # ✅ CJK book title marks handled
 ```
 
 **How it works:** `install_font_fallback()` monkey-patches `Paragraph.__init__` to scan each character against the font's `charToGlyph` table. Characters missing from the base font are automatically wrapped in `<font name="FallbackFont">`. The fallback chain is: English fonts → NotoSerifSC (primary) or Noto Sans SC (legacy), Chinese fonts → FreeSerif. For aesthetic optimization, Cyrillic text in NotoSerifSC/Noto Sans SC is automatically routed to FreeSerif (serif looks better for Cyrillic).
@@ -730,7 +730,7 @@ def insert_cover(cover_pdf, body_pdf, output_pdf):
 - **Pick a layout (01/03/04/06/07)** from `typesetting/cover.md` that matches the document tone. No global default - every selection must be a deliberate design decision.
 - **Maximum 4 components** on any cover. Typical recipe: Title + subtitle + 1 geometric accent + metadata.
 - **Typography Scale**: Title ≈ 45pt, Subtitle ≈ 25pt, Meta ≥ 18pt (never below 14pt). Tiny text = FAIL.
-- **Background layer (optional)**: See `typesetting/cover-backgrounds.md` for 3 recipes (A=极简弧线, B=工程十字轴+立柱, C=锐角切割+出血文字). Background renders BELOW all foreground content at 2-5% opacity.
+- **Background layer (optional)**: See `typesetting/cover-backgrounds.md` for 3 recipes (A=, B=+, C=+). Background renders BELOW all foreground content at 2-5% opacity.
 - **Mandatory `<br>` chunking**: Title MUST break every 2-4 words (CJK) or 3-5 words (English). Single-line title = FAIL.
 - **Bounding Box spatial dispersion**: Group elements into 2-3 bounding boxes at opposite regions (e.g., top-left + bottom-right). Never cluster everything into middle 40%.
 - **Safe Zone**: 12% top/bottom, 14% left/right padding on cover pages.
@@ -1484,15 +1484,15 @@ For documents with 10+ pages:
 
 #### Numbering & Structure
 ```
-一、选择题（每小题 3 分，共 30 分）          ← Section header (宋体/黑体 14pt Bold)
+、（ 3 ， 30 ）          ← Section header (/ 14pt Bold)
 
-1. 以下哪个不是 Python 内置数据类型？     ← Question stem (12pt)
+1.  Python ？     ← Question stem (12pt)
    A. int                                   ← Options: indented 24pt (2em)
    B. float                                 ← Each option on new line or 2×2 grid
    C. array
    D. str
 
-2. 以下表达式的值为？                     ← Next question
+2. ？                     ← Next question
    A. True    B. False                      ← Short options: inline 2×2 grid OK
    C. None    D. Error
 ```
@@ -1567,8 +1567,8 @@ def add_answer_lines(story, num_lines=8, line_spacing=20):
 
 #### Page Density
 - `spaceBefore=12pt` between questions minimum
-- `spaceBefore=24pt` before section headers (一、二、三)
-- Score indicator after question number: `1. (分值: 5分)` or `1. [5 pts]`
+- `spaceBefore=24pt` before section headers (、、)
+- Score indicator after question number: `1. (: 5)` or `1. [5 pts]`
 - Page header: exam title + time limit + total score
 - No cover page unless explicitly requested
 
@@ -1628,7 +1628,7 @@ story.append(KeepTogether(callout))
 
 - [ ] **Font restriction**: Only 6 registered fonts used
 - [ ] **Font family registered**: `registerFontFamily()` called for all used fonts
-- [ ] **⚠️ MANDATORY font fallback**: `install_font_fallback()` called after font registration — **#1 cause of Helvetica garbled text (乱码)**
+- [ ] **⚠️ MANDATORY font fallback**: `install_font_fallback()` called after font registration — **#1 cause of Helvetica garbled text ()**
 - [ ] **Rich text tags**: Only inside `Paragraph()` objects
 - [ ] **Table cells**: ALL text wrapped in `Paragraph()` — no plain strings
 - [ ] **Scientific notation**: Large/small numbers use `<super>` tags
@@ -1663,7 +1663,7 @@ story.append(KeepTogether(callout))
 
 ### Cover
 
-- [ ] **正文编号从 1 开始**: 封面/目录不是章节，Step 3.5 映射表已输出
+- [ ] ** 1 **: /，Step 3.5 
 - [ ] **Cover default ON** for reports/proposals/analysis ≥ 3 pages
 - [ ] **Single PDF output**: Cover merged as page 0 via pypdf
 - [ ] **Page isolation**: Cover never shares page with TOC/body

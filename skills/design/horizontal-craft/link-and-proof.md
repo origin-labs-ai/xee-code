@@ -85,10 +85,10 @@ placeholder
 Recommended attribute:
 
 ```html
-<span data-proof="user-provided">¥128/月</span>
+<span data-proof="user-provided">¥128/</span>
 <span data-proof="sourced">92%</span>
 <span data-proof="demo">92% demo</span>
-<span data-proof="placeholder">[填写真实满意度]</span>
+<span data-proof="placeholder">[]</span>
 ```
 
 ---
@@ -111,7 +111,7 @@ Forbidden:
 ```text
 TODO
 FIXME
-待实现
+
 lorem ipsum
 placeholder text
 feature one / two / three
@@ -120,9 +120,9 @@ feature one / two / three
 Allowed when clearly labeled:
 
 ```text
-[填写真实客户 Logo]
-[替换为用户提供的案例]
-示例数据，仅用于版式预览
+[ Logo]
+[]
+，
 Demo data — replace before publishing
 ```
 
@@ -139,15 +139,15 @@ Every CTA must answer:
 Bad:
 
 ```html
-<a href="#" class="button">立即体验</a>
+<a href="#" class="button"></a>
 ```
 
 Better:
 
 ```html
-<a href="#demo" class="button">预约演示</a>
-<button type="button" class="button" data-action="generate-report">生成报告</button>
-<a aria-disabled="true" data-placeholder-link class="button">等待接入报名链接</a>
+<a href="#demo" class="button"></a>
+<button type="button" class="button" data-action="generate-report"></button>
+<a aria-disabled="true" data-placeholder-link class="button"></a>
 ```
 
 ---

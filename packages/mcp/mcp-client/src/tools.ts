@@ -18,12 +18,12 @@ import type { Client } from '@modelcontextprotocol/sdk/client/index.js'
 import { ListToolsResultSchema } from '@modelcontextprotocol/sdk/types.js'
 import { z } from 'zod'
 import type { Context } from '@deepseek-ai/cordis'
-import { isImageAdmissionError } from '@deepseek-ai/dsh-attachment'
-import type { AttachmentStore, ImageAttachmentRef, ImageMediaType, SaveImageAttachment } from '@deepseek-ai/dsh-attachment'
-import type { ContentBlock } from '@deepseek-ai/dsh-llm'
-import type { ToolDefinition, ToolExecution, ToolExecutionResult } from '@deepseek-ai/dsh-tools'
-import { assertSupportedJsonSchema } from '@deepseek-ai/dsh-tools'
-import type { JsonSchemaNode, JsonValue } from '@deepseek-ai/dsh-tools'
+import { isImageAdmissionError } from '@origin-ai/xhe-attachment'
+import type { AttachmentStore, ImageAttachmentRef, ImageMediaType, SaveImageAttachment } from '@origin-ai/xhe-attachment'
+import type { ContentBlock } from '@origin-ai/xhe-llm'
+import type { ToolDefinition, ToolExecution, ToolExecutionResult } from '@origin-ai/xhe-tools'
+import { assertSupportedJsonSchema } from '@origin-ai/xhe-tools'
+import type { JsonSchemaNode, JsonValue } from '@origin-ai/xhe-tools'
 
 /** Resolved options relevant to tool bridging. */
 export interface ToolBridgeOptions {

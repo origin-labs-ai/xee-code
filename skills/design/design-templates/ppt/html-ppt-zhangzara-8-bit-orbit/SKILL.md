@@ -1,6 +1,6 @@
 ---
 name: html-ppt-zhangzara-8-bit-orbit
-description: 8-Bit Orbit — 像素艺术霓虹街机 × 深海军蓝。任何应该感觉像凌晨 2 点 CRT 屏幕的 deck：cyberpunk / gaming / web3 / indie dev tools / hackathon demo。
+description: 8-Bit Orbit —  × 。 2  CRT  deck：cyberpunk / gaming / web3 / indie dev tools / hackathon demo。
 visibility: public
 mode: template
 carrier: deck
@@ -8,13 +8,13 @@ scenario: marketing
 pattern_source: pattern.html
 source_priority: skill-first
 triggers:
-  - "做个像素风 PPT"
-  - "做个赛博朋克 deck"
+  - " PPT"
+  - " deck"
   - "8-bit-orbit"
   - "zhangzara-8-bit-orbit"
   - "8-Bit Orbit"
   - "retro-tech"
-  - "霓虹街机"
+  - ""
   - "gaming pitch"
   - "hackathon demo"
   - "html deck"

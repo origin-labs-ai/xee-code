@@ -15,8 +15,8 @@ default_for:
   - report deck
   - strategy deck
   - workshop deck
-  - 演示文稿
-  - 路演材料
+  - 
+  - 
 speaker_notes: optional
 animations: optional
 fidelity: high

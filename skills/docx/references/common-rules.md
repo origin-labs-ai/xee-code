@@ -240,7 +240,7 @@ These apply to ALL scenes. Scene files may add scene-specific prohibitions.
 3. **No fake TOC / page numbers / headers** — use proper docx-js structures
 4. **No excessive blank lines** to pad layout
 5. **No dirty formatting** — no stray annotations, template fragments, broken hyperlinks, garbled markers
-6. **No sloppy placeholders** — "TBD", "omitted", "略", "to be refined" are forbidden; use proper `【】` placeholders
+6. **No sloppy placeholders** — "TBD", "omitted", "", "to be refined" are forbidden; use proper `【】` placeholders
 7. **No fabricated data** — do not invent statistics, citations, legal references, or facts to appear professional
 8. **No inconsistent heading/numbering** — one numbering system per document, no level-skipping
 9. **No Markdown artifacts** — no `#`, `**`, `-` list markers, `>` blockquotes, and **no Markdown table syntax** (`| col1 | col2 |`, `|---|---|`) in the final docx. Any tabular data MUST be rendered as a proper docx `Table` object — never as plain-text pipe-delimited lines. This applies to ALL scenes including exam paper data tables, report statistics, and academic result tables.
@@ -310,7 +310,7 @@ If the last line of a title contains only 1–2 characters, merge it into the pr
 
 Line breaks must occur at semantic boundaries: after particles (e.g., de/yu/he/ji/zhi), punctuation, connectors, spaces, or underscores. Never split a compound term (e.g., a 4-character term like a management specification must not be split into 3+1 characters).
 
-For mixed Chinese+English titles (e.g., "基于Transformer架构的..."), use `estimateTextWidth()` instead of character count for line break calculation. Chinese characters are ~2× wider than English characters at the same font size.
+For mixed Chinese+English titles (e.g., "Transformer..."), use `estimateTextWidth()` instead of character count for line break calculation. Chinese characters are ~2× wider than English characters at the same font size.
 
 ### Rule 4: Maximum 3 title lines on cover
 
@@ -381,7 +381,7 @@ All multi-section documents MUST follow this five-zone page numbering scheme unl
 | 5. References | Bibliography | Continues body (no reset) | Same as body | If body ends on p.42, references continue from p.43 |
 
 **Key rules:**
-0. **NEVER use "Page X of Y" denominator format.** Footer must show only the current page number (e.g., `1`, `2`, `iii`). Do NOT display total page count. No `Page 3 of 12`, no `3 / 12`, no `第3页/共12页`. Just the bare number. `PageNumber.TOTAL_PAGES` / `NUMPAGES` is **FORBIDDEN** in footers.
+0. **NEVER use "Page X of Y" denominator format.** Footer must show only the current page number (e.g., `1`, `2`, `iii`). Do NOT display total page count. No `Page 3 of 12`, no `3 / 12`, no `3/12`. Just the bare number. `PageNumber.TOTAL_PAGES` / `NUMPAGES` is **FORBIDDEN** in footers.
 1. **Cover is always page 1 internally** but the page number is never displayed. Suppress footer in cover section.
 2. **Front matter uses independent Roman numerals** starting at `i`. This sequence is separate from the body.
 3. **Body resets to Arabic 1.** The first page of main content is always page `1`.

@@ -8,8 +8,8 @@ preview:
   type: none
 default_for:
   - anti AI slop
-  - AI味
-  - 反AI味
+  - AI
+  - AI
   - generic design
   - template-looking design
   - design polish
@@ -184,18 +184,18 @@ This is not a copywriting rulebook. Only fix copy when it makes the artifact fee
 
 Common visual-quality smells:
 
-- 赋能、打造、匠心、极致、丝滑、惊艳、震撼、颠覆、革新、引爆、解锁、加持、沉浸、深度、全方位、一站式
-- 闭环、抓手、心智、链路、生态、矩阵、势能、心智占位
-- 全新升级、隆重推出、强势来袭、火热进行中
-- 「X，让 Y 更 Z」
-- 「不止 X，更是 Y」
-- 「重新定义 X」
-- 「X，从未如此 Y」
-- 「为 X 而生」
+- 、、、、、、、、、、、、、、、
+- 、、、、、、、
+- 、、、
+- 「X， Y  Z」
+- 「 X， Y」
+- 「 X」
+- 「X， Y」
+- 「 X 」
 
 Prefer concrete verbs:
 
-- 查、算、生成、对比、导出、预约、上传、筛选、复盘、发送
+- 、、、、、、、、、
 
 ---
 

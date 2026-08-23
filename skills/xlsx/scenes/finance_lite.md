@@ -12,15 +12,15 @@ Also load `engines/design.md` for styling (use **standard** design tokens, NOT I
 
 | Signal | finance_lite ✅ | finance.md ❌ |
 |--------|----------------|--------------|
-| 预算表 / budget | ✅ | |
-| 费用报表 / expense report | ✅ | |
-| 项目成本追踪 / project cost tracking | ✅ | |
-| 收支对比 / revenue vs cost | ✅ | |
-| 个人记账 / personal finance | ✅ | |
-| 简单 ROI 计算 / simple ROI calculation | ✅ | |
-| DCF / LBO / 估值模型 (valuation model) | | ✅ |
-| 三表联动 (P&L + BS + CF) | | ✅ |
-| 敏感性分析 / scenario table | | ✅ |
+|  / budget | ✅ | |
+|  / expense report | ✅ | |
+|  / project cost tracking | ✅ | |
+|  / revenue vs cost | ✅ | |
+|  / personal finance | ✅ | |
+|  ROI  / simple ROI calculation | ✅ | |
+| DCF / LBO /  (valuation model) | | ✅ |
+|  (P&L + BS + CF) | | ✅ |
+|  / scenario table | | ✅ |
 | IB pitch book level formatting | | ✅ |
 
 ---
@@ -41,22 +41,22 @@ Sheet: "Budget" (or user-specified name)
 
 **Budget Table:**
 ```
-Category (类别) | Budget Amount (预算金额) | Actual Amount (实际金额) | Variance (差异) | Variance Rate (差异率) | Notes (备注)
+Category () | Budget Amount () | Actual Amount () | Variance () | Variance Rate () | Notes ()
 ```
 
 **Expense Report:**
 ```
-Date (日期) | Category (类别) | Description (说明) | Amount (金额) | Claimant (报销人) | Status (状态)
+Date () | Category () | Description () | Amount () | Claimant () | Status ()
 ```
 
 **Revenue vs Cost:**
 ```
-Month (月份) | Revenue (收入) | Cost (成本) | Gross Profit (毛利) | Gross Margin (毛利率)
+Month () | Revenue () | Cost () | Gross Profit () | Gross Margin ()
 ```
 
 **Project Cost:**
 ```
-Phase (阶段) | Task (任务) | Budget (预算) | Used (已用) | Remaining (剩余) | Usage Rate (使用率) | Status (状态)
+Phase () | Task () | Budget () | Used () | Remaining () | Usage Rate () | Status ()
 ```
 
 ---
@@ -124,7 +124,7 @@ from templates.base import (
 )
 
 # Setup
-setup_sheet(ws, title="2026年部门预算", last_col=7)
+setup_sheet(ws, title="2026", last_col=7)
 
 # Headers at row 4
 style_header_row(ws, row_num=4, col_start=2, col_end=7)
@@ -167,26 +167,26 @@ ws.conditional_formatting.add(
 ### Template: Monthly Budget
 
 ```python
-headers = ["类别", "预算金额", "实际金额", "差异", "差异率", "状态"]
+headers = ["", "", "", "", "", ""]
 # Variance = Actual - Budget
 # Var% = IFERROR((Actual-Budget)/Budget, 0)
-# Status = IF(Var%>0.1,"超支"(Over Budget),IF(Var%>0,"注意"(Watch),"正常"(Normal)))
+# Status = IF(Var%>0.1,""(Over Budget),IF(Var%>0,""(Watch),""(Normal)))
 ```
 
 ### Template: Expense Report
 
 ```python
-headers = ["日期", "类别", "说明", "金额", "报销人", "状态"]
+headers = ["", "", "", "", "", ""]
 # Date format: YYYY-MM-DD
 # Amount: currency_cny
-# Status: dropdown validation ["待审批"(Pending),"已审批"(Approved),"已报销"(Reimbursed),"已拒绝"(Rejected)]
+# Status: dropdown validation [""(Pending),""(Approved),""(Reimbursed),""(Rejected)]
 ```
 
 ### Template: Project Cost Tracker
 
 ```python
-headers = ["阶段", "任务", "预算", "已用", "剩余", "使用率", "状态"]
+headers = ["", "", "", "", "", "", ""]
 # Remaining = Budget - Used
 # Usage% = IFERROR(Used/Budget, 0)
-# Status = IF(Usage%>1,"超支"(Over Budget),IF(Usage%>0.9,"预警"(Warning),"正常"(Normal)))
+# Status = IF(Usage%>1,""(Over Budget),IF(Usage%>0.9,""(Warning),""(Normal)))
 ```

@@ -17,8 +17,8 @@ const PLATFORM_SOURCE = 'packages/client/web/src/platform.ts'
 const PARSER_PRELOAD_SOURCE = 'packages/client/modules/src/index.ts'
 const STATIC_PRESET_SOURCE = 'packages/client/tsdown.client.ts'
 const CORDIS = '@deepseek-ai/cordis'
-const DSH_PREFIX = '@deepseek-ai/dsh-'
-const CLIENT_WEB = '@deepseek-ai/dsh-client-web'
+const XHE_PREFIX = '@origin-ai/xhe-'
+const CLIENT_WEB = '@origin-ai/xhe-client-web'
 
 /** One workspace package's browser-module declaration. */
 export interface ClientDeclaration {
@@ -480,7 +480,7 @@ function collectDependencyViolations(facts: ClientPackageFacts): string[] {
         && peerRange === devRange) continue
       violations.push(
         pkg.manifest + ': ' + name + ' (' + describeOrigins(rule.origins) + ')'
-        + ' is a peer-installed DSH relationship; declare it in peerDependencies and devDependencies'
+        + ' is a peer-installed XHE relationship; declare it in peerDependencies and devDependencies'
         + ' with matching ranges, not dependencies; found ' + describeSections(actual)
         + describeRangeMismatch(peerRange, devRange),
       )
@@ -508,7 +508,7 @@ function collectDependencyViolations(facts: ClientPackageFacts): string[] {
         } else if (section === 'dependencies' && isInternalDsh(name)) {
           violations.push(
             pkg.manifest + ': dynamic package declares ' + name + ' in dependencies;'
-            + ' dynamic DSH relationships are peer plus dev, and static client inputs are dev-only',
+            + ' dynamic XHE relationships are peer plus dev, and static client inputs are dev-only',
           )
         }
       }
@@ -715,7 +715,7 @@ async function readStaticLinkedRoster(root: string): Promise<Set<string>> {
     const loaded = await import(pathToFileURL(resolve(root, configPath)).href) as { default?: unknown }
     if (typeof loaded.default !== 'function') continue
     const configs = (loaded.default as (input: { env: Record<string, string> }) => unknown)({
-      env: { DSH_BUILD_FACE: 'client' },
+      env: { XHE_BUILD_FACE: 'client' },
     })
     if (!Array.isArray(configs) || !predicate(configs)) continue
     const manifest = JSON.parse(
@@ -866,7 +866,7 @@ function describeOrigins(origins: ReadonlySet<string>): string {
 }
 
 function isInternalDsh(name: string): boolean {
-  return name === CORDIS || name.startsWith(DSH_PREFIX)
+  return name === CORDIS || name.startsWith(XHE_PREFIX)
 }
 
 function isBareSpecifier(specifier: string): boolean {

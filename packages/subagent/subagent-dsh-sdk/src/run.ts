@@ -1,27 +1,27 @@
 /**
- * Fresh-process SDK subagent client. Drives one child DeepSeek Harness
- * runtime over stdio JSON-RPC through `@deepseek-ai/dsh-sdk-client` and owns
+ * Fresh-process SDK subagent client. Drives one child Xee Harness Enhanced
+ * runtime over stdio JSON-RPC through `@origin-ai/xhe-sdk-client` and owns
  * cancellation and quiescent disposal. Structure mirrors the ACP backend
- * (`@deepseek-ai/dsh-subagent-acp`): publish after the child handshake,
+ * (`@origin-ai/xhe-subagent-acp`): publish after the child handshake,
  * flatten child failures into stop reasons, tear down to quiescence. The
  * child is spawned BY the SDK client rather than through `ctx.subprocess` —
  * the subprocess seam's documented exception for SDK-managed transports —
  * so this driver applies the seam's shared env scrub itself.
  *
- * @module @deepseek-ai/dsh-subagent-dsh-sdk/run
+ * @module @origin-ai/xhe-subagent-xhe-sdk/run
  */
 
 import { randomUUID } from 'node:crypto'
-import { DeepSeekHarness, type HarnessNotification } from '@deepseek-ai/dsh-sdk-client'
-import type { ContentBlock } from '@deepseek-ai/dsh-llm'
-import { SessionId, type SessionEvent, type TurnEndReason } from '@deepseek-ai/dsh-session'
-import type { SubagentResult, SubagentRun, SubagentStartRequest, SubagentStopReason } from '@deepseek-ai/dsh-subagent'
-import { AssistantOutputFold, settleRunResult, subprocessRunHandle } from '@deepseek-ai/dsh-subagent'
-import { scrubbedParentEnv } from '@deepseek-ai/dsh-subprocess'
+import { DeepSeekHarness, type HarnessNotification } from '@origin-ai/xhe-sdk-client'
+import type { ContentBlock } from '@origin-ai/xhe-llm'
+import { SessionId, type SessionEvent, type TurnEndReason } from '@origin-ai/xhe-session'
+import type { SubagentResult, SubagentRun, SubagentStartRequest, SubagentStopReason } from '@origin-ai/xhe-subagent'
+import { AssistantOutputFold, settleRunResult, subprocessRunHandle } from '@origin-ai/xhe-subagent'
+import { scrubbedParentEnv } from '@origin-ai/xhe-subprocess'
 
 /** Resolved spawn spec for an SDK runtime child process (no defaults — see Config). */
 export interface SdkRunSpec {
-  /** The executable to spawn (the child runtime — a `dsh-jsonrpc-agent` bin or packaged exe). */
+  /** The executable to spawn (the child runtime — a `xhe-jsonrpc-agent` bin or packaged exe). */
   command: string
   /** Arguments passed to {@link command} (typically the child's `cordis.yml` path). */
   args: string[]
@@ -39,9 +39,9 @@ export interface SdkRunSpec {
   maxTokens?: number
   /**
    * Extra environment variables to ADD for the child (e.g. the child
-   * runtime's own `DEEPSEEK_API_KEY`, or `DSH_CORDIS_CONFIG`). Merged after
+   * runtime's own `DEEPSEEK_API_KEY`, or `XHE_CORDIS_CONFIG`). Merged after
    * the seam's `scrubbedParentEnv()` base, so an explicit credential or
-   * current `DSH_*` fact survives while ambient namesakes never leak.
+   * current `XHE_*` fact survives while ambient namesakes never leak.
    */
   env: Record<string, string>
   /** Bound (ms) on the protocol `shutdown` exchange during dispose. */

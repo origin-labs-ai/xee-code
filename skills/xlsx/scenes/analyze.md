@@ -78,7 +78,7 @@ Place 4-6 KPI metrics at the top of Dashboard sheet (row 3-4), each spaced 3 col
 | Just need a summary table (static) | pandas `pivot_table` → openpyxl |
 | Simple aggregation (1 dimension) | pandas `groupby` → openpyxl |
 
-**Trigger phrases**: summarize, aggregate, group by, categorize, breakdown, distribution, tally, totals per, cross-tab, 汇总, 透视, 分类统计, 交叉分析
+**Trigger phrases**: summarize, aggregate, group by, categorize, breakdown, distribution, tally, totals per, cross-tab, , , , 
 
 ---
 

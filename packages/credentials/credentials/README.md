@@ -1,6 +1,4 @@
-# dsh-credentials
-
-English | [中文](README.zh.md)
+# xhe-credentials
 
 Credential Service Definition (`ctx.credentials`). One doctrine, three consequences:
 
@@ -22,7 +20,7 @@ The key is `<scope>/<id>`, where `scope` is the **owning plugin's registered nam
 
 ```ts
 import type { Context } from '@deepseek-ai/cordis'
-import { credentialKey, credentialRef } from '@deepseek-ai/dsh-credentials'
+import { credentialKey, credentialRef } from '@origin-ai/xhe-credentials'
 
 declare const ctx: Context
 
@@ -52,7 +50,7 @@ The shadowing rule on `set`/`unset` is deliberate fail-loud: when a read-only so
 
 ## Providers
 
-[`dsh-credentials-local`](../credentials-local/README.md) layers the inherited process environment over its managed `$DSH_HOME/.credentials.yaml` document, with the launcher's project and user `.env` layers as fallbacks. The seam shape leaves room for keyring-, helper-command-, and KMS-backed providers; a remote settings provider never needs to carry secrets.
+[`xhe-credentials-local`](../credentials-local/README.md) layers the inherited process environment over its managed `$XHE_HOME/.credentials.yaml` document, with the launcher's project and user `.env` layers as fallbacks. The seam shape leaves room for keyring-, helper-command-, and KMS-backed providers; a remote settings provider never needs to carry secrets.
 
 ## Model Experience
 

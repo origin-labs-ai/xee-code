@@ -1,6 +1,6 @@
 ---
-description: AMiner 个性化论文推荐 — 按主题或学者画像
-argument-hint: [topics: 主题1, 主题2 | scholar: 姓名 org: 机构 | 自然语言]
+description: AMiner  — 
+argument-hint: [topics: 1, 2 | scholar:  org:  | ]
 allowed-tools: Read, Bash, Glob, Grep
 ---
 
@@ -32,8 +32,8 @@ Extract any of: `topics`, `scholar` / `author_name`, `org` / `author_org`, `pape
 
 **Critical rules — do NOT violate:**
 
-- **`topics`**: keep the user's exact wording. If they wrote `具身智能, 环境保护`, pass those Chinese strings through. **Never** translate them into unrelated English fields (e.g. don't map them to "Knowledge Distillation" or "Smart agriculture"). If you add an English alias, it must be a faithful translation of the same concept (e.g. 具身智能 → embodied intelligence).
-- **`language_sort`**: include `zh` or `en` **only when the user explicitly asks** for Chinese-/English-biased ranking (e.g. "优先中文论文" / "prefer English papers"). Otherwise omit it entirely.
+- **`topics`**: keep the user's exact wording. If they wrote `, `, pass those Chinese strings through. **Never** translate them into unrelated English fields (e.g. don't map them to "Knowledge Distillation" or "Smart agriculture"). If you add an English alias, it must be a faithful translation of the same concept (e.g.  → embodied intelligence).
+- **`language_sort`**: include `zh` or `en` **only when the user explicitly asks** for Chinese-/English-biased ranking (e.g. "" / "prefer English papers"). Otherwise omit it entirely.
 - **`scholar` / `org`**: use English-canonical names where reasonable (e.g. `Jie Tang`, `Tsinghua University`). If a Chinese name is ambiguous and no org is given, ask the user before guessing.
 - If `$ARGUMENTS` is empty, call the script with no extra fields — the API will return personalized recs based on the API key.
 

@@ -4,19 +4,19 @@
  * producers. It also delivers unreported completions to the owning agent:
  * injected into a busy owner's next step, or opening a turn on an idle one
  * under the default `wakeup` delivery, bounded per owner.
- * @module @deepseek-ai/dsh-tool-jobs
+ * @module @origin-ai/xhe-tool-jobs
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { boundContextSummary, createUserMessage, type ContentBlock } from '@deepseek-ai/dsh-llm'
-import { TextRetainer } from '@deepseek-ai/dsh-output-retention'
-import { defineTool } from '@deepseek-ai/dsh-tools'
-import type { GenericCallView, ToolDefinition, ToolExecution } from '@deepseek-ai/dsh-tools'
-import { JobId } from '@deepseek-ai/dsh-jobs'
-import type { JobSnapshot } from '@deepseek-ai/dsh-jobs'
-import type {} from '@deepseek-ai/dsh-system-prompt'
-import type { Agent } from '@deepseek-ai/dsh-agent'
+import { boundContextSummary, createUserMessage, type ContentBlock } from '@origin-ai/xhe-llm'
+import { TextRetainer } from '@origin-ai/xhe-output-retention'
+import { defineTool } from '@origin-ai/xhe-tools'
+import type { GenericCallView, ToolDefinition, ToolExecution } from '@origin-ai/xhe-tools'
+import { JobId } from '@origin-ai/xhe-jobs'
+import type { JobSnapshot } from '@origin-ai/xhe-jobs'
+import type {} from '@origin-ai/xhe-system-prompt'
+import type { Agent } from '@origin-ai/xhe-agent'
 
 export const name = 'tool-jobs'
 export const inject = ['tools', 'jobs', 'systemPrompt']

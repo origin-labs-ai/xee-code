@@ -2,8 +2,6 @@
 
 Status: implemented
 
-English | [中文](2026-08-09-headless-direct-core-entry-point.zh.md)
-
 ## Problem
 
 The `headless` product contract is one local task with final assistant text on stdout, a success-sensitive exit code, empty stderr on success, and no listening port. A composition containing Workspace Host services, ApiProxy, HTTP, the Web runtime, or browser plugins contradicts that contract and makes local completion depend on an unrelated transport tree.
@@ -12,15 +10,15 @@ The direct entry point still needs the same deployment model state as Web-create
 
 ## Decision
 
-The shipped `headless` profile contains `dsh-base` and `dsh-headless`. The headless bundle supplies its persona and tool mode, disables HMR, mounts the Code Mode worker explicitly, and inserts `headless-runner`. Its tree contains no `@deepseek-ai/dsh-host-*` package, ApiProxy, HTTP server, Web runtime, or browser client. Code Mode and Session persistence are one-shot Agent capabilities independent of Web presentation.
+The shipped `headless` profile contains `xhe-base` and `xhe-headless`. The headless bundle supplies its persona and tool mode, disables HMR, mounts the Code Mode worker explicitly, and inserts `headless-runner`. Its tree contains no `@origin-ai/xhe-host-*` package, ApiProxy, HTTP server, Web runtime, or browser client. Code Mode and Session persistence are one-shot Agent capabilities independent of Web presentation.
 
 `headless-runner` is a direct core entry point. After Loader settlement, it reads `ctx.agentDefaultModel.currentSelection()`, creates a fresh persisted Agent through `ctx.agents.create`, installs that `ModelSelection` in the Agent scope, waits for startup quiescence, anchors the Session sequence, submits one ordinary user message, and waits for quiescence again. It awaits `ctx.sessions.flush`, folds its durable event interval for the last non-empty assistant text and final `turn/end` reason, writes the text plus one newline to stdout, and requests bounded launcher shutdown with exit 0 exactly when the reason is `completed`. A terminal `error` reason writes its durable code and message to stderr; unexpected driver failures also use stderr and exit 1.
 
-`@deepseek-ai/dsh-agent-default-model` owns the transport-independent default used for an Agent without a session-local selection. `AgentDefaultModelConfig` provides `ctx.agentDefaultModel` and registers the `agent-default-model` Settings section. Composition config supplies `{provider, model}`; user settings may also supply `reasoningEffort`. `currentSelection()` returns the live complete selection and `saveSelection()` writes it as a complete section, so a selection without an effort clears any stored effort. `dsh-base` supplies the composition entry. Direct and ApiProxy entry points consume this service; ApiProxy alone owns session-local precedence, model validation, and persistence of accepted Web selections.
+`@origin-ai/xhe-agent-default-model` owns the transport-independent default used for an Agent without a session-local selection. `AgentDefaultModelConfig` provides `ctx.agentDefaultModel` and registers the `agent-default-model` Settings section. Composition config supplies `{provider, model}`; user settings may also supply `reasoningEffort`. `currentSelection()` returns the live complete selection and `saveSelection()` writes it as a complete section, so a selection without an effort clears any stored effort. `xhe-base` supplies the composition entry. Direct and ApiProxy entry points consume this service; ApiProxy alone owns session-local precedence, model validation, and persistence of accepted Web selections.
 
-`loadProfile` recognizes the exact installation-owned headless tuple (`dsh-base`, `dsh-web-app`, `dsh-headless`) and normalizes it to the shipped headless template while preserving every other manifest field. Extra, missing, or reordered bundle lists are user-owned and remain untouched.
+`loadProfile` recognizes the exact installation-owned headless tuple (`xhe-base`, `xhe-web-app`, `xhe-headless`) and normalizes it to the shipped headless template while preserving every other manifest field. Extra, missing, or reordered bundle lists are user-owned and remain untouched.
 
-This note owns the headless transport and completion contracts. [Apps own their command lines](2026-08-06-app-owned-command-line.md) owns the current `dsh --profile headless` grammar; the former [`dsh run` decision](../../archived/feature/2026-08-08-dsh-run-headless-command.md) records the superseded launcher-owned grammar, [GUI layering and RPC protocol](2026-07-19-gui-layering-and-rpc-protocol.md) owns browser gateway boundaries, [web config-tree boot and transport layering](2026-07-24-web-config-tree-boot-and-transport-layering.md) owns the Web tree, and [the default model follows the picker](../feature/2026-08-07-default-model-follows-the-picker.md) owns persistence of the shared Agent default.
+This note owns the headless transport and completion contracts. [Apps own their command lines](2026-08-06-app-owned-command-line.md) owns the current `dsh --profile headless` grammar; the former [`dsh run` decision](../../archived/feature/2026-08-08-xhe-run-headless-command.md) records the superseded launcher-owned grammar, [GUI layering and RPC protocol](2026-07-19-gui-layering-and-rpc-protocol.md) owns browser gateway boundaries, [web config-tree boot and transport layering](2026-07-24-web-config-tree-boot-and-transport-layering.md) owns the Web tree, and [the default model follows the picker](../feature/2026-08-07-default-model-follows-the-picker.md) owns persistence of the shared Agent default.
 
 ## Verification
 
@@ -30,7 +28,7 @@ Package tests use the real Session store and Agent registry around a scripted Ag
 
 | Alternative | Contract mismatch |
 |---|---|
-| Keep `dsh-web-app` but suppress its observation line | The process still opens a port and carries the Host, Web, and browser trees. |
+| Keep `xhe-web-app` but suppress its observation line | The process still opens a port and carries the Host, Web, and browser trees. |
 | Build a Host-only one-shot bundle around ApiProxy | ApiProxy is a client protocol gateway; a local one-shot entry point has no client boundary. |
 | Use `InProcessApiClient` for product-level protocol coverage | Product execution would depend on an unrelated protocol solely to exercise that protocol. |
 | Give headless a separate provider/model config | Direct and Web creation would have independent defaults and persistence. |

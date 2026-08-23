@@ -1,6 +1,6 @@
 ---
 name: html-ppt-zhangzara-grove
-description: Grove — 森林绿底 + 奶油色字 + Playfair 古典衬线 + 单一锈红 accent。任何应该感觉有机 / 考究 / 成熟的 deck：可持续与 wellness 品牌 / 户外自然产品 / 酒庄餐厅 / 文学艺术 deck / 咨询交付 / 双语 EN/CN 报告。
+description: Grove —  +  + Playfair  +  accent。 /  /  deck： wellness  /  /  /  deck /  /  EN/CN 。
 visibility: public
 mode: template
 carrier: deck
@@ -8,13 +8,13 @@ scenario: marketing
 pattern_source: pattern.html
 source_priority: skill-first
 triggers:
-  - "做个森林绿 deck"
-  - "做个可持续品牌 PPT"
-  - "做个考究风演讲稿"
+  - " deck"
+  - " PPT"
+  - ""
   - "grove"
   - "zhangzara-grove"
   - "organic"
-  - "考究"
+  - ""
   - "warm"
   - "sustainability brand"
   - "wellness brand"

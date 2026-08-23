@@ -16,10 +16,10 @@ import { resolveLinuxNodePtyAddon } from './build-exe-for-python-sdk-native-pty.
 const root = resolve(import.meta.dirname, '..')
 
 /** The closure manifest whose dependencies define the executable. */
-const DEPLOY_ROOT_PACKAGE = 'dsh-jsonrpc-agent-pkg'
+const DEPLOY_ROOT_PACKAGE = 'xhe-jsonrpc-agent-pkg'
 /** The closed-runtime app entry inside the deployed closure. */
-const ENTRY_BIN = 'node_modules/@deepseek-ai/dsh-sdk-jsonrpc-demo/lib/packaged-bin.js'
-const OUTPUT_BASENAME = 'dsh-jsonrpc-agent-pkg'
+const ENTRY_BIN = 'node_modules/@origin-ai/xhe-sdk-jsonrpc-demo/lib/packaged-bin.js'
+const OUTPUT_BASENAME = 'xhe-jsonrpc-agent-pkg'
 /** Default Node major; SEA mode requires at least Node 22. */
 const DEFAULT_NODE_RANGE = 'node24'
 /** Pinned for reproducible builds. */
@@ -32,7 +32,7 @@ const PYTHON_NODE_SUBDIR = 'node'
 /** Legacy deploy may hoist peer-specialized workspace packages back here. */
 const DEPLOY_SOURCE_NODE_MODULES = 'python/sdk-runtime/node_modules'
 /** Documentation excluded from the generated runtime directory. */
-const DEPLOY_ONLY_DOCS = ['README.md', 'README.zh.md', 'README.i18n.yaml']
+const DEPLOY_ONLY_DOCS = ['README.md', 'README.md', 'README.i18n.yaml']
 
 /**
  * Whole-tree assets cover Cordis's runtime bare-package imports, which pkg's

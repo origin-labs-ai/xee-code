@@ -8,12 +8,12 @@ scenario: pricing
 pattern_source: pricing-cn.html
 source_priority: skill-first
 triggers:
-  - "做个 SaaS 定价页"
-  - "中文付费页"
-  - "月年套餐切换"
-  - "4 档卡片定价"
-  - "¥ 价格表"
-  - "定价 + FAQ"
+  - " SaaS "
+  - ""
+  - ""
+  - "4 "
+  - "¥ "
+  - " + FAQ"
 ---
 
 # Pricing Page Template
@@ -22,7 +22,7 @@ Use this template when the artifact is a **Chinese-market SaaS / product pricing
 
 ## Use When
 
-- The product is sold to a Chinese audience (¥, 元/月, ICP filing, 微信/支付宝 implied).
+- The product is sold to a Chinese audience (¥, /, ICP filing, / implied).
 - The pricing model fits tier cards (3–4 tiers, optional monthly/annual toggle).
 - One tier should be visibly elevated (early-bird, most-popular, recommended).
 - The brand can carry soft sky-blue glassmorphism — or you intend to retheme the palette while keeping the structure.
@@ -46,7 +46,7 @@ Decide before building:
 
 1. **Tier count** — 3 (standard) or 4 (with an Observer / Free tier).
 2. **Recommended tier** — which one lifts and inverts (white CTA on dark) ?
-3. **Toggle model** — monthly / annual with discount %, or batch / cohort labels (第 N 批) for early-access.
+3. **Toggle model** — monthly / annual with discount %, or batch / cohort labels ( N ) for early-access.
 4. **Tier naming** — generic (Basic / Pro / Business) or atmospheric (Observer / Early Bird / Founder / Patron). The template's voice favors atmospheric.
 
 ## Layout Bias
@@ -62,8 +62,8 @@ Prefer:
 
 Avoid:
 
-- multiple "推荐" badges across tiers — pick one
-- 黑金 gradients or neon accents (forbidden aesthetic)
+- multiple "" badges across tiers — pick one
+-  gradients or neon accents (forbidden aesthetic)
 - generic emoji or 3D-icon feature bullets
 - forcing English tier names when the audience reads Chinese
 - pretending to be Stripe / Linear with a near-identical clone of their pricing page

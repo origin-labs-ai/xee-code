@@ -1,13 +1,13 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
-import AgentRegistry, { Inbox } from '@deepseek-ai/dsh-agent'
-import type { Agent, AgentStatus } from '@deepseek-ai/dsh-agent'
-import CommandRuntime from '@deepseek-ai/dsh-commands'
-import GoalService from '@deepseek-ai/dsh-goal'
-import type { GoalRef } from '@deepseek-ai/dsh-goal'
-import SessionStore, { Session, SessionId } from '@deepseek-ai/dsh-session'
-import * as commandGoal from '@deepseek-ai/dsh-command-goal'
+import AgentRegistry, { Inbox } from '@origin-ai/xhe-agent'
+import type { Agent, AgentStatus } from '@origin-ai/xhe-agent'
+import CommandRuntime from '@origin-ai/xhe-commands'
+import GoalService from '@origin-ai/xhe-goal'
+import type { GoalRef } from '@origin-ai/xhe-goal'
+import SessionStore, { Session, SessionId } from '@origin-ai/xhe-session'
+import * as commandGoal from '@origin-ai/xhe-command-goal'
 
 interface Harness {
   readonly ctx: Context
@@ -85,7 +85,7 @@ function ref(goal: NonNullable<ReturnType<GoalService['get']>>): GoalRef {
   return { id: goal.id, revision: goal.revision }
 }
 
-describe('@deepseek-ai/dsh-command-goal registration', () => {
+describe('@origin-ai/xhe-command-goal registration', () => {
   it('registers one global command with Loader-safe exports and disposes it', async () => {
     const test = await harness()
     expect(commandGoal.name).toBe('command-goal')

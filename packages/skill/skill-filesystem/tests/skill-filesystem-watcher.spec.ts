@@ -5,7 +5,7 @@ import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import SkillRegistry from '@deepseek-ai/dsh-skill'
+import SkillRegistry from '@origin-ai/xhe-skill'
 
 interface FakeWatcherControl {
   emitter: EventEmitter
@@ -92,7 +92,7 @@ vi.mock('chokidar', () => ({
 const SkillFileSystem = await import('../src/index.ts')
 
 async function tempDir(name: string): Promise<string> {
-  return await import('node:fs/promises').then(fs => fs.mkdtemp(join(tmpdir(), `dsh-${name}-`)))
+  return await import('node:fs/promises').then(fs => fs.mkdtemp(join(tmpdir(), `xhe-${name}-`)))
 }
 
 async function writeSkill(root: string, name: string): Promise<void> {

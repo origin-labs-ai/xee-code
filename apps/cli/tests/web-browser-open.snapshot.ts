@@ -15,7 +15,7 @@ const openingMessage = 'dsh web: opening the default browser; pass --no-open to 
 const tempRoots: string[] = []
 const builtArtifactsExist = existsSync(builtBin) && existsSync(frontendIndex)
 
-if (process.env.DSH_EXAMPLE_MODE === 'lib' && !builtArtifactsExist) {
+if (process.env.XHE_EXAMPLE_MODE === 'lib' && !builtArtifactsExist) {
   throw new Error('dsh web browser-open snapshot requires built CLI and Web artifacts in lib mode')
 }
 
@@ -37,7 +37,7 @@ function normalizeLocalUrl(url: string): string {
 
 describe.skipIf(!builtArtifactsExist)('dsh web browser-open assembled snapshot', () => {
   it('hands the reachable page to the default browser after the shipped tree settles', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-web-browser-open-snapshot-'))
+    const root = mkdtempSync(join(tmpdir(), 'xhe-web-browser-open-snapshot-'))
     tempRoots.push(root)
     const result = await execa(process.execPath, [
       '--import', openerHook,
@@ -49,9 +49,9 @@ describe.skipIf(!builtArtifactsExist)('dsh web browser-open assembled snapshot',
       env: {
         ...process.env,
         DEEPSEEK_API_KEY: 'keyless-browser-open-no-call',
-        DSH_AGENTS_HOME: join(root, '.agents'),
-        DSH_HOME: join(root, '.dsh'),
-        DSH_TELEMETRY_DISABLED: '1',
+        XHE_AGENTS_HOME: join(root, '.agents'),
+        XHE_HOME: join(root, '.dsh'),
+        XHE_TELEMETRY_DISABLED: '1',
         NODE_NO_WARNINGS: '1',
         SSH_CONNECTION: '',
         SSH_TTY: '',
@@ -95,7 +95,7 @@ describe.skipIf(!builtArtifactsExist)('dsh web browser-open assembled snapshot',
   })
 
   it('prints the launcher reason and manual URL after the Web app is ready', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-web-browser-open-failure-snapshot-'))
+    const root = mkdtempSync(join(tmpdir(), 'xhe-web-browser-open-failure-snapshot-'))
     tempRoots.push(root)
     const result = await execa(process.execPath, [
       '--import', openerHook,
@@ -108,10 +108,10 @@ describe.skipIf(!builtArtifactsExist)('dsh web browser-open assembled snapshot',
         ...process.env,
         BROWSER_OPEN_TEST_FAILURE: 'fixture desktop unavailable',
         DEEPSEEK_API_KEY: 'keyless-browser-open-no-call',
-        DSH_AGENTS_HOME: join(root, '.agents'),
-        DSH_BROWSER_OPEN_TEST_EXIT_ON_FAILURE: '1',
-        DSH_HOME: join(root, '.dsh'),
-        DSH_TELEMETRY_DISABLED: '1',
+        XHE_AGENTS_HOME: join(root, '.agents'),
+        XHE_BROWSER_OPEN_TEST_EXIT_ON_FAILURE: '1',
+        XHE_HOME: join(root, '.dsh'),
+        XHE_TELEMETRY_DISABLED: '1',
         NODE_NO_WARNINGS: '1',
         SSH_CONNECTION: '',
         SSH_TTY: '',
@@ -144,7 +144,7 @@ describe.skipIf(!builtArtifactsExist)('dsh web browser-open assembled snapshot',
   })
 
   it('prints the host URL without launching a browser in a VS Code Remote SSH session', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-web-browser-open-ssh-snapshot-'))
+    const root = mkdtempSync(join(tmpdir(), 'xhe-web-browser-open-ssh-snapshot-'))
     tempRoots.push(root)
     const result = await execa(process.execPath, [
       '--import', openerHook,
@@ -156,10 +156,10 @@ describe.skipIf(!builtArtifactsExist)('dsh web browser-open assembled snapshot',
       env: {
         ...process.env,
         DEEPSEEK_API_KEY: 'keyless-browser-open-no-call',
-        DSH_AGENTS_HOME: join(root, '.agents'),
-        DSH_BROWSER_OPEN_TEST_EXIT_ON_READY: '1',
-        DSH_HOME: join(root, '.dsh'),
-        DSH_TELEMETRY_DISABLED: '1',
+        XHE_AGENTS_HOME: join(root, '.agents'),
+        XHE_BROWSER_OPEN_TEST_EXIT_ON_READY: '1',
+        XHE_HOME: join(root, '.dsh'),
+        XHE_TELEMETRY_DISABLED: '1',
         NODE_NO_WARNINGS: '1',
         SSH_CONNECTION: '10.0.0.2 55000 10.0.0.9 22',
         SSH_TTY: '',
@@ -190,7 +190,7 @@ describe.skipIf(!builtArtifactsExist)('dsh web browser-open assembled snapshot',
   })
 
   it('rejects a project browser command before starting the Web app', async () => {
-    const root = mkdtempSync(join(tmpdir(), 'dsh-web-browser-open-env-snapshot-'))
+    const root = mkdtempSync(join(tmpdir(), 'xhe-web-browser-open-env-snapshot-'))
     tempRoots.push(root)
     writeFileSync(join(root, '.env'), 'BROWSER=./project-browser\n')
     const result = await execa(process.execPath, [
@@ -203,9 +203,9 @@ describe.skipIf(!builtArtifactsExist)('dsh web browser-open assembled snapshot',
       env: {
         ...process.env,
         DEEPSEEK_API_KEY: 'keyless-browser-open-no-call',
-        DSH_AGENTS_HOME: join(root, '.agents'),
-        DSH_HOME: join(root, '.dsh'),
-        DSH_TELEMETRY_DISABLED: '1',
+        XHE_AGENTS_HOME: join(root, '.agents'),
+        XHE_HOME: join(root, '.dsh'),
+        XHE_TELEMETRY_DISABLED: '1',
         NODE_NO_WARNINGS: '1',
         SSH_CONNECTION: '',
         SSH_TTY: '',

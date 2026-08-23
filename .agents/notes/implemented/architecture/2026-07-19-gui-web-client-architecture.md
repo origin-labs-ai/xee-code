@@ -2,8 +2,6 @@
 
 Status: implemented
 
-English | [中文](2026-07-19-gui-web-client-architecture.zh.md)
-
 > Division of labor: the channel-independent layering model and RPC protocol (message model / type system / contract face / client base class) are in the [layering and RPC protocol note](2026-07-19-gui-layering-and-rpc-protocol.md); this document = the browser side: how the client cordis tree loads, how UI plugins compose through slots and services, and how the React-free object layer feeds React through immutable snapshots.
 
 ## Problem
@@ -17,22 +15,22 @@ Both ends run cordis. The host is a cordis plugin tree; the browser runs a secon
 ```
 ┌─ Host ─────────────────────────┐   ┌─ Browser ─────────────────────────────────────────┐
 │ sessions/agents/SessionLog     │   │ client cordis root ctx                             │
-│ apiproxy: RPC + mux/host 双流  │◀─▶│  ├ vendored Loader + ctx.modules（内核，壳静态持有）│
+│ apiproxy: RPC + mux/host   │◀─▶│  ├ vendored Loader + ctx.modules（，）│
 │ webserver:                     │   │  ├ immediately entries: connection/runtime/        │
-│  ├ GET /plugins/<id>/client.js │   │  │   ui-theme/i18n（fetch bundle，boot 预拉）       │
-│  └ GET / 注入 __DSH_BOOT__ 图  │   │  ├ lazy entries: layout/sidebar/                   │
-│                                │   │  │   conversation/trajectory（fetch bundle，按需） │
-└────────────────────────────────┘   │  ├ ui-renderer（fetch bundle，React 根）       │
-                                     │  └ session scope ×N（观看驱动，惰性建）            │
-                                     │ DOM loading 页 → settled → React UI 一次成型       │
+│  ├ GET /plugins/<id>/client.js │   │  │   ui-theme/i18n（fetch bundle，boot ）       │
+│  └ GET /  __XHE_BOOT__   │   │  ├ lazy entries: layout/sidebar/                   │
+│                                │   │  │   conversation/trajectory（fetch bundle，） │
+└────────────────────────────────┘   │  ├ ui-renderer（fetch bundle，React ）       │
+                                     │  └ session scope ×N（，）            │
+                                     │ DOM loading  → settled → React UI        │
                                      └────────────────────────────────────────────────────┘
 ```
 
 ## The client cordis tree and the loading chain
 
-The loading chain — the two package kinds (plain vs dsh.client plugin), the module-system/plugin-governor split, the two-phase boot over the host-authored entry graph with revisions, and hot reload — is owned by the [client plugin loading note](2026-07-23-client-plugin-loading-model.md). The load-bearing facts for this document: the browser boots the same vendored `@cordisjs/plugin-loader` as the host with a client module system (`ctx.modules`, `packages/client/modules`) filling its `internal` contract; every unit with product behavior is an entry in the host-authored `__DSH_BOOT__` graph — every production plugin package (infrastructure included) carries the `dsh.client` declaration and arrives as a fetched `./client` tsdown closure bundle, `immediately` rows differing only in boot phase-one prefetch, while plain packages (react family, cordis, the not-yet-promoted libraries) stay shell-bundled, seeded, and invisible to the graph; bundles execute `window.__ModuleLoader__.load({ id, factory })` and their `require` is answered from the lazy CJS module table (seed words + registered factories, materialized and memoized on first require — cross-plugin value imports are a build error, cooperation goes through cordis services); global styles and CSS Modules are inlined in their owning plugin bundle and injected as `<style data-plugin="<id>">` at materialization (CSS Modules also receive hashed names; ownership tags make reload removal possible); hot reload is live in dev graphs — the webserver stat-polls the bundles it serves and broadcasts `rebuilt` SSE frames, and the `client-hmr` plugin swaps one fiber per frame. After `loader.await()` and an all-ACTIVE sweep, the framework-free kernel calls the dynamic UI renderer's `ctx.uiRenderer.mount(container)` once — every entry is created and every fiber reached ACTIVE, with FAILED/PENDING fibers listed loud; there is no partial-availability mode (progressive rendering is deferred work).
+The loading chain — the two package kinds (plain vs dsh.client plugin), the module-system/plugin-governor split, the two-phase boot over the host-authored entry graph with revisions, and hot reload — is owned by the [client plugin loading note](2026-07-23-client-plugin-loading-model.md). The load-bearing facts for this document: the browser boots the same vendored `@cordisjs/plugin-loader` as the host with a client module system (`ctx.modules`, `packages/client/modules`) filling its `internal` contract; every unit with product behavior is an entry in the host-authored `__XHE_BOOT__` graph — every production plugin package (infrastructure included) carries the `dsh.client` declaration and arrives as a fetched `./client` tsdown closure bundle, `immediately` rows differing only in boot phase-one prefetch, while plain packages (react family, cordis, the not-yet-promoted libraries) stay shell-bundled, seeded, and invisible to the graph; bundles execute `window.__ModuleLoader__.load({ id, factory })` and their `require` is answered from the lazy CJS module table (seed words + registered factories, materialized and memoized on first require — cross-plugin value imports are a build error, cooperation goes through cordis services); global styles and CSS Modules are inlined in their owning plugin bundle and injected as `<style data-plugin="<id>">` at materialization (CSS Modules also receive hashed names; ownership tags make reload removal possible); hot reload is live in dev graphs — the webserver stat-polls the bundles it serves and broadcasts `rebuilt` SSE frames, and the `client-hmr` plugin swaps one fiber per frame. After `loader.await()` and an all-ACTIVE sweep, the framework-free kernel calls the dynamic UI renderer's `ctx.uiRenderer.mount(container)` once — every entry is created and every fiber reached ACTIVE, with FAILED/PENDING fibers listed loud; there is no partial-availability mode (progressive rendering is deferred work).
 
-Type universes stay split at the aggregate level — `tsconfig.host.json` is the host program and `tsconfig.client.json` the client program, both referenced by the solution root `tsconfig.json` — because both sides merge cordis `Context` under the same keys (`sessions`, `loader`) with different services; client packages consume the wire vocabulary through pure type subpaths (`@deepseek-ai/dsh-session/types` and kin) so no host augmentation rides into the client program.
+Type universes stay split at the aggregate level — `tsconfig.host.json` is the host program and `tsconfig.client.json` the client program, both referenced by the solution root `tsconfig.json` — because both sides merge cordis `Context` under the same keys (`sessions`, `loader`) with different services; client packages consume the wire vocabulary through pure type subpaths (`@origin-ai/xhe-session/types` and kin) so no host augmentation rides into the client program.
 
 ## The slot system: how the page composes
 
@@ -65,7 +63,7 @@ Session.handleMuxEnvelope ──► contiguous Event window
         │                ConversationNodeAssembler
         │                  Definitions -> Contexts -> view builders
         ▼
-Notifier 微任务合批 ──► ConversationSnapshot 缓存 ──uSES──► 组件
+Notifier  ──► ConversationSnapshot  ──uSES──► 
 ```
 
 - **Session** (session.ts): lazily built, resident — once created it keeps eating frames in the background, so switching away and back renders instantly. Operations: `prompt`/`cancel` (RPC passthrough; failures land in the snapshot's `promptError`), `open` (pull the tail history page, idempotent), `loadOlder` (upward paging, reentry-guarded), `resync` (reconnect = clear the window and rerun open). Subscription: `subscribe`/`getSnapshot` (always the cached reference) — `implements ObservableSnapshot<ConversationSnapshot>`, with `useSelector = bindSnapshotSelector(this)` attached at construction, so a Session is directly a uSES source. Frame dispatch is one switch: `session/event` frames dedup by seq (the only dedup key), buffer while open is in flight, otherwise append + incremental projection; open/stitch merges the live buffer by seq and backfills once if `subscribed.lastSeq` outruns the window tail.

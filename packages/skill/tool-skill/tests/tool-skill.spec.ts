@@ -3,20 +3,20 @@ import { mkdir, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import { Context } from '@deepseek-ai/cordis'
-import { createUserMessage, CallId, type Message } from '@deepseek-ai/dsh-llm'
-import { createScope, type Scope } from '@deepseek-ai/dsh-scope'
-import { Session, SessionId, type SessionEvent, type UserMessage } from '@deepseek-ai/dsh-session'
-import SystemPrompt, { renderPrompt } from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime, { defineContentToolFixture } from '@deepseek-ai/dsh-tools'
-import AgentRegistry, { agentEvents, Inbox, type Agent, type PreStepDecision } from '@deepseek-ai/dsh-agent'
-import SkillRegistry from '@deepseek-ai/dsh-skill'
-import * as SkillFileSystem from '@deepseek-ai/dsh-skill-filesystem'
-import * as toolSkill from '@deepseek-ai/dsh-tool-skill'
+import { createUserMessage, CallId, type Message } from '@origin-ai/xhe-llm'
+import { createScope, type Scope } from '@origin-ai/xhe-scope'
+import { Session, SessionId, type SessionEvent, type UserMessage } from '@origin-ai/xhe-session'
+import SystemPrompt, { renderPrompt } from '@origin-ai/xhe-system-prompt'
+import ToolRuntime, { defineContentToolFixture } from '@origin-ai/xhe-tools'
+import AgentRegistry, { agentEvents, Inbox, type Agent, type PreStepDecision } from '@origin-ai/xhe-agent'
+import SkillRegistry from '@origin-ai/xhe-skill'
+import * as SkillFileSystem from '@origin-ai/xhe-skill-filesystem'
+import * as toolSkill from '@origin-ai/xhe-tool-skill'
 
 const testToolSignal = new AbortController().signal
 
 async function tempDir(name: string): Promise<string> {
-  return await import('node:fs/promises').then(fs => fs.mkdtemp(join(tmpdir(), `dsh-${name}-`)))
+  return await import('node:fs/promises').then(fs => fs.mkdtemp(join(tmpdir(), `xhe-${name}-`)))
 }
 
 async function writeSkill(root: string, name: string, description: string, body: string): Promise<void> {
@@ -156,7 +156,7 @@ async function mintAgentScope(ctx: Context, subject: string | Agent): Promise<{ 
   return { agent, scope }
 }
 
-describe('dsh-tool-skill', () => {
+describe('xhe-tool-skill', () => {
   it('registers the skill tool schema and removes it on dispose', async () => {
     const ctx = new Context()
     await ctx.plugin(SystemPrompt)
@@ -520,7 +520,7 @@ describe('dsh-tool-skill', () => {
     }), { surfaceOp: 'append' })
     session.append('user/message', createUserMessage({
       content: catalogContent(['- `resumed-skill`: Resumed skill']),
-      source: { kind: 'plugin', plugin: 'dsh-tool-skill' },
+      source: { kind: 'plugin', plugin: 'xhe-tool-skill' },
     }), { surfaceOp: 'append' })
 
     await fireStep(ctx, agent, 1, 1)

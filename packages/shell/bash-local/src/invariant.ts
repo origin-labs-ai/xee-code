@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@deepseek-ai/dsh-bash-local`.
- * @module @deepseek-ai/dsh-bash-local/invariant
+ * Package-owned invariant companion for `@origin-ai/xhe-bash-local`.
+ * @module @origin-ai/xhe-bash-local/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@deepseek-ai/dsh-invariants'
+import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
 
-const PACKAGE_NAME = '@deepseek-ai/dsh-bash-local'
+const PACKAGE_NAME = '@origin-ai/xhe-bash-local'
 
 /** Cordis companion plugin name. */
 export const name = 'bash-local-invariant'

@@ -23,7 +23,7 @@ metadata:
 Personalized paper recommendation via AMiner rec5 API. Token required: set `AMINER_API_KEY` env var.
 - Docs: https://open.aminer.cn/open/docs | Console: https://open.aminer.cn/open/board?tab=control
 
-**When to activate**: any time the user asks for paper recommendations — explicit command (`/aminer-dp ...`) or natural language (`recommend me papers on RAG`, `帮我推荐最近的多模态论文`).
+**When to activate**: any time the user asks for paper recommendations — explicit command (`/aminer-dp ...`) or natural language (`recommend me papers on RAG`, ``).
 
 ---
 
@@ -59,7 +59,7 @@ Content-Type: application/json;charset=utf-8
 | `topics` | string[] | conditional | Research topic phrases. **Use the user’s wording** (Chinese, English, or mixed). The API accepts multi-language topic strings. |
 | `size` | int | optional | Number of papers per call (1–20). Omit to let the model decide (see below). |
 | `offset` | int | optional | Pagination offset (0–100, default 0). |
-| `language_sort` | string | optional | `zh` or `en` **only when the user explicitly asks** for Chinese- or English-biased ranking (e.g. “优先中文论文” / “prefer English papers”). Otherwise omit; the request will not include this field. |
+| `language_sort` | string | optional | `zh` or `en` **only when the user explicitly asks** for Chinese- or English-biased ranking (e.g. “” / “prefer English papers”). Otherwise omit; the request will not include this field. |
 
 At least one of `author_name` or `topics` should be provided. When none are given, the API returns personalized recommendations based on the account associated with `AMINER_API_KEY`.
 
@@ -120,8 +120,8 @@ recommend me recent papers on RAG
 **Natural language input** — you (the model) must parse it into fields before calling the script. **Critical for `topics`:**
 
 1. **`topics` — do not “translate away” the user’s intent**
-   - If the user already wrote `topics:` in the trigger (e.g. `具身智能`, `环境保护`), pass **those exact strings** into `handle_trigger.py`’s `--text`. **Do not** replace them with unrelated English terms (e.g. do **not** map arbitrary topics to “Knowledge Distillation”, “Smart agriculture”, or any other field the user did not ask for).
-   - If you add English for retrieval, it must be a **faithful** alias of the same concept (e.g. 具身智能 → `embodied intelligence`, 环境保护 → `environmental protection`). When in doubt, **keep the user’s original words** and do not invent synonyms.
+   - If the user already wrote `topics:` in the trigger (e.g. ``, ``), pass **those exact strings** into `handle_trigger.py`’s `--text`. **Do not** replace them with unrelated English terms (e.g. do **not** map arbitrary topics to “Knowledge Distillation”, “Smart agriculture”, or any other field the user did not ask for).
+   - If you add English for retrieval, it must be a **faithful** alias of the same concept (e.g.  → `embodied intelligence`,  → `environmental protection`). When in doubt, **keep the user’s original words** and do not invent synonyms.
    - **Never** change the user’s topic into a different research area.
 
 2. **Scholars and institutions (person search still English-oriented)**
@@ -133,23 +133,23 @@ recommend me recent papers on RAG
 5. Reconstruct the trigger, then call `handle_trigger.py`.
 
 Example (Chinese topics — **keep as-is**):
-- User: `/aminer-dp topics: 具身智能, 环境保护`
-- You call: `handle_trigger.py --text "/aminer-dp topics: 具身智能, 环境保护"`  
+- User: `/aminer-dp topics: , `
+- You call: `handle_trigger.py --text "/aminer-dp topics: , "`  
   (Do **not** rewrite `topics` into unrelated English.)
 
 Example:
-- User: `/aminer-dp 我做多模态智能体和 tool-use，帮我推荐最近论文`
+- User: `/aminer-dp  tool-use，`
 - You extract: `topics: multimodal agents, tool-use`
 - You call: `handle_trigger.py --text "/aminer-dp topics: multimodal agents, tool-use size: 5"`
 
 Example (scholar):
-- User: `/aminer-dp 我是唐杰，清华大学，做多模态和知识图谱`
+- User: `/aminer-dp ，，`
 - You extract: `scholar: Jie Tang, org: Tsinghua University, topics: multimodal, knowledge graph`
 - You call: `handle_trigger.py --text "/aminer-dp scholar: Jie Tang org: Tsinghua University topics: multimodal, knowledge graph"`
 
 Example (ambiguous name, ask user):
-- User: `/aminer-dp 推荐张伟方向的论文`
-- You: "张伟是一个常见名字，请提供机构信息以便精确匹配，例如：张伟，北京大学。或者直接提供 aminer_author_id。"
+- User: `/aminer-dp `
+- You: "，，：，。 aminer_author_id。"
 
 **`papers` field**: representative paper titles (e.g. `papers: OAG-Bench | RPC-Bench`) accompany `scholar`/`author_name` for disambiguation context. They do not map directly to an API field.
 

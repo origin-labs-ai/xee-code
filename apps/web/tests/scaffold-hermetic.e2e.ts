@@ -2,9 +2,9 @@ import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { expect, it } from 'vitest'
-import type {} from '@deepseek-ai/dsh-skill'
-import { SessionId } from '@deepseek-ai/dsh-session'
-import type {} from '@deepseek-ai/dsh-agent-presets'
+import type {} from '@origin-ai/xhe-skill'
+import { SessionId } from '@origin-ai/xhe-session'
+import type {} from '@origin-ai/xhe-agent-presets'
 import { launchWebScaffold, type WebScaffold } from './scaffold.ts'
 
 async function writeSkill(root: string, name: string): Promise<void> {
@@ -20,8 +20,8 @@ Ambient host state.
 }
 
 it('isolates replay skill discovery from every ambient host root', async () => {
-  const ambient = await mkdtemp(join(tmpdir(), 'dsh-web-ambient-skills-'))
-  const dshHome = join(ambient, 'dsh-home')
+  const ambient = await mkdtemp(join(tmpdir(), 'xhe-web-ambient-skills-'))
+  const dshHome = join(ambient, 'xhe-home')
   const agentsHome = join(ambient, 'agents-home')
   const bundled = join(ambient, 'bundled')
   await Promise.all([
@@ -30,12 +30,12 @@ it('isolates replay skill discovery from every ambient host root', async () => {
     writeSkill(bundled, 'ambient-bundled'),
   ])
 
-  const originalDshHome = process.env.DSH_HOME
-  const originalAgentsHome = process.env.DSH_AGENTS_HOME
-  const originalBundled = process.env.DSH_BUNDLED_SKILL_DIR
-  process.env.DSH_HOME = dshHome
-  process.env.DSH_AGENTS_HOME = agentsHome
-  process.env.DSH_BUNDLED_SKILL_DIR = bundled
+  const originalDshHome = process.env.XHE_HOME
+  const originalAgentsHome = process.env.XHE_AGENTS_HOME
+  const originalBundled = process.env.XHE_BUNDLED_SKILL_DIR
+  process.env.XHE_HOME = dshHome
+  process.env.XHE_AGENTS_HOME = agentsHome
+  process.env.XHE_BUNDLED_SKILL_DIR = bundled
   let scaffold: WebScaffold | undefined
   try {
     scaffold = await launchWebScaffold()
@@ -62,12 +62,12 @@ it('isolates replay skill discovery from every ambient host root', async () => {
     try {
       await scaffold?.close()
     } finally {
-      if (originalDshHome === undefined) delete process.env.DSH_HOME
-      else process.env.DSH_HOME = originalDshHome
-      if (originalAgentsHome === undefined) delete process.env.DSH_AGENTS_HOME
-      else process.env.DSH_AGENTS_HOME = originalAgentsHome
-      if (originalBundled === undefined) delete process.env.DSH_BUNDLED_SKILL_DIR
-      else process.env.DSH_BUNDLED_SKILL_DIR = originalBundled
+      if (originalDshHome === undefined) delete process.env.XHE_HOME
+      else process.env.XHE_HOME = originalDshHome
+      if (originalAgentsHome === undefined) delete process.env.XHE_AGENTS_HOME
+      else process.env.XHE_AGENTS_HOME = originalAgentsHome
+      if (originalBundled === undefined) delete process.env.XHE_BUNDLED_SKILL_DIR
+      else process.env.XHE_BUNDLED_SKILL_DIR = originalBundled
       await rm(ambient, { recursive: true, force: true })
     }
   }

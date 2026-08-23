@@ -1,96 +1,96 @@
-- dialog "设置":
+- dialog "":
   - navigation:
-    - text: 设置
-    - button "通用设置":
+    - text: 
+    - button "":
       - img
-      - text: 通用设置
-    - button "模型":
+      - text: 
+    - button "":
       - img
-      - text: 模型
-    - button "插件":
+      - text: 
+    - button "":
       - img
-      - text: 插件
-    - button "Agent 预设":
+      - text: 
+    - button "Agent ":
       - img
-      - text: Agent 预设
-  - button "打开配置文件"
-  - button "关闭":
+      - text: Agent 
+  - button ""
+  - button "":
     - img
-    - text: 关闭
-  - heading "Agent 预设" [level=2]
-  - paragraph: 预设即一个会话的 Agent 所运行的插件组装 —— 它的工具、提示词与能力。复制一份既有预设改成自己的，或用「创造模式」让 Agent 帮你创建。
-  - heading "内置" [level=3]
+    - text: 
+  - heading "Agent " [level=2]
+  - paragraph:  Agent  —— 、。，「」 Agent 。
+  - heading "" [level=3]
   - list:
     - listitem:
-      - 'button "当前使用: 标准模式" [disabled] [pressed]':
-        - text: 标准模式 内置 当前使用 功能完整的编码 Agent，支持文件编辑、Shell、文件与网页检索、Skills、计划、目标、子代理和工作流。
+      - 'button ": " [disabled] [pressed]':
+        - text:     Agent，、Shell、、Skills、、、。
         - code: standard
-      - 'button "查看: 标准模式"':
+      - 'button ": "':
         - img
-        - text: 查看
-      - 'button "复制: 标准模式"':
+        - text: 
+      - 'button ": "':
         - img
-        - text: 复制
+        - text: 
     - listitem:
-      - 'button "设为默认: PTC 模式"':
-        - text: PTC 模式 内置 具备标准模式的全部能力，并通过 Code Mode SDK 呈现工具，让模型用一个 TypeScript 程序组合多步操作。
+      - 'button ": PTC "':
+        - text: PTC   ， Code Mode SDK ， TypeScript 。
         - code: code
-      - 'button "查看: PTC 模式"':
+      - 'button ": PTC "':
         - img
-        - text: 查看
-      - 'button "复制: PTC 模式"':
+        - text: 
+      - 'button ": PTC "':
         - img
-        - text: 复制
+        - text: 
     - listitem:
-      - 'button "设为默认: 极简模式"':
-        - text: 极简模式 内置 仅提供持久 bash 与 str_replace_editor 的双工具编码 Agent。
+      - 'button ": "':
+        - text:    bash  str_replace_editor  Agent。
         - code: minimal
-      - 'button "查看: 极简模式"':
+      - 'button ": "':
         - img
-        - text: 查看
-      - 'button "复制: 极简模式"':
+        - text: 
+      - 'button ": "':
         - img
-        - text: 复制
+        - text: 
     - listitem:
-      - 'button "设为默认: 创造模式"':
-        - text: 创造模式 内置 用于创建自定义 Agent preset：具备标准模式的全部能力，并提供运行时检查、插件实验和 preset 创作指导。
+      - 'button ": "':
+        - text:    Agent preset：，、 preset 。
         - code: cordis
-      - 'button "查看: 创造模式"':
+      - 'button ": "':
         - img
-        - text: 查看
-      - 'button "复制: 创造模式"':
+        - text: 
+      - 'button ": "':
         - img
-        - text: 复制
-  - heading "自定义" [level=3]
+        - text: 
+  - heading "" [level=3]
   - list:
     - listitem:
-      - 'button "加载失败: broken-yaml" [disabled]':
-        - text: broken-yaml 加载失败 自定义 暂无描述。
+      - 'button ": broken-yaml" [disabled]':
+        - text: broken-yaml   。
         - alert: "the composition is not valid YAML: unexpected end of the stream within a flow collection (3:1)"
         - code: broken-yaml
-      - 'button "查看路径: broken-yaml"':
+      - 'button ": broken-yaml"':
         - img
-        - text: 查看路径
-      - 'button "复制: broken-yaml" [disabled]':
+        - text: 
+      - 'button ": broken-yaml" [disabled]':
         - img
-        - text: 预设加载失败，不能复制
-      - 'button "删除: broken-yaml"':
+        - text: ，
+      - 'button ": broken-yaml"':
         - img
-        - text: 删除
+        - text: 
     - listitem:
-      - 'button "加载失败: 幽灵预设" [disabled]':
-        - text: 幽灵预设 加载失败 自定义 composition 已被手动删除。
+      - 'button ": " [disabled]':
+        - text:    composition 。
         - alert: the composition file agent.cordis.yml is missing — the directory still occupies the id; delete it or restore the file
         - code: ghost
-      - 'button "查看路径: 幽灵预设"':
+      - 'button ": "':
         - img
-        - text: 查看路径
-      - 'button "复制: 幽灵预设" [disabled]':
+        - text: 
+      - 'button ": " [disabled]':
         - img
-        - text: 预设加载失败，不能复制
-      - 'button "删除: 幽灵预设"':
+        - text: ，
+      - 'button ": "':
         - img
-        - text: 删除
-  - button "用「创造模式」创作自定义预设":
+        - text: 
+  - button "「」":
     - img
-    - text: 用「创造模式」创作自定义预设
+    - text: 「」

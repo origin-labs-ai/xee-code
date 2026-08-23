@@ -13,7 +13,7 @@ import {
 
 const root = resolve(import.meta.dirname, '..')
 const document = readFileSync(join(root, 'docs/i18n/translation-prompt.md'), 'utf8')
-const terminology = '| English | 中文 |\n|---|---|\n| agent | agent |'
+const terminology = '| English |  |\n|---|---|\n| agent | agent |'
 
 const retainedExamples = [
   ['### Colloquial verb → Professional verb', 'The repo pins pnpm@11.7.0 in package.json', '该仓库在 package.json 中固定使用 pnpm@11.7.0'],
@@ -23,10 +23,10 @@ const retainedExamples = [
   ['### Em-dash → Colon/period', 'FIXME — an issue that should block a new release.', 'FIXME：应当阻塞新版本发布的问题。'],
   ['### Overly literal → Meaningful rendering', 'awkward phrasing is easier to notice when you read the translation without comparing it with the source', '不对照原文阅读译文时，更容易察觉别扭的表达'],
   ['### Terminology — do not translate what should be kept in English', 'typed service seams, and explicit extension points', '类型化的服务 seam 与显式扩展点'],
-  ['### Slang/jargon → Professional phrasing', 'The committed agent workflow lives in .agents/skills/dsh-translate-docs', '仓库内置的 agent 工作流见 .agents/skills/dsh-translate-docs'],
+  ['### Slang/jargon → Professional phrasing', 'The committed agent workflow lives in .agents/skills/xhe-translate-docs', '仓库内置的 agent 工作流见 .agents/skills/xhe-translate-docs'],
   ['### "For humans" — translate the intent, not the word', 'For humans, start with the development guide', '面向开发者：请先阅读开发指南'],
   ['### Code block comments — NEVER translate', '# full-screen TUI coding agent (needs DEEPSEEK_API_KEY)', 'keep exactly as-is, byte-for-byte'],
-  ['### Language switcher — flip direction', 'English | [中文](README.zh.md)', '[English](README.md) | 中文'],
+  ['### Language switcher — flip direction', 'English', '[English](README.md) | '],
 ]
 
 describe('translation prompt rendering', () => {
@@ -89,13 +89,13 @@ describe('translation prompt rendering', () => {
       sourceFilename: 'guide.md',
       sourceDocument: '# Guide\n\nNew source.',
       terminology,
-      examples: [{ english: '# Example\n\nEnglish.', chinese: '# 示例\n\n中文。' }],
+      examples: [{ english: '# Example\n\nEnglish.', chinese: '# 示例\n\n。' }],
     })
     expect(request.targetFilename).toBe('guide.zh.md')
     expect(request.messages.map(message => message.role)).toEqual(['system', 'user', 'assistant', 'user'])
     expect(request.messages.slice(1).map(message => message.content)).toEqual([
       '# Example\n\nEnglish.',
-      '# 示例\n\n中文。',
+      '# 示例\n\n。',
       '# Guide\n\nNew source.',
     ])
 
@@ -104,11 +104,11 @@ describe('translation prompt rendering', () => {
       sourceFilename: 'guide.zh.md',
       sourceDocument: '# 指南\n\n新源文。',
       terminology,
-      examples: [{ english: '# Example\n\nEnglish.', chinese: '# 示例\n\n中文。' }],
+      examples: [{ english: '# Example\n\nEnglish.', chinese: '# 示例\n\n。' }],
     })
     expect(reverse.targetFilename).toBe('guide.md')
     expect(reverse.messages.slice(1).map(message => message.content)).toEqual([
-      '# 示例\n\n中文。',
+      '# 示例\n\n。',
       '# Example\n\nEnglish.',
       '# 指南\n\n新源文。',
     ])
@@ -160,12 +160,12 @@ describe('translation response sections', () => {
     const response = renderTranslationResponse({
       translation: '# 指南\n\n初稿。',
       review: '- 无修正',
-      final: '# 指南\n\nEnglish | [中文](guide.zh.md)\n\n定稿。',
+      final: '# 指南\n\nEnglish\n\n定稿。',
     })
     expect(consumeTranslationResponse(response, { sourceLanguage: 'English', sourceFilename: 'guide.md' }).final).toBe([
       '# 指南',
       '',
-      '[English](guide.md) | 中文',
+      '[English](guide.md) | ',
       '',
       '定稿。',
       '',
@@ -193,7 +193,7 @@ describe('translation response sections', () => {
       '',
       '# 指南',
       '',
-      '[English](guide.md) | 中文',
+      '[English](guide.md) | ',
       '',
       '定稿。',
       '',
@@ -229,6 +229,6 @@ describe('translation response sections', () => {
     expect(consumeTranslationResponse(response, {
       sourceLanguage: 'Chinese',
       sourceFilename: 'guide.zh.md',
-    }).final).toContain('\n\nEnglish | [中文](guide.zh.md)\n\n')
+    }).final).toContain('\n\nEnglish\n\n')
   })
 })

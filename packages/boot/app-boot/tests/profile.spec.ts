@@ -1,5 +1,5 @@
 /**
- * Profile machinery of `dsh-app-boot`: directory resolution and init,
+ * Profile machinery of `xhe-app-boot`: directory resolution and init,
  * manifest round-trips, two-anchor bundle resolution, patch-layer loading,
  * empty-root composition, and the installation module-fallback healing.
  */
@@ -21,7 +21,7 @@ import {
   writeProfileManifest,
 } from '../src/index.ts'
 
-const tmp = (): string => mkdtempSync(join(tmpdir(), 'dsh-profile-'))
+const tmp = (): string => mkdtempSync(join(tmpdir(), 'xhe-profile-'))
 
 /** Stage a fake installed app: package.json with deps and a node_modules holding bundles. */
 function stageInstallation(bundles: Record<string, { patch?: string; deps?: Record<string, string> }>): string {
@@ -41,7 +41,7 @@ function stageInstallation(bundles: Record<string, { patch?: string; deps?: Reco
     }))
     if (spec.patch !== undefined) writeFileSync(join(dir, 'cordis.patch.yml'), spec.patch)
   }
-  writeFileSync(join(appDir, 'package.json'), JSON.stringify({ name: 'dsh-app', dependencies: appDeps }))
+  writeFileSync(join(appDir, 'package.json'), JSON.stringify({ name: 'xhe-app', dependencies: appDeps }))
   return join(appDir, 'package.json')
 }
 
@@ -59,15 +59,15 @@ describe('initProfile', () => {
   it('creates manifest, user patch layer, and pnpm workspace once, never overwriting', () => {
     const home = tmp()
     const dir = resolveProfileDir('tui', home)
-    initProfile(dir, ['@deepseek-ai/dsh-base'])
+    initProfile(dir, ['@origin-ai/xhe-base'])
     const manifest = readProfileManifest('t', dir)
-    expect(manifest.dsh?.profile?.bundles).toEqual(['@deepseek-ai/dsh-base'])
+    expect(manifest.dsh?.profile?.bundles).toEqual(['@origin-ai/xhe-base'])
     expect(readFileSync(join(dir, PROFILE_PATCH_FILENAME), 'utf8')).toContain('[]')
     expect(readFileSync(join(dir, 'pnpm-workspace.yaml'), 'utf8')).toContain('nodeLinker: hoisted')
     // Re-init keeps user edits.
     writeFileSync(join(dir, PROFILE_PATCH_FILENAME), '- id: x\n  config: {}\n')
     initProfile(dir, ['other'])
-    expect(readProfileManifest('t', dir).dsh?.profile?.bundles).toEqual(['@deepseek-ai/dsh-base'])
+    expect(readProfileManifest('t', dir).dsh?.profile?.bundles).toEqual(['@origin-ai/xhe-base'])
     expect(readFileSync(join(dir, PROFILE_PATCH_FILENAME), 'utf8')).toContain('- id: x')
   })
 })
@@ -151,7 +151,7 @@ describe('loadProfile', () => {
     // The web template auto-initializes on first load. Bundle resolution
     // cannot be asserted to fail here: the source-plane test runner resolves
     // @deepseek-ai/* through tsconfig paths regardless of the staged anchor.
-    expect(PROFILE_TEMPLATES.web).toContain('@deepseek-ai/dsh-base')
+    expect(PROFILE_TEMPLATES.web).toContain('@origin-ai/xhe-base')
     try {
       loadProfile('t', 'web', anchor, home)
     } catch {
@@ -163,28 +163,28 @@ describe('loadProfile', () => {
 
   it('normalizes only the exact installation-owned headless bundle tuple', () => {
     const anchor = stageInstallation({
-      '@deepseek-ai/dsh-base': { patch: '[]\n' },
-      '@deepseek-ai/dsh-web-app': { patch: '[]\n' },
-      '@deepseek-ai/dsh-headless': { patch: '[]\n' },
+      '@origin-ai/xhe-base': { patch: '[]\n' },
+      '@origin-ai/xhe-web-app': { patch: '[]\n' },
+      '@origin-ai/xhe-headless': { patch: '[]\n' },
       'custom-bundle': { patch: '[]\n' },
     })
     const home = tmp()
     const stock = resolveProfileDir('headless', home)
     initProfile(stock, [
-      '@deepseek-ai/dsh-base', '@deepseek-ai/dsh-web-app', '@deepseek-ai/dsh-headless',
+      '@origin-ai/xhe-base', '@origin-ai/xhe-web-app', '@origin-ai/xhe-headless',
     ])
     loadProfile('t', 'headless', anchor, home)
     expect(readProfileManifest('t', stock).dsh?.profile?.bundles)
-      .toEqual(['@deepseek-ai/dsh-base', '@deepseek-ai/dsh-headless'])
+      .toEqual(['@origin-ai/xhe-base', '@origin-ai/xhe-headless'])
 
     const customHome = tmp()
     const custom = resolveProfileDir('headless', customHome)
     initProfile(custom, [
-      '@deepseek-ai/dsh-base', '@deepseek-ai/dsh-web-app', '@deepseek-ai/dsh-headless', 'custom-bundle',
+      '@origin-ai/xhe-base', '@origin-ai/xhe-web-app', '@origin-ai/xhe-headless', 'custom-bundle',
     ])
     loadProfile('t', 'headless', anchor, customHome)
     expect(readProfileManifest('t', custom).dsh?.profile?.bundles).toEqual([
-      '@deepseek-ai/dsh-base', '@deepseek-ai/dsh-web-app', '@deepseek-ai/dsh-headless', 'custom-bundle',
+      '@origin-ai/xhe-base', '@origin-ai/xhe-web-app', '@origin-ai/xhe-headless', 'custom-bundle',
     ])
   })
 
@@ -230,7 +230,7 @@ describe('healProfilesModuleFallback', () => {
     const fallback = join(home, 'profiles', 'node_modules')
     // App deps, the bundle's own deps, and the bundle itself are linked; the
     // plain library is linked as an app dep (harmless), the app itself too.
-    for (const name of ['bundle-a', 'plain-lib', 'dep-of-a', 'dsh-app']) {
+    for (const name of ['bundle-a', 'plain-lib', 'dep-of-a', 'xhe-app']) {
       expect(lstatSync(join(fallback, name)).isSymbolicLink(), name).toBe(true)
     }
     // Idempotent, and a moved target is re-pointed.
@@ -242,7 +242,7 @@ describe('healProfilesModuleFallback', () => {
   it('throws when a fallback entry is a real directory', () => {
     const anchor = stageInstallation({})
     const home = tmp()
-    mkdirSync(join(home, 'profiles', 'node_modules', 'dsh-app'), { recursive: true })
+    mkdirSync(join(home, 'profiles', 'node_modules', 'xhe-app'), { recursive: true })
     expect(() => { healProfilesModuleFallback(anchor, home) }).toThrow('is not a symlink')
   })
 
@@ -251,9 +251,9 @@ describe('healProfilesModuleFallback', () => {
     const home = tmp()
     const fallback = join(home, 'profiles', 'node_modules')
     mkdirSync(fallback, { recursive: true })
-    symlinkSync(tmp(), join(fallback, 'dsh-app'), 'junction')
+    symlinkSync(tmp(), join(fallback, 'xhe-app'), 'junction')
     healProfilesModuleFallback(anchor, home)
-    expect(readlinkSync(join(fallback, 'dsh-app'))).toContain('app')
+    expect(readlinkSync(join(fallback, 'xhe-app'))).toContain('app')
   })
 
   it('tolerates losing the concurrent-heal race to an identical link and rejects a different one', () => {
@@ -267,6 +267,6 @@ describe('healProfilesModuleFallback', () => {
     healProfilesModuleFallback(anchor, home)
     healProfilesModuleFallback(anchor, home) // second healer sees the correct link
     const fallback = join(home, 'profiles', 'node_modules')
-    expect(lstatSync(join(fallback, 'dsh-app')).isSymbolicLink()).toBe(true)
+    expect(lstatSync(join(fallback, 'xhe-app')).isSymbolicLink()).toBe(true)
   })
 })

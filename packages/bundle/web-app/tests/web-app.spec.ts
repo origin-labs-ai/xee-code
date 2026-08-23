@@ -13,9 +13,9 @@ import { join } from 'node:path'
 import { PassThrough } from 'node:stream'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { createLaunchEnvironmentSnapshot, DSH_LAUNCH_ENVIRONMENT_KEY } from '@deepseek-ai/dsh-launch-environment'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import type { WebServer } from '@deepseek-ai/dsh-host-webserver'
+import { createLaunchEnvironmentSnapshot, XHE_LAUNCH_ENVIRONMENT_KEY } from '@origin-ai/xhe-launch-environment'
+import SystemPrompt from '@origin-ai/xhe-system-prompt'
+import type { WebServer } from '@origin-ai/xhe-host-webserver'
 import { apply, Config, internals } from '../src/index.ts'
 
 vi.mock('node:child_process', async importOriginal => ({
@@ -60,7 +60,7 @@ function launcher(): BrowserLauncher {
 
 /** Stage a dist fixture and point the bundle's resolver at it. */
 function stageDist(): string {
-  dist = mkdtempSync(join(tmpdir(), 'dsh-web-app-'))
+  dist = mkdtempSync(join(tmpdir(), 'xhe-web-app-'))
   mkdirSync(join(dist, 'dist'))
   const index = join(dist, 'dist', 'index.html')
   writeFileSync(index, '<head></head><body>shell</body>')
@@ -99,7 +99,7 @@ describe('web-app runtime glue', () => {
     stageDist()
     const ctx = new Context()
     // Editor markers and a project .env SSH value do not establish a remote launch.
-    ctx.provide(DSH_LAUNCH_ENVIRONMENT_KEY, createLaunchEnvironmentSnapshot([
+    ctx.provide(XHE_LAUNCH_ENVIRONMENT_KEY, createLaunchEnvironmentSnapshot([
       { source: 'process', values: { VSCODE_IPC_HOOK_CLI: '/tmp/local-vscode-ipc' } },
       { source: 'project-env', path: '/work/.env', values: { SSH_CONNECTION: 'stale-project-value' } },
     ]))
@@ -136,14 +136,14 @@ describe('web-app runtime glue', () => {
       'open:http://127.0.0.1:4567',
     ])
     const assembly = await ctx.systemPrompt.assemble()
-    expect(assembly.sections.find(entry => entry.name === 'harness:source')?.text).toContain('DeepSeek Harness implementation checkout')
+    expect(assembly.sections.find(entry => entry.name === 'harness:source')?.text).toContain('Xee Harness Enhanced implementation checkout')
     const section = assembly.sections.find(entry => entry.name === 'app:web-surface')
     expect(section?.text).toContain('http://127.0.0.1:4567')
     // The single update contract: the receiver is always on; no-refresh
     // reloads additionally need the rebuild watcher.
     expect(section?.text).toContain('pnpm run dev:web')
     const webRuntime = contributions.find(contribution => contribution.name === 'web-runtime')
-    expect(webRuntime?.resolve()).toEqual({ DSH_WEB_URL: 'http://127.0.0.1:4567' })
+    expect(webRuntime?.resolve()).toEqual({ XHE_WEB_URL: 'http://127.0.0.1:4567' })
     await ctx.fiber.dispose()
   })
 
@@ -320,7 +320,7 @@ describe('web-app runtime glue', () => {
 
   it('scrubs the helper environment and reports helper spawn or exit failures', async () => {
     vi.stubEnv('DEEPSEEK_API_KEY', 'must-not-reach-browser')
-    vi.stubEnv('DSH_HOME', '/must-not-reach-browser')
+    vi.stubEnv('XHE_HOME', '/must-not-reach-browser')
     const completed = launcher()
     vi.mocked(spawn).mockReturnValueOnce(completed)
     const completion = originalOpenBrowser('http://127.0.0.1:4567')
@@ -334,7 +334,7 @@ describe('web-app runtime glue', () => {
     expect(args?.[2]).toContain("if (process.platform === 'win32')")
     expect(args?.[2]).toContain('launcher.ref()')
     expect(options?.env).not.toHaveProperty('DEEPSEEK_API_KEY')
-    expect(options?.env).not.toHaveProperty('DSH_HOME')
+    expect(options?.env).not.toHaveProperty('XHE_HOME')
     expect(options?.env?.PATH).toBe(process.env.PATH)
     expect(options?.stdio).toEqual(['ignore', 'inherit', 'pipe'])
     completed.emit('close', 0)

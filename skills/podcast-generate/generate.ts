@@ -144,7 +144,7 @@ function buildPrompts(
 
     const hintBlock = attemptHint ? `\n【上一次生成纠偏提示】\n${attemptHint}\n` : '';
 
-    user = `请把下面【资料】改写为中文播客脚本，形式为双人对谈（男主持 ${cfg.hostName} + 女嘉宾 ${cfg.guestName}）。
+    user = `请把下面【资料】改写为播客脚本，形式为双人对谈（男主持 ${cfg.hostName} + 女嘉宾 ${cfg.guestName}）。
 时长目标：${durationMin} 分钟。
 
 【硬性约束】
@@ -191,7 +191,7 @@ ${material}
 
     const hintBlock = attemptHint ? `\n【上一次生成纠偏提示】\n${attemptHint}\n` : '';
 
-    user = `请把下面【资料】改写为中文单人播客脚本，形式为独白式讲述（主播：${speakerName}）。
+    user = `请把下面【资料】改写为单人播客脚本，形式为独白式讲述（主播：${speakerName}）。
 时长目标：${durationMin} 分钟。
 
 【硬性约束】

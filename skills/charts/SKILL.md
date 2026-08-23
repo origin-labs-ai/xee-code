@@ -59,7 +59,7 @@ Each template file contains its own framework-specific rules (spacing, connector
 
 | User Says | You Must Do | Forbidden |
 |-----------|------------|-----------|
-| "use mermaid code" / "用Mermaid格式输出" / "转化为mermaid" / "mermaid流程" | ① Output Mermaid code block (```mermaid ... ```) ② Also provide a rendered image preview | ❌ Cannot only give image without code; ❌ Cannot screenshot raw code text as image |
+| "use mermaid code" / "Mermaid" / "mermaid" / "mermaid" | ① Output Mermaid code block (```mermaid ... ```) ② Also provide a rendered image preview | ❌ Cannot only give image without code; ❌ Cannot screenshot raw code text as image |
 | "use markdown code" | Output markdown-formatted hierarchy | ❌ Cannot switch to HTML/CSS |
 | "via mermaid or markdown code" | Choose one of the two, output code text | ❌ Cannot switch to any non-specified format |
 | "flowchart" / "mind map" (no format specified) | Free to choose the best approach | - |
@@ -90,7 +90,7 @@ When a specified tool hits rendering difficulties (e.g., mermaid CDN fails):
 
 #### 🔴 Flowchart Default: Phased Vertical (HIGHEST PRIORITY)
 
-**When the user asks to "generate/create a XXX flowchart/流程图" without specifying format, the DEFAULT layout is Phased Vertical (Layout C in `references/playwright-css.md`).**
+**When the user asks to "generate/create a XXX flowchart/" without specifying format, the DEFAULT layout is Phased Vertical (Layout C in `references/playwright-css.md`).**
 
 This is because nearly all real-world processes (manufacturing, legal proceedings, project management, business operations, cooking recipes, etc.) have natural phases/stages. Layout C produces the most professional, readable result.
 
@@ -100,7 +100,7 @@ This is because nearly all real-world processes (manufacturing, legal proceeding
 3. **Everything else** → **Playwright + CSS, Layout C (Phased Vertical)** → `references/playwright-css.md`
 
 **Phase detection — treat as "has phases" when ANY is true:**
-- Content has numbered sections (一、二、三 or 1. 2. 3. or Phase 1/Stage 1)
+- Content has numbered sections (、、 or 1. 2. 3. or Phase 1/Stage 1)
 - Process can be grouped by time/stage/role (e.g., "preparation → execution → review")
 - Total steps ≥ 5 (almost always groupable into 2+ phases)
 - Process involves multiple roles/departments
@@ -192,13 +192,13 @@ These rules apply to ALL charts regardless of framework. Framework-specific rule
 **Anti-overlap decision tree:**
 1. **Check if direct labels fit** — if all labels have enough space (bar tops, line endpoints, large pie slices), label directly. No legend needed.
 2. **If some labels would collide** (small pie slices, dense scatter points, clustered bars) → use legend outside plot area instead of forcing labels into tight spaces.
-3. **Mixed approach** — label the major items directly, group small items into "其他" or use leader lines + legend for the small ones.
+3. **Mixed approach** — label the major items directly, group small items into "" or use leader lines + legend for the small ones.
 
 **Pie chart specific (the worst offender):**
 - Slices < 5%: MUST use leader lines (`wedgeprops + texts` manual repositioning, or `matplotlib.patches.ConnectionPatch`) to pull labels outside. Do NOT rely on `autopct` alone — it places text inside/near the slice.
 - Multiple small adjacent slices: use `bbox_to_anchor` legend outside, NOT direct labels
 - `labeldistance=1.25` minimum to keep labels outside the pie
-- When >2 slices are < 5%, consider grouping all < 3% into "其他（X项）"
+- When >2 slices are < 5%, consider grouping all < 3% into "（X）"
 - Use `adjustText` library to auto-resolve label collisions when available
 
 **Legend placement (when legend is needed):**

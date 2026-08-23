@@ -109,12 +109,12 @@ Use this skill when the user asks for:
 
 Trigger phrases include:
 
-- “先用免费接口”
-- “不要走收费接口”
-- “先帮我筛一下”
-- “先看看值不值得深挖”
-- “找几个候选”
-- “做一个轻量版 skill”
+- “”
+- “”
+- “”
+- “”
+- “”
+- “ skill”
 
 ## Free Workflows
 

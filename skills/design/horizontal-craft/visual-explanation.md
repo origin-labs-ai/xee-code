@@ -22,16 +22,16 @@ default_for:
   - timeline
   - comparison graphic
   - information graphic
-  - 可视化解释
-  - 信息图
-  - 交互式解释
-  - 流程图
-  - 架构图
-  - 系统关系图
-  - 业务流程图
-  - 用户旅程图
-  - 数据流图
-  - 时间线
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
 fidelity: system
 ---
 

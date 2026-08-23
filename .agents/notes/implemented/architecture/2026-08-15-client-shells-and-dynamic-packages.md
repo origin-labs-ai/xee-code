@@ -2,8 +2,6 @@
 
 Status: implemented
 
-English | [中文](2026-08-15-client-shells-and-dynamic-packages.zh.md)
-
 > The [client plugin loading model](2026-07-23-client-plugin-loading-model.md) owns module arrival, Cordis lifecycle, and HMR. This note owns package placement, build faces, shared module requests, and npm dependency declarations; those decisions supersede the older package taxonomy and import-edge rules in the loading note.
 
 ## Problem
@@ -48,7 +46,7 @@ The modules Node half injects the startup protocol into the served HTML in this 
 1. Install `window.__ModuleLoader__` in queue mode with `pendingQueue`, `load()`, and `create()`.
 2. Execute the modules graph row's ordinary `lib/client.js` as a blocking classic script.
 3. Execute runtime's ordinary `lib/client.js` the same way.
-4. Assign `window.__DSH_BOOT__`.
+4. Assign `window.__XHE_BOOT__`.
 5. Execute the Vite main module.
 
 Both early scripts only register factories. The startup kernel passes the raw graph and shell seeds to `__ModuleLoader__.create()`. The facade removes the modules registration, materializes it with a `require` function that rejects every external, and invokes its `createClientModuleSystem` export. The modules bundle parses the graph, constructs `ClientModuleSystem`, caches its own exports as the modules row, and retains the system in a module closure. Construction switches the same facade to live mode before draining runtime's pending factory. The modules client face consequently has a zero-runtime-external bootstrap requirement.

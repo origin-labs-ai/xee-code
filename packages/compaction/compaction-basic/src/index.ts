@@ -1,21 +1,21 @@
 /**
  * Basic replay-aware compaction backend.
  *
- * @module @deepseek-ai/dsh-compaction-basic
+ * @module @origin-ai/xhe-compaction-basic
  */
 
 import { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { CompactionEngine, ManualCompactionError } from '@deepseek-ai/dsh-compaction'
-import type { CompactionResult, CompactionTrigger } from '@deepseek-ai/dsh-compaction'
-import type { TokenMeter } from '@deepseek-ai/dsh-token-meter'
-import type { Session } from '@deepseek-ai/dsh-session'
-import { CONTEXT_WINDOW_EXCEEDED_CODE, assertNever } from '@deepseek-ai/dsh-llm'
-import type { LlmCallConfig } from '@deepseek-ai/dsh-llm'
-import type { Agent, PreStepDecision } from '@deepseek-ai/dsh-agent'
-import type { CommandId } from '@deepseek-ai/dsh-commands/brand'
+import { CompactionEngine, ManualCompactionError } from '@origin-ai/xhe-compaction'
+import type { CompactionResult, CompactionTrigger } from '@origin-ai/xhe-compaction'
+import type { TokenMeter } from '@origin-ai/xhe-token-meter'
+import type { Session } from '@origin-ai/xhe-session'
+import { CONTEXT_WINDOW_EXCEEDED_CODE, assertNever } from '@origin-ai/xhe-llm'
+import type { LlmCallConfig } from '@origin-ai/xhe-llm'
+import type { Agent, PreStepDecision } from '@origin-ai/xhe-agent'
+import type { CommandId } from '@origin-ai/xhe-commands/brand'
 // Type-only: makes the optional sibling service available to `ctx.get()`.
-import type {} from '@deepseek-ai/dsh-compaction-tool-result-pruner'
+import type {} from '@origin-ai/xhe-compaction-tool-result-pruner'
 import {
   resolveCompactSpec,
   resolveConfig,

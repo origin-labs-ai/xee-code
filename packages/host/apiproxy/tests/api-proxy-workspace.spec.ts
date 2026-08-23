@@ -3,20 +3,20 @@ import { homedir, tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import AgentRegistry, { Inbox } from '@deepseek-ai/dsh-agent'
-import type { Agent, AgentFactory } from '@deepseek-ai/dsh-agent'
-import SessionStore, { SessionId } from '@deepseek-ai/dsh-session'
-import type { Session } from '@deepseek-ai/dsh-session'
-import Storage from '@deepseek-ai/dsh-storage'
-import { DomainFacility } from '@deepseek-ai/dsh-storage-domain'
-import UserQuestionService from '@deepseek-ai/dsh-user-questions'
-import { DirectoryPickerError } from '@deepseek-ai/dsh-host-directory-picker'
-import type { DirectoryPickerCapability } from '@deepseek-ai/dsh-host-directory-picker'
-import WorkspaceRegistry from '@deepseek-ai/dsh-workspace'
-import type { HostFrame, WorkspaceId } from '@deepseek-ai/dsh-host-apiproxy/api'
-import type { RpcRequest, RpcResponse } from '@deepseek-ai/dsh-host-apiproxy/api/rpc'
-import { RpcId } from '@deepseek-ai/dsh-host-apiproxy/api/rpc'
-import { createApiProxy } from '@deepseek-ai/dsh-host-apiproxy'
+import AgentRegistry, { Inbox } from '@origin-ai/xhe-agent'
+import type { Agent, AgentFactory } from '@origin-ai/xhe-agent'
+import SessionStore, { SessionId } from '@origin-ai/xhe-session'
+import type { Session } from '@origin-ai/xhe-session'
+import Storage from '@origin-ai/xhe-storage'
+import { DomainFacility } from '@origin-ai/xhe-storage-domain'
+import UserQuestionService from '@origin-ai/xhe-user-questions'
+import { DirectoryPickerError } from '@origin-ai/xhe-host-directory-picker'
+import type { DirectoryPickerCapability } from '@origin-ai/xhe-host-directory-picker'
+import WorkspaceRegistry from '@origin-ai/xhe-workspace'
+import type { HostFrame, WorkspaceId } from '@origin-ai/xhe-host-apiproxy/api'
+import type { RpcRequest, RpcResponse } from '@origin-ai/xhe-host-apiproxy/api/rpc'
+import { RpcId } from '@origin-ai/xhe-host-apiproxy/api/rpc'
+import { createApiProxy } from '@origin-ai/xhe-host-apiproxy'
 import { MemoryStorageBackend } from '../../../storage/storage-domain/tests/helpers/memory-backend.ts'
 
 let nextRpc = 1
@@ -59,7 +59,7 @@ function stubAgent(session: Session): Agent {
 
 /** Compose the API over real Session, Agent, Storage, Domain, and Workspace services. */
 async function harness(
-  root = realpathSync.native(mkdtempSync(join(tmpdir(), 'dsh-apiproxy-workspace-'))),
+  root = realpathSync.native(mkdtempSync(join(tmpdir(), 'xhe-apiproxy-workspace-'))),
   picker: DirectoryPickerCapability = { kind: 'native', pick: async () => null },
   extras: {
     openPath?: (path: string, signal: AbortSignal) => Promise<void>

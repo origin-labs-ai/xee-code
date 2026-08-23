@@ -41,7 +41,7 @@ Determine task weight to control how much context to load:
 1. **Emoji Check** - Scan user content for intentional emoji (decorative 📊🎯🔥, not OS-level emoji input). If found → **force Creative pipeline** (Fixed-Canvas or Flow depending on document type) regardless of original routing. ReportLab renders emoji as □ squares; LaTeX drops them entirely.
 2. **CJK Check** - Chinese/Japanese/Korean content needs font coverage. Report brief must register CJK fonts - **probe first** with `ls /usr/share/fonts/truetype/chinese/` (Linux) or check `$FONT_DIR` (macOS) to confirm which fonts exist, then register accordingly (prefer NotoSerifSC > Noto Sans SC; never hardcode a font name without verifying it exists). Creative Fixed-Canvas and Creative Flow briefs must load Google Fonts Noto Sans SC with `font-display: swap`; Academic brief must use `\usepackage{ctex}`.
 3. **Size Check** - Non-standard page sizes (not A4/Letter/A3) → prefer Creative brief (Playwright handles any dimension). ReportLab can do custom sizes but pagination is manual.
-4. **Character Safety Check** - Before writing any content string, scan for Japanese kana (の、が、は etc.), unusual Unicode symbols, or non-CJK characters that may corrupt during encoding transit ( Especially when code is written via heredoc/base64/LLM output). Replace with plain Chinese equivalents: `の`→`之/的/缔`, `々`→omit or write full character. **If content must preserve Japanese, use only standard CJK Unified Ideographs (U+4E00-U+9FFF) and common kana; avoid rare/private-use codepoints.**
+4. **Character Safety Check** - Before writing any content string, scan for Japanese kana (の、が、は etc.), unusual Unicode symbols, or non-CJK characters that may corrupt during encoding transit ( Especially when code is written via heredoc/base64/LLM output). Replace with plain Chinese equivalents: `の`→`//`, `々`→omit or write full character. **If content must preserve Japanese, use only standard CJK Unified Ideographs (U+4E00-U+9FFF) and common kana; avoid rare/private-use codepoints.**
 
 ---
 
@@ -90,12 +90,12 @@ User Request
 
 | Brief | Keywords |
 |-------|----------|
-| Report | 报告, report, 分析, analysis, 白皮书, white paper, 提案, proposal, 合同, contract, 方案, 规划, 发票, invoice, 收据, receipt, 试卷, exam, quiz, test paper, 练习, exercise, worksheet, 考试, 测验 |
-| Creative Fixed-Canvas | 海报, poster, 邀请函, invitation, 信息图, infographic, 仪表盘, dashboard, 传单, flyer, 证书, certificate, 菜单, menu, 名片, business card, 奖状, award, 标签, label, 信封, envelope, 贺卡, greeting card → `briefs/creative-fixed-canvas.md` |
-| Creative (Poster) | 海报, poster, 传单, flyer, 宣传页, 宣传单 → additionally load `briefs/poster.md` scene layer rules on top of creative-fixed-canvas.md |
-| Creative Flow | 图鉴, guide, 手册, handbook, 目录, catalog, 介绍, introduction, 合集, collection → `briefs/creative-flow.md` |
-| Academic | 论文, paper, 学术, academic, LaTeX, 数学, math, IEEE, ACM, 毕业, thesis, 研究, research, Beamer, slides, 开题报告, 学位, dissertation, proposal |
-| Process | 提取, extract, 合并, merge, 拆分, split, 填写, fill, 转换, convert, OCR, 重排, reformat, 重新排版, redesign, 模板, template, 参照, 照着这个做, match this style, 压缩, compress, 水印, watermark, 加密, encrypt, 签名, sign |
+| Report | , report, , analysis, , white paper, , proposal, , contract, , , , invoice, , receipt, , exam, quiz, test paper, , exercise, worksheet, ,  |
+| Creative Fixed-Canvas | , poster, , invitation, , infographic, , dashboard, , flyer, , certificate, , menu, , business card, , award, , label, , envelope, , greeting card → `briefs/creative-fixed-canvas.md` |
+| Creative (Poster) | , poster, , flyer, ,  → additionally load `briefs/poster.md` scene layer rules on top of creative-fixed-canvas.md |
+| Creative Flow | , guide, , handbook, , catalog, , introduction, , collection → `briefs/creative-flow.md` |
+| Academic | , paper, , academic, LaTeX, , math, IEEE, ACM, , thesis, , research, Beamer, slides, , , dissertation, proposal |
+| Process | , extract, , merge, , split, , fill, , convert, OCR, , reformat, , redesign, , template, , , match this style, , compress, , watermark, , encrypt, , sign |
 
 ### Complete Scenario Routing Matrix
 
@@ -708,7 +708,7 @@ check-tex <tex>                                # LaTeX source validation (table 
 - `EQUATION_OVERFLOW_RISK` (warning): equation body has >80 math characters. Likely overflows single column
 - `ALGORITHM_NO_SMALL_FONT` (warning): `algorithm` environment in dual-column without `\SetAlFnt{\small}`
 - `ALGORITHM_LONG_IO` (warning): Algorithm Input/Output line >120 chars. Will overflow narrow column
-- `CJK_ASCII_QUOTES` (error): ASCII `"` found adjacent to CJK characters. LaTeX interprets `"` as right double quote, so `"北漂"` renders incorrectly. Skips verbatim/lstlisting/minted environments and `\texttt{}`/`\url{}`/`\href{}{}`/`\verb||` inline commands.
+- `CJK_ASCII_QUOTES` (error): ASCII `"` found adjacent to CJK characters. LaTeX interprets `"` as right double quote, so `""` renders incorrectly. Skips verbatim/lstlisting/minted environments and `\texttt{}`/`\url{}`/`\href{}{}`/`\verb||` inline commands.
 
 ### Design Engine: `python3 "$PDF_SKILL_DIR/scripts/design_engine.py"`
 ```bash
@@ -827,7 +827,7 @@ references/
 
 ## 8. Quality Checklist (Mandatory after every PDF generation)
 
-> ⚠️ **正文才是第一章。** 封面/目录/摘要不计入编号，正文编号永远从 1 开始。详见 `report.md` Step 3.5。
+> ⚠️ **。** //， 1 。 `report.md` Step 3.5。
 
 > The following checks come from the `typesetting/` spec files and are **mandatory** quality gates.
 
@@ -873,7 +873,7 @@ After loading your brief, review its quality checklist before delivering.
 
 ### Output Cleanliness (All Pipelines)
 
-- [ ] **No process artifacts in output**: NEVER include version numbers ("V3"), iteration markers, draft labels ("DRAFT"), "CONFIDENTIAL"/"机密" stamps, "Generated by AI"/"本文档由AI生成", or internal comments in the final PDF unless the user explicitly requested them
+- [ ] **No process artifacts in output**: NEVER include version numbers ("V3"), iteration markers, draft labels ("DRAFT"), "CONFIDENTIAL"/"" stamps, "Generated by AI"/"AI", or internal comments in the final PDF unless the user explicitly requested them
 - [ ] **No auto-generated boilerplate labels**: Do not add ANY watermarks, generation notices, version numbers, timestamps, or tool names that the user didn't ask for
 - [ ] **No debug output in content**: Console logs, file paths, generation timestamps, tool names, or error messages must never appear in the PDF body
 - [ ] **Clean metadata only**: PDF metadata (author, title, subject) should reflect the document content, not the generation process

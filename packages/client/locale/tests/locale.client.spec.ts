@@ -1,9 +1,9 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { stubSettingsScope, type StubSettingsScope } from '@deepseek-ai/dsh-client-test-runtime'
-import type { LocaleSettings, LocaleSnapshot } from '@deepseek-ai/dsh-client-locale/client'
-import { FALLBACK_LOCALE, LocaleRuntime } from '@deepseek-ai/dsh-client-locale/client'
+import { stubSettingsScope, type StubSettingsScope } from '@origin-ai/xhe-client-test-runtime'
+import type { LocaleSettings, LocaleSnapshot } from '@origin-ai/xhe-client-locale/client'
+import { FALLBACK_LOCALE, LocaleRuntime } from '@origin-ai/xhe-client-locale/client'
 const make = (host?: StubSettingsScope<LocaleSettings>): {
   ctx: Context
   svc: LocaleRuntime
@@ -18,7 +18,7 @@ const make = (host?: StubSettingsScope<LocaleSettings>): {
 /**
  * Pin the browser environment a fresh service reads its initial locale from.
  * This package's own specs stub the globals directly instead of using
- * `usePinnedBrowserLanguages` (dsh-client-test-runtime): they need the shapes
+ * `usePinnedBrowserLanguages` (xhe-client-test-runtime): they need the shapes
  * that helper deliberately cannot express — a missing `languages` list, a
  * list decoupled from `language`, and a non-browser run with no `window`.
  */
@@ -157,7 +157,7 @@ describe('LocaleRuntime', () => {
     expect(host.set).toHaveBeenLastCalledWith('preference', 'en')
   })
 
-  it('persists an explicit pick of the provisional locale, so a shared DSH home agrees', () => {
+  it('persists an explicit pick of the provisional locale, so a shared XHE home agrees', () => {
     // A browser naming no shipped language opens at FALLBACK_LOCALE with
     // nothing stored. Choosing that same language in the menu must become
     // durable, or a Chinese browser sharing the home still opens Chinese.
@@ -266,7 +266,7 @@ describe('LocaleRuntime', () => {
     expect(svc.bind('ns')('onlyEn')).toBe('English only')
     // The reverse no longer resolves: a zh-only key is unreachable from en, so
     // the key itself surfaces (fail loud) rather than silently rendering zh.
-    svc.register('ns2', 'zh', { onlyZh: '仅中文' })
+    svc.register('ns2', 'zh', { onlyZh: '仅' })
     svc.register('ns2', 'en', {})
     svc.setLocale('en')
     expect(svc.bind('ns2')('onlyZh')).toBe('onlyZh')
@@ -275,7 +275,7 @@ describe('LocaleRuntime', () => {
   it('exposes the two shipped locales with self-described labels', () => {
     const { svc } = make()
     expect(svc.getLocale().locales).toEqual([
-      { id: 'zh', label: '中文' },
+      { id: 'zh', label: '' },
       { id: 'en', label: 'English' },
     ])
   })
