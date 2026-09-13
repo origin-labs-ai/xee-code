@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/version-1.0.0-blue.svg" alt="Version" />
   <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
   <img src="https://img.shields.io/badge/status-production%20ready-brightgreen.svg" alt="Status" />
-  <a href="https://github.com/origin-labs-ai/xhe"><img src="(https://img.shields.io/badge/coverage-95%25-orange)" alt="Repository" /></a>
+  <a href="https://github.com/origin-labs-ai/xhe"><img src="https://img.shields.io/badge/coverage-95%25-orange" alt="Repository" /></a>
 </p>
 
 ---
