@@ -16,7 +16,10 @@ function isBuildFaceClient(value: unknown): boolean {
 export default defineConfig(({ env }) => {
   const client = isBuildFaceClient(env?.XHE_BUILD_FACE)
   return {
-    workspace: ['vendor/*', 'packages/*/*', 'apps/cli'],
+    // packages/cf and packages/mad/* are standalone source-first libs (own
+    // src exports, not part of the host tsc project) — excluded so the
+    // generic lib/types entry pattern does not fail on them. Same for archives.
+    workspace: ['vendor/*', 'packages/*/*', 'apps/cli', '!packages/cf', '!packages/mad/*', '!**/archive/**'],
     entry: client ? '' : ['lib/types/{index,invariant,startup}.js'],
     outDir: 'lib',
     format: ['esm'],
