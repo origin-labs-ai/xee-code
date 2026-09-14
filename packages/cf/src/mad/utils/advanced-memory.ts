@@ -1,5 +1,5 @@
 /**
- * Xee Harness Enhanced (XHE) - Advanced Memory Fabric Implementation
+ * CodeFusion (CF) - Advanced Memory Fabric Implementation
  *
  * ROUND 3 IMPROVEMENT: Production-grade memory system with:
  * - Persistent storage simulation (localStorage/IndexedDB-like)

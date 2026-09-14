@@ -21,7 +21,7 @@ import type { ShellExecRequest, ShellExecSpec, ShellProcess, ShellRunResult } fr
  */
 export const SHELL_SETTINGS_NAMESPACE = settingsNamespace('shell')
 
-export { XHE_ENV_PREFIX } from './types.ts'
+export { CF_ENV_PREFIX } from './types.ts'
 export type {
   ShellExecRequest,
   ShellExecSpec,
@@ -31,8 +31,8 @@ export type {
   ShellRunResult,
   ShellSandboxInfo,
   CollectedOutput,
-  DshEnvironment,
-  DshEnvironmentKey,
+  CfEnvironment,
+  CfEnvironmentKey,
 } from './types.ts'
 export { parseExitStatus } from './render.ts'
 export type { ParsedExitStatus } from './render.ts'

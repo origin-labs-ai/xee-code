@@ -1051,7 +1051,7 @@ describe('tool-owned UI presentation (presentCall / presentResult)', () => {
 })
 
 describe('the model-facing bash tool builds its request from named args only (no {...args} forward)', () => {
-  const recordingDshHome = join(spillDir, 'xhe-home')
+  const recordingCfHome = join(spillDir, 'xhe-home')
 
   /**
    * Records every {@link ShellExecRequest} the consumer hands to `resolve()`, so a
@@ -1078,7 +1078,7 @@ describe('the model-facing bash tool builds its request from named args only (no
         ...request.signal ? { signal: request.signal } : {},
         ...request.stdin !== undefined ? { stdin: request.stdin } : {},
         ...request.env !== undefined ? { env: request.env } : {},
-        ...request.dshEnv !== undefined ? { dshEnv: request.dshEnv } : {},
+        ...request.cfEnv !== undefined ? { cfEnv: request.cfEnv } : {},
         sandboxPolicy: request.sandboxPolicy,
       }
     }
@@ -1111,7 +1111,7 @@ describe('the model-facing bash tool builds its request from named args only (no
     }
     await ctx.plugin(LocalJobRegistry)
     await ctx.plugin(ToolTasks)
-    await ctx.plugin(BashEnvPlugin, { dshHome: recordingDshHome })
+    await ctx.plugin(BashEnvPlugin, { cfHome: recordingCfHome })
     await ctx.plugin(RecordingBashExecutor)
     await ctx.plugin(ToolBash)
     return { ctx, bash: ctx.shell as RecordingBashExecutor }
@@ -1120,8 +1120,8 @@ describe('the model-facing bash tool builds its request from named args only (no
   it('describes the managed harness environment namespace to the model', async () => {
     const { ctx } = await setupRecording()
     const description = ctx.tools.get('bash')?.description ?? ''
-    expect(description).toContain('$XHE_*')
-    expect(description).not.toContain('XHE_SESSION_JSONL')
+    expect(description).toContain('$CF_*')
+    expect(description).not.toContain('CF_SESSION_JSONL')
   })
 
   it('injects the session id and JSONL target path into a foreground request', async () => {
@@ -1137,11 +1137,11 @@ describe('the model-facing bash tool builds its request from named args only (no
       agent,
     })
 
-    expect(bash.requests[0]?.dshEnv).toEqual({
-      XHE_HOME: recordingDshHome,
-      XHE_SESSION_ID: 'request-fg',
-      XHE_SESSION_JSONL: path,
-      XHE_SHELL: '1',
+    expect(bash.requests[0]?.cfEnv).toEqual({
+      CF_HOME: recordingCfHome,
+      CF_SESSION_ID: 'request-fg',
+      CF_SESSION_JSONL: path,
+      CF_SHELL: '1',
     })
   })
 
@@ -1158,24 +1158,24 @@ describe('the model-facing bash tool builds its request from named args only (no
         command: 'sleep 1',
         description: 'run command',
         run_in_background: true,
-        env: { XHE_SESSION_ID: 'spoofed', XHE_SESSION_JSONL: '/tmp/spoofed' },
+        env: { CF_SESSION_ID: 'spoofed', CF_SESSION_JSONL: '/tmp/spoofed' },
       },
       agent,
     })
 
     expect(bash.requests[0]?.env).toBeUndefined()
-    expect(bash.requests[0]?.dshEnv).toEqual({
-      XHE_HOME: recordingDshHome,
-      XHE_SESSION_ID: 'request-bg',
-      XHE_SESSION_JSONL: path,
-      XHE_SHELL: '1',
+    expect(bash.requests[0]?.cfEnv).toEqual({
+      CF_HOME: recordingCfHome,
+      CF_SESSION_ID: 'request-bg',
+      CF_SESSION_JSONL: path,
+      CF_SHELL: '1',
     })
   })
 
   it('injects built-ins and the stable session id when no JSONL locator is available', async () => {
     const { ctx, bash } = await setupRecording()
     const agent = registerFakeAgent(ctx, 'request-id-only', () => undefined)
-    const ambient = process.env.XHE_SESSION_ID
+    const ambient = process.env.CF_SESSION_ID
 
     await ctx.tools.execute({
       signal: testToolSignal,
@@ -1185,12 +1185,12 @@ describe('the model-facing bash tool builds its request from named args only (no
       agent,
     })
 
-    expect(bash.requests[0]?.dshEnv).toEqual({
-      XHE_HOME: recordingDshHome,
-      XHE_SESSION_ID: 'request-id-only',
-      XHE_SHELL: '1',
+    expect(bash.requests[0]?.cfEnv).toEqual({
+      CF_HOME: recordingCfHome,
+      CF_SESSION_ID: 'request-id-only',
+      CF_SHELL: '1',
     })
-    expect(process.env.XHE_SESSION_ID).toBe(ambient)
+    expect(process.env.CF_SESSION_ID).toBe(ambient)
   })
 
   it('keeps parent and child agent session environments isolated', async () => {
@@ -1208,21 +1208,21 @@ describe('the model-facing bash tool builds its request from named args only (no
       })
     }
 
-    expect(bash.requests.map(request => request.dshEnv)).toEqual([
+    expect(bash.requests.map(request => request.cfEnv)).toEqual([
       {
-        XHE_HOME: recordingDshHome,
-        XHE_SESSION_ID: 'request-parent',
-        XHE_SESSION_JSONL: ctx.sessionPersistence.locate(parent.session.header)?.path,
-        XHE_SHELL: '1',
+        CF_HOME: recordingCfHome,
+        CF_SESSION_ID: 'request-parent',
+        CF_SESSION_JSONL: ctx.sessionPersistence.locate(parent.session.header)?.path,
+        CF_SHELL: '1',
       },
       {
-        XHE_HOME: recordingDshHome,
-        XHE_SESSION_ID: 'request-child',
-        XHE_SESSION_JSONL: ctx.sessionPersistence.locate(child.session.header)?.path,
-        XHE_SHELL: '1',
+        CF_HOME: recordingCfHome,
+        CF_SESSION_ID: 'request-child',
+        CF_SESSION_JSONL: ctx.sessionPersistence.locate(child.session.header)?.path,
+        CF_SHELL: '1',
       },
     ])
-    expect(bash.requests[0]?.dshEnv?.XHE_SESSION_JSONL).not.toBe(bash.requests[1]?.dshEnv?.XHE_SESSION_JSONL)
+    expect(bash.requests[0]?.cfEnv?.CF_SESSION_JSONL).not.toBe(bash.requests[1]?.cfEnv?.CF_SESSION_JSONL)
   })
 
   it('does not forward trusted-only fields even when the model includes them as extra arguments', async () => {

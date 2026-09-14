@@ -1,6 +1,6 @@
 {
   "name": "@origin-ai/cf-terminal-bash",
-  "description": "Persistent shell PTY backend over the Xee Harness Enhanced subprocess terminal primitive",
+  "description": "Persistent shell PTY backend over the CodeFusion subprocess terminal primitive",
   "version": "0.1.1-rc.2",
   "publishConfig": {
     "access": "public"

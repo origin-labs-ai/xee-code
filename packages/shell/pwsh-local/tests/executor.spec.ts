@@ -292,28 +292,28 @@ describe.skipIf(!hasPwsh)('PwshLocalExecutor.run', () => {
     await expect(bash.run(bash.resolve({ command: 'Write-Output ok', workdir: '/nonexistent-dsh' }))).rejects.toThrow(/ENOENT/)
   })
 
-  it('resolve() carries stdin/env/dshEnv onto the spec, and run() threads them to the command', async () => {
+  it('resolve() carries stdin/env/cfEnv onto the spec, and run() threads them to the command', async () => {
     const { bash } = await setup()
     const spec = bash.resolve({
-      command: '$s = ([Console]::In.ReadToEnd()).TrimEnd(); Write-Output $s; Write-Output "[$env:SEAM_VAR][$env:XHE_SEAM_VAR]"',
+      command: '$s = ([Console]::In.ReadToEnd()).TrimEnd(); Write-Output $s; Write-Output "[$env:SEAM_VAR][$env:CF_SEAM_VAR]"',
       stdin: 'piped\n',
       env: { SEAM_VAR: 'env-ok' },
-      dshEnv: { XHE_SEAM_VAR: 'xhe-ok' },
+      cfEnv: { CF_SEAM_VAR: 'xhe-ok' },
     })
     // resolve() keeps the optional input/environment fields verbatim.
     expect(spec.stdin).toBe('piped\n')
     expect(spec.env).toEqual({ SEAM_VAR: 'env-ok' })
-    expect(spec.dshEnv).toEqual({ XHE_SEAM_VAR: 'xhe-ok' })
+    expect(spec.cfEnv).toEqual({ CF_SEAM_VAR: 'xhe-ok' })
     const result = await bash.run(spec)
     expect(lf(result.stdout.text)).toBe('piped\n[env-ok][xhe-ok]\n')
   })
 
-  it('resolve() omits stdin/env/dshEnv when the request supplies none', async () => {
+  it('resolve() omits stdin/env/cfEnv when the request supplies none', async () => {
     const { bash } = await setup()
     const spec = bash.resolve({ command: 'Write-Output ok' })
     expect('stdin' in spec).toBe(false)
     expect('env' in spec).toBe(false)
-    expect('dshEnv' in spec).toBe(false)
+    expect('cfEnv' in spec).toBe(false)
   })
 })
 
@@ -334,10 +334,10 @@ describe.skipIf(!hasPwsh)('PwshLocalExecutor.start (background process handles)'
   it('threads stdin and extra env into a background process', async () => {
     const { bash } = await setup()
     const proc = bash.start(bash.resolve({
-      command: '$s = ([Console]::In.ReadToEnd()).TrimEnd(); Write-Output $s; Write-Output "[$env:BG_VAR][$env:XHE_BG_VAR]"',
+      command: '$s = ([Console]::In.ReadToEnd()).TrimEnd(); Write-Output $s; Write-Output "[$env:BG_VAR][$env:CF_BG_VAR]"',
       stdin: 'bg-stdin\n',
       env: { BG_VAR: 'bg-env' },
-      dshEnv: { XHE_BG_VAR: 'bg-xhe-env' },
+      cfEnv: { CF_BG_VAR: 'bg-xhe-env' },
     }))
     const partialOutput = await readUntil(proc, '[bg-env][bg-xhe-env]')
     await proc.done

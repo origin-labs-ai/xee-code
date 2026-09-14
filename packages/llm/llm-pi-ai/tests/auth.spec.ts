@@ -11,7 +11,7 @@ const CODEX = recordKeyFor('openai-codex')
 
 const dirs: string[] = []
 
-/** A context whose credential records live in a throwaway `$XHE_HOME`. */
+/** A context whose credential records live in a throwaway `$CF_HOME`. */
 async function stored(): Promise<Context> {
   const dir = await mkdtemp(join(tmpdir(), 'xhe-pi-auth-'))
   dirs.push(dir)

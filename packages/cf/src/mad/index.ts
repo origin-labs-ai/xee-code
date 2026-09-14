@@ -1,5 +1,5 @@
 /**
- * Xee Harness Enhanced (XHE) - M.A.D (Multi-Agent Deployment) System
+ * CodeFusion (CF) - MAD (Multi-Agent Deployment) System
  *
  * Main entry point for the Multi-Agent Deployment architecture.
  * Implements the complete GOD Runtime specification from TRANSCRIPT.md.
@@ -8,8 +8,8 @@
  *
  * This module exports:
  * - Core GOD Runtime with all 12 components fully implemented
- * - Advanced M.A.D Engine with real LLM API integration
- * - Basic M.A.D Engine for simulation/testing mode
+ * - Advanced MAD Engine with real LLM API integration
+ * - Basic MAD Engine for simulation/testing mode
  * - Complete type system for all components
  * - Factory functions and convenience methods
  *
@@ -18,7 +18,7 @@
  *
  * Also known as:
  * - XeeCode / XCode
- * - Xee Harness Enhanced
+ * - CodeFusion
  *
  * Fork of: DSH/SeepSeek Harness
  */
@@ -56,7 +56,7 @@ export {
 } from './core/god-runtime'
 
 // ============================================================================
-// ADVANCED EXPORTS - Advanced M.A.D Engine (Real API Integration)
+// ADVANCED EXPORTS - Advanced MAD Engine (Real API Integration)
 // ============================================================================
 
 export {
@@ -75,7 +75,7 @@ export type {
 } from './mad'
 
 // ============================================================================
-// BASIC EXPORTS - Basic M.A.D Engine (Simulation Mode)
+// BASIC EXPORTS - Basic MAD Engine (Simulation Mode)
 // ============================================================================
 
 export { MADEngine } from './mad'
@@ -85,8 +85,8 @@ export { MADEngine } from './mad'
 // ============================================================================
 
 // Core Identity
-export type { XHEIdentity } from './types'
-export { XHE_IDENTITY } from './types'
+export type { CfIdentity } from './types'
+export { CF_IDENTITY } from './types'
 
 // Provider & Model Types
 export type {
@@ -309,14 +309,14 @@ export type {
 // CONSTANTS
 // ============================================================================
 
-export { XHE_IDENTITY } from './types'
+export { CF_IDENTITY } from './types'
 
 // ============================================================================
 // FACTORY FUNCTIONS & CONVENIENCE EXPORTS
 // ============================================================================
 
 /**
- * Create a new XHE/GOD Runtime instance
+ * Create a new CF/GOD Runtime instance
  */
 export function createXHE(config?: Partial<import('./types').GODRuntimeConfig>): import('./core/god-runtime').GodRuntime {
   const { GodRuntime } = require('./core/god-runtime')
@@ -324,7 +324,7 @@ export function createXHE(config?: Partial<import('./types').GODRuntimeConfig>):
 }
 
 /**
- * Quick execute helper - runs a complete M.A.D session
+ * Quick execute helper - runs a complete MAD session
  */
 export async function xheExecute(
   task: string,
@@ -346,7 +346,7 @@ export async function xheExecute(
 }
 
 /**
- * Create advanced M.A.D engine with real API support
+ * Create advanced MAD engine with real API support
  */
 export function createAdvancedXHE(config?: Partial<import('./mad').AdvancedMADConfig>): import('./mad').AdvancedMADEngine {
   const { AdvancedMADEngine } = require('./mad')
@@ -374,11 +374,11 @@ export async function xheAdvancedExecute(
 // ============================================================================
 
 export const MAD_VERSION = '2.0.0-advanced'
-export const MAD_DESCRIPTION = 'Xee Harness Enhanced (XHE) - Multi-Agent Deployment System with full GOD Runtime implementation'
+export const MAD_DESCRIPTION = 'CodeFusion (CF) - Multi-Agent Deployment System with full GOD Runtime implementation'
 export const MAD_STATUS = 'production-ready'
 
 /**
- * Get information about the M.A.D system
+ * Get information about the MAD system
  */
 export function getMADInfo(): {
   version: string

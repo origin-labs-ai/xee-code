@@ -10,19 +10,19 @@ import { homedir } from 'node:os'
 import { basename, dirname, join, resolve } from 'node:path'
 
 /** Directory name for the default CodeFusion home under the OS home. */
-export const XHE_HOME_DIR_NAME = '.cf'
+export const CF_HOME_DIR_NAME = '.cf'
 
 /** Directory name of the pre-CodeFusion home, kept for one-way migration. */
 export const LEGACY_DSH_HOME_DIR_NAME = '.dsh'
 
 /** Stable user-facing display form for the default CodeFusion home. */
-export const DEFAULT_XHE_HOME_DISPLAY = `~/${XHE_HOME_DIR_NAME}`
+export const DEFAULT_CF_HOME_DISPLAY = `~/${CF_HOME_DIR_NAME}`
 
 /** User-facing display form of the legacy pre-CodeFusion home. */
 export const LEGACY_DSH_HOME_DISPLAY = `~/${LEGACY_DSH_HOME_DIR_NAME}`
 
 /** Environment variable that overrides the default CodeFusion home. */
-export const XHE_HOME_ENV = 'XHE_HOME'
+export const CF_HOME_ENV = 'CF_HOME'
 
 /**
  * Give a native filesystem watcher one canonical spelling of a path, even
@@ -65,15 +65,15 @@ export async function canonicalizeWatchPath(path: string): Promise<string> {
  * Resolve the default CodeFusion home using Node's platform path rules.
  * @returns the absolute default harness home path.
  */
-export function defaultDshHome(): string {
-  return join(homedir(), XHE_HOME_DIR_NAME)
+export function defaultCfHome(): string {
+  return join(homedir(), CF_HOME_DIR_NAME)
 }
 
 /**
  * Resolve the legacy pre-CodeFusion home (`~/.dsh`).
  * @returns the absolute legacy harness home path.
  */
-export function legacyDshHome(): string {
+export function legacyCfHome(): string {
   return join(homedir(), LEGACY_DSH_HOME_DIR_NAME)
 }
 
@@ -90,7 +90,7 @@ export function legacyDshHome(): string {
  * `'legacy-only'` when migration was skipped (copy failed) and only the
  * legacy home holds data.
  */
-export function migrateLegacyDshHome(home: string = defaultDshHome(), osHome: string = homedir()): 'migrated' | 'fresh' | 'legacy-only' {
+export function migrateLegacyCfHome(home: string = defaultCfHome(), osHome: string = homedir()): 'migrated' | 'fresh' | 'legacy-only' {
   const legacy = join(osHome, LEGACY_DSH_HOME_DIR_NAME)
   const exists = (path: string): boolean => {
     try {
@@ -123,17 +123,17 @@ export function expandHomePath(path: string): string {
 /**
  * Resolve the single-root CodeFusion home.
  *
- * Precedence, highest first: an explicit configured path, `$XHE_HOME`, then
+ * Precedence, highest first: an explicit configured path, `$CF_HOME`, then
  * `~/.cf`. The harness keeps all user data under one root. An empty or
- * whitespace-only `$XHE_HOME` is treated as unset, so a blank override never
+ * whitespace-only `$CF_HOME` is treated as unset, so a blank override never
  * resolves the home to the current working directory.
  * @param configured - explicit harness-home override, which has highest precedence.
- * @param env - environment mapping used to read `XHE_HOME`.
+ * @param env - environment mapping used to read `CF_HOME`.
  * @returns the normalized absolute harness home path.
  */
-export function resolveDshHome(configured?: string, env: Record<string, string | undefined> = process.env): string {
-  const fromEnv = env[XHE_HOME_ENV]
-  const selected = configured ?? (fromEnv !== undefined && fromEnv.trim().length > 0 ? fromEnv : defaultDshHome())
+export function resolveCfHome(configured?: string, env: Record<string, string | undefined> = process.env): string {
+  const fromEnv = env[CF_HOME_ENV]
+  const selected = configured ?? (fromEnv !== undefined && fromEnv.trim().length > 0 ? fromEnv : defaultCfHome())
   return resolve(expandHomePath(selected))
 }
 
@@ -142,18 +142,18 @@ export function resolveDshHome(configured?: string, env: Record<string, string |
  * @param segments - path segments appended to the Harness home; an empty list returns the home itself.
  * @returns the normalized absolute joined path.
  */
-export function dshHomePath(...segments: string[]): string {
-  return join(resolveDshHome(), ...segments)
+export function cfHomePath(...segments: string[]): string {
+  return join(resolveCfHome(), ...segments)
 }
 
 /**
  * Describe a resolved harness home symbolically for user-facing display.
  *
  * It never returns an absolute machine path: the default home is labelled
- * `~/.cf`, and any configured home is labelled `$XHE_HOME`.
- * @param resolvedHome - the absolute path returned by {@link resolveDshHome}.
- * @returns `~/.cf` for the default home, otherwise `$XHE_HOME`.
+ * `~/.cf`, and any configured home is labelled `$CF_HOME`.
+ * @param resolvedHome - the absolute path returned by {@link resolveCfHome}.
+ * @returns `~/.cf` for the default home, otherwise `$CF_HOME`.
  */
-export function dshHomeDisplay(resolvedHome: string): string {
-  return resolvedHome === resolve(defaultDshHome()) ? DEFAULT_XHE_HOME_DISPLAY : `$${XHE_HOME_ENV}`
+export function cfHomeDisplay(resolvedHome: string): string {
+  return resolvedHome === resolve(defaultCfHome()) ? DEFAULT_CF_HOME_DISPLAY : `$${CF_HOME_ENV}`
 }

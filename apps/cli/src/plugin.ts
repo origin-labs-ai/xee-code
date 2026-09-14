@@ -41,14 +41,14 @@ function exportsPatch(packageName: string, profileDir: string): boolean {
     return false // pnpm reported success yet the package is unresolvable — treat as plain
   }
   const manifest = readProfileManifest(NAME, dir)
-  return manifest.dsh?.bundle?.patch !== undefined
+  return manifest.cf?.bundle?.patch !== undefined
 }
 
 /**
- * Reconcile `dsh.profile.bundles` against the installed state: pnpm has
+ * Reconcile `cf.profile.bundles` against the installed state: pnpm has
  * already written the real installed names (so a git/path/tarball/alias spec
  * on the command line reconciles by its true package name) and materialized
- * the packages. A dependency that resolves to a `dsh.bundle`-declaring
+ * the packages. A dependency that resolves to a `cf.bundle`-declaring
  * package joins the layer stack (appended in dependency order); a
  * dependency-listed name that no longer does — removed, or the installed
  * version dropped the declaration — leaves it. In-box bundles from the
@@ -60,7 +60,7 @@ function reconcilePlugins(before: ProfileManifest, profileDir: string): void {
   const after = readProfileManifest(NAME, profileDir)
   const beforeDeps = new Set(Object.keys(before.dependencies ?? {}))
   const dependencies = Object.keys(after.dependencies ?? {})
-  const plugins = after.dsh?.profile?.bundles ?? []
+  const plugins = after.cf?.profile?.bundles ?? []
   let changed = false
   for (const packageName of dependencies) {
     const isBundle = exportsPatch(packageName, profileDir)
@@ -69,7 +69,7 @@ function reconcilePlugins(before: ProfileManifest, profileDir: string): void {
       changed = true
     } else if (!isBundle && !beforeDeps.has(packageName)) {
       process.stderr.write(
-        `${NAME}: warning: ${packageName} declares no dsh.bundle — installed as a plain dependency, not a profile layer `
+        `${NAME}: warning: ${packageName} declares no cf.bundle — installed as a plain dependency, not a profile layer `
         + '(a later update that gains one activates it automatically)\n',
       )
     }
@@ -86,7 +86,7 @@ function reconcilePlugins(before: ProfileManifest, profileDir: string): void {
     }
   }
   if (!changed) return
-  after.dsh = { ...after.dsh, profile: { ...after.dsh?.profile, bundles: plugins } }
+  after.cf = { ...after.cf, profile: { ...after.cf?.profile, bundles: plugins } }
   writeProfileManifest(profileDir, after)
 }
 

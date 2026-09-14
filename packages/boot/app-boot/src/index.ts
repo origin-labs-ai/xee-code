@@ -15,7 +15,7 @@ import { Context, type FiberState } from '@deepseek-ai/cordis'
 import Loader, { type Entry, type EntryOptions } from '@deepseek-ai/cordis-plugin-loader'
 import Include, { applyEntryPatches, entryListSchema, type PatchOptions } from '@deepseek-ai/cordis-plugin-include'
 import Group from '@deepseek-ai/cordis-plugin-group'
-import { dshHomePath, resolveDshHome } from '@origin-ai/cf-home-paths'
+import { cfHomePath, resolveCfHome } from '@origin-ai/cf-home-paths'
 import { createLaunchEnvironmentSnapshot, type LaunchEnvironmentSnapshot } from '@origin-ai/cf-launch-environment'
 import type {} from '@deepseek-ai/cordis-plugin-hmr'
 // Side-effect type import: resolves `ctx.get('systemPrompt')` to the service.
@@ -24,7 +24,7 @@ import type {} from '@origin-ai/cf-system-prompt'
 declare module '@deepseek-ai/cordis' {
   interface Context {
     /** Harness-home path resolver available to Loader `!!js` config expressions. */
-    dshHomePath?: typeof dshHomePath
+    cfHomePath?: typeof cfHomePath
   }
 }
 
@@ -41,9 +41,9 @@ export {
   resolveBundleDir,
   resolveProfileDir,
   writeProfileManifest,
-  type DshBundleManifest,
-  type DshManifestSection,
-  type DshProfileManifest,
+  type CfBundleManifest,
+  type CfManifestSection,
+  type CfProfileManifest,
   type Profile,
   type ProfileLayer,
   type ProfileManifest,
@@ -178,7 +178,7 @@ export function loadLayeredEnv(
   binName: string, cwd: string = process.cwd(),
   warn: (line: string) => void = line => void process.stderr.write(line),
 ): LaunchEnvironmentSnapshot {
-  const home = resolveDshHome()
+  const home = resolveCfHome()
   const inherited = { ...process.env } as Record<string, string>
   // Parse both layers first: a rejection must not leave one file applied.
   const project = readEnvLayer(binName, cwd, warn)
@@ -767,7 +767,7 @@ export async function boot(
   let stage = 'host preparation failed'
   try {
     ctx.baseUrl = pathToFileURL(dirname(absoluteConfigPath)).href + '/'
-    ctx.provide('dshHomePath', dshHomePath)
+    ctx.provide('cfHomePath', cfHomePath)
     await ctx.plugin(Loader)
     await prepare?.(ctx)
     stage = 'plugin tree failed to load'

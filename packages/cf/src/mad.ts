@@ -1,5 +1,5 @@
 /**
- * Xee Harness Enhanced (XHE) - M.A.D (Multi-Agent Deployment) System
+ * CodeFusion (CF) - MAD (Multi-Agent Deployment) System
  * 
  * FULL ADVANCED IMPLEMENTATION - Production Ready
  * 
@@ -51,7 +51,7 @@ import type {
   GauntletConfig,
   ProductionSweepConfig,
   CoreRule,
-  XHEIdentity,
+  CfIdentity,
   ActiveAgent as AdvancedActiveAgent
 } from './types'
 
@@ -592,7 +592,7 @@ class LLMAPIClient {
 // ============================================================================
 
 /**
- * Advanced M.A.D Engine with Real API Integration
+ * Advanced MAD Engine with Real API Integration
  * 
  * This is the production-ready implementation that:
  * - Makes actual LLM API calls
@@ -650,7 +650,7 @@ export class AdvancedMADEngine {
   }
 
   /**
-   * Execute a full M.A.D session with real API calls
+   * Execute a full MAD session with real API calls
    */
   async execute(task: string, options?: {
     mode?: MADMode
@@ -972,7 +972,7 @@ export class AdvancedMADEngine {
   }
 
   private buildSystemPrompt(mode: MADMode): string {
-    const basePrompt = `You are part of XHE (Xee Harness Enhanced), an advanced Multi-Agent Deployment (M.A.D) system.
+    const basePrompt = `You are part of CF (CodeFusion), an advanced Multi-Agent Deployment (MAD) system.
 
 CORE RULES YOU MUST FOLLOW:
 1. Consensus ≠ Correctness: High agreement does not guarantee truth. Verify independently.
@@ -1446,7 +1446,7 @@ function generateId(): string {
 // ============================================================================
 
 /**
- * Create a new Advanced M.A.D Engine
+ * Create a new Advanced MAD Engine
  */
 export function createAdvancedMADEngine(config?: Partial<AdvancedMADConfig>): AdvancedMADEngine {
   return new AdvancedMADEngine(config)
@@ -1480,7 +1480,7 @@ export async function xheAdvExecute(
 // ============================================================================
 
 /**
- * Basic M.A.D Engine (Simulation Mode - for testing without API keys)
+ * Basic MAD Engine (Simulation Mode - for testing without API keys)
  * 
  * This provides a simplified version that simulates multi-agent discussion
  * without requiring actual LLM API credentials. Useful for development and testing.

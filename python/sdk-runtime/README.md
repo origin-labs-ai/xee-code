@@ -1,4 +1,4 @@
-# Xee Harness Enhanced Runtime Wheel
+# CodeFusion Runtime Wheel
 
 Runtime carrier package for the Python SDK (dist `cf-runtime-bin`, module `deepseek_harness_runtime`): it locates the bundled runtime binaries the `cf-sdk` client spawns, and ships the default configuration behind zero-config runs.
 

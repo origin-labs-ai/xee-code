@@ -1,9 +1,9 @@
 /**
- * Xee Harness Enhanced (XHE) - Main Entry Point
+ * CodeFusion (CF) - Main Entry Point
  *
  * Complete integration of:
  * - I-WIN (Infinity Win Loop) - Never give up system
- * - M.A.D (Multi-Agent Deployment) - GOD Runtime with advanced orchestration
+ * - MAD (Multi-Agent Deployment) - GOD Runtime with advanced orchestration
  *   - 12 Core Components (State Manager, Model Router, Scheduler, etc.)
  *   - Discussion Bus with adversarial debate
  *   - Memory Fabric (HOT/WARM/COLD)
@@ -25,7 +25,7 @@
  *
  * Also known as:
  * - XeeCode / XCode
- * - Xee Harness Enhanced
+ * - CodeFusion
  *
  * Fork of: DSH/SeepSeek Harness
  */
@@ -39,10 +39,10 @@ export { IWINEngine, createIWIN, iwinExecute } from './iwin'
 export type { IWINTask, IWINTaskContext, IWINResult, IWINStats, Approach } from './iwin'
 
 // ============================================================================
-// M.A.D System - Complete Integration (Basic + Advanced)
+// MAD System - Complete Integration (Basic + Advanced)
 // ============================================================================
 
-// Basic M.A.D Engine (Quick start, simpler API)
+// Basic MAD Engine (Quick start, simpler API)
 export { MADEngine, createMAD, createAdvancedMAD, madDiscuss, madDiscussAdvanced } from './mad'
 export type {
   MADConfig,
@@ -83,7 +83,7 @@ export type {
   StopPolicy,
   ConvergenceMetrics,
   CoreRule,
-  XHEIdentity,
+  CfIdentity,
   ActiveAgent as AdvancedActiveAgent,
   AgentConfig as AdvancedAgentConfig,
   GODState,
@@ -93,7 +93,7 @@ export type {
 } from './mad/core/god-runtime'
 
 // Re-export types from mad/types for convenience
-export { XHE_IDENTITY, MAD_CORE_RULES } from './mad/types'
+export { CF_IDENTITY, MAD_CORE_RULES } from './mad/types'
 export type {
   ModelCapability,
   MessageType,
@@ -149,7 +149,7 @@ export const inject = ['commands', 'skills']
 // ============================================================================
 
 export const VERSION = '2.0.0'
-export const DESCRIPTION = 'Xee Harness Enhanced (XHE): I-WIN, M.A.D GOD Runtime (12 components), BYOK, Gauntlet Loop, Production Sweep, 15 Core Rules — fork of DSH/SeepSeek Harness'
+export const DESCRIPTION = 'CodeFusion (CF): I-WIN, MAD GOD Runtime (12 components), BYOK, Gauntlet Loop, Production Sweep, 15 Core Rules — fork of DSH/SeepSeek Harness'
 
 // ============================================================================
 // Main Setup Function
@@ -164,7 +164,7 @@ export interface XHEConfig {
   enableAutocomplete?: boolean
   enableTokenOptimization?: boolean
 
-  // Advanced M.A.D features
+  // Advanced MAD features
   enableGODRuntime?: boolean      // Use advanced GOD Runtime instead of basic MAD
   enableDiscussionBus?: boolean   // Enable adversarial discussion bus
   enableVerificationEngine?: boolean // Enable 3-layer verification
@@ -181,8 +181,8 @@ export interface XHEConfig {
 
 export async function setupXHE(config: XHEConfig = {}): Promise<void> {
   console.log('╔═══════════════════════════════════════════════════╗')
-  console.log('║     🚀 XEE HARNESS ENHANCED INITIALIZING         ║')
-  console.log('║     I-WIN | M.A.D | GOD Runtime | BYOK          ║')
+  console.log('║     🚀 CODEFUSION INITIALIZING                 ║')
+  console.log('║     I-WIN | MAD | GOD Runtime | BYOK          ║')
   console.log('╚═══════════════════════════════════════════════════╝')
 
   // Initialize model behavior rules first
@@ -214,7 +214,7 @@ export async function setupXHE(config: XHEConfig = {}): Promise<void> {
   if (config.enableGODRuntime || config.enableDiscussionBus || config.enableVerificationEngine ||
       config.enableGauntletLoop || config.enableProductionSweep || config.enableCostIntelligence ||
       config.enableAdaptiveRouting) {
-    console.log('\n🏛️ Initializing Advanced M.A.D Systems...')
+    console.log('\n🏛️ Initializing Advanced MAD Systems...')
 
     if (config.enableGODRuntime) advancedFeatures.push('GOD Runtime')
     if (config.enableDiscussionBus) advancedFeatures.push('Discussion Bus')
@@ -227,11 +227,11 @@ export async function setupXHE(config: XHEConfig = {}): Promise<void> {
     console.log(`   Enabled: ${advancedFeatures.join(', ')}`)
   }
 
-  console.log('\n✅ Xee Harness Enhanced initialized successfully!')
+  console.log('\n✅ CodeFusion initialized successfully!')
   console.log(`   Version: ${VERSION}`)
   console.log('   Features:')
   console.log(`     - I-WIN: ${config.enableIWIN !== false ? 'ON' : 'OFF'}`)
-  console.log(`     - M.A.D: ${config.enableMAD !== false ? 'ON' : 'OFF'}`)
+  console.log(`     - MAD: ${config.enableMAD !== false ? 'ON' : 'OFF'}`)
   console.log(`     - BYOK: ${config.enableBYOK !== false ? 'ON' : 'OFF'}`)
   console.log(`     - GOD Runtime: ${config.enableGODRuntime ? 'ON' : 'OFF'}`)
   console.log(`     - Advanced Systems: ${advancedFeatures.length > 0 ? `${advancedFeatures.length} modules` : 'NONE'}`)
@@ -259,7 +259,7 @@ export async function iwinTask<T>(
 }
 
 /**
- * Quick start Basic M.A.D discussion (simple API)
+ * Quick start Basic MAD discussion (simple API)
  */
 export async function madTask(
   task: string,
@@ -271,7 +271,7 @@ export async function madTask(
 }
 
 /**
- * Quick start Advanced M.A.D (GOD Runtime) - Uses TRANSCRIPT architecture
+ * Quick start Advanced MAD (GOD Runtime) - Uses TRANSCRIPT architecture
  */
 export async function xheTask(
   task: string,

@@ -37,7 +37,7 @@ const settleChokidarChangeThrottle = (): Promise<void> => new Promise(resolve =>
 
 describe('loadOptionalPatches', () => {
   afterEach(() => {
-    delete process.env.XHE_HOME
+    delete process.env.CF_HOME
   })
 
   it('returns undefined when no user patch file exists', () => {

@@ -29,7 +29,7 @@ import {
   watchUserPatches,
   type Profile,
 } from '@origin-ai/cf-app-boot'
-import { resolveDshHome, migrateLegacyDshHome } from '@origin-ai/cf-home-paths'
+import { resolveCfHome, migrateLegacyCfHome } from '@origin-ai/cf-home-paths'
 
 /** Shipped agent-preset root: beside this app's own config, in both source and built layouts. */
 const SHIPPED_PRESET_ROOT = fileURLToPath(new URL('../config/agent-presets/', import.meta.url))
@@ -41,13 +41,13 @@ import { createProcessShutdown, type ProcessShutdown } from './process-shutdown.
 const NAME = 'dsh'
 
 /**
- * The home-level user patch layer (`$XHE_HOME/cordis.patch.yml`), applied
+ * The home-level user patch layer (`$CF_HOME/cordis.patch.yml`), applied
  * over every profile's own layer. Resolved per call, not at module load:
- * `$XHE_HOME` may be set by the test or launcher after import.
+ * `$CF_HOME` may be set by the test or launcher after import.
  * @returns the absolute patch-file path.
  */
 export function homePatchPath(): string {
-  return join(resolveDshHome(), PROFILE_PATCH_FILENAME)
+  return join(resolveCfHome(), PROFILE_PATCH_FILENAME)
 }
 
 /** Absolute path of this dsh installation's package.json (both anchors: src/ and lib/ sit one level under apps/cli). */
@@ -98,9 +98,9 @@ export function resolveTelemetryPatch(disabledEnv: string | undefined, hasRow: b
 export function prepareProfile(name: string, userLayer = true): Profile {
   // One-way legacy migration: a pre-CodeFusion `~/.dsh` home is copied into
   // `~/.cf` on first boot. Existing `~/.cf` data is never overwritten, and an
-  // explicit `$XHE_HOME` bypasses the default-home migration entirely.
-  if (process.env.XHE_HOME === undefined || process.env.XHE_HOME.trim().length === 0) {
-    migrateLegacyDshHome()
+  // explicit `$CF_HOME` bypasses the default-home migration entirely.
+  if (process.env.CF_HOME === undefined || process.env.CF_HOME.trim().length === 0) {
+    migrateLegacyCfHome()
   }
   healProfilesModuleFallback(INSTALL_ANCHOR)
   const profile = loadProfile(NAME, name, INSTALL_ANCHOR, undefined, { userLayer })
@@ -113,7 +113,7 @@ interface ComposedProfile {
   profile: Profile
   /** Bundle layers concatenated — the part below the user layers on a live reload. */
   bundlePatches: PatchOptions[]
-  /** The home-level user layer (`$XHE_HOME/cordis.patch.yml`), applied after the profile's own. */
+  /** The home-level user layer (`$CF_HOME/cordis.patch.yml`), applied after the profile's own. */
   homePatches: PatchOptions[]
   /** Layers above the user layers on a live reload: `--patch` overlays and the telemetry switch. */
   overlays: PatchOptions[]
@@ -138,7 +138,7 @@ function allPatches(composed: ComposedProfile): PatchOptions[] {
  * Load `name` and compose its effective patch stack: bundle layers in
  * `dsh.profile.bundles` order (the base bundle gates the shell stacks by
  * platform on its own rows), the profile's user layer, the home-level user
- * layer (`$XHE_HOME/cordis.patch.yml` — machine-local preferences that apply
+ * layer (`$CF_HOME/cordis.patch.yml` — machine-local preferences that apply
  * to every profile, so it outranks the per-profile layer), `--patch` overlays,
  * then the telemetry switch.
  * @param name - the profile name.

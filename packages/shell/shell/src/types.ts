@@ -8,10 +8,10 @@
  */
 
 import type { SandboxEnforcement, SandboxExecutionPolicy, SandboxMode } from '@origin-ai/cf-sandbox'
-import type { CollectedOutput, DshEnvironment } from '@origin-ai/cf-subprocess'
+import type { CollectedOutput, CfEnvironment } from '@origin-ai/cf-subprocess'
 
-export { XHE_ENV_PREFIX } from '@origin-ai/cf-subprocess'
-export type { CollectedOutput, DshEnvironment, DshEnvironmentKey } from '@origin-ai/cf-subprocess'
+export { CF_ENV_PREFIX } from '@origin-ai/cf-subprocess'
+export type { CollectedOutput, CfEnvironment, CfEnvironmentKey } from '@origin-ai/cf-subprocess'
 
 /**
  * Sandbox facts for one run, present iff a sandboxing executor handled it.
@@ -60,20 +60,20 @@ export interface ShellExecRequest {
   stdin?: string | undefined
   /**
    * Ordinary environment entries for the command, merged after the credential
-   * scrub. Managed facts belong in {@link dshEnv}, which merges after this
+   * scrub. Managed facts belong in {@link cfEnv}, which merges after this
    * map, so an entry here can never displace one. Set by in-process plugins
    * (the hooks bridges set `CLAUDE_PROJECT_DIR`, `CLAUDE_PLUGIN_ROOT`, …); the
    * model-facing bash tool does not expose it as a parameter.
    */
   env?: Record<string, string> | undefined
   /**
-   * Harness-owned `XHE_*` variables for this execution (typed to managed
-   * keys). Executors discard ambient `XHE_*` entries before merging this
+   * Harness-owned `CF_*` variables for this execution (typed to managed
+   * keys). Executors discard ambient `CF_*` entries before merging this
    * snapshot last, so an unavailable current fact cannot inherit a stale
    * value from the harness process and a caller {@link env} entry cannot
    * displace a managed one.
    */
-  dshEnv?: DshEnvironment | undefined
+  cfEnv?: CfEnvironment | undefined
   /** Fully resolved per-call sandbox policy; sandboxing executors default it. */
   sandboxPolicy?: SandboxExecutionPolicy | undefined
 }
@@ -98,13 +98,13 @@ export interface ShellExecSpec {
   stdin?: string | undefined
   /**
    * Ordinary environment entries carried through from
-   * {@link ShellExecRequest.env}; {@link dshEnv} still merges after them.
+   * {@link ShellExecRequest.env}; {@link cfEnv} still merges after them.
    * OPTIONAL on the spec for the same reason as `stdin`: absent means no
    * ordinary extra environment.
    */
   env?: Record<string, string> | undefined
-  /** Managed `XHE_*` snapshot (typed to managed keys); merges after {@link env}. */
-  dshEnv?: DshEnvironment | undefined
+  /** Managed `CF_*` snapshot (typed to managed keys); merges after {@link env}. */
+  cfEnv?: CfEnvironment | undefined
   /** Resolved sandbox policy; ignored by executors that do not confine. */
   sandboxPolicy: SandboxExecutionPolicy | undefined
 }

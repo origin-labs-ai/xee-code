@@ -5,7 +5,7 @@
  * `<dshHome>/skills`. `includeUserRoot: false` is how a deployment — or a test
  * pinning an exact roster — opts out.
  *
- * `$XHE_HOME` is repointed per test because the derived root is resolved in the
+ * `$CF_HOME` is repointed per test because the derived root is resolved in the
  * constructor: the plugin must be mounted while the environment names the
  * temporary home, or it would reach the developer's real one.
  */
@@ -32,13 +32,13 @@ let previousHome: string | undefined
 
 beforeEach(async () => {
   home = await mkdtemp(join(tmpdir(), 'xhe-preset-home-'))
-  previousHome = process.env.XHE_HOME
-  process.env.XHE_HOME = home
+  previousHome = process.env.CF_HOME
+  process.env.CF_HOME = home
 })
 
 afterEach(() => {
-  if (previousHome === undefined) delete process.env.XHE_HOME
-  else process.env.XHE_HOME = previousHome
+  if (previousHome === undefined) delete process.env.CF_HOME
+  else process.env.CF_HOME = previousHome
 })
 
 /** Boot a roster over the fixture system root, with the derived root left to the plugin. */

@@ -1,5 +1,5 @@
 /**
- * Xee Harness Enhanced (XHE) - Advanced Discussion Algorithms
+ * CodeFusion (CF) - Advanced Discussion Algorithms
  * 
  * ROUND 2 IMPROVEMENT: Sophisticated discussion coordination with:
  * - Bayesian belief updating for claim confidence

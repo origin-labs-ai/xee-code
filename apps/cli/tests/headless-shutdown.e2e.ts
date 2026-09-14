@@ -86,7 +86,7 @@ async function runHeadlessPtySmoke(): Promise<string> {
       configArgs: ['--profile', 'headless', 'never complete'],
       tsconfigPath,
       env: {
-        XHE_HOME: home,
+        CF_HOME: home,
         XHE_AGENTS_HOME: join(cwd, '.agents'),
         DEEPSEEK_API_KEY: 'keyless-shutdown-no-call',
         XHE_TELEMETRY_DISABLED: '1',

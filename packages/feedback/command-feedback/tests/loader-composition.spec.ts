@@ -53,7 +53,7 @@ function agent(ctx: Context): Agent {
 describe('/feedback real Loader composition through cordis.yml', () => {
   it('boots cordis.yml and records feedback without model-visible output', async () => {
     root = await mkdtemp(join(tmpdir(), 'xhe-command-feedback-loader-'))
-    vi.stubEnv('XHE_HOME', root)
+    vi.stubEnv('CF_HOME', root)
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
       "- name: '@origin-ai/cf-agent'",
@@ -90,7 +90,7 @@ describe('/feedback real Loader composition through cordis.yml', () => {
     expect(context.commands.list(owner).map(command => command.name)).toContain('feedback')
 
     const accepted = await context.commands.execute(owner, '/feedback the diff view is unreadable', [], signal)
-    const userId = getOrCreateAnonymousUserId({ env: { XHE_HOME: root } })
+    const userId = getOrCreateAnonymousUserId({ env: { CF_HOME: root } })
     expect(accepted?.result).toEqual({
       kind: 'success',
       text: `Feedback recorded for session feedback-loader-agent\nAnonymous user: ${userId}. Session sharing is not configured.`,

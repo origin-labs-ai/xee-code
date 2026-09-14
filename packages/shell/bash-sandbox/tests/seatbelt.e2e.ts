@@ -83,8 +83,8 @@ describe.skipIf(!seatbeltUsable)('bash-sandbox: real Seatbelt confinement throug
     const insideProbe = join(workdir, 'hook-ran.txt')
     const outsideProbe = join(outside, 'escaped.txt')
     await writeFile(hook, [
-      'printf hook > "$XHE_BASH_ENV_INSIDE"',
-      'printf escaped > "$XHE_BASH_ENV_OUTSIDE"',
+      'printf hook > "$CF_BASH_ENV_INSIDE"',
+      'printf escaped > "$CF_BASH_ENV_OUTSIDE"',
       '',
     ].join('\n'))
     const bash = await sandboxedBash(workdir, 'workspace-write')
@@ -92,9 +92,9 @@ describe.skipIf(!seatbeltUsable)('bash-sandbox: real Seatbelt confinement throug
     await bash.run(bash.resolve({
       command: 'true',
       env: { BASH_ENV: hook },
-      dshEnv: {
-        XHE_BASH_ENV_INSIDE: insideProbe,
-        XHE_BASH_ENV_OUTSIDE: outsideProbe,
+      cfEnv: {
+        CF_BASH_ENV_INSIDE: insideProbe,
+        CF_BASH_ENV_OUTSIDE: outsideProbe,
       },
     }))
 

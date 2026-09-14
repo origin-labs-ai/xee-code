@@ -1,6 +1,6 @@
 # @origin-ai/cf-anonymous-user-id
 
-Shared anonymous identity for session telemetry, direct feedback acknowledgement, and DeepSeek provider requests. `getOrCreateAnonymousUserId()` returns a random UUID v4 scoped to one harness home, persisted as the bare line `$XHE_HOME/.anonymous-user-id` (`~/.cf/.anonymous-user-id` when `XHE_HOME` is unset). The OpenTelemetry backend reports it as Resource `user.id`; `/feedback` includes the same value in its acknowledgement; and `xhe-llm-deepseek` sends it as `x-xhe-user-id`, allowing the receiving systems to correlate records without independently generated identities.
+Shared anonymous identity for session telemetry, direct feedback acknowledgement, and DeepSeek provider requests. `getOrCreateAnonymousUserId()` returns a random UUID v4 scoped to one harness home, persisted as the bare line `$CF_HOME/.anonymous-user-id` (`~/.cf/.anonymous-user-id` when `CF_HOME` is unset). The OpenTelemetry backend reports it as Resource `user.id`; `/feedback` includes the same value in its acknowledgement; and `xhe-llm-deepseek` sends it as `x-xhe-user-id`, allowing the receiving systems to correlate records without independently generated identities.
 
 The identity is never derived from the hostname, network address, git remote, or another identifying source. Deleting `.anonymous-user-id` resets the identity on the next process launch. Separate harness homes have separate identities.
 
@@ -24,5 +24,5 @@ None; the transport header changes neither tokens nor the model-visible prefix.
 
 - **No recovery after deletion** — loss mints a new anonymous identity by design; recovery would require stable derivation material that weakens anonymity.
 - **Best-effort concurrency** — a reader landing in the narrow interval between a concurrent process's exclusive create and completed write can use a different in-memory UUID for that run; later launches converge on the persisted value.
-- **No cross-home identity** — different `$XHE_HOME` values cannot be correlated.
+- **No cross-home identity** — different `$CF_HOME` values cannot be correlated.
 - **Configured DeepSeek gateways receive the id** — `xhe-llm-deepseek` sends the stable header to its resolved `baseURL`, including deployment overrides, independently of telemetry sharing mode.

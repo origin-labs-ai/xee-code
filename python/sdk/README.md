@@ -1,7 +1,7 @@
-# Xee Harness Enhanced Python SDK
+# CodeFusion Python SDK
 
-Python subprocess SDK for driving Xee Harness Enhanced over JSON-RPC stdio. The
-runtime inherits normal Xee Harness Enhanced environment variables such as
+Python subprocess SDK for driving CodeFusion over JSON-RPC stdio. The
+runtime inherits normal CodeFusion environment variables such as
 `DEEPSEEK_BASE_URL` and `DEEPSEEK_API_KEY`, so callers can use real model
 endpoints directly or point those variables at a local proxy.
 

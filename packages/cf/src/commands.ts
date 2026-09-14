@@ -98,13 +98,13 @@ export async function madHandler(ctx: CommandContext, args?: string[]): Promise<
   const task = args?.find(a => !a.startsWith('--')) || ''
   const mode = (args?.find(a => a.includes('--mode='))?.split('=')[1] as MADConfig['mode']) || 'plan'
   console.log('╔═══════════════════════════════════════╗')
-  console.log('║  🏛️  M.A.D. SYSTEM INITIALIZED          ║')
+  console.log('║  🏛️  MAD SYSTEM INITIALIZED          ║')
   console.log('╚═══════════════════════════════════════╝')
   console.log(`📋 MODE: ${mode.toUpperCase()} | 🎯 TASK: ${task}`)
   
   const config: MADConfig = { mode, agents: [], maxRounds: 5, balanceLevel: 'balanced' }
   const response = await ctx.agent.mad({ task, config, behavior: { turnTaking: true, devilAdvocate: true } })
-  console.log('✅ M.A.D. CONSENSUS REACHED')
+  console.log('✅ MAD CONSENSUS REACHED')
   validateResponse(response)
 }
 

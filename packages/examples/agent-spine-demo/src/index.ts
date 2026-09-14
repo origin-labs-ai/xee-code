@@ -35,7 +35,7 @@ import * as toolSkill from '@origin-ai/cf-tool-skill'
 import * as toolJobs from '@origin-ai/cf-tool-jobs'
 import AgentLoop, { type Config as AgentLoopConfig } from '@origin-ai/cf-agent-loop'
 import * as llmRetry from '@origin-ai/cf-llm-retry'
-import { resolveDshHome } from '@origin-ai/cf-home-paths'
+import { resolveCfHome } from '@origin-ai/cf-home-paths'
 
 export const name = 'agent-spine-demo'
 
@@ -73,7 +73,7 @@ export interface GoalConfig {
  * `persona`, and `toolOrder` to the system-prompt plugin (the fixed opener,
  * dynamic-context policy, deployment persona, and explicit model-facing tool
  * order), the `tools` object to the tool registry (its presentation `mode`),
- * `dshHome` to bash environment and local skill discovery, `sessionTitle` to
+ * `cfHome` to bash environment and local skill discovery, `sessionTitle` to
  * the fallback title service, `skills` to the
  * skill registry/local provider/tool consumer, `workspaceContext` to the
  * agent-instructions loader, `jobs` to the process-local job provider, and
@@ -104,8 +104,8 @@ export interface Config {
   toolOrder?: SystemPromptConfig['toolOrder']
   /** The tool registry's config — its presentation `mode` (see xhe-tools' `Config`). */
   tools?: ToolsConfig
-  /** Xee Harness Enhanced home directory shared by shell context and local skill discovery. */
-  dshHome?: string
+  /** CodeFusion home directory shared by shell context and local skill discovery. */
+  cfHome?: string
   /** Deterministic fallback and accepted-title limits; omission uses the bundle's example policy. */
   sessionTitle?: SessionTitleConfig
   /** Workspace-context loader controls with an explicit byte budget; set `false` for hermetic prompts. */
@@ -162,7 +162,7 @@ export const Config = z.intersect([
   SystemPrompt.Config,
   z.object({
     tools: ToolRuntime.Config,
-    dshHome: z.string(),
+    cfHome: z.string(),
     sessionTitle: SessionTitleConfigSchema,
     skills: SkillConfigSchema,
     workspaceContext: z.union([z.const(false), workspaceContext.Config]).required(),
@@ -171,7 +171,7 @@ export const Config = z.intersect([
     toolJobs: z.union([z.const(false), ToolJobsConfigSchema]),
     invariants: InvariantRegistry.Config,
     goals: z.union([z.const(false), GoalConfigSchema]),
-  }) as unknown as z<Pick<Config, 'tools' | 'dshHome' | 'sessionTitle' | 'skills' | 'workspaceContext' | 'toolBash' | 'jobs' | 'toolJobs' | 'invariants' | 'goals'>>,
+  }) as unknown as z<Pick<Config, 'tools' | 'cfHome' | 'sessionTitle' | 'skills' | 'workspaceContext' | 'toolBash' | 'jobs' | 'toolJobs' | 'invariants' | 'goals'>>,
 ]) as unknown as z<Config>
 
 /**
@@ -187,7 +187,7 @@ export function pickSpineConfig(config: Omit<Config, 'agents'>): Omit<Config, 'a
     ...config.persona !== undefined ? { persona: config.persona } : {},
     ...config.toolOrder !== undefined ? { toolOrder: config.toolOrder } : {},
     ...config.tools !== undefined ? { tools: config.tools } : {},
-    ...config.dshHome !== undefined ? { dshHome: config.dshHome } : {},
+    ...config.cfHome !== undefined ? { cfHome: config.cfHome } : {},
     ...config.sessionTitle !== undefined ? { sessionTitle: config.sessionTitle } : {},
     workspaceContext: config.workspaceContext,
     ...config.skills !== undefined ? { skills: config.skills } : {},
@@ -210,12 +210,12 @@ export function pickSpineConfig(config: Omit<Config, 'agents'>): Omit<Config, 'a
  * seams, then the loop that drives them.
  */
 export function apply(ctx: Context, config: Config): void {
-  const nestedDshHome = config.skills?.filesystem?.dshHome
-  if (config.dshHome !== undefined && nestedDshHome !== undefined
-    && resolveDshHome(config.dshHome) !== resolveDshHome(nestedDshHome)) {
-    throw new Error('agent-spine-demo: dshHome and skills.filesystem.dshHome must resolve to the same directory')
+  const nestedCfHome = config.skills?.filesystem?.cfHome
+  if (config.cfHome !== undefined && nestedCfHome !== undefined
+    && resolveCfHome(config.cfHome) !== resolveCfHome(nestedCfHome)) {
+    throw new Error('agent-spine-demo: cfHome and skills.filesystem.cfHome must resolve to the same directory')
   }
-  const dshHome = resolveDshHome(config.dshHome ?? nestedDshHome)
+  const cfHome = resolveCfHome(config.cfHome ?? nestedCfHome)
 
   ctx.plugin(Timer)
   ctx.plugin(LlmRuntime)
@@ -232,7 +232,7 @@ export function apply(ctx: Context, config: Config): void {
   const skillsEnabled = config.skills?.enabled ?? true
   if (skillsEnabled) {
     ctx.plugin(SkillRegistry, config.skills?.registry ?? {})
-    ctx.plugin(SkillFileSystem, Object.assign({}, config.skills?.filesystem, { dshHome }))
+    ctx.plugin(SkillFileSystem, Object.assign({}, config.skills?.filesystem, { cfHome }))
   }
   ctx.plugin(AgentRegistry)
   ctx.plugin(llmRetry)
@@ -248,7 +248,7 @@ export function apply(ctx: Context, config: Config): void {
   ctx.plugin(scopeInvariant)
   ctx.plugin(agentLoopInvariant)
   if (config.toolBash !== false) {
-    ctx.plugin(bashEnv, { dshHome })
+    ctx.plugin(bashEnv, { cfHome })
     ctx.plugin(toolBash, config.toolBash ?? {})
   }
   if (config.workspaceContext !== false) {

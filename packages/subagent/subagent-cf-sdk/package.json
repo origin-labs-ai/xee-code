@@ -1,6 +1,6 @@
 {
   "name": "@origin-ai/cf-subagent-sdk",
-  "description": "Out-of-process SDK subagent backend: drives a child Xee Harness Enhanced runtime subprocess over stdio JSON-RPC through the TypeScript SDK client",
+  "description": "Out-of-process SDK subagent backend: drives a child CodeFusion runtime subprocess over stdio JSON-RPC through the TypeScript SDK client",
   "version": "0.1.1-rc.2",
   "publishConfig": {
     "access": "public"

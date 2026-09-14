@@ -38,7 +38,7 @@
     "lib/types/**/*.d.ts"
   ],
   "license": "MIT",
-  "xhe": {
+  "cf": {
     "bundle": {
       "patch": "./cordis.patch.yml"
     }

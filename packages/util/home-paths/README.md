@@ -4,15 +4,15 @@ Shared filesystem path helpers for CodeFusion user data.
 
 ## XHE home
 
-`resolveDshHome()` resolves the single-root CodeFusion home. Precedence, highest first: an explicit configured path, `$XHE_HOME`, then `~/.cf`. The harness keeps all user data under one root. A legacy `~/.dsh` home is migrated one-way into `~/.cf` on first boot; existing `~/.cf` data is never overwritten.
+`resolveCfHome()` resolves the single-root CodeFusion home. Precedence, highest first: an explicit configured path, `$CF_HOME`, then `~/.cf`. The harness keeps all user data under one root. A legacy `~/.dsh` home is migrated one-way into `~/.cf` on first boot; existing `~/.cf` data is never overwritten.
 
-`dshHomePath(...segments)` joins child segments onto that resolved home with Node's platform path rules. With no segments it returns the home itself.
+`cfHomePath(...segments)` joins child segments onto that resolved home with Node's platform path rules. With no segments it returns the home itself.
 
-`dshHomeDisplay()` names an active root symbolically for user-facing paths: `~/.cf` for the default home, `$XHE_HOME` for any configured home. It never leaks an absolute machine path.
+`cfHomeDisplay()` names an active root symbolically for user-facing paths: `~/.cf` for the default home, `$CF_HOME` for any configured home. It never leaks an absolute machine path.
 
-`XHE_HOME_DIR_NAME` owns the default user-data directory name: `.cf`. `LEGACY_DSH_HOME_DIR_NAME` owns the pre-CodeFusion name (`.dsh`), kept for one-way migration only.
+`CF_HOME_DIR_NAME` owns the default user-data directory name: `.cf`. `LEGACY_DSH_HOME_DIR_NAME` owns the pre-CodeFusion name (`.dsh`), kept for one-way migration only.
 
-`defaultDshHome()` returns the default CodeFusion home by joining the operating-system home directory with `.cf`, using Node's platform path rules. `legacyDshHome()` returns the legacy `~/.dsh` path. `migrateLegacyDshHome()` synchronously copies legacy data into the CodeFusion home when the legacy directory exists and the CodeFusion home does not yet exist.
+`defaultCfHome()` returns the default CodeFusion home by joining the operating-system home directory with `.cf`, using Node's platform path rules. `legacyCfHome()` returns the legacy `~/.dsh` path. `migrateLegacyCfHome()` synchronously copies legacy data into the CodeFusion home when the legacy directory exists and the CodeFusion home does not yet exist.
 
 `expandHomePath()` expands `~`, `~/...`, and Windows-style `~\...` prefixes against the operating-system home directory. It leaves non-tilde paths and `~user/...` untouched.
 

@@ -14,7 +14,7 @@ import { HarnessClient, isRecord, SdkProtocolError } from './client.ts'
 import type { ContentBlock, DeepSeekHarnessOptions, HarnessClientOptions, HarnessNotification, RunResult } from './types.ts'
 
 /**
- * Reusable SDK for running Xee Harness Enhanced agent turns in a runtime
+ * Reusable SDK for running CodeFusion agent turns in a runtime
  * subprocess. The subprocess starts lazily on first use and stays owned by
  * this instance until {@link close}; always close (or `await using`) so the
  * child is reaped.

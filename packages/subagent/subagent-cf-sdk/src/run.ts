@@ -1,5 +1,5 @@
 /**
- * Fresh-process SDK subagent client. Drives one child Xee Harness Enhanced
+ * Fresh-process SDK subagent client. Drives one child CodeFusion
  * runtime over stdio JSON-RPC through `@origin-ai/cf-sdk-client` and owns
  * cancellation and quiescent disposal. Structure mirrors the ACP backend
  * (`@origin-ai/cf-subagent-acp`): publish after the child handshake,

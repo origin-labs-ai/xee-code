@@ -63,9 +63,9 @@ async function composePrefix(ctx: Context, cwd: string): Promise<Message[]> {
  * bin smokes; here we assert the composition + config forwarding.
  */
 async function mount(config: agentCore.Config, withBash = false): Promise<Context> {
-  const oldDshHome = process.env.XHE_HOME
+  const oldDshHome = process.env.CF_HOME
   const oldAgentsHome = process.env.XHE_AGENTS_HOME
-  process.env.XHE_HOME = await mkdtemp(join(tmpdir(), 'xhe-agent-spine-demo-home-'))
+  process.env.CF_HOME = await mkdtemp(join(tmpdir(), 'xhe-agent-spine-demo-home-'))
   process.env.XHE_AGENTS_HOME = await mkdtemp(join(tmpdir(), 'xhe-agent-spine-demo-agents-'))
   const ctx = new Context()
   if (withBash) {
@@ -84,9 +84,9 @@ async function mount(config: agentCore.Config, withBash = false): Promise<Contex
     return ctx
   } finally {
     if (oldDshHome === undefined) {
-      delete process.env.XHE_HOME
+      delete process.env.CF_HOME
     } else {
-      process.env.XHE_HOME = oldDshHome
+      process.env.CF_HOME = oldDshHome
     }
     if (oldAgentsHome === undefined) {
       delete process.env.XHE_AGENTS_HOME
@@ -97,17 +97,17 @@ async function mount(config: agentCore.Config, withBash = false): Promise<Contex
 }
 
 async function withIsolatedSkillHomes<T>(run: () => Promise<T>): Promise<T> {
-  const oldDshHome = process.env.XHE_HOME
+  const oldDshHome = process.env.CF_HOME
   const oldAgentsHome = process.env.XHE_AGENTS_HOME
-  process.env.XHE_HOME = await mkdtemp(join(tmpdir(), 'xhe-agent-spine-demo-home-'))
+  process.env.CF_HOME = await mkdtemp(join(tmpdir(), 'xhe-agent-spine-demo-home-'))
   process.env.XHE_AGENTS_HOME = await mkdtemp(join(tmpdir(), 'xhe-agent-spine-demo-agents-'))
   try {
     return await run()
   } finally {
     if (oldDshHome === undefined) {
-      delete process.env.XHE_HOME
+      delete process.env.CF_HOME
     } else {
-      process.env.XHE_HOME = oldDshHome
+      process.env.CF_HOME = oldDshHome
     }
     if (oldAgentsHome === undefined) {
       delete process.env.XHE_AGENTS_HOME
@@ -426,7 +426,7 @@ describe('xhe-agent-spine-demo bundle', () => {
       skills: {
         registry: { collectCacheMaxEntries: 4 },
         filesystem: {
-          dshHome: join(home, '.dsh'),
+          cfHome: join(home, '.dsh'),
           agentsHome: join(agentsHome, '.agents'),
           customSkillDirs: [custom],
         },
@@ -461,7 +461,7 @@ describe('xhe-agent-spine-demo bundle', () => {
         workspaceContext: false,
         skills: {
           filesystem: {
-            dshHome: join(home, '.dsh'),
+            cfHome: join(home, '.dsh'),
             agentsHome: join(home, '.agents'),
             watchStabilityThresholdMs: 20,
             watchPollIntervalMs: 10,
@@ -589,14 +589,14 @@ describe('xhe-agent-spine-demo bundle', () => {
     }
   })
 
-  it('shares top-level dshHome between local skills and the managed bash environment', async () => {
+  it('shares top-level cfHome between local skills and the managed bash environment', async () => {
     const home = await mkdtemp(join(tmpdir(), 'xhe-agent-core-shared-home-'))
     const agentsHome = await mkdtemp(join(tmpdir(), 'xhe-agent-core-shared-agents-'))
     await mkdir(join(home, 'skills'), { recursive: true })
     await writeFile(join(home, 'skills', 'shared-skill.md'), '---\nname: shared-skill\ndescription: Shared home skill\n---\n\nShared body.\n')
 
     const ctx = await mount({
-      dshHome: home,
+      cfHome: home,
       workspaceContext: false,
       skills: { filesystem: { agentsHome } },
     }, true)
@@ -610,18 +610,18 @@ describe('xhe-agent-spine-demo bundle', () => {
       name: 'bash',
       arguments: { command: 'true' },
     }
-    expect(ctx.shellEnv.collect(execution)).toMatchObject({ XHE_HOME: home, XHE_SHELL: '1' })
+    expect(ctx.shellEnv.collect(execution)).toMatchObject({ CF_HOME: home, CF_SHELL: '1' })
     await ctx.fiber.dispose()
   })
 
   it('rejects conflicting global and nested XHE home directories', () => {
     expect(() => {
       agentCore.apply(new Context(), {
-        dshHome: '/global-xhe-home',
+        cfHome: '/global-xhe-home',
         workspaceContext: false,
-        skills: { filesystem: { dshHome: '/nested-xhe-home' } },
+        skills: { filesystem: { cfHome: '/nested-xhe-home' } },
       })
-    }).toThrow('agent-spine-demo: dshHome and skills.filesystem.dshHome must resolve to the same directory')
+    }).toThrow('agent-spine-demo: cfHome and skills.filesystem.cfHome must resolve to the same directory')
   })
 
   it('delivers workspace instructions ahead of the first-step skill catalog', async () => {
@@ -738,7 +738,7 @@ describe('xhe-agent-spine-demo bundle', () => {
       persona: 'You are merged.',
       toolOrder: ['zulu'],
       tools: { mode: 'native' as const },
-      dshHome: '/tmp/xhe-home',
+      cfHome: '/tmp/xhe-home',
       sessionTitle: { fallbackMaxWords: 3, fallbackMaxBytes: 24, maxTitleBytes: 60 },
       workspaceContext: false as const,
       skills: { enabled: false },
@@ -756,7 +756,7 @@ describe('xhe-agent-spine-demo bundle', () => {
       persona: appConfig.persona,
       toolOrder: appConfig.toolOrder,
       tools: appConfig.tools,
-      dshHome: appConfig.dshHome,
+      cfHome: appConfig.cfHome,
       sessionTitle: appConfig.sessionTitle,
       workspaceContext: false,
       skills: appConfig.skills,

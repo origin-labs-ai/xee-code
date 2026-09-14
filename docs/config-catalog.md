@@ -125,7 +125,7 @@ Source: [`packages/core/agent-default-model/src/index.ts:41`](../packages/core/a
 ```ts config-catalog
 /** User-facing workspace instruction loader configuration. */
 export interface Config {
-  /** Harness home containing the fixed user-global `AGENTS.md`; defaults to `$XHE_HOME` or `~/.cf`. */
+  /** Harness home containing the fixed user-global `AGENTS.md`; defaults to `$CF_HOME` or `~/.cf`. */
   dshHome?: string
   /** Directory entries that identify the project root while walking upward from the session cwd. */
   projectRootMarkers?: string[]
@@ -341,7 +341,7 @@ Source: [`packages/core/agent-tool-presentation/src/index.ts:38`](../packages/co
 ```ts config-catalog
 /** Local attachment backend configuration. */
 export interface Config {
-  /** Explicit harness home; omitted follows `XHE_HOME`, then `~/.cf`. */
+  /** Explicit harness home; omitted follows `CF_HOME`, then `~/.cf`. */
   dshHome?: string
   /** Maximum encoded bytes accepted for one submitted image. Default: 20 MiB. */
   maxImageBytes?: number
@@ -564,7 +564,7 @@ Source: [`packages/compaction/compaction-tool-result-pruner/src/types.ts:4`](../
 export interface Config {
   /** Credentials document path; defaults to `.credentials.yaml` under the harness home. */
   path?: string
-  /** Harness home used when `path` is omitted; defaults to `$XHE_HOME` or `~/.cf`. */
+  /** Harness home used when `path` is omitted; defaults to `$CF_HOME` or `~/.cf`. */
   dshHome?: string
   /** Watch the document and hot-publish external edits; defaults to true. */
   watch?: boolean
@@ -2037,7 +2037,7 @@ Source: [`packages/session/session-title-first-prompt-llm/src/index.ts:15`](../p
 export interface Config {
   /** Settings document path; defaults to `settings.yaml` under the harness home. */
   path?: string
-  /** Harness home used when `path` is omitted; defaults to `$XHE_HOME` or `~/.cf`. */
+  /** Harness home used when `path` is omitted; defaults to `$CF_HOME` or `~/.cf`. */
   dshHome?: string
   /** Watch the document and hot-publish external edits; defaults to true. */
   watch?: boolean
@@ -2055,8 +2055,8 @@ Source: [`packages/settings/settings-file/src/index.ts:21`](../packages/settings
 ```ts config-catalog
 /** Plugin config (all optional — the built-in facts resolve without defaults). */
 export interface Config {
-  /** Xee Harness Enhanced home directory exposed as `XHE_HOME`; defaults to `$XHE_HOME` or `~/.cf`. */
-  dshHome?: string
+  /** Xee Harness Enhanced home directory exposed as `CF_HOME`; defaults to `$CF_HOME` or `~/.cf`. */
+  cfHome?: string
 }
 ```
 
@@ -2111,7 +2111,7 @@ export interface Config {
   providerName?: string
   /** Whether project and user roots are included around custom roots. */
   includeDefaultRoots?: boolean
-  /** Xee Harness Enhanced config root. Defaults to `$XHE_HOME` or `~/.cf`. */
+  /** Xee Harness Enhanced config root. Defaults to `$CF_HOME` or `~/.cf`. */
   dshHome?: string
   /** Shared agent config root. Defaults to `$XHE_AGENTS_HOME` or `~/.agents`. */
   agentsHome?: string

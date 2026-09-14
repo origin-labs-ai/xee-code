@@ -3,14 +3,14 @@
 <p align="center">
   <strong>Agent Development & Operation Protocols</strong>
   <br/>
-  <em>For @origin-ai/cf M.A.D System</em>
+  <em>For @origin-ai/cf MAD System</em>
 </p>
 
 ---
 
 ## Overview
 
-This document defines the guidelines, protocols, and best practices for agents operating within the **Xee Harness Enhanced (XHE)** Multi-Agent Deployment (M.A.D) system.
+This document defines the guidelines, protocols, and best practices for agents operating within the **Xee Harness Enhanced (XHE)** Multi-Agent Deployment (MAD) system.
 
 ### Identity
 

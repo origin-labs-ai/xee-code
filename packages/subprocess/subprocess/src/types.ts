@@ -9,14 +9,14 @@
 
 import type { Readable, Writable } from 'node:stream'
 
-/** Namespace prefix reserved for Xee Harness Enhanced-managed child environment facts. */
-export const XHE_ENV_PREFIX = 'XHE_' as const
+/** Namespace prefix reserved for CodeFusion-managed child environment facts. */
+export const CF_ENV_PREFIX = 'CF_' as const
 
-/** One environment key inside the managed {@link XHE_ENV_PREFIX} namespace. */
-export type DshEnvironmentKey = `${typeof XHE_ENV_PREFIX}${string}`
+/** One environment key inside the managed {@link CF_ENV_PREFIX} namespace. */
+export type CfEnvironmentKey = `${typeof CF_ENV_PREFIX}${string}`
 
-/** Trusted Xee Harness Enhanced variables for one child-process execution. */
-export type DshEnvironment = Readonly<Record<DshEnvironmentKey, string>>
+/** Trusted CodeFusion variables for one child-process execution. */
+export type CfEnvironment = Readonly<Record<CfEnvironmentKey, string>>
 
 /** One captured stream: the (possibly truncated) text plus recovery info. */
 export interface CollectedOutput {
@@ -97,7 +97,7 @@ export interface SubprocessSpawnSpec {
    * Explicit environment entries merged onto the implementation's scrubbed
    * parent base (see `scrubbedParentEnv`), with no namespace validation. A
    * string is a deliberate caller opt-in, so a forwarded credential-shaped
-   * entry or current `XHE_*` fact survives the scrub; `undefined` is a
+   * entry or current `CF_*` fact survives the scrub; `undefined` is a
    * tombstone that removes an ordinary ambient entry from the child.
    */
   env?: NodeJS.ProcessEnv | undefined

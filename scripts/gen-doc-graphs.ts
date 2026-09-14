@@ -545,7 +545,7 @@ const SERVICE_ROLES: ServiceRole[] = [
     title: 'Client plugin graph host',
     mode: 'core',
     consumers: ['hmr'],
-    note: 'Composes the __XHE_BOOT__ entry graph from an incremental dsh.client scan, serves plugin bundles, and notifies rebuilt/graph-changed subscribers.',
+    note: 'Composes the __CF_BOOT__ entry graph from an incremental dsh.client scan, serves plugin bundles, and notifies rebuilt/graph-changed subscribers.',
   },
   {
     key: 'workflowEngine',

@@ -1,6 +1,6 @@
 # @origin-ai/cf-tool-cordis
 
-The self-referential Cordis toolset: five model-facing tools over the live runtime in the current XHE process. The registry, the vm sandbox, and the browser broadcast belong to [`@deepseek-ai/cordis-host-runner`](../cordis-host-runner/README.md) (`ctx.dynamic`), which this toolset injects — a composition with these tools but no runner never activates them. Design home — sandbox semantics, dynamic-package lifecycle and composition, standing decisions: [the toolset Agent Note](../../../.agents/notes/implemented/feature/2026-07-08-self-referential-cordis-toolset.md).
+The self-referential Cordis toolset: five model-facing tools over the live runtime in the current CF process. The registry, the vm sandbox, and the browser broadcast belong to [`@deepseek-ai/cordis-host-runner`](../cordis-host-runner/README.md) (`ctx.dynamic`), which this toolset injects — a composition with these tools but no runner never activates them. Design home — sandbox semantics, dynamic-package lifecycle and composition, standing decisions: [the toolset Agent Note](../../../.agents/notes/implemented/feature/2026-07-08-self-referential-cordis-toolset.md).
 
 ## What it does
 
@@ -14,7 +14,7 @@ Two paired verbs, plus the read-only report.
 
 Exact model-facing schemas: [the generated tool catalog](../../../docs/tool-catalog.md).
 
-Dynamic packages live only in the shared XHE process memory. They remain active across later turns and may affect other sessions in that process, but disappear after `cordis_stop`/`cordis_undefine`, toolset unload, or XHE restart. They create no Plugin file, install no package, change no `cordis.yml` or personal/project configuration, do not survive restart, and cannot be promoted automatically. To keep an experiment, ask the Agent to implement a normal local, project, or repository Plugin through the regular development workflow. Every verb is session-scoped: a package is visible and controllable only in the session that defined it.
+Dynamic packages live only in the shared CF process memory. They remain active across later turns and may affect other sessions in that process, but disappear after `cordis_stop`/`cordis_undefine`, toolset unload, or CF restart. They create no Plugin file, install no package, change no `cordis.yml` or personal/project configuration, do not survive restart, and cannot be promoted automatically. To keep an experiment, ask the Agent to implement a normal local, project, or repository Plugin through the regular development workflow. Every verb is session-scoped: a package is visible and controllable only in the session that defined it.
 
 ## Trust stance
 

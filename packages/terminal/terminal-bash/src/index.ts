@@ -60,9 +60,9 @@ function childEnvironment(spec: TerminalBackendSpawnSpec, dialect: ShellDialect)
     TERM: 'dumb',
     PAGER: 'cat',
     GIT_PAGER: 'cat',
-    XHE_SHELL: '1',
-    XHE_SESSION_ID: spec.owner.id,
-    XHE_PTY_SESSION_ID: spec.sessionId,
+    CF_SHELL: '1',
+    CF_SESSION_ID: spec.owner.id,
+    CF_PTY_SESSION_ID: spec.sessionId,
   }
   if (dialect === 'pwsh') {
     // pwsh ignores PS1/PROMPT_COMMAND; its prompt is installed by the startup

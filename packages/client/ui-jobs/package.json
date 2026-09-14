@@ -21,7 +21,7 @@
     "./src/*": "./src/*",
     "./package.json": "./package.json"
   },
-  "xhe": {
+  "cf": {
     "client": {
       "inject": [
         "@origin-ai/cf-client-locale",

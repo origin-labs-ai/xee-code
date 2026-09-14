@@ -1,7 +1,7 @@
 /**
  * Node half of the client module system (`dsh.client` dual-face package): scans
  * the host Loader's entries for packages declaring `dsh.client`, composes the
- * `window.__XHE_BOOT__` entry graph (wire single source: {@link WebBootEntry}
+ * `window.__CF_BOOT__` entry graph (wire single source: {@link WebBootEntry}
  * in `./client/manifest.ts`) in module-graph order, serves
  * `/plugins/<id>/client.js` and its source map, contributes the boot manifest
  * plus the parser-blocking bootstrap preloads to the webserver's index
@@ -268,7 +268,7 @@ window.__ModuleLoader__={
   return [
     { kind: 'script', placement: 'head', text: queue },
     ...preload,
-    { kind: 'global', name: '__XHE_BOOT__', value: graph },
+    { kind: 'global', name: '__CF_BOOT__', value: graph },
   ]
 }
 
@@ -347,7 +347,7 @@ export class ClientModuleRegistry extends Service {
 
   /**
    * Current composed entry graph (stable object between changes).
-   * @returns the graph served as `window.__XHE_BOOT__`.
+   * @returns the graph served as `window.__CF_BOOT__`.
    */
   graph(): WebBootGraph {
     return this.composed

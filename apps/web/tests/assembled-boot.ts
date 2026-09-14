@@ -122,7 +122,7 @@ const bundles = new Map(PLUGINS.map(plugin => [
 ]))
 
 interface FixtureWindow extends Window {
-  __XHE_BOOT__?: { rev: string; entries: WebBootEntry[] }
+  __CF_BOOT__?: { rev: string; entries: WebBootEntry[] }
   __ModuleLoader__?: ClientModuleLoaderTarget
 }
 
@@ -168,7 +168,7 @@ export function installAssembledBootEnv(): void {
     await act(async () => { await unmount?.() })
     unmount = undefined
     cleanup()
-    delete win.__XHE_BOOT__
+    delete win.__CF_BOOT__
     delete win.__ModuleLoader__
     document.body.innerHTML = ''
     document.head.querySelectorAll('style[data-plugin]').forEach((style) => { style.remove() })
@@ -193,8 +193,8 @@ export function mountAssembledApp(search = '?fixture'): void {
   const root = document.createElement('div')
   root.id = 'root'
   document.body.appendChild(root)
-  win.__XHE_BOOT__ = { rev: 'fx', entries: PLUGINS.map(({ bundlePath: _bundlePath, ...plugin }) => plugin) }
-  const [facadeRow] = bootInjections(win.__XHE_BOOT__)
+  win.__CF_BOOT__ = { rev: 'fx', entries: PLUGINS.map(({ bundlePath: _bundlePath, ...plugin }) => plugin) }
+  const [facadeRow] = bootInjections(win.__CF_BOOT__)
   if (facadeRow?.kind !== 'script') throw new Error('missing injected ModuleLoader facade row')
   ;(0, eval)(facadeRow.text)
   // Mirror the blocking Host-injected scripts before the Vite entry calls create().

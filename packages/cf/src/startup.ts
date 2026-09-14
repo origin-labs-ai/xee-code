@@ -44,7 +44,7 @@ export async function startup(config: StartupConfig = {}): Promise<void> {
   }
   
   if (config.enableMAD) {
-    console.log('🏛️ M.A.D (Multi-Agent Discussion) enabled')
+    console.log('🏛️ MAD (Multi-Agent Discussion) enabled')
     initMADMode()
   }
   

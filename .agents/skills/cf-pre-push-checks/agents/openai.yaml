@@ -1,0 +1,4 @@
+interface:
+  display_name: "XHE Pre-Push Checks"
+  short_description: "Run the relevant Xee Harness Enhanced checks before push"
+  default_prompt: "Use $cf-pre-push-checks before pushing this Xee Harness Enhanced branch."

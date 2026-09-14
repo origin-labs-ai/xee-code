@@ -1,6 +1,6 @@
 {
   "name": "@origin-ai/cf-scope",
-  "description": "Scoped-context registration primitive (scope tags, scope-filtered event dispatch) for the Xee Harness Enhanced",
+  "description": "Scoped-context registration primitive (scope tags, scope-filtered event dispatch) for the CodeFusion",
   "version": "0.1.1-rc.2",
   "publishConfig": {
     "access": "public"

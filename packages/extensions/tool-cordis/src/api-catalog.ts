@@ -510,7 +510,7 @@ export const SERVICE_API: readonly ServiceApiEntry[] = [
         signature: 'graph(): WebBootGraph',
         description: 'Current composed entry graph (stable object between changes).',
         parameters: [],
-        returns: 'the graph served as `window.__XHE_BOOT__`.',
+        returns: 'the graph served as `window.__CF_BOOT__`.',
       },
       {
         signature: 'clientPath(id: string): string | undefined',
@@ -1660,7 +1660,7 @@ export const SERVICE_API: readonly ServiceApiEntry[] = [
         returns: 'the disposer that unregisters the contribution.',
       },
       {
-        signature: 'collect(execution: ToolExecution): DshEnvironment',
+        signature: 'collect(execution: ToolExecution): CfEnvironment',
         description: 'Build the trusted `XHE_*` snapshot for one shell tool execution.',
         parameters: [{ name: 'execution', description: 'the current tool execution.' }],
         returns: 'an immutable environment overlay containing built-ins and current contributions.',
@@ -3003,7 +3003,7 @@ export const TYPE_API: readonly TypeApiEntry[] = [
   },
   {
     name: 'BashEnvContributor',
-    declaration: 'export interface BashEnvContributor {\n    name: string;\n    variables: Readonly<Record<DshEnvironmentKey, BashEnvVariable>>;\n    resolve(execution: ToolExecution): Readonly<Partial<Record<DshEnvironmentKey, string>>>;\n}',
+    declaration: 'export interface BashEnvContributor {\n    name: string;\n    variables: Readonly<Record<CfEnvironmentKey, BashEnvVariable>>;\n    resolve(execution: ToolExecution): Readonly<Partial<Record<CfEnvironmentKey, string>>>;\n}',
   },
   {
     name: 'BashEnvVariable',
@@ -3011,7 +3011,7 @@ export const TYPE_API: readonly TypeApiEntry[] = [
   },
   {
     name: 'BashEnvVariableInfo',
-    declaration: 'export interface BashEnvVariableInfo extends BashEnvVariable {\n    contributor: string;\n    key: DshEnvironmentKey;\n}',
+    declaration: 'export interface BashEnvVariableInfo extends BashEnvVariable {\n    contributor: string;\n    key: CfEnvironmentKey;\n}',
   },
   {
     name: 'Branded',
@@ -3302,12 +3302,12 @@ export const TYPE_API: readonly TypeApiEntry[] = [
     declaration: 'export interface DownloadsApi {\n    sessionLog(request: {\n        sessionId: SessionId;\n        includeDescendants?: boolean;\n    }, signal: AbortSignal): Promise<Response>;\n}',
   },
   {
-    name: 'DshEnvironment',
-    declaration: 'export type DshEnvironment = Readonly<Record<DshEnvironmentKey, string>>;',
+    name: 'CfEnvironment',
+    declaration: 'export type CfEnvironment = Readonly<Record<CfEnvironmentKey, string>>;',
   },
   {
-    name: 'DshEnvironmentKey',
-    declaration: 'export type DshEnvironmentKey = `${typeof XHE_ENV_PREFIX}${string}`;',
+    name: 'CfEnvironmentKey',
+    declaration: 'export type CfEnvironmentKey = `${typeof XHE_ENV_PREFIX}${string}`;',
   },
   {
     name: 'DynamicCordisPackage',
@@ -4343,11 +4343,11 @@ export const TYPE_API: readonly TypeApiEntry[] = [
   },
   {
     name: 'ShellExecRequest',
-    declaration: 'export interface ShellExecRequest {\n    command: string;\n    workdir?: string | undefined;\n    timeoutMs?: number | undefined;\n    stdoutMaxBytes?: number | undefined;\n    signal?: AbortSignal | undefined;\n    stdin?: string | undefined;\n    env?: Record<string, string> | undefined;\n    dshEnv?: DshEnvironment | undefined;\n    sandboxPolicy?: SandboxExecutionPolicy | undefined;\n}',
+    declaration: 'export interface ShellExecRequest {\n    command: string;\n    workdir?: string | undefined;\n    timeoutMs?: number | undefined;\n    stdoutMaxBytes?: number | undefined;\n    signal?: AbortSignal | undefined;\n    stdin?: string | undefined;\n    env?: Record<string, string> | undefined;\n    cfEnv?: CfEnvironment | undefined;\n    sandboxPolicy?: SandboxExecutionPolicy | undefined;\n}',
   },
   {
     name: 'ShellExecSpec',
-    declaration: 'export interface ShellExecSpec {\n    command: string;\n    workdir: string;\n    timeoutMs: number;\n    stdoutMaxBytes: number;\n    signal?: AbortSignal | undefined;\n    stdin?: string | undefined;\n    env?: Record<string, string> | undefined;\n    dshEnv?: DshEnvironment | undefined;\n    sandboxPolicy: SandboxExecutionPolicy | undefined;\n}',
+    declaration: 'export interface ShellExecSpec {\n    command: string;\n    workdir: string;\n    timeoutMs: number;\n    stdoutMaxBytes: number;\n    signal?: AbortSignal | undefined;\n    stdin?: string | undefined;\n    env?: Record<string, string> | undefined;\n    cfEnv?: CfEnvironment | undefined;\n    sandboxPolicy: SandboxExecutionPolicy | undefined;\n}',
   },
   {
     name: 'ShellProcess',

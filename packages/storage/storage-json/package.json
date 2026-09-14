@@ -1,6 +1,6 @@
 {
   "name": "@origin-ai/cf-storage-json",
-  "description": "JSON file KV storage backend for the Xee Harness Enhanced storage hub",
+  "description": "JSON file KV storage backend for the CodeFusion storage hub",
   "version": "0.1.1-rc.2",
   "publishConfig": {
     "access": "public"

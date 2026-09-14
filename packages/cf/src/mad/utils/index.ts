@@ -1,5 +1,5 @@
 /**
- * Xee Harness Enhanced (XHE) - Advanced Utilities Collection
+ * CodeFusion (CF) - Advanced Utilities Collection
  *
  * INDEX FILE - Exports all advanced utility modules
  *
@@ -179,7 +179,7 @@ export type {
 // ============================================================================
 
 export const UTILS_VERSION = '2.0.6-advanced'
-export const UTILS_DESCRIPTION = 'XHE Advanced Utilities Collection'
+export const UTILS_DESCRIPTION = 'CF Advanced Utilities Collection'
 export const UTILS_MODULES = [
   {
     name: 'error-handling',

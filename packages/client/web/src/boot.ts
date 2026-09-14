@@ -59,7 +59,7 @@ export class AppWebEntry {
         __XHE_TRANSPORT__?: { loadBundle?: ClientModuleCreateOptions['loadBundle'] }
       }).__XHE_TRANSPORT__
       this.modules = moduleLoader.create({
-        boot: win.__XHE_BOOT__,
+        boot: win.__CF_BOOT__,
         staticModules: getStaticModules(),
         ...transport?.loadBundle === undefined ? {} : { loadBundle: transport.loadBundle },
         ...this.seams,

@@ -1,5 +1,5 @@
 /**
- * Xee Harness Enhanced (XHE) - Error Handling & Resilience Utilities
+ * CodeFusion (CF) - Error Handling & Resilience Utilities
  *
  * ROUND 1 IMPROVEMENT: Production-grade error handling with:
  * - Exponential backoff retry logic

@@ -1,6 +1,6 @@
 {
   "name": "@origin-ai/cf-sdk-jsonrpc-server",
-  "description": "Stdio JSON-RPC server plugin for out-of-process Xee Harness Enhanced SDK clients",
+  "description": "Stdio JSON-RPC server plugin for out-of-process CodeFusion SDK clients",
   "version": "0.1.1-rc.2",
   "publishConfig": {
     "access": "public"

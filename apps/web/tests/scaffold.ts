@@ -44,7 +44,7 @@ import {
   healProfilesModuleFallback,
   loadOverlayPatches,
 } from '@origin-ai/cf-app-boot'
-import { dshHomePath } from '@origin-ai/cf-home-paths'
+import { cfHomePath } from '@origin-ai/cf-home-paths'
 import { settingsNamespace } from '@origin-ai/cf-settings'
 import { LlmAdapter } from '@origin-ai/cf-llm'
 import type {
@@ -179,7 +179,7 @@ export interface WebScaffold {
   workspaceCwd: string
   /** Temp persistence root (seeded sessions land here through the real API). */
   persistenceRoot: string
-  /** Isolated harness home the settings/credentials rows write ($XHE_HOME double). */
+  /** Isolated harness home the settings/credentials rows write ($CF_HOME double). */
   harnessHome: string
   /** Await a settled turn end: in-process turn/end, then the agent's idle flip (which follows the persistence flush). */
   whenTurnSettled(timeoutMs?: number): Promise<SessionId>
@@ -343,7 +343,7 @@ export async function launchWebScaffold(options: LaunchOptions = {}): Promise<We
     }
   }
   const workspaceCwd = await realpath(await mkdtemp(join(tmpdir(), 'xhe-web-e2e-ws-')))
-  // Isolated harness home: the settings/credentials rows resolve $XHE_HOME
+  // Isolated harness home: the settings/credentials rows resolve $CF_HOME
   // paths at load, and an in-process boot must NEVER touch the developer's
   // real ~/.dsh document or credential file.
   const harnessHome = options.harnessHome ?? join(workspaceCwd, '.xhe-home')
@@ -353,12 +353,12 @@ export async function launchWebScaffold(options: LaunchOptions = {}): Promise<We
   // tree. The row's documented fallback is the environment, so pin that: the
   // whole scaffold lifetime, not just the boot, since presets mount when a
   // session is created. Without this a developer's real ~/.dsh/skills silently
-  // enters replay requests and goldens while CI sees none. `XHE_HOME` follows
+  // enters replay requests and goldens while CI sees none. `CF_HOME` follows
   // the resolved harness home so a scaffold sharing another's home — the
   // cross-port persistence scenario — pins the same roots the settings and
   // credentials rows were configured with.
   const skillRootEnvironment = {
-    XHE_HOME: harnessHome,
+    CF_HOME: harnessHome,
     XHE_AGENTS_HOME: join(workspaceCwd, '.agents-home'),
     XHE_BUNDLED_SKILL_DIR: join(workspaceCwd, '.bundled-skills'),
   }
@@ -427,7 +427,7 @@ export async function launchWebScaffold(options: LaunchOptions = {}): Promise<We
     // the seeded-session scenarios navigate by content search, and these e2e
     // runs are the assembled coverage for the opt-in search path.
     { id: 'session-query-sqlite', config: { path: ':memory:', openAt: 'first-search' } },
-    // storage-json's yml root is anchored to the real $XHE_HOME; pin the row
+    // storage-json's yml root is anchored to the real $CF_HOME; pin the row
     // to an absolute temp root (removed with the workspace at close) so tests
     // never write the user's harness home.
     { id: 'storage-json', config: { root: join(workspaceCwd, '.xhe-storages') } },
@@ -534,7 +534,7 @@ export async function launchWebScaffold(options: LaunchOptions = {}): Promise<We
     await writeFile(rootConfig, '[]\n')
     ctx.baseUrl = pathToFileURL(profileDir).href + '/'
     // This direct Loader harness supplies the same root-path capability as app-boot.
-    ctx.provide('dshHomePath', dshHomePath)
+    ctx.provide('cfHomePath', cfHomePath)
     // A host with no command line still provides one: the web bundle's startup
     // row releases the rows waiting on it, and with no arguments each starts on
     // the values this scaffold composed above. An exit request can only come

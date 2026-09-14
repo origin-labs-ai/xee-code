@@ -252,7 +252,7 @@ export async function runScenario(input: InputScript, opts: RunOptions): Promise
       XHE_SNAPSHOT_FILE: opts.fixtureFile,
       XHE_SNAPSHOT_SESSIONS_ROOT: sessionsRoot,
       XHE_SNAPSHOT_SPILL_ROOT: spillRoot,
-      XHE_HOME: join(cwd, '.dsh'),
+      CF_HOME: join(cwd, '.dsh'),
       XHE_AGENTS_HOME: join(cwd, '.agents'),
       ...opts.overrideFile !== undefined ? { XHE_SNAPSHOT_OVERRIDE: opts.overrideFile } : {},
       ...opts.childFiles !== undefined && opts.childFiles.length > 0

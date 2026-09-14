@@ -1,5 +1,5 @@
 /**
- * Xee Harness Enhanced (XHE) - M.A.D (Multi-Agent Deployment) System
+ * CodeFusion (CF) - MAD (Multi-Agent Deployment) System
  *
  * Core type definitions for the Multi-Agent Deployment architecture.
  * This implements the complete GOD Runtime specification from TRANSCRIPT.md.
@@ -9,7 +9,7 @@
  *
  * Also known as:
  * - XeeCode / XCode
- * - Xee Harness Enhanced
+ * - CodeFusion
  *
  * Fork of: DSH/SeepSeek Harness
  */
@@ -18,22 +18,22 @@
 // Core Identity Types
 // ============================================================================
 
-export interface XHEIdentity {
+export interface CfIdentity {
   /** Primary project name */
-  name: 'Xee Harness Enhanced' | 'XHE'
+  name: 'CodeFusion' | 'CF'
   /** Alternative names / aliases */
-  aliases: ('XeeCode' | 'XCode' | 'Xee Harness Enhanced')[]
+  aliases: ('CodeFusion' | 'CF')[]
   /** Package scope */
   packageScope: '@origin-ai/cf'
-  /** Fork origin */
-  forkOf: 'DSH/SeepSeek Harness'
+  /** Lineage note */
+  forkOf: 'CodeFusion'
 }
 
-export const XHE_IDENTITY: XHEIdentity = {
-  name: 'Xee Harness Enhanced',
-  aliases: ['XeeCode', 'XCode', 'Xee Harness Enhanced'],
+export const CF_IDENTITY: CfIdentity = {
+  name: 'CodeFusion',
+  aliases: ['CodeFusion', 'CF'],
   packageScope: '@origin-ai/cf',
-  forkOf: 'DSH/SeepSeek Harness',
+  forkOf: 'CodeFusion',
 }
 
 // ============================================================================
@@ -1499,7 +1499,7 @@ export interface Checkpoint {
 // ============================================================================
 
 export type {
-  XHEIdentity,
+  CfIdentity,
   ProviderCredential,
   ModelConfig,
   RateLimit,

@@ -35,168 +35,168 @@ function execution(sessionId?: string): ToolExecution {
 describe('ShellEnvRegistry', () => {
   it('collects unconditional shell facts and the current agent session id', () => {
     const ctx = new Context()
-    const registry = new ShellEnvRegistry(ctx, { dshHome: './test-xhe-home' })
+    const registry = new ShellEnvRegistry(ctx, { cfHome: './test-xhe-home' })
 
     expect(registry.collect(execution())).toEqual({
-      XHE_HOME: resolve('./test-xhe-home'),
-      XHE_SHELL: '1',
+      CF_HOME: resolve('./test-xhe-home'),
+      CF_SHELL: '1',
     })
     expect(registry.collect(execution('session-a'))).toEqual({
-      XHE_HOME: resolve('./test-xhe-home'),
-      XHE_SESSION_ID: 'session-a',
-      XHE_SHELL: '1',
+      CF_HOME: resolve('./test-xhe-home'),
+      CF_SESSION_ID: 'session-a',
+      CF_SHELL: '1',
     })
   })
 
-  it('resolves XHE_HOME from the ambient override or the user-home default', () => {
-    vi.stubEnv('XHE_HOME', './ambient-xhe-home')
+  it('resolves CF_HOME from the ambient override or the user-home default', () => {
+    vi.stubEnv('CF_HOME', './ambient-xhe-home')
     const fromEnvironment = new ShellEnvRegistry(new Context())
-    expect(fromEnvironment.collect(execution()).XHE_HOME).toBe(resolve('./ambient-xhe-home'))
+    expect(fromEnvironment.collect(execution()).CF_HOME).toBe(resolve('./ambient-xhe-home'))
 
-    vi.stubEnv('XHE_HOME', undefined)
+    vi.stubEnv('CF_HOME', undefined)
     const fromDefault = new ShellEnvRegistry(new Context())
-    expect(fromDefault.collect(execution()).XHE_HOME).toBe(join(homedir(), '.dsh'))
+    expect(fromDefault.collect(execution()).CF_HOME).toBe(join(homedir(), '.cf'))
   })
 
   it('collects declared contributor variables and omits unavailable values', () => {
     const ctx = new Context()
-    const registry = new ShellEnvRegistry(ctx, { dshHome: './test-xhe-home' })
+    const registry = new ShellEnvRegistry(ctx, { cfHome: './test-xhe-home' })
     registry.register({
       name: 'optional-session-fact',
       variables: {
-        XHE_SESSION_OPTIONAL: { description: 'Optional session-scoped test fact.' },
+        CF_SESSION_OPTIONAL: { description: 'Optional session-scoped test fact.' },
       },
-      resolve: exec => exec.agent === undefined ? {} : { XHE_SESSION_OPTIONAL: exec.agent.session.header.id },
+      resolve: exec => exec.agent === undefined ? {} : { CF_SESSION_OPTIONAL: exec.agent.session.header.id },
     })
     registry.register({
       name: 'always-available-fact',
       variables: {
-        XHE_ALWAYS_AVAILABLE: { description: 'Always-available test fact.' },
+        CF_ALWAYS_AVAILABLE: { description: 'Always-available test fact.' },
       },
-      resolve: () => ({ XHE_ALWAYS_AVAILABLE: 'yes' }),
+      resolve: () => ({ CF_ALWAYS_AVAILABLE: 'yes' }),
     })
 
-    expect(registry.collect(execution())).not.toHaveProperty('XHE_SESSION_OPTIONAL')
-    expect(registry.collect(execution()).XHE_ALWAYS_AVAILABLE).toBe('yes')
-    expect(registry.collect(execution('session-b')).XHE_SESSION_OPTIONAL).toBe('session-b')
+    expect(registry.collect(execution())).not.toHaveProperty('CF_SESSION_OPTIONAL')
+    expect(registry.collect(execution()).CF_ALWAYS_AVAILABLE).toBe('yes')
+    expect(registry.collect(execution('session-b')).CF_SESSION_OPTIONAL).toBe('session-b')
     expect(registry.list()).toEqual([
       {
         contributor: 'always-available-fact',
         description: 'Always-available test fact.',
-        key: 'XHE_ALWAYS_AVAILABLE',
+        key: 'CF_ALWAYS_AVAILABLE',
       },
       {
         contributor: 'optional-session-fact',
         description: 'Optional session-scoped test fact.',
-        key: 'XHE_SESSION_OPTIONAL',
+        key: 'CF_SESSION_OPTIONAL',
       },
     ])
   })
 
   it('rejects duplicate variable ownership at registration time', () => {
     const ctx = new Context()
-    const registry = new ShellEnvRegistry(ctx, { dshHome: './test-xhe-home' })
+    const registry = new ShellEnvRegistry(ctx, { cfHome: './test-xhe-home' })
     registry.register({
       name: 'first',
-      variables: { XHE_SHARED: { description: 'First owner.' } },
-      resolve: () => ({ XHE_SHARED: 'first' }),
+      variables: { CF_SHARED: { description: 'First owner.' } },
+      resolve: () => ({ CF_SHARED: 'first' }),
     })
 
     expect(() => registry.register({
       name: 'second',
-      variables: { XHE_SHARED: { description: 'Second owner.' } },
-      resolve: () => ({ XHE_SHARED: 'second' }),
-    })).toThrow(/XHE_SHARED.*first.*second|XHE_SHARED.*second.*first/)
+      variables: { CF_SHARED: { description: 'Second owner.' } },
+      resolve: () => ({ CF_SHARED: 'second' }),
+    })).toThrow(/CF_SHARED.*first.*second|CF_SHARED.*second.*first/)
   })
 
   it('rejects duplicate contributor names and malformed declarations', () => {
-    const registry = new ShellEnvRegistry(new Context(), { dshHome: './test-xhe-home' })
+    const registry = new ShellEnvRegistry(new Context(), { cfHome: './test-xhe-home' })
     registry.register({
       name: 'declared',
-      variables: { XHE_DECLARED: { description: 'Declared fact.' } },
+      variables: { CF_DECLARED: { description: 'Declared fact.' } },
       resolve: () => ({}),
     })
 
     expect(() => registry.register({
       name: 'declared',
-      variables: { XHE_ANOTHER: { description: 'Another fact.' } },
+      variables: { CF_ANOTHER: { description: 'Another fact.' } },
       resolve: () => ({}),
     })).toThrow(/already registered/)
     expect(() => registry.register({
       name: ' ',
-      variables: { XHE_BLANK_NAME: { description: 'Blank owner.' } },
+      variables: { CF_BLANK_NAME: { description: 'Blank owner.' } },
       resolve: () => ({}),
     })).toThrow(/name must be non-empty/)
     expect(() => registry.register({
       name: 'invalid-key',
-      variables: { dsh_invalid: { description: 'Invalid key.' } } as unknown as Record<'XHE_INVALID', { description: string }>,
+      variables: { dsh_invalid: { description: 'Invalid key.' } } as unknown as Record<'CF_INVALID', { description: string }>,
       resolve: () => ({}),
     })).toThrow(/invalid key/)
     expect(() => registry.register({
       name: 'reserved-key',
-      variables: { XHE_HOME: { description: 'Reserved key.' } },
+      variables: { CF_HOME: { description: 'Reserved key.' } },
       resolve: () => ({}),
     })).toThrow(/reserved key/)
     expect(() => registry.register({
       name: 'blank-description',
-      variables: { XHE_BLANK_DESCRIPTION: { description: ' ' } },
+      variables: { CF_BLANK_DESCRIPTION: { description: ' ' } },
       resolve: () => ({}),
     })).toThrow(/must describe/)
   })
 
   it('rejects undeclared variables returned by a contributor', () => {
     const ctx = new Context()
-    const registry = new ShellEnvRegistry(ctx, { dshHome: './test-xhe-home' })
+    const registry = new ShellEnvRegistry(ctx, { cfHome: './test-xhe-home' })
     registry.register({
       name: 'drifted-provider',
-      variables: { XHE_DECLARED: { description: 'Declared fact.' } },
-      resolve: () => ({ XHE_UNDECLARED: 'bad' }),
+      variables: { CF_DECLARED: { description: 'Declared fact.' } },
+      resolve: () => ({ CF_UNDECLARED: 'bad' }),
     })
 
-    expect(() => registry.collect(execution())).toThrow(/drifted-provider.*XHE_UNDECLARED/)
+    expect(() => registry.collect(execution())).toThrow(/drifted-provider.*CF_UNDECLARED/)
   })
 
   it('rejects non-string values returned by a contributor', () => {
-    const registry = new ShellEnvRegistry(new Context(), { dshHome: './test-xhe-home' })
+    const registry = new ShellEnvRegistry(new Context(), { cfHome: './test-xhe-home' })
     registry.register({
       name: 'wrong-value-type',
-      variables: { XHE_STRING: { description: 'String fact.' } },
-      resolve: () => ({ XHE_STRING: 42 }) as unknown as Record<'XHE_STRING', string>,
+      variables: { CF_STRING: { description: 'String fact.' } },
+      resolve: () => ({ CF_STRING: 42 }) as unknown as Record<'CF_STRING', string>,
     })
 
-    expect(() => registry.collect(execution())).toThrow(/wrong-value-type.*non-string.*XHE_STRING/)
+    expect(() => registry.collect(execution())).toThrow(/wrong-value-type.*non-string.*CF_STRING/)
   })
 
   it('removes an effect-scoped contributor when its plugin is disposed', async () => {
     const ctx = new Context()
-    const registry = new ShellEnvRegistry(ctx, { dshHome: './test-xhe-home' })
+    const registry = new ShellEnvRegistry(ctx, { cfHome: './test-xhe-home' })
     const fiber = await ctx.plugin({
       inject: ['shellEnv'],
       apply(inner: Context) {
         inner.shellEnv.register({
           name: 'temporary',
-          variables: { XHE_TEMPORARY: { description: 'Temporary fact.' } },
-          resolve: () => ({ XHE_TEMPORARY: 'present' }),
+          variables: { CF_TEMPORARY: { description: 'Temporary fact.' } },
+          resolve: () => ({ CF_TEMPORARY: 'present' }),
         })
       },
     })
 
-    expect(registry.collect(execution()).XHE_TEMPORARY).toBe('present')
+    expect(registry.collect(execution()).CF_TEMPORARY).toBe('present')
     await fiber.dispose()
-    expect(registry.collect(execution())).not.toHaveProperty('XHE_TEMPORARY')
+    expect(registry.collect(execution())).not.toHaveProperty('CF_TEMPORARY')
   })
 
   it('returns an explicit contributor disposer', () => {
-    const registry = new ShellEnvRegistry(new Context(), { dshHome: './test-xhe-home' })
+    const registry = new ShellEnvRegistry(new Context(), { cfHome: './test-xhe-home' })
     const dispose = registry.register({
       name: 'explicit-disposal',
-      variables: { XHE_EXPLICIT_DISPOSAL: { description: 'Explicitly disposed fact.' } },
-      resolve: () => ({ XHE_EXPLICIT_DISPOSAL: 'present' }),
+      variables: { CF_EXPLICIT_DISPOSAL: { description: 'Explicitly disposed fact.' } },
+      resolve: () => ({ CF_EXPLICIT_DISPOSAL: 'present' }),
     })
 
-    expect(registry.collect(execution()).XHE_EXPLICIT_DISPOSAL).toBe('present')
+    expect(registry.collect(execution()).CF_EXPLICIT_DISPOSAL).toBe('present')
     dispose()
-    expect(registry.collect(execution())).not.toHaveProperty('XHE_EXPLICIT_DISPOSAL')
+    expect(registry.collect(execution())).not.toHaveProperty('CF_EXPLICIT_DISPOSAL')
   })
 
   it('the plugin registers the service and the persistence contributor on load', async () => {
@@ -207,18 +207,18 @@ describe('ShellEnvRegistry', () => {
       {
         contributor: 'session-persistence',
         description: 'Absolute target path of the current session JSONL when the active persistence backend provides one.',
-        key: 'XHE_SESSION_JSONL',
+        key: 'CF_SESSION_JSONL',
       },
     ])
   })
 
-  it('the persistence contributor resolves XHE_SESSION_JSONL only for a jsonl backend', async () => {
+  it('the persistence contributor resolves CF_SESSION_JSONL only for a jsonl backend', async () => {
     const ctx = new Context()
     await ctx.plugin(BashEnvPlugin)
     ctx.provide('sessionPersistence', {
       locate: () => ({ kind: 'jsonl' as const, path: 'C:\\sessions\\s.jsonl' }),
     })
-    expect(ctx.shellEnv.collect(execution('sess-p')).XHE_SESSION_JSONL).toBe('C:\\sessions\\s.jsonl')
+    expect(ctx.shellEnv.collect(execution('sess-p')).CF_SESSION_JSONL).toBe('C:\\sessions\\s.jsonl')
   })
 
   it('the persistence contributor omits the variable for a non-jsonl backend', async () => {
@@ -227,12 +227,12 @@ describe('ShellEnvRegistry', () => {
     ctx.provide('sessionPersistence', {
       locate: () => ({ kind: 'sqlite' as const, path: 'C:\\sessions\\s.db' }),
     })
-    expect(ctx.shellEnv.collect(execution('sess-p'))).not.toHaveProperty('XHE_SESSION_JSONL')
+    expect(ctx.shellEnv.collect(execution('sess-p'))).not.toHaveProperty('CF_SESSION_JSONL')
   })
 
   it('the persistence contributor omits the variable without a persistence backend', async () => {
     const ctx = new Context()
     await ctx.plugin(BashEnvPlugin)
-    expect(ctx.shellEnv.collect(execution('sess-p'))).not.toHaveProperty('XHE_SESSION_JSONL')
+    expect(ctx.shellEnv.collect(execution('sess-p'))).not.toHaveProperty('CF_SESSION_JSONL')
   })
 })

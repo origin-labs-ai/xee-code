@@ -91,7 +91,7 @@ class E2eAttachmentStore extends AttachmentStore {
 
 beforeEach(async () => {
   identityHome = await mkdtemp(join(tmpdir(), 'xhe-e2e-user-id-'))
-  vi.stubEnv('XHE_HOME', identityHome)
+  vi.stubEnv('CF_HOME', identityHome)
 })
 
 async function harness(_model: string, config: Partial<Config> = {}) {

@@ -1,6 +1,6 @@
 {
   "name": "@origin-ai/cf-compaction",
-  "description": "Abstract compaction service seam (ctx.compaction) for the Xee Harness Enhanced",
+  "description": "Abstract compaction service seam (ctx.compaction) for the CodeFusion",
   "version": "0.1.1-rc.2",
   "publishConfig": {
     "access": "public"

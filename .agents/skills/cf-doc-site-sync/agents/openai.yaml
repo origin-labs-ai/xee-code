@@ -1,0 +1,4 @@
+interface:
+  display_name: "XHE Documentation Site Sync"
+  short_description: "Publish repository docs through the XHE website manifest"
+  default_prompt: "Use $cf-doc-site-sync to publish or update a Xee Harness Enhanced documentation page on the website."

@@ -43,7 +43,7 @@
 # ── web-only host rows, the transport layer, and the browser roster ─────────
 
 # `dsh.client` rows are the browser roster the modules node half scans into
-# window.__XHE_BOOT__; the modules row is simultaneously a host row.
+# window.__CF_BOOT__; the modules row is simultaneously a host row.
 - insert:
     - id: code-runtime
       name: '@origin-ai/cf-code-runtime-worker-thread'
@@ -54,7 +54,7 @@
     - id: storage-json
       name: '@origin-ai/cf-storage-json'
       config:
-        root: !!js dshHomePath('storages')
+        root: !!js cfHomePath('storages')
 
     - id: storage-domain
       name: '@origin-ai/cf-storage-domain'
@@ -152,7 +152,7 @@
 
     # ── browser plugin roster (dsh.client rows; node halves are layer-2 hosts) ──
 
-    # Dual-face: the node half scans this tree, composes window.__XHE_BOOT__,
+    # Dual-face: the node half scans this tree, composes window.__CF_BOOT__,
     # and serves /plugins/<id>/client.js; the browser half is the module table
     # the shell kernel constructs before cordis exists (adopted as a plugin
     # entry by the kernel, never fetched).
@@ -429,7 +429,7 @@
   disabled: true
 
 # The preset roster. `config/agent-presets/` ships with the deployment and is
-# read-only (its entries carry `system` trust); `$XHE_HOME/.agent-presets` is
+# read-only (its entries carry `system` trust); `$CF_HOME/.agent-presets` is
 # where a person — or an agent — authors their own, and carries the same trust
 # as shell access because a preset IS a composition.
 #

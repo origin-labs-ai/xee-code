@@ -1,6 +1,6 @@
-# Xee Harness Enhanced Python SDK
+# CodeFusion Python SDK
 
-Python packages for driving Xee Harness Enhanced as a subprocess. The client SDK communicates with the bundled runtime over newline-delimited JSON-RPC on stdio.
+Python packages for driving CodeFusion as a subprocess. The client SDK communicates with the bundled runtime over newline-delimited JSON-RPC on stdio.
 
 ## Packages
 

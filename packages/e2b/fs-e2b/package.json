@@ -1,6 +1,6 @@
 {
   "name": "@origin-ai/cf-fs-e2b",
-  "description": "E2B filesystem implementation for Xee Harness Enhanced",
+  "description": "E2B filesystem implementation for CodeFusion",
   "version": "0.1.1-rc.2",
   "publishConfig": {
     "access": "public"

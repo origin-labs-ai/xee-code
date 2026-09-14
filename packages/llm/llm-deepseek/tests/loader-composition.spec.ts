@@ -48,7 +48,7 @@ async function loadComposition(
   // exactly as the previous process left them.
   const fresh = options.reuseRoot === undefined
   root = options.reuseRoot ?? await mkdtemp(join(tmpdir(), 'xhe-llm-composition-'))
-  vi.stubEnv('XHE_HOME', root)
+  vi.stubEnv('CF_HOME', root)
   const settingsPath = join(root, 'settings.yaml')
   const credentialsPath = join(root, '.credentials.yaml')
   if (options.withDynamic && fresh) {

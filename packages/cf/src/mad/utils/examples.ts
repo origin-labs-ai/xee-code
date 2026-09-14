@@ -1,5 +1,5 @@
 /**
- * Xee Harness Enhanced (XHE) - Real-World Usage Examples & Helpers
+ * CodeFusion (CF) - Real-World Usage Examples & Helpers
  * 
  * ROUND 7 IMPROVEMENT: Practical implementation guides with:
  * - Complete usage examples for every advanced feature
@@ -516,14 +516,14 @@ export async function exampleMultiCriticGauntlet(): Promise<void> {
 }
 
 // ============================================================================
-// INTEGRATION EXAMPLE: Full M.A.D Pipeline
+// INTEGRATION EXAMPLE: Full MAD Pipeline
 // ============================================================================
 
 /**
- * Example 9: Complete M.A.D Pipeline Integration
+ * Example 9: Complete MAD Pipeline Integration
  */
 export async function exampleFullMADPipeline(): Promise<void> {
-  console.log('\n=== Example 9: Full M.A.D Pipeline Integration ===')
+  console.log('\n=== Example 9: Full MAD Pipeline Integration ===')
 
   // 1. Create resilient LLM client with error handling
   const resilientLLM = makeResilient(
@@ -560,7 +560,7 @@ export async function exampleFullMADPipeline(): Promise<void> {
   // 4. Run simulated discussion
   const topic = 'Implement user authentication system'
 
-  console.log('Starting M.A.D discussion...')
+  console.log('Starting MAD discussion...')
   
   for (let round = 1; round <= 5; round++) {
     console.log(`\n--- Round ${round} ---`)
@@ -604,7 +604,7 @@ export async function exampleFullMADPipeline(): Promise<void> {
     // (would parse actual messages here)
   }
 
-  console.log('\n✅ M.A.D Pipeline Complete!')
+  console.log('\n✅ MAD Pipeline Complete!')
 }
 
 // ============================================================================
@@ -700,7 +700,7 @@ function extractClaimsFromString(text: string): Array<{
  * Run all examples sequentially
  */
 export async function runAllExamples(): Promise<void> {
-  console.log('🚀 Running All XHE Advanced Utility Examples\n'.padStart(60, '='))
+  console.log('🚀 Running All CF Advanced Utility Examples\n'.padStart(60, '='))
 
   try { await exampleErrorHandling() } catch (e) { console.error('Example 1 failed:', e) }
   try { await exampleCircuitBreaker() } catch (e) { console.error('Example 2 failed:', e) }

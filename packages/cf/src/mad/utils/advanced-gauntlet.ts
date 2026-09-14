@@ -1,5 +1,5 @@
 /**
- * Xee Harness Enhanced (XHE) - Advanced Gauntlet Quality System
+ * CodeFusion (CF) - Advanced Gauntlet Quality System
  * 
  * ROUND 5 IMPROVEMENT: Multi-critic ensemble voting with:
  * - Multiple specialized critics with different evaluation lenses

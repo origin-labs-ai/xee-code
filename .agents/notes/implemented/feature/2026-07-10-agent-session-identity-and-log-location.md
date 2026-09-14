@@ -31,7 +31,7 @@ The model-facing bash package owns a `ctx.shellEnv` registry. A contributor decl
 
 The registry rebuilds a trusted overlay for every foreground and background bash `ToolExecution`:
 
-- `XHE_HOME` is always the absolute configured Harness home. The standalone [`@origin-ai/xhe-home-paths`](../../../../packages/util/home-paths/README.md) utility owns its precedence: explicit `dshHome`, then ambient `$XHE_HOME`, then `~/.dsh`.
+- `CF_HOME` is always the absolute configured Harness home. The standalone [`@origin-ai/xhe-home-paths`](../../../../packages/util/home-paths/README.md) utility owns its precedence: explicit `dshHome`, then ambient `$CF_HOME`, then `~/.dsh`.
 - `XHE_SHELL=1` is always present and identifies a model bash child managed by Xee Harness Enhanced.
 - `XHE_SESSION_ID` is present when the execution has an agent and equals `agent.session.header.id`.
 - The built-in persistence translator contributes `XHE_SESSION_JSONL` only when `ctx.sessionPersistence.locate(header)` returns `kind: 'jsonl'`.
@@ -60,7 +60,7 @@ Resume reuses the loaded header and therefore the same id and location. Fork and
 
 Unit coverage pins registry declaration validation, effect disposal, per-execution collection, the `dshHome` precedence, and the local executor's `XHE_*` scrub/rebuild order. Request-recording tests cover foreground/background snapshots, no-agent calls, absent/JSONL persistence, ignored model `env`, and parent/child isolation. JSONL/SQLite locator contract tests and both hook bridge suites pin available and unavailable transcript dialects.
 
-A keyless full-loop integration drives the real agent loop, JSONL persistence, tool-bash, and bash-local on the first turn. The child prints `XHE_HOME`, `XHE_SHELL`, session id, JSONL target, and an inherited stale sentinel; the test verifies current values, absence of the stale variable, pre-flush file absence, and the eventual persisted header. Snapshot coverage pins the generic bash description in the recorded request header. No with-key test is required because the contract is deterministic local execution rather than model choice.
+A keyless full-loop integration drives the real agent loop, JSONL persistence, tool-bash, and bash-local on the first turn. The child prints `CF_HOME`, `XHE_SHELL`, session id, JSONL target, and an inherited stale sentinel; the test verifies current values, absence of the stale variable, pre-flush file absence, and the eventual persisted header. Snapshot coverage pins the generic bash description in the recorded request header. No with-key test is required because the contract is deterministic local execution rather than model choice.
 
 ## Alternatives considered
 

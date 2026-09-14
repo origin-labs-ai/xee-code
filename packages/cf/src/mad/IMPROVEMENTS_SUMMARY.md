@@ -1,4 +1,4 @@
-# XHE M.A.D GOD Runtime - v3.0.0-ultimate
+# XHE MAD GOD Runtime - v3.0.0-ultimate
 ## 8 Rounds of Improvements Complete ✅
 
 ### 📊 FILE STATISTICS

@@ -238,9 +238,9 @@ Below are representative examples of common problems and their corrections. Foll
 - Good: ` seam `
 
 ### Slang/jargon → Professional phrasing
-- Source: `The committed agent workflow lives in .agents/skills/xhe-translate-docs`
-- Bad: ` agent  .agents/skills/xhe-translate-docs`
-- Good: ` agent  .agents/skills/xhe-translate-docs`
+- Source: `The committed agent workflow lives in .agents/skills/cf-translate-docs`
+- Bad: ` agent  .agents/skills/cf-translate-docs`
+- Good: ` agent  .agents/skills/cf-translate-docs`
 
 ### "For humans" — translate the intent, not the word
 - Source: `For humans, start with the development guide`

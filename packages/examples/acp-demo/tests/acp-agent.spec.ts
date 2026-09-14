@@ -39,7 +39,7 @@ async function mount(config: acpAgent.Config, withBash = false): Promise<Context
 async function isolatedSkillsConfig(catalogDescriptionMaxLength?: number): Promise<NonNullable<acpAgent.Config['skills']>> {
   const home = await mkdtemp(join(tmpdir(), 'xhe-acp-demo-skills-'))
   return {
-    filesystem: { dshHome: join(home, '.dsh'), agentsHome: join(home, '.agents') },
+    filesystem: { cfHome: join(home, '.dsh'), agentsHome: join(home, '.agents') },
     ...catalogDescriptionMaxLength !== undefined ? { tool: { catalogDescriptionMaxLength } } : {},
   }
 }
@@ -60,18 +60,18 @@ async function composePrefix(ctx: Context): Promise<Message[]> {
 }
 
 async function withIsolatedSkillHomes<T>(run: () => Promise<T>): Promise<T> {
-  const oldDshHome = process.env.XHE_HOME
+  const oldDshHome = process.env.CF_HOME
   const oldAgentsHome = process.env.XHE_AGENTS_HOME
   const home = await mkdtemp(join(tmpdir(), 'xhe-acp-demo-default-skills-'))
-  process.env.XHE_HOME = join(home, '.dsh')
+  process.env.CF_HOME = join(home, '.dsh')
   process.env.XHE_AGENTS_HOME = join(home, '.agents')
   try {
     return await run()
   } finally {
     if (oldDshHome === undefined) {
-      delete process.env.XHE_HOME
+      delete process.env.CF_HOME
     } else {
-      process.env.XHE_HOME = oldDshHome
+      process.env.CF_HOME = oldDshHome
     }
     if (oldAgentsHome === undefined) {
       delete process.env.XHE_AGENTS_HOME
@@ -161,9 +161,9 @@ describe('xhe-acp-demo composition', () => {
     })
   })
 
-  it('forwards skill config and dshHome into agent-spine-demo', async () => {
+  it('forwards skill config and cfHome into agent-spine-demo', async () => {
     const skills = await isolatedSkillsConfig(6)
-    const ctx = await mount({ provider: 'mock', model: 'mock', persona: 'hi', dshHome: skills.filesystem!.dshHome!, skills, workspaceContext: false })
+    const ctx = await mount({ provider: 'mock', model: 'mock', persona: 'hi', cfHome: skills.filesystem!.cfHome!, skills, workspaceContext: false })
     ctx.skills.register({ name: 'acp-skill', description: 'ACP skill', source: 'runtime', content: 'body' })
     expect(JSON.stringify(await composePrefix(ctx))).toContain('- `acp-skill`: ACP...')
     await ctx.fiber.dispose()

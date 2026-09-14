@@ -166,7 +166,7 @@ describe('dsh web keyless CLI smoke', () => {
         env: {
           ...process.env,
           DEEPSEEK_API_KEY: 'keyless-web-no-call',
-          XHE_HOME: join(sessionsDir, '.dsh'),
+          CF_HOME: join(sessionsDir, '.dsh'),
           XHE_AGENTS_HOME: join(sessionsDir, '.agents'),
           TSX_TSCONFIG_PATH: join(REPO_ROOT, 'tsconfig.json'),
         },
@@ -233,7 +233,7 @@ describe('dsh web keyless CLI smoke', () => {
           ...process.env,
           DEEPSEEK_API_KEY: 'keyless-web-workspace',
           DEEPSEEK_BASE_URL: `http://127.0.0.1:${address.port}`,
-          XHE_HOME: join(workspace, '.dsh'),
+          CF_HOME: join(workspace, '.dsh'),
           XHE_AGENTS_HOME: join(workspace, '.agents'),
           TSX_TSCONFIG_PATH: join(REPO_ROOT, 'tsconfig.json'),
         },
@@ -346,7 +346,7 @@ describe('dsh web keyless CLI smoke', () => {
           ...process.env,
           DEEPSEEK_API_KEY: 'keyless-web-retry',
           DEEPSEEK_BASE_URL: `http://127.0.0.1:${address.port}`,
-          XHE_HOME: join(workspace, '.dsh'),
+          CF_HOME: join(workspace, '.dsh'),
           TSX_TSCONFIG_PATH: join(REPO_ROOT, 'tsconfig.json'),
         },
         stdio: ['ignore', 'pipe', 'pipe'],
@@ -429,7 +429,7 @@ describe('dsh web keyless CLI smoke', () => {
           DEEPSEEK_API_KEY: 'keyless-web-code-mode',
           DEEPSEEK_BASE_URL: `http://127.0.0.1:${address.port}`,
           XHE_TOOLS_MODE: 'code',
-          XHE_HOME: join(workspace, '.dsh'),
+          CF_HOME: join(workspace, '.dsh'),
           XHE_AGENTS_HOME: join(workspace, '.agents'),
           TSX_TSCONFIG_PATH: join(REPO_ROOT, 'tsconfig.json'),
         },
@@ -498,7 +498,7 @@ describe.skipIf(!process.env.DEEPSEEK_API_KEY || notReady.length > 0)('web smoke
         cwd: sessionsDir,
         env: {
           ...process.env,
-          XHE_HOME: join(sessionsDir, '.dsh'),
+          CF_HOME: join(sessionsDir, '.dsh'),
           XHE_AGENTS_HOME: join(sessionsDir, '.agents'),
           TSX_TSCONFIG_PATH: join(REPO_ROOT, 'tsconfig.json'),
         },
@@ -534,7 +534,7 @@ describe.skipIf(!process.env.DEEPSEEK_API_KEY || notReady.length > 0)('web smoke
 
   it('empty-state first send completes a real model round', async () => {
     onTestFailed(() => saveFailureShot(page, 'w5-first-round'))
-    // This scenario spawns its own server against a fresh $XHE_HOME with the
+    // This scenario spawns its own server against a fresh $CF_HOME with the
     // DeepSeek credential inherited from the environment, so no onboarding
     // step mounts and the page is immediately interactive.
     // Fresh world: connect a Workspace so the composer starts live.

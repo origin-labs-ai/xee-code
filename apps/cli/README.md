@@ -6,7 +6,7 @@ The `xhe` command is the product launcher for profiles: ordered stacks of plugin
 
 | Command | Purpose |
 |---|---|
-| `xhe --profile <name>` | Boot the named profile under `$XHE_HOME/profiles/<name>`. |
+| `xhe --profile <name>` | Boot the named profile under `$CF_HOME/profiles/<name>`. |
 | `xhe --profile headless "job"` | Run one fresh persisted session, print the final answer, and exit. |
 | `xhe web` | Alias of `--profile web`. |
 | `xhe plugin --profile <name> <pnpm args>` | Manage a profile's plugins by forwarding to pnpm in the profile directory. |
@@ -31,7 +31,7 @@ A profile directory holds a `package.json` (out-of-tree plugin dependencies plus
 
 The tree composes over an empty root:
 - each bundle's patch in `xhe.profile.bundles` order
-- then the profile's `cordis.patch.yml`, then the home-level `$XHE_HOME/cordis.patch.yml`
+- then the profile's `cordis.patch.yml`, then the home-level `$CF_HOME/cordis.patch.yml`
 - then `--patch` overlays
 
 Bundles named in `xhe.profile.bundles` resolve from the xhe installation first (`@origin-ai/cf-base`, `@origin-ai/cf-web-app`, `@origin-ai/cf-headless`), then from the profile's own `node_modules`, where pnpm installs out-of-tree plugins.

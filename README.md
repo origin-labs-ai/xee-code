@@ -35,15 +35,15 @@ This is not just multi-model execution. This is **coordinated intelligence** thr
 
 ---
 
-## 🚀 M.A.D (Multi-Agent Deployment) System
+## 🚀 MAD (Multi-Agent Deployment) System
 
-The **flagship feature** of XHE is the **M.A.D (Multi-Agent Deployment)** system — a revolutionary approach to orchestrating multiple AI agents in parallel, with intelligent task distribution, conflict resolution, and result aggregation.
+The **flagship feature** of XHE is the **MAD (Multi-Agent Deployment)** system — a revolutionary approach to orchestrating multiple AI agents in parallel, with intelligent task distribution, conflict resolution, and result aggregation.
 
 ### Architecture Overview
 
 ```mermaid
 graph TB
-    subgraph M.A.D Core
+    subgraph MAD Core
         A[User Request] --> B[XEE HARNESS ENHANCED]
         B --> C{Mode Selection}
         C -->|Normal| D[Single Agent Workflow]
@@ -167,18 +167,43 @@ Four-agent final audit before deployment:
 
 ## Installation
 
+### Install (macOS, Linux, Windows)
+
+One command on any terminal (macOS Terminal, Linux shell, Windows Terminal / PowerShell). npm installs the `cf` binary onto your PATH automatically:
+
+```sh
+npm install -g @origin-ai/cf
+```
+
+Then open the Web UI from any directory:
+
+```sh
+cf
+```
+
+`cf` with no arguments boots the Web UI on a local server and opens it in your default browser (same as `cf web`). The server runs locally; nothing leaves your machine unless you configure a provider key.
+
+Other entry points:
+
+```sh
+cf web                        # Web UI (default — same as bare `cf`)
+cf web --no-open              # serve without opening a browser
+cf web --port 8080            # serve on another port
+cf --profile headless "task"  # one-shot task, print result, exit
+cf --help                     # all launcher flags
+```
+
 ### Prerequisites
 
-- Node.js >= 22.19.0 or >= 24.0.0
-- pnpm >= 11.7.0 (recommended package manager)
-- Git for version control
+- Node.js >= 22.19.0 or >= 24.0.0 (npm ships with Node — no other package manager needed)
+- A DeepSeek API key (or your configured provider) for live model runs
 
-### Quick Start
+### Run from source
 
 ```bash
 # Clone the repository
-git clone https://github.com/origin-labs-ai/xhe.git
-cd xhe-repo
+git clone https://github.com/origin-labs-ai/code-fusion.git
+cd code-fusion
 
 # Install dependencies
 pnpm install
@@ -253,7 +278,7 @@ xhee-harness-enhanced/
 ├── .env                         # Environment variables
 │
 ├── src/
-│   └── mad/                     # M.A.D System Implementation
+│   └── mad/                     # MAD System Implementation
 │       ├── index.ts             # Main exports
 │       ├── types.ts             # All type definitions
 │       └── core/
@@ -288,7 +313,7 @@ xhee-harness-enhanced/
 
 ---
 
-## M.A.D Core Rules (from TRANSCRIPT)
+## MAD Core Rules (from TRANSCRIPT)
 
 These 15 commandments govern all multi-agent operations:
 
@@ -340,7 +365,7 @@ Agents analyze issues and find root causes:
 
 ## Cost Intelligence
 
-M.A.D doesn't mean 8× cost. Smart routing makes it economical:
+MAD doesn't mean 8× cost. Smart routing makes it economical:
 
 ```
 NOT:  8 models × full cost every round

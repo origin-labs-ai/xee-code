@@ -1,5 +1,5 @@
 /**
- * Xee Harness Enhanced (XHE) - M.A.D GOD Runtime
+ * CodeFusion (CF) - MAD GOD Runtime
  * 
  * ULTIMATE PRODUCTION IMPLEMENTATION - Enterprise Ready
  * 
@@ -98,7 +98,7 @@ import type {
 } from '../types'
 
 import {
-  XHE_IDENTITY,
+  CF_IDENTITY,
   VERIFICATION_LEVELS,
   GAUNTLET_DEFAULT_CONFIG,
   PRODUCTION_SWEEP_DEFAULT_CONFIG,
@@ -1110,7 +1110,7 @@ class EventBus {
   }
 }
 
-// Predefined event types for XHE system
+// Predefined event types for CF system
 export const XHEEvents = {
   // System Events
   SYSTEM: {
@@ -5749,7 +5749,7 @@ export class GodRuntime {
   }
 
   /**
-   * Execute a task through the full M.A.D pipeline
+   * Execute a task through the full MAD pipeline
    */
   async executeTask(taskSpec: TaskSpecification): Promise<FinalReport> {
     if (!this.initialized) {

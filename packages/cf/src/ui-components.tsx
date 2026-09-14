@@ -14,7 +14,7 @@ export function IWINProgress({ progress }: any) {
 export function MADDiscussion({ agents, messages }: any) {
   return (
     <div className="mad-discussion">
-      <h3>🏛️ M.A.D. Multi-Agent Discussion</h3>
+      <h3>🏛️ MAD Multi-Agent Discussion</h3>
       <div>{agents?.map((a: any) => <span key={a.id}>{a.name} ({a.model})</span>)}</div>
       <div>{messages?.map((m: any, i: number) => <p key={i}>{m.content}</p>)}</div>
     </div>

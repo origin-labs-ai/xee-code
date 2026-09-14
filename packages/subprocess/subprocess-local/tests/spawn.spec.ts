@@ -41,10 +41,10 @@ function shellArgv(command: string): string[] {
     case 'echo "$EXTRA_ONE/$EXTRA_TWO"': return node('console.log(process.env.EXTRA_ONE + "/" + process.env.EXTRA_TWO)')
     case 'echo "$EXPLICIT_OVERRIDE_PASSWORD"': return node('console.log(process.env.EXPLICIT_OVERRIDE_PASSWORD)')
     case 'echo "${SUBPROCESS_TOMBSTONE_PROBE:-absent}"': return node('console.log(process.env.SUBPROCESS_TOMBSTONE_PROBE ?? "absent")')
-    case 'echo "[${XHE_STALE:-absent}|$XHE_SHELL|$XHE_SESSION_ID]"':
-      return node('console.log("[" + [process.env.XHE_STALE ?? "absent", process.env.XHE_SHELL, process.env.XHE_SESSION_ID].join("|") + "]")')
-    case 'echo "[${XHE_TEST_API_KEY:-absent}|${XHE_TEST_TOKEN:-absent}|${SUBPROCESS_TEST_PASSWORD:-absent}|${XHE_TEST_PLAIN:-absent}]"':
-      return node('console.log("[" + [process.env.XHE_TEST_API_KEY ?? "absent", process.env.XHE_TEST_TOKEN ?? "absent", process.env.SUBPROCESS_TEST_PASSWORD ?? "absent", process.env.XHE_TEST_PLAIN ?? "absent"].join("|") + "]")')
+    case 'echo "[${CF_STALE:-absent}|$CF_SHELL|$CF_SESSION_ID]"':
+      return node('console.log("[" + [process.env.CF_STALE ?? "absent", process.env.CF_SHELL, process.env.CF_SESSION_ID].join("|") + "]")')
+    case 'echo "[${CF_TEST_API_KEY:-absent}|${CF_TEST_TOKEN:-absent}|${SUBPROCESS_TEST_PASSWORD:-absent}|${CF_TEST_PLAIN:-absent}]"':
+      return node('console.log("[" + [process.env.CF_TEST_API_KEY ?? "absent", process.env.CF_TEST_TOKEN ?? "absent", process.env.SUBPROCESS_TEST_PASSWORD ?? "absent", process.env.CF_TEST_PLAIN ?? "absent"].join("|") + "]")')
     case 'printf "%.0sx" $(seq 1 500)': return node('process.stdout.write("x".repeat(500))')
     case 'printf "%.0sx" $(seq 1 500); printf "%.0se" $(seq 1 500) >&2':
       return node('process.stdout.write("x".repeat(500)); process.stderr.write("e".repeat(500))')
@@ -1038,35 +1038,35 @@ describe('abort edge cases', () => {
 })
 
 describe('environment and spill-file hardening', () => {
-  it('scrubs credential-shaped and ambient XHE env vars from child processes', async () => {
-    process.env.XHE_TEST_API_KEY = 'super-secret'
-    process.env.XHE_TEST_TOKEN = 'also-secret'
+  it('scrubs credential-shaped and ambient CF env vars from child processes', async () => {
+    process.env.CF_TEST_API_KEY = 'super-secret'
+    process.env.CF_TEST_TOKEN = 'also-secret'
     process.env.SUBPROCESS_TEST_PASSWORD = 'password-secret'
-    process.env.XHE_TEST_PLAIN = 'visible'
+    process.env.CF_TEST_PLAIN = 'visible'
     try {
       const result = await finish(spawnSubprocess(spec(
-        'echo "[${XHE_TEST_API_KEY:-absent}|${XHE_TEST_TOKEN:-absent}|${SUBPROCESS_TEST_PASSWORD:-absent}|${XHE_TEST_PLAIN:-absent}]"',
+        'echo "[${CF_TEST_API_KEY:-absent}|${CF_TEST_TOKEN:-absent}|${SUBPROCESS_TEST_PASSWORD:-absent}|${CF_TEST_PLAIN:-absent}]"',
       )))
       expect(result.stdout.text.trim()).toBe('[absent|absent|absent|absent]')
     } finally {
-      delete process.env.XHE_TEST_API_KEY
-      delete process.env.XHE_TEST_TOKEN
+      delete process.env.CF_TEST_API_KEY
+      delete process.env.CF_TEST_TOKEN
       delete process.env.SUBPROCESS_TEST_PASSWORD
-      delete process.env.XHE_TEST_PLAIN
+      delete process.env.CF_TEST_PLAIN
     }
   })
 
-  it('forwards explicit XHE_* env entries while scrubbing ambient ones', async () => {
-    // Both facts through one explicit map: the ambient XHE_STALE is dropped by
+  it('forwards explicit CF_* env entries while scrubbing ambient ones', async () => {
+    // Both facts through one explicit map: the ambient CF_STALE is dropped by
     // the scrub, and the deliberately supplied current values merge after it.
-    process.env.XHE_STALE = 'old-value'
+    process.env.CF_STALE = 'old-value'
     try {
-      const result = await finish(spawnSubprocess(spec('echo "[${XHE_STALE:-absent}|$XHE_SHELL|$XHE_SESSION_ID]"', {
-        env: { XHE_SHELL: '1', XHE_SESSION_ID: 'current-session' },
+      const result = await finish(spawnSubprocess(spec('echo "[${CF_STALE:-absent}|$CF_SHELL|$CF_SESSION_ID]"', {
+        env: { CF_SHELL: '1', CF_SESSION_ID: 'current-session' },
       })))
       expect(result.stdout.text.trim()).toBe('[absent|1|current-session]')
     } finally {
-      delete process.env.XHE_STALE
+      delete process.env.CF_STALE
     }
   })
 

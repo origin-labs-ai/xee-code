@@ -1245,7 +1245,7 @@ function missingFor(ctx: Context, run: DynamicCordisRun): string[] {
 }
 
 function missingPluginMessage(id: CordisDynamicPluginId): string {
-  return `no dynamic plugin "${id}" in this process — it may have been removed or lost on XHE restart`
+  return `no dynamic plugin "${id}" in this process — it may have been removed or lost on CF restart`
 }
 
 function errorDetails(error: unknown): CordisErrorDetails {

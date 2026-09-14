@@ -71,7 +71,7 @@ export interface WebRuntimeValues {
 }
 
 /** Environment variable naming the canonical local URL of this Web GUI. */
-const XHE_WEB_URL = 'XHE_WEB_URL' as const
+const CF_WEB_URL = 'CF_WEB_URL' as const
 
 // Display-only mirror of the webserver schema's loopback host: the address the
 // local URL always prints. Not a source of truth — the schema is.
@@ -148,7 +148,7 @@ function webSurfacePrompt(webUrl: string): string {
     + 'The browser provides no implicit DOM, route, or screenshot context. '
     + updateContract
     + 'Starting another server does not update this GUI. '
-    + 'The apps/web Vite entry builds the shell but is not a standalone application because only cf web injects window.__XHE_BOOT__. '
+    + 'The apps/web Vite entry builds the shell but is not a standalone application because only cf web injects window.__CF_BOOT__. '
     + 'Do not start a replacement server unless the user asks; if one is needed, use a managed background job and verify its exact URL.'
 }
 
@@ -244,9 +244,9 @@ export function apply(ctx: Context, config: Config): void {
       runtimeCtx.shellEnv.register({
         name: 'web-runtime',
         variables: {
-          [XHE_WEB_URL]: { description: 'Canonical local URL of the CodeFusion Web GUI serving this session.' },
+          [CF_WEB_URL]: { description: 'Canonical local URL of the CodeFusion Web GUI serving this session.' },
         },
-        resolve: () => ({ [XHE_WEB_URL]: localWebUrl(runtimeCtx) }),
+        resolve: () => ({ [CF_WEB_URL]: localWebUrl(runtimeCtx) }),
       })
     })
   }

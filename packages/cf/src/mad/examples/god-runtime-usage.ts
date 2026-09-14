@@ -1,5 +1,5 @@
 /**
- * XHE M.A.D GOD Runtime - Complete Usage Examples
+ * CF MAD GOD Runtime - Complete Usage Examples
  * 
  * This file demonstrates ALL features after 8 rounds of improvements:
  * - 12 Core Components
@@ -300,7 +300,7 @@ async function exampleStreaming(): Promise<void> {
     private chunks: StreamChunk[] = []
     
     simulateStream(agentId: string): void {
-      const words = ['Hello', 'World', 'from', 'XHE', 'MAD', 'Runtime!']
+      const words = ['Hello', 'World', 'from', 'CF', 'MAD', 'Runtime!']
       let content = ''
       
       words.forEach((word, index) => {
@@ -419,7 +419,7 @@ async function exampleProductionSweep(): Promise<void> {
 // ============================================================================
 
 async function main(): Promise<void> {
-  console.log('🚀 XHE M.A.D GOD Runtime - Complete Feature Demo')
+  console.log('🚀 CF MAD GOD Runtime - Complete Feature Demo')
   console.log('=' .repeat(50))
   console.log('Version: 3.0.0-ultimate (8 Rounds of Improvements)\n')
   
