@@ -6,8 +6,8 @@ Python packages for driving Xee Harness Enhanced as a subprocess. The client SDK
 
 | Directory | Dist / module | Role |
 |---|---|---|
-| [sdk](sdk/README.md) | `xhe-sdk` / `deepseek_harness` | High-level turns API and lower-level JSON-RPC client |
-| [sdk-runtime](sdk-runtime/README.md) | `xhe-runtime-bin` / `deepseek_harness_runtime` | Bundled runtime binaries and default agent configuration |
+| [sdk](sdk/README.md) | `cf-sdk` / `deepseek_harness` | High-level turns API and lower-level JSON-RPC client |
+| [sdk-runtime](sdk-runtime/README.md) | `cf-runtime-bin` / `deepseek_harness_runtime` | Bundled runtime binaries and default agent configuration |
 
 ## Behavior
 

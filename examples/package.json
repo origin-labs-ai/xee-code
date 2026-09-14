@@ -75,7 +75,7 @@
     "@origin-ai/cf-subagent-acp": "workspace:*",
     "@origin-ai/cf-subagent-claude-code": "workspace:*",
     "@origin-ai/cf-subagent-codex": "workspace:*",
-    "@origin-ai/cf-subagent-xhe-sdk": "workspace:*",
+    "@origin-ai/cf-subagent-sdk": "workspace:*",
     "@origin-ai/cf-subagent-fork-in-process": "workspace:*",
     "@origin-ai/cf-subagent-spawn-in-process": "workspace:*",
     "@origin-ai/cf-subprocess-e2b": "workspace:*",

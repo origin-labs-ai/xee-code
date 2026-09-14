@@ -634,12 +634,12 @@ importers:
       '@origin-ai/cf-subagent-fork-in-process':
         specifier: workspace:*
         version: link:../packages/subagent/subagent-fork-in-process
+      '@origin-ai/cf-subagent-sdk':
+        specifier: workspace:*
+        version: link:../packages/subagent/subagent-cf-sdk
       '@origin-ai/cf-subagent-spawn-in-process':
         specifier: workspace:*
         version: link:../packages/subagent/subagent-spawn-in-process
-      '@origin-ai/cf-subagent-xhe-sdk':
-        specifier: workspace:*
-        version: link:../packages/subagent/subagent-dsh-sdk
       '@origin-ai/cf-subprocess-e2b':
         specifier: workspace:*
         version: link:../packages/e2b/subprocess-e2b
@@ -5762,6 +5762,90 @@ importers:
         specifier: workspace:^
         version: link:../../core/tools
 
+  packages/mad/discussion-bus:
+    devDependencies:
+      '@deepseek-ai/cordis':
+        specifier: workspace:^
+        version: link:../../../vendor/cordis
+      '@origin-ai/cf-brand':
+        specifier: workspace:^
+        version: link:../../util/brand
+      '@origin-ai/cf-invariants':
+        specifier: workspace:^
+        version: link:../../runtime-diagnostics/invariants
+
+  packages/mad/gauntlet:
+    devDependencies:
+      '@deepseek-ai/cordis':
+        specifier: workspace:^
+        version: link:../../../vendor/cordis
+      '@origin-ai/cf-brand':
+        specifier: workspace:^
+        version: link:../../util/brand
+      '@origin-ai/cf-invariants':
+        specifier: workspace:^
+        version: link:../../runtime-diagnostics/invariants
+
+  packages/mad/god-runtime:
+    devDependencies:
+      '@deepseek-ai/cordis':
+        specifier: workspace:^
+        version: link:../../../vendor/cordis
+      '@origin-ai/cf-brand':
+        specifier: workspace:^
+        version: link:../../util/brand
+      '@origin-ai/cf-invariants':
+        specifier: workspace:^
+        version: link:../../runtime-diagnostics/invariants
+
+  packages/mad/memory-fabric:
+    devDependencies:
+      '@deepseek-ai/cordis':
+        specifier: workspace:^
+        version: link:../../../vendor/cordis
+      '@origin-ai/cf-brand':
+        specifier: workspace:^
+        version: link:../../util/brand
+      '@origin-ai/cf-invariants':
+        specifier: workspace:^
+        version: link:../../runtime-diagnostics/invariants
+
+  packages/mad/production-sweep:
+    devDependencies:
+      '@deepseek-ai/cordis':
+        specifier: workspace:^
+        version: link:../../../vendor/cordis
+      '@origin-ai/cf-brand':
+        specifier: workspace:^
+        version: link:../../util/brand
+      '@origin-ai/cf-invariants':
+        specifier: workspace:^
+        version: link:../../runtime-diagnostics/invariants
+
+  packages/mad/skill-discovery:
+    devDependencies:
+      '@deepseek-ai/cordis':
+        specifier: workspace:^
+        version: link:../../../vendor/cordis
+      '@origin-ai/cf-brand':
+        specifier: workspace:^
+        version: link:../../util/brand
+      '@origin-ai/cf-invariants':
+        specifier: workspace:^
+        version: link:../../runtime-diagnostics/invariants
+
+  packages/mad/verification:
+    devDependencies:
+      '@deepseek-ai/cordis':
+        specifier: workspace:^
+        version: link:../../../vendor/cordis
+      '@origin-ai/cf-brand':
+        specifier: workspace:^
+        version: link:../../util/brand
+      '@origin-ai/cf-invariants':
+        specifier: workspace:^
+        version: link:../../runtime-diagnostics/invariants
+
   packages/mcp/mcp-client:
     dependencies:
       '@deepseek-ai/schemastery':
@@ -7428,6 +7512,46 @@ importers:
         specifier: workspace:^
         version: link:../../util/timeout
 
+  packages/subagent/subagent-cf-sdk:
+    dependencies:
+      '@deepseek-ai/schemastery':
+        specifier: link:../../../vendor/schemastery
+        version: link:../../../vendor/schemastery
+    devDependencies:
+      '@deepseek-ai/cordis':
+        specifier: workspace:^
+        version: link:../../../vendor/cordis
+      '@deepseek-ai/cordis-plugin-loader':
+        specifier: workspace:^
+        version: link:../../../vendor/loader
+      '@origin-ai/cf-agent':
+        specifier: workspace:^
+        version: link:../../core/agent
+      '@origin-ai/cf-invariants':
+        specifier: workspace:^
+        version: link:../../runtime-diagnostics/invariants
+      '@origin-ai/cf-llm':
+        specifier: workspace:^
+        version: link:../../llm/llm
+      '@origin-ai/cf-loader-smoke':
+        specifier: workspace:^
+        version: link:../../test-support/loader-smoke
+      '@origin-ai/cf-sdk-client':
+        specifier: workspace:^
+        version: link:../../sdk/client
+      '@origin-ai/cf-sdk-protocol':
+        specifier: workspace:^
+        version: link:../../sdk/protocol
+      '@origin-ai/cf-session':
+        specifier: workspace:^
+        version: link:../../core/session
+      '@origin-ai/cf-subagent':
+        specifier: workspace:^
+        version: link:../subagent
+      '@origin-ai/cf-subprocess':
+        specifier: workspace:^
+        version: link:../../subprocess/subprocess
+
   packages/subagent/subagent-claude-code:
     dependencies:
       '@anthropic-ai/claude-agent-sdk':
@@ -7522,46 +7646,6 @@ importers:
       '@origin-ai/cf-timeout':
         specifier: workspace:^
         version: link:../../util/timeout
-
-  packages/subagent/subagent-dsh-sdk:
-    dependencies:
-      '@deepseek-ai/schemastery':
-        specifier: link:../../../vendor/schemastery
-        version: link:../../../vendor/schemastery
-    devDependencies:
-      '@deepseek-ai/cordis':
-        specifier: workspace:^
-        version: link:../../../vendor/cordis
-      '@deepseek-ai/cordis-plugin-loader':
-        specifier: workspace:^
-        version: link:../../../vendor/loader
-      '@origin-ai/cf-agent':
-        specifier: workspace:^
-        version: link:../../core/agent
-      '@origin-ai/cf-invariants':
-        specifier: workspace:^
-        version: link:../../runtime-diagnostics/invariants
-      '@origin-ai/cf-llm':
-        specifier: workspace:^
-        version: link:../../llm/llm
-      '@origin-ai/cf-loader-smoke':
-        specifier: workspace:^
-        version: link:../../test-support/loader-smoke
-      '@origin-ai/cf-sdk-client':
-        specifier: workspace:^
-        version: link:../../sdk/client
-      '@origin-ai/cf-sdk-protocol':
-        specifier: workspace:^
-        version: link:../../sdk/protocol
-      '@origin-ai/cf-session':
-        specifier: workspace:^
-        version: link:../../core/session
-      '@origin-ai/cf-subagent':
-        specifier: workspace:^
-        version: link:../subagent
-      '@origin-ai/cf-subprocess':
-        specifier: workspace:^
-        version: link:../../subprocess/subprocess
 
   packages/subagent/subagent-fork-in-process:
     dependencies:
@@ -8681,90 +8765,6 @@ importers:
       '@origin-ai/cf-storage-domain':
         specifier: workspace:^
         version: link:../../storage/storage-domain
-
-  packages/xh/discussion-bus:
-    devDependencies:
-      '@deepseek-ai/cordis':
-        specifier: workspace:^
-        version: link:../../../vendor/cordis
-      '@origin-ai/cf-brand':
-        specifier: workspace:^
-        version: link:../../util/brand
-      '@origin-ai/cf-invariants':
-        specifier: workspace:^
-        version: link:../../runtime-diagnostics/invariants
-
-  packages/xh/god-runtime:
-    devDependencies:
-      '@deepseek-ai/cordis':
-        specifier: workspace:^
-        version: link:../../../vendor/cordis
-      '@origin-ai/cf-brand':
-        specifier: workspace:^
-        version: link:../../util/brand
-      '@origin-ai/cf-invariants':
-        specifier: workspace:^
-        version: link:../../runtime-diagnostics/invariants
-
-  packages/xh/memory-fabric:
-    devDependencies:
-      '@deepseek-ai/cordis':
-        specifier: workspace:^
-        version: link:../../../vendor/cordis
-      '@origin-ai/cf-brand':
-        specifier: workspace:^
-        version: link:../../util/brand
-      '@origin-ai/cf-invariants':
-        specifier: workspace:^
-        version: link:../../runtime-diagnostics/invariants
-
-  packages/xh/xh-gauntlet:
-    devDependencies:
-      '@deepseek-ai/cordis':
-        specifier: workspace:^
-        version: link:../../../vendor/cordis
-      '@origin-ai/cf-brand':
-        specifier: workspace:^
-        version: link:../../util/brand
-      '@origin-ai/cf-invariants':
-        specifier: workspace:^
-        version: link:../../runtime-diagnostics/invariants
-
-  packages/xh/xh-production-sweep:
-    devDependencies:
-      '@deepseek-ai/cordis':
-        specifier: workspace:^
-        version: link:../../../vendor/cordis
-      '@origin-ai/cf-brand':
-        specifier: workspace:^
-        version: link:../../util/brand
-      '@origin-ai/cf-invariants':
-        specifier: workspace:^
-        version: link:../../runtime-diagnostics/invariants
-
-  packages/xh/xh-skill-discovery:
-    devDependencies:
-      '@deepseek-ai/cordis':
-        specifier: workspace:^
-        version: link:../../../vendor/cordis
-      '@origin-ai/cf-brand':
-        specifier: workspace:^
-        version: link:../../util/brand
-      '@origin-ai/cf-invariants':
-        specifier: workspace:^
-        version: link:../../runtime-diagnostics/invariants
-
-  packages/xh/xh-verification:
-    devDependencies:
-      '@deepseek-ai/cordis':
-        specifier: workspace:^
-        version: link:../../../vendor/cordis
-      '@origin-ai/cf-brand':
-        specifier: workspace:^
-        version: link:../../util/brand
-      '@origin-ai/cf-invariants':
-        specifier: workspace:^
-        version: link:../../runtime-diagnostics/invariants
 
   python/sdk-runtime:
     dependencies:

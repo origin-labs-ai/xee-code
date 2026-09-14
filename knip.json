@@ -66,9 +66,9 @@
         "acp-agent/tests/fixtures/subagent/subagent-claude-code/driver.ts",
         "acp-agent/tests/fixtures/subagent/subagent-codex/fixture.ts",
         "acp-agent/tests/fixtures/subagent/subagent-codex/driver.ts",
-        "jsonrpc-agent/tests/fixtures/subagent/subagent-xhe-sdk/driver.ts",
-        "jsonrpc-agent/tests/fixtures/subagent/subagent-xhe-sdk/child-mock-llm.ts",
-        "jsonrpc-agent/tests/fixtures/subagent/subagent-xhe-sdk/mock-delegating-llm.ts",
+        "jsonrpc-agent/tests/fixtures/subagent/subagent-cf-sdk/driver.ts",
+        "jsonrpc-agent/tests/fixtures/subagent/subagent-cf-sdk/child-mock-llm.ts",
+        "jsonrpc-agent/tests/fixtures/subagent/subagent-cf-sdk/mock-delegating-llm.ts",
         "*/tests/**/*.e2e.ts",
         "*/tests/**/*.snapshot.ts"
       ],
@@ -640,7 +640,7 @@
         "@deepseek-ai/.+"
       ]
     },
-    "packages/subagent/subagent-xhe-sdk": {
+    "packages/subagent/subagent-cf-sdk": {
       "entry": [
         "tests/**/*.spec.ts",
         "tests/**/*.e2e.ts"

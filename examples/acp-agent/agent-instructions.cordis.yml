@@ -15,9 +15,9 @@
           persistenceCompression: !!js "process.env.XHE_SNAPSHOT === undefined ? 'zstd' : 'none'"
           workspaceContext:
             maxBytes: 65536
-            dshHome: !!js process.cwd() + '/.dsh'
+            dshHome: !!js process.cwd() + '/.cf'
             projectRootMarkers:
-              - .xhe-project
+              - .cf-project
           persona: |
             You are a CodeFusion coding assistant powered by the {{model}} model. Your working directory is {{cwd}}.
 

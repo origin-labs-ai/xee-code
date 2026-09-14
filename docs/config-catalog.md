@@ -9,7 +9,23 @@ This file is GENERATED from source (`scripts/gen-config-catalog.ts`) and verifie
 
 A `Requires:` line lists the service keys the plugin `inject`s: its `cordis.yml` tree must also load providers for those services. Scope is the harness tier (`packages/`); the vendored cordis plugins a config tree may also load (`hmr`, the console logger, …) are pinned upstream source ([vendoring policy](../vendor/README.md)) and not catalogued here.
 
-<a id="deepseek-aixhe-acp"></a>
+<a id="deepseek-aicordis-host-runner"></a>
+
+## `@deepseek-ai/cordis-host-runner`
+
+Requires: `tools`
+
+```ts config-catalog
+/** Runner configuration. */
+export interface Config {
+  /** Maximum synchronous VM evaluation time in milliseconds. */
+  vmTimeoutMs?: number
+}
+```
+
+Source: [`packages/extensions/cordis-host-runner/src/index.ts:88`](../packages/extensions/cordis-host-runner/src/index.ts)
+
+<a id="origin-aicf-acp"></a>
 
 ## `@origin-ai/cf-acp`
 
@@ -31,7 +47,7 @@ Depends on: `Stream` (`@agentclientprotocol/sdk`)
 
 Source: [`packages/acp/acp/src/index.ts:71`](../packages/acp/acp/src/index.ts)
 
-<a id="deepseek-aixhe-acp-demo"></a>
+<a id="origin-aicf-acp-demo"></a>
 
 ## `@origin-ai/cf-acp-demo`
 
@@ -82,11 +98,11 @@ export interface Config {
 }
 ```
 
-Depends on: [`agentCore`](../packages/examples/agent-spine-demo/src/index.ts) · [`JsonlCompression`](../packages/session/session-persistence-jsonl/src/index.ts) · [`ToolsConfig`](#deepseek-aixhe-tools)
+Depends on: [`agentCore`](../packages/examples/agent-spine-demo/src/index.ts) · [`JsonlCompression`](../packages/session/session-persistence-jsonl/src/index.ts) · [`ToolsConfig`](#origin-aicf-tools)
 
 Source: [`packages/examples/acp-demo/src/index.ts:39`](../packages/examples/acp-demo/src/index.ts)
 
-<a id="deepseek-aixhe-agent-default-model"></a>
+<a id="origin-aicf-agent-default-model"></a>
 
 ## `@origin-ai/cf-agent-default-model`
 
@@ -102,14 +118,14 @@ export interface Config {
 
 Source: [`packages/core/agent-default-model/src/index.ts:41`](../packages/core/agent-default-model/src/index.ts)
 
-<a id="deepseek-aixhe-agent-instructions"></a>
+<a id="origin-aicf-agent-instructions"></a>
 
 ## `@origin-ai/cf-agent-instructions`
 
 ```ts config-catalog
 /** User-facing workspace instruction loader configuration. */
 export interface Config {
-  /** Harness home containing the fixed user-global `AGENTS.md`; defaults to `$XHE_HOME` or `~/.dsh`. */
+  /** Harness home containing the fixed user-global `AGENTS.md`; defaults to `$XHE_HOME` or `~/.cf`. */
   dshHome?: string
   /** Directory entries that identify the project root while walking upward from the session cwd. */
   projectRootMarkers?: string[]
@@ -132,7 +148,7 @@ export interface Config {
 
 Source: [`packages/context/agent-instructions/src/config.ts:18`](../packages/context/agent-instructions/src/config.ts)
 
-<a id="deepseek-aixhe-agent-loop"></a>
+<a id="origin-aicf-agent-loop"></a>
 
 ## `@origin-ai/cf-agent-loop`
 
@@ -164,7 +180,7 @@ Depends on: [`AgentOptions`](subsystems/core.md) · [`SessionId`](subsystems/cor
 
 Source: [`packages/core/agent-loop/src/index.ts:255`](../packages/core/agent-loop/src/index.ts)
 
-<a id="deepseek-aixhe-agent-presets"></a>
+<a id="origin-aicf-agent-presets"></a>
 
 ## `@origin-ai/cf-agent-presets`
 
@@ -202,7 +218,7 @@ export type PresetTrust = 'system' | 'user'
 
 Source: [`packages/preset/agent-presets/src/preset.ts:52`](../packages/preset/agent-presets/src/preset.ts)
 
-<a id="deepseek-aixhe-agent-spine-demo"></a>
+<a id="origin-aicf-agent-spine-demo"></a>
 
 ## `@origin-ai/cf-agent-spine-demo`
 
@@ -290,11 +306,11 @@ export interface GoalConfig {
 }
 ```
 
-Depends on: [`AgentLoopConfig`](#deepseek-aixhe-agent-loop) · [`GoalDomainConfig`](#deepseek-aixhe-goal) · [`InvariantConfig`](#deepseek-aixhe-invariants) · [`JobsConfig`](#deepseek-aixhe-jobs-local) · [`SessionTitleConfig`](#deepseek-aixhe-session-title) · [`SkillFileSystem`](../packages/skill/skill-filesystem/src/index.ts) · [`SkillRegistryConfig`](#deepseek-aixhe-skill) · [`SystemPromptConfig`](#deepseek-aixhe-system-prompt) · [`toolBash`](../packages/shell/tool-bash/src/index.ts) · [`toolGoal`](../packages/goal/tool-goal/src/index.ts) · [`toolJobs`](../packages/jobs/tool-jobs/src/index.ts) · [`ToolsConfig`](#deepseek-aixhe-tools) · [`toolSkill`](../packages/skill/tool-skill/src/index.ts) · [`workspaceContext`](../packages/context/agent-instructions/src/index.ts)
+Depends on: [`AgentLoopConfig`](#origin-aicf-agent-loop) · [`GoalDomainConfig`](#origin-aicf-goal) · [`InvariantConfig`](#origin-aicf-invariants) · [`JobsConfig`](#origin-aicf-jobs-local) · [`SessionTitleConfig`](#origin-aicf-session-title) · [`SkillFileSystem`](../packages/skill/skill-filesystem/src/index.ts) · [`SkillRegistryConfig`](#origin-aicf-skill) · [`SystemPromptConfig`](#origin-aicf-system-prompt) · [`toolBash`](../packages/shell/tool-bash/src/index.ts) · [`toolGoal`](../packages/goal/tool-goal/src/index.ts) · [`toolJobs`](../packages/jobs/tool-jobs/src/index.ts) · [`ToolsConfig`](#origin-aicf-tools) · [`toolSkill`](../packages/skill/tool-skill/src/index.ts) · [`workspaceContext`](../packages/context/agent-instructions/src/index.ts)
 
 Source: [`packages/examples/agent-spine-demo/src/index.ts:92`](../packages/examples/agent-spine-demo/src/index.ts)
 
-<a id="deepseek-aixhe-agent-tool-presentation"></a>
+<a id="origin-aicf-agent-tool-presentation"></a>
 
 ## `@origin-ai/cf-agent-tool-presentation`
 
@@ -318,14 +334,14 @@ Depends on: [`ToolPresentationMode`](subsystems/tools.md)
 
 Source: [`packages/core/agent-tool-presentation/src/index.ts:38`](../packages/core/agent-tool-presentation/src/index.ts)
 
-<a id="deepseek-aixhe-attachment-local"></a>
+<a id="origin-aicf-attachment-local"></a>
 
 ## `@origin-ai/cf-attachment-local`
 
 ```ts config-catalog
 /** Local attachment backend configuration. */
 export interface Config {
-  /** Explicit harness home; omitted follows `XHE_HOME`, then `~/.dsh`. */
+  /** Explicit harness home; omitted follows `XHE_HOME`, then `~/.cf`. */
   dshHome?: string
   /** Maximum encoded bytes accepted for one submitted image. Default: 20 MiB. */
   maxImageBytes?: number
@@ -348,7 +364,7 @@ export interface Config {
 
 Source: [`packages/attachment/attachment-local/src/index.ts:51`](../packages/attachment/attachment-local/src/index.ts)
 
-<a id="deepseek-aixhe-bash-local"></a>
+<a id="origin-aicf-bash-local"></a>
 
 ## `@origin-ai/cf-bash-local`
 
@@ -374,7 +390,7 @@ export interface Config {
 
 Source: [`packages/shell/bash-local/src/index.ts:41`](../packages/shell/bash-local/src/index.ts)
 
-<a id="deepseek-aixhe-bash-sandbox"></a>
+<a id="origin-aicf-bash-sandbox"></a>
 
 ## `@origin-ai/cf-bash-sandbox`
 
@@ -391,11 +407,11 @@ Requires: `subprocess` · `sandbox` · `sandboxPolicy`
 export type Config = LocalConfig
 ```
 
-Depends on: [`LocalConfig`](#deepseek-aixhe-bash-local)
+Depends on: [`LocalConfig`](#origin-aicf-bash-local)
 
 Source: [`packages/shell/bash-sandbox/src/index.ts:35`](../packages/shell/bash-sandbox/src/index.ts)
 
-<a id="deepseek-aixhe-client-connection"></a>
+<a id="origin-aicf-client-connection"></a>
 
 ## `@origin-ai/cf-client-connection`
 
@@ -420,7 +436,7 @@ export interface ConnectionConfig {
 
 Source: [`packages/client/connection/src/index.ts:50`](../packages/client/connection/src/index.ts)
 
-<a id="deepseek-aixhe-client-hmr"></a>
+<a id="origin-aicf-client-hmr"></a>
 
 ## `@origin-ai/cf-client-hmr`
 
@@ -436,7 +452,7 @@ export interface Config {
 
 Source: [`packages/client/hmr/src/index.ts:31`](../packages/client/hmr/src/index.ts)
 
-<a id="deepseek-aixhe-code-runtime-worker-thread"></a>
+<a id="origin-aicf-code-runtime-worker-thread"></a>
 
 ## `@origin-ai/cf-code-runtime-worker-thread`
 
@@ -473,7 +489,7 @@ export interface Config {
 
 Source: [`packages/code-runtime/code-runtime-worker-thread/src/index.ts:25`](../packages/code-runtime/code-runtime-worker-thread/src/index.ts)
 
-<a id="deepseek-aixhe-compaction-basic"></a>
+<a id="origin-aicf-compaction-basic"></a>
 
 ## `@origin-ai/cf-compaction-basic`
 
@@ -519,7 +535,7 @@ export interface ModelCompactPolicyConfig extends CompactionPolicyConfig {
 
 Source: [`packages/compaction/compaction-basic/src/types.ts:38`](../packages/compaction/compaction-basic/src/types.ts)
 
-<a id="deepseek-aixhe-compaction-tool-result-pruner"></a>
+<a id="origin-aicf-compaction-tool-result-pruner"></a>
 
 ## `@origin-ai/cf-compaction-tool-result-pruner`
 
@@ -539,23 +555,7 @@ export interface ToolResultPruneConfig {
 
 Source: [`packages/compaction/compaction-tool-result-pruner/src/types.ts:4`](../packages/compaction/compaction-tool-result-pruner/src/types.ts)
 
-<a id="deepseek-aixhe-cordis-host-runner"></a>
-
-## `@deepseek-ai/cordis-host-runner`
-
-Requires: `tools`
-
-```ts config-catalog
-/** Runner configuration. */
-export interface Config {
-  /** Maximum synchronous VM evaluation time in milliseconds. */
-  vmTimeoutMs?: number
-}
-```
-
-Source: [`packages/extensions/cordis-host-runner/src/index.ts:88`](../packages/extensions/cordis-host-runner/src/index.ts)
-
-<a id="deepseek-aixhe-credentials-local"></a>
+<a id="origin-aicf-credentials-local"></a>
 
 ## `@origin-ai/cf-credentials-local`
 
@@ -564,7 +564,7 @@ Source: [`packages/extensions/cordis-host-runner/src/index.ts:88`](../packages/e
 export interface Config {
   /** Credentials document path; defaults to `.credentials.yaml` under the harness home. */
   path?: string
-  /** Harness home used when `path` is omitted; defaults to `$XHE_HOME` or `~/.dsh`. */
+  /** Harness home used when `path` is omitted; defaults to `$XHE_HOME` or `~/.cf`. */
   dshHome?: string
   /** Watch the document and hot-publish external edits; defaults to true. */
   watch?: boolean
@@ -575,7 +575,7 @@ export interface Config {
 
 Source: [`packages/credentials/credentials-local/src/index.ts:64`](../packages/credentials/credentials-local/src/index.ts)
 
-<a id="deepseek-aixhe-e2b"></a>
+<a id="origin-aicf-e2b"></a>
 
 ## `@origin-ai/cf-e2b`
 
@@ -593,7 +593,7 @@ export interface Config {
 
 Source: [`packages/e2b/e2b/src/index.ts:43`](../packages/e2b/e2b/src/index.ts)
 
-<a id="deepseek-aixhe-experimental-agent-team"></a>
+<a id="origin-aicf-experimental-agent-team"></a>
 
 ## `@origin-ai/cf-experimental-agent-team`
 
@@ -617,7 +617,7 @@ export interface Config {
 
 Source: [`packages/experimental/agent-team/src/types.ts:125`](../packages/experimental/agent-team/src/types.ts)
 
-<a id="deepseek-aixhe-experimental-tool-agent-team"></a>
+<a id="origin-aicf-experimental-tool-agent-team"></a>
 
 ## `@origin-ai/cf-experimental-tool-agent-team`
 
@@ -635,7 +635,7 @@ export interface Config {
 
 Source: [`packages/experimental/tool-agent-team/src/index.ts:17`](../packages/experimental/tool-agent-team/src/index.ts)
 
-<a id="deepseek-aixhe-file-reference-local"></a>
+<a id="origin-aicf-file-reference-local"></a>
 
 ## `@origin-ai/cf-file-reference-local`
 
@@ -655,7 +655,7 @@ export interface Config {
 
 Source: [`packages/context/file-reference-local/src/index.ts:35`](../packages/context/file-reference-local/src/index.ts)
 
-<a id="deepseek-aixhe-fs-local"></a>
+<a id="origin-aicf-fs-local"></a>
 
 ## `@origin-ai/cf-fs-local`
 
@@ -674,7 +674,7 @@ export interface Config {
 
 Source: [`packages/fs/fs-local/src/index.ts:41`](../packages/fs/fs-local/src/index.ts)
 
-<a id="deepseek-aixhe-fs-sandbox"></a>
+<a id="origin-aicf-fs-sandbox"></a>
 
 ## `@origin-ai/cf-fs-sandbox`
 
@@ -690,11 +690,26 @@ Requires: `sandboxPolicy`
 export type Config = LocalConfig
 ```
 
-Depends on: [`LocalConfig`](#deepseek-aixhe-fs-local)
+Depends on: [`LocalConfig`](#origin-aicf-fs-local)
 
 Source: [`packages/fs/fs-sandbox/src/index.ts:49`](../packages/fs/fs-sandbox/src/index.ts)
 
-<a id="deepseek-aixhe-goal"></a>
+<a id="origin-aicf-gauntlet"></a>
+
+## `@origin-ai/cf-gauntlet`
+
+```ts config-catalog
+export interface GauntletConfig {
+  /** Maximum rounds before stop gate fires. */
+  readonly maxRounds: number
+  /** Whether user override is permitted. */
+  readonly allowUserOverride: boolean
+}
+```
+
+Source: [`packages/mad/gauntlet/src/index.ts:114`](../packages/mad/gauntlet/src/index.ts)
+
+<a id="origin-aicf-goal"></a>
 
 ## `@origin-ai/cf-goal`
 
@@ -710,7 +725,37 @@ export interface Config {
 
 Source: [`packages/goal/goal/src/index.ts:116`](../packages/goal/goal/src/index.ts)
 
-<a id="deepseek-aixhe-headless"></a>
+<a id="origin-aicf-god-runtime"></a>
+
+## `@origin-ai/cf-god-runtime`
+
+```ts config-catalog
+/** GOD Runtime configuration (Section 4.3 subset). */
+export interface GodRuntimeConfig {
+  /** Budget ceilings enforced by the scheduler. */
+  readonly budgets: BudgetPolicy
+  /** Maximum agent instances in one run. */
+  readonly maxAgents?: number
+  /** Maximum delegation depth below the root agent. */
+  readonly maxDepth?: number
+}
+
+/** Budget ceilings for a run (Section 4.3). At least one must be set. */
+export interface BudgetPolicy {
+  /** Maximum total tokens across the run. */
+  readonly tokens?: number
+  /** Maximum wall-clock time in milliseconds. */
+  readonly timeMs?: number
+  /** Maximum spend in USD. */
+  readonly costUsd?: number
+  /** Maximum concurrent agent instances. */
+  readonly concurrency?: number
+}
+```
+
+Source: [`packages/mad/god-runtime/src/index.ts:395`](../packages/mad/god-runtime/src/index.ts)
+
+<a id="origin-aicf-headless"></a>
 
 ## `@origin-ai/cf-headless`
 
@@ -726,7 +771,7 @@ export interface Config {
 
 Source: [`packages/bundle/headless/src/index.ts:31`](../packages/bundle/headless/src/index.ts)
 
-<a id="deepseek-aixhe-hooks-claude-code"></a>
+<a id="origin-aicf-hooks-claude-code"></a>
 
 ## `@origin-ai/cf-hooks-claude-code`
 
@@ -764,7 +809,7 @@ export interface Config {
 
 Source: [`packages/hooks/hooks-claude-code/src/index.ts:45`](../packages/hooks/hooks-claude-code/src/index.ts)
 
-<a id="deepseek-aixhe-hooks-codex"></a>
+<a id="origin-aicf-hooks-codex"></a>
 
 ## `@origin-ai/cf-hooks-codex`
 
@@ -791,7 +836,7 @@ export interface Config {
 
 Source: [`packages/hooks/hooks-codex/src/index.ts:44`](../packages/hooks/hooks-codex/src/index.ts)
 
-<a id="deepseek-aixhe-host-apiproxy"></a>
+<a id="origin-aicf-host-apiproxy"></a>
 
 ## `@origin-ai/cf-host-apiproxy`
 
@@ -825,7 +870,7 @@ export interface Config {
 
 Source: [`packages/host/apiproxy/src/index.ts:41`](../packages/host/apiproxy/src/index.ts)
 
-<a id="deepseek-aixhe-host-directory-picker-browse"></a>
+<a id="origin-aicf-host-directory-picker-browse"></a>
 
 ## `@origin-ai/cf-host-directory-picker-browse`
 
@@ -839,7 +884,7 @@ export interface Config {
 
 Source: [`packages/host/directory-picker-browse/src/index.ts:181`](../packages/host/directory-picker-browse/src/index.ts)
 
-<a id="deepseek-aixhe-host-frontend-static"></a>
+<a id="origin-aicf-host-frontend-static"></a>
 
 ## `@origin-ai/cf-host-frontend-static`
 
@@ -855,7 +900,7 @@ export interface Config {
 
 Source: [`packages/host/frontend-static/src/index.ts:28`](../packages/host/frontend-static/src/index.ts)
 
-<a id="deepseek-aixhe-host-webserver"></a>
+<a id="origin-aicf-host-webserver"></a>
 
 ## `@origin-ai/cf-host-webserver`
 
@@ -871,7 +916,7 @@ export interface Config {
 
 Source: [`packages/host/webserver/src/index.ts:59`](../packages/host/webserver/src/index.ts)
 
-<a id="deepseek-aixhe-invariants"></a>
+<a id="origin-aicf-invariants"></a>
 
 ## `@origin-ai/cf-invariants`
 
@@ -889,7 +934,7 @@ export interface Config {
 
 Source: [`packages/runtime-diagnostics/invariants/src/index.ts:15`](../packages/runtime-diagnostics/invariants/src/index.ts)
 
-<a id="deepseek-aixhe-jobs-local"></a>
+<a id="origin-aicf-jobs-local"></a>
 
 ## `@origin-ai/cf-jobs-local`
 
@@ -906,7 +951,7 @@ export interface Config {
 
 Source: [`packages/jobs/jobs-local/src/index.ts:31`](../packages/jobs/jobs-local/src/index.ts)
 
-<a id="deepseek-aixhe-llm-deepseek"></a>
+<a id="origin-aicf-llm-deepseek"></a>
 
 ## `@origin-ai/cf-llm-deepseek`
 
@@ -989,7 +1034,7 @@ Depends on: [`ModelModality`](../packages/llm/llm/src/index.ts) · [`RetryPolicy
 
 Source: [`packages/llm/llm-deepseek/src/index.ts:106`](../packages/llm/llm-deepseek/src/index.ts)
 
-<a id="deepseek-aixhe-llm-pi-ai"></a>
+<a id="origin-aicf-llm-pi-ai"></a>
 
 ## `@origin-ai/cf-llm-pi-ai`
 
@@ -1243,7 +1288,7 @@ Depends on: `Api` (`@earendil-works/pi-ai`) · `CacheRetention` (`@earendil-work
 
 Source: [`packages/llm/llm-pi-ai/src/config.ts:213`](../packages/llm/llm-pi-ai/src/config.ts)
 
-<a id="deepseek-aixhe-llm-replay"></a>
+<a id="origin-aicf-llm-replay"></a>
 
 ## `@origin-ai/cf-llm-replay`
 
@@ -1311,7 +1356,7 @@ Depends on: [`ModelModality`](../packages/llm/llm/src/index.ts) · [`RetryPolicy
 
 Source: [`packages/test-support/llm-replay/src/index.ts:809`](../packages/test-support/llm-replay/src/index.ts)
 
-<a id="deepseek-aixhe-llm-retry"></a>
+<a id="origin-aicf-llm-retry"></a>
 
 ## `@origin-ai/cf-llm-retry`
 
@@ -1324,7 +1369,7 @@ export type Config = Readonly<Record<string, never>>
 
 Source: [`packages/llm/llm-retry/src/index.ts:24`](../packages/llm/llm-retry/src/index.ts)
 
-<a id="deepseek-aixhe-lsp-stdio"></a>
+<a id="origin-aicf-lsp-stdio"></a>
 
 ## `@origin-ai/cf-lsp-stdio`
 
@@ -1366,7 +1411,7 @@ export interface LspLocalServerConfig {
 
 Source: [`packages/lsp/lsp-stdio/src/index.ts:82`](../packages/lsp/lsp-stdio/src/index.ts)
 
-<a id="deepseek-aixhe-mcp-client"></a>
+<a id="origin-aicf-mcp-client"></a>
 
 ## `@origin-ai/cf-mcp-client`
 
@@ -1439,7 +1484,20 @@ export interface ReconnectConfig {
 
 Source: [`packages/mcp/mcp-client/src/index.ts:98`](../packages/mcp/mcp-client/src/index.ts)
 
-<a id="deepseek-aixhe-message-feedback"></a>
+<a id="origin-aicf-memory-fabric"></a>
+
+## `@origin-ai/cf-memory-fabric`
+
+```ts config-catalog
+export interface MemoryFabricConfig {
+  /** Token budget for HOT active context. */
+  readonly hotTokenBudget: number
+}
+```
+
+Source: [`packages/mad/memory-fabric/src/index.ts:286`](../packages/mad/memory-fabric/src/index.ts)
+
+<a id="origin-aicf-message-feedback"></a>
 
 ## `@origin-ai/cf-message-feedback`
 
@@ -1455,7 +1513,7 @@ export interface Config {
 
 Source: [`packages/feedback/message-feedback/src/index.ts:49`](../packages/feedback/message-feedback/src/index.ts)
 
-<a id="deepseek-aixhe-permission-presets"></a>
+<a id="origin-aicf-permission-presets"></a>
 
 ## `@origin-ai/cf-permission-presets`
 
@@ -1494,7 +1552,7 @@ Depends on: [`ApprovalPolicy`](subsystems/approval.md) · [`SandboxMode`](subsys
 
 Source: [`packages/interaction/permission-presets/src/index.ts:156`](../packages/interaction/permission-presets/src/index.ts)
 
-<a id="deepseek-aixhe-persona"></a>
+<a id="origin-aicf-persona"></a>
 
 ## `@origin-ai/cf-persona`
 
@@ -1518,7 +1576,7 @@ export interface Config {
 
 Source: [`packages/preset/persona/src/index.ts:34`](../packages/preset/persona/src/index.ts)
 
-<a id="deepseek-aixhe-plan-mode"></a>
+<a id="origin-aicf-plan-mode"></a>
 
 ## `@origin-ai/cf-plan-mode`
 
@@ -1534,7 +1592,20 @@ export interface PlanModeConfig {
 
 Source: [`packages/plan/plan-mode/src/index.ts:70`](../packages/plan/plan-mode/src/index.ts)
 
-<a id="deepseek-aixhe-pwsh-local"></a>
+<a id="origin-aicf-production-sweep"></a>
+
+## `@origin-ai/cf-production-sweep`
+
+```ts config-catalog
+export interface ProductionSweepConfig {
+  /** Whether to fail on any high-or-above finding. */
+  readonly failOnHigh?: boolean
+}
+```
+
+Source: [`packages/mad/production-sweep/src/index.ts:115`](../packages/mad/production-sweep/src/index.ts)
+
+<a id="origin-aicf-pwsh-local"></a>
 
 ## `@origin-ai/cf-pwsh-local`
 
@@ -1567,7 +1638,7 @@ export interface Config {
 
 Source: [`packages/shell/pwsh-local/src/index.ts:58`](../packages/shell/pwsh-local/src/index.ts)
 
-<a id="deepseek-aixhe-pwsh-sandbox"></a>
+<a id="origin-aicf-pwsh-sandbox"></a>
 
 ## `@origin-ai/cf-pwsh-sandbox`
 
@@ -1585,11 +1656,11 @@ Requires: `subprocess` · `sandbox` · `sandboxPolicy`
 export type Config = LocalConfig
 ```
 
-Depends on: [`LocalConfig`](#deepseek-aixhe-pwsh-local)
+Depends on: [`LocalConfig`](#origin-aicf-pwsh-local)
 
 Source: [`packages/shell/pwsh-sandbox/src/index.ts:40`](../packages/shell/pwsh-sandbox/src/index.ts)
 
-<a id="deepseek-aixhe-repeat-tool-reminder"></a>
+<a id="origin-aicf-repeat-tool-reminder"></a>
 
 ## `@origin-ai/cf-repeat-tool-reminder`
 
@@ -1623,7 +1694,7 @@ export interface Config {
 
 Source: [`packages/guard/repeat-tool-reminder/src/index.ts:28`](../packages/guard/repeat-tool-reminder/src/index.ts)
 
-<a id="deepseek-aixhe-sandbox-local"></a>
+<a id="origin-aicf-sandbox-local"></a>
 
 ## `@origin-ai/cf-sandbox-local`
 
@@ -1655,7 +1726,7 @@ export interface Config {
 
 Source: [`packages/sandbox/sandbox-local/src/index.ts:44`](../packages/sandbox/sandbox-local/src/index.ts)
 
-<a id="deepseek-aixhe-sandbox-policy"></a>
+<a id="origin-aicf-sandbox-policy"></a>
 
 ## `@origin-ai/cf-sandbox-policy`
 
@@ -1682,7 +1753,7 @@ Depends on: [`SandboxMode`](subsystems/sandbox.md)
 
 Source: [`packages/sandbox/sandbox-policy/src/index.ts:67`](../packages/sandbox/sandbox-policy/src/index.ts)
 
-<a id="deepseek-aixhe-sdk-jsonrpc-server"></a>
+<a id="origin-aicf-sdk-jsonrpc-server"></a>
 
 ## `@origin-ai/cf-sdk-jsonrpc-server`
 
@@ -1706,7 +1777,7 @@ Depends on: `Readable` (`node:stream`) · `Writable` (`node:stream`)
 
 Source: [`packages/sdk/server/src/index.ts:25`](../packages/sdk/server/src/index.ts)
 
-<a id="deepseek-aixhe-session-persistence-jsonl"></a>
+<a id="origin-aicf-session-persistence-jsonl"></a>
 
 ## `@origin-ai/cf-session-persistence-jsonl`
 
@@ -1745,7 +1816,7 @@ export type JsonlCompression = 'zstd' | 'none'
 
 Source: [`packages/session/session-persistence-jsonl/src/index.ts:60`](../packages/session/session-persistence-jsonl/src/index.ts)
 
-<a id="deepseek-aixhe-session-persistence-sqlite"></a>
+<a id="origin-aicf-session-persistence-sqlite"></a>
 
 ## `@origin-ai/cf-session-persistence-sqlite`
 
@@ -1772,7 +1843,7 @@ export type JournalMode = 'wal' | 'delete' | 'truncate' | 'persist'
 
 Source: [`packages/session/session-persistence-sqlite/src/index.ts:36`](../packages/session/session-persistence-sqlite/src/index.ts)
 
-<a id="deepseek-aixhe-session-projection-cache"></a>
+<a id="origin-aicf-session-projection-cache"></a>
 
 ## `@origin-ai/cf-session-projection-cache`
 
@@ -1795,7 +1866,7 @@ export interface Config {
 
 Source: [`packages/session/session-projection-cache/src/index.ts:42`](../packages/session/session-projection-cache/src/index.ts)
 
-<a id="deepseek-aixhe-session-query-sqlite"></a>
+<a id="origin-aicf-session-query-sqlite"></a>
 
 ## `@origin-ai/cf-session-query-sqlite`
 
@@ -1841,7 +1912,7 @@ Depends on: [`SessionQueryConfig`](../packages/session-query/session-query/src/i
 
 Source: [`packages/session-query/session-query-sqlite/src/index.ts:89`](../packages/session-query/session-query-sqlite/src/index.ts)
 
-<a id="deepseek-aixhe-session-reference"></a>
+<a id="origin-aicf-session-reference"></a>
 
 ## `@origin-ai/cf-session-reference`
 
@@ -1861,7 +1932,7 @@ export interface Config {
 
 Source: [`packages/context/session-reference/src/config.ts:11`](../packages/context/session-reference/src/config.ts)
 
-<a id="deepseek-aixhe-session-telemetry-otel"></a>
+<a id="origin-aicf-session-telemetry-otel"></a>
 
 ## `@origin-ai/cf-session-telemetry-otel`
 
@@ -1907,7 +1978,7 @@ Depends on: `BatchLogRecordProcessorOptions` (`@opentelemetry/sdk-logs`) · `OTL
 
 Source: [`packages/session/session-telemetry-otel/src/index.ts:91`](../packages/session/session-telemetry-otel/src/index.ts)
 
-<a id="deepseek-aixhe-session-title"></a>
+<a id="origin-aicf-session-title"></a>
 
 ## `@origin-ai/cf-session-title`
 
@@ -1927,7 +1998,7 @@ export interface Config {
 
 Source: [`packages/session/session-title/src/index.ts:79`](../packages/session/session-title/src/index.ts)
 
-<a id="deepseek-aixhe-session-title-all-prompts-llm"></a>
+<a id="origin-aicf-session-title-all-prompts-llm"></a>
 
 ## `@origin-ai/cf-session-title-all-prompts-llm`
 
@@ -1942,7 +2013,7 @@ Depends on: [`SessionTitleLlmConfig`](../packages/session/session-title-llm/src/
 
 Source: [`packages/session/session-title-all-prompts-llm/src/index.ts:15`](../packages/session/session-title-all-prompts-llm/src/index.ts)
 
-<a id="deepseek-aixhe-session-title-first-prompt-llm"></a>
+<a id="origin-aicf-session-title-first-prompt-llm"></a>
 
 ## `@origin-ai/cf-session-title-first-prompt-llm`
 
@@ -1957,7 +2028,7 @@ Depends on: [`SessionTitleLlmConfig`](../packages/session/session-title-llm/src/
 
 Source: [`packages/session/session-title-first-prompt-llm/src/index.ts:15`](../packages/session/session-title-first-prompt-llm/src/index.ts)
 
-<a id="deepseek-aixhe-settings-file"></a>
+<a id="origin-aicf-settings-file"></a>
 
 ## `@origin-ai/cf-settings-file`
 
@@ -1966,7 +2037,7 @@ Source: [`packages/session/session-title-first-prompt-llm/src/index.ts:15`](../p
 export interface Config {
   /** Settings document path; defaults to `settings.yaml` under the harness home. */
   path?: string
-  /** Harness home used when `path` is omitted; defaults to `$XHE_HOME` or `~/.dsh`. */
+  /** Harness home used when `path` is omitted; defaults to `$XHE_HOME` or `~/.cf`. */
   dshHome?: string
   /** Watch the document and hot-publish external edits; defaults to true. */
   watch?: boolean
@@ -1977,21 +2048,21 @@ export interface Config {
 
 Source: [`packages/settings/settings-file/src/index.ts:21`](../packages/settings/settings-file/src/index.ts)
 
-<a id="deepseek-aixhe-shell-env"></a>
+<a id="origin-aicf-shell-env"></a>
 
 ## `@origin-ai/cf-shell-env`
 
 ```ts config-catalog
 /** Plugin config (all optional — the built-in facts resolve without defaults). */
 export interface Config {
-  /** Xee Harness Enhanced home directory exposed as `XHE_HOME`; defaults to `$XHE_HOME` or `~/.dsh`. */
+  /** Xee Harness Enhanced home directory exposed as `XHE_HOME`; defaults to `$XHE_HOME` or `~/.cf`. */
   dshHome?: string
 }
 ```
 
 Source: [`packages/shell/shell-env/src/index.ts:29`](../packages/shell/shell-env/src/index.ts)
 
-<a id="deepseek-aixhe-skill"></a>
+<a id="origin-aicf-skill"></a>
 
 ## `@origin-ai/cf-skill`
 
@@ -2005,7 +2076,29 @@ export interface Config {
 
 Source: [`packages/skill/skill/src/index.ts:279`](../packages/skill/skill/src/index.ts)
 
-<a id="deepseek-aixhe-skill-filesystem"></a>
+<a id="origin-aicf-skill-discovery"></a>
+
+## `@origin-ai/cf-skill-discovery`
+
+```ts config-catalog
+/** Discovery configuration validated from cordis.yml / env. */
+export interface SkillDiscoveryConfig {
+  /** Whether auto-discovery is enabled. */
+  readonly enabled: boolean
+  /** Allow globs for repos (e.g. `org/*`). */
+  readonly allowRepos?: readonly string[]
+  /** Deny globs override allow. */
+  readonly denyRepos?: readonly string[]
+  /** Hard per-run cap on fetches (budget cap). */
+  readonly maxFetchesPerRun: number
+  /** Timeout for isolated vet pass (ms). */
+  readonly vetTimeoutMs?: number
+}
+```
+
+Source: [`packages/mad/skill-discovery/src/index.ts:108`](../packages/mad/skill-discovery/src/index.ts)
+
+<a id="origin-aicf-skill-filesystem"></a>
 
 ## `@origin-ai/cf-skill-filesystem`
 
@@ -2018,7 +2111,7 @@ export interface Config {
   providerName?: string
   /** Whether project and user roots are included around custom roots. */
   includeDefaultRoots?: boolean
-  /** Xee Harness Enhanced config root. Defaults to `$XHE_HOME` or `~/.dsh`. */
+  /** Xee Harness Enhanced config root. Defaults to `$XHE_HOME` or `~/.cf`. */
   dshHome?: string
   /** Shared agent config root. Defaults to `$XHE_AGENTS_HOME` or `~/.agents`. */
   agentsHome?: string
@@ -2043,7 +2136,7 @@ export interface Config {
 
 Source: [`packages/skill/skill-filesystem/src/index.ts:49`](../packages/skill/skill-filesystem/src/index.ts)
 
-<a id="deepseek-aixhe-spill-local"></a>
+<a id="origin-aicf-spill-local"></a>
 
 ## `@origin-ai/cf-spill-local`
 
@@ -2061,7 +2154,7 @@ export interface Config {
 
 Source: [`packages/spill/spill-local/src/index.ts:22`](../packages/spill/spill-local/src/index.ts)
 
-<a id="deepseek-aixhe-spill-policy"></a>
+<a id="origin-aicf-spill-policy"></a>
 
 ## `@origin-ai/cf-spill-policy`
 
@@ -2081,7 +2174,7 @@ export interface Config {
 
 Source: [`packages/spill/spill-policy/src/index.ts:60`](../packages/spill/spill-policy/src/index.ts)
 
-<a id="deepseek-aixhe-storage-domain"></a>
+<a id="origin-aicf-storage-domain"></a>
 
 ## `@origin-ai/cf-storage-domain`
 
@@ -2104,7 +2197,7 @@ export interface Config {
 
 Source: [`packages/storage/storage-domain/src/index.ts:52`](../packages/storage/storage-domain/src/index.ts)
 
-<a id="deepseek-aixhe-storage-json"></a>
+<a id="origin-aicf-storage-json"></a>
 
 ## `@origin-ai/cf-storage-json`
 
@@ -2125,7 +2218,7 @@ export interface Config {
 
 Source: [`packages/storage/storage-json/src/index.ts:27`](../packages/storage/storage-json/src/index.ts)
 
-<a id="deepseek-aixhe-storage-sqlite"></a>
+<a id="origin-aicf-storage-sqlite"></a>
 
 ## `@origin-ai/cf-storage-sqlite`
 
@@ -2165,7 +2258,7 @@ export type JournalMode = 'wal' | 'delete' | 'truncate' | 'persist'
 
 Source: [`packages/storage/storage-sqlite/src/index.ts:24`](../packages/storage/storage-sqlite/src/index.ts)
 
-<a id="deepseek-aixhe-subagent-acp"></a>
+<a id="origin-aicf-subagent-acp"></a>
 
 ## `@origin-ai/cf-subagent-acp`
 
@@ -2218,7 +2311,7 @@ export type PermissionPolicy = 'allow' | 'reject'
 
 Source: [`packages/subagent/subagent-acp/src/index.ts:27`](../packages/subagent/subagent-acp/src/index.ts)
 
-<a id="deepseek-aixhe-subagent-claude-code"></a>
+<a id="origin-aicf-subagent-claude-code"></a>
 
 ## `@origin-ai/cf-subagent-claude-code`
 
@@ -2251,7 +2344,7 @@ export type ClaudeCodePermissionMode = typeof CLAUDE_CODE_PERMISSION_MODES[numbe
 
 Source: [`packages/subagent/subagent-claude-code/src/index.ts:38`](../packages/subagent/subagent-claude-code/src/index.ts)
 
-<a id="deepseek-aixhe-subagent-codex"></a>
+<a id="origin-aicf-subagent-codex"></a>
 
 ## `@origin-ai/cf-subagent-codex`
 
@@ -2282,16 +2375,32 @@ export type CodexPermissionMode =
 
 Source: [`packages/subagent/subagent-codex/src/index.ts:36`](../packages/subagent/subagent-codex/src/index.ts)
 
-<a id="deepseek-aixhe-subagent-xhe-sdk"></a>
+<a id="origin-aicf-subagent-fork-in-process"></a>
 
-## `@origin-ai/cf-subagent-xhe-sdk`
+## `@origin-ai/cf-subagent-fork-in-process`
+
+Requires: `subagents`
+
+```ts config-catalog
+/** Config: the registry name to register the provider under. */
+export interface Config {
+  /** Provider name on `ctx.subagents` (default `fork`). */
+  providerName: string
+}
+```
+
+Source: [`packages/subagent/subagent-fork-in-process/src/index.ts:31`](../packages/subagent/subagent-fork-in-process/src/index.ts)
+
+<a id="origin-aicf-subagent-sdk"></a>
+
+## `@origin-ai/cf-subagent-sdk`
 
 Requires: `subagents`
 
 ```ts config-catalog
 /** Config: how to spawn and drive the child SDK runtime process. */
 export interface Config {
-  /** Provider name on `ctx.subagents` (default `xhe-sdk`). */
+  /** Provider name on `ctx.subagents` (default `cf-sdk`). */
   providerName: string
   /** The executable to spawn for each run (the child runtime bin or packaged exe). */
   command: string
@@ -2333,25 +2442,9 @@ export interface Config {
 }
 ```
 
-Source: [`packages/subagent/subagent-xhe-sdk/src/index.ts:29`](../packages/subagent/subagent-xhe-sdk/src/index.ts)
+Source: [`packages/subagent/subagent-cf-sdk/src/index.ts:29`](../packages/subagent/subagent-cf-sdk/src/index.ts)
 
-<a id="deepseek-aixhe-subagent-fork-in-process"></a>
-
-## `@origin-ai/cf-subagent-fork-in-process`
-
-Requires: `subagents`
-
-```ts config-catalog
-/** Config: the registry name to register the provider under. */
-export interface Config {
-  /** Provider name on `ctx.subagents` (default `fork`). */
-  providerName: string
-}
-```
-
-Source: [`packages/subagent/subagent-fork-in-process/src/index.ts:31`](../packages/subagent/subagent-fork-in-process/src/index.ts)
-
-<a id="deepseek-aixhe-subagent-spawn-in-process"></a>
+<a id="origin-aicf-subagent-spawn-in-process"></a>
 
 ## `@origin-ai/cf-subagent-spawn-in-process`
 
@@ -2367,7 +2460,7 @@ export interface Config {
 
 Source: [`packages/subagent/subagent-spawn-in-process/src/index.ts:25`](../packages/subagent/subagent-spawn-in-process/src/index.ts)
 
-<a id="deepseek-aixhe-subprocess-e2b"></a>
+<a id="origin-aicf-subprocess-e2b"></a>
 
 ## `@origin-ai/cf-subprocess-e2b`
 
@@ -2383,7 +2476,7 @@ export interface Config {
 
 Source: [`packages/e2b/subprocess-e2b/src/index.ts:25`](../packages/e2b/subprocess-e2b/src/index.ts)
 
-<a id="deepseek-aixhe-system-prompt"></a>
+<a id="origin-aicf-system-prompt"></a>
 
 ## `@origin-ai/cf-system-prompt`
 
@@ -2410,7 +2503,7 @@ export interface Config {
 
 Source: [`packages/core/system-prompt/src/index.ts:186`](../packages/core/system-prompt/src/index.ts)
 
-<a id="deepseek-aixhe-terminal-bash"></a>
+<a id="origin-aicf-terminal-bash"></a>
 
 ## `@origin-ai/cf-terminal-bash`
 
@@ -2460,7 +2553,7 @@ export type ShellDialect = 'bash' | 'pwsh'
 
 Source: [`packages/terminal/terminal-bash/src/config.ts:10`](../packages/terminal/terminal-bash/src/config.ts)
 
-<a id="deepseek-aixhe-time-context"></a>
+<a id="origin-aicf-time-context"></a>
 
 ## `@origin-ai/cf-time-context`
 
@@ -2478,7 +2571,7 @@ export interface Config {
 
 Source: [`packages/context/time-context/src/index.ts:27`](../packages/context/time-context/src/index.ts)
 
-<a id="deepseek-aixhe-tmux-context"></a>
+<a id="origin-aicf-tmux-context"></a>
 
 ## `@origin-ai/cf-tmux-context`
 
@@ -2494,7 +2587,7 @@ export interface Config {
 
 Source: [`packages/context/tmux-context/src/index.ts:34`](../packages/context/tmux-context/src/index.ts)
 
-<a id="deepseek-aixhe-token-meter"></a>
+<a id="origin-aicf-token-meter"></a>
 
 ## `@origin-ai/cf-token-meter`
 
@@ -2505,7 +2598,7 @@ export type TokenMeterConfig = Record<string, never>
 
 Source: [`packages/llm/token-meter/src/types.ts:12`](../packages/llm/token-meter/src/types.ts)
 
-<a id="deepseek-aixhe-tool-bash"></a>
+<a id="origin-aicf-tool-bash"></a>
 
 ## `@origin-ai/cf-tool-bash`
 
@@ -2521,7 +2614,7 @@ export interface Config {
 
 Source: [`packages/shell/tool-bash/src/index.ts:34`](../packages/shell/tool-bash/src/index.ts)
 
-<a id="deepseek-aixhe-tool-bash-persistent"></a>
+<a id="origin-aicf-tool-bash-persistent"></a>
 
 ## `@origin-ai/cf-tool-bash-persistent`
 
@@ -2543,7 +2636,7 @@ export interface Config {
 
 Source: [`packages/shell/tool-bash-persistent/src/index.ts:432`](../packages/shell/tool-bash-persistent/src/index.ts)
 
-<a id="deepseek-aixhe-tool-fs"></a>
+<a id="origin-aicf-tool-fs"></a>
 
 ## `@origin-ai/cf-tool-fs`
 
@@ -2565,7 +2658,7 @@ export interface Config {
 
 Source: [`packages/fs/tool-fs/src/index.ts:25`](../packages/fs/tool-fs/src/index.ts)
 
-<a id="deepseek-aixhe-tool-fs-search"></a>
+<a id="origin-aicf-tool-fs-search"></a>
 
 ## `@origin-ai/cf-tool-fs-search`
 
@@ -2600,7 +2693,7 @@ export interface Config {
 
 Source: [`packages/fs/tool-fs-search/src/index.ts:73`](../packages/fs/tool-fs-search/src/index.ts)
 
-<a id="deepseek-aixhe-tool-goal"></a>
+<a id="origin-aicf-tool-goal"></a>
 
 ## `@origin-ai/cf-tool-goal`
 
@@ -2616,7 +2709,7 @@ export interface Config {
 
 Source: [`packages/goal/tool-goal/src/index.ts:26`](../packages/goal/tool-goal/src/index.ts)
 
-<a id="deepseek-aixhe-tool-jobs"></a>
+<a id="origin-aicf-tool-jobs"></a>
 
 ## `@origin-ai/cf-tool-jobs`
 
@@ -2650,7 +2743,7 @@ export type CompletionDelivery = 'quiet' | 'wakeup'
 
 Source: [`packages/jobs/tool-jobs/src/index.ts:32`](../packages/jobs/tool-jobs/src/index.ts)
 
-<a id="deepseek-aixhe-tool-lsp"></a>
+<a id="origin-aicf-tool-lsp"></a>
 
 ## `@origin-ai/cf-tool-lsp`
 
@@ -2670,7 +2763,7 @@ export interface Config {
 
 Source: [`packages/lsp/tool-lsp/src/index.ts:58`](../packages/lsp/tool-lsp/src/index.ts)
 
-<a id="deepseek-aixhe-tool-pwsh"></a>
+<a id="origin-aicf-tool-pwsh"></a>
 
 ## `@origin-ai/cf-tool-pwsh`
 
@@ -2686,7 +2779,7 @@ export interface Config {
 
 Source: [`packages/shell/tool-pwsh/src/index.ts:52`](../packages/shell/tool-pwsh/src/index.ts)
 
-<a id="deepseek-aixhe-tool-pwsh-persistent"></a>
+<a id="origin-aicf-tool-pwsh-persistent"></a>
 
 ## `@origin-ai/cf-tool-pwsh-persistent`
 
@@ -2708,7 +2801,7 @@ export interface Config {
 
 Source: [`packages/shell/tool-pwsh-persistent/src/index.ts:472`](../packages/shell/tool-pwsh-persistent/src/index.ts)
 
-<a id="deepseek-aixhe-tool-ralph"></a>
+<a id="origin-aicf-tool-ralph"></a>
 
 ## `@origin-ai/cf-tool-ralph`
 
@@ -2730,7 +2823,7 @@ export interface Config {
 
 Source: [`packages/workflow/tool-ralph/src/index.ts:23`](../packages/workflow/tool-ralph/src/index.ts)
 
-<a id="deepseek-aixhe-tool-session-query"></a>
+<a id="origin-aicf-tool-session-query"></a>
 
 ## `@origin-ai/cf-tool-session-query`
 
@@ -2748,7 +2841,7 @@ export interface Config {
 
 Source: [`packages/session-query/tool-session-query/src/index.ts:29`](../packages/session-query/tool-session-query/src/index.ts)
 
-<a id="deepseek-aixhe-tool-skill"></a>
+<a id="origin-aicf-tool-skill"></a>
 
 ## `@origin-ai/cf-tool-skill`
 
@@ -2764,7 +2857,7 @@ export interface Config {
 
 Source: [`packages/skill/tool-skill/src/index.ts:61`](../packages/skill/tool-skill/src/index.ts)
 
-<a id="deepseek-aixhe-tool-str-replace-editor"></a>
+<a id="origin-aicf-tool-str-replace-editor"></a>
 
 ## `@origin-ai/cf-tool-str-replace-editor`
 
@@ -2782,7 +2875,7 @@ export interface Config {
 
 Source: [`packages/fs/tool-str-replace-editor/src/index.ts:497`](../packages/fs/tool-str-replace-editor/src/index.ts)
 
-<a id="deepseek-aixhe-tool-subagent"></a>
+<a id="origin-aicf-tool-subagent"></a>
 
 ## `@origin-ai/cf-tool-subagent`
 
@@ -2847,7 +2940,7 @@ Depends on: [`AgentOptions`](subsystems/core.md)
 
 Source: [`packages/subagent/tool-subagent/src/index.ts:29`](../packages/subagent/tool-subagent/src/index.ts)
 
-<a id="deepseek-aixhe-tool-subagent-report"></a>
+<a id="origin-aicf-tool-subagent-report"></a>
 
 ## `@origin-ai/cf-tool-subagent-report`
 
@@ -2869,7 +2962,7 @@ Depends on: [`SubagentReportDelivery`](subsystems/subagent.md)
 
 Source: [`packages/subagent/tool-subagent-report/src/index.ts:27`](../packages/subagent/tool-subagent-report/src/index.ts)
 
-<a id="deepseek-aixhe-tool-terminal"></a>
+<a id="origin-aicf-tool-terminal"></a>
 
 ## `@origin-ai/cf-tool-terminal`
 
@@ -2887,7 +2980,7 @@ export interface Config {
 
 Source: [`packages/terminal/tool-terminal/src/index.ts:35`](../packages/terminal/tool-terminal/src/index.ts)
 
-<a id="deepseek-aixhe-tool-todo"></a>
+<a id="origin-aicf-tool-todo"></a>
 
 ## `@origin-ai/cf-tool-todo`
 
@@ -2909,7 +3002,7 @@ export interface Config {
 
 Source: [`packages/todo/tool-todo/src/index.ts:29`](../packages/todo/tool-todo/src/index.ts)
 
-<a id="deepseek-aixhe-tool-web"></a>
+<a id="origin-aicf-tool-web"></a>
 
 ## `@origin-ai/cf-tool-web`
 
@@ -2937,7 +3030,7 @@ export interface Config {
 
 Source: [`packages/web/tool-web/src/index.ts:37`](../packages/web/tool-web/src/index.ts)
 
-<a id="deepseek-aixhe-tool-workflow"></a>
+<a id="origin-aicf-tool-workflow"></a>
 
 ## `@origin-ai/cf-tool-workflow`
 
@@ -2955,7 +3048,7 @@ export interface Config {
 
 Source: [`packages/workflow/tool-workflow/src/index.ts:33`](../packages/workflow/tool-workflow/src/index.ts)
 
-<a id="deepseek-aixhe-tools"></a>
+<a id="origin-aicf-tools"></a>
 
 ## `@origin-ai/cf-tools`
 
@@ -2991,7 +3084,7 @@ export type ToolPresentationMode = 'native' | 'code' | 'both'
 
 Source: [`packages/core/tools/src/index.ts:654`](../packages/core/tools/src/index.ts)
 
-<a id="deepseek-aixhe-typert-loader"></a>
+<a id="origin-aicf-typert-loader"></a>
 
 ## `@origin-ai/cf-typert-loader`
 
@@ -3007,7 +3100,7 @@ export interface Config {
 
 Source: [`packages/typert/loader/src/index.ts:47`](../packages/typert/loader/src/index.ts)
 
-<a id="deepseek-aixhe-user-approval"></a>
+<a id="origin-aicf-user-approval"></a>
 
 ## `@origin-ai/cf-user-approval`
 
@@ -3038,7 +3131,35 @@ export type ApprovalPolicy = 'ask' | 'never'
 
 Source: [`packages/interaction/user-approval/src/index.ts:177`](../packages/interaction/user-approval/src/index.ts)
 
-<a id="deepseek-aixhe-web"></a>
+<a id="origin-aicf-verification"></a>
+
+## `@origin-ai/cf-verification`
+
+```ts config-catalog
+export interface VerificationConfig {
+  /** Modes enabled for this run. At least one. */
+  readonly modes: readonly VerifierMode[]
+  /** Whether human review may be requested. */
+  readonly allowHuman?: boolean
+  /** Timeout per verification task (ms). */
+  readonly timeoutMs?: number
+}
+
+/** The 8 verifier modes that can be composed per claim. */
+export type VerifierMode =
+  | 'reproduce'
+  | 'tests'
+  | 'static'
+  | 'runtime'
+  | 'bench'
+  | 'security'
+  | 'formal'
+  | 'human'
+```
+
+Source: [`packages/mad/verification/src/index.ts:124`](../packages/mad/verification/src/index.ts)
+
+<a id="origin-aicf-web"></a>
 
 ## `@origin-ai/cf-web`
 
@@ -3059,7 +3180,7 @@ export interface WebRuntimeConfig {
 
 Source: [`packages/web/web/src/index.ts:55`](../packages/web/web/src/index.ts)
 
-<a id="deepseek-aixhe-web-app"></a>
+<a id="origin-aicf-web-app"></a>
 
 ## `@origin-ai/cf-web-app`
 
@@ -3086,7 +3207,7 @@ export interface Config {
 
 Source: [`packages/bundle/web-app/src/index.ts:42`](../packages/bundle/web-app/src/index.ts)
 
-<a id="deepseek-aixhe-web-fetch-http"></a>
+<a id="origin-aicf-web-fetch-http"></a>
 
 ## `@origin-ai/cf-web-fetch-http`
 
@@ -3112,7 +3233,7 @@ export interface Config {
 
 Source: [`packages/web/web-fetch-http/src/index.ts:34`](../packages/web/web-fetch-http/src/index.ts)
 
-<a id="deepseek-aixhe-web-search-deepseek"></a>
+<a id="origin-aicf-web-search-deepseek"></a>
 
 ## `@origin-ai/cf-web-search-deepseek`
 
@@ -3140,7 +3261,7 @@ export interface Config {
 
 Source: [`packages/web/web-search-deepseek/src/index.ts:46`](../packages/web/web-search-deepseek/src/index.ts)
 
-<a id="deepseek-aixhe-web-search-exa"></a>
+<a id="origin-aicf-web-search-exa"></a>
 
 ## `@origin-ai/cf-web-search-exa`
 
@@ -3164,7 +3285,7 @@ export interface Config {
 
 Source: [`packages/web/web-search-exa/src/index.ts:38`](../packages/web/web-search-exa/src/index.ts)
 
-<a id="deepseek-aixhe-web-search-perplexity"></a>
+<a id="origin-aicf-web-search-perplexity"></a>
 
 ## `@origin-ai/cf-web-search-perplexity`
 
@@ -3188,7 +3309,7 @@ export interface Config {
 
 Source: [`packages/web/web-search-perplexity/src/index.ts:32`](../packages/web/web-search-perplexity/src/index.ts)
 
-<a id="deepseek-aixhe-workflow-worker-thread"></a>
+<a id="origin-aicf-workflow-worker-thread"></a>
 
 ## `@origin-ai/cf-workflow-worker-thread`
 
@@ -3222,6 +3343,7 @@ Source: [`packages/workflow/workflow-worker-thread/src/index.ts:32`](../packages
 
 These load from a `cordis.yml` entry with no `config:` block; they declare no configuration API.
 
+- `@deepseek-ai/cordis-client-runner` ([`packages/extensions/cordis-client-runner/src/index.ts`](../packages/extensions/cordis-client-runner/src/index.ts))
 - `@origin-ai/cf-agent` ([`packages/core/agent/src/index.ts`](../packages/core/agent/src/index.ts))
 - `@origin-ai/cf-api-gateway` — requires `typert` ([`packages/api/gateway/src/index.ts`](../packages/api/gateway/src/index.ts))
 - `@origin-ai/cf-api-remotes` ([`packages/api/remotes/src/index.ts`](../packages/api/remotes/src/index.ts))
@@ -3266,7 +3388,7 @@ These load from a `cordis.yml` entry with no `config:` block; they declare no co
 - `@origin-ai/cf-command-feedback` — requires `commands` ([`packages/feedback/command-feedback/src/index.ts`](../packages/feedback/command-feedback/src/index.ts))
 - `@origin-ai/cf-command-goal` — requires `commands` · `goals` ([`packages/goal/command-goal/src/index.ts`](../packages/goal/command-goal/src/index.ts))
 - `@origin-ai/cf-commands` ([`packages/interaction/commands/src/index.ts`](../packages/interaction/commands/src/index.ts))
-- `@deepseek-ai/cordis-client-runner` ([`packages/extensions/cordis-client-runner/src/index.ts`](../packages/extensions/cordis-client-runner/src/index.ts))
+- `@origin-ai/cf-discussion-bus` ([`packages/mad/discussion-bus/src/index.ts`](../packages/mad/discussion-bus/src/index.ts))
 - `@origin-ai/cf-fs-e2b` — requires `e2b` ([`packages/e2b/fs-e2b/src/index.ts`](../packages/e2b/fs-e2b/src/index.ts))
 - `@origin-ai/cf-fs-observation-policy` ([`packages/fs/fs-observation-policy/src/index.ts`](../packages/fs/fs-observation-policy/src/index.ts))
 - `@origin-ai/cf-goal-round-driver` — requires `agents` · `goals` · `sessions` ([`packages/goal/goal-round-driver/src/index.ts`](../packages/goal/goal-round-driver/src/index.ts))

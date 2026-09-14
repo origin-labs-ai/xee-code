@@ -73,7 +73,7 @@
     "verify-public-repository-links": "tsx scripts/verify-public-repository-links.ts",
     "verify-doc-refs": "tsx scripts/verify-doc-refs.ts",
     "verify-package-paths": "tsx scripts/verify-package-paths.ts",
-    "verify-xhe-package-licenses": "tsx scripts/verify-xhe-package-licenses.ts",
+    "verify-cf-package-licenses": "tsx scripts/verify-cf-package-licenses.ts",
     "verify-config-source-ownership": "tsx scripts/verify-config-source-ownership.ts",
     "verify-package-invariants": "tsx scripts/verify-package-invariants.ts",
     "verify-built-package-invariants": "node scripts/verify-built-package-invariants.mjs",
