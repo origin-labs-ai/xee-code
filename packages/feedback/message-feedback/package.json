@@ -1,0 +1,80 @@
+{
+  "name": "@origin-ai/xhe-message-feedback",
+  "description": "Lifecycle-bound per-message rating and note sidecar for the Xee Harness Enhanced",
+  "version": "0.1.1-rc.2",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/xhe.git",
+    "directory": "packages/feedback/message-feedback"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./types": {
+      "types": "./lib/types/types.d.ts",
+      "default": "./lib/types/types.js"
+    },
+    "./typert": {
+      "types": "./lib/typert.host.d.ts",
+      "default": "./lib/typert.host.js"
+    },
+    "./remote": {
+      "types": "./lib/typert.remote-client.d.ts",
+      "default": "./lib/typert.remote-client.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/types/**/*.js",
+    "lib/types/**/*.d.ts",
+    "lib/typert.host.js",
+    "lib/typert.host.d.ts",
+    "lib/typert.remote-client.js",
+    "lib/typert.remote-client.d.ts"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@origin-ai/xhe-brand": "workspace:^",
+    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/xhe-llm": "workspace:^",
+    "@origin-ai/xhe-session": "workspace:^",
+    "@origin-ai/xhe-session-persistence": "workspace:^",
+    "@origin-ai/xhe-storage-domain": "workspace:^",
+    "@origin-ai/xhe-typert-protocol": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "workspace:^",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis-plugin-include": "workspace:^",
+    "@deepseek-ai/cordis-plugin-loader": "workspace:^",
+    "@origin-ai/xhe-brand": "workspace:^",
+    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/xhe-llm": "workspace:^",
+    "@origin-ai/xhe-session": "workspace:^",
+    "@origin-ai/xhe-session-persistence": "workspace:^",
+    "@origin-ai/xhe-session-persistence-jsonl": "workspace:^",
+    "@origin-ai/xhe-storage": "workspace:^",
+    "@origin-ai/xhe-storage-domain": "workspace:^",
+    "@origin-ai/xhe-storage-json": "workspace:^",
+    "@origin-ai/xhe-typert-protocol": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  }
+}

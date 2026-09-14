@@ -1,0 +1,106 @@
+{
+  "name": "@origin-ai/xhe-subagent",
+  "description": "Abstract subagent seam (ctx.subagents): named-provider registry for delegating to child agents",
+  "version": "0.1.1-rc.2",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/xhe.git",
+    "directory": "packages/subagent/subagent"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./client": {
+      "types": "./lib/types/client.d.ts",
+      "default": "./lib/types/client.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/types/**/*.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "zod": "^4.4.3"
+  },
+  "peerDependencies": {
+    "@origin-ai/xhe-agent": "workspace:^",
+    "@origin-ai/xhe-agent-presets": "workspace:^",
+    "@origin-ai/xhe-brand": "workspace:^",
+    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/xhe-llm": "workspace:^",
+    "@origin-ai/xhe-sandbox": "workspace:^",
+    "@origin-ai/xhe-sandbox-policy": "workspace:^",
+    "@origin-ai/xhe-scope": "workspace:^",
+    "@origin-ai/xhe-session": "workspace:^",
+    "@origin-ai/xhe-session-persistence": "workspace:^",
+    "@origin-ai/xhe-session-projection": "workspace:^",
+    "@origin-ai/xhe-session-projection-cache": "workspace:^",
+    "@origin-ai/xhe-jobs": "workspace:^",
+    "@origin-ai/xhe-tools": "workspace:^",
+    "@origin-ai/xhe-user-approval": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  },
+  "peerDependenciesMeta": {
+    "@origin-ai/xhe-agent-presets": {
+      "optional": true
+    },
+    "@origin-ai/xhe-sandbox": {
+      "optional": true
+    },
+    "@origin-ai/xhe-sandbox-policy": {
+      "optional": true
+    },
+    "@origin-ai/xhe-session-persistence": {
+      "optional": true
+    },
+    "@origin-ai/xhe-session-projection": {
+      "optional": true
+    },
+    "@origin-ai/xhe-session-projection-cache": {
+      "optional": true
+    },
+    "@origin-ai/xhe-jobs": {
+      "optional": true
+    },
+    "@origin-ai/xhe-user-approval": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@origin-ai/xhe-agent": "workspace:^",
+    "@origin-ai/xhe-agent-presets": "workspace:^",
+    "@origin-ai/xhe-brand": "workspace:^",
+    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/xhe-llm": "workspace:^",
+    "@origin-ai/xhe-sandbox": "workspace:^",
+    "@origin-ai/xhe-sandbox-policy": "workspace:^",
+    "@origin-ai/xhe-scope": "workspace:^",
+    "@origin-ai/xhe-session": "workspace:^",
+    "@origin-ai/xhe-session-persistence": "workspace:^",
+    "@origin-ai/xhe-session-projection": "workspace:^",
+    "@origin-ai/xhe-session-projection-cache": "workspace:^",
+    "@origin-ai/xhe-storage": "workspace:^",
+    "@origin-ai/xhe-storage-domain": "workspace:^",
+    "@origin-ai/xhe-jobs": "workspace:^",
+    "@origin-ai/xhe-tools": "workspace:^",
+    "@origin-ai/xhe-user-approval": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  }
+}

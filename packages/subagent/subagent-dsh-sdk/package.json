@@ -1,0 +1,60 @@
+{
+  "name": "@origin-ai/xhe-subagent-xhe-sdk",
+  "description": "Out-of-process SDK subagent backend: drives a child Xee Harness Enhanced runtime subprocess over stdio JSON-RPC through the TypeScript SDK client",
+  "version": "0.1.1-rc.2",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/xhe.git",
+    "directory": "packages/subagent/subagent-xhe-sdk"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@origin-ai/xhe-agent": "workspace:^",
+    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/xhe-llm": "workspace:^",
+    "@origin-ai/xhe-sdk-client": "workspace:^",
+    "@origin-ai/xhe-session": "workspace:^",
+    "@origin-ai/xhe-subagent": "workspace:^",
+    "@origin-ai/xhe-subprocess": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "workspace:^"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis-plugin-loader": "workspace:^",
+    "@origin-ai/xhe-agent": "workspace:^",
+    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/xhe-llm": "workspace:^",
+    "@origin-ai/xhe-loader-smoke": "workspace:^",
+    "@origin-ai/xhe-sdk-client": "workspace:^",
+    "@origin-ai/xhe-sdk-protocol": "workspace:^",
+    "@origin-ai/xhe-session": "workspace:^",
+    "@origin-ai/xhe-subagent": "workspace:^",
+    "@origin-ai/xhe-subprocess": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  }
+}

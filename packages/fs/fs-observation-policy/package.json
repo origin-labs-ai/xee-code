@@ -1,0 +1,45 @@
+{
+  "name": "@origin-ai/xhe-fs-observation-policy",
+  "description": "File-context policy plugin for the Xee Harness Enhanced — observed-state, read-before-edit, and version-guarded write/edit added over the ctx.fs provider seam through the fs/* event gate (no service API)",
+  "version": "0.1.1-rc.2",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/xhe.git",
+    "directory": "packages/fs/fs-observation-policy"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/types/**/*.d.ts"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@origin-ai/xhe-fs": "workspace:^",
+    "@origin-ai/xhe-invariants": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  },
+  "devDependencies": {
+    "@origin-ai/xhe-fs": "workspace:^",
+    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/xhe-llm": "workspace:^",
+    "@deepseek-ai/cordis": "workspace:^"
+  }
+}

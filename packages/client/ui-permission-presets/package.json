@@ -1,0 +1,85 @@
+{
+  "name": "@origin-ai/xhe-client-ui-permission-presets",
+  "description": "Permission surfaces: a new-session default in General settings and a current-session /permission popup over the permissions projection",
+  "version": "0.1.1-rc.2",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepseek-ai/xhe.git",
+    "directory": "packages/client/ui-permission-presets"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "xhe": {
+    "client": {
+      "inject": [
+        "@origin-ai/xhe-client-connection",
+        "@origin-ai/xhe-client-locale",
+        "@origin-ai/xhe-client-runtime",
+        "@origin-ai/xhe-client-ui-commands",
+        "@origin-ai/xhe-api-remotes",
+        "@origin-ai/xhe-client-ui-settings"
+      ],
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "bundle": "tsdown",
+    "watch": "tsdown --watch"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "workspace:^",
+    "@origin-ai/xhe-api-remotes": "workspace:^",
+    "@origin-ai/xhe-client-connection": "workspace:^",
+    "@origin-ai/xhe-client-locale": "workspace:^",
+    "@origin-ai/xhe-client-runtime": "workspace:^",
+    "@origin-ai/xhe-client-ui-commands": "workspace:^",
+    "@origin-ai/xhe-client-ui-settings": "workspace:^",
+    "@origin-ai/xhe-client-ui-input-trigger": "workspace:^",
+    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/xhe-permission-presets": "workspace:^"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "workspace:^",
+    "@origin-ai/xhe-api-remotes": "workspace:^",
+    "@origin-ai/xhe-client-connection": "workspace:^",
+    "@origin-ai/xhe-client-locale": "workspace:^",
+    "@origin-ai/xhe-client-runtime": "workspace:^",
+    "@origin-ai/xhe-client-test-runtime": "workspace:^",
+    "@origin-ai/xhe-client-ui-commands": "workspace:^",
+    "@origin-ai/xhe-client-ui-primitives": "workspace:^",
+    "@origin-ai/xhe-client-ui-settings": "workspace:^",
+    "@origin-ai/xhe-client-ui-input-trigger": "workspace:^",
+    "@origin-ai/xhe-client-ui-slots": "workspace:^",
+    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/xhe-permission-presets": "workspace:^",
+    "@types/react": "~18.3.1",
+    "react": "^18.2.0"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/invariant.js",
+    "lib/client.js",
+    "lib/types/**/*.d.ts"
+  ]
+}
