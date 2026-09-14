@@ -3,10 +3,10 @@
  * intent and must remain turn-enclosed and invoked/result paired. Mid-turn hook
  * points satisfy that boundary; SessionStart records injected context instead
  * and does not append `hook/*` outside a turn.
- * @module @origin-ai/xhe-hook-protocol/events
+ * @module @origin-ai/cf-hook-protocol/events
  */
 
-import type { Session } from '@origin-ai/xhe-session'
+import type { Session } from '@origin-ai/cf-session'
 import type { HookDialect, HookOutput } from './types.ts'
 
 /** What identifies a hook invocation across its invoked/result pair. */

@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-mcp-client`.
- * @module @origin-ai/xhe-mcp-client/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-mcp-client`.
+ * @module @origin-ai/cf-mcp-client/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-mcp-client'
+const PACKAGE_NAME = '@origin-ai/cf-mcp-client'
 
 /** Cordis companion plugin name. */
 export const name = 'mcp-client-invariant'

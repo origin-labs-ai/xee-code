@@ -6,14 +6,14 @@
 
 import { afterEach, describe, expect, it, onTestFinished, vi } from 'vitest'
 import { act, cleanup, fireEvent, render } from '@testing-library/react'
-import { bindSnapshotSelector } from '@origin-ai/xhe-client-test-runtime'
+import { bindSnapshotSelector } from '@origin-ai/cf-client-test-runtime'
 import {
   createSnapshotStore, EMPTY_CHAT_SNAPSHOT, EMPTY_CONVERSATION_VIEWS,
-} from '@origin-ai/xhe-client-runtime/client'
-import { makeTranslate } from '@origin-ai/xhe-client-test-runtime'
-import { zh as commonZh } from '@origin-ai/xhe-client-locale/src/locales/zh.ts'
-import type { ClientContext, ConversationSnapshot, SessionId } from '@origin-ai/xhe-client-runtime/client'
-import type { SubmitOutcome } from '@origin-ai/xhe-client-ui-input-trigger/client'
+} from '@origin-ai/cf-client-runtime/client'
+import { makeTranslate } from '@origin-ai/cf-client-test-runtime'
+import { zh as commonZh } from '@origin-ai/cf-client-locale/src/locales/zh.ts'
+import type { ClientContext, ConversationSnapshot, SessionId } from '@origin-ai/cf-client-runtime/client'
+import type { SubmitOutcome } from '@origin-ai/cf-client-ui-input-trigger/client'
 import { SessionInputShell } from '../src/client/input/facade.ts'
 import type {
   ComposerAttachment, ComposerAttachmentsOwnerProps,

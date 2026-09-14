@@ -1,9 +1,9 @@
-/** Package-owned invariant companion for the directory-picker seam. @module @origin-ai/xhe-host-directory-picker/invariant */
+/** Package-owned invariant companion for the directory-picker seam. @module @origin-ai/cf-host-directory-picker/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-host-directory-picker'
+const PACKAGE_NAME = '@origin-ai/cf-host-directory-picker'
 
 /** Cordis companion plugin name. */
 export const name = 'host-directory-picker-invariant'

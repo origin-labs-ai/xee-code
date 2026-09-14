@@ -9,9 +9,9 @@ import { fileURLToPath } from 'node:url'
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import { credentialRef } from '@origin-ai/xhe-credentials'
-import type { SessionEvent } from '@origin-ai/xhe-session'
-import { WEB_SEARCH_MAX_RESULTS } from '@origin-ai/xhe-tool-web'
+import { credentialRef } from '@origin-ai/cf-credentials'
+import type { SessionEvent } from '@origin-ai/cf-session'
+import { WEB_SEARCH_MAX_RESULTS } from '@origin-ai/cf-tool-web'
 import {
   assertFixtureInventory, captureStableAria, compareOrRefreshGolden, fixtureUserPrompts,
   launchWebScaffold, recordFixture, watchConsole, webSnapshotMode, type WebScaffold,

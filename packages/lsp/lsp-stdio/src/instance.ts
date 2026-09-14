@@ -4,16 +4,16 @@
  * instance owns one `(provider id, canonical workspace)` process. Queries serialize through a single
  * queue so a cancellation that fails to stop the server can terminate it without killing unrelated
  * work; distinct instances run in parallel.
- * @module @origin-ai/xhe-lsp-stdio/instance
+ * @module @origin-ai/cf-lsp-stdio/instance
  */
 
-import { LspError } from '@origin-ai/xhe-lsp'
+import { LspError } from '@origin-ai/cf-lsp'
 import type {
   LspOperation,
   LspProviderQuery,
   LspQueryResult,
-} from '@origin-ai/xhe-lsp'
-import { deadline } from '@origin-ai/xhe-timeout'
+} from '@origin-ai/cf-lsp'
+import { deadline } from '@origin-ai/cf-timeout'
 import { abortable, abortError } from './abort.ts'
 import { LspConnection } from './connection.ts'
 import type { ConnectionSpawner, ConnectionSpec, ConnectionWriter } from './connection.ts'

@@ -78,7 +78,7 @@ async function makeConsumer(): Promise<string> {
     await link(dirname(resolved), dep, nm)
   }
   await writeFile(join(dir, 'mock-llm.mjs'), [
-    "import { LlmAdapter } from '@origin-ai/xhe-llm'",
+    "import { LlmAdapter } from '@origin-ai/cf-llm'",
     'class Mock extends LlmAdapter {',
     '  async * stream() {',
     "    yield { type: 'block-start', index: 0, blockType: 'text' }",
@@ -96,11 +96,11 @@ async function makeConsumer(): Promise<string> {
     '- id: mock-llm',
     '  name: \'./mock-llm.mjs\'',
     '- id: subprocess',
-    '  name: \'@origin-ai/xhe-subprocess-local\'',
+    '  name: \'@origin-ai/cf-subprocess-local\'',
     '- id: bash',
-    '  name: \'@origin-ai/xhe-bash-local\'',
+    '  name: \'@origin-ai/cf-bash-local\'',
     '- id: acp-agent',
-    '  name: \'@origin-ai/xhe-acp-demo\'',
+    '  name: \'@origin-ai/cf-acp-demo\'',
     '  config:',
     '    provider: built-acp-mock',
     '    model: built-acp-mock',

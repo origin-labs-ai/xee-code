@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-storage-json`.
- * @module @origin-ai/xhe-storage-json/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-storage-json`.
+ * @module @origin-ai/cf-storage-json/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-storage-json'
+const PACKAGE_NAME = '@origin-ai/cf-storage-json'
 
 /** Cordis companion plugin name. */
 export const name = 'storage-json-invariant'

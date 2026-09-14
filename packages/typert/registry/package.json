@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-typert-registry",
+  "name": "@origin-ai/cf-typert-registry",
   "description": "Runtime registry for generated package reflection and Zod schemas",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -53,15 +53,15 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@origin-ai/xhe-typert-protocol": "workspace:^",
+    "@origin-ai/cf-typert-protocol": "workspace:^",
     "zod": "^4.4.3"
   },
   "peerDependencies": {
-    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "devDependencies": {
-    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

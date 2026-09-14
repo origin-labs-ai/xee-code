@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { parseClaudeCodeConfig, substituteCommand } from '@origin-ai/xhe-hooks-claude-code/src/config.ts'
+import { parseClaudeCodeConfig, substituteCommand } from '@origin-ai/cf-hooks-claude-code/src/config.ts'
 
 describe('substituteCommand', () => {
   it('replaces CLAUDE_PLUGIN_ROOT and CLAUDE_PROJECT_DIR (all occurrences)', () => {

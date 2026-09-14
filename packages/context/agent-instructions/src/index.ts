@@ -6,15 +6,15 @@
  * Plugin lifecycle reads use the optional `ctx.fs` provider, so providerless products
  * mount it as a no-op.
  *
- * @module @origin-ai/xhe-agent-instructions
+ * @module @origin-ai/cf-agent-instructions
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import { isDeepStrictEqual } from 'node:util'
-import type { Agent, PreStepDecision } from '@origin-ai/xhe-agent'
-import { createUserMessage } from '@origin-ai/xhe-llm'
-import type { Session, UserMessage } from '@origin-ai/xhe-session'
-import type { ToolExecution, ToolExecutionResult, ToolExecutionToken } from '@origin-ai/xhe-tools'
+import type { Agent, PreStepDecision } from '@origin-ai/cf-agent'
+import { createUserMessage } from '@origin-ai/cf-llm'
+import type { Session, UserMessage } from '@origin-ai/cf-session'
+import type { ToolExecution, ToolExecutionResult, ToolExecutionToken } from '@origin-ai/cf-tools'
 import { Config, resolveConfig, workspaceBaselineIdentity, type ResolvedConfig } from './config.ts'
 import { findProjectRoot, loadBaselineInstructionSet } from './files.ts'
 import {

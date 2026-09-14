@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-output-retention`.
- * @module @origin-ai/xhe-output-retention/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-output-retention`.
+ * @module @origin-ai/cf-output-retention/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-output-retention'
+const PACKAGE_NAME = '@origin-ai/cf-output-retention'
 
 /** Cordis companion plugin name. */
 export const name = 'output-retention-invariant'

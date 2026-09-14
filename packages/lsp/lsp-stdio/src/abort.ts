@@ -1,9 +1,9 @@
 /**
  * Shared cancellation helpers for the local LSP provider's host-I/O, queue, and protocol phases.
- * @module @origin-ai/xhe-lsp-stdio/abort
+ * @module @origin-ai/cf-lsp-stdio/abort
  */
 
-import { timeoutOf } from '@origin-ai/xhe-timeout'
+import { timeoutOf } from '@origin-ai/cf-timeout'
 
 /**
  * Build an abort Error carrying the signal's reason and preserving timeout classification.

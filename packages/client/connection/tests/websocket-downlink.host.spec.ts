@@ -5,8 +5,8 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import WebSocket from 'ws'
 import type {
   ApiProxy, HostFrame, MuxFrame, RpcRequest, ServerRequest,
-} from '@origin-ai/xhe-host-apiproxy/api'
-import { RpcId } from '@origin-ai/xhe-host-apiproxy/api'
+} from '@origin-ai/cf-host-apiproxy/api'
+import { RpcId } from '@origin-ai/cf-host-apiproxy/api'
 import { HOST_EVENTS_PATH, MUX_EVENTS_PATH } from '../src/api-path.ts'
 import { WebSocketDownlinks } from '../src/websocket-downlink.ts'
 

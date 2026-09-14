@@ -1,4 +1,4 @@
-# @origin-ai/xhe-subagent-in-process-driver
+# @origin-ai/cf-subagent-in-process-driver
 
 This package is the shared run driver for the two in-process providers. Spawn passes no session seed; fork passes the parent's completed-turn prefix. Everything else—depth, child creation, optional child customization, result reading, cancellation, and disposal—has one implementation here.
 

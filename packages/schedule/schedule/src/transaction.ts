@@ -1,6 +1,6 @@
 /** Agent-scoped serialization for Schedule reads and durable mutations. */
 
-import type { Agent } from '@origin-ai/xhe-agent'
+import type { Agent } from '@origin-ai/cf-agent'
 
 const tails = new WeakMap<Agent, Promise<void>>()
 

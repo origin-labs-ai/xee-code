@@ -3,19 +3,19 @@
  * the cancellable generated Remote namespaces in parallel with deterministic
  * ordering and labels.
  *
- * @module @origin-ai/xhe-client-ui-reference/client
+ * @module @origin-ai/cf-client-ui-reference/client
  */
 // Type-only: pulls the generated Remote API and ctx.remote merge through the Client assembly boundary.
-import type {} from '@origin-ai/xhe-api-remotes/client'
+import type {} from '@origin-ai/cf-api-remotes/client'
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
-import type {} from '@origin-ai/xhe-client-locale/client'
-import type { ClientContext } from '@origin-ai/xhe-client-runtime/client'
+import type {} from '@origin-ai/cf-client-locale/client'
+import type { ClientContext } from '@origin-ai/cf-client-runtime/client'
 import type {
   ClientSessionContext, InputTriggerServiceContract, InputTriggerSource,
-} from '@origin-ai/xhe-client-ui-input-trigger/client'
-import { formatFileMention } from '@origin-ai/xhe-file-reference/grammar'
-import type { FileReferenceCandidate } from '@origin-ai/xhe-file-reference/types'
-import type { SessionReferenceMentionCandidate } from '@origin-ai/xhe-session-reference/types'
+} from '@origin-ai/cf-client-ui-input-trigger/client'
+import { formatFileMention } from '@origin-ai/cf-file-reference/grammar'
+import type { FileReferenceCandidate } from '@origin-ai/cf-file-reference/types'
+import type { SessionReferenceMentionCandidate } from '@origin-ai/cf-session-reference/types'
 import { en, NS, zh, type ReferenceKey } from './locales.ts'
 
 /** Required services: the trigger registry, the Remote namespaces, and the copy. */

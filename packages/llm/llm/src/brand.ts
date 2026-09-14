@@ -2,15 +2,15 @@
  * xhe-llm's owned branded ids: tool-call correlation and provider request
  * diagnostics.
  *
- * The `Branded<B>` primitive itself lives in `@origin-ai/xhe-brand` (a
+ * The `Branded<B>` primitive itself lives in `@origin-ai/cf-brand` (a
  * zero-dependency type-only package) so every owner of a cross-boundary id can
  * brand it without depending on xhe-llm; see that package's README for the
  * nominal-typing policy.
  *
- * @module @origin-ai/xhe-llm/brand
+ * @module @origin-ai/cf-llm/brand
  */
 
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 
 /** Stable identity carried by one message across inbox, log, and model-request boundaries. */
 export type MessageId = Branded<'MessageId'>

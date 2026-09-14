@@ -3,7 +3,7 @@
 import type { Context } from '@deepseek-ai/cordis'
 import { HOST_BUILTIN_INSPECTION } from '@deepseek-ai/cordis-host-runner'
 import type { HostCordisInspectProviderRegistration } from '@deepseek-ai/cordis-host-runner'
-import type { JsonValue } from '@origin-ai/xhe-session'
+import type { JsonValue } from '@origin-ai/cf-session'
 import { EVENT_API, queryEventApi, queryServiceApi } from './api-catalog.ts'
 
 const EMPTY_INPUT = { type: 'object', properties: {}, additionalProperties: false } as const

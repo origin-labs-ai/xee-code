@@ -9,8 +9,8 @@
  */
 import { Fragment, useEffect, useRef, useSyncExternalStore } from 'react'
 import clsx from 'clsx'
-import { useAnchoredMaxHeight } from '@origin-ai/xhe-client-ui-primitives'
-import type { PropsLocale } from '@origin-ai/xhe-client-ui-slots'
+import { useAnchoredMaxHeight } from '@origin-ai/cf-client-ui-primitives'
+import type { PropsLocale } from '@origin-ai/cf-client-ui-slots'
 import css from './MenuView.module.css'
 import type { MenuViewInjected } from './slots.ts'
 import type { MenuKey } from './locales.ts'

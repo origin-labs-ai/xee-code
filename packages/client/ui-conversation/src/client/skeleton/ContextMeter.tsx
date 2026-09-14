@@ -5,10 +5,10 @@
  * capacity. */
 
 import { useEffect, useRef, useState } from 'react'
-import type { UseProjection } from '@origin-ai/xhe-client-runtime/client'
+import type { UseProjection } from '@origin-ai/cf-client-runtime/client'
 // Type-only: the `contextPressure` / `contextBreakdown` projection key merges.
-import type {} from '@origin-ai/xhe-token-meter/client'
-import { Tooltip } from '@origin-ai/xhe-client-ui-primitives'
+import type {} from '@origin-ai/cf-token-meter/client'
+import { Tooltip } from '@origin-ai/cf-client-ui-primitives'
 import type { ComposerBarProps } from '../contract/slots.ts'
 import { contextOccupancy, formatTokens } from '../chat/StatsLine.tsx'
 import css from './ContextMeter.module.css'

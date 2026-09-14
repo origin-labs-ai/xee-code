@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /** Inspect the public Codex provider composition without invoking the product. */
 
-import { boot, loadOverlayPatches, resolveConfigPath } from '@origin-ai/xhe-app-boot'
-import type {} from '@origin-ai/xhe-subagent'
-import type {} from '@origin-ai/xhe-tools'
+import { boot, loadOverlayPatches, resolveConfigPath } from '@origin-ai/cf-app-boot'
+import type {} from '@origin-ai/cf-subagent'
+import type {} from '@origin-ai/cf-tools'
 
 const configPath = process.argv[2]
 const bundlePatchPath = process.argv[3]

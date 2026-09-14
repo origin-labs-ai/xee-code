@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-subagent-acp",
+  "name": "@origin-ai/cf-subagent-acp",
   "description": "Out-of-process ACP subagent backend: drives a child agent in a spawned subprocess over the Agent Client Protocol",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -32,13 +32,13 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-subagent": "workspace:^",
-    "@origin-ai/xhe-subprocess": "workspace:^",
-    "@origin-ai/xhe-timeout": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-subagent": "workspace:^",
+    "@origin-ai/cf-subprocess": "workspace:^",
+    "@origin-ai/cf-timeout": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "dependencies": {
@@ -47,15 +47,15 @@
   },
   "devDependencies": {
     "@deepseek-ai/cordis-plugin-loader": "workspace:^",
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-loader-smoke": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-subagent": "workspace:^",
-    "@origin-ai/xhe-subprocess": "workspace:^",
-    "@origin-ai/xhe-subprocess-local": "workspace:^",
-    "@origin-ai/xhe-timeout": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-loader-smoke": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-subagent": "workspace:^",
+    "@origin-ai/cf-subprocess": "workspace:^",
+    "@origin-ai/cf-subprocess-local": "workspace:^",
+    "@origin-ai/cf-timeout": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

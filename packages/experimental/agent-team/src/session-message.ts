@@ -1,7 +1,7 @@
 /** Durable Session-message acceptance checks shared by provisioning and mailbox recovery. */
 
-import type { UserMessage } from '@origin-ai/xhe-llm'
-import type { SessionEvent } from '@origin-ai/xhe-session'
+import type { UserMessage } from '@origin-ai/cf-llm'
+import type { SessionEvent } from '@origin-ai/cf-session'
 
 type InboxProjection = Record<'next-turn' | 'next-step', UserMessage[]>
 

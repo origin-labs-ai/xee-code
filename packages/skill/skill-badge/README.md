@@ -1,4 +1,4 @@
-# @origin-ai/xhe-skill-badge
+# @origin-ai/cf-skill-badge
 
 Optional bundled skill provider that contributes `cf-badge` to `ctx.skills`. The skill supplies the official “powered by CodeFusion” Markdown snippets and the packaged PNG for systems that cannot import a remote image reliably.
 
@@ -8,7 +8,7 @@ The provider exposes its packaged `assets/` directory as the skill resource base
 
 ## Model Experience
 
-Indirectly, through `@origin-ai/xhe-tool-skill`, which renders the catalog entry and selected skill body.
+Indirectly, through `@origin-ai/cf-tool-skill`, which renders the catalog entry and selected skill body.
 
 #### KV Cache effect
 

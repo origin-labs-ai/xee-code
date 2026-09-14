@@ -11,15 +11,15 @@
  * before-the-fact, while the header only reports what a session already runs.
  */
 
-import type { ConnectionHandle } from '@origin-ai/xhe-api-remotes/client'
+import type { ConnectionHandle } from '@origin-ai/cf-api-remotes/client'
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
-import type {} from '@origin-ai/xhe-client-locale/client'
+import type {} from '@origin-ai/cf-client-locale/client'
 // Type-only: pulls the ctx.remote merge and the forwarded-event key face
 // (the settings invalidation rides the allowlist) into this program.
-import type {} from '@origin-ai/xhe-api-remotes/client'
+import type {} from '@origin-ai/cf-api-remotes/client'
 // Type-only: pulls the settings shell's SlotMap merge (the 'settings.section' entry).
-import type {} from '@origin-ai/xhe-client-ui-settings/client'
-import type { ClientContext } from '@origin-ai/xhe-client-runtime/client'
+import type {} from '@origin-ai/cf-client-ui-settings/client'
+import type { ClientContext } from '@origin-ai/cf-client-runtime/client'
 import { AgentPresetLabel } from './AgentPresetLabel.tsx'
 import type { AgentPresetLabelInjected } from './AgentPresetLabel.tsx'
 import { AgentPresetRow } from './AgentPresetRow.tsx'

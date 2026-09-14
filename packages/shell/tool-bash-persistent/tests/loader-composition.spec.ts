@@ -6,19 +6,19 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import Include from '@deepseek-ai/cordis-plugin-include'
-import { CallId } from '@origin-ai/xhe-llm'
-import { Session, SessionId } from '@origin-ai/xhe-session'
-import AgentRegistry, { Inbox } from '@origin-ai/xhe-agent'
-import type { Agent } from '@origin-ai/xhe-agent'
-import TerminalSessionService from '@origin-ai/xhe-terminal'
-import * as TerminalLocal from '@origin-ai/xhe-terminal-bash'
-import SandboxProvider from '@origin-ai/xhe-sandbox'
-import type { ConfinedArgv, SandboxPolicy } from '@origin-ai/xhe-sandbox'
-import SandboxPolicyService from '@origin-ai/xhe-sandbox-policy'
-import LocalSubprocessRuntime from '@origin-ai/xhe-subprocess-local'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ToolRuntime from '@origin-ai/xhe-tools'
-import * as ToolBashPersistent from '@origin-ai/xhe-tool-bash-persistent'
+import { CallId } from '@origin-ai/cf-llm'
+import { Session, SessionId } from '@origin-ai/cf-session'
+import AgentRegistry, { Inbox } from '@origin-ai/cf-agent'
+import type { Agent } from '@origin-ai/cf-agent'
+import TerminalSessionService from '@origin-ai/cf-terminal'
+import * as TerminalLocal from '@origin-ai/cf-terminal-bash'
+import SandboxProvider from '@origin-ai/cf-sandbox'
+import type { ConfinedArgv, SandboxPolicy } from '@origin-ai/cf-sandbox'
+import SandboxPolicyService from '@origin-ai/cf-sandbox-policy'
+import LocalSubprocessRuntime from '@origin-ai/cf-subprocess-local'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ToolRuntime from '@origin-ai/cf-tools'
+import * as ToolBashPersistent from '@origin-ai/cf-tool-bash-persistent'
 
 let root: string | undefined
 let context: Context | undefined
@@ -70,17 +70,17 @@ suite('persistent Bash through a real cordis.yml Loader composition', () => {
     root = await mkdtemp(join(tmpdir(), 'xhe-persistent-bash-loader-'))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@origin-ai/xhe-agent'",
-      "- name: '@origin-ai/xhe-system-prompt'",
-      "- name: '@origin-ai/xhe-tools'",
-      "- name: '@origin-ai/xhe-terminal'",
-      "- name: '@origin-ai/xhe-test-sandbox'",
-      "- name: '@origin-ai/xhe-sandbox-policy'",
+      "- name: '@origin-ai/cf-agent'",
+      "- name: '@origin-ai/cf-system-prompt'",
+      "- name: '@origin-ai/cf-tools'",
+      "- name: '@origin-ai/cf-terminal'",
+      "- name: '@origin-ai/cf-test-sandbox'",
+      "- name: '@origin-ai/cf-sandbox-policy'",
       '  config:',
       '    mode: danger-full-access',
       `    workspaceRoot: ${JSON.stringify(root)}`,
-      "- name: '@origin-ai/xhe-subprocess-local'",
-      "- name: '@origin-ai/xhe-terminal-bash'",
+      "- name: '@origin-ai/cf-subprocess-local'",
+      "- name: '@origin-ai/cf-terminal-bash'",
       '  config:',
       '    pollIntervalMs: 10',
       '    exactProbeAfterMs: 20',
@@ -92,7 +92,7 @@ suite('persistent Bash through a real cordis.yml Loader composition', () => {
       '    scrollbackLines: 20000',
       '    timeoutMs: 2000',
       '    disposeGraceMs: 500',
-      "- name: '@origin-ai/xhe-tool-bash-persistent'",
+      "- name: '@origin-ai/cf-tool-bash-persistent'",
       '  config:',
       '    timeoutMs: 5000',
       '',
@@ -103,15 +103,15 @@ suite('persistent Bash through a real cordis.yml Loader composition', () => {
     await context.plugin(Loader)
     context.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
-      ['@origin-ai/xhe-agent', AgentRegistry],
-      ['@origin-ai/xhe-system-prompt', SystemPrompt],
-      ['@origin-ai/xhe-tools', ToolRuntime],
-      ['@origin-ai/xhe-terminal', TerminalSessionService],
-      ['@origin-ai/xhe-test-sandbox', PassthroughSandbox],
-      ['@origin-ai/xhe-sandbox-policy', SandboxPolicyService],
-      ['@origin-ai/xhe-subprocess-local', LocalSubprocessRuntime],
-      ['@origin-ai/xhe-terminal-bash', TerminalLocal],
-      ['@origin-ai/xhe-tool-bash-persistent', ToolBashPersistent],
+      ['@origin-ai/cf-agent', AgentRegistry],
+      ['@origin-ai/cf-system-prompt', SystemPrompt],
+      ['@origin-ai/cf-tools', ToolRuntime],
+      ['@origin-ai/cf-terminal', TerminalSessionService],
+      ['@origin-ai/cf-test-sandbox', PassthroughSandbox],
+      ['@origin-ai/cf-sandbox-policy', SandboxPolicyService],
+      ['@origin-ai/cf-subprocess-local', LocalSubprocessRuntime],
+      ['@origin-ai/cf-terminal-bash', TerminalLocal],
+      ['@origin-ai/cf-tool-bash-persistent', ToolBashPersistent],
     ])
     context.loader.internal = {
       version: 'v2',

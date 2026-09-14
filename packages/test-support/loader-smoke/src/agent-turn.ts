@@ -1,12 +1,12 @@
 /**
  * Test-only direct-agent turn driver shared by assembled Loader fixtures.
- * @module @origin-ai/xhe-loader-smoke/agent-turn
+ * @module @origin-ai/cf-loader-smoke/agent-turn
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Agent } from '@origin-ai/xhe-agent'
-import { createUserMessage, type TokenUsage } from '@origin-ai/xhe-llm'
-import type { SessionEvent } from '@origin-ai/xhe-session'
+import type { Agent } from '@origin-ai/cf-agent'
+import { createUserMessage, type TokenUsage } from '@origin-ai/cf-llm'
+import type { SessionEvent } from '@origin-ai/cf-session'
 
 /** Result envelope consumed only by snapshot and composition tests. */
 export interface FixtureTurnResult {

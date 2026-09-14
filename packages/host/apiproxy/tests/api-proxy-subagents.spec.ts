@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import type { SessionEvent, SessionHeader, SessionId } from '@origin-ai/xhe-session'
-import { SubagentError } from '@origin-ai/xhe-subagent'
+import type { SessionEvent, SessionHeader, SessionId } from '@origin-ai/cf-session'
+import { SubagentError } from '@origin-ai/cf-subagent'
 import { RpcId } from '../src/api/rpc.ts'
 import type { RpcRequest } from '../src/api/rpc.ts'
 import { createApiProxy } from '../src/api-proxy.ts'
@@ -235,12 +235,12 @@ describe('subagent gateway', () => {
 
   it('maps the missing projections capability to one wire face on list, history, and prompt', async () => {
     const listError = () => new SubagentError(
-      'listing subagents requires the sessionProjections registry (load @origin-ai/xhe-session-projection)',
+      'listing subagents requires the sessionProjections registry (load @origin-ai/cf-session-projection)',
       'SUBAGENT_CONTROL_PROJECTIONS_UNAVAILABLE',
     )
     const expected = {
       code: 'internal',
-      message: 'subagent catalog is unavailable: this deployment does not mount the sessionProjections registry (load @origin-ai/xhe-session-projection)',
+      message: 'subagent catalog is unavailable: this deployment does not mount the sessionProjections registry (load @origin-ai/cf-session-projection)',
     }
 
     const list = bench({ listError: listError() })

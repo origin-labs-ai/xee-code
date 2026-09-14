@@ -14,9 +14,9 @@
 
 import { useState } from 'react'
 import type { ReactNode } from 'react'
-import type { IApiClient } from '@origin-ai/xhe-api-remotes/client'
-import { Button, IconPlusOutline16, Modal } from '@origin-ai/xhe-client-ui-primitives'
-import type { InjectFace } from '@origin-ai/xhe-client-ui-slots'
+import type { IApiClient } from '@origin-ai/cf-api-remotes/client'
+import { Button, IconPlusOutline16, Modal } from '@origin-ai/cf-client-ui-primitives'
+import type { InjectFace } from '@origin-ai/cf-client-ui-slots'
 import { CustomProviderCard } from './CustomProviderCard.tsx'
 import { deriveKeyRef, messageOf, protocolChoices, providerUsable } from './store.ts'
 import type { ModelsSettingsStore, ProviderRow } from './store.ts'

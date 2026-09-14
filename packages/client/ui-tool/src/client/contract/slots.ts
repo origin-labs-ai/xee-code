@@ -1,11 +1,11 @@
 /** Tool UI slot declarations and their composed component props. */
-import type { HostDescriptionSource } from '@origin-ai/xhe-client-connection/client'
-import type { InjectFace, PropsLocale, PropsRenderSlots, PropsRuntime } from '@origin-ai/xhe-client-ui-slots'
-import type { ToolCallBlock } from '@origin-ai/xhe-client-runtime/client'
-import type {} from '@origin-ai/xhe-client-ui-conversation/client'
-import type {} from '@origin-ai/xhe-client-locale/client'
+import type { HostDescriptionSource } from '@origin-ai/cf-client-connection/client'
+import type { InjectFace, PropsLocale, PropsRenderSlots, PropsRuntime } from '@origin-ai/cf-client-ui-slots'
+import type { ToolCallBlock } from '@origin-ai/cf-client-runtime/client'
+import type {} from '@origin-ai/cf-client-ui-conversation/client'
+import type {} from '@origin-ai/cf-client-locale/client'
 
-declare module '@origin-ai/xhe-client-ui-slots' {
+declare module '@origin-ai/cf-client-ui-slots' {
   interface SlotMap {
     /**
      * Keyed atomic Tool call view, dispatched by the wire Tool name. Register

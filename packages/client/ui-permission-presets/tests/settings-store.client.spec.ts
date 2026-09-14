@@ -1,8 +1,8 @@
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import type { SettingsNamespaceView } from '@origin-ai/xhe-api-remotes/client'
-import { SettingsSchemaService } from '@origin-ai/xhe-client-ui-settings/src/client/schema.ts'
-import { SettingsDescribeMirror } from '@origin-ai/xhe-client-ui-settings/src/client/settings-mirror.ts'
+import type { SettingsNamespaceView } from '@origin-ai/cf-api-remotes/client'
+import { SettingsSchemaService } from '@origin-ai/cf-client-ui-settings/src/client/schema.ts'
+import { SettingsDescribeMirror } from '@origin-ai/cf-client-ui-settings/src/client/settings-mirror.ts'
 import {
   PermissionPresetSettingsController, permissionDefaultOf,
 } from '../src/client/settings-store.ts'

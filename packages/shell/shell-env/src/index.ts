@@ -5,16 +5,16 @@
  * the registry itself while plugins can register additional, enumerable facts
  * with effect-scoped disposal.
  *
- * @module @origin-ai/xhe-shell-env
+ * @module @origin-ai/cf-shell-env
  */
 
 import { Service, type Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { XHE_ENV_PREFIX } from '@origin-ai/xhe-shell'
-import type { DshEnvironment, DshEnvironmentKey } from '@origin-ai/xhe-shell'
-import { XHE_HOME_ENV, resolveDshHome } from '@origin-ai/xhe-home-paths'
-import type { ToolExecution } from '@origin-ai/xhe-tools'
-import type {} from '@origin-ai/xhe-session-persistence'
+import { XHE_ENV_PREFIX } from '@origin-ai/cf-shell'
+import type { DshEnvironment, DshEnvironmentKey } from '@origin-ai/cf-shell'
+import { XHE_HOME_ENV, resolveDshHome } from '@origin-ai/cf-home-paths'
+import type { ToolExecution } from '@origin-ai/cf-tools'
+import type {} from '@origin-ai/cf-session-persistence'
 
 declare module '@deepseek-ai/cordis' {
   interface Context {

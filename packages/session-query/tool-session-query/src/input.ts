@@ -1,21 +1,21 @@
 /**
  * Model argument schemas, normalization, and filter construction.
  *
- * @module @origin-ai/xhe-tool-session-query/input
+ * @module @origin-ai/cf-tool-session-query/input
  */
 
 import {
   SessionId,
   type SessionEventType,
   type SessionId as SessionIdValue,
-} from '@origin-ai/xhe-session'
+} from '@origin-ai/cf-session'
 import {
   SessionQueryError,
   type SessionAvailability,
   type SessionEventMetadataFilter,
   type SessionEventSurface,
   type SessionResultFilter,
-} from '@origin-ai/xhe-session-query'
+} from '@origin-ai/cf-session-query'
 
 interface SessionSearchArgs {
   query: string

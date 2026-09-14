@@ -1,4 +1,4 @@
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 
 /** Stable Loader-tree identity of one configured plugin entry. */
 export type PluginEntryId = Branded<'PluginEntryId'>

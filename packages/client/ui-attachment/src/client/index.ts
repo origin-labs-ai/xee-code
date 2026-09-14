@@ -1,6 +1,6 @@
 /** Browser attachment plugin: fills conversation's composer and message-image slots. */
-import type { ClientContext } from '@origin-ai/xhe-client-runtime/client'
-import type {} from '@origin-ai/xhe-client-ui-conversation/client'
+import type { ClientContext } from '@origin-ai/cf-client-runtime/client'
+import type {} from '@origin-ai/cf-client-ui-conversation/client'
 import { ComposerAttachments } from './ComposerAttachments.tsx'
 import { MessageImages } from './MessageImages.tsx'
 

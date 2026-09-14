@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { jsonSchemaToTs, renderToolsSdk } from '@origin-ai/xhe-tools/src/ts-types.ts'
-import type { ToolSdkSchema } from '@origin-ai/xhe-tools/src/ts-types.ts'
-import { parameterSchemaSpecToJsonSchema } from '@origin-ai/xhe-tools'
+import { jsonSchemaToTs, renderToolsSdk } from '@origin-ai/cf-tools/src/ts-types.ts'
+import type { ToolSdkSchema } from '@origin-ai/cf-tools/src/ts-types.ts'
+import { parameterSchemaSpecToJsonSchema } from '@origin-ai/cf-tools'
 
 describe('jsonSchemaToTs', () => {
   it('maps every unified schema construct', () => {

@@ -1,9 +1,9 @@
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it } from 'vitest'
-import { SettingsProvider, settingsNamespace, type SettingsNamespace } from '@origin-ai/xhe-settings'
+import { SettingsProvider, settingsNamespace, type SettingsNamespace } from '@origin-ai/cf-settings'
 import {
   CONVERSATION_SETTINGS_NAMESPACE, DEFAULT_BUSY_ENTER_BEHAVIOR, apply,
-} from '@origin-ai/xhe-client-ui-conversation'
+} from '@origin-ai/cf-client-ui-conversation'
 
 class MemorySettings extends SettingsProvider {
   readonly writable = true

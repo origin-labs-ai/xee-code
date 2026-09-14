@@ -120,7 +120,7 @@ This plugin logs tool calls and results:
 
 ```ts
 import type { Context } from '@deepseek-ai/cordis'
-import '@origin-ai/xhe-tools'
+import '@origin-ai/cf-tools'
 
 export const name = 'tool-logger'
 

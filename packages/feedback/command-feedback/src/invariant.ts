@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-command-feedback`.
- * @module @origin-ai/xhe-command-feedback/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-command-feedback`.
+ * @module @origin-ai/cf-command-feedback/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-command-feedback'
+const PACKAGE_NAME = '@origin-ai/cf-command-feedback'
 
 /** Cordis companion plugin name. */
 export const name = 'command-feedback-invariant'

@@ -5,10 +5,10 @@
  */
 import type {
   ConversationNodeDefinition, ToolResultNode,
-} from '@origin-ai/xhe-client-runtime/client'
-import { isAppendSurfaceEvent } from '@origin-ai/xhe-client-runtime/client'
-import type { MarkdownFileMentions } from '@origin-ai/xhe-client-ui-primitives'
-import type { TurnTailOwnerProps } from '@origin-ai/xhe-client-ui-conversation/client'
+} from '@origin-ai/cf-client-runtime/client'
+import { isAppendSurfaceEvent } from '@origin-ai/cf-client-runtime/client'
+import type { MarkdownFileMentions } from '@origin-ai/cf-client-ui-primitives'
+import type { TurnTailOwnerProps } from '@origin-ai/cf-client-ui-conversation/client'
 
 interface ProducedPath {
   readonly seq: number
@@ -20,7 +20,7 @@ export interface DeliverablesTurnData {
   readonly produced: readonly ProducedPath[]
 }
 
-declare module '@origin-ai/xhe-client-runtime/client' {
+declare module '@origin-ai/cf-client-runtime/client' {
   interface ConversationTurnDataMap {
     /** Successful mutation paths accumulated in this Turn. */
     deliverables: DeliverablesTurnData

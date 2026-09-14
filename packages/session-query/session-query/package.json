@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-session-query",
+  "name": "@origin-ai/cf-session-query",
   "description": "Combined session query service contract with concrete reads, traces, and filters",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -32,26 +32,26 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-session-title": "workspace:^",
-    "@origin-ai/xhe-session-persistence": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-session-title": "workspace:^",
+    "@origin-ai/cf-session-persistence": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "peerDependenciesMeta": {
-    "@origin-ai/xhe-session-persistence": {
+    "@origin-ai/cf-session-persistence": {
       "optional": true
     }
   },
   "devDependencies": {
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-session-title": "workspace:^",
-    "@origin-ai/xhe-session-persistence": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-session-title": "workspace:^",
+    "@origin-ai/cf-session-persistence": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

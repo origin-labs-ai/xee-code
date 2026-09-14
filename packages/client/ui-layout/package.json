@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-client-ui-layout",
+  "name": "@origin-ai/cf-client-ui-layout",
   "description": "Shell plugin: three-column AppFrame with drag handles, ctx.layout viewing-state service (navigation + panels)",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -32,8 +32,8 @@
   "xhe": {
     "client": {
       "inject": [
-        "@origin-ai/xhe-client-runtime",
-        "@origin-ai/xhe-client-ui-theme"
+        "@origin-ai/cf-client-runtime",
+        "@origin-ai/cf-client-ui-theme"
       ],
       "platform": "web"
     }
@@ -44,17 +44,17 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@origin-ai/xhe-client-runtime": "workspace:^",
-    "@origin-ai/xhe-client-ui-theme": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/cf-client-runtime": "workspace:^",
+    "@origin-ai/cf-client-ui-theme": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "devDependencies": {
-    "@origin-ai/xhe-client-locale": "workspace:^",
-    "@origin-ai/xhe-client-runtime": "workspace:^",
-    "@origin-ai/xhe-client-ui-slots": "workspace:^",
-    "@origin-ai/xhe-client-ui-theme": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/cf-client-locale": "workspace:^",
+    "@origin-ai/cf-client-runtime": "workspace:^",
+    "@origin-ai/cf-client-ui-slots": "workspace:^",
+    "@origin-ai/cf-client-ui-theme": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
     "@types/react": "~18.3.1",
     "@deepseek-ai/cordis": "workspace:^",
     "react": "^18.2.0"

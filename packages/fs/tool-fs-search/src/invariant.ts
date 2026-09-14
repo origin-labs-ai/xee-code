@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-tool-fs-search`.
- * @module @origin-ai/xhe-tool-fs-search/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-tool-fs-search`.
+ * @module @origin-ai/cf-tool-fs-search/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-tool-fs-search'
+const PACKAGE_NAME = '@origin-ai/cf-tool-fs-search'
 
 /** Cordis companion plugin name. */
 export const name = 'tool-fs-search-invariant'

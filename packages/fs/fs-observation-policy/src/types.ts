@@ -4,15 +4,15 @@
  * actor the `fs/*` events carry.
  *
  * The provider vocabulary (`FsTarget`, `FsVersion`, write/edit request types) is
- * re-used from `@origin-ai/xhe-fs`; this package owns only the observed-state
+ * re-used from `@origin-ai/cf-fs`; this package owns only the observed-state
  * owner structure on top of it.
  *
- * @module @origin-ai/xhe-fs-observation-policy/types
+ * @module @origin-ai/cf-fs-observation-policy/types
  */
 
 /**
  * Minimal structural view of a tool execution the policy plugin needs to derive
- * an observed-state owner. `@origin-ai/xhe-tools`' `ToolExecution` contains
+ * an observed-state owner. `@origin-ai/cf-tools`' `ToolExecution` contains
  * these fields, so the tool passes its `exec` straight through as the opaque
  * `object` actor on the `fs/*` events; this plugin narrows that actor to
  * `FsObservationActor` without importing `xhe-tools`, `xhe-agent`, or `xhe-session`.

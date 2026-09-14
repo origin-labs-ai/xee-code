@@ -1,9 +1,9 @@
 /**
  * Bounded sharing and exclusive reservation of unpublished Sessions.
- * @module @origin-ai/xhe-session-persistence/preparations
+ * @module @origin-ai/cf-session-persistence/preparations
  */
 
-import type { Session, SessionId } from '@origin-ai/xhe-session'
+import type { Session, SessionId } from '@origin-ai/cf-session'
 
 interface PreparedSource {
   readonly session: Session

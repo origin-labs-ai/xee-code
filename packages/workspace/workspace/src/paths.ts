@@ -1,6 +1,6 @@
 /**
  * Path canonicalization for workspace identity.
- * @module @origin-ai/xhe-workspace/src/paths
+ * @module @origin-ai/cf-workspace/src/paths
  */
 
 import { realpath } from 'node:fs/promises'

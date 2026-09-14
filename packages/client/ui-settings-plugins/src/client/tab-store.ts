@@ -10,9 +10,9 @@
  * trace and does not count toward the empty line.
  */
 
-import type { SettingsDescribeFace } from '@origin-ai/xhe-client-ui-settings/client'
-import type { StoredEntry } from '@origin-ai/xhe-client-ui-slots'
-import { createSnapshotStore, type SnapshotStore } from '@origin-ai/xhe-client-runtime/client'
+import type { SettingsDescribeFace } from '@origin-ai/cf-client-ui-settings/client'
+import type { StoredEntry } from '@origin-ai/cf-client-ui-slots'
+import { createSnapshotStore, type SnapshotStore } from '@origin-ai/cf-client-runtime/client'
 
 /** What the section renders. */
 export interface ConfigurablePluginsTabState {

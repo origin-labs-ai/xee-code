@@ -1,11 +1,11 @@
 /**
  * Incremental projection of durable agent inbox events.
  *
- * @module @origin-ai/xhe-agent/inbox
+ * @module @origin-ai/cf-agent/inbox
  */
 
-import type { MessageId } from '@origin-ai/xhe-llm'
-import type { Session, SessionEventMap, UserMessage } from '@origin-ai/xhe-session'
+import type { MessageId } from '@origin-ai/cf-llm'
+import type { Session, SessionEventMap, UserMessage } from '@origin-ai/cf-session'
 import type { InboxTarget } from './types.ts'
 
 /** Mutable state privately owned by an {@link Inbox}. */

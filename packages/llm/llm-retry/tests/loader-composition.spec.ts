@@ -6,13 +6,13 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import Include from '@deepseek-ai/cordis-plugin-include'
-import AgentRegistry from '@origin-ai/xhe-agent'
-import AgentLoop from '@origin-ai/xhe-agent-loop'
-import LlmRuntime, { createUserMessage, LlmAdapter, LlmError, resolveRetryPolicy  } from '@origin-ai/xhe-llm'
-import type { GenerateOptions, ResolvedRetryPolicy, StreamChunk } from '@origin-ai/xhe-llm'
-import SessionStore, { SessionId } from '@origin-ai/xhe-session'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ToolRuntime from '@origin-ai/xhe-tools'
+import AgentRegistry from '@origin-ai/cf-agent'
+import AgentLoop from '@origin-ai/cf-agent-loop'
+import LlmRuntime, { createUserMessage, LlmAdapter, LlmError, resolveRetryPolicy  } from '@origin-ai/cf-llm'
+import type { GenerateOptions, ResolvedRetryPolicy, StreamChunk } from '@origin-ai/cf-llm'
+import SessionStore, { SessionId } from '@origin-ai/cf-session'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ToolRuntime from '@origin-ai/cf-tools'
 import * as retry from '../src/index.ts'
 
 let root: string | undefined
@@ -58,13 +58,13 @@ async function loadYaml(lines: readonly string[]): Promise<Context> {
   await context.plugin(Loader)
   context.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@origin-ai/xhe-llm', LlmRuntime],
-    ['@origin-ai/xhe-session', SessionStore],
-    ['@origin-ai/xhe-system-prompt', SystemPrompt],
-    ['@origin-ai/xhe-tools', ToolRuntime],
-    ['@origin-ai/xhe-agent', AgentRegistry],
-    ['@origin-ai/xhe-llm-retry', retry],
-    ['@origin-ai/xhe-agent-loop', AgentLoop],
+    ['@origin-ai/cf-llm', LlmRuntime],
+    ['@origin-ai/cf-session', SessionStore],
+    ['@origin-ai/cf-system-prompt', SystemPrompt],
+    ['@origin-ai/cf-tools', ToolRuntime],
+    ['@origin-ai/cf-agent', AgentRegistry],
+    ['@origin-ai/cf-llm-retry', retry],
+    ['@origin-ai/cf-agent-loop', AgentLoop],
   ])
   context.loader.internal = {
     version: 'v2',
@@ -87,13 +87,13 @@ describe('real Loader composition', () => {
   // to trip the default 5s budget on cold caches.
   it('loads provider-supplied policy and records recovery through the shipping loop', { timeout: 60_000 }, async () => {
     const loaded = await loadYaml([
-      "- name: '@origin-ai/xhe-llm'",
-      "- name: '@origin-ai/xhe-session'",
-      "- name: '@origin-ai/xhe-system-prompt'",
-      "- name: '@origin-ai/xhe-tools'",
-      "- name: '@origin-ai/xhe-agent'",
-      "- name: '@origin-ai/xhe-llm-retry'",
-      "- name: '@origin-ai/xhe-agent-loop'",
+      "- name: '@origin-ai/cf-llm'",
+      "- name: '@origin-ai/cf-session'",
+      "- name: '@origin-ai/cf-system-prompt'",
+      "- name: '@origin-ai/cf-tools'",
+      "- name: '@origin-ai/cf-agent'",
+      "- name: '@origin-ai/cf-llm-retry'",
+      "- name: '@origin-ai/cf-agent-loop'",
     ])
 
     const unloaded = [...loaded.loader.entries()]

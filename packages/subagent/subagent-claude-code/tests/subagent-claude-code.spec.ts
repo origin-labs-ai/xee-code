@@ -22,17 +22,17 @@ import {
   type Mock,
   vi,
 } from 'vitest'
-import type { Agent } from '@origin-ai/xhe-agent'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import SubagentRuntime from '@origin-ai/xhe-subagent'
+import type { Agent } from '@origin-ai/cf-agent'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import SubagentRuntime from '@origin-ai/cf-subagent'
 import type {
   SubprocessHandle,
   SubprocessOutcome,
   SubprocessSpawnSpec,
-} from '@origin-ai/xhe-subprocess'
-import LocalSubprocessRuntime from '@origin-ai/xhe-subprocess-local'
-import { MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
+} from '@origin-ai/cf-subprocess'
+import LocalSubprocessRuntime from '@origin-ai/cf-subprocess-local'
+import { MAX_TIMER_DELAY_MS } from '@origin-ai/cf-timeout'
 import * as claudeCode from '../src/index.ts'
 import * as invariant from '../src/invariant.ts'
 import {
@@ -359,7 +359,7 @@ describe('task admission and package contracts', () => {
       '^1.29.0',
     )
     expect(manifest.dependencies).toHaveProperty('zod', '^4.4.3')
-    expect(manifest.dependencies).not.toHaveProperty('@origin-ai/xhe-subagent-codex')
+    expect(manifest.dependencies).not.toHaveProperty('@origin-ai/cf-subagent-codex')
 
     const sdkRoot = dirname(fileURLToPath(
       import.meta.resolve('@anthropic-ai/claude-agent-sdk'),
@@ -396,7 +396,7 @@ describe('task admission and package contracts', () => {
       : []
     expect(rows).toEqual([{
       id: 'subagent-claude-code',
-      name: '@origin-ai/xhe-subagent-claude-code',
+      name: '@origin-ai/cf-subagent-claude-code',
     }])
     expect(JSON.stringify(rows)).not.toContain('tool-subagent')
   })
@@ -704,7 +704,7 @@ describe('task admission and package contracts', () => {
     const ctx = { invariants: { register } } as unknown as Context
     await expect(invariant.apply(ctx)).resolves.toBe(dispose)
     expect(register).toHaveBeenCalledWith(
-      '@origin-ai/xhe-subagent-claude-code',
+      '@origin-ai/cf-subagent-claude-code',
       expect.any(Function),
     )
     const install = register.mock.calls[0]![1]

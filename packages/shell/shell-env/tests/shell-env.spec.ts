@@ -1,5 +1,5 @@
 /**
- * Registry tests for `@origin-ai/xhe-shell-env`: built-in facts, contributor
+ * Registry tests for `@origin-ai/cf-shell-env`: built-in facts, contributor
  * ownership and validation, collection ordering, effect-scoped disposal, and
  * the explicit disposer contract.
  */
@@ -8,11 +8,11 @@ import { homedir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { CallId } from '@origin-ai/xhe-llm'
-import type { Agent } from '@origin-ai/xhe-agent'
-import type { ToolExecution } from '@origin-ai/xhe-tools'
-import { ShellEnvRegistry } from '@origin-ai/xhe-shell-env'
-import * as BashEnvPlugin from '@origin-ai/xhe-shell-env'
+import { CallId } from '@origin-ai/cf-llm'
+import type { Agent } from '@origin-ai/cf-agent'
+import type { ToolExecution } from '@origin-ai/cf-tools'
+import { ShellEnvRegistry } from '@origin-ai/cf-shell-env'
+import * as BashEnvPlugin from '@origin-ai/cf-shell-env'
 
 const testToolSignal = new AbortController().signal
 

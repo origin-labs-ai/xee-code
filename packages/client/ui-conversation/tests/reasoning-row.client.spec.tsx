@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, fireEvent, render } from '@testing-library/react'
-import { makeTranslate } from '@origin-ai/xhe-client-test-runtime'
-import { zh as commonZh } from '@origin-ai/xhe-client-locale/src/locales/zh.ts'
+import { makeTranslate } from '@origin-ai/cf-client-test-runtime'
+import { zh as commonZh } from '@origin-ai/cf-client-locale/src/locales/zh.ts'
 import { AssistantMarkdown, type AssistantMarkdownProps } from '../src/client/chat/AssistantMarkdown.tsx'
 import { zh } from '../src/client/locales.ts'
 

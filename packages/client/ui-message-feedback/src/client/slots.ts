@@ -5,15 +5,15 @@
  * merge lives here. Live per-message state arrives through the `feedback`
  * hook (the framework standard kit binds it into `useFeedback`); inject
  * carries the two mutation verbs plus the lazy loader.
- * @module @origin-ai/xhe-client-ui-message-feedback/client/slots
+ * @module @origin-ai/cf-client-ui-message-feedback/client/slots
  */
 
 import type {
   HostObservable, InjectFace, PropsLocale, PropsRuntime,
-} from '@origin-ai/xhe-client-ui-slots'
-import type {} from '@origin-ai/xhe-client-ui-conversation/client'
-import type { MessageId } from '@origin-ai/xhe-client-connection/client'
-import type { MessageFeedbackRating } from '@origin-ai/xhe-message-feedback/types'
+} from '@origin-ai/cf-client-ui-slots'
+import type {} from '@origin-ai/cf-client-ui-conversation/client'
+import type { MessageId } from '@origin-ai/cf-client-connection/client'
+import type { MessageFeedbackRating } from '@origin-ai/cf-message-feedback/types'
 // Type-only: pulls this package's LocaleNamespaceMap merge (the 'feedback' seat).
 import type {} from './locales.ts'
 import type { MessageFeedbackActionResult, MessageFeedbackView } from './controller.ts'

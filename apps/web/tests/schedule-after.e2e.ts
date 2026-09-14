@@ -5,17 +5,17 @@ import { fileURLToPath } from 'node:url'
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import type { AgentHandle } from '@origin-ai/xhe-agent'
-import { CallId, createUserMessage, LlmAdapter } from '@origin-ai/xhe-llm'
-import type { GenerateOptions, StreamChunk } from '@origin-ai/xhe-llm'
-import { SessionId, type SessionEvent } from '@origin-ai/xhe-session'
+import type { AgentHandle } from '@origin-ai/cf-agent'
+import { CallId, createUserMessage, LlmAdapter } from '@origin-ai/cf-llm'
+import type { GenerateOptions, StreamChunk } from '@origin-ai/cf-llm'
+import { SessionId, type SessionEvent } from '@origin-ai/cf-session'
 import {
   ScheduleId,
   createEveryScheduleRecord,
   foldScheduleEvents,
   resolveEveryOccurrence,
   type EveryScheduleRecord,
-} from '@origin-ai/xhe-schedule'
+} from '@origin-ai/cf-schedule'
 import {
   assertFixtureInventory,
   captureStableAria,

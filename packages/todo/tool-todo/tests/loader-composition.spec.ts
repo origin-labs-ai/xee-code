@@ -9,13 +9,13 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import Include from '@deepseek-ai/cordis-plugin-include'
-import { CallId } from '@origin-ai/xhe-llm'
-import { Session, SessionId } from '@origin-ai/xhe-session'
-import AgentRegistry, { Inbox } from '@origin-ai/xhe-agent'
-import type { Agent } from '@origin-ai/xhe-agent'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ToolRuntime from '@origin-ai/xhe-tools'
-import * as ToolTodo from '@origin-ai/xhe-tool-todo'
+import { CallId } from '@origin-ai/cf-llm'
+import { Session, SessionId } from '@origin-ai/cf-session'
+import AgentRegistry, { Inbox } from '@origin-ai/cf-agent'
+import type { Agent } from '@origin-ai/cf-agent'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ToolRuntime from '@origin-ai/cf-tools'
+import * as ToolTodo from '@origin-ai/cf-tool-todo'
 
 let root: string | undefined
 let context: Context | undefined
@@ -55,10 +55,10 @@ async function boot(configLines: readonly string[]): Promise<Context> {
   root = await mkdtemp(join(tmpdir(), 'xhe-todo-loader-'))
   const configPath = join(root, 'cordis.yml')
   await writeFile(configPath, [
-    "- name: '@origin-ai/xhe-agent'",
-    "- name: '@origin-ai/xhe-system-prompt'",
-    "- name: '@origin-ai/xhe-tools'",
-    "- name: '@origin-ai/xhe-tool-todo'",
+    "- name: '@origin-ai/cf-agent'",
+    "- name: '@origin-ai/cf-system-prompt'",
+    "- name: '@origin-ai/cf-tools'",
+    "- name: '@origin-ai/cf-tool-todo'",
     ...configLines.length > 0 ? ['  config:', ...configLines] : [],
     '',
   ].join('\n'))
@@ -69,10 +69,10 @@ async function boot(configLines: readonly string[]): Promise<Context> {
   await ctx.plugin(Loader)
   ctx.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@origin-ai/xhe-agent', AgentRegistry],
-    ['@origin-ai/xhe-system-prompt', SystemPrompt],
-    ['@origin-ai/xhe-tools', ToolRuntime],
-    ['@origin-ai/xhe-tool-todo', ToolTodo],
+    ['@origin-ai/cf-agent', AgentRegistry],
+    ['@origin-ai/cf-system-prompt', SystemPrompt],
+    ['@origin-ai/cf-tools', ToolRuntime],
+    ['@origin-ai/cf-tool-todo', ToolTodo],
   ])
   ctx.loader.internal = {
     version: 'v2',

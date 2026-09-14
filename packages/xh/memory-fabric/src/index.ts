@@ -6,12 +6,12 @@
  * - WARM: claim/evidence graph, fact base, dead-end/anomaly registries, unknowns.
  * - COLD: append-only SHA-256 blobs + SQLite/FTS + vector index, queried by RAG.
  *
- * @module @origin-ai/xhe-memory-fabric
+ * @module @origin-ai/cf-memory-fabric
  */
 
 import { createHash } from 'node:crypto'
 import { Service } from '@deepseek-ai/cordis'
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 
 // ---------------------------------------------------------------------------
 // Content addressing

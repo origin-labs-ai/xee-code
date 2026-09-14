@@ -40,7 +40,7 @@ const appOverlayFiles = new Set([
 const metadataFields = ['id', 'name', 'group', 'inject', 'intercept', 'isolate'] as const
 
 /** The adaptive directory-picker chooser package (mounts a backend row at boot). */
-const CHOOSER_PACKAGE = '@origin-ai/xhe-host-directory-picker-auto'
+const CHOOSER_PACKAGE = '@origin-ai/cf-host-directory-picker-auto'
 
 /**
  * The packages the chooser mounts by runtime string (mirror of its exported
@@ -50,10 +50,10 @@ const CHOOSER_PACKAGE = '@origin-ai/xhe-host-directory-picker-auto'
  * until a macOS boot.
  */
 const CHOOSER_BACKEND_PACKAGES = [
-  '@origin-ai/xhe-host-directory-picker-native',
-  '@origin-ai/xhe-host-directory-picker-browse',
-  '@origin-ai/xhe-client-ui-directory-picker-browse',
-  '@origin-ai/xhe-client-ui-directory-picker-native',
+  '@origin-ai/cf-host-directory-picker-native',
+  '@origin-ai/cf-host-directory-picker-browse',
+  '@origin-ai/cf-client-ui-directory-picker-browse',
+  '@origin-ai/cf-client-ui-directory-picker-native',
 ]
 const errors: string[] = []
 const pluginReferences: PluginReference[] = []

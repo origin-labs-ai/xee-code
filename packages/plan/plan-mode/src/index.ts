@@ -20,22 +20,22 @@
  * Agent Note:
  * - .agents/notes/implemented/simplification/2026-07-22-plan-specific-collaboration-state.md
  *
- * @module @origin-ai/xhe-plan-mode
+ * @module @origin-ai/cf-plan-mode
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'
 import { z as zod } from 'zod'
 import type { ZodType } from 'zod'
-import type { Agent, PreStepDecision } from '@origin-ai/xhe-agent'
-import { createUserMessage } from '@origin-ai/xhe-llm'
-import type { Session, SessionEvent, UserMessage } from '@origin-ai/xhe-session'
-import { defineTool } from '@origin-ai/xhe-tools'
-import type {} from '@origin-ai/xhe-system-prompt'
-import { UserQuestionError } from '@origin-ai/xhe-user-questions'
+import type { Agent, PreStepDecision } from '@origin-ai/cf-agent'
+import { createUserMessage } from '@origin-ai/cf-llm'
+import type { Session, SessionEvent, UserMessage } from '@origin-ai/cf-session'
+import { defineTool } from '@origin-ai/cf-tools'
+import type {} from '@origin-ai/cf-system-prompt'
+import { UserQuestionError } from '@origin-ai/cf-user-questions'
 // Type-only edge: resolves `ctx.commands` for the optional command child.
-import type { CommandId } from '@origin-ai/xhe-commands'
+import type { CommandId } from '@origin-ai/cf-commands'
 // Type-only: resolves ctx.sessionProjections for the optional unit child.
-import type {} from '@origin-ai/xhe-session-projection'
+import type {} from '@origin-ai/cf-session-projection'
 import type { PlanProjection } from './types.ts'
 // The `plan` projection-key declaration lives in src/types.ts (its one home);
 // this re-export projects the type face onto the package root AND keeps the
@@ -43,7 +43,7 @@ import type { PlanProjection } from './types.ts'
 // declarations still receive the SessionProjectionMap merge.
 export type * from './types.ts'
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     /**
      * Whether plan mode is in force from this point on: log-only, non-surface,
@@ -151,7 +151,7 @@ interface PlanUnitState {
   running: { commandId: CommandId; wanted: boolean } | null
 }
 
-declare module '@origin-ai/xhe-session-projection/types' {
+declare module '@origin-ai/cf-session-projection/types' {
   interface SessionProjectionStateMap {
     plan: PlanUnitState
   }

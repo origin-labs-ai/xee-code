@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import { apply, inject, name } from '../src/invariant.ts'
 
-describe('@origin-ai/xhe-session-log-export/invariant', () => {
+describe('@origin-ai/cf-session-log-export/invariant', () => {
   it('registers the package-owned empty companion', async () => {
     const register = vi.fn(() => vi.fn())
     const ctx = new Context()
@@ -10,7 +10,7 @@ describe('@origin-ai/xhe-session-log-export/invariant', () => {
     const dispose = await apply(ctx)
     expect(name).toBe('session-export-invariant')
     expect(inject).toEqual(['invariants'])
-    expect(register).toHaveBeenCalledWith('@origin-ai/xhe-session-log-export', expect.any(Function))
+    expect(register).toHaveBeenCalledWith('@origin-ai/cf-session-log-export', expect.any(Function))
     dispose()
   })
 })

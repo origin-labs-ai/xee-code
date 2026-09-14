@@ -4,7 +4,7 @@
  * the settings section, so the literal never rides a response.
  */
 
-import type { InjectFace, PropsLocale, PropsRuntime } from '@origin-ai/xhe-client-ui-slots'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@origin-ai/cf-client-ui-slots'
 import { SecretField, ValueField } from './fields.tsx'
 import { PluginCard } from './PluginCard.tsx'
 import type { WebSearchCardFace } from './web-search-card-controller.ts'

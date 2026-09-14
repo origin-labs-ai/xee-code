@@ -4,12 +4,12 @@ import { tmpdir } from 'node:os'
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
-import * as workspaceContext from '@origin-ai/xhe-agent-instructions'
-import LlmRuntime, { createUserMessage, CallId, type Message, type StreamChunk } from '@origin-ai/xhe-llm'
-import SessionStore, { Session, SessionId, SESSION_FORMAT_VERSION, type SessionEvent, type UserMessage } from '@origin-ai/xhe-session'
-import AgentRegistry, { agentEvents, Inbox, type Agent } from '@origin-ai/xhe-agent'
-import AgentLoop from '@origin-ai/xhe-agent-loop'
-import { FileSystem, FsTargetKey, FsVersion } from '@origin-ai/xhe-fs'
+import * as workspaceContext from '@origin-ai/cf-agent-instructions'
+import LlmRuntime, { createUserMessage, CallId, type Message, type StreamChunk } from '@origin-ai/cf-llm'
+import SessionStore, { Session, SessionId, SESSION_FORMAT_VERSION, type SessionEvent, type UserMessage } from '@origin-ai/cf-session'
+import AgentRegistry, { agentEvents, Inbox, type Agent } from '@origin-ai/cf-agent'
+import AgentLoop from '@origin-ai/cf-agent-loop'
+import { FileSystem, FsTargetKey, FsVersion } from '@origin-ai/cf-fs'
 import type {
   FsDirEntry,
   FsEditOutcome,
@@ -19,20 +19,20 @@ import type {
   FsTarget,
   FsWriteIntent,
   FsWriteOutcome,
-} from '@origin-ai/xhe-fs'
-import LocalFileSystem from '@origin-ai/xhe-fs-local'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ToolRuntime, { defineContentToolFixture } from '@origin-ai/xhe-tools'
+} from '@origin-ai/cf-fs'
+import LocalFileSystem from '@origin-ai/cf-fs-local'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ToolRuntime, { defineContentToolFixture } from '@origin-ai/cf-tools'
 import type {
   ToolExecution,
   ToolExecutionToken,
-} from '@origin-ai/xhe-tools'
-import * as ToolFs from '@origin-ai/xhe-tool-fs'
+} from '@origin-ai/cf-tools'
+import * as ToolFs from '@origin-ai/cf-tool-fs'
 import {
   discoverBaselineInstructionFiles,
   loadBaselineInstructions,
   renderWorkspaceContext,
-} from '@origin-ai/xhe-agent-instructions'
+} from '@origin-ai/cf-agent-instructions'
 import {
   applyInstructionVersionUpdates,
   baselineInstructionState,
@@ -629,7 +629,7 @@ describe('workspace context instruction discovery', () => {
       vi.stubEnv('XHE_HOME', '')
       vi.resetModules()
       vi.doMock('node:os', () => ({ homedir: () => home }))
-      const isolated = await import('@origin-ai/xhe-agent-instructions')
+      const isolated = await import('@origin-ai/cf-agent-instructions')
       const files = await isolated.discoverBaselineInstructionFiles({ cwd: root })
 
       expect(files.map(file => file.displayPath)).toEqual(['~/.cf/AGENTS.md'])
@@ -650,7 +650,7 @@ describe('workspace context instruction discovery', () => {
 
       vi.resetModules()
       vi.doMock('node:os', () => ({ homedir: () => home }))
-      const isolated = await import('@origin-ai/xhe-agent-instructions')
+      const isolated = await import('@origin-ai/cf-agent-instructions')
       const files = await isolated.discoverBaselineInstructionFiles({ cwd: root, dshHome: '~/.cf' })
 
       expect(files).toEqual([{ absolutePath: join(home, '.cf/AGENTS.md'), displayPath: '~/.cf/AGENTS.md' }])
@@ -2440,7 +2440,7 @@ describe('workspace context request injection', () => {
           },
         }
       })
-      const isolated = await import('@origin-ai/xhe-agent-instructions')
+      const isolated = await import('@origin-ai/cf-agent-instructions')
       await isolated.loadBaselineInstructions({ cwd: root, dshHome: home, maxBytes: 65536 })
       observedStats.clear()
       await isolated.loadBaselineInstructions({ cwd: root, dshHome: home, maxBytes: 65536 })
@@ -2473,7 +2473,7 @@ describe('workspace context request injection', () => {
           },
         }
       })
-      const isolated = await import('@origin-ai/xhe-agent-instructions')
+      const isolated = await import('@origin-ai/cf-agent-instructions')
 
       const rendered = await isolated.loadBaselineInstructions({ cwd: root, dshHome: home, maxBytes: 65536 })
 

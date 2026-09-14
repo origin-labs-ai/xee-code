@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import type { RpcResponse, SettingsNamespaceView } from '@origin-ai/xhe-api-remotes/client'
+import type { RpcResponse, SettingsNamespaceView } from '@origin-ai/cf-api-remotes/client'
 import { SettingsDescribeMirror, type SettingsDescribeView } from '../src/client/settings-mirror.ts'
 
 let rpc = 0

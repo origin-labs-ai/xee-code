@@ -4,11 +4,11 @@
  * not the only correct recovery (re-read / read the file), so this package
  * appends the remedy at the model boundary; provider messages stay
  * machine-oriented and unchanged.
- * @module @origin-ai/xhe-tool-fs/src/error
+ * @module @origin-ai/cf-tool-fs/src/error
  */
 
-import { FsError } from '@origin-ai/xhe-fs'
-import type { FsErrorCode } from '@origin-ai/xhe-fs'
+import { FsError } from '@origin-ai/cf-fs'
+import type { FsErrorCode } from '@origin-ai/cf-fs'
 
 /** The remedy appended to each remediable failure code's message. */
 const REMEDIES: Partial<Record<FsErrorCode, string>> = {

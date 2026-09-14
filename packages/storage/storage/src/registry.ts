@@ -1,6 +1,6 @@
 /**
  * Named backend registry of the storage hub.
- * @module @origin-ai/xhe-storage/src/registry
+ * @module @origin-ai/cf-storage/src/registry
  */
 
 import type { StorageBackend } from './backend.ts'

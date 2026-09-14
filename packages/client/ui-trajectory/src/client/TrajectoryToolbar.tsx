@@ -1,7 +1,7 @@
 /** Trajectory toolbar: timeline and ledger fold controls. */
 
-import type { TranslateNS } from '@origin-ai/xhe-client-ui-slots'
-import { IconSearchOutline16 } from '@origin-ai/xhe-client-ui-primitives'
+import type { TranslateNS } from '@origin-ai/cf-client-ui-slots'
+import { IconSearchOutline16 } from '@origin-ai/cf-client-ui-primitives'
 import type { NS } from './locales.ts'
 import css from './TrajectoryToolbar.module.css'
 

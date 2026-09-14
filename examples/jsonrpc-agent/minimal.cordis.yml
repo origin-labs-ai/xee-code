@@ -4,12 +4,12 @@
 # context compaction are absent.
 
 - id: sdk-jsonrpc-server
-  name: '@origin-ai/xhe-sdk-jsonrpc-server'
+  name: '@origin-ai/cf-sdk-jsonrpc-server'
   config:
     maxTokensAsSuccess: false
 
 - id: llm-deepseek
-  name: '@origin-ai/xhe-llm-deepseek'
+  name: '@origin-ai/cf-llm-deepseek'
   config:
     apiKeyEnv: DEEPSEEK_API_KEY
     streamIdleTimeoutMs: 172800000
@@ -18,34 +18,34 @@
         contextWindow: !!js Number(process.env.XHE_CONTEXT_WINDOW ?? 1000000)
 
 - id: sandbox
-  name: '@origin-ai/xhe-sandbox-local'
+  name: '@origin-ai/cf-sandbox-local'
 
 - id: sandbox-policy
-  name: '@origin-ai/xhe-sandbox-policy'
+  name: '@origin-ai/cf-sandbox-policy'
   config:
     mode: danger-full-access
     workspaceRoot: !!js process.env.XHE_CWD ?? process.cwd()
 
 - id: subprocess
-  name: '@origin-ai/xhe-subprocess-local'
+  name: '@origin-ai/cf-subprocess-local'
 
 - id: pty
-  name: '@origin-ai/xhe-terminal'
+  name: '@origin-ai/cf-terminal'
 
 - id: terminal-bash
-  name: '@origin-ai/xhe-terminal-bash'
+  name: '@origin-ai/cf-terminal-bash'
   config:
     timeoutMs: 300000
 
 # The editor uses the bare local filesystem; persistent Bash still consumes the
 # shared danger-full-access sandbox policy above.
 - id: fs-local
-  name: '@origin-ai/xhe-fs-local'
+  name: '@origin-ai/cf-fs-local'
   config:
     cwd: !!js process.env.XHE_CWD ?? process.cwd()
 
 - id: agent-spine
-  name: '@origin-ai/xhe-agent-spine-demo'
+  name: '@origin-ai/cf-agent-spine-demo'
   config:
     includeHarnessIdentity: false
     includeRuntimeContext: false
@@ -57,7 +57,7 @@
     toolJobs: false
 
 - id: persistent-bash
-  name: '@origin-ai/xhe-tool-bash-persistent'
+  name: '@origin-ai/cf-tool-bash-persistent'
   config:
     timeoutMs: 300000
     description: |-
@@ -71,12 +71,12 @@
       * Please run long lived commands in the background, e.g. 'sleep 10 &' or start a server in the background.
 
 - id: str-replace-editor
-  name: '@origin-ai/xhe-tool-str-replace-editor'
+  name: '@origin-ai/cf-tool-str-replace-editor'
   config:
     maxOutputChars: 16000
 
 - id: sessions
-  name: '@origin-ai/xhe-session-persistence-jsonl'
+  name: '@origin-ai/cf-session-persistence-jsonl'
   config:
     root: !!js process.env.XHE_SESSION_ROOT ?? './.sessions'
     compression: none

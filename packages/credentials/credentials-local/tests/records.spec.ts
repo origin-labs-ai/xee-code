@@ -7,8 +7,8 @@ import { Context } from '@deepseek-ai/cordis'
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { credentialKey, credentialKeyScope, credentialRef, parseCredentialKey } from '@origin-ai/xhe-credentials'
-import type { CredentialKey, CredentialRecord } from '@origin-ai/xhe-credentials'
+import { credentialKey, credentialKeyScope, credentialRef, parseCredentialKey } from '@origin-ai/cf-credentials'
+import type { CredentialKey, CredentialRecord } from '@origin-ai/cf-credentials'
 import { LocalCredentialProvider } from '../src/index.ts'
 
 /** Credential documents are seeded owner-only, exactly as the provider creates them. */

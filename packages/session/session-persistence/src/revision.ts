@@ -1,6 +1,6 @@
 /** Opaque revision identity for lightweight persistence observations. */
 
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 
 /**
  * Backend-owned token that identifies both one storage source and one revision

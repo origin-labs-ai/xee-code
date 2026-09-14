@@ -1,8 +1,8 @@
-import { createUserMessage, createMessage, createToolResultMessage, CallId } from '@origin-ai/xhe-llm'
+import { createUserMessage, createMessage, createToolResultMessage, CallId } from '@origin-ai/cf-llm'
 // Minimal SessionEvent builders for orchestration tests (shape mirrors what the
 // host emits; only the fields the object layer reads).
-import type { ContentBlock } from '@origin-ai/xhe-llm/types'
-import type { SessionEvent } from '@origin-ai/xhe-session/types'
+import type { ContentBlock } from '@origin-ai/cf-llm/types'
+import type { SessionEvent } from '@origin-ai/cf-session/types'
 
 /** One text content block (local helper). */
 const text = (t: string): ContentBlock[] => [{ type: 'text', text: t }]

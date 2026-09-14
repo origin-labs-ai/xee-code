@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-spill-policy`.
- * @module @origin-ai/xhe-spill-policy/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-spill-policy`.
+ * @module @origin-ai/cf-spill-policy/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-spill-policy'
+const PACKAGE_NAME = '@origin-ai/cf-spill-policy'
 
 /** Cordis companion plugin name. */
 export const name = 'spill-policy-invariant'

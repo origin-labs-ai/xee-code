@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { jsonSchemaToPy, renderToolsSdkPy } from '@origin-ai/xhe-tools/src/py-types.ts'
-import { parameterSchemaSpecToJsonSchema } from '@origin-ai/xhe-tools'
-import type { ToolSdkSchema } from '@origin-ai/xhe-tools/src/ts-types.ts'
+import { jsonSchemaToPy, renderToolsSdkPy } from '@origin-ai/cf-tools/src/py-types.ts'
+import { parameterSchemaSpecToJsonSchema } from '@origin-ai/cf-tools'
+import type { ToolSdkSchema } from '@origin-ai/cf-tools/src/ts-types.ts'
 
 describe('jsonSchemaToPy', () => {
   it('maps the defineTool DSL subset', () => {

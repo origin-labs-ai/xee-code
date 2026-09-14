@@ -1,8 +1,8 @@
 /** Unified JSON-value schema DSL, inference, compilation, and typed tool helper. @module xhe-tools/schema */
 
-import { HarnessError } from '@origin-ai/xhe-llm'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import type { JsonValue } from '@origin-ai/xhe-session'
+import { HarnessError } from '@origin-ai/cf-llm'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import type { JsonValue } from '@origin-ai/cf-session'
 import type { ToolDefinition, ToolExecution, ToolExecutionResult, ToolRunContext, ToolResult } from './index.ts'
 import { assertSupportedJsonSchema, isJsonSchemaRecord, isPlainJsonArray, JsonSchemaError, validateJsonSchemaValue } from './json-schema.ts'
 import type { JsonSchemaNode, JsonSchemaScalar, ObjectJsonSchema } from './json-schema.ts'

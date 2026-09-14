@@ -2,12 +2,12 @@
  * The background-job Service Definition (`ctx.jobs`). It owns the contract for
  * job ids, session-scoped access, lifecycle state, completion listeners, and
  * owner cleanup while producers retain their execution resources. The
- * process-local registry lives in `@origin-ai/xhe-jobs-local`.
- * @module @origin-ai/xhe-jobs
+ * process-local registry lives in `@origin-ai/cf-jobs-local`.
+ * @module @origin-ai/cf-jobs
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'
-import type { Agent } from '@origin-ai/xhe-agent'
+import type { Agent } from '@origin-ai/cf-agent'
 import type {
   JobDoneListener, JobId, JobRead, JobSnapshot, JobStart, JobsChangedListener,
 } from './types.ts'
@@ -65,7 +65,7 @@ export abstract class JobRegistry extends Service {
     // would register a ctx.jobs with no method implementations and fail far
     // from the misconfiguration. Fail loud at load instead.
     if (new.target === JobRegistry) {
-      throw new Error('@origin-ai/xhe-jobs is the abstract job registry seam; load an implementation such as @origin-ai/xhe-jobs-local instead')
+      throw new Error('@origin-ai/cf-jobs is the abstract job registry seam; load an implementation such as @origin-ai/cf-jobs-local instead')
     }
     super(ctx, 'jobs')
   }

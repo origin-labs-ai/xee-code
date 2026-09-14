@@ -10,16 +10,16 @@ import {
   FileNotFoundError,
   SandboxNotFoundError,
   quoteE2BShellArg,
-} from '@origin-ai/xhe-e2b'
-import type { CommandHandle, CommandResult, Sandbox } from '@origin-ai/xhe-e2b'
+} from '@origin-ai/cf-e2b'
+import type { CommandHandle, CommandResult, Sandbox } from '@origin-ai/cf-e2b'
 import type {
   SubprocessOutcome,
   SubprocessTerminalForeground,
   SubprocessTerminalHandle,
   SubprocessTerminalSignal,
   SubprocessTerminalSpawnSpec,
-} from '@origin-ai/xhe-subprocess'
-import type E2BRuntime from '@origin-ai/xhe-e2b'
+} from '@origin-ai/cf-subprocess'
+import type E2BRuntime from '@origin-ai/cf-e2b'
 import {
   bootstrapEnvironment,
   readRemoteEnvironment,

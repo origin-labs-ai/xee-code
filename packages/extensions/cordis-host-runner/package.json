@@ -54,25 +54,25 @@
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "workspace:^",
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-scope": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-tools": "workspace:^",
-    "@origin-ai/xhe-typert-protocol": "workspace:^"
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-scope": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-tools": "workspace:^",
+    "@origin-ai/cf-typert-protocol": "workspace:^"
   },
   "devDependencies": {
     "@deepseek-ai/cordis": "workspace:^",
     "@deepseek-ai/cordis-plugin-timer": "workspace:^",
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-scope": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-tools": "workspace:^",
-    "@origin-ai/xhe-typert-protocol": "workspace:^"
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-scope": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-tools": "workspace:^",
+    "@origin-ai/cf-typert-protocol": "workspace:^"
   }
 }

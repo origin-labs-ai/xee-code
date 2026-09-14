@@ -11,7 +11,7 @@ import { readFile, readdir } from 'node:fs/promises'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
-import { LOADER_SMOKE_TEST_TIMEOUT_MS, runLoaderSmoke } from '@origin-ai/xhe-loader-smoke'
+import { LOADER_SMOKE_TEST_TIMEOUT_MS, runLoaderSmoke } from '@origin-ai/cf-loader-smoke'
 
 const driver = fileURLToPath(new URL(
   '../../../../examples/headless-agent/tests/fixtures/session-telemetry-otel-driver.ts',

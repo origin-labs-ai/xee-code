@@ -1,16 +1,16 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context, type Fiber } from '@deepseek-ai/cordis'
-import type { Agent } from '@origin-ai/xhe-agent'
-import { createUserMessage, CallId, HarnessError , createMessage } from '@origin-ai/xhe-llm'
-import { MAX_TIMER_DELAY_MS, TimeoutReason } from '@origin-ai/xhe-timeout'
-import * as TimeoutPolicy from '@origin-ai/xhe-tool-call-timeout-policy'
+import type { Agent } from '@origin-ai/cf-agent'
+import { createUserMessage, CallId, HarnessError , createMessage } from '@origin-ai/cf-llm'
+import { MAX_TIMER_DELAY_MS, TimeoutReason } from '@origin-ai/cf-timeout'
+import * as TimeoutPolicy from '@origin-ai/cf-tool-call-timeout-policy'
 import SessionStore, {
   SESSION_FORMAT_VERSION,
   SessionId,
   type Session,
   type SessionHeader,
   type SessionId as SessionIdValue,
-} from '@origin-ai/xhe-session'
+} from '@origin-ai/cf-session'
 import SessionQueryEngine, {
   SessionQueryError,
   SessionSearchCursor,
@@ -23,10 +23,10 @@ import SessionQueryEngine, {
   type SessionSearchPage,
   type SessionSearchRequest,
   type SessionTitleObservationResult,
-} from '@origin-ai/xhe-session-query'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ToolRuntime, { type ToolExecutionResult } from '@origin-ai/xhe-tools'
-import * as ToolSessionQuery from '@origin-ai/xhe-tool-session-query'
+} from '@origin-ai/cf-session-query'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ToolRuntime, { type ToolExecutionResult } from '@origin-ai/cf-tools'
+import * as ToolSessionQuery from '@origin-ai/cf-tool-session-query'
 
 const activeContexts: Context[] = []
 

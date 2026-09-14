@@ -11,12 +11,12 @@
  * stop-on-throw) or touch the agent loop. Composed by a backend in its
  * constructor.
  *
- * @module @origin-ai/xhe-session-telemetry/coordinator
+ * @module @origin-ai/cf-session-telemetry/coordinator
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type { Agent } from '@origin-ai/xhe-agent'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type { Agent } from '@origin-ai/cf-agent'
 import type { SessionTelemetrySink, SessionTelemetryRecord, SessionTelemetrySeverity } from './index.ts'
 
 /** Whether capture follows live events or reads the canonical log only when requested. */

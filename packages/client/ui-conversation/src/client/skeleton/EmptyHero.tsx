@@ -8,8 +8,8 @@ import { useId } from 'react'
 import type { ReactNode, RefObject } from 'react'
 import {
   FishLogo, IconChevronDownOutline14, IconFolderClose16, IconFolderOpen16,
-} from '@origin-ai/xhe-client-ui-primitives'
-import { workspaceTitleOf } from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-ui-primitives'
+import { workspaceTitleOf } from '@origin-ai/cf-client-runtime/client'
 import type { ConversationSlotProps } from '../contract/slots.ts'
 import css from './HeroShell.module.css'
 

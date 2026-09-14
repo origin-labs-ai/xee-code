@@ -1,4 +1,4 @@
-# @origin-ai/xhe-acp
+# @origin-ai/cf-acp
 
 Automation-only [Agent Client Protocol](https://agentclientprotocol.com) server over JSON-RPC stdio. Programmatic clients create fresh harness agents, send text/image prompts, collect committed assistant text/images, resolve one-shot permission requests by policy, and cancel work. The primary in-repository client is [`xhe-subagent-acp`](../../subagent/subagent-acp/README.md).
 
@@ -39,7 +39,7 @@ ACP requires each prompt response to carry a `stopReason`, but the bridge does n
 
 ## Running
 
-`pnpm --dir /path/to/xhe run demo:acp` boots the repository's automation server composition. A parent harness can spawn it through [`@origin-ai/xhe-subagent-acp`](../../subagent/subagent-acp/README.md); other ACP clients need only the core methods above.
+`pnpm --dir /path/to/xhe run demo:acp` boots the repository's automation server composition. A parent harness can spawn it through [`@origin-ai/cf-subagent-acp`](../../subagent/subagent-acp/README.md); other ACP clients need only the core methods above.
 
 ## Model Experience
 

@@ -3,10 +3,10 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { LocalBashExecutor } from '@origin-ai/xhe-bash-local'
-import LocalSubprocessRuntime from '@origin-ai/xhe-subprocess-local'
-import { MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
-import type { ShellProcess } from '@origin-ai/xhe-shell'
+import { LocalBashExecutor } from '@origin-ai/cf-bash-local'
+import LocalSubprocessRuntime from '@origin-ai/cf-subprocess-local'
+import { MAX_TIMER_DELAY_MS } from '@origin-ai/cf-timeout'
+import type { ShellProcess } from '@origin-ai/cf-shell'
 
 const spillDir = mkdtempSync(join(tmpdir(), 'xhe-bash-exec-spec-'))
 

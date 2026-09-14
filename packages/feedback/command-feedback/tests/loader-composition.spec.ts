@@ -6,12 +6,12 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import Include from '@deepseek-ai/cordis-plugin-include'
-import AgentRegistry, { Inbox } from '@origin-ai/xhe-agent'
-import type { Agent, AgentStatus } from '@origin-ai/xhe-agent'
-import CommandRuntime from '@origin-ai/xhe-commands'
-import SessionStore, { SessionId } from '@origin-ai/xhe-session'
-import * as CommandFeedback from '@origin-ai/xhe-command-feedback'
-import { getOrCreateAnonymousUserId } from '@origin-ai/xhe-anonymous-user-id'
+import AgentRegistry, { Inbox } from '@origin-ai/cf-agent'
+import type { Agent, AgentStatus } from '@origin-ai/cf-agent'
+import CommandRuntime from '@origin-ai/cf-commands'
+import SessionStore, { SessionId } from '@origin-ai/cf-session'
+import * as CommandFeedback from '@origin-ai/cf-command-feedback'
+import { getOrCreateAnonymousUserId } from '@origin-ai/cf-anonymous-user-id'
 
 let root: string | undefined
 let context: Context | undefined
@@ -56,10 +56,10 @@ describe('/feedback real Loader composition through cordis.yml', () => {
     vi.stubEnv('XHE_HOME', root)
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@origin-ai/xhe-agent'",
-      "- name: '@origin-ai/xhe-session'",
-      "- name: '@origin-ai/xhe-commands'",
-      "- name: '@origin-ai/xhe-command-feedback'",
+      "- name: '@origin-ai/cf-agent'",
+      "- name: '@origin-ai/cf-session'",
+      "- name: '@origin-ai/cf-commands'",
+      "- name: '@origin-ai/cf-command-feedback'",
       '',
     ].join('\n'))
 
@@ -68,10 +68,10 @@ describe('/feedback real Loader composition through cordis.yml', () => {
     await context.plugin(Loader)
     context.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
-      ['@origin-ai/xhe-agent', AgentRegistry],
-      ['@origin-ai/xhe-session', SessionStore],
-      ['@origin-ai/xhe-commands', CommandRuntime],
-      ['@origin-ai/xhe-command-feedback', CommandFeedback],
+      ['@origin-ai/cf-agent', AgentRegistry],
+      ['@origin-ai/cf-session', SessionStore],
+      ['@origin-ai/cf-commands', CommandRuntime],
+      ['@origin-ai/cf-command-feedback', CommandFeedback],
     ])
     context.loader.internal = {
       version: 'v2',

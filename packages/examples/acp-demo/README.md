@@ -1,16 +1,16 @@
-# @origin-ai/xhe-acp-demo
+# @origin-ai/cf-acp-demo
 
-ACP automation server app: the default agent spine, client-created agents through [`@origin-ai/xhe-acp`](../../acp/acp/README.md), JSONL persistence, and semantic checkpointing behind one JSON-RPC stdio bin. Programmatic clients create fresh sessions; this package mounts no human UI.
+ACP automation server app: the default agent spine, client-created agents through [`@origin-ai/cf-acp`](../../acp/acp/README.md), JSONL persistence, and semantic checkpointing behind one JSON-RPC stdio bin. Programmatic clients create fresh sessions; this package mounts no human UI.
 
 ## Composition
 
 | Plugin | Role |
 |---|---|
-| `@origin-ai/xhe-agent-spine-demo` | Providerless agent spine with no pre-created agents; `session/new` creates each agent. |
-| `@origin-ai/xhe-session-persistence-jsonl` | Durable session logs used by checkpointing, observability, and snapshot replay. |
-| `@origin-ai/xhe-session-checkpoint-policy` | Durability barriers before model calls and top-level tool effects, plus completed-step checkpoints. |
-| `@origin-ai/xhe-session-query-sqlite` | Derived exact/FTS session-query service, opened before the ACP transport so leaf consumers are ready for the first model request. |
-| `@origin-ai/xhe-acp` | Automation-only ACP transport over stdin/stdout. |
+| `@origin-ai/cf-agent-spine-demo` | Providerless agent spine with no pre-created agents; `session/new` creates each agent. |
+| `@origin-ai/cf-session-persistence-jsonl` | Durable session logs used by checkpointing, observability, and snapshot replay. |
+| `@origin-ai/cf-session-checkpoint-policy` | Durability barriers before model calls and top-level tool effects, plus completed-step checkpoints. |
+| `@origin-ai/cf-session-query-sqlite` | Derived exact/FTS session-query service, opened before the ACP transport so leaf consumers are ready for the first model request. |
+| `@origin-ai/cf-acp` | Automation-only ACP transport over stdin/stdout. |
 
 The app does not install commands, user interaction, session navigation, configuration pickers, or a stdout logger. It owns these plugins through one ordered effect so the query service is ready before ACP accepts work and ACP sessions quiesce before checkpointing and persistence detach. Leaf configurations supply LLM, executor, sandbox, approval, filesystem, and model-facing tool plugins.
 

@@ -6,6 +6,6 @@
     patches:
       - insert:
           - id: goal
-            name: '@origin-ai/xhe-goal'
+            name: '@origin-ai/cf-goal'
           - id: tool-goal
-            name: '@origin-ai/xhe-tool-goal'
+            name: '@origin-ai/cf-tool-goal'

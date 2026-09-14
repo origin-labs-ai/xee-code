@@ -3,12 +3,12 @@
  * family (`--host`, `--port`, `--trusted-host`, `--no-open`) and its `--help`
  * text, then provides the immutable values as {@link WEB_STARTUP_SERVICE}.
  * Ordinary rows inject that service before reading it from lazy config.
- * @module @origin-ai/xhe-web-app/startup
+ * @module @origin-ai/cf-web-app/startup
  */
 
 import { Command } from 'commander'
 import type { Context } from '@deepseek-ai/cordis'
-import { parseCmdline } from '@origin-ai/xhe-cmdline'
+import { parseCmdline } from '@origin-ai/cf-cmdline'
 
 /** Stable Cordis plugin name. */
 export const name = 'web-startup'

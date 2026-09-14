@@ -3,10 +3,10 @@
  * Only command hooks run; other hook types are returned as skipped so the
  * bridge can warn. Plugin-root and project-directory substitutions are applied
  * to commands at parse time.
- * @module @origin-ai/xhe-hooks-claude-code/config
+ * @module @origin-ai/cf-hooks-claude-code/config
  */
 
-import { matcherDiagnostic, type MatcherGroup } from '@origin-ai/xhe-hook-protocol'
+import { matcherDiagnostic, type MatcherGroup } from '@origin-ai/cf-hook-protocol'
 
 const CLAUDE_EVENTS = [
   'SessionStart',

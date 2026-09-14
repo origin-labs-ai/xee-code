@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 import clsx from 'clsx'
-import type { PermissionSelect as PermissionSelectValue } from '@origin-ai/xhe-permission-presets/client'
-import { IconChevronDownOutline14, Menu, RiskConfirmation } from '@origin-ai/xhe-client-ui-primitives'
-import type { MenuEntry } from '@origin-ai/xhe-client-ui-primitives'
+import type { PermissionSelect as PermissionSelectValue } from '@origin-ai/cf-permission-presets/client'
+import { IconChevronDownOutline14, Menu, RiskConfirmation } from '@origin-ai/cf-client-ui-primitives'
+import type { MenuEntry } from '@origin-ai/cf-client-ui-primitives'
 import type { ComposerBarProps } from '../contract/slots.ts'
 import css from './PermissionSelect.module.css'
 

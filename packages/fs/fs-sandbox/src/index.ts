@@ -1,6 +1,6 @@
 /**
  * `SandboxedFileSystem`: the sandbox-enforcing implementation of the
- * `@origin-ai/xhe-fs` Service Definition. It extends `LocalFileSystem` so all
+ * `@origin-ai/cf-fs` Service Definition. It extends `LocalFileSystem` so all
  * text-storage mechanics — resolve, stat, read/stream, list, the atomic
  * write and the read-match-write edit critical section — are the local
  * implementation's, verbatim; this package adds only the per-call POLICY fence
@@ -11,7 +11,7 @@
  * NOT a kernel boundary — the operations are the seam's own (open, rename),
  * and only the target path is untrusted, so canonicalize-then-contain is the
  * complete answer to this surface. Kernel-grade isolation of untrusted CODE
- * stays `ctx.shell`'s job (`@origin-ai/xhe-bash-sandbox`). This mirrors the
+ * stays `ctx.shell`'s job (`@origin-ai/cf-bash-sandbox`). This mirrors the
  * `code-runtime` stance: containment, not a security boundary. The residual
  * TOCTOU (an ancestor symlink swapped between the containment re-check and the
  * syscall) is narrowed by re-canonicalizing immediately before delegating and
@@ -24,20 +24,20 @@
  * `danger-full-access` delegates unfenced. A denial throws the structured
  * `FS_SANDBOX_DENIED` — no text inference is needed (unlike bash's kernel
  * stderr), because an in-process fence knows exactly what it refused. The
- * escalation retry lives in the tool layer (`@origin-ai/xhe-tool-fs`),
+ * escalation retry lives in the tool layer (`@origin-ai/cf-tool-fs`),
  * exactly as bash's does.
  *
- * @module @origin-ai/xhe-fs-sandbox
+ * @module @origin-ai/cf-fs-sandbox
  */
 
 import { Context } from '@deepseek-ai/cordis'
-import { LocalFileSystem } from '@origin-ai/xhe-fs-local'
-import type { Config as LocalConfig } from '@origin-ai/xhe-fs-local'
-import { FsError } from '@origin-ai/xhe-fs'
-import type { FsEditOutcome, FsEditRequest, FsTarget, FsVersion, FsWriteIntent, FsWriteOutcome } from '@origin-ai/xhe-fs'
-import { writableRoots } from '@origin-ai/xhe-sandbox'
-import type { SandboxExecutionPolicy, SandboxMode } from '@origin-ai/xhe-sandbox'
-import type {} from '@origin-ai/xhe-sandbox-policy'
+import { LocalFileSystem } from '@origin-ai/cf-fs-local'
+import type { Config as LocalConfig } from '@origin-ai/cf-fs-local'
+import { FsError } from '@origin-ai/cf-fs'
+import type { FsEditOutcome, FsEditRequest, FsTarget, FsVersion, FsWriteIntent, FsWriteOutcome } from '@origin-ai/cf-fs'
+import { writableRoots } from '@origin-ai/cf-sandbox'
+import type { SandboxExecutionPolicy, SandboxMode } from '@origin-ai/cf-sandbox'
+import type {} from '@origin-ai/cf-sandbox-policy'
 import { isPathUnder } from './containment.ts'
 
 /**

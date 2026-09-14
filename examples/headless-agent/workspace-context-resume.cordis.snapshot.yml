@@ -3,24 +3,24 @@
 # while the session is offline, then resumes through the public agent service.
 
 - id: persistence
-  name: '@origin-ai/xhe-session-persistence-jsonl'
+  name: '@origin-ai/cf-session-persistence-jsonl'
   config:
     root: './.sessions'
     compression: none
 
 - id: replay
-  name: '@origin-ai/xhe-llm-replay'
+  name: '@origin-ai/cf-llm-replay'
   config:
     file: !!js process.env.XHE_SNAPSHOT_FILE
     overrideFile: !!js process.env.XHE_SNAPSHOT_OVERRIDE
 
 - id: fs-local
-  name: '@origin-ai/xhe-fs-local'
+  name: '@origin-ai/cf-fs-local'
   config:
     cwd: !!js process.cwd()
 
 - id: agent
-  name: '@origin-ai/xhe-agent-spine-demo'
+  name: '@origin-ai/cf-agent-spine-demo'
   config:
     agents: []
     workspaceContext:

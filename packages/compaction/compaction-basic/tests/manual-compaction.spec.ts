@@ -1,37 +1,37 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import AgentLoop from '@origin-ai/xhe-agent-loop'
-import { mountAgentLoopTestDependencies } from '@origin-ai/xhe-agent-loop-testkit'
-import InvariantRegistry from '@origin-ai/xhe-invariants'
-import { CommandId } from '@origin-ai/xhe-commands/brand'
-import * as SessionInvariant from '@origin-ai/xhe-session/invariant'
-import * as AgentInvariant from '@origin-ai/xhe-agent/invariant'
-import * as AgentLoopInvariant from '@origin-ai/xhe-agent-loop/invariant'
-import * as CompactionInvariant from '@origin-ai/xhe-compaction/invariant'
-import * as CompactionBasicInvariant from '@origin-ai/xhe-compaction-basic/invariant'
-import { BasicCompactionEngine } from '@origin-ai/xhe-compaction-basic'
-import { CompactionId, isCompactCheckpointSource, ManualCompactionError } from '@origin-ai/xhe-compaction'
-import type { CompactionResult } from '@origin-ai/xhe-compaction'
+import AgentLoop from '@origin-ai/cf-agent-loop'
+import { mountAgentLoopTestDependencies } from '@origin-ai/cf-agent-loop-testkit'
+import InvariantRegistry from '@origin-ai/cf-invariants'
+import { CommandId } from '@origin-ai/cf-commands/brand'
+import * as SessionInvariant from '@origin-ai/cf-session/invariant'
+import * as AgentInvariant from '@origin-ai/cf-agent/invariant'
+import * as AgentLoopInvariant from '@origin-ai/cf-agent-loop/invariant'
+import * as CompactionInvariant from '@origin-ai/cf-compaction/invariant'
+import * as CompactionBasicInvariant from '@origin-ai/cf-compaction-basic/invariant'
+import { BasicCompactionEngine } from '@origin-ai/cf-compaction-basic'
+import { CompactionId, isCompactCheckpointSource, ManualCompactionError } from '@origin-ai/cf-compaction'
+import type { CompactionResult } from '@origin-ai/cf-compaction'
 import {
   createAssistantMessage,
   createUserMessage,
   LlmAdapter,
-} from '@origin-ai/xhe-llm'
+} from '@origin-ai/cf-llm'
 import type {
   ContentBlock,
   LlmResolvedModelInfo,
   Message,
   StreamChunk,
   TokenUsage,
-} from '@origin-ai/xhe-llm'
-import SessionStore, { Session, SessionId, type SessionEvent } from '@origin-ai/xhe-session'
-import LlmRuntime from '@origin-ai/xhe-llm'
-import TokenMeter from '@origin-ai/xhe-token-meter'
-import type { Agent } from '@origin-ai/xhe-agent'
+} from '@origin-ai/cf-llm'
+import SessionStore, { Session, SessionId, type SessionEvent } from '@origin-ai/cf-session'
+import LlmRuntime from '@origin-ai/cf-llm'
+import TokenMeter from '@origin-ai/cf-token-meter'
+import type { Agent } from '@origin-ai/cf-agent'
 import type {
   SummarizationInput,
   SummaryResult,
-} from '@origin-ai/xhe-compaction-basic/src/summarizer.ts'
+} from '@origin-ai/cf-compaction-basic/src/summarizer.ts'
 
 const MODEL = 'mock'
 const SIGNAL = new AbortController().signal

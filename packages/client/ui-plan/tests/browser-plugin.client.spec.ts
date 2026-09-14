@@ -7,9 +7,9 @@
  */
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import { SlotRegistry } from '@origin-ai/xhe-client-runtime/client'
-import type { SessionId } from '@origin-ai/xhe-client-runtime/client'
-import { LocaleRuntime } from '@origin-ai/xhe-client-locale/client'
+import { SlotRegistry } from '@origin-ai/cf-client-runtime/client'
+import type { SessionId } from '@origin-ai/cf-client-runtime/client'
+import { LocaleRuntime } from '@origin-ai/cf-client-locale/client'
 import { PlanChip } from '../src/client/PlanModeControl.tsx'
 import type { PlanChipInjected } from '../src/client/index.ts'
 import { apply, inject } from '../src/client/index.ts'

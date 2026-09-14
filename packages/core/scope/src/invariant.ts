@@ -1,11 +1,11 @@
-/** Package-owned scoped-dispatch invariants. @module @origin-ai/xhe-scope/invariant */
+/** Package-owned scoped-dispatch invariants. @module @origin-ai/cf-scope/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
-import { carrierKeyOf, isScopeCarrier } from '@origin-ai/xhe-scope'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
+import { carrierKeyOf, isScopeCarrier } from '@origin-ai/cf-scope'
 import { scopedSubjectResolverFor } from './scoped-events.generated.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-scope'
+const PACKAGE_NAME = '@origin-ai/cf-scope'
 
 /** Cordis companion plugin name. */
 export const name = 'scope-invariant'

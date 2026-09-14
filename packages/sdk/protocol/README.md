@@ -1,4 +1,4 @@
-# @origin-ai/xhe-sdk-protocol
+# @origin-ai/cf-sdk-protocol
 
 The shared wire protocol for the Xee Harness Enhanced SDK runtime: one newline-delimited JSON-RPC 2.0 transport class plus the named request, result, and notification types both wire ends speak. The package root enumerates the protocol consumer interface; source modules are not exported as deep imports. The server side is the [`xhe-sdk-jsonrpc-server`](../server/README.md) plugin; clients are [`xhe-sdk-client`](../client/README.md) (TypeScript) and the [Python SDK](../../../python/README.md) (which mirrors these shapes but does not import them). A pure library — no plugin, no Config, no registration.
 

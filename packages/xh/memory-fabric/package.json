@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-memory-fabric",
+  "name": "@origin-ai/cf-memory-fabric",
   "description": "HOT/WARM/COLD memory fabric for XH with SHA-256 content addressing, sqlite/vector index stubs, and compaction",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -26,13 +26,13 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "devDependencies": {
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

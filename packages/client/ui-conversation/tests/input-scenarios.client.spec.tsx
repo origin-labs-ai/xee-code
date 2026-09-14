@@ -13,22 +13,22 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render } from '@testing-library/react'
 import {
   EMPTY_CHAT_SNAPSHOT, EMPTY_CONVERSATION_VIEWS, SessionRuntime,
-} from '@origin-ai/xhe-client-runtime/client'
-import { InputTriggerService } from '@origin-ai/xhe-client-ui-input-trigger/client'
+} from '@origin-ai/cf-client-runtime/client'
+import { InputTriggerService } from '@origin-ai/cf-client-ui-input-trigger/client'
 import type {
   ClientSessionContext, CommandClaim, PickOutcome, SubmitEnvelope, SubmitImageAttachment, SubmitOutcome,
-} from '@origin-ai/xhe-client-ui-input-trigger/client'
+} from '@origin-ai/cf-client-ui-input-trigger/client'
 import { FakeApiClient, fakeRemote, ok } from '../../runtime/tests/fake-api.client.ts'
-import { makeTranslate } from '@origin-ai/xhe-client-test-runtime'
-import { zh as commonZh } from '@origin-ai/xhe-client-locale/src/locales/zh.ts'
+import { makeTranslate } from '@origin-ai/cf-client-test-runtime'
+import { zh as commonZh } from '@origin-ai/cf-client-locale/src/locales/zh.ts'
 import type { DraftAttachmentId } from '../src/client/input/contract.ts'
 import { SessionInputShell } from '../src/client/input/facade.ts'
 import { InputBar } from '../src/client/skeleton/InputBar.tsx'
 import type { InputBarProps } from '../src/client/skeleton/InputBar.tsx'
 import { zh } from '../src/client/locales.ts'
-import { bindSnapshotSelector } from '@origin-ai/xhe-client-test-runtime'
-import { createSnapshotStore } from '@origin-ai/xhe-client-runtime/client'
-import type { ConversationSnapshot } from '@origin-ai/xhe-client-runtime/client'
+import { bindSnapshotSelector } from '@origin-ai/cf-client-test-runtime'
+import { createSnapshotStore } from '@origin-ai/cf-client-runtime/client'
+import type { ConversationSnapshot } from '@origin-ai/cf-client-runtime/client'
 
 afterEach(cleanup)
 

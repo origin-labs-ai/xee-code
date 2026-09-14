@@ -12,11 +12,11 @@ import {
   type SessionNotification,
   type Stream,
 } from '@agentclientprotocol/sdk'
-import AttachmentStore, { AttachmentError, AttachmentId } from '@origin-ai/xhe-attachment'
-import type { ImageAttachmentLimits, ImageAttachmentRef, SaveImageAttachment, StoredImageAttachment } from '@origin-ai/xhe-attachment'
-import { type GenerateOptions, LlmAdapter, type LlmResolvedModelInfo, type StreamChunk } from '@origin-ai/xhe-llm'
-import AgentLoop from '@origin-ai/xhe-agent-loop'
-import { mountAgentLoopTestDependencies } from '@origin-ai/xhe-agent-loop-testkit'
+import AttachmentStore, { AttachmentError, AttachmentId } from '@origin-ai/cf-attachment'
+import type { ImageAttachmentLimits, ImageAttachmentRef, SaveImageAttachment, StoredImageAttachment } from '@origin-ai/cf-attachment'
+import { type GenerateOptions, LlmAdapter, type LlmResolvedModelInfo, type StreamChunk } from '@origin-ai/cf-llm'
+import AgentLoop from '@origin-ai/cf-agent-loop'
+import { mountAgentLoopTestDependencies } from '@origin-ai/cf-agent-loop-testkit'
 import * as AcpPlugin from '../src/index.ts'
 import type { AcpConfig } from '../src/index.ts'
 

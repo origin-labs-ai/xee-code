@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import InvariantRegistry from '@origin-ai/xhe-invariants'
+import InvariantRegistry from '@origin-ai/cf-invariants'
 import { credentialRef } from '../src/index.ts'
 import * as CredentialsInvariant from '../src/invariant.ts'
 import { MemoryCredentials } from './memory.ts'
@@ -31,7 +31,7 @@ describe('credentials invariant companion', () => {
     await ctx.plugin(CredentialsInvariant)
 
     expect(() => {
-      ctx.invariants.register('@origin-ai/xhe-credentials', () => {})
+      ctx.invariants.register('@origin-ai/cf-credentials', () => {})
     }).toThrow(/already registered/)
   })
 })

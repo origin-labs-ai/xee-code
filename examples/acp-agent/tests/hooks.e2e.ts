@@ -8,7 +8,7 @@ import {
   launchAcpTestAgent,
   type AgentUnderTest,
   type LaunchedAcpTestAgent,
-} from '@origin-ai/xhe-acp-snapshot'
+} from '@origin-ai/cf-acp-snapshot'
 import { cleanupAcpExampleTest } from './cleanup.ts'
 
 /**

@@ -10,9 +10,9 @@ import { tmpdir } from 'node:os'
 import { basename, join } from 'node:path'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import type { SandboxPolicy } from '@origin-ai/xhe-sandbox'
-import { SessionId } from '@origin-ai/xhe-session'
-import { LocalSandboxProvider } from '@origin-ai/xhe-sandbox-local'
+import type { SandboxPolicy } from '@origin-ai/cf-sandbox'
+import { SessionId } from '@origin-ai/cf-session'
+import { LocalSandboxProvider } from '@origin-ai/cf-sandbox-local'
 
 /** Cross-file state shared with the vi.mock factory (hoisting contract). */
 const mockState = vi.hoisted(() => ({
@@ -24,7 +24,7 @@ const mockState = vi.hoisted(() => ({
   disposeFailure: undefined as Error | undefined,
 }))
 
-vi.mock('@origin-ai/xhe-sandbox-windows-acl', () => {
+vi.mock('@origin-ai/cf-sandbox-windows-acl', () => {
   class MockAclWriteGrant {
     readonly writeSid: string
     readonly added: Array<{ path: string; standing: boolean }> = []

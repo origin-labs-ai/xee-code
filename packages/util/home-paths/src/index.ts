@@ -1,7 +1,7 @@
 /**
  * Shared filesystem path helpers for CodeFusion user data.
  *
- * @module @origin-ai/xhe-home-paths
+ * @module @origin-ai/cf-home-paths
  */
 
 import { cpSync, statSync } from 'node:fs'

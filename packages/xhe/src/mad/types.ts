@@ -4,7 +4,7 @@
  * Core type definitions for the Multi-Agent Deployment architecture.
  * This implements the complete GOD Runtime specification from TRANSCRIPT.md.
  * 
- * @origin-ai/xhe/mad
+ * @origin-ai/cf/mad
  * @version 2.0.0
  * 
  * Also known as:
@@ -24,7 +24,7 @@ export interface XHEIdentity {
   /** Alternative names / aliases */
   aliases: ('XeeCode' | 'XCode' | 'Xee Harness Enhanced')[]
   /** Package scope */
-  packageScope: '@origin-ai/xhe'
+  packageScope: '@origin-ai/cf'
   /** Fork origin */
   forkOf: 'DSH/SeepSeek Harness'
 }
@@ -32,7 +32,7 @@ export interface XHEIdentity {
 export const XHE_IDENTITY: XHEIdentity = {
   name: 'Xee Harness Enhanced',
   aliases: ['XeeCode', 'XCode', 'Xee Harness Enhanced'],
-  packageScope: '@origin-ai/xhe',
+  packageScope: '@origin-ai/cf',
   forkOf: 'DSH/SeepSeek Harness'
 }
 

@@ -2,18 +2,18 @@
  * JSON-RPC methods and notifications for out-of-process harness SDKs.
  * The surrounding context owns plugins, persistence, and configured adapters.
  *
- * @module @origin-ai/xhe-sdk-jsonrpc-server/server
+ * @module @origin-ai/cf-sdk-jsonrpc-server/server
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import { resolve } from 'node:path'
-import type { Agent, AgentHandle } from '@origin-ai/xhe-agent'
-import { createUserMessage } from '@origin-ai/xhe-llm'
-import { carrierKeyOf, type Scoped } from '@origin-ai/xhe-scope'
-import { SessionId } from '@origin-ai/xhe-session'
-import type SubagentRuntime from '@origin-ai/xhe-subagent'
-import type { SubagentRunEndInfo } from '@origin-ai/xhe-subagent'
-import * as LlmDeepSeek from '@origin-ai/xhe-llm-deepseek'
+import type { Agent, AgentHandle } from '@origin-ai/cf-agent'
+import { createUserMessage } from '@origin-ai/cf-llm'
+import { carrierKeyOf, type Scoped } from '@origin-ai/cf-scope'
+import { SessionId } from '@origin-ai/cf-session'
+import type SubagentRuntime from '@origin-ai/cf-subagent'
+import type { SubagentRunEndInfo } from '@origin-ai/cf-subagent'
+import * as LlmDeepSeek from '@origin-ai/cf-llm-deepseek'
 import type {
   InitializeParams,
   InitializeResult,
@@ -23,7 +23,7 @@ import type {
   SessionPromptResult,
   SubagentFinishedNotification,
   SubagentStartedNotification,
-} from '@origin-ai/xhe-sdk-protocol'
+} from '@origin-ai/cf-sdk-protocol'
 
 interface SessionRecord {
   handle: AgentHandle
@@ -219,7 +219,7 @@ export class HarnessSdkJsonRpcServer {
     // No preset composition: this server's compositions keep the model-facing
     // rows in the host plane, so this agent reads them from the global layer. A
     // deployment that configures a roster has to join one here first
-    // (@origin-ai/xhe-agent-presets README, "Composing a child agent").
+    // (@origin-ai/cf-agent-presets README, "Composing a child agent").
     const handle = await this.ctx.agents.create({
       sessionId: SessionId(sessionId),
       meta: { cwd: this.cwd },

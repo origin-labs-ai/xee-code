@@ -1,13 +1,13 @@
 /**
  * E2B provider for the filesystem capability seam. Paths, contents, and
  * atomic staging files remain inside the shared remote sandbox.
- * @module @origin-ai/xhe-fs-e2b
+ * @module @origin-ai/cf-fs-e2b
  */
 
 import { createHash, randomUUID } from 'node:crypto'
 import { Buffer } from 'node:buffer'
 import { posix } from 'node:path'
-import { FileSystem, FsError, FsTargetKey, FsVersion } from '@origin-ai/xhe-fs'
+import { FileSystem, FsError, FsTargetKey, FsVersion } from '@origin-ai/cf-fs'
 import type {
   FsDirEntry,
   FsEditOutcome,
@@ -17,15 +17,15 @@ import type {
   FsTarget,
   FsWriteIntent,
   FsWriteOutcome,
-} from '@origin-ai/xhe-fs'
+} from '@origin-ai/cf-fs'
 import {
   CommandExitError,
   e2bControlEnvs,
   FileNotFoundError,
   FileType,
   quoteE2BShellArg,
-} from '@origin-ai/xhe-e2b'
-import type { EntryInfo, Sandbox } from '@origin-ai/xhe-e2b'
+} from '@origin-ai/cf-e2b'
+import type { EntryInfo, Sandbox } from '@origin-ai/cf-e2b'
 
 const VERSION_METADATA_KEY = 'xhe-version'
 const BINARY_SAMPLE_BYTES = 8192

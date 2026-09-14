@@ -3,12 +3,12 @@
  * children. Kept apart from the service so composition helpers can read it
  * without importing the registry.
  *
- * @module @origin-ai/xhe-subagent/depth
+ * @module @origin-ai/cf-subagent/depth
  */
 
-import type { Agent } from '@origin-ai/xhe-agent'
+import type { Agent } from '@origin-ai/cf-agent'
 
-declare module '@origin-ai/xhe-agent' {
+declare module '@origin-ai/cf-agent' {
   interface AgentOptions {
     /** Delegation depth: zero for a top-level agent and parent depth + 1 for a child. */
     subagentDepth?: number

@@ -9,16 +9,16 @@ import {
 
 const experimental: WorkspaceManifest = {
   dir: 'packages/experimental/prototype',
-  manifest: { name: '@origin-ai/xhe-experimental-prototype', private: true },
+  manifest: { name: '@origin-ai/cf-experimental-prototype', private: true },
 }
 
 describe('experimental workspace constraints', () => {
   it('requires the experimental package-name prefix', () => {
     expect(checkExperimentalManifest({
       ...experimental,
-      manifest: { ...experimental.manifest, name: '@origin-ai/xhe-prototype' },
+      manifest: { ...experimental.manifest, name: '@origin-ai/cf-prototype' },
     })).toEqual([
-      '@origin-ai/xhe-prototype: experimental package name must start with "@origin-ai/xhe-experimental-"',
+      '@origin-ai/cf-prototype: experimental package name must start with "@origin-ai/cf-experimental-"',
     ])
   })
 
@@ -28,8 +28,8 @@ describe('experimental workspace constraints', () => {
       ...experimental,
       manifest: { ...experimental.manifest, private: false, publishConfig: { access: 'public' } },
     })).toEqual([
-      '@origin-ai/xhe-experimental-prototype: experimental package must set "private": true',
-      '@origin-ai/xhe-experimental-prototype: experimental package must omit publishConfig',
+      '@origin-ai/cf-experimental-prototype: experimental package must set "private": true',
+      '@origin-ai/cf-experimental-prototype: experimental package must omit publishConfig',
     ])
   })
 
@@ -39,11 +39,11 @@ describe('experimental workspace constraints', () => {
       expect(checkExperimentalDependencyIsolation([experimental, {
         dir: 'packages/core/consumer',
         manifest: {
-          name: '@origin-ai/xhe-consumer',
-          [section]: { '@origin-ai/xhe-experimental-prototype': 'workspace:^' },
+          name: '@origin-ai/cf-consumer',
+          [section]: { '@origin-ai/cf-experimental-prototype': 'workspace:^' },
         },
       }])).toEqual([
-        `@origin-ai/xhe-consumer: ${section}.@origin-ai/xhe-experimental-prototype must not reference an experimental package`,
+        `@origin-ai/cf-consumer: ${section}.@origin-ai/cf-experimental-prototype must not reference an experimental package`,
       ])
     },
   )
@@ -52,25 +52,25 @@ describe('experimental workspace constraints', () => {
     const manifests: WorkspaceManifest[] = [experimental, {
       dir: 'packages/core/test-only',
       manifest: {
-        name: '@origin-ai/xhe-test-only',
-        devDependencies: { '@origin-ai/xhe-experimental-prototype': 'workspace:^' },
+        name: '@origin-ai/cf-test-only',
+        devDependencies: { '@origin-ai/cf-experimental-prototype': 'workspace:^' },
       },
     }, {
       dir: 'packages/experimental/consumer',
       manifest: {
-        name: '@origin-ai/xhe-experimental-consumer',
-        dependencies: { '@origin-ai/xhe-experimental-prototype': 'workspace:^' },
+        name: '@origin-ai/cf-experimental-consumer',
+        dependencies: { '@origin-ai/cf-experimental-prototype': 'workspace:^' },
       },
     }, {
       dir: 'python/sdk-runtime',
       manifest: {
-        name: '@origin-ai/xhe-python-runtime',
-        dependencies: { '@origin-ai/xhe-experimental-prototype': 'workspace:^' },
+        name: '@origin-ai/cf-python-runtime',
+        dependencies: { '@origin-ai/cf-experimental-prototype': 'workspace:^' },
       },
     }]
 
     expect(checkExperimentalDependencyIsolation(manifests)).toEqual([
-      '@origin-ai/xhe-python-runtime: dependencies.@origin-ai/xhe-experimental-prototype must not reference an experimental package',
+      '@origin-ai/cf-python-runtime: dependencies.@origin-ai/cf-experimental-prototype must not reference an experimental package',
     ])
   })
 })

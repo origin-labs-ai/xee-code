@@ -5,7 +5,7 @@
  */
 
 import { z } from 'zod'
-import type { AskUserQuestionAnswer } from '@origin-ai/xhe-user-questions/types'
+import type { AskUserQuestionAnswer } from '@origin-ai/cf-user-questions/types'
 import type { QuestionResponsePayload } from './questions.ts'
 import type { Wire } from './rpc.schema.ts'
 import { sessionIdSchema } from './sessions.schema.ts'

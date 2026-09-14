@@ -16,7 +16,7 @@ interface CssPlugin {
 
 function cssPlugin(name: 'xhe-css-modules-inline' | 'xhe-css-global-inline' | 'xhe-css-text-inline'): CssPlugin {
   const configs = clientBundle(
-    '@origin-ai/xhe-client-test',
+    '@origin-ai/cf-client-test',
     ['lib/types/index.js', 'lib/types/invariant.js'],
   )({ env: { XHE_BUILD_FACE: 'client' } })
   const client = configs.find(config => config.platform === 'browser')

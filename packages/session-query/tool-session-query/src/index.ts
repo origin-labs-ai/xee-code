@@ -1,14 +1,14 @@
 /**
  * Model-facing, workspace-authorized session-history search and read tools.
  *
- * @module @origin-ai/xhe-tool-session-query
+ * @module @origin-ai/cf-tool-session-query
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
-import { defineTool } from '@origin-ai/xhe-tools'
-import type {} from '@origin-ai/xhe-system-prompt'
+import { MAX_TIMER_DELAY_MS } from '@origin-ai/cf-timeout'
+import { defineTool } from '@origin-ai/cf-tools'
+import type {} from '@origin-ai/cf-system-prompt'
 import { toolInput } from './input.ts'
 import { operations } from './operations.ts'
 import { presentation } from './presentation.ts'

@@ -7,11 +7,11 @@
  * Counterexample Hunter + Red-Team + Independent Rebuilder). Proof lifecycle:
  * propose → lemma-attack → formal-check → counterexample → repair → accept.
  *
- * @module @origin-ai/xhe-xh-verification
+ * @module @origin-ai/cf-xh-verification
  */
 
 import { Service } from '@deepseek-ai/cordis'
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 
 // ---------------------------------------------------------------------------
 // Branded identities

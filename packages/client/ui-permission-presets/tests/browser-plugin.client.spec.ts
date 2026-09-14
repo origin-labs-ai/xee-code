@@ -10,12 +10,12 @@
  */
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it } from 'vitest'
-import { SlotRegistry, type SessionId } from '@origin-ai/xhe-client-runtime/client'
-import { LocaleRuntime } from '@origin-ai/xhe-client-locale/client'
-import { TestRemote } from '@origin-ai/xhe-client-test-runtime'
-import { apply as settingsApply, inject as settingsInject } from '@origin-ai/xhe-client-ui-settings/client'
-import type { CommandDecoration } from '@origin-ai/xhe-client-ui-commands/client'
-import type { PermissionSelect } from '@origin-ai/xhe-permission-presets/client'
+import { SlotRegistry, type SessionId } from '@origin-ai/cf-client-runtime/client'
+import { LocaleRuntime } from '@origin-ai/cf-client-locale/client'
+import { TestRemote } from '@origin-ai/cf-client-test-runtime'
+import { apply as settingsApply, inject as settingsInject } from '@origin-ai/cf-client-ui-settings/client'
+import type { CommandDecoration } from '@origin-ai/cf-client-ui-commands/client'
+import type { PermissionSelect } from '@origin-ai/cf-permission-presets/client'
 import {
   PermissionRow, type PermissionRowInjected,
 } from '../src/client/PermissionRow.tsx'

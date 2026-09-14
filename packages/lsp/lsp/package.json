@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-lsp",
+  "name": "@origin-ai/cf-lsp",
   "description": "Abstract LSP capability seam (ctx.lsp) for the Xee Harness Enhanced — language-server provider registry keyed by branded id and extension mapping, order-independent per-query selection, normalized definition/references/implementation/hover requests and results, and the LspError taxonomy",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -32,15 +32,15 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "devDependencies": {
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

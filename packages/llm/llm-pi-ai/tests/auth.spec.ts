@@ -3,8 +3,8 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import LocalCredentialProvider from '@origin-ai/xhe-credentials-local'
-import { credentialKey, credentialRef } from '@origin-ai/xhe-credentials'
+import LocalCredentialProvider from '@origin-ai/cf-credentials-local'
+import { credentialKey, credentialRef } from '@origin-ai/cf-credentials'
 import { authContextFrom, credentialStoreFrom, recordKeyFor } from '../src/auth.ts'
 
 const CODEX = recordKeyFor('openai-codex')

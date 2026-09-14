@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { zstdCompressSync } from 'node:zlib'
-import type { SessionEvent } from '@origin-ai/xhe-session'
-import { CallId, type StreamChunk } from '@origin-ai/xhe-llm'
+import type { SessionEvent } from '@origin-ai/cf-session'
+import { CallId, type StreamChunk } from '@origin-ai/cf-llm'
 import {
   decodeStorageRecord,
   MAX_PACKED_DATA_BYTES,

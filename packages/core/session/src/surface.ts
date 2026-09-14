@@ -5,10 +5,10 @@
  * Browser-safe: web clients consume this subpath export, so it must stay free
  * of `node:` imports (they break the vite bundle).
  *
- * @module @origin-ai/xhe-session/surface
+ * @module @origin-ai/cf-session/surface
  */
 
-import type { Message } from '@origin-ai/xhe-llm'
+import type { Message } from '@origin-ai/cf-llm'
 import type { SessionEvent, SurfaceEvent, SurfaceEventType, SurfaceOp } from './types.ts'
 
 /** Runtime counterpart of the message-producing event union. */

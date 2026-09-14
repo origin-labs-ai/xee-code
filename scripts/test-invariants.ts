@@ -8,14 +8,14 @@
 import { expect } from 'vitest'
 import { FiberState, Inject, RegistryService, ValidationError } from '@deepseek-ai/cordis'
 import type { Context, Plugin } from '@deepseek-ai/cordis'
-import { AttachmentStore } from '@origin-ai/xhe-attachment'
+import { AttachmentStore } from '@origin-ai/cf-attachment'
 import type {
   ImageAttachmentLimits,
   ImageAttachmentRef,
   SaveImageAttachment,
   StoredImageAttachment,
-} from '@origin-ai/xhe-attachment'
-import InvariantRegistry from '@origin-ai/xhe-invariants'
+} from '@origin-ai/cf-attachment'
+import InvariantRegistry from '@origin-ai/cf-invariants'
 
 declare global {
   interface ImportMeta {

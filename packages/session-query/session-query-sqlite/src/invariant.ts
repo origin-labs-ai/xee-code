@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-session-query-sqlite`.
- * @module @origin-ai/xhe-session-query-sqlite/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-session-query-sqlite`.
+ * @module @origin-ai/cf-session-query-sqlite/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-session-query-sqlite'
+const PACKAGE_NAME = '@origin-ai/cf-session-query-sqlite'
 
 /** Cordis companion plugin name. */
 export const name = 'session-query-sqlite-invariant'

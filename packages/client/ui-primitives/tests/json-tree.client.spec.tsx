@@ -2,7 +2,7 @@
 
 import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { JsonTree } from '@origin-ai/xhe-client-ui-primitives'
+import { JsonTree } from '@origin-ai/cf-client-ui-primitives'
 
 let writeText: ReturnType<typeof vi.fn>
 

@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-client-ui-renderer",
+  "name": "@origin-ai/cf-client-ui-renderer",
   "description": "Browser UI renderer: React slot bindings, ctx.uiRenderer, and the assembled application root",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -32,7 +32,7 @@
   "xhe": {
     "client": {
       "inject": [
-        "@origin-ai/xhe-client-runtime"
+        "@origin-ai/cf-client-runtime"
       ],
       "platform": "web",
       "immediately": true
@@ -47,15 +47,15 @@
     "use-sync-external-store": "1.2.0"
   },
   "peerDependencies": {
-    "@origin-ai/xhe-client-runtime": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/cf-client-runtime": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "devDependencies": {
-    "@origin-ai/xhe-client-runtime": "workspace:^",
-    "@origin-ai/xhe-client-test-runtime": "workspace:^",
-    "@origin-ai/xhe-client-ui-slots": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/cf-client-runtime": "workspace:^",
+    "@origin-ai/cf-client-test-runtime": "workspace:^",
+    "@origin-ai/cf-client-ui-slots": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
     "@types/react": "~18.3.1",
     "@types/react-dom": "~18.3.0",
     "@deepseek-ai/cordis": "workspace:^",

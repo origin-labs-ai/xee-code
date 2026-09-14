@@ -2,13 +2,13 @@
 /** todo_write atomic Tool presentation and its plan-summary model. */
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import type { TodoItem, ToolResultNode } from '@origin-ai/xhe-client-runtime/client'
-import { makeTranslate } from '@origin-ai/xhe-client-test-runtime'
-import { zh as commonZh } from '@origin-ai/xhe-client-locale/src/locales/zh.ts'
+import type { TodoItem, ToolResultNode } from '@origin-ai/cf-client-runtime/client'
+import { makeTranslate } from '@origin-ai/cf-client-test-runtime'
+import { zh as commonZh } from '@origin-ai/cf-client-locale/src/locales/zh.ts'
 import { TodoRow, todoToolview } from '../src/client/tool/toolviews/todo-row.tsx'
 import { planSummary } from '../src/client/tool/toolviews/plan-summary.ts'
 import { CONVERSATION_NS as NS } from '../src/client/locale.ts'
-import { zh } from '@origin-ai/xhe-client-ui-conversation/src/client/locales.ts'
+import { zh } from '@origin-ai/cf-client-ui-conversation/src/client/locales.ts'
 
 type TodoRowProps = Parameters<typeof TodoRow>[0]
 

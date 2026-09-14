@@ -1,7 +1,7 @@
 /** Injected faces and the Package-owned `tool.view.cordis` slot declaration. */
 
-import type { SessionId } from '@origin-ai/xhe-client-connection/client'
-import type { HostObservable } from '@origin-ai/xhe-client-ui-slots'
+import type { SessionId } from '@origin-ai/cf-client-connection/client'
+import type { HostObservable } from '@origin-ai/cf-client-ui-slots'
 import type {
   CordisRunActivity, CordisRunFailure, CordisUserRunRequest, DynamicCordisLivePackage,
   DynamicCordisRenderFailure,
@@ -20,7 +20,7 @@ export interface CordisToolViewOwnerProps {
   readonly pluginRunId: CordisDynamicPluginRunId
 }
 
-declare module '@origin-ai/xhe-client-ui-slots' {
+declare module '@origin-ai/cf-client-ui-slots' {
   interface SlotMap {
     /**
      * Interactive Package-owned region rendered inside the latest eligible

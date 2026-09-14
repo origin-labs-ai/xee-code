@@ -6,8 +6,8 @@
  */
 
 import { z } from 'zod'
-import type { SessionEvent, SessionId } from '@origin-ai/xhe-session/types'
-import type { MessageId } from '@origin-ai/xhe-llm/brand'
+import type { SessionEvent, SessionId } from '@origin-ai/cf-session/types'
+import type { MessageId } from '@origin-ai/cf-llm/brand'
 import type { RequestPayload, ResponseValue } from './rpc-map.ts'
 import type { Wire } from './rpc.schema.ts'
 import type {
@@ -15,7 +15,7 @@ import type {
   ModelReasoningEffort, ModelSelection, SessionListMetadata, SessionProjectionsBlock, SessionSearchItem, SessionSummary,
 } from './sessions.ts'
 import type { ToolEventView } from './events.ts'
-import type { AttachmentIdType, ImageAttachmentLimits, ImageAttachmentRef } from '@origin-ai/xhe-attachment'
+import type { AttachmentIdType, ImageAttachmentLimits, ImageAttachmentRef } from '@origin-ai/cf-attachment'
 import type { WorkspaceId } from './workspace.ts'
 import {
   SESSION_SEARCH_RESULT_LIMIT,

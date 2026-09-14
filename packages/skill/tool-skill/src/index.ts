@@ -1,16 +1,16 @@
 /**
  * Durable session skill catalog and model-facing `skill` loader tool.
  *
- * @module @origin-ai/xhe-tool-skill
+ * @module @origin-ai/cf-tool-skill
  */
 
 import { createHash } from 'node:crypto'
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import type { Agent, PreStepDecision } from '@origin-ai/xhe-agent'
-import { defineTool } from '@origin-ai/xhe-tools'
-import { createUserMessage } from '@origin-ai/xhe-llm'
-import type { UserMessage } from '@origin-ai/xhe-session'
+import type { Agent, PreStepDecision } from '@origin-ai/cf-agent'
+import { defineTool } from '@origin-ai/cf-tools'
+import { createUserMessage } from '@origin-ai/cf-llm'
+import type { UserMessage } from '@origin-ai/cf-session'
 import {
   escapeText,
   isModelInvocable,
@@ -19,7 +19,7 @@ import {
   renderSkillContent,
   type SkillInvocationSource,
   type SkillSummary,
-} from '@origin-ai/xhe-skill'
+} from '@origin-ai/cf-skill'
 
 export const name = 'tool-skill'
 export const inject = ['agents', 'tools', 'skills']
@@ -40,7 +40,7 @@ export interface SkillCatalogSource {
   readonly entries: readonly { readonly name: string; readonly description: string }[]
 }
 
-declare module '@origin-ai/xhe-llm' {
+declare module '@origin-ai/cf-llm' {
   interface MessageSourceMap {
     'skill-catalog': SkillCatalogSource
   }

@@ -1,12 +1,12 @@
 /**
  * Model-facing result rendering for the bash tool.
  *
- * @module @origin-ai/xhe-tool-bash/render
+ * @module @origin-ai/cf-tool-bash/render
  */
 
-import type { ShellProcessRead, ShellRunResult, ShellSandboxInfo, CollectedOutput } from '@origin-ai/xhe-shell'
-import type { SandboxMode } from '@origin-ai/xhe-sandbox'
-import { escalationHintMarker, sandboxDenialMarker } from '@origin-ai/xhe-sandbox'
+import type { ShellProcessRead, ShellRunResult, ShellSandboxInfo, CollectedOutput } from '@origin-ai/cf-shell'
+import type { SandboxMode } from '@origin-ai/cf-sandbox'
+import { escalationHintMarker, sandboxDenialMarker } from '@origin-ai/cf-sandbox'
 
 /** Append the truncation notice (with the full-output spill path) to a stream's text. */
 function streamText(output: CollectedOutput): string {
@@ -96,8 +96,8 @@ export function renderProcessRead(
 
 /**
  * The exit-status parse is the shared marker-contract half of the shell-tool
- * rendering story, owned by `@origin-ai/xhe-shell` so `xhe-tool-pwsh` reuses
+ * rendering story, owned by `@origin-ai/cf-shell` so `xhe-tool-pwsh` reuses
  * it (its renderer emits the same markers). Re-exported here to keep
  * `../src/render.ts` a single import root for bash-tool consumers.
  */
-export { parseExitStatus, type ParsedExitStatus } from '@origin-ai/xhe-shell'
+export { parseExitStatus, type ParsedExitStatus } from '@origin-ai/cf-shell'

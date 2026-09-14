@@ -4,16 +4,16 @@
  * Session backs every message control in that Session, so a single list read
  * seeds the whole transcript. Mutations go through the generated
  * messageFeedback Remote; the Host owns per-item compare-and-set.
- * @module @origin-ai/xhe-client-ui-message-feedback/client
+ * @module @origin-ai/cf-client-ui-message-feedback/client
  */
 
-import type { ClientContext, SessionId } from '@origin-ai/xhe-client-runtime/client'
+import type { ClientContext, SessionId } from '@origin-ai/cf-client-runtime/client'
 // Type-only: pulls the generated Remote API and ctx.remote merge through the Client assembly boundary.
-import type {} from '@origin-ai/xhe-api-remotes/client'
+import type {} from '@origin-ai/cf-api-remotes/client'
 // Type-only: pulls the ui-conversation SlotMap merge (the assistant-actions entry).
-import type {} from '@origin-ai/xhe-client-ui-conversation/client'
+import type {} from '@origin-ai/cf-client-ui-conversation/client'
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
-import type {} from '@origin-ai/xhe-client-locale/client'
+import type {} from '@origin-ai/cf-client-locale/client'
 import { MessageFeedbackController } from './controller.ts'
 import { MessageFeedbackActions } from './MessageFeedbackActions.tsx'
 import type { MessageFeedbackInjected } from './slots.ts'

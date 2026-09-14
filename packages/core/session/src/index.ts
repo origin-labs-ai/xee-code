@@ -3,17 +3,17 @@
  * the derived LLM message history. Persistence is a plugin concern (subscribe
  * to `session/event`, drain on `session/flush`).
  *
- * @module @origin-ai/xhe-session
+ * @module @origin-ai/cf-session
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'
 import { isAbsolute } from 'node:path'
-import { deepFreeze } from '@origin-ai/xhe-llm'
-import { scopeOf, scopeTarget } from '@origin-ai/xhe-scope'
-import type { Scoped } from '@origin-ai/xhe-scope'
-import type { Message } from '@origin-ai/xhe-llm'
+import { deepFreeze } from '@origin-ai/cf-llm'
+import { scopeOf, scopeTarget } from '@origin-ai/cf-scope'
+import type { Scoped } from '@origin-ai/cf-scope'
+import type { Message } from '@origin-ai/cf-llm'
 import { SESSION_FORMAT_VERSION, SessionId } from './types.ts'
-import type { TypertLookup } from '@origin-ai/xhe-typert-protocol'
+import type { TypertLookup } from '@origin-ai/cf-typert-protocol'
 import type { CreateSessionOptions, EpochHeader, PrepareSessionOptions, RequestContext, SessionEvent, SessionEventMap, SessionEventType, SessionHeader, SurfaceIntent, SurfaceEventType } from './types.ts'
 import { snapshotJsonValue } from './json.ts'
 import { deriveEventMessage, SurfaceManager } from './surface.ts'
@@ -23,7 +23,7 @@ import { foldRequestHeader } from './request-header.ts'
 export * from './types.ts'
 export { SessionPreparation } from './preparation.ts'
 export type { SessionPreparationOptions } from './preparation.ts'
-export type { AssistantMessage, ToolResultMessage, UserMessage } from '@origin-ai/xhe-llm'
+export type { AssistantMessage, ToolResultMessage, UserMessage } from '@origin-ai/cf-llm'
 export { isJsonValue, snapshotJsonValue } from './json.ts'
 export type { JsonValue } from './json.ts'
 export { interruptedTurnClosers, TOOL_NOT_STARTED, TOOL_OUTCOME_UNKNOWN } from './repair.ts'
@@ -45,7 +45,7 @@ declare module '@deepseek-ai/cordis' {
      * back with a paired disposal; detach requested during dispatch is deferred.
      * A returned-promise rejection is logged but cannot retroactively veto this
      * synchronous boundary.
-     * Scope-filtered dispatch (`@origin-ai/xhe-scope`): agent-scoped listeners
+     * Scope-filtered dispatch (`@origin-ai/cf-scope`): agent-scoped listeners
      * receive only sessions entered through that agent's context.
      * @param session - the session just entered and announced.
      * @dshScopeScan unsupported
@@ -56,7 +56,7 @@ declare module '@deepseek-ai/cordis' {
      * Emitted once when an announced session leaves the store, including
      * publication rollback, but never for an entry whose creation announcement
      * did not begin. Listener failures are logged and contained.
-     * Scope-filtered dispatch (`@origin-ai/xhe-scope`) reuses the owner scope.
+     * Scope-filtered dispatch (`@origin-ai/cf-scope`) reuses the owner scope.
      * @param session - the session that is no longer live in the store.
      * @dshScopeScan unsupported
      * @mode emit
@@ -66,7 +66,7 @@ declare module '@deepseek-ai/cordis' {
      * Post-commit, fire-and-forget append feed. The listener snapshot resolves
      * before the log push, but callbacks run after it; observer failures are
      * logged and contained without making the committed append fail.
-     * Scope-filtered dispatch (`@origin-ai/xhe-scope`): agent-scoped listeners
+     * Scope-filtered dispatch (`@origin-ai/cf-scope`): agent-scoped listeners
      * receive only events from sessions entered through that agent's context.
      * @param session - the session whose log grew.
      * @param event - the appended event, exactly as recorded.
@@ -77,7 +77,7 @@ declare module '@deepseek-ai/cordis' {
     /**
      * Awaited parallel durability checkpoint: every listener runs and the
      * caller awaits all of them, with no waterfall veto. Scope-filtered dispatch
-     * (`@origin-ai/xhe-scope`) reuses the session's owner scope.
+     * (`@origin-ai/cf-scope`) reuses the session's owner scope.
      * @param session - the session whose buffered events must reach durable storage.
      * @dshScopeScan unsupported
      * @mode parallel
@@ -86,7 +86,7 @@ declare module '@deepseek-ai/cordis' {
   }
 }
 
-declare module '@origin-ai/xhe-typert-protocol' {
+declare module '@origin-ai/cf-typert-protocol' {
   interface TypertLookupMap {
     session: TypertLookup<Session, SessionId>
   }
@@ -799,8 +799,8 @@ export class SessionStore extends Service {
       typeCtx.typert.lookups.register('session', {
         parameter: 'session',
         wire: 'sessionId',
-        hostTypeSymbol: '@origin-ai/xhe-session#Session',
-        wireTypeSymbol: '@origin-ai/xhe-session/types#SessionId',
+        hostTypeSymbol: '@origin-ai/cf-session#Session',
+        wireTypeSymbol: '@origin-ai/cf-session/types#SessionId',
         resolve: sessionId => this.get(sessionId),
       })
     })

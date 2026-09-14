@@ -7,7 +7,7 @@
     path: ./cordis.yml
     patches:
       - id: acp-agent
-        name: '@origin-ai/xhe-acp-demo'
+        name: '@origin-ai/cf-acp-demo'
         config:
           provider: deepseek-official
           model: deepseek-v4-pro

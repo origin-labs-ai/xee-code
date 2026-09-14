@@ -1,10 +1,10 @@
-/** Package-owned durable todo-snapshot invariants. @module @origin-ai/xhe-tool-todo/invariant */
+/** Package-owned durable todo-snapshot invariants. @module @origin-ai/cf-tool-todo/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-tool-todo'
+const PACKAGE_NAME = '@origin-ai/cf-tool-todo'
 const TODO_STATUSES = new Set(['pending', 'in_progress', 'completed'])
 
 /** Cordis companion plugin name. */

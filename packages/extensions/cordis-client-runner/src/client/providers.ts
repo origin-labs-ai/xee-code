@@ -1,9 +1,9 @@
 /** Built-in Client inspect providers over live Client-owned services. */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { JsonValue } from '@origin-ai/xhe-api-remotes/client'
-import type { SlotRegistry } from '@origin-ai/xhe-client-runtime/client'
-import type {} from '@origin-ai/xhe-client-ui-theme/client'
+import type { JsonValue } from '@origin-ai/cf-api-remotes/client'
+import type { SlotRegistry } from '@origin-ai/cf-client-runtime/client'
+import type {} from '@origin-ai/cf-client-ui-theme/client'
 import { queryEventApi, queryServiceApi } from './api-catalog.ts'
 import type { ClientCordisInspectProviderRegistration } from './inspect-registry.ts'
 import { CLIENT_SLOT_API } from './slot-catalog.ts'

@@ -17,8 +17,8 @@ import type {
   DynamicCordisResolveAck,
   DynamicCordisRunResolution,
   DynamicCordisRunResponse,
-} from '@origin-ai/xhe-api-remotes/client'
-import type { SessionId } from '@origin-ai/xhe-client-connection/client'
+} from '@origin-ai/cf-api-remotes/client'
+import type { SessionId } from '@origin-ai/cf-client-connection/client'
 import { errorDetails } from './runtime.ts'
 import type { CordisErrorDetails, CordisObservable, DynamicCordisPackageRunner } from './runtime.ts'
 

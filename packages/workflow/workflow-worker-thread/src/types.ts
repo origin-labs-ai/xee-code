@@ -2,12 +2,12 @@
  * Non-protocol wire vocabulary for the worker-thread engine: the `workerData` init payload and
  * the child-port interfaces the worker-side runtime consumes. Host/worker messages are defined in
  * `./protocol.ts`; transported child requests and results are plain JSON for structured clone.
- * @module @origin-ai/xhe-workflow-worker-thread/types
+ * @module @origin-ai/cf-workflow-worker-thread/types
  */
 
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import type { ObjectJsonSchema } from '@origin-ai/xhe-tools'
-import type { WorkflowMeta } from '@origin-ai/xhe-workflow'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import type { ObjectJsonSchema } from '@origin-ai/cf-tools'
+import type { WorkflowMeta } from '@origin-ai/cf-workflow'
 
 /**
  * The per-run limits the worker-side runtime enforces. The host keeps the

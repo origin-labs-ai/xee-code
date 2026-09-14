@@ -2,8 +2,8 @@ import type { Context } from '@deepseek-ai/cordis'
 import type {
   ConversationMatch, ConversationNodeContext, ConversationNodeDefinition,
   RunningToolCall, ToolCallBlock, ToolResultNode,
-} from '@origin-ai/xhe-client-runtime/client'
-import type {} from '@origin-ai/xhe-tools/types'
+} from '@origin-ai/cf-client-runtime/client'
+import type {} from '@origin-ai/cf-tools/types'
 import { trajectoryNode } from './trajectory-definition-common.ts'
 
 /* jscpd:ignore-start -- Target-owned Definitions intentionally keep their event

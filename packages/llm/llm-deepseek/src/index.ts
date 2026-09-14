@@ -8,18 +8,18 @@
  * anything, while an in-flight stream keeps the facts it started with. The
  * one registration-captured fact — the retry policy — re-registers the route
  * in place when it changes.
- * @module @origin-ai/xhe-llm-deepseek
+ * @module @origin-ai/cf-llm-deepseek
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { assertUsableApiKey, LlmError, resolveRetryPolicy, RetryPolicySchema } from '@origin-ai/xhe-llm'
-import type { ModelModality, RetryPolicyConfig } from '@origin-ai/xhe-llm'
-import { credentialRef } from '@origin-ai/xhe-credentials'
-import { launchEnvironmentOf, type LaunchEnvironmentSnapshot } from '@origin-ai/xhe-launch-environment'
-import { deepEqualJson, installSettingsSection, settingsNamespace } from '@origin-ai/xhe-settings'
-import { MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
-import { getOrCreateAnonymousUserId, type AnonymousUserId } from '@origin-ai/xhe-anonymous-user-id'
+import { assertUsableApiKey, LlmError, resolveRetryPolicy, RetryPolicySchema } from '@origin-ai/cf-llm'
+import type { ModelModality, RetryPolicyConfig } from '@origin-ai/cf-llm'
+import { credentialRef } from '@origin-ai/cf-credentials'
+import { launchEnvironmentOf, type LaunchEnvironmentSnapshot } from '@origin-ai/cf-launch-environment'
+import { deepEqualJson, installSettingsSection, settingsNamespace } from '@origin-ai/cf-settings'
+import { MAX_TIMER_DELAY_MS } from '@origin-ai/cf-timeout'
+import { getOrCreateAnonymousUserId, type AnonymousUserId } from '@origin-ai/cf-anonymous-user-id'
 import {
   DEFAULT_CONTEXT_WINDOW,
   DEFAULT_FILE_EXPIRY_SECONDS,

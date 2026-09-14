@@ -8,12 +8,12 @@
  * Activation disposal, so no installation outlives either owner and no removed
  * contribution can be installed after revocation reports completion.
  *
- * @module @origin-ai/xhe-subagent/activation-setup-registry
+ * @module @origin-ai/cf-subagent/activation-setup-registry
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { AgentSetupCommit } from '@origin-ai/xhe-agent'
-import { errorChain } from '@origin-ai/xhe-llm'
+import type { AgentSetupCommit } from '@origin-ai/cf-agent'
+import { errorChain } from '@origin-ai/cf-llm'
 import { SubagentError } from './error.ts'
 
 /**

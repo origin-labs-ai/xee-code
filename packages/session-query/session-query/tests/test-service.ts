@@ -1,4 +1,4 @@
-import SessionQueryEngine from '@origin-ai/xhe-session-query'
+import SessionQueryEngine from '@origin-ai/cf-session-query'
 import type {
   SessionEventSearchPage,
   SessionEventSearchRequest,
@@ -6,7 +6,7 @@ import type {
   SessionSearchHit,
   SessionSearchPage,
   SessionSearchRequest,
-} from '@origin-ai/xhe-session-query'
+} from '@origin-ai/cf-session-query'
 
 /** Test-only concrete query service for backend-independent behavior. */
 export class TestSessionQueryEngine extends SessionQueryEngine {

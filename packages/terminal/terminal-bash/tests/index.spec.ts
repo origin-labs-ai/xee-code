@@ -3,25 +3,25 @@ import { PassThrough } from 'node:stream'
 import { resolve } from 'node:path'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
-import SessionStore, { Session, SessionId } from '@origin-ai/xhe-session'
-import AgentRegistry, { Inbox, type Agent } from '@origin-ai/xhe-agent'
-import SandboxProvider from '@origin-ai/xhe-sandbox'
-import type { ConfinedArgv, SandboxPolicy } from '@origin-ai/xhe-sandbox'
-import SandboxPolicyService, { setSandboxMode } from '@origin-ai/xhe-sandbox-policy'
-import TerminalSessionService, { TerminalBackendCleanupError, TerminalSessionId } from '@origin-ai/xhe-terminal'
-import type { TerminalSendRequest, TerminalWaitReason } from '@origin-ai/xhe-terminal'
-import { BashTerminalBackend, PWSH_PROMPT_SETUP } from '@origin-ai/xhe-terminal-bash'
-import { ENCODING_PREAMBLE } from '@origin-ai/xhe-pwsh-local'
-import * as ptyLocal from '@origin-ai/xhe-terminal-bash'
-import type { ResolvedConfig } from '@origin-ai/xhe-terminal-bash/src/config.ts'
-import type { LocalPtySession } from '@origin-ai/xhe-terminal-bash/src/session.ts'
-import { SubprocessRuntime } from '@origin-ai/xhe-subprocess'
+import SessionStore, { Session, SessionId } from '@origin-ai/cf-session'
+import AgentRegistry, { Inbox, type Agent } from '@origin-ai/cf-agent'
+import SandboxProvider from '@origin-ai/cf-sandbox'
+import type { ConfinedArgv, SandboxPolicy } from '@origin-ai/cf-sandbox'
+import SandboxPolicyService, { setSandboxMode } from '@origin-ai/cf-sandbox-policy'
+import TerminalSessionService, { TerminalBackendCleanupError, TerminalSessionId } from '@origin-ai/cf-terminal'
+import type { TerminalSendRequest, TerminalWaitReason } from '@origin-ai/cf-terminal'
+import { BashTerminalBackend, PWSH_PROMPT_SETUP } from '@origin-ai/cf-terminal-bash'
+import { ENCODING_PREAMBLE } from '@origin-ai/cf-pwsh-local'
+import * as ptyLocal from '@origin-ai/cf-terminal-bash'
+import type { ResolvedConfig } from '@origin-ai/cf-terminal-bash/src/config.ts'
+import type { LocalPtySession } from '@origin-ai/cf-terminal-bash/src/session.ts'
+import { SubprocessRuntime } from '@origin-ai/cf-subprocess'
 import type {
   SubprocessHandle,
   SubprocessSpawnSpec,
   SubprocessTerminalHandle,
   SubprocessTerminalSpawnSpec,
-} from '@origin-ai/xhe-subprocess'
+} from '@origin-ai/cf-subprocess'
 
 class EmptySandbox extends SandboxProvider {
   confine(_argv: readonly string[], _policy: SandboxPolicy): ConfinedArgv {

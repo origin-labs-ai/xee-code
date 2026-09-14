@@ -17,8 +17,8 @@ const PLATFORM_SOURCE = 'packages/client/web/src/platform.ts'
 const PARSER_PRELOAD_SOURCE = 'packages/client/modules/src/index.ts'
 const STATIC_PRESET_SOURCE = 'packages/client/tsdown.client.ts'
 const CORDIS = '@deepseek-ai/cordis'
-const XHE_PREFIX = '@origin-ai/xhe-'
-const CLIENT_WEB = '@origin-ai/xhe-client-web'
+const XHE_PREFIX = '@origin-ai/cf-'
+const CLIENT_WEB = '@origin-ai/cf-client-web'
 
 /** One workspace package's browser-module declaration. */
 export interface ClientDeclaration {

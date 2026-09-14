@@ -2,11 +2,11 @@
  * Types for the TypeScript SDK client: launch options, notification shapes,
  * and owned activity results.
  *
- * @module @origin-ai/xhe-sdk-client/types
+ * @module @origin-ai/cf-sdk-client/types
  */
 
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import type { SessionEvent } from '@origin-ai/xhe-session'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import type { SessionEvent } from '@origin-ai/cf-session'
 
 /** One server-to-client notification as received off the wire. */
 export interface HarnessNotification {
@@ -30,7 +30,7 @@ export interface HarnessClientOptions {
   /**
    * The complete child environment. `undefined` inherits the parent env
    * verbatim; passing an object replaces it entirely, so callers own
-   * credential policy (see `scrubbedParentEnv` in `@origin-ai/xhe-subprocess`
+   * credential policy (see `scrubbedParentEnv` in `@origin-ai/cf-subprocess`
    * for the shared scrub-then-merge base).
    */
   env?: NodeJS.ProcessEnv

@@ -1,4 +1,4 @@
-# @origin-ai/xhe-spill
+# @origin-ai/cf-spill
 
 The **`SpillStore`** (`ctx.spillStore`) defines WHAT a spill backend does — persist a tool's oversized text and return a model-facing locator plus retrieval guidance — without saying HOW.
 
@@ -6,9 +6,9 @@ This package is one third of the spill capability, split so each concern evolves
 
 | Package | Role |
 |---|---|
-| `@origin-ai/xhe-spill` (this) | Service Definition: abstract service + vocabulary types |
-| `@origin-ai/xhe-spill-local` | Service Provider: private session-scoped files on the host filesystem |
-| `@origin-ai/xhe-spill-policy` | Consumer: the tool-result policy that spills oversized final results |
+| `@origin-ai/cf-spill` (this) | Service Definition: abstract service + vocabulary types |
+| `@origin-ai/cf-spill-local` | Service Provider: private session-scoped files on the host filesystem |
+| `@origin-ai/cf-spill-policy` | Consumer: the tool-result policy that spills oversized final results |
 
 The split mirrors the shell/fs seams. A future remote or virtual backend (e.g. a `spill://…` URI, a database key, or a backend-specific retrieval tool) implements this Service Definition without touching the policy plugin.
 
@@ -18,7 +18,7 @@ The split mirrors the shell/fs seams. A future remote or virtual backend (e.g. a
 |---|---|
 | `saveText(input)` | Persist `input.content` verbatim; resolves with a `SpillRef` (opaque locator, exact bytes written, and retrieval hint). **Rejects on a real storage failure** (permissions, ENOSPC, backend unavailable) — the caller decides how to degrade. |
 
-Storage is grouped by the request's `owner` session as a save-time namespace; the backend chooses its own private representation and may derive names from — never trust as a path — the caller's `suggestedName`. The seam owns storage only: NO retention policy (that is [`@origin-ai/xhe-output-retention`](../../util/output-retention)), NO tool-result replacement (that is `@origin-ai/xhe-spill-policy`), NO retrieval/search API (the backend's `retrievalHint` tells the model what to do with the locator).
+Storage is grouped by the request's `owner` session as a save-time namespace; the backend chooses its own private representation and may derive names from — never trust as a path — the caller's `suggestedName`. The seam owns storage only: NO retention policy (that is [`@origin-ai/cf-output-retention`](../../util/output-retention)), NO tool-result replacement (that is `@origin-ai/cf-spill-policy`), NO retrieval/search API (the backend's `retrievalHint` tells the model what to do with the locator).
 
 ## Vocabulary
 

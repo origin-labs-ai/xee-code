@@ -1,12 +1,12 @@
-# @origin-ai/xhe-session-telemetry-otel
+# @origin-ai/cf-session-telemetry-otel
 
-The OpenTelemetry backend for [the telemetry seam](../session-telemetry/) — the only entry a deployment loads. Its `mode` decides whether the seam follows session events live, replays the canonical log only at recorded feedback, or keeps telemetry local. Uploading modes compose the OTel JS SDK as-is (`LoggerProvider` → `BatchLogRecordProcessor` → OTLP/HTTP log exporter) and map each handed-over record onto `logger.emit()`, under two instrumentation scopes: ledger records on `@origin-ai/xhe-session-sessionTelemetry-otel`, operational records on `@origin-ai/xhe-session-sessionTelemetry-otel/ops`. Resource identity contains `service.name`/`service.version` from `xhe-llm`'s `APP_IDENTITY` plus this package's anonymous `user.id` (`$XHE_HOME/.anonymous-user-id`, a random UUID created on first use and reset by deleting the file), carried once per export batch rather than per record.
+The OpenTelemetry backend for [the telemetry seam](../session-telemetry/) — the only entry a deployment loads. Its `mode` decides whether the seam follows session events live, replays the canonical log only at recorded feedback, or keeps telemetry local. Uploading modes compose the OTel JS SDK as-is (`LoggerProvider` → `BatchLogRecordProcessor` → OTLP/HTTP log exporter) and map each handed-over record onto `logger.emit()`, under two instrumentation scopes: ledger records on `@origin-ai/cf-session-sessionTelemetry-otel`, operational records on `@origin-ai/cf-session-sessionTelemetry-otel/ops`. Resource identity contains `service.name`/`service.version` from `xhe-llm`'s `APP_IDENTITY` plus this package's anonymous `user.id` (`$XHE_HOME/.anonymous-user-id`, a random UUID created on first use and reset by deleting the file), carried once per export batch rather than per record.
 
 ## Config
 
 ```yaml
 - id: sessionTelemetry-otel
-  name: '@origin-ai/xhe-session-sessionTelemetry-otel'
+  name: '@origin-ai/cf-session-sessionTelemetry-otel'
   config:
     mode: FULL                # explicit opt-in; default: DISABLED
     shutdownTimeoutMillis: 3000 # optional; defaults to 3000

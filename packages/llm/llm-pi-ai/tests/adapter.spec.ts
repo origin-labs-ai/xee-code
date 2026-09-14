@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { AttachmentId, AttachmentStore, ImageVariantId } from '@origin-ai/xhe-attachment'
+import { AttachmentId, AttachmentStore, ImageVariantId } from '@origin-ai/cf-attachment'
 import type {
   ImageAttachmentLimits,
   ImageAttachmentRef,
@@ -8,11 +8,11 @@ import type {
   RequestImageAttachment,
   SaveImageAttachment,
   StoredImageAttachment,
-} from '@origin-ai/xhe-attachment'
-import LlmRuntime, { createUserMessage, CONTEXT_WINDOW_EXCEEDED_CODE, LlmError, ReasoningEffortId, userAgent } from '@origin-ai/xhe-llm'
-import * as LlmPiAi from '@origin-ai/xhe-llm-pi-ai'
-import { PiAiAdapter } from '@origin-ai/xhe-llm-pi-ai'
-import { MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
+} from '@origin-ai/cf-attachment'
+import LlmRuntime, { createUserMessage, CONTEXT_WINDOW_EXCEEDED_CODE, LlmError, ReasoningEffortId, userAgent } from '@origin-ai/cf-llm'
+import * as LlmPiAi from '@origin-ai/cf-llm-pi-ai'
+import { PiAiAdapter } from '@origin-ai/cf-llm-pi-ai'
+import { MAX_TIMER_DELAY_MS } from '@origin-ai/cf-timeout'
 import { getBuiltinModels } from '@earendil-works/pi-ai/providers/all'
 import { DEFAULT_MAX_REQUEST_IMAGE_BYTES, resolveProfiles } from '../src/config.ts'
 import { memoryAuth } from './auth-double.ts'

@@ -1,7 +1,7 @@
-import { createUserMessage, type StreamChunk } from '@origin-ai/xhe-llm'
+import { createUserMessage, type StreamChunk } from '@origin-ai/cf-llm'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { PROTOCOL_VERSION } from '@agentclientprotocol/sdk'
-import { SessionId } from '@origin-ai/xhe-session'
+import { SessionId } from '@origin-ai/cf-session'
 import {
   errorResponse,
   makeBridgeHarness,

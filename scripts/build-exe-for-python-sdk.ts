@@ -18,7 +18,7 @@ const root = resolve(import.meta.dirname, '..')
 /** The closure manifest whose dependencies define the executable. */
 const DEPLOY_ROOT_PACKAGE = 'xhe-jsonrpc-agent-pkg'
 /** The closed-runtime app entry inside the deployed closure. */
-const ENTRY_BIN = 'node_modules/@origin-ai/xhe-sdk-jsonrpc-demo/lib/packaged-bin.js'
+const ENTRY_BIN = 'node_modules/@origin-ai/cf-sdk-jsonrpc-demo/lib/packaged-bin.js'
 const OUTPUT_BASENAME = 'xhe-jsonrpc-agent-pkg'
 /** Default Node major; SEA mode requires at least Node 22. */
 const DEFAULT_NODE_RANGE = 'node24'

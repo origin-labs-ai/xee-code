@@ -1,17 +1,17 @@
 /**
- * `@origin-ai/xhe-web-search-exa`: registers an Exa-backed `WebSearchProvider`
+ * `@origin-ai/cf-web-search-exa`: registers an Exa-backed `WebSearchProvider`
  * with `ctx.web`. A function/namespace plugin (NOT a default-export service):
  * a search provider does not own the `ctx.web` key — it registers INTO the
- * seam's provider registry, exactly as `@origin-ai/xhe-llm-deepseek`
- * registers an adapter into `ctx.llm`. The key is owned by `@origin-ai/xhe-web`.
+ * seam's provider registry, exactly as `@origin-ai/cf-llm-deepseek`
+ * registers an adapter into `ctx.llm`. The key is owned by `@origin-ai/cf-web`.
  *
- * @module @origin-ai/xhe-web-search-exa
+ * @module @origin-ai/cf-web-search-exa
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import { launchEnvironmentOf } from '@origin-ai/xhe-launch-environment'
+import { launchEnvironmentOf } from '@origin-ai/cf-launch-environment'
 import z from '@deepseek-ai/schemastery'
-import type {} from '@origin-ai/xhe-web'
+import type {} from '@origin-ai/cf-web'
 import {
   ExaSearchProvider,
   EXA_DEFAULT_BASE_URL,

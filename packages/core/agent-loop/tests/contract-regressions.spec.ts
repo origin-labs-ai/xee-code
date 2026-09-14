@@ -1,16 +1,16 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import LlmRuntime, { createUserMessage, CallId, LlmError, MessageSource, ProviderRequestId, StreamChunk  } from '@origin-ai/xhe-llm'
-import SessionStore, { Session, SessionEvent, SessionId, TurnEndReason, type UserMessage } from '@origin-ai/xhe-session'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ToolRuntime, { defineContentToolFixture, type PostToolDecision } from '@origin-ai/xhe-tools'
-import AgentRegistry, { type Agent } from '@origin-ai/xhe-agent'
-import AgentLoop from '@origin-ai/xhe-agent-loop'
+import LlmRuntime, { createUserMessage, CallId, LlmError, MessageSource, ProviderRequestId, StreamChunk  } from '@origin-ai/cf-llm'
+import SessionStore, { Session, SessionEvent, SessionId, TurnEndReason, type UserMessage } from '@origin-ai/cf-session'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ToolRuntime, { defineContentToolFixture, type PostToolDecision } from '@origin-ai/cf-tools'
+import AgentRegistry, { type Agent } from '@origin-ai/cf-agent'
+import AgentLoop from '@origin-ai/cf-agent-loop'
 import { ReactLoopAgent } from '../src/agent.ts'
-import InvariantRegistry from '@origin-ai/xhe-invariants'
-import * as SessionInvariant from '@origin-ai/xhe-session/invariant'
-import * as AgentInvariant from '@origin-ai/xhe-agent/invariant'
-import * as AgentLoopInvariant from '@origin-ai/xhe-agent-loop/invariant'
+import InvariantRegistry from '@origin-ai/cf-invariants'
+import * as SessionInvariant from '@origin-ai/cf-session/invariant'
+import * as AgentInvariant from '@origin-ai/cf-agent/invariant'
+import * as AgentLoopInvariant from '@origin-ai/cf-agent-loop/invariant'
 import { MockAdapter, textResponse, toolCallResponse } from './mock-adapter.ts'
 
 async function mountInvariants(ctx: Context): Promise<void> {
@@ -810,7 +810,7 @@ describe('turn and step boundary recovery', () => {
     expect(adapter.requests).toHaveLength(1)
     expect(errors.map(error => error.message)).toEqual([
       'reject first step-end',
-      'invariant violated by "@origin-ai/xhe-session": turn/end 1 while step 1 is still open',
+      'invariant violated by "@origin-ai/cf-session": turn/end 1 while step 1 is still open',
     ])
     expect(boundaryCounts(agent)).toMatchObject({
       turnStart: 1,

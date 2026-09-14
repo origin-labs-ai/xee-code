@@ -3,16 +3,16 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import type {
   ConversationSnapshot, SessionId, SessionListState, WorkspaceListState,
-} from '@origin-ai/xhe-client-runtime/client'
-import { PendingWait } from '@origin-ai/xhe-client-runtime/client'
-import type { RpcReceipt } from '@origin-ai/xhe-api-remotes/client'
-import { RpcId } from '@origin-ai/xhe-client-connection/client'
-import type { SnapshotSelectorHook } from '@origin-ai/xhe-client-ui-slots'
+} from '@origin-ai/cf-client-runtime/client'
+import { PendingWait } from '@origin-ai/cf-client-runtime/client'
+import type { RpcReceipt } from '@origin-ai/cf-api-remotes/client'
+import { RpcId } from '@origin-ai/cf-client-connection/client'
+import type { SnapshotSelectorHook } from '@origin-ai/cf-client-ui-slots'
 import { PendingQuestion, type QuestionComposerProps } from '../src/client/contract/slots.ts'
 import { QuestionComposer, parseRecommendedLabel } from '../src/client/QuestionComposer.tsx'
 import { en, zh } from '../src/client/locales.ts'
-import { en as commonEn } from '@origin-ai/xhe-client-locale/src/locales/en.ts'
-import { zh as commonZh } from '@origin-ai/xhe-client-locale/src/locales/zh.ts'
+import { en as commonEn } from '@origin-ai/cf-client-locale/src/locales/en.ts'
+import { zh as commonZh } from '@origin-ai/cf-client-locale/src/locales/zh.ts'
 
 afterEach(cleanup)
 

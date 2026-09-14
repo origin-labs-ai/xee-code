@@ -2,22 +2,22 @@ import type { Context } from '@deepseek-ai/cordis'
 import type {
   AssistantBlock, AssistantMessageNode, ConversationLocation, ConversationMatch,
   ConversationNodeContext, ConversationNodeDefinition,
-} from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-runtime/client'
 import {
   emptyAssistantBlock, isAppendSurfaceEvent, isTokenDelta, toAssistantBlock, toAssistantBlocks,
-} from '@origin-ai/xhe-client-runtime/client'
-import type {} from '@origin-ai/xhe-llm-retry/types'
+} from '@origin-ai/cf-client-runtime/client'
+import type {} from '@origin-ai/cf-llm-retry/types'
 import type { AssistantChatData } from '../contract/chat-nodes.ts'
 import { CHAT_SYNTHETIC_SEQ_OFFSETS, chatNode } from './common.ts'
 
-declare module '@origin-ai/xhe-client-ui-conversation/client' {
+declare module '@origin-ai/cf-client-ui-conversation/client' {
   interface ChatNodeDataMap {
     /** Streaming, settled, or interrupted Assistant step. */
     'assistant-step': AssistantChatData
   }
 }
 
-declare module '@origin-ai/xhe-client-runtime/client' {
+declare module '@origin-ai/cf-client-runtime/client' {
   interface ConversationStepDataMap {
     /** Streaming, settled, or interrupted Assistant material for this Step. */
     'assistant-step': AssistantChatData

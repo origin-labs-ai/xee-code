@@ -8,18 +8,18 @@ import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Context } from '@deepseek-ai/cordis'
-import { normalizeSessionSnapshot, type NormalizeContext } from '@origin-ai/xhe-acp-snapshot'
-import { LOADER_SMOKE_TEST_TIMEOUT_MS, runLoaderSmoke } from '@origin-ai/xhe-loader-smoke'
-import { createUserMessage } from '@origin-ai/xhe-llm'
+import { normalizeSessionSnapshot, type NormalizeContext } from '@origin-ai/cf-acp-snapshot'
+import { LOADER_SMOKE_TEST_TIMEOUT_MS, runLoaderSmoke } from '@origin-ai/cf-loader-smoke'
+import { createUserMessage } from '@origin-ai/cf-llm'
 import SessionStore, {
   SESSION_FORMAT_VERSION,
   SessionId,
   type SessionEvent,
   type SessionHeader,
-} from '@origin-ai/xhe-session'
-import JsonlSessionPersistence from '@origin-ai/xhe-session-persistence-jsonl'
-import { renderWorkspaceContext } from '@origin-ai/xhe-agent-instructions'
-import { resolveConfig, workspaceBaselineIdentity } from '@origin-ai/xhe-agent-instructions/src/config.ts'
+} from '@origin-ai/cf-session'
+import JsonlSessionPersistence from '@origin-ai/cf-session-persistence-jsonl'
+import { renderWorkspaceContext } from '@origin-ai/cf-agent-instructions'
+import { resolveConfig, workspaceBaselineIdentity } from '@origin-ai/cf-agent-instructions/src/config.ts'
 import { describe, expect, it } from 'vitest'
 
 const fixtureDir = join(dirname(fileURLToPath(import.meta.url)), 'workspace-context-resume-snapshots/offline-edit')

@@ -1,15 +1,15 @@
-/** Package-owned durable clock-context invariants. @module @origin-ai/xhe-time-context/invariant */
+/** Package-owned durable clock-context invariants. @module @origin-ai/cf-time-context/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 import {
   deriveBrowserTimeZoneContext,
   renderBrowserTimeZoneContext,
 } from './request-zone.ts'
 import { createTimestampFormatter, formatTimestamp } from './timestamp.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-time-context'
+const PACKAGE_NAME = '@origin-ai/cf-time-context'
 const SOURCE_NAME = 'time-context'
 const READING = new RegExp(
   '^Time sampled while preparing turn (\\d+), step (\\d+): '

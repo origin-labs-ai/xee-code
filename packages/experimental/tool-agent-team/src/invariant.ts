@@ -1,9 +1,9 @@
 /** Package-owned invariant companion for the Team tool adapter. */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-experimental-tool-agent-team'
+const PACKAGE_NAME = '@origin-ai/cf-experimental-tool-agent-team'
 
 /** Cordis companion plugin name. */
 export const name = 'tool-team-invariant'

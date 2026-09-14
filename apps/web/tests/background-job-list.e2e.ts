@@ -9,10 +9,10 @@ import { join } from 'node:path'
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import type { Agent } from '@origin-ai/xhe-agent'
-import { CallId } from '@origin-ai/xhe-llm'
-import { SessionId } from '@origin-ai/xhe-session'
-import { JobId } from '@origin-ai/xhe-jobs'
+import type { Agent } from '@origin-ai/cf-agent'
+import { CallId } from '@origin-ai/cf-llm'
+import { SessionId } from '@origin-ai/cf-session'
+import { JobId } from '@origin-ai/cf-jobs'
 import {
   assertFixtureInventory, captureStableAria, compareOrRefreshGolden,
   launchWebScaffold, seedSession, watchConsole, webSnapshotMode, type WebScaffold,

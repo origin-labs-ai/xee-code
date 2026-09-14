@@ -2,13 +2,13 @@
  * Concrete agent-loop plugin: creates scoped ReactLoopAgents, publishes them
  * through the agent/session registries, and owns their ordered teardown.
  *
- * @module @origin-ai/xhe-agent-loop
+ * @module @origin-ai/cf-agent-loop
  */
 
 import { Context, FiberState, Service } from '@deepseek-ai/cordis'
 import { randomUUID } from 'node:crypto'
 import z from '@deepseek-ai/schemastery'
-import { emitAgentEvent } from '@origin-ai/xhe-agent'
+import { emitAgentEvent } from '@origin-ai/cf-agent'
 import type {
   Agent,
   AgentFactory,
@@ -18,14 +18,14 @@ import type {
   CreateAgentOptions,
   ResumeAgentOptions,
   SessionStartSource,
-} from '@origin-ai/xhe-agent'
-import { errorChain } from '@origin-ai/xhe-llm'
-import { installSettingsSection, settingsNamespace } from '@origin-ai/xhe-settings'
-import { SessionId, SessionPreparation } from '@origin-ai/xhe-session'
-import type { Session, SessionHeader } from '@origin-ai/xhe-session'
-import type {} from '@origin-ai/xhe-system-prompt'
-import type {} from '@origin-ai/xhe-tools'
-import type { SessionPersistence } from '@origin-ai/xhe-session-persistence'
+} from '@origin-ai/cf-agent'
+import { errorChain } from '@origin-ai/cf-llm'
+import { installSettingsSection, settingsNamespace } from '@origin-ai/cf-settings'
+import { SessionId, SessionPreparation } from '@origin-ai/cf-session'
+import type { Session, SessionHeader } from '@origin-ai/cf-session'
+import type {} from '@origin-ai/cf-system-prompt'
+import type {} from '@origin-ai/cf-tools'
+import type { SessionPersistence } from '@origin-ai/cf-session-persistence'
 import { ReactLoopAgent } from './agent.ts'
 import { DEFAULT_MAX_PARALLEL_TOOL_CALLS } from './constants.ts'
 

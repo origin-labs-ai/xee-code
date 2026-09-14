@@ -5,17 +5,17 @@
  * image-reading tool is useful only when the exact calling route can inspect
  * its result, so unknown capability refuses instead of relying on an adapter
  * failure after filesystem and attachment work.
- * @module @origin-ai/xhe-tool-fs/src/read-image
+ * @module @origin-ai/cf-tool-fs/src/read-image
  */
 
 import { basename, extname } from 'node:path'
 import type { Context } from '@deepseek-ai/cordis'
-import { AttachmentError, AttachmentId } from '@origin-ai/xhe-attachment'
-import type { ImageAttachmentRef, ImageMediaType } from '@origin-ai/xhe-attachment'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import { defineTool } from '@origin-ai/xhe-tools'
-import type { GenericCallView, ToolExecution } from '@origin-ai/xhe-tools'
-import type {} from '@origin-ai/xhe-fs'
+import { AttachmentError, AttachmentId } from '@origin-ai/cf-attachment'
+import type { ImageAttachmentRef, ImageMediaType } from '@origin-ai/cf-attachment'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import { defineTool } from '@origin-ai/cf-tools'
+import type { GenericCallView, ToolExecution } from '@origin-ai/cf-tools'
+import type {} from '@origin-ai/cf-fs'
 import { resolveRegularReadTarget } from './read-target.ts'
 
 /** Extensions `read_image` accepts; magic-byte validation at the attachment service stays authoritative. */

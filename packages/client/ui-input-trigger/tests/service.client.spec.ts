@@ -9,13 +9,13 @@
  */
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import { createScope, scopeOf } from '@origin-ai/xhe-client-runtime/client'
-import type { SessionId } from '@origin-ai/xhe-client-runtime/client'
-import { InputTriggerController, InputTriggerService } from '@origin-ai/xhe-client-ui-input-trigger/client'
+import { createScope, scopeOf } from '@origin-ai/cf-client-runtime/client'
+import type { SessionId } from '@origin-ai/cf-client-runtime/client'
+import { InputTriggerController, InputTriggerService } from '@origin-ai/cf-client-ui-input-trigger/client'
 import type {
   BeginCommandRequest, ClientSessionContext, CommandClaim, InsertReferenceRequest, PickOutcome,
   ReferenceInsert, InputTriggerCandidate, InputTriggerPick, InputTriggerSource, SourceRoster, TriggerChar,
-} from '@origin-ai/xhe-client-ui-input-trigger/client'
+} from '@origin-ai/cf-client-ui-input-trigger/client'
 
 const sid = (k: string): SessionId => k as SessionId
 

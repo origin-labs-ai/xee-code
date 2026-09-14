@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-xh-skill-discovery",
+  "name": "@origin-ai/cf-xh-skill-discovery",
   "description": "XH Skill Discovery: GitHub auto-discovery with mandatory trust gate search→rank→vet→fetch→activate",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -26,13 +26,13 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "devDependencies": {
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

@@ -1,7 +1,7 @@
 /**
  * Browser-safe `@file` token grammar shared by terminal and web clients.
  *
- * @module @origin-ai/xhe-file-reference/grammar
+ * @module @origin-ai/cf-file-reference/grammar
  */
 
 import type { FileReferenceCandidate } from './types.ts'

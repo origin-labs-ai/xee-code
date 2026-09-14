@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-tool-call-timeout-policy`.
- * @module @origin-ai/xhe-tool-call-timeout-policy/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-tool-call-timeout-policy`.
+ * @module @origin-ai/cf-tool-call-timeout-policy/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-tool-call-timeout-policy'
+const PACKAGE_NAME = '@origin-ai/cf-tool-call-timeout-policy'
 
 /** Cordis companion plugin name. */
 export const name = 'timeout-policy-invariant'

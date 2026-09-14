@@ -1,4 +1,4 @@
-# @origin-ai/xhe-lsp
+# @origin-ai/cf-lsp
 
 The **LSP capability seam**: an abstract `LspService` (`ctx.lsp`) defining WHAT semantic code navigation the harness has — go to definition, find references, find implementations, hover — over language-server providers, without binding the model contract to local subprocesses.
 
@@ -6,9 +6,9 @@ This package owns the Service Definition role of the LSP capability:
 
 | Package | Role |
 |---|---|
-| `@origin-ai/xhe-lsp` (this) | Service Definition: the service, provider registry keyed by branded id + extension mapping, per-query selection, request/result vocabulary, the `LspError` taxonomy |
-| `@origin-ai/xhe-lsp-stdio` | Service Provider: a generic local backend that registers configured stdio language-server providers |
-| `@origin-ai/xhe-tool-lsp` | Consumer: the model-facing `lsp` tool over `ctx.lsp` |
+| `@origin-ai/cf-lsp` (this) | Service Definition: the service, provider registry keyed by branded id + extension mapping, per-query selection, request/result vocabulary, the `LspError` taxonomy |
+| `@origin-ai/cf-lsp-stdio` | Service Provider: a generic local backend that registers configured stdio language-server providers |
+| `@origin-ai/cf-tool-lsp` | Consumer: the model-facing `lsp` tool over `ctx.lsp` |
 
 The seam exposes exactly four semantic operations — `goToDefinition`, `findReferences`, `goToImplementation`, `hover` — and no generic JSON-RPC escape hatch, so no protocol payload or unreviewed command/mutation reaches a provider through `ctx.lsp`.
 

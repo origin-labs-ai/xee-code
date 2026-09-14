@@ -1,11 +1,11 @@
 // @vitest-environment jsdom
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { bindSnapshotSelector } from '@origin-ai/xhe-client-test-runtime'
+import { bindSnapshotSelector } from '@origin-ai/cf-client-test-runtime'
 import { Context } from '@deepseek-ai/cordis'
-import { SettingsSchemaService } from '@origin-ai/xhe-client-ui-settings/src/client/schema.ts'
-import { SettingsDescribeMirror } from '@origin-ai/xhe-client-ui-settings/src/client/settings-mirror.ts'
-import { SettingsScopeController } from '@origin-ai/xhe-client-ui-settings/src/client/settings-scope.ts'
+import { SettingsSchemaService } from '@origin-ai/cf-client-ui-settings/src/client/schema.ts'
+import { SettingsDescribeMirror } from '@origin-ai/cf-client-ui-settings/src/client/settings-mirror.ts'
+import { SettingsScopeController } from '@origin-ai/cf-client-ui-settings/src/client/settings-scope.ts'
 
 /** Stateless schema service for scope construction in this jsdom fixture. */
 const schemaService = new SettingsSchemaService(new Context())

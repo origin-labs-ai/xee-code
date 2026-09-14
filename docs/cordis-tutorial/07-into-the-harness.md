@@ -8,8 +8,8 @@ Create `greet-tool.ts` in `tmp/cordis-tutorial`:
 
 ```ts
 import type { Context } from '@deepseek-ai/cordis'
-import { defineTool } from '@origin-ai/xhe-tools'
-import { CallId } from '@origin-ai/xhe-llm'
+import { defineTool } from '@origin-ai/cf-tools'
+import { CallId } from '@origin-ai/cf-llm'
 
 export const name = 'greet-tool'
 export const inject = ['tools']
@@ -52,7 +52,7 @@ Create `tool-logger.ts` — a separate plugin that watches every tool call in th
 
 ```ts
 import type { Context } from '@deepseek-ai/cordis'
-import type {} from '@origin-ai/xhe-tools'
+import type {} from '@origin-ai/cf-tools'
 
 export const name = 'tool-logger'
 export const inject = ['tools']
@@ -67,18 +67,18 @@ export function apply(ctx: Context) {
 }
 ```
 
-The `import type {} from '@origin-ai/xhe-tools'` line pulls in the package's declaration merges so `'tools/result'` and its payload are typed — the same move as chapter 4's `stats.ts` import, at package scale.
+The `import type {} from '@origin-ai/cf-tools'` line pulls in the package's declaration merges so `'tools/result'` and its payload are typed — the same move as chapter 4's `stats.ts` import, at package scale.
 
 ## Compose and run
 
 ```yaml
-- name: '@origin-ai/xhe-system-prompt'
-- name: '@origin-ai/xhe-tools'
+- name: '@origin-ai/cf-system-prompt'
+- name: '@origin-ai/cf-tools'
 - name: './tool-logger.ts'
 - name: './greet-tool.ts'
 ```
 
-`@origin-ai/xhe-tools` injects the `systemPrompt` service because tools contribute schemas to the system prompt, so the composition lists its provider too. Without it, the tools plugin remains PENDING as described in [chapter 6](06-composition-and-hmr.md).
+`@origin-ai/cf-tools` injects the `systemPrompt` service because tools contribute schemas to the system prompt, so the composition lists its provider too. Without it, the tools plugin remains PENDING as described in [chapter 6](06-composition-and-hmr.md).
 
 ```sh
 node --import tsx ../../vendor/cordis/bin.js

@@ -1,5 +1,5 @@
 /** Client-safe event declarations owned by the agent-preset domain. */
-import type { SessionId } from '@origin-ai/xhe-session/types'
+import type { SessionId } from '@origin-ai/cf-session/types'
 
 declare module '@deepseek-ai/cordis' {
   interface Events {

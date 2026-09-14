@@ -9,23 +9,23 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import SessionStore from '@origin-ai/xhe-session'
-import AgentRegistry from '@origin-ai/xhe-agent'
-import { TypertLookupFailure } from '@origin-ai/xhe-typert-protocol'
-import TypertRegistry from '@origin-ai/xhe-typert-registry'
-import { createUserMessage, MessageId } from '@origin-ai/xhe-llm'
-import type { Agent } from '@origin-ai/xhe-agent'
-import UserQuestionService from '@origin-ai/xhe-user-questions'
-import type { SessionEvent, SessionHeader, SessionId } from '@origin-ai/xhe-session'
+import SessionStore from '@origin-ai/cf-session'
+import AgentRegistry from '@origin-ai/cf-agent'
+import { TypertLookupFailure } from '@origin-ai/cf-typert-protocol'
+import TypertRegistry from '@origin-ai/cf-typert-registry'
+import { createUserMessage, MessageId } from '@origin-ai/cf-llm'
+import type { Agent } from '@origin-ai/cf-agent'
+import UserQuestionService from '@origin-ai/cf-user-questions'
+import type { SessionEvent, SessionHeader, SessionId } from '@origin-ai/cf-session'
 import {
   PersistenceCoordinator,
   SessionPersistenceRevision,
   type PersistenceBackend,
   type StoredPrefix,
-} from '@origin-ai/xhe-session-persistence'
-import type { RpcRequest } from '@origin-ai/xhe-host-apiproxy/api/rpc'
-import { RpcId } from '@origin-ai/xhe-host-apiproxy/api/rpc'
-import { createApiProxy } from '@origin-ai/xhe-host-apiproxy'
+} from '@origin-ai/cf-session-persistence'
+import type { RpcRequest } from '@origin-ai/cf-host-apiproxy/api/rpc'
+import { RpcId } from '@origin-ai/cf-host-apiproxy/api/rpc'
+import { createApiProxy } from '@origin-ai/cf-host-apiproxy'
 
 const sid = (id: string): SessionId => id as SessionId
 
@@ -339,7 +339,7 @@ describe('Remote Agent and Session lookup policy', () => {
       inspect,
       locate: () => undefined,
     } as never)
-    const resumedSession = { id: sessionId, header: meta, events: [] } as unknown as import('@origin-ai/xhe-session').Session
+    const resumedSession = { id: sessionId, header: meta, events: [] } as unknown as import('@origin-ai/cf-session').Session
     const resumedAgent = { id: sessionId, session: resumedSession, status: 'idle', ctx } as Agent
     const release = Promise.withResolvers<undefined>()
     const resume = vi.spyOn(ctx.agents, 'resume').mockImplementation(async () => {

@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-skill-badge`.
- * @module @origin-ai/xhe-skill-badge/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-skill-badge`.
+ * @module @origin-ai/cf-skill-badge/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-skill-badge'
+const PACKAGE_NAME = '@origin-ai/cf-skill-badge'
 
 /** Cordis companion plugin name. */
 export const name = 'skill-badge-invariant'

@@ -8,12 +8,12 @@
  */
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it } from 'vitest'
-import { createScope, scopeOf, SlotRegistry } from '@origin-ai/xhe-client-runtime/client'
-import type { SessionId } from '@origin-ai/xhe-client-runtime/client'
-import type { InputTriggerSource } from '@origin-ai/xhe-client-ui-input-trigger/client'
+import { createScope, scopeOf, SlotRegistry } from '@origin-ai/cf-client-runtime/client'
+import type { SessionId } from '@origin-ai/cf-client-runtime/client'
+import type { InputTriggerSource } from '@origin-ai/cf-client-ui-input-trigger/client'
 import type { CommandUiContract } from '../src/client/contract.ts'
 import type { PopupSelectInjected } from '../src/client/PopupSelectView.tsx'
-import { LocaleRuntime } from '@origin-ai/xhe-client-locale/client'
+import { LocaleRuntime } from '@origin-ai/cf-client-locale/client'
 import { apply, CommandUiRuntime, inject } from '../src/client/index.ts'
 
 const sid = (k: string): SessionId => k as SessionId

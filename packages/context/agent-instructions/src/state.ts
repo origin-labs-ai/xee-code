@@ -1,14 +1,14 @@
 /**
  * Session-visible workspace instruction state and dynamic reconciliation.
  *
- * @module @origin-ai/xhe-agent-instructions/state
+ * @module @origin-ai/cf-agent-instructions/state
  */
 
-import type { Agent } from '@origin-ai/xhe-agent'
-import { createUserMessage } from '@origin-ai/xhe-llm'
-import type { Message } from '@origin-ai/xhe-llm'
-import type { Session, UserMessage } from '@origin-ai/xhe-session'
-import type { FileSystem, FsVersion } from '@origin-ai/xhe-fs'
+import type { Agent } from '@origin-ai/cf-agent'
+import { createUserMessage } from '@origin-ai/cf-llm'
+import type { Message } from '@origin-ai/cf-llm'
+import type { Session, UserMessage } from '@origin-ai/cf-session'
+import type { FileSystem, FsVersion } from '@origin-ai/cf-fs'
 import type { ResolvedConfig } from './config.ts'
 import { instructionContentSha1, trimmedInstructionDigest } from './digest.ts'
 import {
@@ -45,7 +45,7 @@ export interface AgentInstructionSource {
   changes: AgentInstructionChange[]
 }
 
-declare module '@origin-ai/xhe-llm' {
+declare module '@origin-ai/cf-llm' {
   interface MessageSourceMap {
     'agent-instructions': AgentInstructionSource
   }

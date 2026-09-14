@@ -199,7 +199,7 @@ packages/xhe-enhanced/src/mad/
 ## 📖 USAGE EXAMPLE
 
 ```typescript
-import { GodRuntime } from '@origin-ai/xhe/mad/core'
+import { GodRuntime } from '@origin-ai/cf/mad/core'
 
 // Initialize with all features
 const runtime = new GodRuntime({

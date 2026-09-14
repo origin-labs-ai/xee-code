@@ -7,6 +7,6 @@
     patches:
       - insert:
           - id: tool-session-query
-            name: '@origin-ai/xhe-tool-session-query'
+            name: '@origin-ai/cf-tool-session-query'
           - id: timeout-policy
-            name: '@origin-ai/xhe-tool-call-timeout-policy'
+            name: '@origin-ai/cf-tool-call-timeout-policy'

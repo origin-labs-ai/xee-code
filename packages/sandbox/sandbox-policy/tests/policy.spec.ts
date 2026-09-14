@@ -9,10 +9,10 @@ import { tmpdir } from 'node:os'
 import { join, resolve, sep } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import type { Agent } from '@origin-ai/xhe-agent'
-import { Session, SessionId } from '@origin-ai/xhe-session'
-import SandboxPolicyService, { SANDBOX_MODES, effectiveSandboxMode, setSandboxMode } from '@origin-ai/xhe-sandbox-policy'
-import SystemPrompt, { renderContextSnapshot, renderPrompt } from '@origin-ai/xhe-system-prompt'
+import type { Agent } from '@origin-ai/cf-agent'
+import { Session, SessionId } from '@origin-ai/cf-session'
+import SandboxPolicyService, { SANDBOX_MODES, effectiveSandboxMode, setSandboxMode } from '@origin-ai/cf-sandbox-policy'
+import SystemPrompt, { renderContextSnapshot, renderPrompt } from '@origin-ai/cf-system-prompt'
 
 async function mounted(config: { mode?: 'read-only' | 'workspace-write' | 'danger-full-access'; workspaceRoot?: string } = {}) {
   const ctx = new Context()

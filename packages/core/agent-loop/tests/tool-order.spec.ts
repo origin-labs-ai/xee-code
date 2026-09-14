@@ -1,4 +1,4 @@
-import { createUserMessage } from '@origin-ai/xhe-llm'
+import { createUserMessage } from '@origin-ai/cf-llm'
 /**
  * Loop-level tool-order determinism: the request/header event — and therefore the frozen
  * request the adapter receives — carries the assembly's canonical tool order (system-prompt's
@@ -9,14 +9,14 @@ import { createUserMessage } from '@origin-ai/xhe-llm'
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import LlmRuntime from '@origin-ai/xhe-llm'
-import SessionStore, { SessionId, foldRequestHeader } from '@origin-ai/xhe-session'
-import SystemPrompt, { TOOL_ORDER_REST } from '@origin-ai/xhe-system-prompt'
-import type { Config as SystemPromptConfig } from '@origin-ai/xhe-system-prompt'
-import ToolRuntime, { defineContentToolFixture } from '@origin-ai/xhe-tools'
-import AgentRegistry, { type Agent } from '@origin-ai/xhe-agent'
+import LlmRuntime from '@origin-ai/cf-llm'
+import SessionStore, { SessionId, foldRequestHeader } from '@origin-ai/cf-session'
+import SystemPrompt, { TOOL_ORDER_REST } from '@origin-ai/cf-system-prompt'
+import type { Config as SystemPromptConfig } from '@origin-ai/cf-system-prompt'
+import ToolRuntime, { defineContentToolFixture } from '@origin-ai/cf-tools'
+import AgentRegistry, { type Agent } from '@origin-ai/cf-agent'
 
-import AgentLoop from '@origin-ai/xhe-agent-loop'
+import AgentLoop from '@origin-ai/cf-agent-loop'
 import { MockAdapter, textResponse } from './mock-adapter.ts'
 
 async function harness(adapter: MockAdapter, toolOrder?: SystemPromptConfig['toolOrder']) {

@@ -4,12 +4,12 @@
  * NOT queued here — per the backend contract, write ordering belongs to the
  * caller (the domain layer's write chain); this unit only guarantees that
  * each single call publishes a complete, durable file.
- * @module @origin-ai/xhe-storage-json/src/unit
+ * @module @origin-ai/cf-storage-json/src/unit
  */
 
 import { readFile } from 'node:fs/promises'
-import { StorageError } from '@origin-ai/xhe-storage'
-import type { KvUnit, KvUnitDescriptor } from '@origin-ai/xhe-storage'
+import { StorageError } from '@origin-ai/cf-storage'
+import type { KvUnit, KvUnitDescriptor } from '@origin-ai/cf-storage'
 import { writeAtomic } from './atomic.ts'
 import { parse, serialize } from './format.ts'
 import type { UnitState } from './format.ts'

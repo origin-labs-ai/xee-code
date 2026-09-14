@@ -4,8 +4,8 @@ import type { Context } from '@deepseek-ai/cordis'
 import type {
   CordisInspectProviderManifest, CordisInspectQueryRequest, CordisInspectQueryResolution,
   CordisInspectRequestId, JsonValue,
-} from '@origin-ai/xhe-api-remotes/client'
-import type { SessionId } from '@origin-ai/xhe-client-connection/client'
+} from '@origin-ai/cf-api-remotes/client'
+import type { SessionId } from '@origin-ai/cf-client-connection/client'
 
 /** Context supplied to a Client inspect provider query. */
 export interface ClientCordisInspectQueryContext {

@@ -10,7 +10,7 @@
     path: ./cordis.yml
     patches:
       - id: acp-agent
-        name: '@origin-ai/xhe-acp-demo'
+        name: '@origin-ai/cf-acp-demo'
         config:
           provider: deepseek-official
           model: deepseek-v4-flash
@@ -24,4 +24,4 @@
             Verify your work by running the code or tests. Keep answers brief and factual.
       - insert:
           - id: attachment-local
-            name: '@origin-ai/xhe-attachment-local'
+            name: '@origin-ai/cf-attachment-local'

@@ -37,7 +37,7 @@
  *    the CALLER owns the DACLs (the sandbox seam's grant reuse):
  *    init()/dispose() skip grant/revoke entirely and the caller must not
  *    revoke under live children.
- * @module @origin-ai/xhe-sandbox-windows-acl
+ * @module @origin-ai/cf-sandbox-windows-acl
  */
 
 import { existsSync, statSync } from 'node:fs'

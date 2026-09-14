@@ -13,7 +13,7 @@
  * NOTE: ./suite.ts imports vitest, so this package is importable only inside a
  * vitest run — a support-tier constraint stated in the README.
  *
- * @module @origin-ai/xhe-acp-snapshot
+ * @module @origin-ai/cf-acp-snapshot
  */
 
 export {

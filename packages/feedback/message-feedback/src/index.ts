@@ -1,17 +1,17 @@
 /**
  * Durable, lifecycle-bound feedback for finalized assistant messages.
- * @module @origin-ai/xhe-message-feedback
+ * @module @origin-ai/cf-message-feedback
  */
 
 import { Buffer } from 'node:buffer'
 import { randomUUID } from 'node:crypto'
 import { Context, Service } from '@deepseek-ai/cordis'
 import s from '@deepseek-ai/schemastery'
-import { deriveEventMessage, isAppendSurfaceEvent } from '@origin-ai/xhe-session/surface'
-import type { SessionHeader, SessionId } from '@origin-ai/xhe-session/types'
-import type { SessionInspection } from '@origin-ai/xhe-session-persistence'
-import type { KvTable } from '@origin-ai/xhe-storage-domain'
-import { TypertRemoteService, Remote } from '@origin-ai/xhe-typert-protocol'
+import { deriveEventMessage, isAppendSurfaceEvent } from '@origin-ai/cf-session/surface'
+import type { SessionHeader, SessionId } from '@origin-ai/cf-session/types'
+import type { SessionInspection } from '@origin-ai/cf-session-persistence'
+import type { KvTable } from '@origin-ai/cf-storage-domain'
+import { TypertRemoteService, Remote } from '@origin-ai/cf-typert-protocol'
 import { messageFeedbackDomainSpec } from './spec.ts'
 import type { MessageFeedbackRow, MessageFeedbackSessionIdentity } from './spec.ts'
 import type {

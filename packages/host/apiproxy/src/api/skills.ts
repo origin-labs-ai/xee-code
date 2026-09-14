@@ -5,7 +5,7 @@
  * resumes an Agent.
  */
 
-import type { SessionId } from '@origin-ai/xhe-session/types'
+import type { SessionId } from '@origin-ai/cf-session/types'
 import type { RpcRequest, RpcResponse } from './rpc.ts'
 
 /** Skill catalog row (wire projection of the host SkillSummary; provider/source vocabulary stays host-side). */

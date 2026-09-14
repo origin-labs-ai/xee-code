@@ -8,14 +8,14 @@
   name: './mock-delegating-llm.ts'
 
 - id: subagent
-  name: '@origin-ai/xhe-subagent'
+  name: '@origin-ai/cf-subagent'
 
 # The out-of-process ACP backend spawns its child through the subprocess seam.
 - id: subprocess
-  name: '@origin-ai/xhe-subprocess-local'
+  name: '@origin-ai/cf-subprocess-local'
 
 - id: subagent-acp
-  name: '@origin-ai/xhe-subagent-acp'
+  name: '@origin-ai/cf-subagent-acp'
   config:
     providerName: acp
     command: !!js process.execPath
@@ -26,7 +26,7 @@
       MOCK_ECHO_CWD: '1'
 
 - id: tool-subagent
-  name: '@origin-ai/xhe-tool-subagent'
+  name: '@origin-ai/cf-tool-subagent'
   config:
     provider: acp
     toolName: subagent
@@ -35,7 +35,7 @@
     maxDepth: 'provider-managed'
 
 - id: agent-spine
-  name: '@origin-ai/xhe-agent-spine-demo'
+  name: '@origin-ai/cf-agent-spine-demo'
   config:
     agents:
       - id: main
@@ -46,10 +46,10 @@
     workspaceContext: false
 
 - id: persistence
-  name: '@origin-ai/xhe-session-persistence-jsonl'
+  name: '@origin-ai/cf-session-persistence-jsonl'
   config:
     root: './.sessions'
     compression: 'none'
 
 - id: checkpoint-policy
-  name: '@origin-ai/xhe-session-checkpoint-policy'
+  name: '@origin-ai/cf-session-checkpoint-policy'

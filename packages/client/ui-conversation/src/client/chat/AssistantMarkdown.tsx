@@ -11,9 +11,9 @@
 
 import { Fragment, memo, useMemo } from 'react'
 import type { ReactNode } from 'react'
-import type { AssistantBlock } from '@origin-ai/xhe-client-runtime/client'
-import { JsonBlock, MarkdownText } from '@origin-ai/xhe-client-ui-primitives'
-import type { MarkdownFileMentions } from '@origin-ai/xhe-client-ui-primitives'
+import type { AssistantBlock } from '@origin-ai/cf-client-runtime/client'
+import { JsonBlock, MarkdownText } from '@origin-ai/cf-client-ui-primitives'
+import type { MarkdownFileMentions } from '@origin-ai/cf-client-ui-primitives'
 import type { ChatNodeOwnerProps, ChatViewSlotProps } from '../contract/slots.ts'
 import { ReasoningRow } from './ReasoningRow.tsx'
 import css from './AssistantMarkdown.module.css'

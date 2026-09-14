@@ -1,6 +1,6 @@
-import type { ObservableSnapshot, SessionId } from '@origin-ai/xhe-client-runtime/client'
-import { Button, Modal } from '@origin-ai/xhe-client-ui-primitives'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@origin-ai/xhe-client-ui-slots'
+import type { ObservableSnapshot, SessionId } from '@origin-ai/cf-client-runtime/client'
+import { Button, Modal } from '@origin-ai/cf-client-ui-primitives'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@origin-ai/cf-client-ui-slots'
 import type { SessionLogDownloadState } from './controller.ts'
 import { NS } from './locales.ts'
 

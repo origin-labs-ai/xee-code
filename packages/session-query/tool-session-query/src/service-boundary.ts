@@ -1,15 +1,15 @@
 /**
  * Session-query service error containment and model-safe translation.
  *
- * @module @origin-ai/xhe-tool-session-query/service-boundary
+ * @module @origin-ai/cf-tool-session-query/service-boundary
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import { HarnessError } from '@origin-ai/xhe-llm'
+import { HarnessError } from '@origin-ai/cf-llm'
 import {
   SessionQueryError,
   type SessionQueryErrorCode,
-} from '@origin-ai/xhe-session-query'
+} from '@origin-ai/cf-session-query'
 
 interface ModelSafeServiceFailure {
   readonly code: SessionQueryErrorCode | 'SESSION_QUERY_TOOL_FAILED'

@@ -20,12 +20,12 @@
  * time stays uncounted in every time figure — matching the window, which
  * renders it as an untimed interrupted node.
  *
- * @module @origin-ai/xhe-session-stats/projection
+ * @module @origin-ai/cf-session-stats/projection
  */
 
 import { z } from 'zod'
-import { isTokenDelta } from '@origin-ai/xhe-llm/message'
-import type { ProjectionDefinition } from '@origin-ai/xhe-session-projection'
+import { isTokenDelta } from '@origin-ai/cf-llm/message'
+import type { ProjectionDefinition } from '@origin-ai/cf-session-projection'
 
 /** Accumulated whole-log figures (the view is exactly these totals). */
 interface SessionStatsTotals {
@@ -62,7 +62,7 @@ interface SessionStatsState extends SessionStatsTotals {
   pendingCalls: Record<string, number>
 }
 
-declare module '@origin-ai/xhe-session-projection/types' {
+declare module '@origin-ai/cf-session-projection/types' {
   interface SessionProjectionStateMap {
     sessionStats: SessionStatsState
   }

@@ -1,13 +1,13 @@
 import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
-import { boot } from '@origin-ai/xhe-app-boot'
-import { Inbox } from '@origin-ai/xhe-agent'
-import type { Agent } from '@origin-ai/xhe-agent'
-import { Session, SessionId } from '@origin-ai/xhe-session'
-import type {} from '@origin-ai/xhe-fs-e2b'
-import type {} from '@origin-ai/xhe-bash-local'
-import type {} from '@origin-ai/xhe-lsp-stdio'
-import type {} from '@origin-ai/xhe-terminal-bash'
+import { boot } from '@origin-ai/cf-app-boot'
+import { Inbox } from '@origin-ai/cf-agent'
+import type { Agent } from '@origin-ai/cf-agent'
+import { Session, SessionId } from '@origin-ai/cf-session'
+import type {} from '@origin-ai/cf-fs-e2b'
+import type {} from '@origin-ai/cf-bash-local'
+import type {} from '@origin-ai/cf-lsp-stdio'
+import type {} from '@origin-ai/cf-terminal-bash'
 
 const configPath = process.argv[2]
 if (configPath === undefined) throw new Error('usage: bin.ts <cordis.yml>')

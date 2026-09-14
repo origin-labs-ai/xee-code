@@ -1,12 +1,12 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-host-frontend-static`.
- * @module @origin-ai/xhe-host-frontend-static/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-host-frontend-static`.
+ * @module @origin-ai/cf-host-frontend-static/invariant
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-host-frontend-static'
+const PACKAGE_NAME = '@origin-ai/cf-host-frontend-static'
 
 /** Cordis companion plugin name. */
 export const name = 'host-frontend-static-invariant'

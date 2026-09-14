@@ -1,4 +1,4 @@
-# @origin-ai/xhe-popular-skells
+# @origin-ai/cf-popular-skells
 
 **Supercharge your XHE (XEE Harness Enhanced) with 25+ battle-tested skills and slash commands inspired by Claude Code, Cursor, and Gauntlet-Loop patterns.**
 

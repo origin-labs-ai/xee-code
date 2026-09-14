@@ -6,12 +6,12 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Include from '@deepseek-ai/cordis-plugin-include'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
-import SessionStore, { SessionId } from '@origin-ai/xhe-session'
-import JsonlSessionPersistence from '@origin-ai/xhe-session-persistence-jsonl'
-import Storage from '@origin-ai/xhe-storage'
-import * as StorageDomain from '@origin-ai/xhe-storage-domain'
-import * as StorageJson from '@origin-ai/xhe-storage-json'
-import { remoteMethods } from '@origin-ai/xhe-typert-protocol'
+import SessionStore, { SessionId } from '@origin-ai/cf-session'
+import JsonlSessionPersistence from '@origin-ai/cf-session-persistence-jsonl'
+import Storage from '@origin-ai/cf-storage'
+import * as StorageDomain from '@origin-ai/cf-storage-domain'
+import * as StorageJson from '@origin-ai/cf-storage-json'
+import { remoteMethods } from '@origin-ai/cf-typert-protocol'
 import MessageFeedbackService from '../src/index.ts'
 import { appendMessageFixture } from './helpers.ts'
 
@@ -30,12 +30,12 @@ async function loadComposition(configPath: string): Promise<Context> {
   await ctx.plugin(Loader)
   ctx.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@origin-ai/xhe-session', SessionStore],
-    ['@origin-ai/xhe-session-persistence-jsonl', JsonlSessionPersistence],
-    ['@origin-ai/xhe-storage', Storage],
-    ['@origin-ai/xhe-storage-json', StorageJson],
-    ['@origin-ai/xhe-storage-domain', StorageDomain],
-    ['@origin-ai/xhe-message-feedback', MessageFeedbackService],
+    ['@origin-ai/cf-session', SessionStore],
+    ['@origin-ai/cf-session-persistence-jsonl', JsonlSessionPersistence],
+    ['@origin-ai/cf-storage', Storage],
+    ['@origin-ai/cf-storage-json', StorageJson],
+    ['@origin-ai/cf-storage-domain', StorageDomain],
+    ['@origin-ai/cf-message-feedback', MessageFeedbackService],
   ])
   ctx.loader.internal = {
     version: 'v2',
@@ -61,20 +61,20 @@ describe('message feedback through a real Loader composition', () => {
     root = await mkdtemp(join(tmpdir(), 'xhe-message-feedback-loader-'))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@origin-ai/xhe-session'",
-      "- name: '@origin-ai/xhe-session-persistence-jsonl'",
+      "- name: '@origin-ai/cf-session'",
+      "- name: '@origin-ai/cf-session-persistence-jsonl'",
       '  config:',
       `    root: ${JSON.stringify(join(root, 'sessions'))}`,
       '    compression: none',
       '    writeBatchMaxDelayMs: 1',
-      "- name: '@origin-ai/xhe-storage'",
-      "- name: '@origin-ai/xhe-storage-json'",
+      "- name: '@origin-ai/cf-storage'",
+      "- name: '@origin-ai/cf-storage-json'",
       '  config:',
       `    root: ${JSON.stringify(join(root, 'storage'))}`,
-      "- name: '@origin-ai/xhe-storage-domain'",
+      "- name: '@origin-ai/cf-storage-domain'",
       '  config:',
       '    backend: json',
-      "- name: '@origin-ai/xhe-message-feedback'",
+      "- name: '@origin-ai/cf-message-feedback'",
       '  config:',
       '    maxNoteBytes: 32',
       '',

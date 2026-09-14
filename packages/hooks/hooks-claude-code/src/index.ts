@@ -6,18 +6,18 @@
  * `updatedInput` is logged and warned but not honored. Bespoke behavior should
  * use typed native plugins on the same extension points; see the
  * [hook-bridges Agent Note](../../../../.agents/notes/implemented/feature/2026-06-30-hook-bridges.md).
- * @module @origin-ai/xhe-hooks-claude-code
+ * @module @origin-ai/cf-hooks-claude-code
  */
 
 import { readFileSync } from 'node:fs'
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import type { Agent, PreStepDecision } from '@origin-ai/xhe-agent'
-import { createUserMessage } from '@origin-ai/xhe-llm'
-import type { ContentBlock, MessageSource } from '@origin-ai/xhe-llm'
-import type { UserMessage } from '@origin-ai/xhe-session'
-import type {} from '@origin-ai/xhe-session-persistence'
-import type { PostToolDecision, PreToolDecision, ToolExecution, ToolExecutionResult } from '@origin-ai/xhe-tools'
+import type { Agent, PreStepDecision } from '@origin-ai/cf-agent'
+import { createUserMessage } from '@origin-ai/cf-llm'
+import type { ContentBlock, MessageSource } from '@origin-ai/cf-llm'
+import type { UserMessage } from '@origin-ai/cf-session'
+import type {} from '@origin-ai/cf-session-persistence'
+import type { PostToolDecision, PreToolDecision, ToolExecution, ToolExecutionResult } from '@origin-ai/cf-tools'
 import {
   appendHookInvoked,
   appendHookResult,
@@ -30,10 +30,10 @@ import {
   type HookOutput,
   type MatcherGroup,
   type MergedHookOutcome,
-} from '@origin-ai/xhe-hook-protocol'
+} from '@origin-ai/cf-hook-protocol'
 // Pulls in the declaration-merged subagent events and the identity pairing their
 // start/end edges.
-import type { SubagentRunId } from '@origin-ai/xhe-subagent'
+import type { SubagentRunId } from '@origin-ai/cf-subagent'
 import { parseClaudeCodeConfig, type ClaudeCodeHookConfig } from './config.ts'
 
 export const name = 'hooks-claude-code'

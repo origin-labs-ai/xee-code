@@ -1,4 +1,4 @@
-# @origin-ai/xhe-tool-cordis
+# @origin-ai/cf-tool-cordis
 
 The self-referential Cordis toolset: five model-facing tools over the live runtime in the current XHE process. The registry, the vm sandbox, and the browser broadcast belong to [`@deepseek-ai/cordis-host-runner`](../cordis-host-runner/README.md) (`ctx.dynamic`), which this toolset injects — a composition with these tools but no runner never activates them. Design home — sandbox semantics, dynamic-package lifecycle and composition, standing decisions: [the toolset Agent Note](../../../.agents/notes/implemented/feature/2026-07-08-self-referential-cordis-toolset.md).
 
@@ -45,7 +45,7 @@ The generated `INHERITED_CTX_API` closes the `api` report with the framework-inh
 
 ## Rendering
 
-Every tool renders a `generic` card (`read` / `execute` / `delete`); `cordis_define` carries the submitted halves as `rawInput` and titles the card with the label and purpose. Presenters are pure functions of the args, and results keep the default text rendering. A Web client registers its own keyed `cordis_define` row (`@origin-ai/xhe-client-ui-cordis`) and reads the label, purpose, and minted id from the call arguments and the result metadata; the generic card is what a surface without that registration falls back to.
+Every tool renders a `generic` card (`read` / `execute` / `delete`); `cordis_define` carries the submitted halves as `rawInput` and titles the card with the label and purpose. Presenters are pure functions of the args, and results keep the default text rendering. A Web client registers its own keyed `cordis_define` row (`@origin-ai/cf-client-ui-cordis`) and reads the label, purpose, and minted id from the call arguments and the result metadata; the generic card is what a surface without that registration falls back to.
 
 ## Export shape
 

@@ -5,12 +5,12 @@
  * It lives in its own leaf because the package root and `./types` both reach
  * `xhe-agent` through the owner and listener signatures, which a Client program
  * cannot resolve even as a type. A browser-safe consumer imports the id here;
- * `Branded<B>` itself comes from the zero-dependency `@origin-ai/xhe-brand`.
+ * `Branded<B>` itself comes from the zero-dependency `@origin-ai/cf-brand`.
  *
- * @module @origin-ai/xhe-jobs/brand
+ * @module @origin-ai/cf-jobs/brand
  */
 
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 
 /**
  * Identifies a background job. The registry generates `<kind>-N`; predictable

@@ -3,17 +3,17 @@
  *
  * This package owns the Service Definition role of the skill capability seam.
  * Concrete
- * providers such as `@origin-ai/xhe-skill-filesystem` decide where skills come
+ * providers such as `@origin-ai/cf-skill-filesystem` decide where skills come
  * from; this service only merges provider catalogs, resolves the winning skill
  * for a name, and exposes the winning summaries and definitions to consumers.
  *
- * @module @origin-ai/xhe-skill
+ * @module @origin-ai/cf-skill
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'
-import { assertNever } from '@origin-ai/xhe-llm'
-import { NamedEntries, ScopedLayers, scopeChainOf, scopeOf } from '@origin-ai/xhe-scope'
-import type { ScopeKey, ScopeLayer } from '@origin-ai/xhe-scope'
+import { assertNever } from '@origin-ai/cf-llm'
+import { NamedEntries, ScopedLayers, scopeChainOf, scopeOf } from '@origin-ai/cf-scope'
+import type { ScopeKey, ScopeLayer } from '@origin-ai/cf-scope'
 import z from '@deepseek-ai/schemastery'
 import type Schema from '@deepseek-ai/schemastery'
 
@@ -152,7 +152,7 @@ export interface SkillInvocationSource {
   readonly form: 'instructions'
 }
 
-declare module '@origin-ai/xhe-llm' {
+declare module '@origin-ai/cf-llm' {
   interface MessageSourceMap {
     /** A user-explicit skill invocation injected by the host. */
     'skill-invocation': SkillInvocationSource

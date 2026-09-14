@@ -1,10 +1,10 @@
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import LlmRuntime, { createUserMessage, LlmAdapter  } from '@origin-ai/xhe-llm'
-import type { GenerateOptions, StreamChunk } from '@origin-ai/xhe-llm'
-import SessionStore, { Session, SessionId } from '@origin-ai/xhe-session'
-import SessionTitleService, { type SessionTitleProvider } from '@origin-ai/xhe-session-title'
-import * as providerPlugin from '@origin-ai/xhe-session-title-first-prompt-llm'
+import LlmRuntime, { createUserMessage, LlmAdapter  } from '@origin-ai/cf-llm'
+import type { GenerateOptions, StreamChunk } from '@origin-ai/cf-llm'
+import SessionStore, { Session, SessionId } from '@origin-ai/cf-session'
+import SessionTitleService, { type SessionTitleProvider } from '@origin-ai/cf-session-title'
+import * as providerPlugin from '@origin-ai/cf-session-title-first-prompt-llm'
 
 class RecordingAdapter extends LlmAdapter {
   readonly requests: GenerateOptions[] = []

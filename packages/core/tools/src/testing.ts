@@ -1,7 +1,7 @@
 /** Canonical tool-definition fixtures for repository tests. @module xhe-tools/testing */
 
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import type { JsonValue } from '@origin-ai/xhe-session'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import type { JsonValue } from '@origin-ai/cf-session'
 import { defineTool } from './schema.ts'
 import type { DefineToolOptions, ParameterSchemaSpec } from './schema.ts'
 import type { ToolDefinition, ToolRunContext } from './index.ts'

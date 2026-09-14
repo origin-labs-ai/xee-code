@@ -1,11 +1,11 @@
-/** Package-owned background-job snapshot invariants. @module @origin-ai/xhe-jobs/invariant */
+/** Package-owned background-job snapshot invariants. @module @origin-ai/cf-jobs/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Agent } from '@origin-ai/xhe-agent'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { Agent } from '@origin-ai/cf-agent'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 import type { JobSnapshot } from './types.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-jobs'
+const PACKAGE_NAME = '@origin-ai/cf-jobs'
 const TERMINAL_STATUSES = new Set(['completed', 'killed', 'failed'])
 
 /** Cordis companion plugin name. */

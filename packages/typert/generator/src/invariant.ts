@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-typert-generator`.
- * @module @origin-ai/xhe-typert-generator/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-typert-generator`.
+ * @module @origin-ai/cf-typert-generator/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-typert-generator'
+const PACKAGE_NAME = '@origin-ai/cf-typert-generator'
 
 /** Cordis companion plugin name. */
 export const name = 'typert-generator-invariant'

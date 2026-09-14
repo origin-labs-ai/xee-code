@@ -11,7 +11,7 @@
  * - Architecture compliance checking
  * - Multi-language support (JS/TS, Python, Go, Rust patterns)
  * 
- * @origin-ai/xhe/mad/utils
+ * @origin-ai/cf/mad/utils
  * @version 2.0.4-advanced
  */
 

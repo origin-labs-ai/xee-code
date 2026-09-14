@@ -1,9 +1,9 @@
 import { Context } from '@deepseek-ai/cordis'
-import SystemPrompt, { renderPrompt } from '@origin-ai/xhe-system-prompt'
-import { createScope, type ScopeKey } from '@origin-ai/xhe-scope'
+import SystemPrompt, { renderPrompt } from '@origin-ai/cf-system-prompt'
+import { createScope, type ScopeKey } from '@origin-ai/cf-scope'
 import { describe, expect, it } from 'vitest'
-import * as Persona from '@origin-ai/xhe-persona'
-import { PERSONA_SECTION } from '@origin-ai/xhe-persona'
+import * as Persona from '@origin-ai/cf-persona'
+import { PERSONA_SECTION } from '@origin-ai/cf-persona'
 
 async function harness(deploymentPersona: string): Promise<Context> {
   const ctx = new Context()

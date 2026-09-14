@@ -14,7 +14,7 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import Include from '@deepseek-ai/cordis-plugin-include'
-import HttpServer from '@origin-ai/xhe-host-webserver'
+import HttpServer from '@origin-ai/cf-host-webserver'
 import * as FrontendStatic from '../src/index.ts'
 
 let root: string | undefined
@@ -40,12 +40,12 @@ async function loadComposition(): Promise<Context> {
   await mkdir(join(dist, 'empty'))
   const configPath = join(root, 'cordis.yml')
   await writeFile(configPath, [
-    "- name: '@origin-ai/xhe-host-webserver'",
+    "- name: '@origin-ai/cf-host-webserver'",
     '  config:',
     "    host: '127.0.0.1'",
     '    port: 0',
     '- id: frontend',
-    "  name: '@origin-ai/xhe-host-frontend-static'",
+    "  name: '@origin-ai/cf-host-frontend-static'",
     '  config:',
     `    distIndex: '${distIndex}'`,
     '',
@@ -56,8 +56,8 @@ async function loadComposition(): Promise<Context> {
   await context.plugin(Loader)
   context.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@origin-ai/xhe-host-webserver', HttpServer],
-    ['@origin-ai/xhe-host-frontend-static', FrontendStatic],
+    ['@origin-ai/cf-host-webserver', HttpServer],
+    ['@origin-ai/cf-host-frontend-static', FrontendStatic],
   ])
   context.loader.internal = {
     version: 'v2',

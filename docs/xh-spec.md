@@ -1,7 +1,7 @@
 # X Harness (XH) — Normative Specification
 
 > **Project:** `X_HARNESS`
-> **Scope:** `@origin-ai/xhe-*`
+> **Scope:** `@origin-ai/cf-*`
 > **Status:** Normative English specification derived from `TRANSCRIPT.md`.
 > **Conformance:** Keywords MUST, MUST NOT, SHOULD, SHOULD NOT, MAY follow RFC 2119.
 

@@ -3,17 +3,17 @@
  * every backend uses for its replacement user message, plus the predicate that
  * recognizes persisted checkpoints.
  *
- * The seam itself lives in `@origin-ai/xhe-compaction`, which re-exports these
+ * The seam itself lives in `@origin-ai/cf-compaction`, which re-exports these
  * contracts; this module is a pure type/value/predicate outlet (no cordis
  * imports, no module augmentation) so client and wire programs can name the
  * checkpoint source without loading the host plugin's Context merges — the
  * `xhe-commands/brand` shape.
  *
- * @module @origin-ai/xhe-compaction/checkpoint
+ * @module @origin-ai/cf-compaction/checkpoint
  */
 
-import type { MessageSource } from '@origin-ai/xhe-llm/message'
-import type { CommandId } from '@origin-ai/xhe-commands/brand'
+import type { MessageSource } from '@origin-ai/cf-llm/message'
+import type { CommandId } from '@origin-ai/cf-commands/brand'
 import type { CompactionId } from './brand.ts'
 
 const COMPACT_CHECKPOINT_MARKER = Object.freeze({ kind: 'plugin', plugin: 'compact' } as const)

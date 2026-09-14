@@ -4,11 +4,11 @@
  * knowledge graph (Section 8.1). The context-clear stop policy
  * (`UNTIL_CONTEXT_CLEAR`) is defined by convergence signals (Section 8.3).
  *
- * @module @origin-ai/xhe-discussion-bus
+ * @module @origin-ai/cf-discussion-bus
  */
 
 import { Service } from '@deepseek-ai/cordis'
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 
 // ---------------------------------------------------------------------------
 // Identities

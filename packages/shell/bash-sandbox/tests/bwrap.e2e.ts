@@ -5,17 +5,17 @@ import { homedir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { LocalSandboxProvider } from '@origin-ai/xhe-sandbox-local'
-import { SandboxPolicyService } from '@origin-ai/xhe-sandbox-policy'
-import { bwrapProfileArgs } from '@origin-ai/xhe-sandbox-local/src/profiles.ts'
-import { SandboxBashExecutor } from '@origin-ai/xhe-bash-sandbox'
-import LocalSubprocessRuntime from '@origin-ai/xhe-subprocess-local'
+import { LocalSandboxProvider } from '@origin-ai/cf-sandbox-local'
+import { SandboxPolicyService } from '@origin-ai/cf-sandbox-policy'
+import { bwrapProfileArgs } from '@origin-ai/cf-sandbox-local/src/profiles.ts'
+import { SandboxBashExecutor } from '@origin-ai/cf-bash-sandbox'
+import LocalSubprocessRuntime from '@origin-ai/cf-subprocess-local'
 
 /**
  * Keyless integration of the real provider and executor through public run/start paths. With
  * no rung forced, a passing bwrap probe selects the ladder's first rung. The tests check world
  * effects and stamped facts, including EROFS classification through the wrap-carried dialect;
- * backend-only confinement is covered by `@origin-ai/xhe-sandbox-local`.
+ * backend-only confinement is covered by `@origin-ai/cf-sandbox-local`.
  *
  * Skips when bwrap or unprivileged user namespaces are unavailable. HOME-based paths are
  * intentional because bwrap replaces `/tmp`, which cannot prove the workspace-root boundary.

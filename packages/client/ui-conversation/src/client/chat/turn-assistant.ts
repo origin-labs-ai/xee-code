@@ -1,4 +1,4 @@
-import type { AssistantBlock } from '@origin-ai/xhe-client-runtime/client'
+import type { AssistantBlock } from '@origin-ai/cf-client-runtime/client'
 
 /**
  * Collect visible prose from one Assistant lifecycle.

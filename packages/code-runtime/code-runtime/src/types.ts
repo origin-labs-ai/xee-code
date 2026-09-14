@@ -3,7 +3,7 @@
  * {@link ../index.ts | CodeRuntime} and what it gets back. Pure types — no
  * runtime code lives here.
  *
- * @module @origin-ai/xhe-code-runtime/src/types
+ * @module @origin-ai/cf-code-runtime/src/types
  */
 
 /**

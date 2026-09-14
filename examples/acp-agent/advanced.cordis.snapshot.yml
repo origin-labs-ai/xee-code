@@ -5,10 +5,10 @@
     path: ./cordis.yml
     patches:
       - id: llm-deepseek
-        name: '@origin-ai/xhe-llm-deepseek'
+        name: '@origin-ai/cf-llm-deepseek'
         disabled: true
       - id: acp-agent
-        name: '@origin-ai/xhe-acp-demo'
+        name: '@origin-ai/cf-acp-demo'
         config:
           provider: deepseek-official
           model: deepseek-v4-flash
@@ -24,13 +24,13 @@
             Verify your work by running the code or tests. Keep answers brief and factual.
       - insert:
           - id: code-runtime
-            name: '@origin-ai/xhe-code-runtime-worker-thread'
+            name: '@origin-ai/cf-code-runtime-worker-thread'
           - id: cordis-host-runner
             name: '@deepseek-ai/cordis-host-runner'
           - id: tool-cordis
-            name: '@origin-ai/xhe-tool-cordis'
+            name: '@origin-ai/cf-tool-cordis'
           - id: llm-replay
-            name: '@origin-ai/xhe-llm-replay'
+            name: '@origin-ai/cf-llm-replay'
             config:
               providers:
                 - id: deepseek-official

@@ -1,12 +1,12 @@
 /** Models section registration: slot declaration injection, the locale-following label thunk, and HMR recovery. */
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import { resolveSlotLabel } from '@origin-ai/xhe-client-ui-slots'
-import { SlotRegistry } from '@origin-ai/xhe-client-runtime/client'
-import { LocaleRuntime } from '@origin-ai/xhe-client-locale/client'
-import { TestRemote } from '@origin-ai/xhe-client-test-runtime'
-import { apply as settingsApply, inject as settingsInject } from '@origin-ai/xhe-client-ui-settings/client'
-import { apply, inject, refreshIfLoaded } from '@origin-ai/xhe-client-ui-settings-models/client'
+import { resolveSlotLabel } from '@origin-ai/cf-client-ui-slots'
+import { SlotRegistry } from '@origin-ai/cf-client-runtime/client'
+import { LocaleRuntime } from '@origin-ai/cf-client-locale/client'
+import { TestRemote } from '@origin-ai/cf-client-test-runtime'
+import { apply as settingsApply, inject as settingsInject } from '@origin-ai/cf-client-ui-settings/client'
+import { apply, inject, refreshIfLoaded } from '@origin-ai/cf-client-ui-settings-models/client'
 import {
   WELCOME_NOTICE_ACK_FIELD, WELCOME_NOTICE_SETTINGS_NAMESPACE, WELCOME_NOTICE_VERSION,
 } from '../src/onboarding-copy.ts'

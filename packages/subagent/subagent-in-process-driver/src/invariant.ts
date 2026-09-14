@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-subagent-in-process-driver`.
- * @module @origin-ai/xhe-subagent-in-process-driver/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-subagent-in-process-driver`.
+ * @module @origin-ai/cf-subagent-in-process-driver/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-subagent-in-process-driver'
+const PACKAGE_NAME = '@origin-ai/cf-subagent-in-process-driver'
 
 /** Cordis companion plugin name. */
 export const name = 'subagent-in-process-driver-invariant'

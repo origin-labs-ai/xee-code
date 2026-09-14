@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-sdk-jsonrpc-demo`.
- * @module @origin-ai/xhe-sdk-jsonrpc-demo/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-sdk-jsonrpc-demo`.
+ * @module @origin-ai/cf-sdk-jsonrpc-demo/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-sdk-jsonrpc-demo'
+const PACKAGE_NAME = '@origin-ai/cf-sdk-jsonrpc-demo'
 
 /** Cordis companion plugin name. */
 export const name = 'sdk-jsonrpc-demo-invariant'

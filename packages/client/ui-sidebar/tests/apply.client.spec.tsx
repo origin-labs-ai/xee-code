@@ -1,10 +1,10 @@
 /** Sidebar shell slot registration and its plain runtime/layout callbacks. */
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import { SlotRegistry } from '@origin-ai/xhe-client-runtime/client'
-import { LocaleRuntime } from '@origin-ai/xhe-client-locale/client'
-import { apply, inject } from '@origin-ai/xhe-client-ui-sidebar/client'
-import type { SidebarRootInjected } from '@origin-ai/xhe-client-ui-sidebar/client'
+import { SlotRegistry } from '@origin-ai/cf-client-runtime/client'
+import { LocaleRuntime } from '@origin-ai/cf-client-locale/client'
+import { apply, inject } from '@origin-ai/cf-client-ui-sidebar/client'
+import type { SidebarRootInjected } from '@origin-ai/cf-client-ui-sidebar/client'
 
 async function bench(declare = true) {
   const ctx = new Context()

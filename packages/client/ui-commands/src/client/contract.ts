@@ -3,8 +3,8 @@
  * CommandUiRuntime (`ctx.commandUi`) implements this face; business packages
  * consume `register` alone.
  */
-import type { ClientContext } from '@origin-ai/xhe-client-runtime/client'
-import type { ClientSessionContext } from '@origin-ai/xhe-client-ui-input-trigger/client'
+import type { ClientContext } from '@origin-ai/cf-client-runtime/client'
+import type { ClientSessionContext } from '@origin-ai/cf-client-ui-input-trigger/client'
 
 /** Copy for an option that must be acknowledged before onSelect can run. */
 export interface SelectConfirmation {

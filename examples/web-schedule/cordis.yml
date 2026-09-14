@@ -3,7 +3,7 @@
 
 - insert:
     - id: time-context
-      name: '@origin-ai/xhe-time-context'
+      name: '@origin-ai/cf-time-context'
 
     - id: schedule
-      name: '@origin-ai/xhe-schedule'
+      name: '@origin-ai/cf-schedule'

@@ -2,9 +2,9 @@
 // — the durable relationship every appended session/title event must keep.
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import * as SessionTitleInvariantCompanion from '@origin-ai/xhe-session-title/invariant'
-import InvariantRegistry, { InvariantError } from '@origin-ai/xhe-invariants'
-import SessionStore, { SessionId } from '@origin-ai/xhe-session'
+import * as SessionTitleInvariantCompanion from '@origin-ai/cf-session-title/invariant'
+import InvariantRegistry, { InvariantError } from '@origin-ai/cf-invariants'
+import SessionStore, { SessionId } from '@origin-ai/cf-session'
 
 async function setup(): Promise<Context> {
   const ctx = new Context()
@@ -31,13 +31,13 @@ describe('session-title source invariant', () => {
       session.append('session/title', { title: 'auto', messageSeqs: [], source: { kind: 'fallback' } })
     }).toThrow(expect.objectContaining<Partial<InvariantError>>({
       code: 'INVARIANT',
-      packageName: '@origin-ai/xhe-session-title',
+      packageName: '@origin-ai/cf-session-title',
     }))
     expect(() => {
       session.append('session/title', { title: 'named', messageSeqs: [1], source: { kind: 'user' } })
     }).toThrow(expect.objectContaining<Partial<InvariantError>>({
       code: 'INVARIANT',
-      packageName: '@origin-ai/xhe-session-title',
+      packageName: '@origin-ai/cf-session-title',
     }))
     expect(session.seq).toBe(0)
   })

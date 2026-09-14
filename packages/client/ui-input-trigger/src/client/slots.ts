@@ -8,11 +8,11 @@
  * program picks this merge up transitively through its ui-input-trigger imports.
  */
 // Type-only edge: the SlotMap augmentation below merges into this package's interface.
-import type {} from '@origin-ai/xhe-client-ui-slots'
-import type { SnapshotStore } from '@origin-ai/xhe-client-runtime/client'
+import type {} from '@origin-ai/cf-client-ui-slots'
+import type { SnapshotStore } from '@origin-ai/cf-client-runtime/client'
 import type { MenuState } from '../core/contract.ts'
 
-declare module '@origin-ai/xhe-client-ui-slots' {
+declare module '@origin-ai/cf-client-ui-slots' {
   interface SlotMap {
     /**
      * The InputBar floating overlay anchor: MenuView (this package) and the

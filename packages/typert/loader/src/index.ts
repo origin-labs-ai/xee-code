@@ -22,7 +22,7 @@
  * that do not use a `./typert` artifact (hand-written wire schemas,
  * tests, non-loader compositions).
  *
- * @module @origin-ai/xhe-typert-loader
+ * @module @origin-ai/cf-typert-loader
  */
 
 import { readFileSync } from 'node:fs'
@@ -32,8 +32,8 @@ import { pathToFileURL } from 'node:url'
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
 import type {} from '@deepseek-ai/cordis-plugin-loader'
-import type {} from '@origin-ai/xhe-typert-registry'
-import type { TypertContribution } from '@origin-ai/xhe-typert-registry/types'
+import type {} from '@origin-ai/cf-typert-registry'
+import type { TypertContribution } from '@origin-ai/cf-typert-registry/types'
 
 /** The package.json exports key naming a package's host-face typert artifact. */
 export const TYPERT_HOST_EXPORT = './typert'

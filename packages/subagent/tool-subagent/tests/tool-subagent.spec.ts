@@ -4,23 +4,23 @@ import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
-import { CallId } from '@origin-ai/xhe-llm'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ToolRuntime, { TOOL_ABORTED_BEFORE_DISPATCH } from '@origin-ai/xhe-tools'
-import { assembleContextFor, type Agent } from '@origin-ai/xhe-agent'
-import AgentRegistry from '@origin-ai/xhe-agent'
-import AgentLoop from '@origin-ai/xhe-agent-loop'
-import { mountAgentLoopTestDependencies } from '@origin-ai/xhe-agent-loop-testkit'
-import JsonlSessionPersistence from '@origin-ai/xhe-session-persistence-jsonl'
-import SubagentRuntime from '@origin-ai/xhe-subagent'
-import type { SubagentStartRequest } from '@origin-ai/xhe-subagent'
-import LocalJobRegistry from '@origin-ai/xhe-jobs-local'
-import * as SubagentSpawn from '@origin-ai/xhe-subagent-spawn-in-process'
-import * as ToolTasks from '@origin-ai/xhe-tool-jobs'
+import { CallId } from '@origin-ai/cf-llm'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ToolRuntime, { TOOL_ABORTED_BEFORE_DISPATCH } from '@origin-ai/cf-tools'
+import { assembleContextFor, type Agent } from '@origin-ai/cf-agent'
+import AgentRegistry from '@origin-ai/cf-agent'
+import AgentLoop from '@origin-ai/cf-agent-loop'
+import { mountAgentLoopTestDependencies } from '@origin-ai/cf-agent-loop-testkit'
+import JsonlSessionPersistence from '@origin-ai/cf-session-persistence-jsonl'
+import SubagentRuntime from '@origin-ai/cf-subagent'
+import type { SubagentStartRequest } from '@origin-ai/cf-subagent'
+import LocalJobRegistry from '@origin-ai/cf-jobs-local'
+import * as SubagentSpawn from '@origin-ai/cf-subagent-spawn-in-process'
+import * as ToolTasks from '@origin-ai/cf-tool-jobs'
 import { MockAdapter, textResponse } from '../../../core/agent-loop/tests/mock-adapter.ts'
 import * as mock from './scripted-provider.ts'
 import * as tool from '../src/index.ts'
-import { SessionId } from '@origin-ai/xhe-session'
+import { SessionId } from '@origin-ai/cf-session'
 
 const testToolSignal = new AbortController().signal
 
@@ -902,7 +902,7 @@ describe('xhe-tool-subagent background mode', () => {
     const ctx = await setup({ provider: 'mock' })
     const result = await callSubagent(ctx, { description: 'd', prompt: 'p', run_in_background: true })
     expect(result.isError).toBe(true)
-    expect(text(result)).toContain('background jobs unavailable: load @origin-ai/xhe-jobs')
+    expect(text(result)).toContain('background jobs unavailable: load @origin-ai/cf-jobs')
   })
 
   it('skips background startup when the tool signal is already aborted', async () => {

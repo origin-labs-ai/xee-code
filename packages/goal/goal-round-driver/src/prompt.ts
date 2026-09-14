@@ -1,7 +1,7 @@
 /** Model-visible continuation prompt for one same-session goal round. */
 
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import type { GoalView } from '@origin-ai/xhe-goal'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import type { GoalView } from '@origin-ai/cf-goal'
 
 /**
  * Render the complete goal-round instruction retained in session history.

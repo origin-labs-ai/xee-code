@@ -1,11 +1,11 @@
-/** Package-owned session-event invariants for sandbox policy. @module @origin-ai/xhe-sandbox-policy/invariant */
+/** Package-owned session-event invariants for sandbox policy. @module @origin-ai/cf-sandbox-policy/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 import { SANDBOX_MODES } from './session-mode.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-sandbox-policy'
+const PACKAGE_NAME = '@origin-ai/cf-sandbox-policy'
 
 /** Cordis companion plugin name. */
 export const name = 'sandbox-policy-invariant'

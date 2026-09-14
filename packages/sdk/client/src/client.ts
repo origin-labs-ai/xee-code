@@ -1,7 +1,7 @@
 /**
  * Low-level JSON-RPC client for a Xee Harness Enhanced SDK runtime subprocess.
  * {@link HarnessClient} owns the child process: it spawns the runtime, speaks
- * the `@origin-ai/xhe-sdk-protocol` wire over the child's stdio, fans
+ * the `@origin-ai/cf-sdk-protocol` wire over the child's stdio, fans
  * server notifications out to subscriptions, and tears the child down to
  * quiescence through a private EOF → SIGTERM → SIGKILL ladder. The design
  * twin is the Python SDK's `HarnessClient` (`python/sdk`); both drive the
@@ -9,7 +9,7 @@
  * spawns directly rather than through the `xhe-subprocess` service — the
  * seam's documented exception for SDK-managed transports.
  *
- * @module @origin-ai/xhe-sdk-client/client
+ * @module @origin-ai/cf-sdk-client/client
  */
 
 import { spawn, type ChildProcess } from 'node:child_process'
@@ -19,8 +19,8 @@ import {
   type InitializeParams,
   type InitializeResult,
   type SessionPromptParams,
-} from '@origin-ai/xhe-sdk-protocol'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
+} from '@origin-ai/cf-sdk-protocol'
+import type { ContentBlock } from '@origin-ai/cf-llm'
 import { disposeRuntimeProcess } from './dispose.ts'
 import type { HarnessClientOptions, HarnessNotification, NotificationFilter } from './types.ts'
 

@@ -3,13 +3,13 @@
 # parent's subagent-sdk backend spawns this composition per run; stdout is
 # reserved for JSON-RPC frames.
 - id: sdk-jsonrpc-server
-  name: '@origin-ai/xhe-sdk-jsonrpc-server'
+  name: '@origin-ai/cf-sdk-jsonrpc-server'
 
 - id: child-mock-llm
   name: './child-mock-llm.ts'
 
 - id: agent-core
-  name: '@origin-ai/xhe-agent-spine-demo'
+  name: '@origin-ai/cf-agent-spine-demo'
   config:
     persona: 'Echo where you run.'
     workspaceContext: false
@@ -22,19 +22,19 @@
 # The child persists its own session log beside the parent's (distinct root),
 # so the driving e2e can inspect both transcripts after the run.
 - id: sessions
-  name: '@origin-ai/xhe-session-persistence-jsonl'
+  name: '@origin-ai/cf-session-persistence-jsonl'
   config:
     root: !!js process.env.XHE_SESSION_ROOT ?? './.child-sessions'
     compression: none
 
 - id: session-checkpoints
-  name: '@origin-ai/xhe-session-checkpoint-policy'
+  name: '@origin-ai/cf-session-checkpoint-policy'
 
 # bash-local executes through the subprocess seam.
 - id: subprocess
-  name: '@origin-ai/xhe-subprocess-local'
+  name: '@origin-ai/cf-subprocess-local'
 
 - id: bash
-  name: '@origin-ai/xhe-bash-local'
+  name: '@origin-ai/cf-bash-local'
   config:
     cwd: !!js process.env.XHE_CWD ?? process.cwd()

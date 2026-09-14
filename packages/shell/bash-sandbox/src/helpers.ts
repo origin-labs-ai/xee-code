@@ -1,12 +1,12 @@
 /**
  * Internal sandbox-result classification helpers.
  *
- * @module @origin-ai/xhe-bash-sandbox/helpers
+ * @module @origin-ai/cf-bash-sandbox/helpers
  */
 
 import { accessSync, constants, statSync } from 'node:fs'
-import type { ShellRunResult } from '@origin-ai/xhe-shell'
-import type { RunnerFailureRule } from '@origin-ai/xhe-sandbox'
+import type { ShellRunResult } from '@origin-ai/cf-shell'
+import type { RunnerFailureRule } from '@origin-ai/cf-sandbox'
 
 /** Node-local spawn codes proven to identify executable resolution or permission failure. */
 const EXECUTABLE_SPAWN_CODES = new Set(['EACCES', 'ENOENT'])

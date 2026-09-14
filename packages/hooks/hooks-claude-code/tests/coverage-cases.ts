@@ -1,20 +1,20 @@
-import { createUserMessage } from '@origin-ai/xhe-llm'
+import { createUserMessage } from '@origin-ai/cf-llm'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { mkdtempSync, rmSync, writeFileSync, chmodSync, existsSync, readFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@deepseek-ai/cordis'
-import { SessionId, type SessionEvent } from '@origin-ai/xhe-session'
-import JsonlSessionPersistence from '@origin-ai/xhe-session-persistence-jsonl'
-import { defineContentToolFixture } from '@origin-ai/xhe-tools'
-import type { Agent } from '@origin-ai/xhe-agent'
-import AgentLoop from '@origin-ai/xhe-agent-loop'
-import { mountAgentLoopTestDependencies } from '@origin-ai/xhe-agent-loop-testkit'
-import { LocalBashExecutor } from '@origin-ai/xhe-bash-local'
-import LocalSubprocessRuntime from '@origin-ai/xhe-subprocess-local'
-import { scopeTarget } from '@origin-ai/xhe-scope'
-import SubagentRuntime, { SubagentRunId } from '@origin-ai/xhe-subagent'
-import * as HooksClaude from '@origin-ai/xhe-hooks-claude-code'
+import { SessionId, type SessionEvent } from '@origin-ai/cf-session'
+import JsonlSessionPersistence from '@origin-ai/cf-session-persistence-jsonl'
+import { defineContentToolFixture } from '@origin-ai/cf-tools'
+import type { Agent } from '@origin-ai/cf-agent'
+import AgentLoop from '@origin-ai/cf-agent-loop'
+import { mountAgentLoopTestDependencies } from '@origin-ai/cf-agent-loop-testkit'
+import { LocalBashExecutor } from '@origin-ai/cf-bash-local'
+import LocalSubprocessRuntime from '@origin-ai/cf-subprocess-local'
+import { scopeTarget } from '@origin-ai/cf-scope'
+import SubagentRuntime, { SubagentRunId } from '@origin-ai/cf-subagent'
+import * as HooksClaude from '@origin-ai/cf-hooks-claude-code'
 import { MockAdapter, textResponse, toolCallResponse } from '../../../core/agent-loop/tests/mock-adapter.ts'
 
 const testToolSignal = new AbortController().signal
@@ -153,7 +153,7 @@ export function defineCoverageCases(group: CoverageGroup): void {
       const ctx = await harness(path, new MockAdapter([]))
       let ran = false
       ctx.tools.register(defineContentToolFixture({ name: 'echo', description: 'e', parameters: {}, async execute() { ran = true; return [{ type: 'text', text: 'x' }] } }))
-      const { CallId } = await import('@origin-ai/xhe-llm')
+      const { CallId } = await import('@origin-ai/cf-llm')
       const result = await ctx.tools.execute({ signal: testToolSignal, callId: CallId('c1'), name: 'echo', arguments: {} })
       expect(ran).toBe(false)
       expect(result.isError).toBe(true)
@@ -479,7 +479,7 @@ export function defineCoverageCases(group: CoverageGroup): void {
       const adapter = new MockAdapter([textResponse('ran')])
       const ctx = await harness(path, adapter) // NB: no projectDir
       // The factory create() path honors meta.cwd (the plain agentLoop.create() does not).
-      const { SessionId } = await import('@origin-ai/xhe-session')
+      const { SessionId } = await import('@origin-ai/cf-session')
       const handle = await ctx.agents.create({ sessionId: SessionId('s1'), meta: { cwd: workspace }, agentOptions: { provider: 'mock', model: 'mock' } })
       handle.agent.followup(createUserMessage({ content: [{ type: 'text', text: 'go' }], source: { kind: 'user' } }))
       await waitForIdle(ctx, handle.agent)
@@ -675,7 +675,7 @@ export function defineCoverageCases(group: CoverageGroup): void {
       ctx.llm.registerAdapter(['mock'], adapter)
       ctx.tools.register(defineContentToolFixture({ name: 'echo', description: 'e', parameters: {}, async execute() { return [{ type: 'text', text: 'ok' }] } }))
 
-      const { SessionId } = await import('@origin-ai/xhe-session')
+      const { SessionId } = await import('@origin-ai/cf-session')
       const handle = await ctx.agents.create({ sessionId: SessionId('s1'), meta: { cwd: sessionDir }, agentOptions: { provider: 'mock', model: 'mock' } })
       handle.agent.followup(createUserMessage({ content: [{ type: 'text', text: 'go' }], source: { kind: 'user' } }))
       await waitForIdle(ctx, handle.agent)
@@ -703,7 +703,7 @@ export function defineCoverageCases(group: CoverageGroup): void {
       await ctx.plugin(HooksClaude, { configPath: join(serverDir, 'hooks.json') })
       ctx.llm.registerAdapter(['mock'], new MockAdapter([]))
 
-      const { SessionId } = await import('@origin-ai/xhe-session')
+      const { SessionId } = await import('@origin-ai/cf-session')
       const childHandle = await ctx.agents.create({ sessionId: SessionId('child-stop-session'), meta: { cwd: childDir }, agentOptions: { provider: 'mock', model: 'mock' } })
       const runId = SubagentRunId('run-stop')
       const identity = { runId, provider: 'inproc', id: childHandle.agent.id, local: true }

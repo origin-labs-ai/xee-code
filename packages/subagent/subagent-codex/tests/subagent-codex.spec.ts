@@ -6,17 +6,17 @@ import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import * as yaml from 'js-yaml'
 import { describe, expect, it, vi } from 'vitest'
-import type { Agent } from '@origin-ai/xhe-agent'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import SubagentRuntime from '@origin-ai/xhe-subagent'
-import { MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
+import type { Agent } from '@origin-ai/cf-agent'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import SubagentRuntime from '@origin-ai/cf-subagent'
+import { MAX_TIMER_DELAY_MS } from '@origin-ai/cf-timeout'
 import type {
   SubprocessHandle,
   SubprocessOutcome,
   SubprocessSpawnSpec,
-} from '@origin-ai/xhe-subprocess'
-import LocalSubprocessRuntime from '@origin-ai/xhe-subprocess-local'
+} from '@origin-ai/cf-subprocess'
+import LocalSubprocessRuntime from '@origin-ai/cf-subprocess-local'
 import * as codex from '../src/index.ts'
 import * as invariant from '../src/invariant.ts'
 import {
@@ -368,11 +368,11 @@ describe('task admission and package contracts', () => {
     expect(manifest.dsh?.bundle?.patch).toBe('./cordis.patch.yml')
     expect(manifest.files).toContain('cordis.patch.yml')
     expect(manifest.dependencies).toHaveProperty(
-      '@origin-ai/xhe-sdk-protocol',
+      '@origin-ai/cf-sdk-protocol',
       'workspace:^',
     )
     expect(manifest.dependencies).toHaveProperty('@openai/codex', CODEX_VERSION)
-    expect(manifest.dependencies).not.toHaveProperty('@origin-ai/xhe-subagent-claude-code')
+    expect(manifest.dependencies).not.toHaveProperty('@origin-ai/cf-subagent-claude-code')
 
     const codexPackageJson = fileURLToPath(import.meta.resolve('@openai/codex/package.json'))
     const codexManifest = JSON.parse(readFileSync(codexPackageJson, 'utf8')) as {
@@ -410,7 +410,7 @@ describe('task admission and package contracts', () => {
       : []
     expect(rows).toEqual([{
       id: 'subagent-codex',
-      name: '@origin-ai/xhe-subagent-codex',
+      name: '@origin-ai/cf-subagent-codex',
     }])
     expect(JSON.stringify(rows)).not.toContain('tool-subagent')
   })
@@ -665,7 +665,7 @@ describe('task admission and package contracts', () => {
     const ctx = { invariants: { register } } as unknown as Context
     await expect(invariant.apply(ctx)).resolves.toBe(dispose)
     expect(register).toHaveBeenCalledWith(
-      '@origin-ai/xhe-subagent-codex',
+      '@origin-ai/cf-subagent-codex',
       expect.any(Function),
     )
     const install = register.mock.calls[0]![1]

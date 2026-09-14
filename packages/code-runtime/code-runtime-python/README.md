@@ -1,6 +1,6 @@
-# @origin-ai/xhe-code-runtime-python
+# @origin-ai/cf-code-runtime-python
 
-CPython-subprocess implementation of the [`@origin-ai/xhe-code-runtime`](../code-runtime/README.md) seam. Companion to [`@origin-ai/xhe-code-runtime-worker-thread`](../code-runtime-worker-thread/README.md); trades the Node worker thread for a fresh `python3` subprocess so model code is Python instead of TypeScript.
+CPython-subprocess implementation of the [`@origin-ai/cf-code-runtime`](../code-runtime/README.md) seam. Companion to [`@origin-ai/cf-code-runtime-worker-thread`](../code-runtime-worker-thread/README.md); trades the Node worker thread for a fresh `python3` subprocess so model code is Python instead of TypeScript.
 
 The package owns the wire protocol for that seam: the host-side frame codec and the Python-side mirror of the same message vocabulary.
 

@@ -4,7 +4,7 @@
  * through the seam, and every write re-reads the document under a
  * cross-process writer lock before patching it as a comment-preserving
  * leaf-level diff.
- * @module @origin-ai/xhe-settings-file
+ * @module @origin-ai/cf-settings-file
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'
@@ -13,9 +13,9 @@ import { watch as chokidarWatch } from 'chokidar'
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, extname, join, resolve } from 'node:path'
 import { Document, parseDocument } from 'yaml'
-import { withFileLock, writeFileAtomic } from '@origin-ai/xhe-atomic-write'
-import { canonicalizeWatchPath, resolveDshHome } from '@origin-ai/xhe-home-paths'
-import { SettingsProvider, deepEqualJson, type SettingsNamespace } from '@origin-ai/xhe-settings'
+import { withFileLock, writeFileAtomic } from '@origin-ai/cf-atomic-write'
+import { canonicalizeWatchPath, resolveDshHome } from '@origin-ai/cf-home-paths'
+import { SettingsProvider, deepEqualJson, type SettingsNamespace } from '@origin-ai/cf-settings'
 
 /** Plugin config: file location and hot-reload behavior. */
 export interface Config {

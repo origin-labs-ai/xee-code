@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-api-remotes",
+  "name": "@origin-ai/cf-api-remotes",
   "description": "Remote BFF assembly and Host Agent/Session lookup policy",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -36,7 +36,7 @@
   "xhe": {
     "client": {
       "inject": [
-        "@origin-ai/xhe-api-gateway"
+        "@origin-ai/cf-api-gateway"
       ],
       "platform": "web",
       "immediately": true
@@ -55,46 +55,46 @@
     "lib/types/**/*.d.ts"
   ],
   "dependencies": {
-    "@origin-ai/xhe-typert-protocol": "workspace:^"
+    "@origin-ai/cf-typert-protocol": "workspace:^"
   },
   "peerDependencies": {
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-agent-presets": "workspace:^",
-    "@origin-ai/xhe-api-gateway": "workspace:^",
-    "@origin-ai/xhe-commands": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-agent-presets": "workspace:^",
+    "@origin-ai/cf-api-gateway": "workspace:^",
+    "@origin-ai/cf-commands": "workspace:^",
     "@deepseek-ai/cordis-host-runner": "workspace:^",
-    "@origin-ai/xhe-credentials": "workspace:^",
-    "@origin-ai/xhe-file-reference": "workspace:^",
-    "@origin-ai/xhe-goal": "workspace:^",
-    "@origin-ai/xhe-host-plugin-inventory": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-message-feedback": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-session-persistence": "workspace:^",
-    "@origin-ai/xhe-session-reference": "workspace:^",
-    "@origin-ai/xhe-settings": "workspace:^",
-    "@origin-ai/xhe-typert-registry": "workspace:^",
+    "@origin-ai/cf-credentials": "workspace:^",
+    "@origin-ai/cf-file-reference": "workspace:^",
+    "@origin-ai/cf-goal": "workspace:^",
+    "@origin-ai/cf-host-plugin-inventory": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-message-feedback": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-session-persistence": "workspace:^",
+    "@origin-ai/cf-session-reference": "workspace:^",
+    "@origin-ai/cf-settings": "workspace:^",
+    "@origin-ai/cf-typert-registry": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "devDependencies": {
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-agent-presets": "workspace:^",
-    "@origin-ai/xhe-api-gateway": "workspace:^",
-    "@origin-ai/xhe-commands": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-agent-presets": "workspace:^",
+    "@origin-ai/cf-api-gateway": "workspace:^",
+    "@origin-ai/cf-commands": "workspace:^",
     "@deepseek-ai/cordis-host-runner": "workspace:^",
-    "@origin-ai/xhe-credentials": "workspace:^",
-    "@origin-ai/xhe-file-reference": "workspace:^",
-    "@origin-ai/xhe-goal": "workspace:^",
-    "@origin-ai/xhe-host-plugin-inventory": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-message-feedback": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-session-persistence": "workspace:^",
-    "@origin-ai/xhe-session-reference": "workspace:^",
-    "@origin-ai/xhe-settings": "workspace:^",
-    "@origin-ai/xhe-typert-registry": "workspace:^",
+    "@origin-ai/cf-credentials": "workspace:^",
+    "@origin-ai/cf-file-reference": "workspace:^",
+    "@origin-ai/cf-goal": "workspace:^",
+    "@origin-ai/cf-host-plugin-inventory": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-message-feedback": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-session-persistence": "workspace:^",
+    "@origin-ai/cf-session-reference": "workspace:^",
+    "@origin-ai/cf-settings": "workspace:^",
+    "@origin-ai/cf-typert-registry": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

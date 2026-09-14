@@ -1,4 +1,4 @@
-# `@origin-ai/xhe-cmdline`
+# `@origin-ai/cf-cmdline`
 
 The command line a dsh launcher hands to the app it boots. The launcher parses only its own flags (`--profile`, `--patch`, the config dumps) and hands **everything after them** to the tree verbatim, so an app owns its flag family, its `--help` text, and its parse errors instead of the launcher knowing them.
 
@@ -30,14 +30,14 @@ Its Loader row carries no launcher marker or special kind:
 
 ```yaml
 - id: web-startup
-  name: '@origin-ai/xhe-web-app/startup'
+  name: '@origin-ai/cf-web-app/startup'
 ```
 
 Every row configured from those values uses ordinary service injection and direct lazy config access:
 
 ```yaml
 - id: webserver
-  name: '@origin-ai/xhe-host-webserver'
+  name: '@origin-ai/cf-host-webserver'
   inject: [webStartup]
   config:
     host: !!js ctx.webStartup.host ?? '127.0.0.1'

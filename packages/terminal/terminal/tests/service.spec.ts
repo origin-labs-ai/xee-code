@@ -1,9 +1,9 @@
 import { describe, expect, expectTypeOf, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { Session, SessionId } from '@origin-ai/xhe-session'
-import AgentRegistry, { Inbox } from '@origin-ai/xhe-agent'
-import type { Agent } from '@origin-ai/xhe-agent'
-import TerminalSessionService, { TerminalBackendCleanupError, TerminalError, TerminalSessionId } from '@origin-ai/xhe-terminal'
+import { Session, SessionId } from '@origin-ai/cf-session'
+import AgentRegistry, { Inbox } from '@origin-ai/cf-agent'
+import type { Agent } from '@origin-ai/cf-agent'
+import TerminalSessionService, { TerminalBackendCleanupError, TerminalError, TerminalSessionId } from '@origin-ai/cf-terminal'
 import type {
   TerminalBackend,
   TerminalBackendSession,
@@ -13,7 +13,7 @@ import type {
   TerminalSessionId as TerminalSessionIdType,
   TerminalSessionStatus,
   TerminalSignal,
-} from '@origin-ai/xhe-terminal'
+} from '@origin-ai/cf-terminal'
 
 const agentScopeDisposers = new WeakMap<Agent, () => Promise<void>>()
 const ptyServiceDisposers = new WeakMap<Context, () => Promise<void>>()

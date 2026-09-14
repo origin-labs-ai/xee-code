@@ -1,6 +1,6 @@
-/** Durable request-route lookup for one open model step. @module @origin-ai/xhe-llm-retry/history */
+/** Durable request-route lookup for one open model step. @module @origin-ai/cf-llm-retry/history */
 
-import type { SessionEvent } from '@origin-ai/xhe-session'
+import type { SessionEvent } from '@origin-ai/cf-session'
 
 /**
  * Find the provider in force for one currently open step.

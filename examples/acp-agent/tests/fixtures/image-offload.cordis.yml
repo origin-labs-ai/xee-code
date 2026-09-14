@@ -7,7 +7,7 @@
     path: ../../cordis.yml
     patches:
       - id: llm-deepseek
-        name: '@origin-ai/xhe-llm-deepseek'
+        name: '@origin-ai/cf-llm-deepseek'
         config:
           apiKeyEnv: XHE_SNAPSHOT_API_KEY
           baseURL: !!js process.env.XHE_SNAPSHOT_BASE_URL
@@ -20,7 +20,7 @@
               maxTokens: 1024
               inputModalities: [text, image]
       - id: acp-agent
-        name: '@origin-ai/xhe-acp-demo'
+        name: '@origin-ai/cf-acp-demo'
         config:
           provider: deepseek-official
           model: deepseek-v4-flash-vision-exp
@@ -34,4 +34,4 @@
             Keep answers brief and factual.
       - insert:
           - id: attachment-local
-            name: '@origin-ai/xhe-attachment-local'
+            name: '@origin-ai/cf-attachment-local'

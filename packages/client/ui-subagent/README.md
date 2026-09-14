@@ -1,4 +1,4 @@
-# @origin-ai/xhe-client-ui-subagent
+# @origin-ai/cf-client-ui-subagent
 
 Web subagent feature owner: contributes current-title lineage navigation to `conversation.session.header.lineage`, reason-specific read-only replacements to the conversation composer chain, and the existing `@` reference source to `ctx.inputTriggers`.
 

@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-acp-demo`.
- * @module @origin-ai/xhe-acp-demo/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-acp-demo`.
+ * @module @origin-ai/cf-acp-demo/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-acp-demo'
+const PACKAGE_NAME = '@origin-ai/cf-acp-demo'
 
 /** Cordis companion plugin name. */
 export const name = 'acp-demo-invariant'

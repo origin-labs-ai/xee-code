@@ -5,18 +5,18 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import type { ReactNode } from 'react'
 import { act, cleanup, fireEvent, render } from '@testing-library/react'
-import { bindSnapshotSelector } from '@origin-ai/xhe-client-test-runtime'
+import { bindSnapshotSelector } from '@origin-ai/cf-client-test-runtime'
 import {
   createSnapshotStore, EMPTY_CHAT_SNAPSHOT, EMPTY_CONVERSATION_VIEWS,
-} from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-runtime/client'
 import type {
   ConversationSnapshot, SessionId, SessionListState, WorkspaceId, WorkspaceListState, WorkspaceView,
-} from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-runtime/client'
 import type { ConversationRootProps } from '../src/client/skeleton/ConversationRoot.tsx'
-import type { ClientContext } from '@origin-ai/xhe-client-runtime/client'
-import { makeTranslate } from '@origin-ai/xhe-client-test-runtime'
-import { en as commonEn } from '@origin-ai/xhe-client-locale/src/locales/en.ts'
-import { zh as commonZh } from '@origin-ai/xhe-client-locale/src/locales/zh.ts'
+import type { ClientContext } from '@origin-ai/cf-client-runtime/client'
+import { makeTranslate } from '@origin-ai/cf-client-test-runtime'
+import { en as commonEn } from '@origin-ai/cf-client-locale/src/locales/en.ts'
+import { zh as commonZh } from '@origin-ai/cf-client-locale/src/locales/zh.ts'
 import { createChatStore } from '../src/client/stores.ts'
 import { SessionInputShell } from '../src/client/input/facade.ts'
 import { en, zh } from '../src/client/locales.ts'

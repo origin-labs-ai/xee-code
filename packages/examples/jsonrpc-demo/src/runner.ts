@@ -1,11 +1,11 @@
 /**
  * Shared process lifecycle for the generic and closed-runtime JSON-RPC bins.
  *
- * @module @origin-ai/xhe-sdk-jsonrpc-demo/runner
+ * @module @origin-ai/cf-sdk-jsonrpc-demo/runner
  */
 
 import { existsSync } from 'node:fs'
-import { boot, installFailLoud, loadEnv, resolveConfigPath } from '@origin-ai/xhe-app-boot'
+import { boot, installFailLoud, loadEnv, resolveConfigPath } from '@origin-ai/cf-app-boot'
 
 /* v8 ignore start -- composition over tested app-boot/jsonrpc and executable acceptance paths */
 const NAME = 'xhe-jsonrpc-agent'

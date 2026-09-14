@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { normalizeTerminalText, TerminalSanitizer } from '@origin-ai/xhe-terminal-bash/src/sanitize.ts'
+import { normalizeTerminalText, TerminalSanitizer } from '@origin-ai/cf-terminal-bash/src/sanitize.ts'
 
 describe('TerminalSanitizer', () => {
   it('removes split CSI and owned OSC prompt markers', () => {

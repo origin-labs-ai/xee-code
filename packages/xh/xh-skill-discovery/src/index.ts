@@ -8,12 +8,12 @@
  * gate passes. Configuration reads `XH_*` with `XH_*` fallback (dual-read)
  * and enforces a per-run fetch budget cap.
  *
- * @module @origin-ai/xhe-xh-skill-discovery
+ * @module @origin-ai/cf-xh-skill-discovery
  */
 
 import { createHash } from 'node:crypto'
 import { Service } from '@deepseek-ai/cordis'
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 
 // ---------------------------------------------------------------------------
 // Branded identities

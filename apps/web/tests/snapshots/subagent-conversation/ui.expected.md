@@ -17,10 +17,10 @@
 - text: Explain event sourcing in one sentence. {{clock}}
 - button "Copy":
   - img
-- button "Context injection @origin-ai/xhe-system-prompt":
+- button "Context injection @origin-ai/cf-system-prompt":
   - img
   - img
-  - text: Context injection @origin-ai/xhe-system-prompt
+  - text: Context injection @origin-ai/cf-system-prompt
 - button "Think The user is asking for a one-sentence description of event sourcing. This is a straightforward knowledge question that doesn't require any skill loading or tool calls.":
   - img
   - img

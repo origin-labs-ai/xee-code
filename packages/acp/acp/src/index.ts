@@ -6,7 +6,7 @@
  * and one-shot permission decisions; presentation and human-interaction
  * features stay with the harness's UI modules.
  *
- * @module @origin-ai/xhe-acp
+ * @module @origin-ai/cf-acp
  */
 
 import type { Context } from '@deepseek-ai/cordis'
@@ -14,7 +14,7 @@ import { randomUUID } from 'node:crypto'
 import { isAbsolute } from 'node:path'
 import { Readable, Writable } from 'node:stream'
 import Schema from '@deepseek-ai/schemastery'
-import { createUserMessage, errorChain } from '@origin-ai/xhe-llm'
+import { createUserMessage, errorChain } from '@origin-ai/cf-llm'
 import {
   AgentSideConnection,
   ndJsonStream,
@@ -33,10 +33,10 @@ import {
   type StopReason,
   type Stream,
 } from '@agentclientprotocol/sdk'
-import type { Agent } from '@origin-ai/xhe-agent'
-import { SessionId, type SessionEvent, type TurnEndReason } from '@origin-ai/xhe-session'
+import type { Agent } from '@origin-ai/cf-agent'
+import { SessionId, type SessionEvent, type TurnEndReason } from '@origin-ai/cf-session'
 // Side-effect type import: declaration-merges the approval waterfall answered below.
-import type {} from '@origin-ai/xhe-user-approval'
+import type {} from '@origin-ai/cf-user-approval'
 import { AcpContentError, admitAcpPrompt, assistantBlockToAcp, supportsAcpImagePrompts } from './content.ts'
 import { turnEndToStopReason } from './codec.ts'
 
@@ -312,7 +312,7 @@ export function apply(ctx: Context, config: AcpConfig): void {
         // No preset composition: the ACP bundle keeps the model-facing rows in
         // the host plane, so this agent reads them from the global layer. A
         // deployment that configures a roster has to join one here first
-        // (@origin-ai/xhe-agent-presets README, "Composing a child agent").
+        // (@origin-ai/cf-agent-presets README, "Composing a child agent").
         const handle = await agents.create({
           sessionId,
           meta: { cwd: params.cwd },

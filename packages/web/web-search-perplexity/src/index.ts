@@ -1,16 +1,16 @@
 /**
- * `@origin-ai/xhe-web-search-perplexity`: registers a Perplexity-backed
+ * `@origin-ai/cf-web-search-perplexity`: registers a Perplexity-backed
  * `WebSearchProvider` with `ctx.web`. A function/namespace plugin (NOT a
  * default-export service): it registers INTO the seam's provider registry, like
- * `@origin-ai/xhe-llm-deepseek` registers an adapter into `ctx.llm`.
+ * `@origin-ai/cf-llm-deepseek` registers an adapter into `ctx.llm`.
  *
- * @module @origin-ai/xhe-web-search-perplexity
+ * @module @origin-ai/cf-web-search-perplexity
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import { launchEnvironmentOf } from '@origin-ai/xhe-launch-environment'
+import { launchEnvironmentOf } from '@origin-ai/cf-launch-environment'
 import z from '@deepseek-ai/schemastery'
-import type {} from '@origin-ai/xhe-web'
+import type {} from '@origin-ai/cf-web'
 import { PerplexitySearchProvider, PERPLEXITY_DEFAULT_BASE_URL, PERPLEXITY_DEFAULT_MAX_TOKENS, PERPLEXITY_DEFAULT_MODEL } from './provider.ts'
 
 export {

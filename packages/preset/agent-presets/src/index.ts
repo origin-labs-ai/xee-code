@@ -18,17 +18,17 @@
  * agent factory's `setup(agentCtx)` hook is the one supported call site,
  * because only there is the join installed while the agent is still
  * unpublished, so a rejected composition rolls the whole creation back.
- * @module @origin-ai/xhe-agent-presets
+ * @module @origin-ai/cf-agent-presets
  */
 
 import { stat } from 'node:fs/promises'
 import { Context, Service } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { bindScopeParent, createScope, scopeOf, type Scope, type ScopeKey, type ScopeParentBinding } from '@origin-ai/xhe-scope'
+import { bindScopeParent, createScope, scopeOf, type Scope, type ScopeKey, type ScopeParentBinding } from '@origin-ai/cf-scope'
 // Type-only: resolves the `agent/created` lifecycle event this service watches.
-import type {} from '@origin-ai/xhe-agent'
-import { settingsNamespace, type SettingsScope, type default as SettingsService } from '@origin-ai/xhe-settings'
-import { dshHomePath } from '@origin-ai/xhe-home-paths'
+import type {} from '@origin-ai/cf-agent'
+import { settingsNamespace, type SettingsScope, type default as SettingsService } from '@origin-ai/cf-settings'
+import { dshHomePath } from '@origin-ai/cf-home-paths'
 import { discoverPresets, USER_PRESET_DIR } from './discovery.ts'
 import { copyComposition, deleteComposition, readComposition } from './authoring.ts'
 import { mountPreset, serviceForAgent, standingMountFor } from './mount.ts'

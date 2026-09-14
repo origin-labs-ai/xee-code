@@ -1,11 +1,11 @@
 /**
  * Service Definition for the workflow capability seam. Service Providers execute orchestration scripts;
  * observe-only lifecycle events never expose run control.
- * @module @origin-ai/xhe-workflow
+ * @module @origin-ai/cf-workflow
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'
-import { HarnessError } from '@origin-ai/xhe-llm'
+import { HarnessError } from '@origin-ai/cf-llm'
 import type {
   WorkflowAgentEndInfo,
   WorkflowAgentInfo,

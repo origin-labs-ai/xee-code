@@ -4,19 +4,19 @@
  * version this controller last observed, and a `version-conflict` reply carries
  * the authoritative item, so a lost race reconciles from the reply itself
  * instead of refetching the whole Session.
- * @module @origin-ai/xhe-client-ui-message-feedback/client/controller
+ * @module @origin-ai/cf-client-ui-message-feedback/client/controller
  */
 
-import type { RemoteResult } from '@origin-ai/xhe-typert-protocol'
-import type { HostObservable } from '@origin-ai/xhe-client-ui-slots'
-import type { MessageId, SessionId } from '@origin-ai/xhe-client-connection/client'
+import type { RemoteResult } from '@origin-ai/cf-typert-protocol'
+import type { HostObservable } from '@origin-ai/cf-client-ui-slots'
+import type { MessageId, SessionId } from '@origin-ai/cf-client-connection/client'
 import type {
   MessageFeedbackDeleteResult,
   MessageFeedbackItem,
   MessageFeedbackListResult,
   MessageFeedbackPutResult,
   MessageFeedbackRating,
-} from '@origin-ai/xhe-message-feedback/types'
+} from '@origin-ai/cf-message-feedback/types'
 
 /**
  * The three Remote calls this controller needs. The generated face wraps every

@@ -2848,7 +2848,7 @@
             ],
             "source": {
               "kind": "plugin",
-              "plugin": "@origin-ai/xhe-system-prompt",
+              "plugin": "@origin-ai/cf-system-prompt",
               "form": "snapshot",
               "sections": [
                 {
@@ -3552,7 +3552,7 @@
             ],
             "source": {
               "kind": "plugin",
-              "plugin": "@origin-ai/xhe-system-prompt",
+              "plugin": "@origin-ai/cf-system-prompt",
               "form": "snapshot",
               "sections": [
                 {

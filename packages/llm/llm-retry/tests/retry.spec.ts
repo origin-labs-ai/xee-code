@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, expectTypeOf, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import type { Fiber } from '@deepseek-ai/cordis'
-import LlmRuntime, { createUserMessage, CallId, EMPTY_RESPONSE_CODE, LlmAdapter, LlmError, resolveRetryPolicy  } from '@origin-ai/xhe-llm'
+import LlmRuntime, { createUserMessage, CallId, EMPTY_RESPONSE_CODE, LlmAdapter, LlmError, resolveRetryPolicy  } from '@origin-ai/cf-llm'
 import type {
   AlwaysRetryPolicyConfig,
   BackoffConfig,
@@ -10,15 +10,15 @@ import type {
   ResolvedRetryPolicy,
   RetryPolicyConfig,
   StreamChunk,
-} from '@origin-ai/xhe-llm'
-import SessionStore, { SessionId } from '@origin-ai/xhe-session'
-import type { SessionEvent, SessionEventMap } from '@origin-ai/xhe-session'
-import type { LlmRetryEventData } from '@origin-ai/xhe-llm-retry/types'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ToolRuntime, { defineContentToolFixture } from '@origin-ai/xhe-tools'
-import AgentRegistry from '@origin-ai/xhe-agent'
-import type { Agent, RequestErrorAction } from '@origin-ai/xhe-agent'
-import AgentLoop from '@origin-ai/xhe-agent-loop'
+} from '@origin-ai/cf-llm'
+import SessionStore, { SessionId } from '@origin-ai/cf-session'
+import type { SessionEvent, SessionEventMap } from '@origin-ai/cf-session'
+import type { LlmRetryEventData } from '@origin-ai/cf-llm-retry/types'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ToolRuntime, { defineContentToolFixture } from '@origin-ai/cf-tools'
+import AgentRegistry from '@origin-ai/cf-agent'
+import type { Agent, RequestErrorAction } from '@origin-ai/cf-agent'
+import AgentLoop from '@origin-ai/cf-agent-loop'
 import * as retry from '../src/index.ts'
 
 type ScriptEntry = Error | Iterable<StreamChunk> | AsyncIterable<StreamChunk>

@@ -1,7 +1,7 @@
 /** One-shot session-lineage and event-relationship tracing helpers. */
 
-import { foldSurface, isSurfaceEvent, snapshotSessionEvent } from '@origin-ai/xhe-session'
-import type { SessionEvent, SessionId, SurfaceEvent, SurfaceEventType } from '@origin-ai/xhe-session'
+import { foldSurface, isSurfaceEvent, snapshotSessionEvent } from '@origin-ai/cf-session'
+import type { SessionEvent, SessionId, SurfaceEvent, SurfaceEventType } from '@origin-ai/cf-session'
 import { SessionQueryError } from './config.ts'
 import type {
   SessionEventRecord,

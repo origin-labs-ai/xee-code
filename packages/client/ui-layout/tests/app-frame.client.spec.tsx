@@ -13,13 +13,13 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, render } from '@testing-library/react'
 import { useSyncExternalStore } from 'react'
-import { AppFrame } from '@origin-ai/xhe-client-ui-layout/src/client/AppFrame.tsx'
-import type { AppFrameProps } from '@origin-ai/xhe-client-ui-layout/src/client/AppFrame.tsx'
-import { SIDEBAR_COLLAPSED } from '@origin-ai/xhe-client-ui-layout/src/client/columns.ts'
-import { createLayoutStore } from '@origin-ai/xhe-client-ui-layout/src/client/stores.ts'
+import { AppFrame } from '@origin-ai/cf-client-ui-layout/src/client/AppFrame.tsx'
+import type { AppFrameProps } from '@origin-ai/cf-client-ui-layout/src/client/AppFrame.tsx'
+import { SIDEBAR_COLLAPSED } from '@origin-ai/cf-client-ui-layout/src/client/columns.ts'
+import { createLayoutStore } from '@origin-ai/cf-client-ui-layout/src/client/stores.ts'
 import type {
   SessionId, SessionListState, WorkspaceListState,
-} from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-runtime/client'
 
 // Session selection controls for the SessionProvider and useSessions stubs.
 const selectedSession = { current: 's-test' as SessionId | undefined }

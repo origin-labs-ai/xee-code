@@ -12,7 +12,7 @@ import type {
   RequestView,
   ToolCallBlock,
   ToolResultNode,
-} from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-runtime/client'
 import type {
   TrajectoryCellProps,
   TrajectorySourceBlock,

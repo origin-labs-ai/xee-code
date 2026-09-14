@@ -4,8 +4,8 @@
  * mapped interfaces make the content, source, and finish unions extensible.
  */
 
-import type { Branded } from '@origin-ai/xhe-brand'
-import type { ImageAttachmentRef } from '@origin-ai/xhe-attachment'
+import type { Branded } from '@origin-ai/cf-brand'
+import type { ImageAttachmentRef } from '@origin-ai/cf-attachment'
 import type { CallId, ProviderRequestId, ReasoningEffortId } from './brand.ts'
 import type { Message } from './message.ts'
 

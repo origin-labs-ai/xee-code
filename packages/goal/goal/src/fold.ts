@@ -1,7 +1,7 @@
 /** Pure replay fold and strict decoder for durable goal changes. */
 
-import type { MessageSource } from '@origin-ai/xhe-llm'
-import type { SessionEvent } from '@origin-ai/xhe-session'
+import type { MessageSource } from '@origin-ai/cf-llm'
+import type { SessionEvent } from '@origin-ai/cf-session'
 import { GOAL_CHANGE_VERSION, GoalId } from './runtime.ts'
 import type { GoalBlockReason, GoalPhase, GoalRef, GoalSnapshot } from './types.ts'
 import type {

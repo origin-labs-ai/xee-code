@@ -2,9 +2,9 @@ import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { expect, it } from 'vitest'
-import type {} from '@origin-ai/xhe-skill'
-import { SessionId } from '@origin-ai/xhe-session'
-import type {} from '@origin-ai/xhe-agent-presets'
+import type {} from '@origin-ai/cf-skill'
+import { SessionId } from '@origin-ai/cf-session'
+import type {} from '@origin-ai/cf-agent-presets'
 import { launchWebScaffold, type WebScaffold } from './scaffold.ts'
 
 async function writeSkill(root: string, name: string): Promise<void> {

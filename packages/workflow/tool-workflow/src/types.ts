@@ -2,13 +2,13 @@
  * Browser-safe durable workflow-record events written by the model-facing
  * workflow tool into its calling parent Session.
  *
- * @module @origin-ai/xhe-tool-workflow/types
+ * @module @origin-ai/cf-tool-workflow/types
  */
 
-import type { SessionId } from '@origin-ai/xhe-session/types'
+import type { SessionId } from '@origin-ai/cf-session/types'
 import type {
   WorkflowAgentOutcome, WorkflowRunId, WorkflowStopReason,
-} from '@origin-ai/xhe-workflow/types'
+} from '@origin-ai/cf-workflow/types'
 
 /** Opens one durable top-level workflow run record. */
 export interface ToolWorkflowRunStartData {
@@ -38,7 +38,7 @@ export interface ToolWorkflowRunEndData {
   readonly stopReason: WorkflowStopReason
 }
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     /**
      * Opens one top-level workflow record.

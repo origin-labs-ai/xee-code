@@ -6,7 +6,7 @@
  * and the consumer `ctx.remote.$on` key face read one declaration instead of
  * two copies that could drift.
  *
- * @module @origin-ai/xhe-api-remotes/types
+ * @module @origin-ai/cf-api-remotes/types
  */
 
 import type { API_REMOTE_FORWARDED_EVENTS } from './remote-events.ts'
@@ -14,6 +14,6 @@ import type { API_REMOTE_FORWARDED_EVENTS } from './remote-events.ts'
 /** Type projection of the allowlist; the consumer and the Host read this one. */
 export type ApiRemoteForwardedEvent = typeof API_REMOTE_FORWARDED_EVENTS[number]
 
-declare module '@origin-ai/xhe-typert-protocol' {
+declare module '@origin-ai/cf-typert-protocol' {
   interface TypertRemoteEventSelection extends Record<ApiRemoteForwardedEvent, true> {}
 }

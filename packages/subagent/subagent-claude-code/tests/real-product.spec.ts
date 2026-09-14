@@ -19,14 +19,14 @@ import type {
 } from '@anthropic-ai/claude-agent-sdk'
 import { Context } from '@deepseek-ai/cordis'
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
-import type { Agent } from '@origin-ai/xhe-agent'
-import SubagentRuntime from '@origin-ai/xhe-subagent'
+import type { Agent } from '@origin-ai/cf-agent'
+import SubagentRuntime from '@origin-ai/cf-subagent'
 import type {
   SubprocessHandle,
   SubprocessOutcome,
   SubprocessSpawnSpec,
-} from '@origin-ai/xhe-subprocess'
-import LocalSubprocessRuntime from '@origin-ai/xhe-subprocess-local'
+} from '@origin-ai/cf-subprocess'
+import LocalSubprocessRuntime from '@origin-ai/cf-subprocess-local'
 import * as claudeCode from '../src/index.ts'
 import type { ClaudeCodePermissionMode } from '../src/run.ts'
 import {

@@ -1,10 +1,10 @@
 /**
  * Agent-scoped model selection shared by runtime entry points.
- * @module @origin-ai/xhe-agent/model-selection
+ * @module @origin-ai/cf-agent/model-selection
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { LlmCallConfig, ReasoningEffortId } from '@origin-ai/xhe-llm'
+import type { LlmCallConfig, ReasoningEffortId } from '@origin-ai/cf-llm'
 
 /** Complete provider, model, and optional reasoning effort selected for one live Agent. */
 export interface ModelSelection {

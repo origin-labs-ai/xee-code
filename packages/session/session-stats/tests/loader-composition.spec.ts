@@ -13,9 +13,9 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import Include from '@deepseek-ai/cordis-plugin-include'
-import SessionStore, { SessionId } from '@origin-ai/xhe-session'
-import SessionProjectionRegistry from '@origin-ai/xhe-session-projection'
-import * as SessionStatsPlugin from '@origin-ai/xhe-session-stats'
+import SessionStore, { SessionId } from '@origin-ai/cf-session'
+import SessionProjectionRegistry from '@origin-ai/cf-session-projection'
+import * as SessionStatsPlugin from '@origin-ai/cf-session-stats'
 
 let root: string | undefined
 let context: Context | undefined
@@ -37,9 +37,9 @@ async function loadYaml(lines: readonly string[]): Promise<Context> {
   await context.plugin(Loader)
   context.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@origin-ai/xhe-session', SessionStore],
-    ['@origin-ai/xhe-session-projection', SessionProjectionRegistry],
-    ['@origin-ai/xhe-session-stats', SessionStatsPlugin],
+    ['@origin-ai/cf-session', SessionStore],
+    ['@origin-ai/cf-session-projection', SessionProjectionRegistry],
+    ['@origin-ai/cf-session-stats', SessionStatsPlugin],
   ])
   context.loader.internal = {
     version: 'v2',
@@ -59,9 +59,9 @@ async function loadYaml(lines: readonly string[]): Promise<Context> {
 describe('real Loader composition', () => {
   it('loads the shipped session-stats YAML shape and serves whole-log counts', async () => {
     const loaded = await loadYaml([
-      "- name: '@origin-ai/xhe-session'",
-      "- name: '@origin-ai/xhe-session-projection'",
-      "- name: '@origin-ai/xhe-session-stats'",
+      "- name: '@origin-ai/cf-session'",
+      "- name: '@origin-ai/cf-session-projection'",
+      "- name: '@origin-ai/cf-session-stats'",
     ])
 
     const unloaded = [...loaded.loader.entries()]

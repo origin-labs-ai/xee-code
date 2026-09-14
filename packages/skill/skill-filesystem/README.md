@@ -1,8 +1,8 @@
-# @origin-ai/xhe-skill-filesystem
+# @origin-ai/cf-skill-filesystem
 
 Local filesystem provider for the `ctx.skills` registry.
 
-This package implements one skill source. It scans local project, custom, and user skill roots, parses `SKILL.md` or flat Markdown skill files, and registers the provider on `ctx.skills`. The registry remains in `@origin-ai/xhe-skill`; the durable session catalogs and model-facing loader tool remain in `@origin-ai/xhe-tool-skill`.
+This package implements one skill source. It scans local project, custom, and user skill roots, parses `SKILL.md` or flat Markdown skill files, and registers the provider on `ctx.skills`. The registry remains in `@origin-ai/cf-skill`; the durable session catalogs and model-facing loader tool remain in `@origin-ai/cf-tool-skill`.
 
 ## Plugin
 
@@ -14,7 +14,7 @@ Requires `ctx.skills` (`inject: ['skills']`).
 |---|---|---|
 | `providerName` | `filesystem` | Unique name used to register this provider on `ctx.skills`. |
 | `includeDefaultRoots` | `true` | Include project and user roots around `customSkillDirs`; set false for an isolated custom-root provider. |
-| `dshHome` | `$XHE_HOME` or `~/.cf` | Xee Harness Enhanced config root resolved by [`@origin-ai/xhe-home-paths`](../../util/home-paths/README.md); scans `skills` under this directory. |
+| `dshHome` | `$XHE_HOME` or `~/.cf` | Xee Harness Enhanced config root resolved by [`@origin-ai/cf-home-paths`](../../util/home-paths/README.md); scans `skills` under this directory. |
 | `agentsHome` | `$XHE_AGENTS_HOME` or `~/.agents` | Shared agent config root scanned for compatible skills. |
 | `customSkillDirs` | `[]` | Additional local skill roots scanned after project roots and before user roots. |
 | `watch` | `true` | Watch host-local roots and invalidate the local provider when catalog membership or frontmatter may have changed. |

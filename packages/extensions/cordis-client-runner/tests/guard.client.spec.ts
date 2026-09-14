@@ -15,8 +15,8 @@ import type {
   CordisDynamicPluginId,
   CordisDynamicPluginRunId,
   DynamicCordisPackage,
-} from '@origin-ai/xhe-api-remotes/client'
-import { SlotRegistry } from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-api-remotes/client'
+import { SlotRegistry } from '@origin-ai/cf-client-runtime/client'
 import { dynamicCordisContext } from '../src/client/guard.ts'
 import type { DynamicCordisSlotLedgerRow } from '../src/client/guard.ts'
 

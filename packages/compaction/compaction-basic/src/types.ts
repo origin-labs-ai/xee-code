@@ -1,10 +1,10 @@
 /**
  * Configuration vocabulary for the replay-aware basic compaction backend.
  *
- * @module @origin-ai/xhe-compaction-basic/types
+ * @module @origin-ai/cf-compaction-basic/types
  */
 
-import type { LlmCallConfig } from '@origin-ai/xhe-llm'
+import type { LlmCallConfig } from '@origin-ai/cf-llm'
 
 /** Policy fields shared by the default policy and exact model overrides. */
 export interface CompactionPolicyConfig {

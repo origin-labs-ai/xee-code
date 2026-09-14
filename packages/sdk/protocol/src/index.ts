@@ -2,10 +2,10 @@
  * Shared wire protocol for the Xee Harness Enhanced SDK runtime: the
  * newline-delimited JSON-RPC stdio transport plus the named request, result,
  * and notification types both wire ends speak. The runtime server plugin
- * (`@origin-ai/xhe-sdk-jsonrpc-server`) serves this protocol; SDK clients
- * (`@origin-ai/xhe-sdk-client`, the Python SDK) drive it.
+ * (`@origin-ai/cf-sdk-jsonrpc-server`) serves this protocol; SDK clients
+ * (`@origin-ai/cf-sdk-client`, the Python SDK) drive it.
  *
- * @module @origin-ai/xhe-sdk-protocol
+ * @module @origin-ai/cf-sdk-protocol
  */
 
 export { JsonRpcLineTransport, JsonRpcResponseError } from './transport.ts'

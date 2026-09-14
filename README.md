@@ -24,7 +24,7 @@
 ### Also Known As
 
 - **XeeCode** / **XCode** — Developer-friendly aliases
-- **@origin-ai/xhe** — Package registry identifier
+- **@origin-ai/cf** — Package registry identifier
 - **XHE** — Concise abbreviation for "Xee Harness Enhanced"
 
 ### The Core Philosophy
@@ -197,7 +197,7 @@ pnpm run xhe --help
 ### Basic Usage
 
 ```typescript
-import { createXHE, xheExecute } from '@origin-ai/xhe/mad'
+import { createXHE, xheExecute } from '@origin-ai/cf/mad'
 
 // Option 1: Full control
 const xhe = createXHE({
@@ -247,7 +247,7 @@ xhee-harness-enhanced/
 ├── README.md                    # This file - Project documentation
 ├── AGENTS.md                    # Agent guidelines and protocols
 ├── BRAND_GUIDELINES.md          # XHE branding rules
-├── package.json                 # Main package config (@origin-ai/xhe)
+├── package.json                 # Main package config (@origin-ai/cf)
 ├── pnpm-workspace.yaml          # Monorepo workspace definition
 ├── .gitignore                   # Git ignore rules
 ├── .env                         # Environment variables
@@ -443,5 +443,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 </p>
 
 <p align="center">
-  <em>Fork of DSH/SeepSeek Harness • Package: @origin-ai/xhe • Also known as: XeeCode, XCode</em>
+  <em>Fork of DSH/SeepSeek Harness • Package: @origin-ai/cf • Also known as: XeeCode, XCode</em>
 </p>

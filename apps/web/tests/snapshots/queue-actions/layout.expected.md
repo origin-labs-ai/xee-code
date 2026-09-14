@@ -18,10 +18,10 @@
   - img
   - img
   - text: Context injection goal
-- button "Context injection @origin-ai/xhe-system-prompt":
+- button "Context injection @origin-ai/cf-system-prompt":
   - img
   - img
-  - text: Context injection @origin-ai/xhe-system-prompt
+  - text: Context injection @origin-ai/cf-system-prompt
 - paragraph: partial
 - status: Deep diving...
 - region "To-dos":

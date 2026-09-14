@@ -15,11 +15,11 @@
 
 import { Context } from '@deepseek-ai/cordis'
 import type { Plugin } from '@deepseek-ai/cordis'
-import { scopeOf } from '@origin-ai/xhe-scope'
-import { assertSupportedJsonSchema, defineTool } from '@origin-ai/xhe-tools'
-import type { ToolDefinition } from '@origin-ai/xhe-tools'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import type { JsonValue } from '@origin-ai/xhe-session'
+import { scopeOf } from '@origin-ai/cf-scope'
+import { assertSupportedJsonSchema, defineTool } from '@origin-ai/cf-tools'
+import type { ToolDefinition } from '@origin-ai/cf-tools'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import type { JsonValue } from '@origin-ai/cf-session'
 
 const DYNAMIC_TOOL = Symbol('cordis-host-runner.dynamic-tool')
 const SCHEMA_TYPES = new Set<unknown>(['string', 'number', 'integer', 'boolean', 'null', 'object', 'array', 'json'])

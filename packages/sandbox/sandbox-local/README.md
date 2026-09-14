@@ -1,4 +1,4 @@
-# @origin-ai/xhe-sandbox-local
+# @origin-ai/cf-sandbox-local
 
 Local implementation of the [`xhe-sandbox`](../sandbox/) seam. It selects and caches one platform runner: Linux prefers a working `bwrap` then Landlock; macOS uses Seatbelt; Windows uses the ACL restricted-token runner. Multiple candidates are probed in order, while a sole candidate is selected directly.
 
@@ -18,10 +18,10 @@ The Windows rung keeps one deterministic write SID and standing ACE per workspac
 
 ```yaml
 - id: sandbox
-  name: '@origin-ai/xhe-sandbox-local'
+  name: '@origin-ai/cf-sandbox-local'
 ```
 
-Consumers: [`@origin-ai/xhe-bash-sandbox`](../../shell/bash-sandbox/); see [the acp-agent example](../../../examples/acp-agent/) for the runnable default composition.
+Consumers: [`@origin-ai/cf-bash-sandbox`](../../shell/bash-sandbox/); see [the acp-agent example](../../../examples/acp-agent/) for the runnable default composition.
 
 ## Model Experience
 

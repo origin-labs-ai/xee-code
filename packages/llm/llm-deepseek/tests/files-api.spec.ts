@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { userAgent } from '@origin-ai/xhe-llm'
+import { userAgent } from '@origin-ai/cf-llm'
 import { DeepSeekFileId } from '../src/file-id.ts'
 import {
   DeepSeekFilesClient,

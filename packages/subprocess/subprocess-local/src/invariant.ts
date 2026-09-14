@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-subprocess-local`.
- * @module @origin-ai/xhe-subprocess-local/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-subprocess-local`.
+ * @module @origin-ai/cf-subprocess-local/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-subprocess-local'
+const PACKAGE_NAME = '@origin-ai/cf-subprocess-local'
 
 /** Cordis companion plugin name. */
 export const name = 'subprocess-local-invariant'

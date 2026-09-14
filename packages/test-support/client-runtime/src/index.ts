@@ -8,7 +8,7 @@
  * Not part of the product plugin graph (no `dsh.client`); feature packages
  * depend on it in devDependencies only. It copies no SlotCore/renderer/store
  * machinery — everything mounts the production implementations.
- * @module @origin-ai/xhe-client-test-runtime
+ * @module @origin-ai/cf-client-test-runtime
  */
 /* oxlint-disable typescript/no-redundant-type-constituents --
  * `keyof SlotMap & string` is the declare-merge key pattern (see ui-slots):
@@ -24,19 +24,19 @@ import type { queries } from '@testing-library/dom'
 import type { BoundFunctions } from '@testing-library/dom'
 import {
   ConversationEventRegistry, ConversationViewRegistry, SlotRegistry,
-} from '@origin-ai/xhe-client-runtime/client'
-import { bindSnapshotSelector as bindRendererSnapshotSelector } from '@origin-ai/xhe-client-ui-renderer/src/client/bind.ts'
-import { createSlotRenderer as createRenderer } from '@origin-ai/xhe-client-ui-renderer/src/client/scoped-slots.tsx'
+} from '@origin-ai/cf-client-runtime/client'
+import { bindSnapshotSelector as bindRendererSnapshotSelector } from '@origin-ai/cf-client-ui-renderer/src/client/bind.ts'
+import { createSlotRenderer as createRenderer } from '@origin-ai/cf-client-ui-renderer/src/client/scoped-slots.tsx'
 import type {
   ChildrenDecl, ComposedProps, HostObservable, OwnerOf, SlotComponent, SlotMap, SlotRenderer,
   SlotRendererHost, SnapshotSelectorHook, StoreInstanceLike,
-} from '@origin-ai/xhe-client-ui-slots'
+} from '@origin-ai/cf-client-ui-slots'
 import { registerDomSnapshotSerializer } from './snapshot.ts'
 import { TestSessions } from './sessions.ts'
 import { TestWorkspaces } from './workspaces.ts'
 import type { Stabilizer } from './fixtures.ts'
 
-export type { UseSession } from '@origin-ai/xhe-client-ui-renderer/client'
+export type { UseSession } from '@origin-ai/cf-client-ui-renderer/client'
 export { domSnapshotSerializer, registerDomSnapshotSerializer } from './snapshot.ts'
 export { FixtureSession, TestSessions } from './sessions.ts'
 export { stubSettingsScope } from './settings-scope.ts'

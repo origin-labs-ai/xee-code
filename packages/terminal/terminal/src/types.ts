@@ -1,11 +1,11 @@
 /**
  * Types shared by PTY backends, the owner-scoped registry, and tool consumers.
  * Runtime service code lives in `./index.ts`.
- * @module @origin-ai/xhe-terminal/types
+ * @module @origin-ai/cf-terminal/types
  */
 
-import type { Branded } from '@origin-ai/xhe-brand'
-import type { Agent } from '@origin-ai/xhe-agent'
+import type { Branded } from '@origin-ai/cf-brand'
+import type { Agent } from '@origin-ai/cf-agent'
 
 /** Internal exported basis for the public `TerminalSessionId` type/value pair. */
 export type TerminalSessionIdValue = Branded<'TerminalSessionId'>
@@ -31,7 +31,7 @@ export type TerminalWaitReason = 'stdin_read' | 'inferred_idle' | 'timeout' | 's
 /**
  * Signals the model-facing PTY surface permits for foreground process groups.
  * Kept member-identical to `SubprocessTerminalSignal` in
- * `@origin-ai/xhe-subprocess` without a cross-seam dependency; change both together.
+ * `@origin-ai/cf-subprocess` without a cross-seam dependency; change both together.
  */
 export type TerminalSignal = 'SIGINT' | 'SIGTERM' | 'SIGKILL' | 'SIGTSTP' | 'SIGHUP'
 

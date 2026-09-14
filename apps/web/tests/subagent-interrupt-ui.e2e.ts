@@ -18,8 +18,8 @@ import { fileURLToPath } from 'node:url'
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import type { SessionEvent, SessionId } from '@origin-ai/xhe-session'
-import type { Agent } from '@origin-ai/xhe-agent'
+import type { SessionEvent, SessionId } from '@origin-ai/cf-session'
+import type { Agent } from '@origin-ai/cf-agent'
 import {
   acknowledgeReloadConnectionLoss, assertFixtureInventory, captureStableAria, compareOrRefreshGolden,
   launchWebScaffold, watchConsole, webSnapshotMode, type WebScaffold,

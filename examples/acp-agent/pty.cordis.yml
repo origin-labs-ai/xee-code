@@ -7,9 +7,9 @@
     patches:
       - insert:
           - id: pty
-            name: '@origin-ai/xhe-terminal'
+            name: '@origin-ai/cf-terminal'
           - id: terminal-bash
-            name: '@origin-ai/xhe-terminal-bash'
+            name: '@origin-ai/cf-terminal-bash'
             config:
               pollIntervalMs: 10
               exactProbeAfterMs: 20
@@ -18,4 +18,4 @@
               timeoutMs: 2000
               disposeGraceMs: 500
           - id: tool-terminal
-            name: '@origin-ai/xhe-tool-terminal'
+            name: '@origin-ai/cf-tool-terminal'

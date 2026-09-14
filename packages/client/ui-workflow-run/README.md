@@ -1,4 +1,4 @@
-# @origin-ai/xhe-client-ui-workflow-run
+# @origin-ai/cf-client-ui-workflow-run
 
 The browser plugin that reconstructs durable top-level workflow runs as independent Chat nodes. It consumes the four `tool-workflow/*` Session events owned by [`xhe-tool-workflow`](../../workflow/tool-workflow/README.md), registers one `ConversationNodeDefinition`, and renders through the keyed `conversation.chat.node` slot without changing the existing workflow tool card.
 

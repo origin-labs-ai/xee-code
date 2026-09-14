@@ -1,6 +1,6 @@
 /** Shared immutable-header checks for logical session source observers. */
 
-import type { SessionHeader } from '@origin-ai/xhe-session'
+import type { SessionHeader } from '@origin-ai/cf-session'
 import { SessionQueryError } from './config.ts'
 
 /**

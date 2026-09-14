@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-subagent-spawn-in-process",
+  "name": "@origin-ai/cf-subagent-spawn-in-process",
   "description": "In-process spawn subagent backend: runs a fresh child agent on ctx.agents",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -32,9 +32,9 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-subagent": "workspace:^",
-    "@origin-ai/xhe-subagent-in-process-driver": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-subagent": "workspace:^",
+    "@origin-ai/cf-subagent-in-process-driver": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "dependencies": {
@@ -42,19 +42,19 @@
   },
   "devDependencies": {
     "@deepseek-ai/cordis-plugin-loader": "workspace:^",
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-agent-loop": "workspace:^",
-    "@origin-ai/xhe-agent-loop-testkit": "workspace:^",
-    "@origin-ai/xhe-bash-local": "workspace:^",
-    "@origin-ai/xhe-subprocess-local": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-llm-deepseek": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-subagent": "workspace:^",
-    "@origin-ai/xhe-subagent-in-process-driver": "workspace:^",
-    "@origin-ai/xhe-tool-bash": "workspace:^",
-    "@origin-ai/xhe-tool-subagent": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-agent-loop": "workspace:^",
+    "@origin-ai/cf-agent-loop-testkit": "workspace:^",
+    "@origin-ai/cf-bash-local": "workspace:^",
+    "@origin-ai/cf-subprocess-local": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-llm-deepseek": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-subagent": "workspace:^",
+    "@origin-ai/cf-subagent-in-process-driver": "workspace:^",
+    "@origin-ai/cf-tool-bash": "workspace:^",
+    "@origin-ai/cf-tool-subagent": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

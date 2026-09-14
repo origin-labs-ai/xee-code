@@ -30,15 +30,15 @@
  * accent row derived only from each logged call/result slice.
  */
 // Type-only: the carrier types, the forwarded Host-event face and the ctx.remote merge.
-import type { ConnectionHandle, SessionId, SkillEntry } from '@origin-ai/xhe-api-remotes/client'
-import type { ClientContext, ISessions } from '@origin-ai/xhe-client-runtime/client'
-import type { InputTriggerServiceContract, InputTriggerSource } from '@origin-ai/xhe-client-ui-input-trigger/client'
+import type { ConnectionHandle, SessionId, SkillEntry } from '@origin-ai/cf-api-remotes/client'
+import type { ClientContext, ISessions } from '@origin-ai/cf-client-runtime/client'
+import type { InputTriggerServiceContract, InputTriggerSource } from '@origin-ai/cf-client-ui-input-trigger/client'
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
-import type {} from '@origin-ai/xhe-client-locale/client'
+import type {} from '@origin-ai/cf-client-locale/client'
 import { SkillRow } from './SkillRow.tsx'
 import { en, NS, zh, type SkillKey } from './locales.ts'
 
-declare module '@origin-ai/xhe-client-ui-slots' {
+declare module '@origin-ai/cf-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** The dedicated skill tool row's copy. */
     skill: SkillKey

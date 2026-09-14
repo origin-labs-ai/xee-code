@@ -8,8 +8,8 @@
  * @module xhe-llm-pi-ai/replay
  */
 
-import { LlmError } from '@origin-ai/xhe-llm'
-import type { Message, ModelMessageSource, ReplayEnvelope } from '@origin-ai/xhe-llm'
+import { LlmError } from '@origin-ai/cf-llm'
+import type { Message, ModelMessageSource, ReplayEnvelope } from '@origin-ai/cf-llm'
 import type { Api, AssistantMessage, Usage as PiUsage } from '@earendil-works/pi-ai'
 
 /** Per-block half of the pi-ai replay envelope, one entry per content block. */

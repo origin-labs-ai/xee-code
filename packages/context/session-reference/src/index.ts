@@ -2,17 +2,17 @@
  * Cross-session snapshot preparation. Hosts adapt mentions into structured
  * references; this service owns exact reads, projection, budgets, and durable context.
  *
- * @module @origin-ai/xhe-session-reference
+ * @module @origin-ai/cf-session-reference
  */
 
 import { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import type { Agent, PreStepDecision } from '@origin-ai/xhe-agent'
-import { Remote, TypertRemoteService } from '@origin-ai/xhe-typert-protocol'
-import { createUserMessage, freezeMessage } from '@origin-ai/xhe-llm'
-import type { ContentBlock, UserMessage } from '@origin-ai/xhe-llm'
-import type { SessionId } from '@origin-ai/xhe-session'
-import type { SessionSurfaceSnapshot, SessionTitleObservationResult } from '@origin-ai/xhe-session-query'
+import type { Agent, PreStepDecision } from '@origin-ai/cf-agent'
+import { Remote, TypertRemoteService } from '@origin-ai/cf-typert-protocol'
+import { createUserMessage, freezeMessage } from '@origin-ai/cf-llm'
+import type { ContentBlock, UserMessage } from '@origin-ai/cf-llm'
+import type { SessionId } from '@origin-ai/cf-session'
+import type { SessionSurfaceSnapshot, SessionTitleObservationResult } from '@origin-ai/cf-session-query'
 import {
   DEFAULT_CANDIDATE_LIMIT,
   DEFAULT_MAX_REFERENCE_BYTES,

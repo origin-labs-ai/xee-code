@@ -7,15 +7,15 @@
  * Feature-owned rows and sections stay with their features.
  * Export discipline: packages/client/AGENTS.md.
  */
-import type { ClientContext } from '@origin-ai/xhe-client-runtime/client'
-import type { ConnectionHandle } from '@origin-ai/xhe-api-remotes/client'
-import { resolveSlotLabel } from '@origin-ai/xhe-client-ui-slots'
+import type { ClientContext } from '@origin-ai/cf-client-runtime/client'
+import type { ConnectionHandle } from '@origin-ai/cf-api-remotes/client'
+import { resolveSlotLabel } from '@origin-ai/cf-client-ui-slots'
 // Type-only: the settings slot declarations plus the ctx.settingsScope Context
 // merge. Cross-plugin collaboration goes through the service, never a value
 // import (client bundle purity gate).
-import type {} from '@origin-ai/xhe-client-ui-settings/client'
+import type {} from '@origin-ai/cf-client-ui-settings/client'
 // Type-only: pulls ctx.locale into this program.
-import type {} from '@origin-ai/xhe-client-locale/client'
+import type {} from '@origin-ai/cf-client-locale/client'
 import type {
   SettingsOnboardingStep, SettingsRootInjected, SettingsSectionRow,
 } from './shell-contract.ts'
@@ -38,7 +38,7 @@ export type { SettingsDocumentState } from './settings-document-store.ts'
 export { SettingsDocumentStore } from './settings-document-store.ts'
 export type { SettingsKey } from './locales.ts'
 
-declare module '@origin-ai/xhe-client-ui-slots' {
+declare module '@origin-ai/cf-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Shell chrome + shell-owned General section copy. */
     settings: SettingsKey

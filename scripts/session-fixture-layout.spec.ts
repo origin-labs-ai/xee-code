@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { type SessionEvent } from '@origin-ai/xhe-session'
-import { parseSessionLog } from '@origin-ai/xhe-llm-replay'
+import { type SessionEvent } from '@origin-ai/cf-session'
+import { parseSessionLog } from '@origin-ai/cf-llm-replay'
 import { canonicalSessionFixture } from './session-fixture-layout.ts'
 
 const HEADER = '  {"type":"session","version":0,"id":"fixture","createdAt":1,"delegationDepth":0}  '

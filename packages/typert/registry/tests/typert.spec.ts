@@ -6,16 +6,16 @@ import TypertRegistry, {
   typertKey,
   typertPackageKey,
   type TypertContribution,
-} from '@origin-ai/xhe-typert-registry'
+} from '@origin-ai/cf-typert-registry'
 import type {
   InvocationDescriptor,
   TypertContext,
   TypertLookup,
   TypertRemoteContribution,
-} from '@origin-ai/xhe-typert-protocol'
+} from '@origin-ai/cf-typert-protocol'
 import { apply as applyClientRegistry, inject as clientRegistryInject } from '../src/client/index.ts'
 
-declare module '@origin-ai/xhe-typert-protocol' {
+declare module '@origin-ai/cf-typert-protocol' {
   interface TypertLookupMap {
     fixture: TypertLookup<{ readonly id: string }, string>
   }
@@ -33,7 +33,7 @@ async function makeCtx(): Promise<Context> {
 
 function toolsContribution(schema: z.ZodType = z.object({ name: z.string() })): TypertContribution {
   return {
-    package: '@origin-ai/xhe-tools',
+    package: '@origin-ai/cf-tools',
     face: 'host',
     schemas: [{ name: 'ToolInput', schema }],
     invocations: [],
@@ -103,16 +103,16 @@ describe('TypertRegistry', () => {
     const contribution = toolsContribution()
     ctx.typert.register(contribution)
 
-    expect(typertKey('@origin-ai/xhe-tools', 'ToolInput')).toBe('@origin-ai/xhe-tools#ToolInput')
-    expect(typertPackageKey('@origin-ai/xhe-tools', 'host')).toBe('@origin-ai/xhe-tools#host')
-    expect(ctx.typert.get('@origin-ai/xhe-tools#ToolInput')).toMatchObject({
-      package: '@origin-ai/xhe-tools',
+    expect(typertKey('@origin-ai/cf-tools', 'ToolInput')).toBe('@origin-ai/cf-tools#ToolInput')
+    expect(typertPackageKey('@origin-ai/cf-tools', 'host')).toBe('@origin-ai/cf-tools#host')
+    expect(ctx.typert.get('@origin-ai/cf-tools#ToolInput')).toMatchObject({
+      package: '@origin-ai/cf-tools',
       face: 'host',
       name: 'ToolInput',
     })
-    expect(ctx.typert.get('@origin-ai/xhe-tools#ToolInput')?.schema).toBe(contribution.schemas[0]?.schema)
-    expect(ctx.typert.getPackage('@origin-ai/xhe-tools', 'host')).toMatchObject({
-      key: '@origin-ai/xhe-tools#host',
+    expect(ctx.typert.get('@origin-ai/cf-tools#ToolInput')?.schema).toBe(contribution.schemas[0]?.schema)
+    expect(ctx.typert.getPackage('@origin-ai/cf-tools', 'host')).toMatchObject({
+      key: '@origin-ai/cf-tools#host',
       model: { services: [{ key: 'tools' }] },
     })
     expect(ctx.typert.list()).toHaveLength(1)
@@ -122,12 +122,12 @@ describe('TypertRegistry', () => {
   it('withdraws schemas and package metadata through the exact contribution disposer', async () => {
     const ctx = await makeCtx()
     const dispose = ctx.typert.register(toolsContribution())
-    expect(ctx.typert.getPackage('@origin-ai/xhe-tools')).toBeDefined()
+    expect(ctx.typert.getPackage('@origin-ai/cf-tools')).toBeDefined()
 
     await dispose()
 
-    expect(ctx.typert.get('@origin-ai/xhe-tools#ToolInput')).toBeUndefined()
-    expect(ctx.typert.getPackage('@origin-ai/xhe-tools')).toBeUndefined()
+    expect(ctx.typert.get('@origin-ai/cf-tools#ToolInput')).toBeUndefined()
+    expect(ctx.typert.getPackage('@origin-ai/cf-tools')).toBeUndefined()
     expect(ctx.typert.listPackages()).toEqual([])
   })
 
@@ -138,11 +138,11 @@ describe('TypertRegistry', () => {
       { inject: ['typert'] },
     ))
     await fiber
-    expect(ctx.typert.getPackage('@origin-ai/xhe-tools')).toBeDefined()
+    expect(ctx.typert.getPackage('@origin-ai/cf-tools')).toBeDefined()
 
     await fiber.dispose()
 
-    expect(ctx.typert.getPackage('@origin-ai/xhe-tools')).toBeUndefined()
+    expect(ctx.typert.getPackage('@origin-ai/cf-tools')).toBeUndefined()
     expect(ctx.typert.list()).toEqual([])
   })
 
@@ -152,7 +152,7 @@ describe('TypertRegistry', () => {
     ctx.typert.register(original)
 
     expect(() => ctx.typert.register(toolsContribution(z.never()))).toThrow('package face')
-    expect(ctx.typert.get('@origin-ai/xhe-tools#ToolInput')?.schema).toBe(original.schemas[0]?.schema)
+    expect(ctx.typert.get('@origin-ai/cf-tools#ToolInput')?.schema).toBe(original.schemas[0]?.schema)
 
     const duplicateBatch: TypertContribution = {
       ...toolsContribution(),
@@ -192,13 +192,13 @@ describe('TypertRegistry', () => {
     const ctx = await makeCtx()
     ctx.typert.register(toolsContribution())
 
-    expect(ctx.typert.resolve('@origin-ai/xhe-tools#ToolInput').name).toBe('ToolInput')
-    expect(() => ctx.typert.resolve('@origin-ai/xhe-tools#Missing')).toThrow('contributes no schema named "Missing"')
+    expect(ctx.typert.resolve('@origin-ai/cf-tools#ToolInput').name).toBe('ToolInput')
+    expect(() => ctx.typert.resolve('@origin-ai/cf-tools#Missing')).toThrow('contributes no schema named "Missing"')
     expect(() => ctx.typert.resolve('@fixture/absent#Value')).toThrow('has no registered contribution')
     expect(() => ctx.typert.resolve('invalid')).toThrow('expected "<package>#<name>"')
-    const projected = ctx.typert.toJSONSchema('@origin-ai/xhe-tools#ToolInput')
+    const projected = ctx.typert.toJSONSchema('@origin-ai/cf-tools#ToolInput')
     expect(projected).toMatchObject({ type: 'object', properties: { name: { type: 'string' } } })
-    expect(ctx.typert.toJSONSchema('@origin-ai/xhe-tools#ToolInput')).not.toBe(projected)
+    expect(ctx.typert.toJSONSchema('@origin-ai/cf-tools#ToolInput')).not.toBe(projected)
   })
 
   it('registers local invocations atomically with generated reflection', async () => {
@@ -220,7 +220,7 @@ describe('TypertRegistry', () => {
     await dispose()
     expect(ctx.typert.local.list()).toEqual([])
     expect(ctx.typert.local.hasSeen('goals/create')).toBe(true)
-    expect(ctx.typert.getPackage('@origin-ai/xhe-tools')).toBeUndefined()
+    expect(ctx.typert.getPackage('@origin-ai/cf-tools')).toBeUndefined()
     expect(changes).toEqual(['local:goals/create', 'local:goals/create'])
   })
 

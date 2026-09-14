@@ -1,7 +1,7 @@
 /**
  * Bundled `cf-badge` skill provider.
  *
- * @module @origin-ai/xhe-skill-badge
+ * @module @origin-ai/cf-skill-badge
  */
 
 import { readFile } from 'node:fs/promises'
@@ -12,7 +12,7 @@ import {
   type SkillCandidate,
   type SkillDefinition,
   type SkillProvider,
-} from '@origin-ai/xhe-skill'
+} from '@origin-ai/cf-skill'
 
 const PROVIDER_NAME = 'cf-badge'
 const SKILL_BODY_URL = new URL('../assets/cf-badge.md', import.meta.url)

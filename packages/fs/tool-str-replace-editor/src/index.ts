@@ -1,18 +1,18 @@
 /**
  * Model-facing `str_replace_editor` over the Harness filesystem seam.
- * @module @origin-ai/xhe-tool-str-replace-editor
+ * @module @origin-ai/cf-tool-str-replace-editor
  */
 
 import { isAbsolute } from 'node:path'
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { FsError } from '@origin-ai/xhe-fs'
-import type { FsInfo, FsTarget, FsWriteIntent } from '@origin-ai/xhe-fs'
-import { sandboxDenialMarker } from '@origin-ai/xhe-sandbox'
-import type { SandboxExecutionPolicy } from '@origin-ai/xhe-sandbox'
-import type { SandboxPolicyService } from '@origin-ai/xhe-sandbox-policy'
-import { defineTool } from '@origin-ai/xhe-tools'
-import type { ToolCallView, ToolRunContext } from '@origin-ai/xhe-tools'
+import { FsError } from '@origin-ai/cf-fs'
+import type { FsInfo, FsTarget, FsWriteIntent } from '@origin-ai/cf-fs'
+import { sandboxDenialMarker } from '@origin-ai/cf-sandbox'
+import type { SandboxExecutionPolicy } from '@origin-ai/cf-sandbox'
+import type { SandboxPolicyService } from '@origin-ai/cf-sandbox-policy'
+import { defineTool } from '@origin-ai/cf-tools'
+import type { ToolCallView, ToolRunContext } from '@origin-ai/cf-tools'
 
 const TRUNCATED_MESSAGE = '<response clipped><NOTE>To save on context only part of this file has been shown to you. You should retry this tool after you have searched inside the file with `grep -n` in order to find the line numbers of what you are looking for.</NOTE>'
 

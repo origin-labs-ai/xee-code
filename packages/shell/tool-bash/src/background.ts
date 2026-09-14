@@ -1,10 +1,10 @@
 /**
  * Generic-task adaptation for background bash process handles.
  *
- * @module @origin-ai/xhe-tool-bash/background
+ * @module @origin-ai/cf-tool-bash/background
  */
 
-import type { ShellProcess } from '@origin-ai/xhe-shell'
+import type { ShellProcess } from '@origin-ai/cf-shell'
 
 /**
  * Map a settled background process onto the generic task-outcome vocabulary:

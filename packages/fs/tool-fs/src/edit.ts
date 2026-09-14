@@ -2,14 +2,14 @@
  * Model-facing literal edit, unique-match by default. It obtains an optional guard from the
  * single intent slot, calls `ctx.fs.editText` without a separate stat, then records the observed
  * version; no policy means an unconditional atomic edit.
- * @module @origin-ai/xhe-tool-fs/src/edit
+ * @module @origin-ai/cf-tool-fs/src/edit
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import { defineTool } from '@origin-ai/xhe-tools'
-import type { DiffCallView, DiffResultView, ToolResult } from '@origin-ai/xhe-tools'
-import type {} from '@origin-ai/xhe-fs'
-import type {} from '@origin-ai/xhe-system-prompt'
+import { defineTool } from '@origin-ai/cf-tools'
+import type { DiffCallView, DiffResultView, ToolResult } from '@origin-ai/cf-tools'
+import type {} from '@origin-ai/cf-fs'
+import type {} from '@origin-ai/cf-system-prompt'
 import { computeHunkDiffs, diffsFromMeta } from './diff.ts'
 import { remediateFsError } from './error.ts'
 import { sessionResolveOptions } from './session-cwd.ts'

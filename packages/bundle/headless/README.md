@@ -1,4 +1,4 @@
-# `@origin-ai/xhe-headless`
+# `@origin-ai/cf-headless`
 
 The dsh one-shot bundle. [`cordis.patch.yml`](cordis.patch.yml) rides directly over [`xhe-base`](../base/README.md): it supplies the coding persona and tool mode, disables HMR, mounts Code Mode's worker as a core execution capability, and inserts this package's `headless-runner` plugin (config `{task}`, resolved from the injected `headlessStartup` provider). It mounts no Host, HTTP server, Web runtime, or browser plugin.
 

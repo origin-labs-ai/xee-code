@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-atomic-write`.
- * @module @origin-ai/xhe-atomic-write/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-atomic-write`.
+ * @module @origin-ai/cf-atomic-write/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-atomic-write'
+const PACKAGE_NAME = '@origin-ai/cf-atomic-write'
 
 /** Cordis companion plugin name. */
 export const name = 'atomic-write-invariant'

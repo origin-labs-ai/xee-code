@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-terminal-bash`.
- * @module @origin-ai/xhe-terminal-bash/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-terminal-bash`.
+ * @module @origin-ai/cf-terminal-bash/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-terminal-bash'
+const PACKAGE_NAME = '@origin-ai/cf-terminal-bash'
 
 /** Cordis companion plugin name. */
 export const name = 'terminal-bash-invariant'

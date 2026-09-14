@@ -5,14 +5,14 @@ import { chmodSync, existsSync, mkdtempSync, realpathSync, rmSync, writeFileSync
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import SubagentRuntime from '@origin-ai/xhe-subagent'
-import type { Agent } from '@origin-ai/xhe-agent'
-import { MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
-import type { SubprocessOutcome } from '@origin-ai/xhe-subprocess'
+import SubagentRuntime from '@origin-ai/cf-subagent'
+import type { Agent } from '@origin-ai/cf-agent'
+import { MAX_TIMER_DELAY_MS } from '@origin-ai/cf-timeout'
+import type { SubprocessOutcome } from '@origin-ai/cf-subprocess'
 import * as acp from '../src/index.ts'
 import { acpStopReason, acpContentText, DEFAULT_DISPOSE_EOF_GRACE_MS, DEFAULT_DISPOSE_GRACE_MS, disposeAcpChild, startAcpRun, toAcpPrompt, type AcpRunSpec } from '../src/run.ts'
-import LocalSubprocessRuntime from '@origin-ai/xhe-subprocess-local'
-import { spawnSubprocess } from '@origin-ai/xhe-subprocess-local/src/spawn.ts'
+import LocalSubprocessRuntime from '@origin-ai/cf-subprocess-local'
+import { spawnSubprocess } from '@origin-ai/cf-subprocess-local/src/spawn.ts'
 
 /**
  * Keyless integration tests for the ACP subagent backend. Each spawns a REAL

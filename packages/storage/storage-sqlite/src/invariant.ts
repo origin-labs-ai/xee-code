@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-storage-sqlite`.
- * @module @origin-ai/xhe-storage-sqlite/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-storage-sqlite`.
+ * @module @origin-ai/cf-storage-sqlite/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-storage-sqlite'
+const PACKAGE_NAME = '@origin-ai/cf-storage-sqlite'
 
 /** Cordis companion plugin name. */
 export const name = 'storage-sqlite-invariant'

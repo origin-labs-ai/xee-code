@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-compaction-tool-result-pruner`.
- * @module @origin-ai/xhe-compaction-tool-result-pruner/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-compaction-tool-result-pruner`.
+ * @module @origin-ai/cf-compaction-tool-result-pruner/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-compaction-tool-result-pruner'
+const PACKAGE_NAME = '@origin-ai/cf-compaction-tool-result-pruner'
 
 /** Cordis companion plugin name. */
 export const name = 'compaction-tool-result-pruner-invariant'

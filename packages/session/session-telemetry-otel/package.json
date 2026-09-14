@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-session-telemetry-otel",
+  "name": "@origin-ai/cf-session-telemetry-otel",
   "description": "OpenTelemetry backend for the Xee Harness Enhanced telemetry seam: hands captured session records to the OTel JS SDK's log pipeline",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -41,22 +41,22 @@
     "@deepseek-ai/schemastery": "workspace:^"
   },
   "peerDependencies": {
-    "@origin-ai/xhe-command-feedback": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-session-telemetry": "workspace:^",
-    "@origin-ai/xhe-anonymous-user-id": "workspace:^",
+    "@origin-ai/cf-command-feedback": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-session-telemetry": "workspace:^",
+    "@origin-ai/cf-anonymous-user-id": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "devDependencies": {
     "@deepseek-ai/cordis-plugin-loader": "workspace:^",
-    "@origin-ai/xhe-command-feedback": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-session-telemetry": "workspace:^",
-    "@origin-ai/xhe-anonymous-user-id": "workspace:^",
+    "@origin-ai/cf-command-feedback": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-session-telemetry": "workspace:^",
+    "@origin-ai/cf-anonymous-user-id": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

@@ -2,7 +2,7 @@
 # the pinned executable first; XHE starts it but does not run a package manager.
 - insert:
     - id: memory-mcp-reference
-      name: '@origin-ai/xhe-mcp-client'
+      name: '@origin-ai/cf-mcp-client'
       config:
         serverName: reference_memory
         transport: stdio

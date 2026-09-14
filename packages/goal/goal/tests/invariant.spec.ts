@@ -1,13 +1,13 @@
-import { createUserMessage } from '@origin-ai/xhe-llm'
+import { createUserMessage } from '@origin-ai/cf-llm'
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import {
   GoalId,
   type GoalSnapshotChangeMeta,
-} from '@origin-ai/xhe-goal'
-import * as GoalInvariantCompanion from '@origin-ai/xhe-goal/invariant'
-import InvariantRegistry, { InvariantError } from '@origin-ai/xhe-invariants'
-import SessionStore, { SessionId } from '@origin-ai/xhe-session'
+} from '@origin-ai/cf-goal'
+import * as GoalInvariantCompanion from '@origin-ai/cf-goal/invariant'
+import InvariantRegistry, { InvariantError } from '@origin-ai/cf-invariants'
+import SessionStore, { SessionId } from '@origin-ai/cf-session'
 
 const change: GoalSnapshotChangeMeta = {
   kind: 'goal/change',
@@ -54,7 +54,7 @@ describe('goal stream invariants', () => {
       session.append('goal/change', { ...change, extra: true } as never)
     }).toThrow(expect.objectContaining<Partial<InvariantError>>({
       code: 'INVARIANT',
-      packageName: '@origin-ai/xhe-goal',
+      packageName: '@origin-ai/cf-goal',
     }))
     expect(session.seq).toBe(0)
     expect(() => {

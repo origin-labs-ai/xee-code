@@ -8,10 +8,10 @@ import { Context } from '@deepseek-ai/cordis'
 import { mkdirSync, mkdtempSync, realpathSync, rmSync, symlinkSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, resolve, sep } from 'node:path'
-import { CallId } from '@origin-ai/xhe-llm'
-import SystemPrompt, { renderPrompt } from '@origin-ai/xhe-system-prompt'
-import ToolRuntime, { type ToolResult } from '@origin-ai/xhe-tools'
-import { FileSystem, FsError, FsTargetKey, FsVersion } from '@origin-ai/xhe-fs'
+import { CallId } from '@origin-ai/cf-llm'
+import SystemPrompt, { renderPrompt } from '@origin-ai/cf-system-prompt'
+import ToolRuntime, { type ToolResult } from '@origin-ai/cf-tools'
+import { FileSystem, FsError, FsTargetKey, FsVersion } from '@origin-ai/cf-fs'
 import type {
   FsDirEntry,
   FsEditOutcome,
@@ -21,16 +21,16 @@ import type {
   FsTarget,
   FsWriteIntent,
   FsWriteOutcome,
-} from '@origin-ai/xhe-fs'
-import * as FsPolicy from '@origin-ai/xhe-fs-observation-policy'
-import * as ToolFs from '@origin-ai/xhe-tool-fs'
+} from '@origin-ai/cf-fs'
+import * as FsPolicy from '@origin-ai/cf-fs-observation-policy'
+import * as ToolFs from '@origin-ai/cf-tool-fs'
 import { STREAM_MIN_SIZE } from '../src/read.ts'
 import { formatReadOutput } from '../src/read-render.ts'
 import type { FileReadOutcome } from '../src/read-render.ts'
 import { sessionCwd } from '../src/session-cwd.ts'
-import ApprovalService from '@origin-ai/xhe-user-approval'
-import type { SandboxExecutionPolicy, SandboxMode } from '@origin-ai/xhe-sandbox'
-import SandboxPolicyService from '@origin-ai/xhe-sandbox-policy'
+import ApprovalService from '@origin-ai/cf-user-approval'
+import type { SandboxExecutionPolicy, SandboxMode } from '@origin-ai/cf-sandbox'
+import SandboxPolicyService from '@origin-ai/cf-sandbox-policy'
 
 const testToolSignal = new AbortController().signal
 

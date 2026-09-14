@@ -13,7 +13,7 @@
  * - Complete type system for all components
  * - Factory functions and convenience methods
  * 
- * @origin-ai/xhe/mad
+ * @origin-ai/cf/mad
  * @version 2.0.0-advanced
  * 
  * Also known as:

@@ -7,8 +7,8 @@
  * with the runtime sessions service. A second effect seats the theme
  * presenter, which projects ctx.theme snapshots onto document.body.
  */
-import type { ClientContext } from '@origin-ai/xhe-client-runtime/client'
-import type {} from '@origin-ai/xhe-client-ui-theme/client'
+import type { ClientContext } from '@origin-ai/cf-client-runtime/client'
+import type {} from '@origin-ai/cf-client-ui-theme/client'
 import type { PanelActions } from './service.ts'
 import { AppFrame } from './AppFrame.tsx'
 import { createLayoutStore } from './stores.ts'
@@ -30,7 +30,7 @@ declare module '@deepseek-ai/cordis' {
   }
 }
 
-declare module '@origin-ai/xhe-client-ui-slots' {
+declare module '@origin-ai/cf-client-ui-slots' {
   interface SlotMap {
     // The 'root' entry itself is the runtime's built-in slot (declared
     // there); these four are the frame's children, declared by the same

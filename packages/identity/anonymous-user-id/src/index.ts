@@ -13,14 +13,14 @@
  * touches the disk once, and a file deleted mid-run keeps the process's id
  * until the next launch.
  *
- * @module @origin-ai/xhe-anonymous-user-id
+ * @module @origin-ai/cf-anonymous-user-id
  */
 
 import { randomUUID } from 'node:crypto'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
-import type { Branded } from '@origin-ai/xhe-brand'
-import { resolveDshHome } from '@origin-ai/xhe-home-paths'
+import type { Branded } from '@origin-ai/cf-brand'
+import { resolveDshHome } from '@origin-ai/cf-home-paths'
 
 /** A harness-home-scoped anonymous user id (random UUID v4). */
 export type AnonymousUserId = Branded<'AnonymousUserId'>

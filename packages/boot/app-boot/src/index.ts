@@ -3,7 +3,7 @@
  * `.env`, install the fail-loud Loader guards, resolve the config path (snapshot-aware), load the
  * optional user patch layers from the Harness home (`~/.cf`), expose its path resolver to
  * config expressions, and drive the Cordis Loader against a leaf `cordis.yml` until the tree settles.
- * @module @origin-ai/xhe-app-boot
+ * @module @origin-ai/cf-app-boot
  */
 
 import { pathToFileURL } from 'node:url'
@@ -15,11 +15,11 @@ import { Context, type FiberState } from '@deepseek-ai/cordis'
 import Loader, { type Entry, type EntryOptions } from '@deepseek-ai/cordis-plugin-loader'
 import Include, { applyEntryPatches, entryListSchema, type PatchOptions } from '@deepseek-ai/cordis-plugin-include'
 import Group from '@deepseek-ai/cordis-plugin-group'
-import { dshHomePath, resolveDshHome } from '@origin-ai/xhe-home-paths'
-import { createLaunchEnvironmentSnapshot, type LaunchEnvironmentSnapshot } from '@origin-ai/xhe-launch-environment'
+import { dshHomePath, resolveDshHome } from '@origin-ai/cf-home-paths'
+import { createLaunchEnvironmentSnapshot, type LaunchEnvironmentSnapshot } from '@origin-ai/cf-launch-environment'
 import type {} from '@deepseek-ai/cordis-plugin-hmr'
 // Side-effect type import: resolves `ctx.get('systemPrompt')` to the service.
-import type {} from '@origin-ai/xhe-system-prompt'
+import type {} from '@origin-ai/cf-system-prompt'
 
 declare module '@deepseek-ai/cordis' {
   interface Context {

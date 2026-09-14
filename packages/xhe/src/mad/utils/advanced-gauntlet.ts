@@ -10,7 +10,7 @@
  * - Adaptive stopping based on convergence
  * - Critic performance tracking and optimization
  * 
- * @origin-ai/xhe/mad/utils
+ * @origin-ai/cf/mad/utils
  * @version 2.0.5-advanced
  */
 

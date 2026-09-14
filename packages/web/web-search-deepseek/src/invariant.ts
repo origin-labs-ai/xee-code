@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-web-search-deepseek`.
- * @module @origin-ai/xhe-web-search-deepseek/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-web-search-deepseek`.
+ * @module @origin-ai/cf-web-search-deepseek/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-web-search-deepseek'
+const PACKAGE_NAME = '@origin-ai/cf-web-search-deepseek'
 
 /** Cordis companion plugin name. */
 export const name = 'web-search-deepseek-invariant'

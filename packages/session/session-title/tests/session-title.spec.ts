@@ -1,14 +1,14 @@
-import { createUserMessage } from '@origin-ai/xhe-llm'
+import { createUserMessage } from '@origin-ai/cf-llm'
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it } from 'vitest'
-import SessionStore, { Session, SessionId } from '@origin-ai/xhe-session'
+import SessionStore, { Session, SessionId } from '@origin-ai/cf-session'
 import SessionTitleService, {
   SessionTitleProviderId,
   fallbackSessionTitle,
   foldSessionTitle,
   normalizeSessionTitle,
   truncateTitleUtf8,
-} from '@origin-ai/xhe-session-title'
+} from '@origin-ai/cf-session-title'
 
 const CONFIG = {
   fallbackMaxWords: 5,

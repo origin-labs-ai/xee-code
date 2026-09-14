@@ -14,13 +14,13 @@
  * armed claim folds with zero delta because bounded state cannot reconstruct
  * the replaced range; this preserves replay at the cost of possible drift.
  *
- * @module @origin-ai/xhe-token-meter/surface-projection
+ * @module @origin-ai/cf-token-meter/surface-projection
  */
 
-import { deriveEventMessage, isSurfaceEvent } from '@origin-ai/xhe-session'
-import type { SessionEvent } from '@origin-ai/xhe-session'
+import { deriveEventMessage, isSurfaceEvent } from '@origin-ai/cf-session'
+import type { SessionEvent } from '@origin-ai/cf-session'
 // Type-only: the `compaction/*` SessionEventMap merges (shadow-price events).
-import type {} from '@origin-ai/xhe-compaction'
+import type {} from '@origin-ai/cf-compaction'
 import { estimateMessage } from './estimate.ts'
 
 /**

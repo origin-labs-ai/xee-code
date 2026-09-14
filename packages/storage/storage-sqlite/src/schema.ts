@@ -3,13 +3,13 @@
  * layout version, the database open/configure sequence (permissions, pragmas,
  * version stamp/reject), and the unit metadata tables. Unit record tables are
  * created per descriptor in `unit.ts`.
- * @module @origin-ai/xhe-storage-sqlite/schema
+ * @module @origin-ai/cf-storage-sqlite/schema
  */
 
 import { DatabaseSync } from 'node:sqlite'
 import { mkdir, open } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
-import { StorageError } from '@origin-ai/xhe-storage'
+import { StorageError } from '@origin-ai/cf-storage'
 
 /**
  * The on-disk physical layout version, stored in `PRAGMA user_version`.

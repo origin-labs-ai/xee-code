@@ -19,7 +19,7 @@
  * flat fallback directory `$XHE_HOME/profiles/node_modules` (one symlink per
  * package the installation's app and bundles depend on) makes every in-box
  * plugin Node-resolvable from any profile through the ordinary parent-walk.
- * @module @origin-ai/xhe-app-boot/profile
+ * @module @origin-ai/cf-app-boot/profile
  */
 
 import { createRequire } from 'node:module'
@@ -29,7 +29,7 @@ import {
 import { basename, dirname, join } from 'node:path'
 import type { EntryOptions } from '@deepseek-ai/cordis-plugin-loader'
 import { applyEntryPatches, type PatchOptions } from '@deepseek-ai/cordis-plugin-include'
-import { resolveDshHome } from '@origin-ai/xhe-home-paths'
+import { resolveDshHome } from '@origin-ai/cf-home-paths'
 import { loadOverlayPatches } from './index.ts'
 
 /** Directory under the Harness home holding every profile. */
@@ -112,17 +112,17 @@ export function resolveProfileDir(name: string, home: string = resolveDshHome())
 
 /** The shipped profile templates auto-initialized on first use, by name. */
 export const PROFILE_TEMPLATES: Record<string, readonly string[]> = {
-  web: ['@origin-ai/xhe-base', '@origin-ai/xhe-web-app'],
-  headless: ['@origin-ai/xhe-base', '@origin-ai/xhe-headless'],
+  web: ['@origin-ai/cf-base', '@origin-ai/cf-web-app'],
+  headless: ['@origin-ai/cf-base', '@origin-ai/cf-headless'],
 }
 
 /** Installation-owned bundle tuples normalized to the shipped template. */
 const INSTALLATION_OWNED_PROFILE_TUPLES: Record<string, readonly string[]> = {
-  headless: ['@origin-ai/xhe-base', '@origin-ai/xhe-web-app', '@origin-ai/xhe-headless'],
+  headless: ['@origin-ai/cf-base', '@origin-ai/cf-web-app', '@origin-ai/cf-headless'],
 }
 
 /** The bundle list a `dsh plugin` init uses for a name with no shipped template. */
-export const DEFAULT_PROFILE_BUNDLES: readonly string[] = ['@origin-ai/xhe-base']
+export const DEFAULT_PROFILE_BUNDLES: readonly string[] = ['@origin-ai/cf-base']
 
 const PROFILE_PATCH_TEMPLATE = `# Your patch layer for this dsh profile, applied after every bundle layer:
 # a top-level YAML array of loader patch entries (id-targeted config
@@ -332,7 +332,7 @@ function packageDirFromAnchor(anchor: string, packageName: string): string | und
 /**
  * Resolve one bundle package's directory: installation anchor first, then the
  * profile directory. The installation-first order is the contract that
- * `@origin-ai/xhe-base` (and every other in-box bundle) always comes from
+ * `@origin-ai/cf-base` (and every other in-box bundle) always comes from
  * the same installation as the running dsh, never from a profile-local copy.
  * Resolution does not require the package to export `./package.json`.
  * @param binName - the diagnostic prefix on the thrown error.

@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-client-ui-commands`.
- * @module @origin-ai/xhe-client-ui-commands/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-client-ui-commands`.
+ * @module @origin-ai/cf-client-ui-commands/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-client-ui-commands'
+const PACKAGE_NAME = '@origin-ai/cf-client-ui-commands'
 
 /** Cordis companion plugin name. */
 export const name = 'client-ui-commands-invariant'

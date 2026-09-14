@@ -4,13 +4,13 @@ import { join, sep } from 'node:path'
 import { tmpdir } from 'node:os'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
-import { renderPrompt, TOOL_ORDER_REST } from '@origin-ai/xhe-system-prompt'
+import { renderPrompt, TOOL_ORDER_REST } from '@origin-ai/cf-system-prompt'
 import * as agentCore from '../src/index.ts'
-import { agentEvents, type Agent } from '@origin-ai/xhe-agent'
-import { SessionId } from '@origin-ai/xhe-session'
-import LocalBashExecutor from '@origin-ai/xhe-bash-local'
-import LocalFileSystem from '@origin-ai/xhe-fs-local'
-import * as ToolFs from '@origin-ai/xhe-tool-fs'
+import { agentEvents, type Agent } from '@origin-ai/cf-agent'
+import { SessionId } from '@origin-ai/cf-session'
+import LocalBashExecutor from '@origin-ai/cf-bash-local'
+import LocalFileSystem from '@origin-ai/cf-fs-local'
+import * as ToolFs from '@origin-ai/cf-tool-fs'
 import { MockAdapter, textResponse, toolCallResponse } from '../../../core/agent-loop/tests/mock-adapter.ts'
 import {
   createUserMessage,
@@ -22,16 +22,16 @@ import {
   type Message,
   type ResolvedRetryPolicy,
   type StreamChunk,
-} from '@origin-ai/xhe-llm'
-import type { ToolExecution } from '@origin-ai/xhe-tools'
-import * as sessionInvariant from '@origin-ai/xhe-session/invariant'
-import * as agentInvariant from '@origin-ai/xhe-agent/invariant'
-import * as scopeInvariant from '@origin-ai/xhe-scope/invariant'
-import * as agentLoopInvariant from '@origin-ai/xhe-agent-loop/invariant'
+} from '@origin-ai/cf-llm'
+import type { ToolExecution } from '@origin-ai/cf-tools'
+import * as sessionInvariant from '@origin-ai/cf-session/invariant'
+import * as agentInvariant from '@origin-ai/cf-agent/invariant'
+import * as scopeInvariant from '@origin-ai/cf-scope/invariant'
+import * as agentLoopInvariant from '@origin-ai/cf-agent-loop/invariant'
 
 const testToolSignal = new AbortController().signal
 
-declare module '@origin-ai/xhe-jobs' {
+declare module '@origin-ai/cf-jobs' {
   interface JobKindMap {
     probe: 'probe'
   }
@@ -53,7 +53,7 @@ async function composePrefix(ctx: Context, cwd: string): Promise<Message[]> {
 }
 
 /**
- * Unit coverage for the @origin-ai/xhe-agent-spine-demo bundle: mounting it brings
+ * Unit coverage for the @origin-ai/cf-agent-spine-demo bundle: mounting it brings
  * up the whole default spine in one `ctx.plugin`, and the forwarded
  * `agents` config reaches the loop (default `[]`, or a pre-created agent).
  *
@@ -227,8 +227,8 @@ describe('xhe-agent-spine-demo bundle', () => {
 
     for (const invariants of [
       { enabled: false },
-      { package_allowlist: ['^@origin-ai/xhe-agent$'] },
-      { package_blocklist: ['^@origin-ai/xhe-session$'] },
+      { package_allowlist: ['^@origin-ai/cf-agent$'] },
+      { package_blocklist: ['^@origin-ai/cf-session$'] },
     ]) {
       const filtered = await mount({ workspaceContext: false, invariants })
       expect(() => { nestedTurn(filtered) }).not.toThrow()

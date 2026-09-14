@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-llm-mock-server`.
- * @module @origin-ai/xhe-llm-mock-server/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-llm-mock-server`.
+ * @module @origin-ai/cf-llm-mock-server/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-llm-mock-server'
+const PACKAGE_NAME = '@origin-ai/cf-llm-mock-server'
 
 /** Cordis companion plugin name. */
 export const name = 'llm-mock-server-invariant'

@@ -3,10 +3,10 @@
  * process-group cancellation, and timeout machinery. The bridge supplies the
  * trusted stdin payload and dialect environment, then this module decodes the
  * captured outcome.
- * @module @origin-ai/xhe-hook-protocol/runner
+ * @module @origin-ai/cf-hook-protocol/runner
  */
 
-import type { ShellExecutor } from '@origin-ai/xhe-shell'
+import type { ShellExecutor } from '@origin-ai/cf-shell'
 import { parseHookOutput } from './codec.ts'
 import type { CommandHook, HookOutput } from './types.ts'
 

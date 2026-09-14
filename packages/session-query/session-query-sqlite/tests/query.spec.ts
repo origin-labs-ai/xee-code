@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { SessionId } from '@origin-ai/xhe-session'
-import { SessionSearchCursor, type SessionQueryErrorCode } from '@origin-ai/xhe-session-query'
+import { SessionId } from '@origin-ai/cf-session'
+import { SessionSearchCursor, type SessionQueryErrorCode } from '@origin-ai/cf-session-query'
 import {
   buildEventWhere,
   buildSessionWhere,

@@ -1,6 +1,6 @@
 /**
  * Dependency-free CLI parsing for the standalone mock LLM server.
- * @module @origin-ai/xhe-llm-mock-server/cli
+ * @module @origin-ai/cf-llm-mock-server/cli
  */
 
 import { parseArgs } from 'node:util'

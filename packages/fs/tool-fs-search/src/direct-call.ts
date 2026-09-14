@@ -1,7 +1,7 @@
 /** Shared top-level-call post-policy selection for search result spill. @module xhe-tool-fs-search/direct-call */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { JsonValue, PostToolDecision, ToolDefinition, ToolExecution, ToolExecutionResult } from '@origin-ai/xhe-tools'
+import type { JsonValue, PostToolDecision, ToolDefinition, ToolExecution, ToolExecutionResult } from '@origin-ai/cf-tools'
 
 /**
  * Return the accepted canonical value only when this tool still owns a direct

@@ -15,22 +15,22 @@ import { Context } from '@deepseek-ai/cordis'
 import { mkdtempSync, realpathSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, resolve as resolvePath } from 'node:path'
-import { CallId } from '@origin-ai/xhe-llm'
-import SystemPrompt, { renderPrompt } from '@origin-ai/xhe-system-prompt'
-import ToolRuntime, { TOOL_ABORTED, TOOL_ABORTED_BEFORE_DISPATCH } from '@origin-ai/xhe-tools'
-import LocalJobRegistry from '@origin-ai/xhe-jobs-local'
-import * as ToolTasks from '@origin-ai/xhe-tool-jobs'
-import AgentRegistry from '@origin-ai/xhe-agent'
-import type { Agent } from '@origin-ai/xhe-agent'
-import { SessionId } from '@origin-ai/xhe-session'
-import ApprovalService from '@origin-ai/xhe-user-approval'
-import type { ApprovalOutcome } from '@origin-ai/xhe-user-approval'
-import { ShellExecutor } from '@origin-ai/xhe-shell'
-import type { ShellExecRequest, ShellExecSpec, ShellProcess, ShellRunResult } from '@origin-ai/xhe-shell'
-import SandboxPolicyService from '@origin-ai/xhe-sandbox-policy'
-import * as ToolPwsh from '@origin-ai/xhe-tool-pwsh'
-import * as BashEnvPlugin from '@origin-ai/xhe-shell-env'
-import type { ShellProcessRead } from '@origin-ai/xhe-shell'
+import { CallId } from '@origin-ai/cf-llm'
+import SystemPrompt, { renderPrompt } from '@origin-ai/cf-system-prompt'
+import ToolRuntime, { TOOL_ABORTED, TOOL_ABORTED_BEFORE_DISPATCH } from '@origin-ai/cf-tools'
+import LocalJobRegistry from '@origin-ai/cf-jobs-local'
+import * as ToolTasks from '@origin-ai/cf-tool-jobs'
+import AgentRegistry from '@origin-ai/cf-agent'
+import type { Agent } from '@origin-ai/cf-agent'
+import { SessionId } from '@origin-ai/cf-session'
+import ApprovalService from '@origin-ai/cf-user-approval'
+import type { ApprovalOutcome } from '@origin-ai/cf-user-approval'
+import { ShellExecutor } from '@origin-ai/cf-shell'
+import type { ShellExecRequest, ShellExecSpec, ShellProcess, ShellRunResult } from '@origin-ai/cf-shell'
+import SandboxPolicyService from '@origin-ai/cf-sandbox-policy'
+import * as ToolPwsh from '@origin-ai/cf-tool-pwsh'
+import * as BashEnvPlugin from '@origin-ai/cf-shell-env'
+import type { ShellProcessRead } from '@origin-ai/cf-shell'
 import { processOutcome } from '../src/background.ts'
 import { renderPwshProcessRead, renderPwshResult } from '../src/render.ts'
 
@@ -744,7 +744,7 @@ describe('background execution through the job runtime', () => {
     const { ctx } = await setup() // no LocalJobRegistry / ToolTasks
     const result = await call(ctx, 'pwsh', { command: 'Start-Sleep -Seconds 60', description: 'test command', run_in_background: true })
     expect(result.isError).toBe(true)
-    expect(text(result)).toContain('background jobs unavailable: load @origin-ai/xhe-jobs and @origin-ai/xhe-tool-jobs')
+    expect(text(result)).toContain('background jobs unavailable: load @origin-ai/cf-jobs and @origin-ai/cf-tool-jobs')
   })
 
   it('a pre-aborted call is skipped before the process starts', async () => {

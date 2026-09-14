@@ -1,9 +1,9 @@
-/** Local durable attachment backend rooted below `XHE_HOME`. @module @origin-ai/xhe-attachment-local */
+/** Local durable attachment backend rooted below `XHE_HOME`. @module @origin-ai/cf-attachment-local */
 
 import { join, resolve } from 'node:path'
 import { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { AttachmentStore } from '@origin-ai/xhe-attachment'
+import { AttachmentStore } from '@origin-ai/cf-attachment'
 import type {
   ImageAttachmentLimits,
   ImageAttachmentRef,
@@ -11,8 +11,8 @@ import type {
   RequestImageAttachment,
   SaveImageAttachment,
   StoredImageAttachment,
-} from '@origin-ai/xhe-attachment'
-import { resolveDshHome } from '@origin-ai/xhe-home-paths'
+} from '@origin-ai/cf-attachment'
+import { resolveDshHome } from '@origin-ai/cf-home-paths'
 import type { NormalizationPolicy } from './normalization.ts'
 import { CompressionLimiter } from './compression-limiter.ts'
 import { commitPreparedImageFile, prepareImageFile, readImageFile, validateImageFile } from './store.ts'

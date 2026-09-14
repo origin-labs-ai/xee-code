@@ -14,18 +14,18 @@ import { mkdtempSync, readFileSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@deepseek-ai/cordis'
-import { CallId } from '@origin-ai/xhe-llm'
-import { SessionId } from '@origin-ai/xhe-session'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ToolRuntime from '@origin-ai/xhe-tools'
-import type { ToolExecution } from '@origin-ai/xhe-tools'
+import { CallId } from '@origin-ai/cf-llm'
+import { SessionId } from '@origin-ai/cf-session'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ToolRuntime from '@origin-ai/cf-tools'
+import type { ToolExecution } from '@origin-ai/cf-tools'
 
 const testToolSignal = new AbortController().signal
-import WebRuntime from '@origin-ai/xhe-web'
-import * as WebFetchLocal from '@origin-ai/xhe-web-fetch-http'
-import LocalSpillStore from '@origin-ai/xhe-spill-local'
-import * as SpillPolicy from '@origin-ai/xhe-spill-policy'
-import * as ToolWeb from '@origin-ai/xhe-tool-web'
+import WebRuntime from '@origin-ai/cf-web'
+import * as WebFetchLocal from '@origin-ai/cf-web-fetch-http'
+import LocalSpillStore from '@origin-ai/cf-spill-local'
+import * as SpillPolicy from '@origin-ai/cf-spill-policy'
+import * as ToolWeb from '@origin-ai/cf-tool-web'
 
 type Handler = (req: IncomingMessage, res: ServerResponse) => void
 

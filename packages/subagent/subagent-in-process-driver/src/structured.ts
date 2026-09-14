@@ -7,13 +7,13 @@
  * Capture commits only after the authoritative `tools/result` succeeds; Code Mode capture also
  * waits for the enclosing `run_code` result. The terminal result marker and monotonic tool
  * guard prevent later calls from reopening a completed structured run.
- * @module @origin-ai/xhe-subagent-in-process-driver/structured
+ * @module @origin-ai/cf-subagent-in-process-driver/structured
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { ToolSchema } from '@origin-ai/xhe-llm'
-import type { ToolExecution, ToolRunContext } from '@origin-ai/xhe-tools'
-import { ToolArgsError, validateJsonSchemaValue, type ObjectJsonSchema } from '@origin-ai/xhe-tools'
+import type { ToolSchema } from '@origin-ai/cf-llm'
+import type { ToolExecution, ToolRunContext } from '@origin-ai/cf-tools'
+import { ToolArgsError, validateJsonSchemaValue, type ObjectJsonSchema } from '@origin-ai/cf-tools'
 
 /** The model-facing tool name a structured child must call to finish. */
 export const STRUCTURED_OUTPUT_TOOL = 'structured_output'

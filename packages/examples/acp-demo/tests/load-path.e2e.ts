@@ -32,26 +32,26 @@ const repoTsconfig = fileURLToPath(new URL('../../../../tsconfig.json', import.m
 // session-query consumer/policies, inlined so the package test owns its fixture.
 const CORDIS_YML = `
 - id: llm-deepseek
-  name: '@origin-ai/xhe-llm-deepseek'
+  name: '@origin-ai/cf-llm-deepseek'
 - id: subprocess
-  name: '@origin-ai/xhe-subprocess-local'
+  name: '@origin-ai/cf-subprocess-local'
 - id: bash
-  name: '@origin-ai/xhe-bash-local'
+  name: '@origin-ai/cf-bash-local'
 - id: acp-agent
-  name: '@origin-ai/xhe-acp-demo'
+  name: '@origin-ai/cf-acp-demo'
   config:
     provider: deepseek-official
     model: deepseek-v4-flash
     persona: 'You are a test agent.'
     workspaceContext: false
 - id: tool-session-query
-  name: '@origin-ai/xhe-tool-session-query'
+  name: '@origin-ai/cf-tool-session-query'
 - id: timeout-policy
-  name: '@origin-ai/xhe-tool-call-timeout-policy'
+  name: '@origin-ai/cf-tool-call-timeout-policy'
 - id: spill-local
-  name: '@origin-ai/xhe-spill-local'
+  name: '@origin-ai/cf-spill-local'
 - id: spill-policy
-  name: '@origin-ai/xhe-spill-policy'
+  name: '@origin-ai/cf-spill-policy'
   config:
     maxInlineBytes: 50000
 `

@@ -2,15 +2,15 @@ import type { Context } from '@deepseek-ai/cordis'
 import type {
   CommandNode, CompactionSummaryNode, ConversationMatch, ConversationNodeContext,
   ConversationNodeDefinition,
-} from '@origin-ai/xhe-client-runtime/client'
-import { isReplacementSurfaceEvent } from '@origin-ai/xhe-client-runtime/client'
-import type { CompactionCheckpointSource } from '@origin-ai/xhe-compaction/checkpoint'
-import type {} from '@origin-ai/xhe-compaction/types'
-import type {} from '@origin-ai/xhe-commands/types'
+} from '@origin-ai/cf-client-runtime/client'
+import { isReplacementSurfaceEvent } from '@origin-ai/cf-client-runtime/client'
+import type { CompactionCheckpointSource } from '@origin-ai/cf-compaction/checkpoint'
+import type {} from '@origin-ai/cf-compaction/types'
+import type {} from '@origin-ai/cf-commands/types'
 import type { ManualCompactionChatData } from '../contract/chat-nodes.ts'
 import { chatNode } from './common.ts'
 
-declare module '@origin-ai/xhe-client-ui-conversation/client' {
+declare module '@origin-ai/cf-client-ui-conversation/client' {
   interface ChatNodeDataMap {
     /** Ordinary slash-command lifecycle. */
     command: CommandNode

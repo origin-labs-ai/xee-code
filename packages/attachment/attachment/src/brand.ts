@@ -1,6 +1,6 @@
-/** Attachment identifier brand. @module @origin-ai/xhe-attachment/brand */
+/** Attachment identifier brand. @module @origin-ai/cf-attachment/brand */
 
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 
 /** Opaque content-addressed identifier for one immutable attachment object. */
 export type AttachmentId = Branded<'AttachmentId'>

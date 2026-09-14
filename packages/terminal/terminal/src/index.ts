@@ -1,11 +1,11 @@
 /**
  * Owner-scoped persistent PTY registry. Backends own terminal mechanics while
  * this service owns ids, publication, authorization, and awaited cleanup.
- * @module @origin-ai/xhe-terminal
+ * @module @origin-ai/cf-terminal
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'
-import type { Agent } from '@origin-ai/xhe-agent'
+import type { Agent } from '@origin-ai/cf-agent'
 import { TerminalBackendCleanupError } from './types.ts'
 import type {
   TerminalBackend,

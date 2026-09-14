@@ -1,13 +1,13 @@
 /** Browser plugin for durable workflow-run Conversation Nodes. */
 
-import type { ClientContext, SessionId } from '@origin-ai/xhe-client-runtime/client'
-import type {} from '@origin-ai/xhe-client-locale/client'
-import type {} from '@origin-ai/xhe-client-ui-conversation/client'
+import type { ClientContext, SessionId } from '@origin-ai/cf-client-runtime/client'
+import type {} from '@origin-ai/cf-client-locale/client'
+import type {} from '@origin-ai/cf-client-ui-conversation/client'
 import { WorkflowRunPanel, type WorkflowRunInjected } from './WorkflowRunPanel.tsx'
 import { en, NS, type WorkflowRunKey, zh } from './locales.ts'
 import { workflowRunDefinition } from './workflow-definition.ts'
 
-declare module '@origin-ai/xhe-client-ui-slots' {
+declare module '@origin-ai/cf-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Durable workflow-run node copy. */
     workflowRun: WorkflowRunKey

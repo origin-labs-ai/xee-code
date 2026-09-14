@@ -7,11 +7,11 @@
  * fatal close, and exposes tree-scoped termination through the handle so the
  * instance owns teardown; group/tree mechanics live in the subprocess
  * Service Provider.
- * @module @origin-ai/xhe-lsp-stdio/connection
+ * @module @origin-ai/cf-lsp-stdio/connection
  */
 
 import type { Writable } from 'node:stream'
-import type { SubprocessHandle, SubprocessSpawnSpec } from '@origin-ai/xhe-subprocess'
+import type { SubprocessHandle, SubprocessSpawnSpec } from '@origin-ai/cf-subprocess'
 import { encodeMessage, MessageDecoder } from './framing.ts'
 
 /** How to launch the server and answer its config requests. */

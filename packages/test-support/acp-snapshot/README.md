@@ -1,4 +1,4 @@
-# `@origin-ai/xhe-acp-snapshot`
+# `@origin-ai/cf-acp-snapshot`
 
 The ACP snapshot suite kit: the shared machinery behind the keyless snapshot tier (`pnpm run test:snapshot`, [testing policy](../../../docs/testing.md)). An example gets a full snapshot suite from a scenario table plus a fixtures directory; every compare/guard mechanic lives here, under the per-file coverage gate, instead of being copied per example.
 
@@ -20,7 +20,7 @@ import {
   defineAcpSnapshotSuite,
   type Scenario,
   type SnapshotSuiteOptions,
-} from '@origin-ai/xhe-acp-snapshot'
+} from '@origin-ai/cf-acp-snapshot'
 
 function snapshotMode(value: string | undefined): SnapshotSuiteOptions['mode'] {
   switch (value) {

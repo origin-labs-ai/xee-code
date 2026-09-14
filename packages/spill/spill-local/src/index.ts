@@ -1,18 +1,18 @@
 /**
  * `LocalSpillStore`: the host-filesystem implementation of the
- * `@origin-ai/xhe-spill` storage seam. Persists a tool's oversized text to a
+ * `@origin-ai/cf-spill` storage seam. Persists a tool's oversized text to a
  * private, session-scoped file (see `./store.ts` for the traversal-safe naming
  * and exclusive owner-only write) and returns a path locator plus local
  * read/grep retrieval guidance.
  *
- * @module @origin-ai/xhe-spill-local
+ * @module @origin-ai/cf-spill-local
  */
 
 import { Context } from '@deepseek-ai/cordis'
 import { resolve } from 'node:path'
 import z from '@deepseek-ai/schemastery'
-import { SpillLocator, SpillStore } from '@origin-ai/xhe-spill'
-import type { SaveTextSpill, SpillRef } from '@origin-ai/xhe-spill'
+import { SpillLocator, SpillStore } from '@origin-ai/cf-spill'
+import type { SaveTextSpill, SpillRef } from '@origin-ai/cf-spill'
 import { privateRoot, saveTextFile } from './store.ts'
 
 export { encodeSegment, privateRoot, saveTextFile, sessionDir } from './store.ts'

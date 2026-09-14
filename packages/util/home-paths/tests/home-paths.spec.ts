@@ -15,7 +15,7 @@ import {
   legacyDshHome,
   migrateLegacyDshHome,
   resolveDshHome,
-} from '@origin-ai/xhe-home-paths'
+} from '@origin-ai/cf-home-paths'
 
 afterEach(() => {
   vi.unstubAllEnvs()

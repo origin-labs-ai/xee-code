@@ -6,9 +6,9 @@
  * @module xhe-llm-deepseek/serialize
  */
 
-import { contentHasImage, LlmError, offloadRequestImagesWithPolicy, requestImageHandleText } from '@origin-ai/xhe-llm'
-import type { ContentBlock, GenerateOptions, Message } from '@origin-ai/xhe-llm'
-import type { ImageAttachmentRef, RequestImageAttachment } from '@origin-ai/xhe-attachment'
+import { contentHasImage, LlmError, offloadRequestImagesWithPolicy, requestImageHandleText } from '@origin-ai/cf-llm'
+import type { ContentBlock, GenerateOptions, Message } from '@origin-ai/cf-llm'
+import type { ImageAttachmentRef, RequestImageAttachment } from '@origin-ai/cf-attachment'
 import type {
   WireImageContentPart,
   WireMessage,

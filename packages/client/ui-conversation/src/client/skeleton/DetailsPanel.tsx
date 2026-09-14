@@ -7,9 +7,9 @@
 // session snapshot — no data of its own.
 
 import { Fragment } from 'react'
-import { CodeBlock } from '@origin-ai/xhe-client-ui-primitives'
-import { shallowEqual } from '@origin-ai/xhe-client-runtime/client'
-import type { ConversationSnapshot, RunningToolCall, ToolCallBlock, ToolResultNode } from '@origin-ai/xhe-client-runtime/client'
+import { CodeBlock } from '@origin-ai/cf-client-ui-primitives'
+import { shallowEqual } from '@origin-ai/cf-client-runtime/client'
+import type { ConversationSnapshot, RunningToolCall, ToolCallBlock, ToolResultNode } from '@origin-ai/cf-client-runtime/client'
 import type { DetailsSlotProps } from '../contract/slots.ts'
 import { findToolCall } from '../chat/tool-node-reader.ts'
 import css from './DetailsPanel.module.css'

@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-subprocess-local",
+  "name": "@origin-ai/cf-subprocess-local",
   "description": "Local-subprocess implementation of the Xee Harness Enhanced subprocess seam",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -36,9 +36,9 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-subprocess": "workspace:^",
-    "@origin-ai/xhe-timeout": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-subprocess": "workspace:^",
+    "@origin-ai/cf-timeout": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "dependencies": {
@@ -46,10 +46,10 @@
     "node-pty": "1.2.0-beta.15"
   },
   "devDependencies": {
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-loader-smoke": "workspace:^",
-    "@origin-ai/xhe-subprocess": "workspace:^",
-    "@origin-ai/xhe-timeout": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-loader-smoke": "workspace:^",
+    "@origin-ai/cf-subprocess": "workspace:^",
+    "@origin-ai/cf-timeout": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

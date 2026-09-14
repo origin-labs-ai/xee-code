@@ -1,7 +1,7 @@
 /**
  * Keyless snapshot coverage for the TypeScript SDK path: each scenario spawns
  * the REAL `xhe-jsonrpc-agent` runtime (per `XHE_EXAMPLE_MODE`) through the
- * REAL `@origin-ai/xhe-sdk-client`, drives one turn over stdio JSON-RPC,
+ * REAL `@origin-ai/cf-sdk-client`, drives one turn over stdio JSON-RPC,
  * and pins the SDK `RunResult`, the complete notification stream, and the
  * persisted session logs. Replay serves recorded model
  * responses via `llm-replay` (`cordis.snapshot.yml`); `XHE_SNAPSHOT=record`
@@ -27,9 +27,9 @@ import {
   tokenizeSessionFixtureCwd,
   type HarvestedLog,
   type NormalizeContext,
-} from '@origin-ai/xhe-acp-snapshot'
-import { resolveExampleLaunch } from '@origin-ai/xhe-loader-smoke'
-import { DeepSeekHarness, type HarnessNotification, type RunResult } from '@origin-ai/xhe-sdk-client'
+} from '@origin-ai/cf-acp-snapshot'
+import { resolveExampleLaunch } from '@origin-ai/cf-loader-smoke'
+import { DeepSeekHarness, type HarnessNotification, type RunResult } from '@origin-ai/cf-sdk-client'
 
 const testsDir = dirOf(import.meta.url)
 const snapshotsDir = join(testsDir, 'snapshots')
@@ -189,7 +189,7 @@ function assembledRuntimeContexts(log: PersistedLog): string[] {
     }
     if (event.type !== 'user/message'
       || event.data?.source?.kind !== 'plugin'
-      || event.data.source.plugin !== '@origin-ai/xhe-system-prompt') return []
+      || event.data.source.plugin !== '@origin-ai/cf-system-prompt') return []
     return event.data.content?.flatMap(block => block.type === 'text' && typeof block.text === 'string' ? [block.text] : []) ?? []
   })
 }

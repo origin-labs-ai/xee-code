@@ -32,10 +32,10 @@
   "xhe": {
     "client": {
       "inject": [
-        "@origin-ai/xhe-client-runtime",
-        "@origin-ai/xhe-api-remotes",
-        "@origin-ai/xhe-client-modules",
-        "@origin-ai/xhe-client-ui-theme"
+        "@origin-ai/cf-client-runtime",
+        "@origin-ai/cf-api-remotes",
+        "@origin-ai/cf-client-modules",
+        "@origin-ai/cf-client-ui-theme"
       ],
       "platform": "web"
     }
@@ -47,22 +47,22 @@
   "license": "MIT",
   "peerDependencies": {
     "@deepseek-ai/cordis-plugin-loader": "workspace:^",
-    "@origin-ai/xhe-api-remotes": "workspace:^",
-    "@origin-ai/xhe-client-connection": "workspace:^",
-    "@origin-ai/xhe-client-modules": "workspace:^",
-    "@origin-ai/xhe-client-runtime": "workspace:^",
-    "@origin-ai/xhe-client-ui-theme": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/cf-api-remotes": "workspace:^",
+    "@origin-ai/cf-client-connection": "workspace:^",
+    "@origin-ai/cf-client-modules": "workspace:^",
+    "@origin-ai/cf-client-runtime": "workspace:^",
+    "@origin-ai/cf-client-ui-theme": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "devDependencies": {
     "@deepseek-ai/cordis-plugin-loader": "workspace:^",
-    "@origin-ai/xhe-api-remotes": "workspace:^",
-    "@origin-ai/xhe-client-connection": "workspace:^",
-    "@origin-ai/xhe-client-modules": "workspace:^",
-    "@origin-ai/xhe-client-runtime": "workspace:^",
-    "@origin-ai/xhe-client-ui-theme": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/cf-api-remotes": "workspace:^",
+    "@origin-ai/cf-client-connection": "workspace:^",
+    "@origin-ai/cf-client-modules": "workspace:^",
+    "@origin-ai/cf-client-runtime": "workspace:^",
+    "@origin-ai/cf-client-ui-theme": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
     "@types/react": "~18.3.1",
     "@deepseek-ai/cordis": "workspace:^",
     "react": "^18.2.0"

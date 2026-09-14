@@ -3,13 +3,13 @@
  * recovery after an HMR collapse of the declaring entry. */
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import { SlotRegistry } from '@origin-ai/xhe-client-runtime/client'
-import { apply as settingsApply, inject as settingsInject } from '@origin-ai/xhe-client-ui-settings/client'
-import { TestRemote } from '@origin-ai/xhe-client-test-runtime'
+import { SlotRegistry } from '@origin-ai/cf-client-runtime/client'
+import { apply as settingsApply, inject as settingsInject } from '@origin-ai/cf-client-ui-settings/client'
+import { TestRemote } from '@origin-ai/cf-client-test-runtime'
 import {
   apply, inject, SETTINGS_NS,
-} from '@origin-ai/xhe-client-locale/client'
-import type { LanguageRowInjected, LocaleRuntime } from '@origin-ai/xhe-client-locale/client'
+} from '@origin-ai/cf-client-locale/client'
+import type { LanguageRowInjected, LocaleRuntime } from '@origin-ai/cf-client-locale/client'
 import { LOCALE_SETTINGS_NAMESPACE, LocaleSettingsSchema } from '../src/locale-settings.ts'
 import { LanguageRow } from '../src/client/LanguageRow.tsx'
 import type { createLanguageRowStore } from '../src/client/settings-store.ts'

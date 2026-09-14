@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-web-fetch-http`.
- * @module @origin-ai/xhe-web-fetch-http/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-web-fetch-http`.
+ * @module @origin-ai/cf-web-fetch-http/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-web-fetch-http'
+const PACKAGE_NAME = '@origin-ai/cf-web-fetch-http'
 
 /** Cordis companion plugin name. */
 export const name = 'web-fetch-http-invariant'

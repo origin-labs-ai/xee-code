@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-skill-filesystem`.
- * @module @origin-ai/xhe-skill-filesystem/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-skill-filesystem`.
+ * @module @origin-ai/cf-skill-filesystem/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-skill-filesystem'
+const PACKAGE_NAME = '@origin-ai/cf-skill-filesystem'
 
 /** Cordis companion plugin name. */
 export const name = 'skill-filesystem-invariant'

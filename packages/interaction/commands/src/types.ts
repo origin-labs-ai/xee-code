@@ -4,7 +4,7 @@
  * reaches a Host-only symbol, so a Client compilation face reads the same
  * `commands/change` signature the Host emits.
  *
- * @module @origin-ai/xhe-commands/types
+ * @module @origin-ai/cf-commands/types
  */
 
 import type { CommandId } from './brand.ts'
@@ -81,7 +81,7 @@ declare module '@deepseek-ai/cordis' {
   }
 }
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     /**
      * A resolved slash command entered its handler. Log-only (never model

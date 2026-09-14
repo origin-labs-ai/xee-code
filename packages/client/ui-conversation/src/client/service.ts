@@ -12,9 +12,9 @@ import type { Context } from '@deepseek-ai/cordis'
 // Type-only imports: a plugin-to-plugin value import is a bundle purity
 // error, so scope resolution goes through the sessions service (scopeOf
 // method) instead of the standalone helper.
-import type { ISessions, SessionFace, SessionId } from '@origin-ai/xhe-client-runtime/client'
-import type { SubmitImageAttachment, SubmitOutcome } from '@origin-ai/xhe-client-ui-input-trigger/client'
-import type { ImageAttachmentRef, ImageMediaType } from '@origin-ai/xhe-attachment'
+import type { ISessions, SessionFace, SessionId } from '@origin-ai/cf-client-runtime/client'
+import type { SubmitImageAttachment, SubmitOutcome } from '@origin-ai/cf-client-ui-input-trigger/client'
+import type { ImageAttachmentRef, ImageMediaType } from '@origin-ai/cf-attachment'
 import type { ComposerAttachment } from './contract/slots.ts'
 import type { QueueAction, QueueItemId } from './contract/queue.ts'
 import type { ComposerBlocks } from './input/blocks.ts'

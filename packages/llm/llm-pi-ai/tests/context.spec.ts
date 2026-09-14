@@ -1,13 +1,13 @@
 import { describe, expect, it, vi } from 'vitest'
-import { AttachmentId, ImageVariantId } from '@origin-ai/xhe-attachment'
+import { AttachmentId, ImageVariantId } from '@origin-ai/cf-attachment'
 import type {
   AttachmentStore,
   ImageAttachmentRef,
   ImageRequestPolicy,
   RequestImageAttachment,
-} from '@origin-ai/xhe-attachment'
-import { CallId, createMessage, createUserMessage, OFFLOADED_IMAGE_TEXT } from '@origin-ai/xhe-llm'
-import type { ContentBlock, GenerateOptions, Message } from '@origin-ai/xhe-llm'
+} from '@origin-ai/cf-attachment'
+import { CallId, createMessage, createUserMessage, OFFLOADED_IMAGE_TEXT } from '@origin-ai/cf-llm'
+import type { ContentBlock, GenerateOptions, Message } from '@origin-ai/cf-llm'
 import { toPiContext } from '../src/context.ts'
 import { toPiAssistant } from '../src/replay.ts'
 

@@ -4,8 +4,8 @@
 
 import { afterEach, describe, expect, it } from 'vitest'
 import { cleanup, fireEvent, render } from '@testing-library/react'
-import { makeTranslate } from '@origin-ai/xhe-client-test-runtime'
-import { en as commonEn, zh as commonZh } from '@origin-ai/xhe-client-locale/src/locales/index.ts'
+import { makeTranslate } from '@origin-ai/cf-client-test-runtime'
+import { en as commonEn, zh as commonZh } from '@origin-ai/cf-client-locale/src/locales/index.ts'
 import { ContextMeter, type ContextMeterProps } from '../src/client/skeleton/ContextMeter.tsx'
 import css from '../src/client/skeleton/ContextMeter.module.css'
 import { en, zh } from '../src/client/locales.ts'

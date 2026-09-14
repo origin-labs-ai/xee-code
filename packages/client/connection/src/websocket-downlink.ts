@@ -6,8 +6,8 @@ import type { Duplex } from 'node:stream'
 import WebSocket, { WebSocketServer } from 'ws'
 import type {
   ApiProxy, HostFrame, MuxFrame, RpcRequest, ServerRequest,
-} from '@origin-ai/xhe-host-apiproxy/api'
-import { RpcId } from '@origin-ai/xhe-host-apiproxy/api'
+} from '@origin-ai/cf-host-apiproxy/api'
+import { RpcId } from '@origin-ai/cf-host-apiproxy/api'
 
 type Frame = MuxFrame | HostFrame
 

@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-bash-sandbox`.
- * @module @origin-ai/xhe-bash-sandbox/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-bash-sandbox`.
+ * @module @origin-ai/cf-bash-sandbox/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-bash-sandbox'
+const PACKAGE_NAME = '@origin-ai/cf-bash-sandbox'
 
 /** Cordis companion plugin name. */
 export const name = 'bash-sandbox-invariant'

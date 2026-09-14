@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-commands",
+  "name": "@origin-ai/cf-commands",
   "description": "Plugin-owned human command registry for Xee Harness Enhanced UIs",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -53,28 +53,28 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-attachment": "workspace:^",
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-scope": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-typert-protocol": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-attachment": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-scope": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-typert-protocol": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "dependencies": {
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-attachment": "workspace:^",
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-scope": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-typert-protocol": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-attachment": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-scope": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-typert-protocol": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

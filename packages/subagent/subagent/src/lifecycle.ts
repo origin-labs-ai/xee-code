@@ -11,15 +11,15 @@
  * between this module and one in-package caller, not something a plugin may
  * depend on.
  *
- * @module @origin-ai/xhe-subagent/lifecycle
+ * @module @origin-ai/cf-subagent/lifecycle
  */
 
 import { randomUUID } from 'node:crypto'
 import type { Context } from '@deepseek-ai/cordis'
-import type { Agent } from '@origin-ai/xhe-agent'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import { foldConsumedWork } from '@origin-ai/xhe-agent'
-import type { SessionEvent, SessionId } from '@origin-ai/xhe-session'
+import type { Agent } from '@origin-ai/cf-agent'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import { foldConsumedWork } from '@origin-ai/cf-agent'
+import type { SessionEvent, SessionId } from '@origin-ai/cf-session'
 import { finalAssistantOutput } from './assistant-output.ts'
 import { SubagentRunId } from './types.ts'
 import type { SubagentResult, SubagentRun, SubagentRunEndInfo, SubagentRunInfo } from './types.ts'

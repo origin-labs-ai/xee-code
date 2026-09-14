@@ -1,18 +1,18 @@
 /** Host BFF entry and Loader shell for the Remote contribution assembly. */
 
-import type { TypertForwardableEvent } from '@origin-ai/xhe-typert-protocol'
+import type { TypertForwardableEvent } from '@origin-ai/cf-typert-protocol'
 import { API_REMOTE_FORWARDED_EVENTS } from './remote-events.ts'
 
 // The owner packages' client-safe `./types` exports carry the cordis `Events`
 // declarations for every allowlisted event. Pulling them into this face is what
 // makes the shape assertion below judge real signatures rather than an empty
 // event vocabulary.
-import type {} from '@origin-ai/xhe-commands/types'
+import type {} from '@origin-ai/cf-commands/types'
 import type {} from '@deepseek-ai/cordis-host-runner/types'
-import type {} from '@origin-ai/xhe-credentials/types'
-import type {} from '@origin-ai/xhe-llm/types'
-import type {} from '@origin-ai/xhe-agent-presets/types'
-import type {} from '@origin-ai/xhe-settings/types'
+import type {} from '@origin-ai/cf-credentials/types'
+import type {} from '@origin-ai/cf-llm/types'
+import type {} from '@origin-ai/cf-agent-presets/types'
+import type {} from '@origin-ai/cf-settings/types'
 
 export {
   ApiRemoteSessionNotFound,

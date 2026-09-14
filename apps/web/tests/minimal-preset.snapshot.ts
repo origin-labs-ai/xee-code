@@ -2,11 +2,11 @@ import { mkdir, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import type { AgentHandle } from '@origin-ai/xhe-agent'
-import { CallId, createUserMessage } from '@origin-ai/xhe-llm'
-import { SessionId } from '@origin-ai/xhe-session'
-import type {} from '@origin-ai/xhe-agent-presets'
-import type {} from '@origin-ai/xhe-system-prompt'
+import type { AgentHandle } from '@origin-ai/cf-agent'
+import { CallId, createUserMessage } from '@origin-ai/cf-llm'
+import { SessionId } from '@origin-ai/cf-session'
+import type {} from '@origin-ai/cf-agent-presets'
+import type {} from '@origin-ai/cf-system-prompt'
 import { assertFixtureInventory, launchWebScaffold, type WebScaffold } from './scaffold.ts'
 
 const SNAPSHOT_DIR = fileURLToPath(new URL('./snapshots/minimal-preset', import.meta.url))
@@ -57,7 +57,7 @@ describe('minimal agent preset', () => {
     if (requestHeader === undefined) throw new Error('the minimal agent issued no model request')
     expect(agentHandle.agent.session.events.some(event => event.type === 'user/message'
       && event.data.source.kind === 'plugin'
-      && event.data.source.plugin === '@origin-ai/xhe-system-prompt')).toBe(false)
+      && event.data.source.plugin === '@origin-ai/cf-system-prompt')).toBe(false)
     const presetFileSystem = scaffold.ctx.agentPresets.serviceFor(agentHandle.agent, 'fs')
     expect(presetFileSystem).toBeDefined()
     expect(presetFileSystem?.sandboxMode).toBeUndefined()

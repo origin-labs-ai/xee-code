@@ -1,29 +1,29 @@
 /**
  * The ACP automation server app: the default agent spine
- * ({@link @origin-ai/xhe-agent-spine-demo}), JSONL session persistence, and
- * the {@link @origin-ai/xhe-acp} bridge. The app owns those plugins through one
+ * ({@link @origin-ai/cf-agent-spine-demo}), JSONL session persistence, and
+ * the {@link @origin-ai/cf-acp} bridge. The app owns those plugins through one
  * ordered lifecycle so ACP sessions quiesce before persistence detaches. It
  * writes nothing to stdout.
  * It pre-creates no agents and leaves adapters, executors, and optional tools to
  * the leaf, which must likewise avoid stdout loggers. Named exports are
  * required so Loader retains this plugin's `Config` schema (see
  * docs/postmortem/0001).
- * @module @origin-ai/xhe-acp-demo
+ * @module @origin-ai/cf-acp-demo
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import { join } from 'node:path'
 import z from '@deepseek-ai/schemastery'
-import * as acp from '@origin-ai/xhe-acp'
-import * as agentCore from '@origin-ai/xhe-agent-spine-demo'
-import * as workspaceContext from '@origin-ai/xhe-agent-instructions'
-import ToolRuntime, { type Config as ToolsConfig } from '@origin-ai/xhe-tools'
+import * as acp from '@origin-ai/cf-acp'
+import * as agentCore from '@origin-ai/cf-agent-spine-demo'
+import * as workspaceContext from '@origin-ai/cf-agent-instructions'
+import ToolRuntime, { type Config as ToolsConfig } from '@origin-ai/cf-tools'
 import JsonlSessionPersistence, {
   JsonlCompressionSchema,
   type JsonlCompression,
-} from '@origin-ai/xhe-session-persistence-jsonl'
-import * as sessionCheckpointPolicy from '@origin-ai/xhe-session-checkpoint-policy'
-import SqliteSessionQueryEngine from '@origin-ai/xhe-session-query-sqlite'
+} from '@origin-ai/cf-session-persistence-jsonl'
+import * as sessionCheckpointPolicy from '@origin-ai/cf-session-checkpoint-policy'
+import SqliteSessionQueryEngine from '@origin-ai/cf-session-query-sqlite'
 
 export const name = 'acp-demo'
 const DEFAULT_PERSISTENCE_ROOT = './.sessions'

@@ -5,19 +5,19 @@
     path: ./cordis.yml
     patches:
       - id: llm-deepseek
-        name: '@origin-ai/xhe-llm-deepseek'
+        name: '@origin-ai/cf-llm-deepseek'
         disabled: true
       - insert:
           - id: pty
-            name: '@origin-ai/xhe-terminal'
+            name: '@origin-ai/cf-terminal'
           - id: pty-snapshot-backend
             name: './pty-snapshot-backend.mjs'
           - id: tool-terminal
-            name: '@origin-ai/xhe-tool-terminal'
+            name: '@origin-ai/cf-tool-terminal'
             config:
               maxResultBytes: 64
           - id: llm-replay
-            name: '@origin-ai/xhe-llm-replay'
+            name: '@origin-ai/cf-llm-replay'
             config:
               providers:
                 - id: deepseek-official

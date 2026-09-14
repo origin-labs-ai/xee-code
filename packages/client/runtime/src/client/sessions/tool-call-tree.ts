@@ -1,5 +1,5 @@
-import type { SessionEvent } from '@origin-ai/xhe-session/types'
-import type {} from '@origin-ai/xhe-tools/types'
+import type { SessionEvent } from '@origin-ai/cf-session/types'
+import type {} from '@origin-ai/cf-tools/types'
 import type {
   ConversationNode, RunningToolCall, ToolCallBlock, ToolResultNode,
 } from './conversation.ts'

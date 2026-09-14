@@ -13,10 +13,10 @@ import {
   type InputScript,
   type Scenario,
   type SnapshotSuiteOptions,
-} from '@origin-ai/xhe-acp-snapshot'
-import { resolvePwshPath } from '@origin-ai/xhe-pwsh-local'
-import { parseSessionLog } from '@origin-ai/xhe-llm-replay'
-import { OFFLOADED_IMAGE_TEXT } from '@origin-ai/xhe-llm'
+} from '@origin-ai/cf-acp-snapshot'
+import { resolvePwshPath } from '@origin-ai/cf-pwsh-local'
+import { parseSessionLog } from '@origin-ai/cf-llm-replay'
+import { OFFLOADED_IMAGE_TEXT } from '@origin-ai/cf-llm'
 
 /**
  * The acp-agent example's snapshot suite: the scenario table for

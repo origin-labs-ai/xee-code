@@ -8,11 +8,11 @@
  * price is derived from THIS fold's nodes by the replace producer. A
  * projection replacement without a claim deliberately folds with zero delta.
  *
- * @module @origin-ai/xhe-token-meter/surface-fold
+ * @module @origin-ai/cf-token-meter/surface-fold
  */
 
-import { deriveEventMessage } from '@origin-ai/xhe-session'
-import type { SurfaceEvent } from '@origin-ai/xhe-session'
+import { deriveEventMessage } from '@origin-ai/cf-session'
+import type { SurfaceEvent } from '@origin-ai/cf-session'
 import type { TokenSurfaceNode } from './types.ts'
 import { estimateMessage } from './estimate.ts'
 

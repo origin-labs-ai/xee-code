@@ -4,16 +4,16 @@
  * surface events; a separate replacement `user/message` carries the summary.
  * Backend packages own configuration and retention policy; see
  * `.agents/notes/implemented/feature/2026-06-18-compaction-capability-seam.md`.
- * @module @origin-ai/xhe-compaction/types
+ * @module @origin-ai/cf-compaction/types
  */
 
-import type { ContentBlock, TokenUsage } from '@origin-ai/xhe-llm'
-import type { CommandId } from '@origin-ai/xhe-commands/brand'
+import type { ContentBlock, TokenUsage } from '@origin-ai/cf-llm'
+import type { CommandId } from '@origin-ai/cf-commands/brand'
 import type { CompactionId } from './brand.ts'
 
 export type { CompactionId }
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     /**
      * Marks the start of a compaction — log-only, holds the lock until

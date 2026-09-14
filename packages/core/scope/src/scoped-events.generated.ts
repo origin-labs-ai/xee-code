@@ -2,7 +2,7 @@
  * Generated scoped-event routing-subject resolvers for xhe-scope invariants.
  * Do not edit by hand; run `pnpm run gen-scoped-events`.
  *
- * @module @origin-ai/xhe-scope/scoped-events.generated
+ * @module @origin-ai/cf-scope/scoped-events.generated
  */
 
 type ScopedSubjectResolver = (args: readonly unknown[]) => unknown

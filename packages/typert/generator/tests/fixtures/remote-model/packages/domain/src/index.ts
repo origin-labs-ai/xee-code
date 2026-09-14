@@ -1,4 +1,4 @@
-import type { TypertContext, TypertLookup } from '@origin-ai/xhe-typert-protocol'
+import type { TypertContext, TypertLookup } from '@origin-ai/cf-typert-protocol'
 import type { AgentId } from './types.ts'
 
 /** Host-only live Agent object. */
@@ -6,7 +6,7 @@ export class Agent {
   constructor(readonly id: AgentId) {}
 }
 
-declare module '@origin-ai/xhe-typert-protocol' {
+declare module '@origin-ai/cf-typert-protocol' {
   interface TypertLookupMap {
     agent: TypertLookup<Agent, AgentId>
   }

@@ -1,11 +1,11 @@
-/** Package-owned tool-pipeline invariants. @module @origin-ai/xhe-tools/invariant */
+/** Package-owned tool-pipeline invariants. @module @origin-ai/cf-tools/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 import type { ToolExecution, ToolExecutionResult } from './index.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-tools'
+const PACKAGE_NAME = '@origin-ai/cf-tools'
 
 /** Cordis companion plugin name. */
 export const name = 'tools-invariant'

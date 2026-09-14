@@ -27,7 +27,7 @@
  *   web bodies). `head` / `tail` / `headTail`, preserving UTF-8 boundaries at
  *   {@link TextRetainer.finish}.
  *
- * @module @origin-ai/xhe-output-retention
+ * @module @origin-ai/cf-output-retention
  */
 
 /**

@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-plan-mode",
+  "name": "@origin-ai/cf-plan-mode",
   "description": "Logged per-agent plan mode with deployment guidance, a direct slash command, and a user-reviewed exit",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -41,19 +41,19 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-commands": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-session-projection": "workspace:^",
-    "@origin-ai/xhe-system-prompt": "workspace:^",
-    "@origin-ai/xhe-tools": "workspace:^",
-    "@origin-ai/xhe-user-questions": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-commands": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-session-projection": "workspace:^",
+    "@origin-ai/cf-system-prompt": "workspace:^",
+    "@origin-ai/cf-tools": "workspace:^",
+    "@origin-ai/cf-user-questions": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "peerDependenciesMeta": {
-    "@origin-ai/xhe-commands": {
+    "@origin-ai/cf-commands": {
       "optional": true
     }
   },
@@ -61,17 +61,17 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-agent-loop": "workspace:^",
-    "@origin-ai/xhe-code-runtime": "workspace:^",
-    "@origin-ai/xhe-commands": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-session-projection": "workspace:^",
-    "@origin-ai/xhe-system-prompt": "workspace:^",
-    "@origin-ai/xhe-tools": "workspace:^",
-    "@origin-ai/xhe-user-questions": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-agent-loop": "workspace:^",
+    "@origin-ai/cf-code-runtime": "workspace:^",
+    "@origin-ai/cf-commands": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-session-projection": "workspace:^",
+    "@origin-ai/cf-system-prompt": "workspace:^",
+    "@origin-ai/cf-tools": "workspace:^",
+    "@origin-ai/cf-user-questions": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

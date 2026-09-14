@@ -1,9 +1,9 @@
 /**
  * Strict Schedule decoding, replay, time validation, and framing.
- * @module @origin-ai/xhe-schedule
+ * @module @origin-ai/cf-schedule
  */
 
-import type { SessionEvent } from '@origin-ai/xhe-session'
+import type { SessionEvent } from '@origin-ai/cf-session'
 import type {
   AfterScheduleRecord,
   AtInput,

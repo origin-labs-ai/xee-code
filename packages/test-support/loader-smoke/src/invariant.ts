@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-loader-smoke`.
- * @module @origin-ai/xhe-loader-smoke/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-loader-smoke`.
+ * @module @origin-ai/cf-loader-smoke/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-loader-smoke'
+const PACKAGE_NAME = '@origin-ai/cf-loader-smoke'
 
 /** Cordis companion plugin name. */
 export const name = 'loader-smoke-invariant'

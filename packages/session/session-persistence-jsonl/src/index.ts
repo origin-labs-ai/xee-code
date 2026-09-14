@@ -3,7 +3,7 @@
  * events in one append-only file per session, and delegates orchestration to
  * {@link PersistenceCoordinator}. Its side-effect-free locator returns the
  * absolute per-session log target before materialization.
- * @module @origin-ai/xhe-session-persistence-jsonl
+ * @module @origin-ai/cf-session-persistence-jsonl
  */
 
 import { Context } from '@deepseek-ai/cordis'
@@ -20,8 +20,8 @@ import {
   type PersistenceBackend, type SessionLocation, type SessionPersistenceSnapshot,
   type SessionInspection, type SessionPersistenceRevision as PersistenceRevision, type SessionRawArtifact,
   type StoredPrefix,
-} from '@origin-ai/xhe-session-persistence'
-import type { SessionEvent, SessionId, SessionHeader, SessionPreparation } from '@origin-ai/xhe-session'
+} from '@origin-ai/cf-session-persistence'
+import type { SessionEvent, SessionId, SessionHeader, SessionPreparation } from '@origin-ai/cf-session'
 import {
   encodeSegment, eventLines, logPath, logSuffix, parseHeaderMeta, projectDir, scanLog, sessionDir,
   SessionLogScanner, toHeaderLine,

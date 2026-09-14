@@ -18,7 +18,7 @@
  * package can brand its ids without depending on an unrelated capability
  * package.
  *
- * @module @origin-ai/xhe-brand
+ * @module @origin-ai/cf-brand
  */
 
 declare const BRAND: unique symbol

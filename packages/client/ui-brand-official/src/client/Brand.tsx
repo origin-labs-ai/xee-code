@@ -1,6 +1,6 @@
-import { BrandWordmark, FishLogo } from '@origin-ai/xhe-client-ui-primitives'
-import type { HeroBrandMarkOwnerProps } from '@origin-ai/xhe-client-ui-conversation/client'
-import type { SidebarBrandMarkOwnerProps } from '@origin-ai/xhe-client-ui-sidebar/client'
+import { BrandWordmark, FishLogo } from '@origin-ai/cf-client-ui-primitives'
+import type { HeroBrandMarkOwnerProps } from '@origin-ai/cf-client-ui-conversation/client'
+import type { SidebarBrandMarkOwnerProps } from '@origin-ai/cf-client-ui-sidebar/client'
 
 type OfficialBrandMarkProps = HeroBrandMarkOwnerProps & SidebarBrandMarkOwnerProps
 

@@ -1,18 +1,18 @@
 /**
  * Local-filesystem implementation of `ctx.fileReferences`.
  *
- * @module @origin-ai/xhe-file-reference-local
+ * @module @origin-ai/cf-file-reference-local
  */
 
 import { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import type { Agent } from '@origin-ai/xhe-agent'
+import type { Agent } from '@origin-ai/cf-agent'
 import FileReferenceService, {
   FILE_REFERENCE_PROMPT,
   type FileReferenceCandidate,
-} from '@origin-ai/xhe-file-reference'
-import type {} from '@origin-ai/xhe-system-prompt'
-import type {} from '@origin-ai/xhe-tools'
+} from '@origin-ai/cf-file-reference'
+import type {} from '@origin-ai/cf-system-prompt'
+import type {} from '@origin-ai/cf-tools'
 import {
   DEFAULT_FILE_SEARCH_EXCLUDED_DIRECTORIES,
   DEFAULT_FILE_SEARCH_MAX_ENTRIES,
@@ -28,8 +28,8 @@ export {
   WorkspaceFileSearch,
 } from './search.ts'
 export type { FileSearchConfig } from './search.ts'
-export { FILE_REFERENCE_PROMPT } from '@origin-ai/xhe-file-reference'
-export { activeAtToken, formatFileMention } from '@origin-ai/xhe-file-reference/grammar'
+export { FILE_REFERENCE_PROMPT } from '@origin-ai/cf-file-reference'
+export { activeAtToken, formatFileMention } from '@origin-ai/cf-file-reference/grammar'
 
 /** Local file-reference discovery configuration. */
 export interface Config {

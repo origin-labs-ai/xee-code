@@ -11,15 +11,15 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import LlmRuntime from '@origin-ai/xhe-llm'
-import { createUserMessage, LlmAdapter } from '@origin-ai/xhe-llm'
-import type { GenerateOptions, StreamChunk } from '@origin-ai/xhe-llm'
-import SessionStore, { SessionId } from '@origin-ai/xhe-session'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ToolRuntime from '@origin-ai/xhe-tools'
-import AgentRegistry, { type Agent } from '@origin-ai/xhe-agent'
+import LlmRuntime from '@origin-ai/cf-llm'
+import { createUserMessage, LlmAdapter } from '@origin-ai/cf-llm'
+import type { GenerateOptions, StreamChunk } from '@origin-ai/cf-llm'
+import SessionStore, { SessionId } from '@origin-ai/cf-session'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ToolRuntime from '@origin-ai/cf-tools'
+import AgentRegistry, { type Agent } from '@origin-ai/cf-agent'
 
-import AgentLoop from '@origin-ai/xhe-agent-loop'
+import AgentLoop from '@origin-ai/cf-agent-loop'
 import fc from 'fast-check'
 
 /** A never-exhausting adapter: every model call returns the same short reply. */

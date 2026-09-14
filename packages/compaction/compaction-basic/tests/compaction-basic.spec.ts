@@ -1,18 +1,18 @@
 import { describe, expect, expectTypeOf, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { AttachmentId } from '@origin-ai/xhe-attachment'
-import BasicCompactionEngine from '@origin-ai/xhe-compaction-basic'
-import type { BasicCompactionConfig } from '@origin-ai/xhe-compaction-basic'
-import { selectCompactableRange } from '@origin-ai/xhe-compaction-basic/src/region.ts'
-import type { SummarizationInput, SummaryResult } from '@origin-ai/xhe-compaction-basic/src/summarizer.ts'
-import { CompactionId, toolPairingBalancedAfter, toolPairingBalancedBefore } from '@origin-ai/xhe-compaction'
+import { AttachmentId } from '@origin-ai/cf-attachment'
+import BasicCompactionEngine from '@origin-ai/cf-compaction-basic'
+import type { BasicCompactionConfig } from '@origin-ai/cf-compaction-basic'
+import { selectCompactableRange } from '@origin-ai/cf-compaction-basic/src/region.ts'
+import type { SummarizationInput, SummaryResult } from '@origin-ai/cf-compaction-basic/src/summarizer.ts'
+import { CompactionId, toolPairingBalancedAfter, toolPairingBalancedBefore } from '@origin-ai/cf-compaction'
 import {
   resolveCompactSpec,
   resolveConfig,
   resolveTargetPolicy,
-} from '@origin-ai/xhe-compaction-basic/src/config.ts'
-import type { CompactionResult } from '@origin-ai/xhe-compaction'
-import LlmRuntime, { createUserMessage, CallId, CONTEXT_WINDOW_EXCEEDED_CODE, createToolResultMessage, LlmAdapter , createMessage } from '@origin-ai/xhe-llm'
+} from '@origin-ai/cf-compaction-basic/src/config.ts'
+import type { CompactionResult } from '@origin-ai/cf-compaction'
+import LlmRuntime, { createUserMessage, CallId, CONTEXT_WINDOW_EXCEEDED_CODE, createToolResultMessage, LlmAdapter , createMessage } from '@origin-ai/cf-llm'
 import type {
   ContentBlock,
   GenerateOptions,
@@ -21,11 +21,11 @@ import type {
   Message,
   StreamChunk,
   TokenUsage,
-} from '@origin-ai/xhe-llm'
-import SessionStore, { Session, SessionId } from '@origin-ai/xhe-session'
-import TokenMeter from '@origin-ai/xhe-token-meter'
-import { agentEvents, type Agent, type RequestErrorAction } from '@origin-ai/xhe-agent'
-import ToolResultPruner from '@origin-ai/xhe-compaction-tool-result-pruner'
+} from '@origin-ai/cf-llm'
+import SessionStore, { Session, SessionId } from '@origin-ai/cf-session'
+import TokenMeter from '@origin-ai/cf-token-meter'
+import { agentEvents, type Agent, type RequestErrorAction } from '@origin-ai/cf-agent'
+import ToolResultPruner from '@origin-ai/cf-compaction-tool-result-pruner'
 
 const SIGNAL = new AbortController().signal
 const MODEL = 'test-model'

@@ -4,9 +4,9 @@
  * direct parent into the child's Agent inbox.
  */
 
-import type { MessageId } from '@origin-ai/xhe-llm/brand'
-import type { ContentBlock } from '@origin-ai/xhe-llm/types'
-import type { SessionId } from '@origin-ai/xhe-session/types'
+import type { MessageId } from '@origin-ai/cf-llm/brand'
+import type { ContentBlock } from '@origin-ai/cf-llm/types'
+import type { SessionId } from '@origin-ai/cf-session/types'
 import type { RpcRequest, RpcResponse } from './rpc.ts'
 import type { HistoryEntry, SessionProjectionsBlock } from './sessions.ts'
 

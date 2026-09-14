@@ -125,7 +125,7 @@ it('boots the built plugin graph and renders a fixture session end to end', asyn
   // Every bundle injected its plugin-owned style tag (the loader's CSS path).
   const styleOwners = [...document.head.querySelectorAll('style[data-plugin]')]
     .map(style => style.getAttribute('data-plugin'))
-  for (const plugin of ['@origin-ai/xhe-client-ui-layout', '@origin-ai/xhe-client-ui-sidebar', '@origin-ai/xhe-client-ui-conversation', '@origin-ai/xhe-client-ui-tool']) {
+  for (const plugin of ['@origin-ai/cf-client-ui-layout', '@origin-ai/cf-client-ui-sidebar', '@origin-ai/cf-client-ui-conversation', '@origin-ai/cf-client-ui-tool']) {
     expect(styleOwners).toContain(plugin)
   }
 })

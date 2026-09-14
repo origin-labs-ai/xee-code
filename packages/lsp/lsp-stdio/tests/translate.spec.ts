@@ -6,8 +6,8 @@ import {
   requestMethod,
   supportsOperation,
   supportsTransientOpen,
-} from '@origin-ai/xhe-lsp-stdio'
-import type { WireServerCapabilities } from '@origin-ai/xhe-lsp-stdio/src/protocol.ts'
+} from '@origin-ai/cf-lsp-stdio'
+import type { WireServerCapabilities } from '@origin-ai/cf-lsp-stdio/src/protocol.ts'
 
 const RANGE = { start: { line: 1, character: 2 }, end: { line: 1, character: 5 } }
 

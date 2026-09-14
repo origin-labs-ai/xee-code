@@ -1,13 +1,13 @@
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import LlmRuntime, { createUserMessage, deepFreeze, markAgentLoopRequest  } from '@origin-ai/xhe-llm'
-import SessionStore, { SessionId } from '@origin-ai/xhe-session'
+import LlmRuntime, { createUserMessage, deepFreeze, markAgentLoopRequest  } from '@origin-ai/cf-llm'
+import SessionStore, { SessionId } from '@origin-ai/cf-session'
 import SessionTitleService, {
   SessionTitleProviderId,
   type SessionTitleProvider,
   type SessionTitleProviderRequest,
   type SessionTitleProviderResult,
-} from '@origin-ai/xhe-session-title'
+} from '@origin-ai/cf-session-title'
 
 const CONFIG = {
   fallbackMaxWords: 5,

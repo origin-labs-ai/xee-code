@@ -7,38 +7,38 @@
 # delegation bypass.
 
 - id: persistence
-  name: '@origin-ai/xhe-session-persistence-jsonl'
+  name: '@origin-ai/cf-session-persistence-jsonl'
   config:
     root: './.sessions'
     compression: none
 
 # file/override/childFiles all default to their XHE_SNAPSHOT_* env vars.
 - id: replay
-  name: '@origin-ai/xhe-llm-replay'
+  name: '@origin-ai/cf-llm-replay'
 
 # The confining filesystem stack: the wide deployment default lives on the
 # shared policy home; the seeded parent's read-only override must beat it
 # INSIDE the child for the scenario to deny.
 - id: sandbox-policy
-  name: '@origin-ai/xhe-sandbox-policy'
+  name: '@origin-ai/cf-sandbox-policy'
   config:
     mode: workspace-write
     workspaceRoot: !!js process.cwd()
 
 - id: fs-sandbox
-  name: '@origin-ai/xhe-fs-sandbox'
+  name: '@origin-ai/cf-fs-sandbox'
 
 - id: fs-observation-policy
-  name: '@origin-ai/xhe-fs-observation-policy'
+  name: '@origin-ai/cf-fs-observation-policy'
 
 - id: tool-fs
-  name: '@origin-ai/xhe-tool-fs'
+  name: '@origin-ai/cf-tool-fs'
 
 # This scenario probes filesystem confinement only, so the bash stack is absent:
 # without it the bundle's `toolBash: false` is required, because `tool-bash` would
 # otherwise wait forever for a `bash` executor this tree never mounts.
 - id: agent
-  name: '@origin-ai/xhe-agent-spine-demo'
+  name: '@origin-ai/cf-agent-spine-demo'
   config:
     agents: []
     workspaceContext: false
@@ -49,15 +49,15 @@
     goals: false
 
 - id: subagent
-  name: '@origin-ai/xhe-subagent'
+  name: '@origin-ai/cf-subagent'
 
 - id: subagent-spawn-in-process
-  name: '@origin-ai/xhe-subagent-spawn-in-process'
+  name: '@origin-ai/cf-subagent-spawn-in-process'
   config:
     providerName: spawn
 
 - id: tool-subagent
-  name: '@origin-ai/xhe-tool-subagent'
+  name: '@origin-ai/cf-tool-subagent'
   config:
     provider: spawn
     toolName: subagent

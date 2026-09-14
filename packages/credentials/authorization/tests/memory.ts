@@ -1,4 +1,4 @@
-import { CredentialProvider } from '@origin-ai/xhe-credentials'
+import { CredentialProvider } from '@origin-ai/cf-credentials'
 import type {
   CredentialInfo,
   CredentialKey,
@@ -7,7 +7,7 @@ import type {
   CredentialRecordInfo,
   CredentialRef,
   ResolvedCredential,
-} from '@origin-ai/xhe-credentials'
+} from '@origin-ai/cf-credentials'
 
 /**
  * In-memory credentials provider for the authorization suite. Only the record

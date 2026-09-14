@@ -9,7 +9,7 @@
 import type { Transport } from '@modelcontextprotocol/sdk/shared/transport.js'
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js'
-import { scrubbedParentEnv } from '@origin-ai/xhe-subprocess'
+import { scrubbedParentEnv } from '@origin-ai/cf-subprocess'
 import type { Config } from './index.ts'
 
 /**

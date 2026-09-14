@@ -7,14 +7,14 @@ import { join } from 'node:path'
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import { createUserMessage } from '@origin-ai/xhe-llm'
+import { createUserMessage } from '@origin-ai/cf-llm'
 import {
   SESSION_FORMAT_VERSION,
   Session,
   SessionId,
-} from '@origin-ai/xhe-session'
-import type {} from '@origin-ai/xhe-session-reference/types'
-import type {} from '@origin-ai/xhe-session-title'
+} from '@origin-ai/cf-session'
+import type {} from '@origin-ai/cf-session-reference/types'
+import type {} from '@origin-ai/cf-session-title'
 import {
   assertFixtureInventory,
   captureStableAria,

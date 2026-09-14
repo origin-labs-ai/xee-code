@@ -1,12 +1,12 @@
 import type { Context } from '@deepseek-ai/cordis'
 import type {
   ConversationLocation, ConversationNodeDefinition, ModelRetryNode,
-} from '@origin-ai/xhe-client-runtime/client'
-import type {} from '@origin-ai/xhe-llm-retry/types'
+} from '@origin-ai/cf-client-runtime/client'
+import type {} from '@origin-ai/cf-llm-retry/types'
 import type { RetryChatData } from '../contract/chat-nodes.ts'
 import { chatNode } from './common.ts'
 
-declare module '@origin-ai/xhe-client-ui-conversation/client' {
+declare module '@origin-ai/cf-client-ui-conversation/client' {
   interface ChatNodeDataMap {
     /** Producer-correlated model retry chain. */
     'model-retry': RetryChatData

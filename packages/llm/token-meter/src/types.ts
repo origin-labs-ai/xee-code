@@ -1,10 +1,10 @@
 /**
  * Public configuration and measurement vocabulary for replay token metering.
  *
- * @module @origin-ai/xhe-token-meter/types
+ * @module @origin-ai/cf-token-meter/types
  */
 
-import type { TokenUsage } from '@origin-ai/xhe-llm'
+import type { TokenUsage } from '@origin-ai/cf-llm'
 
 export type { ContextBreakdownProjection, ContextPressureProjection, TokenUsageProjection } from './projection.ts'
 

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { CallId , createMessage, createToolResultMessage } from '@origin-ai/xhe-llm'
+import { CallId , createMessage, createToolResultMessage } from '@origin-ai/cf-llm'
 import { interruptedTurnClosers, TOOL_NOT_STARTED, TOOL_OUTCOME_UNKNOWN } from '../src/index.ts'
 import type { SessionEvent, SurfaceEvent } from '../src/index.ts'
 

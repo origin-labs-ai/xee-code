@@ -13,16 +13,16 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import { join, sep } from 'node:path'
-import { createUserMessage, CallId } from '@origin-ai/xhe-llm'
-import SystemPrompt, { renderPrompt } from '@origin-ai/xhe-system-prompt'
-import ToolRuntime, { TOOL_ABORTED_BEFORE_DISPATCH, type ToolExecution, type ToolExecutionToken } from '@origin-ai/xhe-tools'
-import { SubprocessRuntime } from '@origin-ai/xhe-subprocess'
-import type { SubprocessCollectedOutputs, SubprocessHandle, SubprocessOutcome, SubprocessOutputRead, SubprocessOutputReader, SubprocessSpawnSpec } from '@origin-ai/xhe-subprocess'
-import { MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
+import { createUserMessage, CallId } from '@origin-ai/cf-llm'
+import SystemPrompt, { renderPrompt } from '@origin-ai/cf-system-prompt'
+import ToolRuntime, { TOOL_ABORTED_BEFORE_DISPATCH, type ToolExecution, type ToolExecutionToken } from '@origin-ai/cf-tools'
+import { SubprocessRuntime } from '@origin-ai/cf-subprocess'
+import type { SubprocessCollectedOutputs, SubprocessHandle, SubprocessOutcome, SubprocessOutputRead, SubprocessOutputReader, SubprocessSpawnSpec } from '@origin-ai/cf-subprocess'
+import { MAX_TIMER_DELAY_MS } from '@origin-ai/cf-timeout'
 import { rgPath } from '@vscode/ripgrep'
-import { SpillLocator, SpillStore } from '@origin-ai/xhe-spill'
-import type { SaveTextSpill, SpillRef } from '@origin-ai/xhe-spill'
-import * as ToolFsSearch from '@origin-ai/xhe-tool-fs-search'
+import { SpillLocator, SpillStore } from '@origin-ai/cf-spill'
+import type { SaveTextSpill, SpillRef } from '@origin-ai/cf-spill'
+import * as ToolFsSearch from '@origin-ai/cf-tool-fs-search'
 import {
   buildGlobCommand,
   buildGrepCommand,
@@ -37,7 +37,7 @@ import {
   runRipgrep,
   sampleAcrossTopLevel,
   toWorkdirRelative,
-} from '@origin-ai/xhe-tool-fs-search'
+} from '@origin-ai/cf-tool-fs-search'
 
 const testToolSignal = new AbortController().signal
 

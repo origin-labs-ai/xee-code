@@ -2,20 +2,20 @@
  * The sandbox-escalation API shared by the `write` and `edit` tools: the
  * per-call policy resolution, the advertised escalation fields, and the denial-marker
  * mapping — all delegating the vocabulary and the fail-closed approval
- * sequence to `@origin-ai/xhe-sandbox` (the same pieces `@origin-ai/xhe-tool-bash`
+ * sequence to `@origin-ai/cf-sandbox` (the same pieces `@origin-ai/cf-tool-bash`
  * uses), so bash and fs escalate identically. Built ONCE per plugin from
  * `ctx.fs.sandboxMode` (the capability fact — is a confining backend mounted?)
  * and shared by both mutating tools.
  *
- * @module @origin-ai/xhe-tool-fs/sandbox
+ * @module @origin-ai/cf-tool-fs/sandbox
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { ToolExecution } from '@origin-ai/xhe-tools'
-import type { SandboxExecutionPolicy, SandboxMode } from '@origin-ai/xhe-sandbox'
-import { ESCALATION_TARGETS, approveEscalation, escalationHintMarker, sandboxDenialMarker, validateEscalationArgs } from '@origin-ai/xhe-sandbox'
-import type { SandboxPolicyService } from '@origin-ai/xhe-sandbox-policy'
-import { FsError } from '@origin-ai/xhe-fs'
+import type { ToolExecution } from '@origin-ai/cf-tools'
+import type { SandboxExecutionPolicy, SandboxMode } from '@origin-ai/cf-sandbox'
+import { ESCALATION_TARGETS, approveEscalation, escalationHintMarker, sandboxDenialMarker, validateEscalationArgs } from '@origin-ai/cf-sandbox'
+import type { SandboxPolicyService } from '@origin-ai/cf-sandbox-policy'
+import { FsError } from '@origin-ai/cf-fs'
 
 /** The two escalation arguments a mutating tool may carry (advertised only under a confining backend). */
 export interface FsEscalationArgs {

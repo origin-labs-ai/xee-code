@@ -7,7 +7,7 @@ import Lsp, {
   type LspProvider,
   type LspProviderQuery,
   type LspQueryResult,
-} from '@origin-ai/xhe-lsp'
+} from '@origin-ai/cf-lsp'
 
 /** A scripted provider that records the queries it receives. */
 function makeProvider(

@@ -1,20 +1,20 @@
 /**
  * Log-backed session title service, deterministic fallback, and provider contract.
- * @module @origin-ai/xhe-session-title
+ * @module @origin-ai/cf-session-title
  */
 
 import { Context, FiberState, Service, type Fiber } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
 import { z as zod } from 'zod'
-import type { Branded } from '@origin-ai/xhe-brand'
-import { assertNever, deepFreeze, isAgentLoopRequest } from '@origin-ai/xhe-llm'
-import type { GenerateOptions } from '@origin-ai/xhe-llm'
+import type { Branded } from '@origin-ai/cf-brand'
+import { assertNever, deepFreeze, isAgentLoopRequest } from '@origin-ai/cf-llm'
+import type { GenerateOptions } from '@origin-ai/cf-llm'
 import type {
   Session,
   SessionEvent,
-} from '@origin-ai/xhe-session'
+} from '@origin-ai/cf-session'
 // Type-only: resolves ctx.sessionProjections for the optional unit child.
-import type {} from '@origin-ai/xhe-session-projection'
+import type {} from '@origin-ai/cf-session-projection'
 // The `title` projection-key declaration lives in src/types.ts (its one home);
 // this re-export projects the type face onto the package root AND keeps the
 // module edge in the emitted index.d.ts, so aggregate programs consuming the
@@ -91,7 +91,7 @@ declare module '@deepseek-ai/cordis' {
   }
 }
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     /**
      * Latest-wins session title snapshot. Log-only: it never enters the model

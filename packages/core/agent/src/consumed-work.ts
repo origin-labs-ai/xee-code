@@ -9,10 +9,10 @@
  * with `removedCount` and marks a cancellation `outcome: 'canceled'`, which
  * separates a turn claiming its input from work being dropped unrun.
  *
- * @module @origin-ai/xhe-agent/consumed-work
+ * @module @origin-ai/cf-agent/consumed-work
  */
 
-import type { SessionEvent, TurnEndReason } from '@origin-ai/xhe-session'
+import type { SessionEvent, TurnEndReason } from '@origin-ai/cf-session'
 
 /** How one agent log accounts for the work it consumed. */
 export interface ConsumedWork {

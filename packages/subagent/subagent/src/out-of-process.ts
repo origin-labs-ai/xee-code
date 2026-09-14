@@ -8,12 +8,12 @@
  * the process machinery itself (spawn, env scrub, tree-scoped teardown)
  * belongs to the `xhe-subprocess` seam.
  *
- * @module @origin-ai/xhe-subagent/out-of-process
+ * @module @origin-ai/cf-subagent/out-of-process
  */
 
 import { accessSync, constants, statSync } from 'node:fs'
 import { isAbsolute, resolve } from 'node:path'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
+import type { ContentBlock } from '@origin-ai/cf-llm'
 import type { SubagentCapabilities, SubagentResult, SubagentRun, SubagentStopReason } from './types.ts'
 
 /** Maximum UTF-8 size of {@link SubagentResult.diagnostic}. */

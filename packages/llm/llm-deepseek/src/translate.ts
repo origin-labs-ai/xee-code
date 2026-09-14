@@ -8,8 +8,8 @@
  * @module xhe-llm-deepseek/translate
  */
 
-import { CallId, EMPTY_RESPONSE_CODE, LlmError } from '@origin-ai/xhe-llm'
-import type { ContentBlock, FinishReason, StreamChunk, TokenUsage } from '@origin-ai/xhe-llm'
+import { CallId, EMPTY_RESPONSE_CODE, LlmError } from '@origin-ai/cf-llm'
+import type { ContentBlock, FinishReason, StreamChunk, TokenUsage } from '@origin-ai/cf-llm'
 import { DONE } from './sse.ts'
 import type { WireChunk, WireUsage } from './types.ts'
 

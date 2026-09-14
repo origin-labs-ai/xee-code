@@ -1,16 +1,16 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { createUserMessage, CallId  } from '@origin-ai/xhe-llm'
-import { createScope } from '@origin-ai/xhe-scope'
-import type { Scope } from '@origin-ai/xhe-scope'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import { CodeRuntime } from '@origin-ai/xhe-code-runtime'
-import type { CodeRunRequest, CodeRunResult } from '@origin-ai/xhe-code-runtime'
-import ToolRuntime, { CodeRunFailedError, RUN_CODE_NAME, TOOL_ABORTED_BEFORE_DISPATCH, defineContentToolFixture, defineTool } from '@origin-ai/xhe-tools'
-import type { Config, JsonSchemaNode, PostToolDecision, ToolExecutionResult } from '@origin-ai/xhe-tools'
-import type { Agent } from '@origin-ai/xhe-agent'
-import { Session, SessionId } from '@origin-ai/xhe-session'
-import type { JsonValue, SessionEventMap } from '@origin-ai/xhe-session'
+import { createUserMessage, CallId  } from '@origin-ai/cf-llm'
+import { createScope } from '@origin-ai/cf-scope'
+import type { Scope } from '@origin-ai/cf-scope'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import { CodeRuntime } from '@origin-ai/cf-code-runtime'
+import type { CodeRunRequest, CodeRunResult } from '@origin-ai/cf-code-runtime'
+import ToolRuntime, { CodeRunFailedError, RUN_CODE_NAME, TOOL_ABORTED_BEFORE_DISPATCH, defineContentToolFixture, defineTool } from '@origin-ai/cf-tools'
+import type { Config, JsonSchemaNode, PostToolDecision, ToolExecutionResult } from '@origin-ai/cf-tools'
+import type { Agent } from '@origin-ai/cf-agent'
+import { Session, SessionId } from '@origin-ai/cf-session'
+import type { JsonValue, SessionEventMap } from '@origin-ai/cf-session'
 
 const testToolSignal = new AbortController().signal
 
@@ -1735,7 +1735,7 @@ describe('per-agent presentation', () => {
   })
 
   it('inherits a STANDING preset scope\'s mode down the chain, agents beside it unaffected', async () => {
-    const { bindScopeParent } = await import('@origin-ai/xhe-scope')
+    const { bindScopeParent } = await import('@origin-ai/cf-scope')
     const { ctx, systemPrompt } = await setup({ mode: 'native' })
     const calls = registerEcho(ctx)
     // The preset's standing scope declares once; the agent only PARENTS to it

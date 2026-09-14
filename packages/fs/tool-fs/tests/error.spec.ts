@@ -4,7 +4,7 @@
  */
 
 import { describe, expect, it } from 'vitest'
-import { FsError } from '@origin-ai/xhe-fs'
+import { FsError } from '@origin-ai/cf-fs'
 import { remediateFsError } from '../src/error.ts'
 
 describe('remediateFsError', () => {

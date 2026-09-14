@@ -1,15 +1,15 @@
 /**
  * Semantic durability checkpoints for model requests, top-level tool dispatch,
  * and completed agent steps.
- * @module @origin-ai/xhe-session-checkpoint-policy
+ * @module @origin-ai/cf-session-checkpoint-policy
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Session } from '@origin-ai/xhe-session'
-import type { StreamChunk } from '@origin-ai/xhe-llm'
-import { TOOL_ABORTED_BEFORE_DISPATCH, type ToolExecutionResult } from '@origin-ai/xhe-tools'
-import type { PreStepDecision } from '@origin-ai/xhe-agent'
-import type {} from '@origin-ai/xhe-session-persistence'
+import type { Session } from '@origin-ai/cf-session'
+import type { StreamChunk } from '@origin-ai/cf-llm'
+import { TOOL_ABORTED_BEFORE_DISPATCH, type ToolExecutionResult } from '@origin-ai/cf-tools'
+import type { PreStepDecision } from '@origin-ai/cf-agent'
+import type {} from '@origin-ai/cf-session-persistence'
 
 /** Cordis plugin name used by Loader diagnostics. */
 export const name = 'session-checkpoint-policy'

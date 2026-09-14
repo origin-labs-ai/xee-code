@@ -3,9 +3,9 @@ import { Context } from '@deepseek-ai/cordis'
 import { mkdir, mkdtemp, readFile, rm, stat, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
-import { credentialRef } from '@origin-ai/xhe-credentials'
-import { createLaunchEnvironmentSnapshot, XHE_LAUNCH_ENVIRONMENT_KEY } from '@origin-ai/xhe-launch-environment'
-import type { CredentialRef } from '@origin-ai/xhe-credentials'
+import { credentialRef } from '@origin-ai/cf-credentials'
+import { createLaunchEnvironmentSnapshot, XHE_LAUNCH_ENVIRONMENT_KEY } from '@origin-ai/cf-launch-environment'
+import type { CredentialRef } from '@origin-ai/cf-credentials'
 import { LocalCredentialProvider, resolveSpec } from '../src/index.ts'
 
 /** Credential documents are seeded owner-only, exactly as the provider creates them. */

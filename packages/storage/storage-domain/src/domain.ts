@@ -6,11 +6,11 @@
  * backend write leaves memory untouched (no divergence between reads and the
  * medium), and events carry values that equal the in-memory state at
  * emission, in write order.
- * @module @origin-ai/xhe-storage-domain/src/domain
+ * @module @origin-ai/cf-storage-domain/src/domain
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { KvUnit } from '@origin-ai/xhe-storage'
+import type { KvUnit } from '@origin-ai/cf-storage'
 import { DomainError } from './error.ts'
 import type { DomainSpec, DomainGlobalSpec, TableKeyOf, TableValueOf } from './spec.ts'
 import type { DomainChanged } from './events.ts'

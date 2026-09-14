@@ -1,18 +1,18 @@
 /**
  * Package-owned relational invariants for the session event log. Load this
- * companion beside `@origin-ai/xhe-invariants` to enable the checks.
+ * companion beside `@origin-ai/cf-invariants` to enable the checks.
  *
- * @module @origin-ai/xhe-session/invariant
+ * @module @origin-ai/cf-session/invariant
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import { assertNever } from '@origin-ai/xhe-llm'
-import type { CallId } from '@origin-ai/xhe-llm'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
+import { assertNever } from '@origin-ai/cf-llm'
+import type { CallId } from '@origin-ai/cf-llm'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
 import { TOOL_NOT_STARTED } from './repair.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-session'
+const PACKAGE_NAME = '@origin-ai/cf-session'
 
 /** Cordis companion plugin name. */
 export const name = 'session-invariant'

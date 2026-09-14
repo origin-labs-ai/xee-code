@@ -1,25 +1,25 @@
 /**
  * Shared route, framing, timeout, assembly, and validation policy for
  * model-backed session-title providers.
- * @module @origin-ai/xhe-session-title-llm
+ * @module @origin-ai/cf-session-title-llm
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { createUserMessage, BlockAssembler, deepFreeze } from '@origin-ai/xhe-llm'
-import type { FinishReason, GenerateOptions, Message } from '@origin-ai/xhe-llm'
-import { deadline, MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
+import { createUserMessage, BlockAssembler, deepFreeze } from '@origin-ai/cf-llm'
+import type { FinishReason, GenerateOptions, Message } from '@origin-ai/cf-llm'
+import { deadline, MAX_TIMER_DELAY_MS } from '@origin-ai/cf-timeout'
 import {
   normalizeSessionTitle,
   SessionTitleProviderId,
-} from '@origin-ai/xhe-session-title'
+} from '@origin-ai/cf-session-title'
 import type {
   SessionTitleAutomaticMode,
   SessionTitleModelProvenance,
   SessionTitleProviderRequest,
   SessionTitleProviderResult,
   SessionTitleUserMessage,
-} from '@origin-ai/xhe-session-title'
+} from '@origin-ai/cf-session-title'
 
 /** Exact model-visible request recorded before one auxiliary title dispatch. */
 export interface SessionTitleLlmRequestEventData {
@@ -37,7 +37,7 @@ export interface SessionTitleLlmRequestEventData {
   readonly maxTokens: number
 }
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     /** Log-only pre-dispatch record of one session-title model request. */
     'session/title-llm-request': SessionTitleLlmRequestEventData

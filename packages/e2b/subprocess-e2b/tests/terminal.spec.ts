@@ -9,10 +9,10 @@ import {
   type CommandHandle,
   type CommandResult,
   type Sandbox,
-} from '@origin-ai/xhe-e2b'
-import type E2BRuntime from '@origin-ai/xhe-e2b'
-import type { SubprocessTerminalSpawnSpec } from '@origin-ai/xhe-subprocess'
-import E2BSubprocessRuntime from '@origin-ai/xhe-subprocess-e2b'
+} from '@origin-ai/cf-e2b'
+import type E2BRuntime from '@origin-ai/cf-e2b'
+import type { SubprocessTerminalSpawnSpec } from '@origin-ai/cf-subprocess'
+import E2BSubprocessRuntime from '@origin-ai/cf-subprocess-e2b'
 import { spawnE2BTerminal } from '../src/terminal.ts'
 
 function commandError(exitCode: number): CommandExitError {

@@ -18,10 +18,10 @@
  * @module xhe-sandbox-policy/session-mode
  */
 
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type { SandboxMode } from '@origin-ai/xhe-sandbox'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type { SandboxMode } from '@origin-ai/cf-sandbox'
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     /**
      * The session's sandbox mode was switched — log-only (like `approval/*`;

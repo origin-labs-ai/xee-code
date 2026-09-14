@@ -3,10 +3,10 @@
  * provider — the pure, network-free half. The provider's `fetch()` composes
  * these with transport (redirect following, byte caps, decoding).
  *
- * @module @origin-ai/xhe-web-fetch-http/policy
+ * @module @origin-ai/cf-web-fetch-http/policy
  */
 
-import { WebError } from '@origin-ai/xhe-web'
+import { WebError } from '@origin-ai/cf-web'
 
 /** The body kinds this provider decodes. */
 export type FetchableKind = 'html' | 'text'

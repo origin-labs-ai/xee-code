@@ -5,14 +5,14 @@ import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
-import { agentEvents } from '@origin-ai/xhe-agent'
-import { TOOL_ORDER_REST } from '@origin-ai/xhe-system-prompt'
-import type { Message } from '@origin-ai/xhe-llm'
-import { SessionId } from '@origin-ai/xhe-session'
+import { agentEvents } from '@origin-ai/cf-agent'
+import { TOOL_ORDER_REST } from '@origin-ai/cf-system-prompt'
+import type { Message } from '@origin-ai/cf-llm'
+import { SessionId } from '@origin-ai/cf-session'
 import * as acpAgent from '../src/index.ts'
 
 /**
- * In-process unit coverage for the @origin-ai/xhe-acp-demo composition:
+ * In-process unit coverage for the @origin-ai/cf-acp-demo composition:
  * mounting it brings up the agent-spine-demo spine + JSONL persistence + the ACP
  * bridge in one `ctx.plugin`. It loads no Loader-only plugin (no hmr), so it
  * mounts in a plain Context.

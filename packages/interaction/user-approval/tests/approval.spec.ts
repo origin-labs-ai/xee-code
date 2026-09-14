@@ -1,13 +1,13 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import type { Agent } from '@origin-ai/xhe-agent'
-import { CallId } from '@origin-ai/xhe-llm'
-import { carrierKeyOf, createScope } from '@origin-ai/xhe-scope'
-import type { Scope } from '@origin-ai/xhe-scope'
-import SessionStore, { Session, SessionId } from '@origin-ai/xhe-session'
-import type { SessionEvent } from '@origin-ai/xhe-session'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ApprovalService, { ApprovalOutcome, ApprovalRequest, effectiveApprovalPolicy, setApprovalPolicy } from '@origin-ai/xhe-user-approval'
+import type { Agent } from '@origin-ai/cf-agent'
+import { CallId } from '@origin-ai/cf-llm'
+import { carrierKeyOf, createScope } from '@origin-ai/cf-scope'
+import type { Scope } from '@origin-ai/cf-scope'
+import SessionStore, { Session, SessionId } from '@origin-ai/cf-session'
+import type { SessionEvent } from '@origin-ai/cf-session'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ApprovalService, { ApprovalOutcome, ApprovalRequest, effectiveApprovalPolicy, setApprovalPolicy } from '@origin-ai/cf-user-approval'
 
 /**
  * A minimal Agent stand-in — the service only reaches `agent.session.append`

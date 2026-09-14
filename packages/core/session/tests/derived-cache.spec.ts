@@ -1,4 +1,4 @@
-import { createUserMessage, createMessage } from '@origin-ai/xhe-llm'
+import { createUserMessage, createMessage } from '@origin-ai/cf-llm'
 /**
  * Derived-message cache contract against a scratch oracle: project new nodes
  * once, rebuild on surface replacements, return fresh arrays over shared
@@ -6,7 +6,7 @@ import { createUserMessage, createMessage } from '@origin-ai/xhe-llm'
  */
 
 import { describe, expect, it } from 'vitest'
-import { Session, SessionId } from '@origin-ai/xhe-session'
+import { Session, SessionId } from '@origin-ai/cf-session'
 
 function userText(session: Session, text: string): void {
   session.append('user/message', createUserMessage({

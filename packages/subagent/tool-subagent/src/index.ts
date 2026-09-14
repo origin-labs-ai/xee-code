@@ -5,19 +5,19 @@
  * Background policy is selected by this plugin's configuration: one-shot
  * calls own a plain Task, while continuable calls use
  * `ctx.subagents.startContinuable()`.
- * @module @origin-ai/xhe-tool-subagent
+ * @module @origin-ai/cf-tool-subagent
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { defineTool } from '@origin-ai/xhe-tools'
-import type { AgentOptions } from '@origin-ai/xhe-agent'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import type { JsonValue } from '@origin-ai/xhe-session'
-import { assertSubagentMaxDepth, settleRun } from '@origin-ai/xhe-subagent'
-import type { SubagentProvider, SubagentResult, SubagentRun } from '@origin-ai/xhe-subagent'
-import type { JobOutcome } from '@origin-ai/xhe-jobs'
-import type {} from '@origin-ai/xhe-system-prompt'
+import { defineTool } from '@origin-ai/cf-tools'
+import type { AgentOptions } from '@origin-ai/cf-agent'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import type { JsonValue } from '@origin-ai/cf-session'
+import { assertSubagentMaxDepth, settleRun } from '@origin-ai/cf-subagent'
+import type { SubagentProvider, SubagentResult, SubagentRun } from '@origin-ai/cf-subagent'
+import type { JobOutcome } from '@origin-ai/cf-jobs'
+import type {} from '@origin-ai/cf-system-prompt'
 
 export const name = 'tool-subagent'
 export const inject = ['tools', 'subagents', 'systemPrompt']
@@ -408,7 +408,7 @@ export function apply(ctx: Context, config: Config): void {
           }
           const jobs = ctx.get('jobs')
           if (jobs === undefined) {
-            throw new Error('background jobs unavailable: load @origin-ai/xhe-jobs and @origin-ai/xhe-tool-jobs')
+            throw new Error('background jobs unavailable: load @origin-ai/cf-jobs and @origin-ai/cf-tool-jobs')
           }
           // One-shot background child: job preflight finishes before the
           // starter can spawn, and the task-owned signal covers startup.

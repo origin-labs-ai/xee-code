@@ -1,6 +1,6 @@
 /**
  * Ownership of one unpublished Session before registry publication.
- * @module @origin-ai/xhe-session/preparation
+ * @module @origin-ai/cf-session/preparation
  */
 
 import type { Session } from './index.ts'

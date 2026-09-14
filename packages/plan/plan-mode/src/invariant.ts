@@ -1,10 +1,10 @@
-/** Package-owned durable plan-mode invariants. @module @origin-ai/xhe-plan-mode/invariant */
+/** Package-owned durable plan-mode invariants. @module @origin-ai/cf-plan-mode/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-plan-mode'
+const PACKAGE_NAME = '@origin-ai/cf-plan-mode'
 
 /** Cordis companion plugin name. */
 export const name = 'plan-mode-invariant'

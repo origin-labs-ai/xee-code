@@ -1,12 +1,12 @@
-/** Package-owned durable goal-stream invariants. @module @origin-ai/xhe-goal/invariant */
+/** Package-owned durable goal-stream invariants. @module @origin-ai/cf-goal/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
 import { applyGoalEvent, emptyGoalFoldState } from './fold.ts'
 import type { GoalFoldState } from './fold.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-goal'
+const PACKAGE_NAME = '@origin-ai/cf-goal'
 
 /** Cordis companion plugin name. */
 export const name = 'goal-invariant'

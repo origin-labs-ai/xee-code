@@ -9,8 +9,8 @@
  * covers everything the card shows.
  */
 
-import type { IApiClient } from '@origin-ai/xhe-client-connection/client'
-import type { SettingsScope, SettingsScopeSnapshot, SnapshotStore } from '@origin-ai/xhe-client-runtime/client'
+import type { IApiClient } from '@origin-ai/cf-client-connection/client'
+import type { SettingsScope, SettingsScopeSnapshot, SnapshotStore } from '@origin-ai/cf-client-runtime/client'
 import {
   CardForm, numberField, textField,
   type CardActions, type CardFieldState, type CardShell,

@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-typert-protocol`.
- * @module @origin-ai/xhe-typert-protocol/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-typert-protocol`.
+ * @module @origin-ai/cf-typert-protocol/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-typert-protocol'
+const PACKAGE_NAME = '@origin-ai/cf-typert-protocol'
 
 /** Cordis companion plugin name. */
 export const name = 'typert-protocol-invariant'

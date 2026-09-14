@@ -1,25 +1,25 @@
 /**
- * @origin-ai/xhe-headless — one-shot direct Agent driver. The bundle patch
+ * @origin-ai/cf-headless — one-shot direct Agent driver. The bundle patch
  * rides over xhe-base without Host, HTTP, or browser plugins; this runner
  * creates one Agent through the core registry, drives the task to quiescence,
  * flushes its Session, prints the final assistant text, and exits.
  *
- * @module @origin-ai/xhe-headless
+ * @module @origin-ai/cf-headless
  */
 
 import { randomUUID } from 'node:crypto'
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { installModelSelection } from '@origin-ai/xhe-agent'
-import type { ModelSelectionRef } from '@origin-ai/xhe-agent'
-import type {} from '@origin-ai/xhe-agent-default-model'
-import { createUserMessage } from '@origin-ai/xhe-llm'
-import { SessionId } from '@origin-ai/xhe-session'
-import type { SessionEvent } from '@origin-ai/xhe-session'
+import { installModelSelection } from '@origin-ai/cf-agent'
+import type { ModelSelectionRef } from '@origin-ai/cf-agent'
+import type {} from '@origin-ai/cf-agent-default-model'
+import { createUserMessage } from '@origin-ai/cf-llm'
+import { SessionId } from '@origin-ai/cf-session'
+import type { SessionEvent } from '@origin-ai/cf-session'
 // Empty type imports carry the loader Context merge for the settlement await
 // and the cmdline Context merge for the appExit host value.
 import type {} from '@deepseek-ai/cordis-plugin-loader'
-import type {} from '@origin-ai/xhe-cmdline'
+import type {} from '@origin-ai/cf-cmdline'
 
 /** Stable Cordis plugin name. */
 export const name = 'headless-runner'
@@ -107,7 +107,7 @@ async function run(ctx: Context, task: string, io: HeadlessIo): Promise<void> {
   // This bundle composes no preset roster, so the model-facing rows sit in the
   // host plane and the agent reads them from the global layer. A deployment
   // that DOES configure one has to join it here first
-  // (@origin-ai/xhe-agent-presets README, "Composing a child agent").
+  // (@origin-ai/cf-agent-presets README, "Composing a child agent").
   const { agent } = await agents.create({
     sessionId: SessionId(`session-${randomUUID()}`),
     meta: { cwd: process.cwd() },

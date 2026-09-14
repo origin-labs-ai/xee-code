@@ -3,11 +3,11 @@
  * TODO/FIXME/XXX/HACK + adversarial + UX) with dedup / severity /
  * dependency graph → remediation + fresh resweep + READY gates.
  *
- * @module @origin-ai/xhe-xh-production-sweep
+ * @module @origin-ai/cf-xh-production-sweep
  */
 
 import { Service } from '@deepseek-ai/cordis'
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 
 // ---------------------------------------------------------------------------
 // Branded identities

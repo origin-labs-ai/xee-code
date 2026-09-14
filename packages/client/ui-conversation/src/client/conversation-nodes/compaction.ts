@@ -1,12 +1,12 @@
 import type { Context } from '@deepseek-ai/cordis'
 import type {
   CompactionSummaryNode, ConversationMatch, ConversationNodeContext, ConversationNodeDefinition,
-} from '@origin-ai/xhe-client-runtime/client'
-import type {} from '@origin-ai/xhe-compaction/types'
+} from '@origin-ai/cf-client-runtime/client'
+import type {} from '@origin-ai/cf-compaction/types'
 import { chatNode } from './common.ts'
 import { compactSource, compactSummary, updateCompactionState } from './command.ts'
 
-declare module '@origin-ai/xhe-client-ui-conversation/client' {
+declare module '@origin-ai/cf-client-ui-conversation/client' {
   interface ChatNodeDataMap {
     /** Automatic compaction checkpoint marker. */
     compaction: CompactionSummaryNode

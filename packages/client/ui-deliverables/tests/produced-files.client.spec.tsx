@@ -10,15 +10,15 @@ import { act, cleanup, fireEvent, render, within } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import {
   ConversationEventRegistry, ConversationNodeAssembler, SlotRegistry,
-} from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-runtime/client'
 import type {
   ConversationEventInput, ConversationLocationDataStore, ConversationMatch, ConversationNodeDefinition,
   ConversationTimelineSnapshot, ConversationTurnDataMap, ConversationViewDefinition,
   ConversationViewNode, ToolResultNode, TurnLocation,
-} from '@origin-ai/xhe-client-runtime/client'
-import { apply as applyLocale, inject as localeInject } from '@origin-ai/xhe-client-locale/client'
-import type { ChatFileMentions, TurnTailOwnerProps } from '@origin-ai/xhe-client-ui-conversation/client'
-import { makeTranslate, stubSettingsScope } from '@origin-ai/xhe-client-test-runtime'
+} from '@origin-ai/cf-client-runtime/client'
+import { apply as applyLocale, inject as localeInject } from '@origin-ai/cf-client-locale/client'
+import type { ChatFileMentions, TurnTailOwnerProps } from '@origin-ai/cf-client-ui-conversation/client'
+import { makeTranslate, stubSettingsScope } from '@origin-ai/cf-client-test-runtime'
 import {
   fitProducedFiles, ProducedFiles, type ProducedFilesProps,
 } from '../src/client/ProducedFiles.tsx'
@@ -445,7 +445,7 @@ describe('package shells', () => {
       register: (pkg: string) => { registered.push(pkg); return () => {} },
     } as never)
     const dispose = await applyInvariant(ctx)
-    expect(registered).toEqual(['@origin-ai/xhe-client-ui-deliverables'])
+    expect(registered).toEqual(['@origin-ai/cf-client-ui-deliverables'])
     expect(dispose).toBeTypeOf('function')
   })
 })

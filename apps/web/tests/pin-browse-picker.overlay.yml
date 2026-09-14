@@ -8,6 +8,6 @@
   disabled: true
 - insert:
     - id: directory-picker-browse
-      name: '@origin-ai/xhe-host-directory-picker-browse'
+      name: '@origin-ai/cf-host-directory-picker-browse'
     - id: ui-directory-picker-browse
-      name: '@origin-ai/xhe-client-ui-directory-picker-browse'
+      name: '@origin-ai/cf-client-ui-directory-picker-browse'

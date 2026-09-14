@@ -1,7 +1,7 @@
 /** Reconstruct durable steering identity from the event-sourced agent inbox. */
 
-import type { SessionEvent } from '@origin-ai/xhe-session/types'
-import type { InboxTarget } from '@origin-ai/xhe-agent/types'
+import type { SessionEvent } from '@origin-ai/cf-session/types'
+import type { InboxTarget } from '@origin-ai/cf-agent/types'
 
 /** Minimal pending identity retained while replaying durable inbox splices. */
 interface PendingIdentity {

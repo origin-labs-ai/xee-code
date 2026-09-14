@@ -13,12 +13,12 @@ import { join } from 'node:path'
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import { LAUNCHER_FAILURE_EXIT } from '@deepseek-ai/node-addon-landlock-run'
-import { SANDBOX_UNAVAILABLE, SandboxUnavailableError } from '@origin-ai/xhe-sandbox'
-import type { SandboxPolicy } from '@origin-ai/xhe-sandbox'
+import { SANDBOX_UNAVAILABLE, SandboxUnavailableError } from '@origin-ai/cf-sandbox'
+import type { SandboxPolicy } from '@origin-ai/cf-sandbox'
 import {
   LocalSandboxProvider,
-} from '@origin-ai/xhe-sandbox-local'
-import type { Config } from '@origin-ai/xhe-sandbox-local'
+} from '@origin-ai/cf-sandbox-local'
+import type { Config } from '@origin-ai/cf-sandbox-local'
 import { bwrapProfileArgs, landlockProfileArgs, seatbeltProfileArgs } from '../src/profiles.ts'
 
 const RO: SandboxPolicy = { mode: 'read-only', workspaceRoot: '/ws' }
@@ -220,7 +220,7 @@ describe('the platform chains', () => {
   })
 
   // The win32 chain's argv contract, denial dialect, and runner-failure rules
-  // live in @origin-ai/xhe-sandbox-windows-acl/tests/provider-chain.spec.ts
+  // live in @origin-ai/cf-sandbox-windows-acl/tests/provider-chain.spec.ts
   // (platform-independent assertions that run in every CI lane, including
   // Windows where this package's POSIX-only suites are excluded).
 

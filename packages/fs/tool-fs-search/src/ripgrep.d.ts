@@ -3,7 +3,7 @@
  * resolves the platform ripgrep binary (`@vscode/ripgrep-<platform>-<arch>`
  * optional dependency) and exports its absolute path as the named export
  * `rgPath` (no bundled type declarations).
- * @module @origin-ai/xhe-tool-fs-search/ripgrep-types
+ * @module @origin-ai/cf-tool-fs-search/ripgrep-types
  */
 
 declare module '@vscode/ripgrep' {

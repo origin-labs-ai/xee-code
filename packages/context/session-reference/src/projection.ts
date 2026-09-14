@@ -1,9 +1,9 @@
 /** Current-surface projection and byte-bounded rendering. */
 
-import { isCompactCheckpointSource } from '@origin-ai/xhe-compaction'
-import type { SessionSurfaceSnapshot } from '@origin-ai/xhe-session-query'
-import { assertNever } from '@origin-ai/xhe-llm'
-import { TextRetainer } from '@origin-ai/xhe-output-retention'
+import { isCompactCheckpointSource } from '@origin-ai/cf-compaction'
+import type { SessionSurfaceSnapshot } from '@origin-ai/cf-session-query'
+import { assertNever } from '@origin-ai/cf-llm'
+import { TextRetainer } from '@origin-ai/cf-output-retention'
 import { stringifyTagSafeJson } from './serialization.ts'
 import type { ReferencedConversationItem } from './types.ts'
 

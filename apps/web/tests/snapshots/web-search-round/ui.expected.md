@@ -12,10 +12,10 @@
 - text: Use web_search once with queries ["Xee Harness Enhanced snapshot search","Xee Harness Enhanced multi-query search"]. Then reply exactly SEARCH_DONE and stop. {{clock}}
 - button "Copy":
   - img
-- button "Context injection @origin-ai/xhe-system-prompt":
+- button "Context injection @origin-ai/cf-system-prompt":
   - img
   - img
-  - text: Context injection @origin-ai/xhe-system-prompt
+  - text: Context injection @origin-ai/cf-system-prompt
 - button "Search Xee Harness Enhanced snapshot search, Xee Harness Enhanced multi-query search":
   - img
   - img

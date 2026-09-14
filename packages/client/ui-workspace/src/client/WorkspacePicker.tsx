@@ -12,11 +12,11 @@ import type { ReactNode, RefObject } from 'react'
 import { useCallback, useEffect, useState } from 'react'
 import {
   Button, IconFolderClose16, IconPlusOutline16, Menu, Modal, type MenuEntry,
-} from '@origin-ai/xhe-client-ui-primitives'
+} from '@origin-ai/cf-client-ui-primitives'
 import type {
   WorkspaceId, WorkspaceListState, WorkspaceView,
-} from '@origin-ai/xhe-client-runtime/client'
-import type { SnapshotSelectorHook } from '@origin-ai/xhe-client-ui-slots'
+} from '@origin-ai/cf-client-runtime/client'
+import type { SnapshotSelectorHook } from '@origin-ai/cf-client-ui-slots'
 import type { DirectoryFlowOwnerProps, WorkspacePickerProps } from './contract/slots.ts'
 import css from './WorkspacePicker.module.css'
 

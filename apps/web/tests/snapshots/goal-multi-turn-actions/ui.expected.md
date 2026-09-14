@@ -18,10 +18,10 @@
   - img
   - img
   - text: Context injection goal
-- button "Context injection @origin-ai/xhe-system-prompt":
+- button "Context injection @origin-ai/cf-system-prompt":
   - img
   - img
-  - text: Context injection @origin-ai/xhe-system-prompt
+  - text: Context injection @origin-ai/cf-system-prompt
 - 'button "Think The user''s goal is: \"turn，turn。turn，，，turn，\" — which translates to: \"Do two turns, each turn output the file structure of a random package. Note that after you finish one turn, directly output the content and stop; our system will help you open another turn, and you just do something similar.\""':
   - img
   - img

@@ -14,9 +14,9 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import {
   Button, IconBrowseOutline16, IconCopyOutline16, IconFolderOpenOutline16, IconPlusOutline16, IconTrashOutline16, Modal, Tooltip,
-} from '@origin-ai/xhe-client-ui-primitives'
-import type { SnapshotStore } from '@origin-ai/xhe-client-runtime/client'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@origin-ai/xhe-client-ui-slots'
+} from '@origin-ai/cf-client-ui-primitives'
+import type { SnapshotStore } from '@origin-ai/cf-client-runtime/client'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@origin-ai/cf-client-ui-slots'
 import { draftBlocker, type AgentPresetSectionState } from './section-store.ts'
 import { presetDisplayText, type AgentPresetSettingsKey } from './locales.ts'
 import css from './AgentPresetSection.module.css'

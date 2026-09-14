@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import type { SessionEvent, SurfaceEvent, SurfaceEventType } from '@origin-ai/xhe-session'
+import type { SessionEvent, SurfaceEvent, SurfaceEventType } from '@origin-ai/cf-session'
 import {
   Session,
   SessionId,
@@ -8,8 +8,8 @@ import {
   isReplacementSurfaceEvent,
   isSurfaceEligibleType,
   isSurfaceEvent,
-} from '@origin-ai/xhe-session'
-import { SurfaceManager } from '@origin-ai/xhe-session/surface'
+} from '@origin-ai/cf-session'
+import { SurfaceManager } from '@origin-ai/cf-session/surface'
 import {
   createMessage,
   createToolResultMessage,
@@ -17,7 +17,7 @@ import {
   freezeMessage,
   CallId,
   MessageId,
-} from '@origin-ai/xhe-llm'
+} from '@origin-ai/cf-llm'
 
 /** Build a minimal session with turn boundaries and a single user message. */
 function surfaceSession(): Session {

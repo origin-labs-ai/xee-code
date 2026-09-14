@@ -2,12 +2,12 @@
  * Pure session projections for subagent identity (mode/label) and active-turn
  * duration.
  *
- * @module @origin-ai/xhe-subagent/projection
+ * @module @origin-ai/cf-subagent/projection
  */
 
 import { z } from 'zod'
-import type { ProjectionDefinition } from '@origin-ai/xhe-session-projection'
-import type { SessionEvent } from '@origin-ai/xhe-session'
+import type { ProjectionDefinition } from '@origin-ai/cf-session-projection'
+import type { SessionEvent } from '@origin-ai/cf-session'
 import { foldSubagentDescriptor } from './descriptor.ts'
 import type { SubagentDescriptorData } from './descriptor.ts'
 import type { SubagentIdentityProjection, SubagentTimingProjection } from './projection-types.ts'
@@ -44,7 +44,7 @@ const timingStateSchema: z.ZodType<TimingState> = z.object({
   descriptorSeen: z.boolean(),
 }).strict()
 
-declare module '@origin-ai/xhe-session-projection/types' {
+declare module '@origin-ai/cf-session-projection/types' {
   interface SessionProjectionStateMap {
     subagentTiming: TimingState
     subagent: IdentityState

@@ -11,9 +11,9 @@ import {
   HoverCard, IconArchiveOutline20, IconBranchOutline16, IconEditOutline16,
   IconEllipsisOutline16, IconFolderClose16, IconFolderOpen16, IconPlusOutline16,
   IconTrashOutline16, IconTriangleRightFill14, Menu, StateDot,
-} from '@origin-ai/xhe-client-ui-primitives'
-import type { StateDotState } from '@origin-ai/xhe-client-ui-primitives'
-import { abbreviateHomePath } from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-ui-primitives'
+import type { StateDotState } from '@origin-ai/cf-client-ui-primitives'
+import { abbreviateHomePath } from '@origin-ai/cf-client-runtime/client'
 import type { WorkspaceBrowserProps } from '../contract/slots.ts'
 import type { GroupNode, SearchResultNode, SessionNode } from '../tree.ts'
 import { relativeTime } from '../tree.ts'

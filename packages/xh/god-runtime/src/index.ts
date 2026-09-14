@@ -7,11 +7,11 @@
  * coordinator, and arbiter. Minimal typed stubs — full behavior is behind
  * explicit configuration and remains opt-in.
  *
- * @module @origin-ai/xhe-god-runtime
+ * @module @origin-ai/cf-god-runtime
  */
 
 import { Service } from '@deepseek-ai/cordis'
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 
 // ---------------------------------------------------------------------------
 // Branded identities

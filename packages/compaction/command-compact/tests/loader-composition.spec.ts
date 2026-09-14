@@ -6,8 +6,8 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import Include from '@deepseek-ai/cordis-plugin-include'
-import type { Agent } from '@origin-ai/xhe-agent'
-import CommandRuntime from '@origin-ai/xhe-commands'
+import type { Agent } from '@origin-ai/cf-agent'
+import CommandRuntime from '@origin-ai/cf-commands'
 import {
   CompactionId,
   CompactionEngine,
@@ -15,9 +15,9 @@ import {
   type CompactionResult,
   type CompactionTrigger,
   type ManualCompactAgentContext,
-} from '@origin-ai/xhe-compaction'
-import * as commandCompact from '@origin-ai/xhe-command-compact'
-import { Session, SessionId } from '@origin-ai/xhe-session'
+} from '@origin-ai/cf-compaction'
+import * as commandCompact from '@origin-ai/cf-command-compact'
+import { Session, SessionId } from '@origin-ai/cf-session'
 
 const COMPACTION_ID = CompactionId('loader-command-compact-test')
 
@@ -84,9 +84,9 @@ describe('command-compact real Loader composition', () => {
     root = await mkdtemp(join(tmpdir(), 'xhe-command-compact-loader-'))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@origin-ai/xhe-commands'",
+      "- name: '@origin-ai/cf-commands'",
       "- name: '@test/compact-backend'",
-      "- name: '@origin-ai/xhe-command-compact'",
+      "- name: '@origin-ai/cf-command-compact'",
       '',
     ].join('\n'))
 
@@ -95,9 +95,9 @@ describe('command-compact real Loader composition', () => {
     await context.plugin(Loader)
     context.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
-      ['@origin-ai/xhe-commands', CommandRuntime],
+      ['@origin-ai/cf-commands', CommandRuntime],
       ['@test/compact-backend', LoaderCompactionEngine],
-      ['@origin-ai/xhe-command-compact', commandCompact],
+      ['@origin-ai/cf-command-compact', commandCompact],
     ])
     context.loader.internal = {
       version: 'v2',

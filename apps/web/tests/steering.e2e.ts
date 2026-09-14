@@ -8,8 +8,8 @@ import { join } from 'node:path'
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import { parseSessionLog } from '@origin-ai/xhe-llm-replay'
-import type { SessionEvent } from '@origin-ai/xhe-session'
+import { parseSessionLog } from '@origin-ai/cf-llm-replay'
+import type { SessionEvent } from '@origin-ai/cf-session'
 import {
   assertFixtureInventory, captureStableAria, compareOrRefreshGolden, fixtureUserPrompts,
   launchWebScaffold, recordFixture, watchConsole, webSnapshotMode, type WebScaffold,

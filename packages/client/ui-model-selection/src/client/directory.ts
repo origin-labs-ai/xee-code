@@ -7,9 +7,9 @@
  */
 import type {
   IApiClient, ModelCatalogFailure, ModelProviderGroup, ModelSelection, SessionId, SessionModels,
-} from '@origin-ai/xhe-api-remotes/client'
-import type { SnapshotStore } from '@origin-ai/xhe-client-runtime/client'
-import { createSnapshotStore } from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-api-remotes/client'
+import type { SnapshotStore } from '@origin-ai/cf-client-runtime/client'
+import { createSnapshotStore } from '@origin-ai/cf-client-runtime/client'
 
 /** Directory snapshot both entries render from. */
 export interface ModelDirectoryState {

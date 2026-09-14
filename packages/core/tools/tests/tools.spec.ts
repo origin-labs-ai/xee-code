@@ -1,15 +1,15 @@
 import { describe, expect, expectTypeOf, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { createUserMessage, CallId, HarnessError, type ContentBlock  } from '@origin-ai/xhe-llm'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import type { Agent } from '@origin-ai/xhe-agent'
-import ApprovalService, { type ApprovalOutcome, type ApprovalRequest } from '@origin-ai/xhe-user-approval'
+import { createUserMessage, CallId, HarnessError, type ContentBlock  } from '@origin-ai/cf-llm'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import type { Agent } from '@origin-ai/cf-agent'
+import ApprovalService, { type ApprovalOutcome, type ApprovalRequest } from '@origin-ai/cf-user-approval'
 import ToolRuntime, {
   defineContentToolFixture, defineTool, JsonSchemaError, parameterSchemaSpecToJsonSchema, validateArgs, ToolArgsError, ToolNotFoundError,
   TOOL_ABORTED, TOOL_ABORTED_BEFORE_DISPATCH,
   type InferArgs, type JsonValue, type ParameterSchemaSpec, type PreToolDecision, type PostToolDecision,
   type JsonSchemaNode, type ToolDefinition, type ToolDispatchExecution, type ToolExecutionResult, type ToolExecutionToken,
-} from '@origin-ai/xhe-tools'
+} from '@origin-ai/cf-tools'
 
 const testToolSignal = new AbortController().signal
 
@@ -665,7 +665,7 @@ describe('ToolRuntime', () => {
   })
 
   it('ToolNotFoundError carries a stable message and code', async () => {
-    const { HarnessError } = await import('@origin-ai/xhe-llm')
+    const { HarnessError } = await import('@origin-ai/cf-llm')
     const err = new ToolNotFoundError('ghost')
     expect(err).toBeInstanceOf(HarnessError)
     expect(err.name).toBe('ToolNotFoundError')
@@ -2631,7 +2631,7 @@ describe('defineTool validation (the runtime-validation Agent Note, part 1)', ()
   })
 
   it('a tool throwing a HarnessError surfaces its name and code', async () => {
-    const { HarnessError } = await import('@origin-ai/xhe-llm')
+    const { HarnessError } = await import('@origin-ai/cf-llm')
     const ctx = await setup()
     ctx.tools.register({
       ...echoTool,

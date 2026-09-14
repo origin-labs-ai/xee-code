@@ -9,9 +9,9 @@
  */
 
 import { join } from 'node:path'
-import { decodeStorageRecord, packChunkRuns, SESSION_FORMAT_VERSION } from '@origin-ai/xhe-session'
-import type { SessionEvent, SessionHeader, SessionId, StorageRecord } from '@origin-ai/xhe-session'
-import { SessionFormatUnsupportedError, sessionFormatVersionRefusal } from '@origin-ai/xhe-session-persistence'
+import { decodeStorageRecord, packChunkRuns, SESSION_FORMAT_VERSION } from '@origin-ai/cf-session'
+import type { SessionEvent, SessionHeader, SessionId, StorageRecord } from '@origin-ai/cf-session'
+import { SessionFormatUnsupportedError, sessionFormatVersionRefusal } from '@origin-ai/cf-session-persistence'
 
 /** Physical encoding selected for JSONL session artifacts. */
 export type JsonlCompression = 'zstd' | 'none'

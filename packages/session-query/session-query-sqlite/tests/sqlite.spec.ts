@@ -1,18 +1,18 @@
-import { createAssistantMessage, createUserMessage } from '@origin-ai/xhe-llm'
+import { createAssistantMessage, createUserMessage } from '@origin-ai/cf-llm'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context, type Fiber } from '@deepseek-ai/cordis'
 import { DatabaseSync } from 'node:sqlite'
 import { chmod, mkdtemp, rm, stat, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
-import SessionStore, { SESSION_FORMAT_VERSION, SessionId } from '@origin-ai/xhe-session'
-import type { SessionEvent, SessionHeader, SessionId as SessionIdType } from '@origin-ai/xhe-session'
-import SessionPersistence, { SessionPersistenceRevision } from '@origin-ai/xhe-session-persistence'
-import type { SessionPersistenceSnapshot } from '@origin-ai/xhe-session-persistence'
-import SqliteSessionPersistence from '@origin-ai/xhe-session-persistence-sqlite'
+import SessionStore, { SESSION_FORMAT_VERSION, SessionId } from '@origin-ai/cf-session'
+import type { SessionEvent, SessionHeader, SessionId as SessionIdType } from '@origin-ai/cf-session'
+import SessionPersistence, { SessionPersistenceRevision } from '@origin-ai/cf-session-persistence'
+import type { SessionPersistenceSnapshot } from '@origin-ai/cf-session-persistence'
+import SqliteSessionPersistence from '@origin-ai/cf-session-persistence-sqlite'
 import SqliteSessionQueryEngine, {
   SESSION_QUERY_SQLITE_SCHEMA_VERSION,
-} from '@origin-ai/xhe-session-query-sqlite'
+} from '@origin-ai/cf-session-query-sqlite'
 import {
   SESSION_QUERY_DEFAULT_PERSISTED_INSPECT_CONCURRENCY,
   SessionQueryError,
@@ -20,7 +20,7 @@ import {
   type SessionAvailability,
   type SessionQueryErrorCode,
   type SessionSearchRequest,
-} from '@origin-ai/xhe-session-query'
+} from '@origin-ai/cf-session-query'
 
 const temporaryDirectories: string[] = []
 

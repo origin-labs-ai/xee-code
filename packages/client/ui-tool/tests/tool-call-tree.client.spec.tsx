@@ -2,13 +2,13 @@
 /** ToolCallTree-owned root/subcall markers and selection projection. */
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render } from '@testing-library/react'
-import type { HostDescription } from '@origin-ai/xhe-client-connection/client'
-import type { ConversationSnapshot, ToolResultNode } from '@origin-ai/xhe-client-runtime/client'
-import { makeTranslate } from '@origin-ai/xhe-client-test-runtime'
-import { zh as commonZh } from '@origin-ai/xhe-client-locale/src/locales/zh.ts'
+import type { HostDescription } from '@origin-ai/cf-client-connection/client'
+import type { ConversationSnapshot, ToolResultNode } from '@origin-ai/cf-client-runtime/client'
+import { makeTranslate } from '@origin-ai/cf-client-test-runtime'
+import { zh as commonZh } from '@origin-ai/cf-client-locale/src/locales/zh.ts'
 import type { ToolTreeProps } from '../src/client/contract/slots.ts'
 import { ToolCallTree } from '../src/client/tool/ToolCallTree.tsx'
-import { zh } from '@origin-ai/xhe-client-ui-conversation/src/client/locales.ts'
+import { zh } from '@origin-ai/cf-client-ui-conversation/src/client/locales.ts'
 
 afterEach(cleanup)
 

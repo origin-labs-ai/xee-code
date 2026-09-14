@@ -1,11 +1,11 @@
 /**
  * xhe-lsp's owned branded id: {@link LspProviderId}, the opaque identity a provider reserves on
- * `ctx.lsp`. The `Branded<B>` primitive lives in `@origin-ai/xhe-brand`; keeping the type and its
+ * `ctx.lsp`. The `Branded<B>` primitive lives in `@origin-ai/cf-brand`; keeping the type and its
  * factory together here lets `index.ts` re-export both under one name.
- * @module @origin-ai/xhe-lsp/brand
+ * @module @origin-ai/cf-lsp/brand
  */
 
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 
 /** Opaque provider identity, reserved atomically with its extension mappings at registration. */
 export type LspProviderId = Branded<'LspProviderId'>

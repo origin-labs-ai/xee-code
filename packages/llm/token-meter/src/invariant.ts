@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-token-meter`.
- * @module @origin-ai/xhe-token-meter/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-token-meter`.
+ * @module @origin-ai/cf-token-meter/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-token-meter'
+const PACKAGE_NAME = '@origin-ai/cf-token-meter'
 
 /** Cordis companion plugin name. */
 export const name = 'token-meter-invariant'

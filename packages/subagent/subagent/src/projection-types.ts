@@ -1,7 +1,7 @@
 /**
  * Pure client-safe subagent projection vocabulary.
  *
- * @module @origin-ai/xhe-subagent/projection-types
+ * @module @origin-ai/cf-subagent/projection-types
  */
 
 /** Durable active-turn timing for one descriptor-backed child session. */
@@ -46,7 +46,7 @@ export type SubagentIdentityProjection =
     seq: number
   }
 
-declare module '@origin-ai/xhe-session-projection/types' {
+declare module '@origin-ai/cf-session-projection/types' {
   interface SessionProjectionMap {
     /** Active-turn duration for a descriptor-backed subagent session. */
     subagentTiming: SubagentTimingProjection

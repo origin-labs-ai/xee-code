@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-pwsh-local`.
- * @module @origin-ai/xhe-pwsh-local/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-pwsh-local`.
+ * @module @origin-ai/cf-pwsh-local/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-pwsh-local'
+const PACKAGE_NAME = '@origin-ai/cf-pwsh-local'
 
 /** Cordis companion plugin name. */
 export const name = 'pwsh-local-invariant'

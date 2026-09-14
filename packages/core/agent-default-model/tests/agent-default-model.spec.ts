@@ -3,9 +3,9 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import AgentDefaultModelConfig, { AGENT_DEFAULT_MODEL_SETTINGS_NAMESPACE } from '../src/index.ts'
-import { SettingsProvider } from '@origin-ai/xhe-settings'
-import type { SettingsNamespace } from '@origin-ai/xhe-settings'
-import { ReasoningEffortId } from '@origin-ai/xhe-llm'
+import { SettingsProvider } from '@origin-ai/cf-settings'
+import type { SettingsNamespace } from '@origin-ai/cf-settings'
+import { ReasoningEffortId } from '@origin-ai/cf-llm'
 
 /** The smallest real provider: one in-memory document, always writable. */
 class MemorySettings extends SettingsProvider {

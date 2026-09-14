@@ -45,7 +45,7 @@ describe('release families', () => {
     const members = releaseFamily('dsh').members(resolve(import.meta.dirname, '../..'))
 
     expect(members.some(member => member.directory.startsWith('packages/experimental/'))).toBe(false)
-    expect(members.map(member => member.name)).not.toContain('@origin-ai/xhe-experimental-agent-team')
+    expect(members.map(member => member.name)).not.toContain('@origin-ai/cf-experimental-agent-team')
   })
 
   it('bumps private dsh packages without adding release tags', () => {
@@ -56,7 +56,7 @@ describe('release families', () => {
     write(join(root, 'packages/core/unselected/package.json'), '{"version":"0.0.1"}\n')
 
     const dsh = releaseFamily('dsh')
-    const published = member('packages/core/published', '@origin-ai/xhe-published')
+    const published = member('packages/core/published', '@origin-ai/cf-published')
     const { planned } = planShared(dsh, root, [published], '0.0.2')
 
     expect(planned.map(entry => ({ path: entry.manifestPath, tag: entry.tag }))).toEqual([
@@ -69,7 +69,7 @@ describe('release families', () => {
   it('names one tag for the whole dsh family and one per vendored package', () => {
     const dsh = releaseFamily('dsh')
     const vendor = releaseFamily('vendor')
-    const cli = member('apps/cli', '@origin-ai/xhe')
+    const cli = member('apps/cli', '@origin-ai/cf')
     const cordis = { ...member('vendor/cordis', '@deepseek-ai/cordis'), version: '4.0.1' }
 
     expect(dsh.tagFor(cli)).toBe('xhe-v0.0.1')
@@ -82,7 +82,7 @@ describe('release families', () => {
 
   it('rejects a family whose members disagree on the shared version', () => {
     const dsh = releaseFamily('dsh')
-    const members = [member('apps/cli', '@origin-ai/xhe'), { ...member('apps/web', '@origin-ai/xhe-web-frontend'), version: '0.0.2' }]
+    const members = [member('apps/cli', '@origin-ai/cf'), { ...member('apps/web', '@origin-ai/cf-web-frontend'), version: '0.0.2' }]
 
     expect(() => { dsh.verifyVersions(members) }).toThrow(/must share one version/)
     expect(() => { dsh.verifyVersions([members[0]!]) }).not.toThrow()
@@ -119,23 +119,23 @@ describe('release families', () => {
   it('publishes a dependency before its consumer, and orders ties by name', () => {
     const dsh = releaseFamily('dsh')
     const members = [
-      member('packages/a/consumer', '@origin-ai/xhe-consumer', { dependencies: { '@origin-ai/xhe-library': 'workspace:^' } }),
-      member('packages/a/library', '@origin-ai/xhe-library'),
-      member('packages/a/zebra', '@origin-ai/xhe-zebra'),
+      member('packages/a/consumer', '@origin-ai/cf-consumer', { dependencies: { '@origin-ai/cf-library': 'workspace:^' } }),
+      member('packages/a/library', '@origin-ai/cf-library'),
+      member('packages/a/zebra', '@origin-ai/cf-zebra'),
     ]
 
     expect(dsh.publishOrder(members).order.map(entry => entry.name)).toEqual([
-      '@origin-ai/xhe-library',
-      '@origin-ai/xhe-consumer',
-      '@origin-ai/xhe-zebra',
+      '@origin-ai/cf-library',
+      '@origin-ai/cf-consumer',
+      '@origin-ai/cf-zebra',
     ])
   })
 
   it('reports a runtime dependency cycle instead of emitting an arbitrary order', () => {
     const dsh = releaseFamily('dsh')
     const members = [
-      member('packages/a/left', '@origin-ai/xhe-left', { dependencies: { '@origin-ai/xhe-right': 'workspace:^' } }),
-      member('packages/a/right', '@origin-ai/xhe-right', { dependencies: { '@origin-ai/xhe-left': 'workspace:^' } }),
+      member('packages/a/left', '@origin-ai/cf-left', { dependencies: { '@origin-ai/cf-right': 'workspace:^' } }),
+      member('packages/a/right', '@origin-ai/cf-right', { dependencies: { '@origin-ai/cf-left': 'workspace:^' } }),
     ]
 
     expect(() => { dsh.publishOrder(members) }).toThrow(/dependency cycle/)
@@ -144,44 +144,44 @@ describe('release families', () => {
   it('publishes a peer before its consumer', () => {
     const dsh = releaseFamily('dsh')
     const members = [
-      member('packages/a/consumer', '@origin-ai/xhe-consumer', { peerDependencies: { '@origin-ai/xhe-zebra': 'workspace:^' } }),
-      member('packages/a/zebra', '@origin-ai/xhe-zebra'),
+      member('packages/a/consumer', '@origin-ai/cf-consumer', { peerDependencies: { '@origin-ai/cf-zebra': 'workspace:^' } }),
+      member('packages/a/zebra', '@origin-ai/cf-zebra'),
     ]
 
     // Name order alone would place the consumer first; the peer edge moves it.
     expect(dsh.publishOrder(members).order.map(entry => entry.name)).toEqual([
-      '@origin-ai/xhe-zebra',
-      '@origin-ai/xhe-consumer',
+      '@origin-ai/cf-zebra',
+      '@origin-ai/cf-consumer',
     ])
   })
 
   it('orders around a peer cycle rather than refusing to publish, and reports the edge it dropped', () => {
     const dsh = releaseFamily('dsh')
     const members = [
-      member('packages/a/left', '@origin-ai/xhe-left', { peerDependencies: { '@origin-ai/xhe-right': 'workspace:^' } }),
-      member('packages/a/right', '@origin-ai/xhe-right', { peerDependencies: { '@origin-ai/xhe-left': 'workspace:^' } }),
+      member('packages/a/left', '@origin-ai/cf-left', { peerDependencies: { '@origin-ai/cf-right': 'workspace:^' } }),
+      member('packages/a/right', '@origin-ai/cf-right', { peerDependencies: { '@origin-ai/cf-left': 'workspace:^' } }),
     ]
 
     // Sibling packages declare each other as peers, and npm treats an unmet peer
     // as a warning, so this pair has to publish rather than fail the release.
     const plan = dsh.publishOrder(members)
     expect(plan.order.map(entry => entry.name)).toEqual([
-      '@origin-ai/xhe-right',
-      '@origin-ai/xhe-left',
+      '@origin-ai/cf-right',
+      '@origin-ai/cf-left',
     ])
     // One of the two edges has to give, and which one it is belongs in the log.
     expect(plan.droppedPeerEdges).toEqual([
-      { consumer: '@origin-ai/xhe-right', peer: '@origin-ai/xhe-left' },
+      { consumer: '@origin-ai/cf-right', peer: '@origin-ai/cf-left' },
     ])
   })
 
   it('honours an install edge even when a peer cycle surrounds it', () => {
     const dsh = releaseFamily('dsh')
     const members = [
-      member('packages/a/base', '@origin-ai/xhe-base', { peerDependencies: { '@origin-ai/xhe-consumer': 'workspace:^' } }),
-      member('packages/a/consumer', '@origin-ai/xhe-consumer', {
-        dependencies: { '@origin-ai/xhe-base': 'workspace:^' },
-        peerDependencies: { '@origin-ai/xhe-base': 'workspace:^' },
+      member('packages/a/base', '@origin-ai/cf-base', { peerDependencies: { '@origin-ai/cf-consumer': 'workspace:^' } }),
+      member('packages/a/consumer', '@origin-ai/cf-consumer', {
+        dependencies: { '@origin-ai/cf-base': 'workspace:^' },
+        peerDependencies: { '@origin-ai/cf-base': 'workspace:^' },
       }),
     ]
 
@@ -189,20 +189,20 @@ describe('release families', () => {
     // would reverse it is the one dropped.
     const plan = dsh.publishOrder(members)
     expect(plan.order.map(entry => entry.name)).toEqual([
-      '@origin-ai/xhe-base',
-      '@origin-ai/xhe-consumer',
+      '@origin-ai/cf-base',
+      '@origin-ai/cf-consumer',
     ])
     expect(plan.droppedPeerEdges).toEqual([
-      { consumer: '@origin-ai/xhe-base', peer: '@origin-ai/xhe-consumer' },
+      { consumer: '@origin-ai/cf-base', peer: '@origin-ai/cf-consumer' },
     ])
   })
 
   it('refuses an order that would publish a consumer before a dependency it installs', () => {
     const dsh = releaseFamily('dsh')
     const members = [
-      member('packages/a/alpha', '@origin-ai/xhe-alpha', { peerDependencies: { '@origin-ai/xhe-bravo': 'workspace:^' } }),
-      member('packages/a/bravo', '@origin-ai/xhe-bravo', { peerDependencies: { '@origin-ai/xhe-charlie': 'workspace:^' } }),
-      member('packages/a/charlie', '@origin-ai/xhe-charlie', { dependencies: { '@origin-ai/xhe-alpha': 'workspace:^' } }),
+      member('packages/a/alpha', '@origin-ai/cf-alpha', { peerDependencies: { '@origin-ai/cf-bravo': 'workspace:^' } }),
+      member('packages/a/bravo', '@origin-ai/cf-bravo', { peerDependencies: { '@origin-ai/cf-charlie': 'workspace:^' } }),
+      member('packages/a/charlie', '@origin-ai/cf-charlie', { dependencies: { '@origin-ai/cf-alpha': 'workspace:^' } }),
     ]
 
     // A cycle of two peer edges closed by one install edge: dropping a peer edge
@@ -215,22 +215,22 @@ describe('release families', () => {
   it('ignores devDependencies when ordering', () => {
     const dsh = releaseFamily('dsh')
     const members = [
-      member('packages/a/alpha', '@origin-ai/xhe-alpha', { devDependencies: { '@origin-ai/xhe-zebra': 'workspace:^' } }),
-      member('packages/a/zebra', '@origin-ai/xhe-zebra'),
+      member('packages/a/alpha', '@origin-ai/cf-alpha', { devDependencies: { '@origin-ai/cf-zebra': 'workspace:^' } }),
+      member('packages/a/zebra', '@origin-ai/cf-zebra'),
     ]
 
     // A dev dependency is absent from the published package, so it must not move
     // the consumer behind it.
     expect(dsh.publishOrder(members).order.map(entry => entry.name)).toEqual([
-      '@origin-ai/xhe-alpha',
-      '@origin-ai/xhe-zebra',
+      '@origin-ai/cf-alpha',
+      '@origin-ai/cf-zebra',
     ])
   })
 
   it('applies the harness payload policy to dsh and keeps upstream payloads for vendored packages', () => {
     const dsh = releaseFamily('dsh')
     const vendor = releaseFamily('vendor')
-    const harness = member('packages/a/library', '@origin-ai/xhe-library')
+    const harness = member('packages/a/library', '@origin-ai/cf-library')
     const vendored = member('vendor/cordis', '@deepseek-ai/cordis')
 
     expect(() => { dsh.validatePayload(harness, ['package/lib/index.js', 'package/src/index.ts']) })
@@ -240,7 +240,7 @@ describe('release families', () => {
   })
 
   it('drives the installed entry only for the family that publishes one', () => {
-    expect(releaseFamily('dsh').installedEntry).toEqual({ packageName: '@origin-ai/xhe', binPath: 'lib/bin.js' })
+    expect(releaseFamily('dsh').installedEntry).toEqual({ packageName: '@origin-ai/cf', binPath: 'lib/bin.js' })
     expect(releaseFamily('vendor').installedEntry).toBeUndefined()
   })
 
@@ -323,7 +323,7 @@ describe('payload change judgement', () => {
     // unnecessary patch bump, while under-reporting fails the next publish on a
     // version whose bytes moved.
     expect(reachesPayload(sourceShipping, 'vendor/cosmokit/README.i18n.yaml')).toBe(true)
-    expect(reachesPayload(member('packages/a/library', '@origin-ai/xhe-library', { files: ['lib/index.js'] }),
+    expect(reachesPayload(member('packages/a/library', '@origin-ai/cf-library', { files: ['lib/index.js'] }),
       'packages/a/library/tests/library.spec.ts')).toBe(false)
   })
 })

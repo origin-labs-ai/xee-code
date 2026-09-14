@@ -18,14 +18,14 @@
  * durable descriptor, so it neither restores the prior budget nor inherits
  * the parent's current one; the resumed route's defaults apply instead.
  *
- * @module @origin-ai/xhe-subagent/descriptor
+ * @module @origin-ai/cf-subagent/descriptor
  */
 
-import { snapshotJsonValue } from '@origin-ai/xhe-session'
-import type { SessionEvent } from '@origin-ai/xhe-session'
-import type { ToolRestriction } from '@origin-ai/xhe-tools'
+import { snapshotJsonValue } from '@origin-ai/cf-session'
+import type { SessionEvent } from '@origin-ai/cf-session'
+import type { ToolRestriction } from '@origin-ai/cf-tools'
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     /**
      * Durable identity and lifecycle mode of a session-backed subagent child,

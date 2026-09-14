@@ -3,8 +3,8 @@ import type { AddressInfo } from 'node:net'
 import { describe, expect, it } from 'vitest'
 import { Context, Service, symbols } from '@deepseek-ai/cordis'
 import { z } from 'zod'
-import { apply as applyConnection, inject as connectionInject } from '@origin-ai/xhe-client-connection'
-import type { WebServer, WebRoute } from '@origin-ai/xhe-host-webserver'
+import { apply as applyConnection, inject as connectionInject } from '@origin-ai/cf-client-connection'
+import type { WebServer, WebRoute } from '@origin-ai/cf-host-webserver'
 import {
   bindTypertRemote,
   Remote,
@@ -14,9 +14,9 @@ import {
   type TypertContext,
   type TypertLookup,
   type TypertLookupProvider,
-} from '@origin-ai/xhe-typert-protocol'
-import TypertRegistry, { type TypertContribution } from '@origin-ai/xhe-typert-registry'
-import TypertGatewayService, { TypertGatewayError } from '@origin-ai/xhe-api-gateway'
+} from '@origin-ai/cf-typert-protocol'
+import TypertRegistry, { type TypertContribution } from '@origin-ai/cf-typert-registry'
+import TypertGatewayService, { TypertGatewayError } from '@origin-ai/cf-api-gateway'
 
 interface FixtureAgent {
   readonly id: string
@@ -26,7 +26,7 @@ interface MarkedContext extends Context {
   readonly fixtureScope?: string
 }
 
-declare module '@origin-ai/xhe-typert-protocol' {
+declare module '@origin-ai/cf-typert-protocol' {
   interface TypertLookupMap {
     gatewayFixture: TypertLookup<FixtureAgent, string>
     gatewayFixtureAlias: TypertLookup<FixtureAgent, string>

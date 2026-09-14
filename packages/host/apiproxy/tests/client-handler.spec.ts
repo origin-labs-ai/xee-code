@@ -6,9 +6,9 @@
  */
 
 import { describe, expect, it, vi } from 'vitest'
-import type { SessionId } from '@origin-ai/xhe-session'
-import type { ApiProxy, GoalRef, HostFrame, MuxFrame, RpcMessage, RpcRequest, RpcResponse } from '@origin-ai/xhe-host-apiproxy'
-import { InProcessApiClient, RpcId, toFetchHandler } from '@origin-ai/xhe-host-apiproxy'
+import type { SessionId } from '@origin-ai/cf-session'
+import type { ApiProxy, GoalRef, HostFrame, MuxFrame, RpcMessage, RpcRequest, RpcResponse } from '@origin-ai/cf-host-apiproxy'
+import { InProcessApiClient, RpcId, toFetchHandler } from '@origin-ai/cf-host-apiproxy'
 
 const sid = (id: string): SessionId => id as SessionId
 

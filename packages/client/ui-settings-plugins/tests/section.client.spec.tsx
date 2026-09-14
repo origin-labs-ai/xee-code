@@ -7,8 +7,8 @@
 
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { bindSnapshotSelector } from '@origin-ai/xhe-client-test-runtime'
-import { createSnapshotStore } from '@origin-ai/xhe-client-runtime/client'
+import { bindSnapshotSelector } from '@origin-ai/cf-client-test-runtime'
+import { createSnapshotStore } from '@origin-ai/cf-client-runtime/client'
 import { AgentLoopCard } from '../src/client/AgentLoopCard.tsx'
 import type { AgentLoopCardProps } from '../src/client/AgentLoopCard.tsx'
 import { BashCard } from '../src/client/BashCard.tsx'

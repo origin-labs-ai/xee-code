@@ -7,21 +7,21 @@
 
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import AgentRegistry, { agentEvents } from '@origin-ai/xhe-agent'
-import type { Agent } from '@origin-ai/xhe-agent'
-import AttachmentStore from '@origin-ai/xhe-attachment'
-import LlmRuntime, { LlmAdapter, ReasoningEffortId } from '@origin-ai/xhe-llm'
+import AgentRegistry, { agentEvents } from '@origin-ai/cf-agent'
+import type { Agent } from '@origin-ai/cf-agent'
+import AttachmentStore from '@origin-ai/cf-attachment'
+import LlmRuntime, { LlmAdapter, ReasoningEffortId } from '@origin-ai/cf-llm'
 import type {
   GenerateOptions, LlmCallConfig, LlmModelInfo, LlmModelReasoningInfo, LlmProviderInfo,
   LlmResolvedModelInfo, StreamChunk,
   UserMessage,
-} from '@origin-ai/xhe-llm'
-import SessionStore from '@origin-ai/xhe-session'
-import type { SessionId } from '@origin-ai/xhe-session'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import UserQuestionService from '@origin-ai/xhe-user-questions'
-import type { RpcRequest } from '@origin-ai/xhe-host-apiproxy/api/rpc'
-import { RpcId } from '@origin-ai/xhe-host-apiproxy/api/rpc'
+} from '@origin-ai/cf-llm'
+import SessionStore from '@origin-ai/cf-session'
+import type { SessionId } from '@origin-ai/cf-session'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import UserQuestionService from '@origin-ai/cf-user-questions'
+import type { RpcRequest } from '@origin-ai/cf-host-apiproxy/api/rpc'
+import { RpcId } from '@origin-ai/cf-host-apiproxy/api/rpc'
 import { createApiProxy } from '../src/api-proxy.ts'
 
 let nextRpc = 1

@@ -7,14 +7,14 @@ import {
   createAssistantMessage,
   createToolResultMessage,
   createUserMessage,
-} from '@origin-ai/xhe-llm'
+} from '@origin-ai/cf-llm'
 import {
   SESSION_FORMAT_VERSION,
   Session,
   SessionId,
-} from '@origin-ai/xhe-session'
+} from '@origin-ai/cf-session'
 // Carries the session/title event declaration into this fixture builder.
-import type {} from '@origin-ai/xhe-session-title'
+import type {} from '@origin-ai/cf-session-title'
 
 /** Options for one deterministic long-chat fixture. */
 export interface ChatScrollFixtureOptions {

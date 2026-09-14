@@ -51,15 +51,15 @@ The root entrypoint of each owner remains independent of diagnostics. Loading th
 
 ```ts
 import type { Context } from '@deepseek-ai/cordis'
-import InvariantRegistry from '@origin-ai/xhe-invariants'
-import * as SessionInvariant from '@origin-ai/xhe-session/invariant'
+import InvariantRegistry from '@origin-ai/cf-invariants'
+import * as SessionInvariant from '@origin-ai/cf-session/invariant'
 
 declare const ctx: Context
 
 ctx.plugin(InvariantRegistry, {
   enabled: true,
-  package_allowlist: ['^@origin-ai/xhe-'],
-  package_blocklist: ['^@origin-ai/xhe-agent-loop$'],
+  package_allowlist: ['^@origin-ai/cf-'],
+  package_blocklist: ['^@origin-ai/cf-agent-loop$'],
 })
 ctx.plugin(SessionInvariant)
 ```

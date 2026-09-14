@@ -4,13 +4,13 @@ import { afterEach, describe, expect, it } from 'vitest'
 import type {
   ChatConversationViewNode, ChatSnapshot, ConversationEventInput,
   ConversationNodeDefinition, ConversationViewDefinition,
-} from '@origin-ai/xhe-client-runtime/client'
-import { ConversationNodeAssembler } from '@origin-ai/xhe-client-runtime/client'
-import { makeTranslate } from '@origin-ai/xhe-client-test-runtime'
-import { zh as commonZh } from '@origin-ai/xhe-client-locale/src/locales/zh.ts'
-import type { SessionEvent } from '@origin-ai/xhe-session/types'
-import { commandDefinition } from '@origin-ai/xhe-client-ui-conversation/src/client/conversation-nodes/command.ts'
-import { chatViewDefinition } from '@origin-ai/xhe-client-ui-conversation/src/client/conversation-nodes/chat-snapshot-builder.ts'
+} from '@origin-ai/cf-client-runtime/client'
+import { ConversationNodeAssembler } from '@origin-ai/cf-client-runtime/client'
+import { makeTranslate } from '@origin-ai/cf-client-test-runtime'
+import { zh as commonZh } from '@origin-ai/cf-client-locale/src/locales/zh.ts'
+import type { SessionEvent } from '@origin-ai/cf-session/types'
+import { commandDefinition } from '@origin-ai/cf-client-ui-conversation/src/client/conversation-nodes/command.ts'
+import { chatViewDefinition } from '@origin-ai/cf-client-ui-conversation/src/client/conversation-nodes/chat-snapshot-builder.ts'
 import { GoalCommandInputView } from '../src/client/GoalCommandInputView.tsx'
 import {
   goalCommandInputDefinition, goalCommandText,

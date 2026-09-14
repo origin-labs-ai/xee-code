@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-tool-web`.
- * @module @origin-ai/xhe-tool-web/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-tool-web`.
+ * @module @origin-ai/cf-tool-web/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-tool-web'
+const PACKAGE_NAME = '@origin-ai/cf-tool-web'
 
 /** Cordis companion plugin name. */
 export const name = 'tool-web-invariant'

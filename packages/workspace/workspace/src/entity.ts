@@ -5,12 +5,12 @@
  * `updatedAt` stamping and invalid-account pruning happen exactly once.
  * Not re-exported from the package entrypoint — consumers see only the
  * `Workspace` interface.
- * @module @origin-ai/xhe-workspace/src/entity
+ * @module @origin-ai/cf-workspace/src/entity
  */
 
 import { stat } from 'node:fs/promises'
-import type { SessionHeader, SessionId } from '@origin-ai/xhe-session'
-import type { KvTable } from '@origin-ai/xhe-storage-domain'
+import type { SessionHeader, SessionId } from '@origin-ai/cf-session'
+import type { KvTable } from '@origin-ai/cf-storage-domain'
 import type { WorkspaceRecord } from './spec.ts'
 import type { Workspace, WorkspaceId } from './types.ts'
 import { realpathNormalize } from './paths.ts'

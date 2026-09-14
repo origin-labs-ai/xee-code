@@ -1,4 +1,4 @@
-# @origin-ai/xhe-command-feedback
+# @origin-ai/cf-command-feedback
 
 Trigger-independent session feedback plus human-facing `/feedback` capture. The package exports `recordFeedback(session, text)`, which appends one log-only `feedback/record` event. Its plugin registers one global command through [`ctx.commands`](../../interaction/commands/README.md), so every composed command adapter discovers it; the shipped Web client executes it without a model turn.
 
@@ -38,9 +38,9 @@ The producer injects only `commands`. A custom app mounts the registry plus this
 
 ```yaml
 - id: commands
-  name: '@origin-ai/xhe-commands'
+  name: '@origin-ai/cf-commands'
 - id: command-feedback
-  name: '@origin-ai/xhe-command-feedback'
+  name: '@origin-ai/cf-command-feedback'
 ```
 
 The shipped `dsh` base mounts this command unconditionally; it has no configuration and no dependency on the persisted-goal stack. The Web client exposes it through the command adapter. Headless mode, ACP automation, and JSON-RPC do not provide a command adapter, so they do not expose it.

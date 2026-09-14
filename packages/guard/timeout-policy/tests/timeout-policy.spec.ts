@@ -1,5 +1,5 @@
 /**
- * Unit + real-load-path coverage for @origin-ai/xhe-tool-call-timeout-policy. The
+ * Unit + real-load-path coverage for @origin-ai/cf-tool-call-timeout-policy. The
  * timeout-wins cases drive the deadline under fake timers (deterministic — no
  * wall-clock race) and use a COOPERATIVE tool that settles only when its
  * `exec.signal` aborts, mirroring how a real capability forwards the signal and
@@ -9,11 +9,11 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
-import { CallId, HarnessError } from '@origin-ai/xhe-llm'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ToolRuntime, { defineContentToolFixture, TOOL_ABORTED, type ToolExecutionInput, type PostToolDecision } from '@origin-ai/xhe-tools'
-import * as timeoutPolicy from '@origin-ai/xhe-tool-call-timeout-policy'
-import { TOOL_TIMEOUT } from '@origin-ai/xhe-tool-call-timeout-policy'
+import { CallId, HarnessError } from '@origin-ai/cf-llm'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ToolRuntime, { defineContentToolFixture, TOOL_ABORTED, type ToolExecutionInput, type PostToolDecision } from '@origin-ai/cf-tools'
+import * as timeoutPolicy from '@origin-ai/cf-tool-call-timeout-policy'
+import { TOOL_TIMEOUT } from '@origin-ai/cf-tool-call-timeout-policy'
 
 const testToolSignal = new AbortController().signal
 

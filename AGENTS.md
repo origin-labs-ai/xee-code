@@ -3,7 +3,7 @@
 <p align="center">
   <strong>Agent Development & Operation Protocols</strong>
   <br/>
-  <em>For @origin-ai/xhe M.A.D System</em>
+  <em>For @origin-ai/cf M.A.D System</em>
 </p>
 
 ---
@@ -16,7 +16,7 @@ This document defines the guidelines, protocols, and best practices for agents o
 
 - **Project:** Xee Harness Enhanced (XHE)
 - **Also Known As:** XeeCode, XCode
-- **Package Scope:** `@origin-ai/xhe`
+- **Package Scope:** `@origin-ai/cf`
 - **Fork Origin:** DSH/SeepSeek Harness (internal reference)
 
 ---
@@ -372,5 +372,5 @@ The goal is to produce the **best collective outcome** through structured collab
 ---
 
 *Last Updated: XHE v1.0.0*
-*Part of @origin-ai/xhe ecosystem*
+*Part of @origin-ai/cf ecosystem*
 *Fork of DSH/SeepSeek Harness*

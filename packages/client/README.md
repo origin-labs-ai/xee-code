@@ -1,6 +1,6 @@
 # client/ — web-GUI browser half
 
-The browser side of the dsh web GUI: shell boot, browser-host communication, shared UI services, and feature plugins. Authoring rules live in [AGENTS.md](AGENTS.md); the host half is [`host/`](../host/README.md). All except `test-runtime` are **product** packages named `@origin-ai/xhe-client-<name>`.
+The browser side of the dsh web GUI: shell boot, browser-host communication, shared UI services, and feature plugins. Authoring rules live in [AGENTS.md](AGENTS.md); the host half is [`host/`](../host/README.md). All except `test-runtime` are **product** packages named `@origin-ai/cf-client-<name>`.
 
 | Package | Purpose |
 |---|---|

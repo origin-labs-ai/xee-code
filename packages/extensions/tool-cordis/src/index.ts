@@ -1,20 +1,20 @@
 /**
  * Model-facing Cordis runtime/package inspection, define, run, stop, and remove tools.
- * @module @origin-ai/xhe-tool-cordis
+ * @module @origin-ai/cf-tool-cordis
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Agent, PreStepDecision } from '@origin-ai/xhe-agent'
+import type { Agent, PreStepDecision } from '@origin-ai/cf-agent'
 import {
   CordisDynamicPackageId, CordisDynamicPluginId,
 } from '@deepseek-ai/cordis-host-runner'
 import type { DynamicCordisReference } from '@deepseek-ai/cordis-host-runner'
-import { createUserMessage } from '@origin-ai/xhe-llm'
-import type { JsonValue } from '@origin-ai/xhe-session'
-import type { UserMessage } from '@origin-ai/xhe-session'
-import { defineTool } from '@origin-ai/xhe-tools'
-import type { ToolExecution } from '@origin-ai/xhe-tools'
-import type {} from '@origin-ai/xhe-system-prompt'
+import { createUserMessage } from '@origin-ai/cf-llm'
+import type { JsonValue } from '@origin-ai/cf-session'
+import type { UserMessage } from '@origin-ai/cf-session'
+import { defineTool } from '@origin-ai/cf-tools'
+import type { ToolExecution } from '@origin-ai/cf-tools'
+import type {} from '@origin-ai/cf-system-prompt'
 import { missingServices, providedServices } from './inspect.ts'
 import {
   presentDefineCall, presentInspectListCall, presentInspectQueryCall, presentInspectSelfCall, presentRunCall,

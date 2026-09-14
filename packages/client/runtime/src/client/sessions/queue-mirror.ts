@@ -1,6 +1,6 @@
-import type { ContentBlock } from '@origin-ai/xhe-llm/types'
-import type { MuxFrame } from '@origin-ai/xhe-api-remotes/client'
-import type { SessionEvent } from '@origin-ai/xhe-session/types'
+import type { ContentBlock } from '@origin-ai/cf-llm/types'
+import type { MuxFrame } from '@origin-ai/cf-api-remotes/client'
+import type { SessionEvent } from '@origin-ai/cf-session/types'
 import type { QueuedMessage } from './conversation.ts'
 
 const QUEUE_PREVIEW_CHARS = 200

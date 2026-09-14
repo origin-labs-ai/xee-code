@@ -17,14 +17,14 @@
 import type { Context, Fiber } from '@deepseek-ai/cordis'
 import type {
   IApiClient, RpcError, RpcResult, SessionId, SubagentAddress, JobView, WorkspaceId,
-} from '@origin-ai/xhe-api-remotes/client'
+} from '@origin-ai/cf-api-remotes/client'
 // Value import from the inline-safe wire layer (not the connection plugin):
 // plugin-to-plugin value imports are a bundle purity error.
-import { SESSION_SEARCH_RESULT_LIMIT } from '@origin-ai/xhe-host-apiproxy/api'
+import { SESSION_SEARCH_RESULT_LIMIT } from '@origin-ai/cf-host-apiproxy/api'
 import type {
   HostObservable, SessionMaybeProvideInfo, SessionProvideInfo,
-} from '@origin-ai/xhe-client-ui-slots'
-import type { SessionProjectionMap } from '@origin-ai/xhe-session-projection/types'
+} from '@origin-ai/cf-client-ui-slots'
+import type { SessionProjectionMap } from '@origin-ai/cf-session-projection/types'
 import type { SnapshotStore } from '../contract/store.ts'
 import { createSnapshotStore } from '../contract/store.ts'
 import type { SessionFace } from '../contract/session.ts'

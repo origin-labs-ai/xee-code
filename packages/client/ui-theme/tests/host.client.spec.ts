@@ -1,10 +1,10 @@
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it } from 'vitest'
-import type { IndexInjection } from '@origin-ai/xhe-host-webserver'
-import { SettingsProvider, settingsNamespace, type SettingsNamespace } from '@origin-ai/xhe-settings'
+import type { IndexInjection } from '@origin-ai/cf-host-webserver'
+import { SettingsProvider, settingsNamespace, type SettingsNamespace } from '@origin-ai/cf-settings'
 import {
   DEFAULT_PREFERENCE, THEME_SETTINGS_NAMESPACE, apply,
-} from '@origin-ai/xhe-client-ui-theme'
+} from '@origin-ai/cf-client-ui-theme'
 
 class MemorySettings extends SettingsProvider {
   readonly writable = true

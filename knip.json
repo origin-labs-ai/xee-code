@@ -81,8 +81,8 @@
     },
     "packages/host/directory-picker-auto": {
       "ignoreDependencies": [
-        "@origin-ai/xhe-client-ui-directory-picker-browse",
-        "@origin-ai/xhe-client-ui-directory-picker-native"
+        "@origin-ai/cf-client-ui-directory-picker-browse",
+        "@origin-ai/cf-client-ui-directory-picker-native"
       ]
     },
     "packages/extensions/cordis-host-runner": {
@@ -116,7 +116,7 @@
         "tests/**/*.ts"
       ],
       "ignoreDependencies": [
-        "@origin-ai/xhe-api-gateway"
+        "@origin-ai/cf-api-gateway"
       ]
     },
     "packages/client/ui-primitives": {
@@ -618,8 +618,8 @@
         "tests/**/*.ts"
       ],
       "ignoreDependencies": [
-        "@origin-ai/xhe-client-ui-primitives",
-        "@origin-ai/xhe-client-ui-slots",
+        "@origin-ai/cf-client-ui-primitives",
+        "@origin-ai/cf-client-ui-slots",
         "@types/react",
         "@types/react-dom",
         "react",
@@ -657,7 +657,7 @@
     },
     "packages/bundle/headless": {
       "ignoreDependencies": [
-        "@origin-ai/xhe-code-runtime-worker-thread"
+        "@origin-ai/cf-code-runtime-worker-thread"
       ]
     },
     "packages/bundle/web-app": {

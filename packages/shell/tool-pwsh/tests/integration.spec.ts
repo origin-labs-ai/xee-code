@@ -1,5 +1,5 @@
 /**
- * Integration tests: the REAL `@origin-ai/xhe-pwsh-local` executor plus the
+ * Integration tests: the REAL `@origin-ai/cf-pwsh-local` executor plus the
  * `pwsh` tool, exercised through `ctx.tools.execute()` with a real PowerShell
  * process. These verify the world — actual commands run, stdout/stderr come
  * back, exit codes render, timeouts abort, background jobs settle through the
@@ -15,15 +15,15 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { spawnSync } from 'node:child_process'
 import { Context } from '@deepseek-ai/cordis'
-import { CallId } from '@origin-ai/xhe-llm'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ToolRuntime, { TOOL_ABORTED } from '@origin-ai/xhe-tools'
-import LocalJobRegistry from '@origin-ai/xhe-jobs-local'
-import * as ToolTasks from '@origin-ai/xhe-tool-jobs'
-import LocalSubprocessRuntime from '@origin-ai/xhe-subprocess-local'
-import { PwshLocalExecutor, resolvePwshPath } from '@origin-ai/xhe-pwsh-local'
-import * as ToolPwsh from '@origin-ai/xhe-tool-pwsh'
-import * as BashEnvPlugin from '@origin-ai/xhe-shell-env'
+import { CallId } from '@origin-ai/cf-llm'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ToolRuntime, { TOOL_ABORTED } from '@origin-ai/cf-tools'
+import LocalJobRegistry from '@origin-ai/cf-jobs-local'
+import * as ToolTasks from '@origin-ai/cf-tool-jobs'
+import LocalSubprocessRuntime from '@origin-ai/cf-subprocess-local'
+import { PwshLocalExecutor, resolvePwshPath } from '@origin-ai/cf-pwsh-local'
+import * as ToolPwsh from '@origin-ai/cf-tool-pwsh'
+import * as BashEnvPlugin from '@origin-ai/cf-shell-env'
 
 const testToolSignal = new AbortController().signal
 

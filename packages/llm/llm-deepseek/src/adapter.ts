@@ -8,7 +8,7 @@
  * @module xhe-llm-deepseek/adapter
  */
 
-import { attributionHeaders, contentHasImage, CONTEXT_WINDOW_EXCEEDED_CODE, isContextWindowExceededError, isQuotaExceededError, LlmAdapter, LlmError, offloadRequestImagesWithPolicy, ProviderRequestId, QUOTA_EXCEEDED_CODE, ReasoningEffortId } from '@origin-ai/xhe-llm'
+import { attributionHeaders, contentHasImage, CONTEXT_WINDOW_EXCEEDED_CODE, isContextWindowExceededError, isQuotaExceededError, LlmAdapter, LlmError, offloadRequestImagesWithPolicy, ProviderRequestId, QUOTA_EXCEEDED_CODE, ReasoningEffortId } from '@origin-ai/cf-llm'
 import type {
   ContentBlock,
   GenerateOptions,
@@ -19,17 +19,17 @@ import type {
   ModelModality,
   ResolvedRetryPolicy,
   StreamChunk,
-} from '@origin-ai/xhe-llm'
+} from '@origin-ai/cf-llm'
 import type {
   AttachmentId,
   AttachmentStore,
   ImageAttachmentRef,
   ImageRequestPolicy,
   RequestImageAttachment,
-} from '@origin-ai/xhe-attachment'
-import type { CredentialRef } from '@origin-ai/xhe-credentials'
-import { deadline, idleWatchdog, timeoutOf } from '@origin-ai/xhe-timeout'
-import type { AnonymousUserId } from '@origin-ai/xhe-anonymous-user-id'
+} from '@origin-ai/cf-attachment'
+import type { CredentialRef } from '@origin-ai/cf-credentials'
+import { deadline, idleWatchdog, timeoutOf } from '@origin-ai/cf-timeout'
+import type { AnonymousUserId } from '@origin-ai/cf-anonymous-user-id'
 import { serializeRequest, serializeRequestWithImages } from './serialize.ts'
 import type { ImageWireLocation, RequestDefaults } from './serialize.ts'
 import { DeepSeekFileStore } from './file-store.ts'

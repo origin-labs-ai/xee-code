@@ -1,12 +1,12 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-cmdline`.
- * @module @origin-ai/xhe-cmdline/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-cmdline`.
+ * @module @origin-ai/cf-cmdline/invariant
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-cmdline'
+const PACKAGE_NAME = '@origin-ai/cf-cmdline'
 
 /** Cordis companion plugin name. */
 export const name = 'cmdline-invariant'

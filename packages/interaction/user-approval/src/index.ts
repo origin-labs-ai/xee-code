@@ -1,18 +1,18 @@
 /**
  * Service Definition for the approval capability seam, covering requests, cancellation, audit, and per-session policy. Missing
  * answerers fail closed; grants apply only to the requested action.
- * @module @origin-ai/xhe-user-approval
+ * @module @origin-ai/cf-user-approval
  */
 
 import { randomUUID } from 'node:crypto'
 import { Context, Service } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import type { Agent } from '@origin-ai/xhe-agent'
-import { createUserMessage, type CallId } from '@origin-ai/xhe-llm'
-import { scopeTarget } from '@origin-ai/xhe-scope'
-import type { Scoped } from '@origin-ai/xhe-scope'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type {} from '@origin-ai/xhe-system-prompt'
+import type { Agent } from '@origin-ai/cf-agent'
+import { createUserMessage, type CallId } from '@origin-ai/cf-llm'
+import { scopeTarget } from '@origin-ai/cf-scope'
+import type { Scoped } from '@origin-ai/cf-scope'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type {} from '@origin-ai/cf-system-prompt'
 
 declare module '@deepseek-ai/cordis' {
   interface Context {
@@ -23,7 +23,7 @@ declare module '@deepseek-ai/cordis' {
     /**
      * Ask composed answerers for one decision. Return an outcome to claim the
      * request or call `next()`; failure yields the fail-closed default.
-     * Scope-filtered dispatch (`@origin-ai/xhe-scope`): agent-scoped listeners receive only that agent.
+     * Scope-filtered dispatch (`@origin-ai/cf-scope`): agent-scoped listeners receive only that agent.
      * @param req - the pending decision (agent, tool identity, reason, signal).
      * @mode waterfall
      */
@@ -31,7 +31,7 @@ declare module '@deepseek-ai/cordis' {
   }
 }
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     /**
      * An approval question was put to the answerer chain — log-only audit

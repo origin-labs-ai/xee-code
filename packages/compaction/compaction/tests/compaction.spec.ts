@@ -1,4 +1,4 @@
-import { createUserMessage } from '@origin-ai/xhe-llm'
+import { createUserMessage } from '@origin-ai/cf-llm'
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import {
@@ -6,11 +6,11 @@ import {
   CompactionEngine,
   compactCheckpointSource,
   isCompactCheckpointSource,
-} from '@origin-ai/xhe-compaction'
-import type { CompactionResult, CompactionTrigger } from '@origin-ai/xhe-compaction'
-import { Session, SessionId } from '@origin-ai/xhe-session'
-import type { CompactionAgentContext } from '@origin-ai/xhe-compaction'
-import type { ManualCompactAgentContext } from '@origin-ai/xhe-compaction'
+} from '@origin-ai/cf-compaction'
+import type { CompactionResult, CompactionTrigger } from '@origin-ai/cf-compaction'
+import { Session, SessionId } from '@origin-ai/cf-session'
+import type { CompactionAgentContext } from '@origin-ai/cf-compaction'
+import type { ManualCompactAgentContext } from '@origin-ai/cf-compaction'
 
 /**
  * A trivial concrete CompactionEngine implementing the abstract contract. The

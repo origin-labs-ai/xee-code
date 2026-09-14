@@ -1,12 +1,12 @@
-/** Package-owned approval audit-stream invariants. @module @origin-ai/xhe-user-approval/invariant */
+/** Package-owned approval audit-stream invariants. @module @origin-ai/cf-user-approval/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 import type { ApprovalRequestId } from './index.ts'
 import { APPROVAL_POLICIES } from './index.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-user-approval'
+const PACKAGE_NAME = '@origin-ai/cf-user-approval'
 const APPROVAL_OUTCOMES = ['allowed-once', 'rejected', 'cancelled', 'unavailable'] as const
 
 /** Cordis companion plugin name. */

@@ -129,10 +129,10 @@ describe.skipIf(!requiredArtifacts)('Goal Remote built LIB chain', () => {
       }
       const client = new Context()
       for (const id of [
-        '@origin-ai/xhe-typert-registry',
-        '@origin-ai/xhe-client-connection',
-        '@origin-ai/xhe-api-gateway',
-        '@origin-ai/xhe-api-remotes',
+        '@origin-ai/cf-typert-registry',
+        '@origin-ai/cf-client-connection',
+        '@origin-ai/cf-api-gateway',
+        '@origin-ai/cf-api-remotes',
       ]) {
         const plugin = instantiate(id)
         await client.plugin({ inject: plugin.inject, apply: plugin.apply })

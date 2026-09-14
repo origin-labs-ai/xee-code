@@ -1,6 +1,6 @@
 # Minimal keyless composition: real app, pwsh executor, and pwsh tool; replayed model.
 - id: llm-replay
-  name: '@origin-ai/xhe-llm-replay'
+  name: '@origin-ai/cf-llm-replay'
   config:
     providers:
       - id: deepseek-official
@@ -9,16 +9,16 @@
           - id: deepseek-v4-pro
 
 - id: subprocess
-  name: '@origin-ai/xhe-subprocess-local'
+  name: '@origin-ai/cf-subprocess-local'
 
 - id: bash
-  name: '@origin-ai/xhe-pwsh-local'
+  name: '@origin-ai/cf-pwsh-local'
 
 - id: shell-env
-  name: '@origin-ai/xhe-shell-env'
+  name: '@origin-ai/cf-shell-env'
 
 - id: acp-agent
-  name: '@origin-ai/xhe-acp-demo'
+  name: '@origin-ai/cf-acp-demo'
   config:
     provider: deepseek-official
     model: deepseek-v4-pro
@@ -35,4 +35,4 @@
     persona: You are a concise snapshot agent working in {{cwd}}.
 
 - id: tool-pwsh
-  name: '@origin-ai/xhe-tool-pwsh'
+  name: '@origin-ai/cf-tool-pwsh'

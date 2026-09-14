@@ -1,7 +1,7 @@
-/** Package-owned workflow lifecycle invariants. @module @origin-ai/xhe-workflow/invariant */
+/** Package-owned workflow lifecycle invariants. @module @origin-ai/cf-workflow/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 import type {
   WorkflowAgentEndInfo,
   WorkflowAgentInfo,
@@ -9,7 +9,7 @@ import type {
   WorkflowRunInfo,
 } from './types.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-workflow'
+const PACKAGE_NAME = '@origin-ai/cf-workflow'
 
 /** Cordis companion plugin name. */
 export const name = 'workflow-invariant'

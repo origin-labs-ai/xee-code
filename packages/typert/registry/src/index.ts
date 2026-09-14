@@ -1,7 +1,7 @@
 /** Host entry for the shared Typert runtime registry. */
 
 import type { z } from 'zod'
-import type { TypertDisposer } from '@origin-ai/xhe-typert-protocol'
+import type { TypertDisposer } from '@origin-ai/cf-typert-protocol'
 import type {
   TypertContribution,
   TypertFace,
@@ -14,7 +14,7 @@ import type {
 export { default, TypertRegistry, typertEndpoint, typertKey, typertPackageKey } from './service.ts'
 export type * from './types.ts'
 
-declare module '@origin-ai/xhe-typert-protocol' {
+declare module '@origin-ai/cf-typert-protocol' {
   interface TypertRegistryContract {
     register(contribution: TypertContribution): TypertDisposer
     get(key: string): TypertSchemaRecord | undefined

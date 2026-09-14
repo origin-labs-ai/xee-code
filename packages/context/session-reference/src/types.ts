@@ -2,12 +2,12 @@
  * Public session-reference request, candidate, and preparation records.
  * Imports stay on type-only subpaths so generated Remote clients can consume
  * this module without Host runtime code.
- * @module @origin-ai/xhe-session-reference/types
+ * @module @origin-ai/cf-session-reference/types
  */
 
-import type { UserMessage } from '@origin-ai/xhe-llm/message'
-import type { ContentBlock } from '@origin-ai/xhe-llm/types'
-import type { SessionId } from '@origin-ai/xhe-session/types'
+import type { UserMessage } from '@origin-ai/cf-llm/message'
+import type { ContentBlock } from '@origin-ai/cf-llm/types'
+import type { SessionId } from '@origin-ai/cf-session/types'
 
 /** Durable source session, cited event seqs, and snapshot facts for prepared cross-session context. */
 export interface SessionReferenceSource {
@@ -29,7 +29,7 @@ export interface SessionReferenceSource {
   }[]
 }
 
-declare module '@origin-ai/xhe-llm' {
+declare module '@origin-ai/cf-llm' {
   interface MessageSourceMap {
     'session-reference': SessionReferenceSource
   }

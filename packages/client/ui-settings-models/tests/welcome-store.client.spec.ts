@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from 'vitest'
-import type { RpcResponse } from '@origin-ai/xhe-api-remotes/client'
+import type { RpcResponse } from '@origin-ai/cf-api-remotes/client'
 import { Context } from '@deepseek-ai/cordis'
-import { SettingsSchemaService } from '@origin-ai/xhe-client-ui-settings/src/client/schema.ts'
-import { SettingsDescribeMirror } from '@origin-ai/xhe-client-ui-settings/src/client/settings-mirror.ts'
-import { SettingsScopeController } from '@origin-ai/xhe-client-ui-settings/src/client/settings-scope.ts'
+import { SettingsSchemaService } from '@origin-ai/cf-client-ui-settings/src/client/schema.ts'
+import { SettingsDescribeMirror } from '@origin-ai/cf-client-ui-settings/src/client/settings-mirror.ts'
+import { SettingsScopeController } from '@origin-ai/cf-client-ui-settings/src/client/settings-scope.ts'
 import { decodeWelcomeSection, WelcomeNoticeStore } from '../src/client/welcome-store.ts'
 import {
   WELCOME_NOTICE_ACK_FIELD, WELCOME_NOTICE_SETTINGS_NAMESPACE, WELCOME_NOTICE_VERSION,

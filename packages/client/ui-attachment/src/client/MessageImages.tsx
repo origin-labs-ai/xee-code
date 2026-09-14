@@ -1,4 +1,4 @@
-import type { MessageImagesProps } from '@origin-ai/xhe-client-ui-conversation/client'
+import type { MessageImagesProps } from '@origin-ai/cf-client-ui-conversation/client'
 import { ImageGallery } from '../MessageImage.tsx'
 import { messageImageLabels } from './labels.ts'
 

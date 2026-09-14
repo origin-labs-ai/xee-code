@@ -14,8 +14,8 @@ import { readFile, readdir } from 'node:fs/promises'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
-import { type SessionEvent } from '@origin-ai/xhe-session'
-import { resolveExampleLaunch, runLoaderSmoke } from '@origin-ai/xhe-loader-smoke'
+import { type SessionEvent } from '@origin-ai/cf-session'
+import { resolveExampleLaunch, runLoaderSmoke } from '@origin-ai/cf-loader-smoke'
 
 const fixtureDir = new URL('../../../../examples/jsonrpc-agent/tests/fixtures/subagent/subagent-xhe-sdk/', import.meta.url)
 const driver = fileURLToPath(new URL('driver.ts', fixtureDir))

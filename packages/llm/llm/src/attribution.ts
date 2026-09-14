@@ -4,7 +4,7 @@
  * `.agents/notes/implemented/architecture/2026-06-21-mandatory-app-attribution-headers.md`.
  *
  * App-attribution vocabulary for provider requests.
- * @module @origin-ai/xhe-llm/attribution
+ * @module @origin-ai/cf-llm/attribution
  */
 
 import { createRequire } from 'node:module'

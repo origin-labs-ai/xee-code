@@ -1,4 +1,4 @@
-import type { PropsLocale, PropsRuntime } from '@origin-ai/xhe-client-ui-slots'
+import type { PropsLocale, PropsRuntime } from '@origin-ai/cf-client-ui-slots'
 import { NS } from './locales.ts'
 import css from './SubagentReadOnlyComposer.module.css'
 

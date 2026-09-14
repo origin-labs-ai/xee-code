@@ -13,8 +13,8 @@
  * until the result arrives.
  * @module
  */
-import { abbreviateHomePath } from '@origin-ai/xhe-client-runtime/client'
-import type { ReadBlockLine, ReadBlockProps } from '@origin-ai/xhe-client-ui-primitives'
+import { abbreviateHomePath } from '@origin-ai/cf-client-runtime/client'
+import type { ReadBlockLine, ReadBlockProps } from '@origin-ai/cf-client-ui-primitives'
 import { relativizeToCwd, type ToolCallBlock } from './tool-call-model.ts'
 
 /**

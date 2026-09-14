@@ -2,7 +2,7 @@
  * Shared rendering helpers for the shell tools (`xhe-tool-bash`,
  * `xhe-tool-pwsh`): the exit-status marker contract the tools' renderers
  * emit and the presentation layer parses back.
- * @module @origin-ai/xhe-shell/render
+ * @module @origin-ai/cf-shell/render
  */
 
 /**

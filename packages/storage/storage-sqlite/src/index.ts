@@ -2,14 +2,14 @@
  * SQLite storage backend for the storage hub: one database file hosts every
  * routed unit, document-per-row (`key TEXT` / `value TEXT` JSON). Registers
  * as backend `sqlite`; the disposer unregisters first, then closes the medium.
- * @module @origin-ai/xhe-storage-sqlite
+ * @module @origin-ai/cf-storage-sqlite
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
 import type { DatabaseSync } from 'node:sqlite'
-import { StorageError, UNIT_NAME_RE, storageBackendServiceKey } from '@origin-ai/xhe-storage'
-import type { KvFacet, KvUnit, KvUnitDescriptor, StorageBackend } from '@origin-ai/xhe-storage'
+import { StorageError, UNIT_NAME_RE, storageBackendServiceKey } from '@origin-ai/cf-storage'
+import type { KvFacet, KvUnit, KvUnitDescriptor, StorageBackend } from '@origin-ai/cf-storage'
 import { openDatabase, recordTableName, type JournalMode } from './schema.ts'
 import { SqliteKvUnit } from './unit.ts'
 

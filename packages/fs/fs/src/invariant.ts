@@ -1,10 +1,10 @@
-/** Package-owned filesystem event-data invariants. @module @origin-ai/xhe-fs/invariant */
+/** Package-owned filesystem event-data invariants. @module @origin-ai/cf-fs/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 import type { FsObservation, FsTarget } from './types.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-fs'
+const PACKAGE_NAME = '@origin-ai/cf-fs'
 
 /** Cordis companion plugin name. */
 export const name = 'fs-invariant'

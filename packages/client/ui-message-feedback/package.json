@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-client-ui-message-feedback",
+  "name": "@origin-ai/cf-client-ui-message-feedback",
   "description": "Per-message feedback controls contributed to the assistant-message action strip, backed by the messageFeedback Host Remote",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -32,10 +32,10 @@
   "xhe": {
     "client": {
       "inject": [
-        "@origin-ai/xhe-client-runtime",
-        "@origin-ai/xhe-api-remotes",
-        "@origin-ai/xhe-client-locale",
-        "@origin-ai/xhe-client-ui-conversation"
+        "@origin-ai/cf-client-runtime",
+        "@origin-ai/cf-api-remotes",
+        "@origin-ai/cf-client-locale",
+        "@origin-ai/cf-client-ui-conversation"
       ],
       "platform": "web"
     }
@@ -46,28 +46,28 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@origin-ai/xhe-api-remotes": "workspace:^",
-    "@origin-ai/xhe-client-connection": "workspace:^",
-    "@origin-ai/xhe-client-locale": "workspace:^",
-    "@origin-ai/xhe-client-runtime": "workspace:^",
-    "@origin-ai/xhe-client-ui-conversation": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-message-feedback": "workspace:^",
-    "@origin-ai/xhe-typert-protocol": "workspace:^",
+    "@origin-ai/cf-api-remotes": "workspace:^",
+    "@origin-ai/cf-client-connection": "workspace:^",
+    "@origin-ai/cf-client-locale": "workspace:^",
+    "@origin-ai/cf-client-runtime": "workspace:^",
+    "@origin-ai/cf-client-ui-conversation": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-message-feedback": "workspace:^",
+    "@origin-ai/cf-typert-protocol": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "devDependencies": {
-    "@origin-ai/xhe-api-remotes": "workspace:^",
-    "@origin-ai/xhe-client-connection": "workspace:^",
-    "@origin-ai/xhe-client-locale": "workspace:^",
-    "@origin-ai/xhe-client-runtime": "workspace:^",
-    "@origin-ai/xhe-client-test-runtime": "workspace:^",
-    "@origin-ai/xhe-client-ui-conversation": "workspace:^",
-    "@origin-ai/xhe-client-ui-primitives": "workspace:^",
-    "@origin-ai/xhe-client-ui-slots": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-message-feedback": "workspace:^",
-    "@origin-ai/xhe-typert-protocol": "workspace:^",
+    "@origin-ai/cf-api-remotes": "workspace:^",
+    "@origin-ai/cf-client-connection": "workspace:^",
+    "@origin-ai/cf-client-locale": "workspace:^",
+    "@origin-ai/cf-client-runtime": "workspace:^",
+    "@origin-ai/cf-client-test-runtime": "workspace:^",
+    "@origin-ai/cf-client-ui-conversation": "workspace:^",
+    "@origin-ai/cf-client-ui-primitives": "workspace:^",
+    "@origin-ai/cf-client-ui-slots": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-message-feedback": "workspace:^",
+    "@origin-ai/cf-typert-protocol": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^",
     "@testing-library/react": "^16.1.0",
     "@types/react": "~18.3.1",

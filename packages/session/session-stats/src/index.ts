@@ -6,7 +6,7 @@
  * compaction cannot change. The plugin owns only the fold; delivery is the
  * seam's.
  *
- * @module @origin-ai/xhe-session-stats
+ * @module @origin-ai/cf-session-stats
  */
 
 import type { Context } from '@deepseek-ai/cordis'

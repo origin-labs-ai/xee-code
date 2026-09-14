@@ -1,4 +1,4 @@
-# @origin-ai/xhe-code-runtime
+# @origin-ai/cf-code-runtime
 
 The **`CodeRuntime`** (`ctx.codeRuntime`) defines WHAT a code runtime does — run one model-written program against a set of host-provided async bindings and report `{ value, logs, error? }` — without saying HOW.
 

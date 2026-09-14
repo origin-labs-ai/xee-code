@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { createUserMessage } from '@origin-ai/xhe-llm'
-import type { UserMessage } from '@origin-ai/xhe-llm'
+import { createUserMessage } from '@origin-ai/cf-llm'
+import type { UserMessage } from '@origin-ai/cf-llm'
 import {
   deriveBrowserTimeZoneContext,
   renderBrowserTimeZoneContext,

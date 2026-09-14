@@ -2,8 +2,8 @@
 
 import type {
   IApiClient, RpcResult, WorkspaceView,
-} from '@origin-ai/xhe-api-remotes/client'
-import { transportError } from '@origin-ai/xhe-host-apiproxy/api'
+} from '@origin-ai/cf-api-remotes/client'
+import { transportError } from '@origin-ai/cf-host-apiproxy/api'
 import type { ObservableSnapshot } from '../contract/store.ts'
 import { Notifier } from '../sessions/notifier.ts'
 

@@ -3,13 +3,13 @@
  * {@link agentEvents} couples the agent subject to its scope carrier, so the
  * scope key and the payload's `agent` cannot diverge; repeat dispatchers (the
  * loop driver) build it once in the agent's constructor and reuse it.
- * @module @origin-ai/xhe-agent/dispatch
+ * @module @origin-ai/cf-agent/dispatch
  */
 
 import type { Context, Events } from '@deepseek-ai/cordis'
-import { scopeTarget } from '@origin-ai/xhe-scope'
-import type { Scoped } from '@origin-ai/xhe-scope'
-import type { AssembleContext } from '@origin-ai/xhe-system-prompt'
+import { scopeTarget } from '@origin-ai/cf-scope'
+import type { Scoped } from '@origin-ai/cf-scope'
+import type { AssembleContext } from '@origin-ai/cf-system-prompt'
 import type { Agent } from './runtime-types.ts'
 
 /** Extract the parameter tuple from an event handler type (its `this` is not part of the tuple). */

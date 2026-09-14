@@ -9,7 +9,7 @@
  */
 
 import { describe, expect, it } from 'vitest'
-import type { JsonValue } from '@origin-ai/xhe-session'
+import type { JsonValue } from '@origin-ai/cf-session'
 import {
   globSearchMeta,
   grepSearchMeta,

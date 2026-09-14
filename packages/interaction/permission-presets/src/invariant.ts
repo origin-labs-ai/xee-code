@@ -1,10 +1,10 @@
-/** Package-owned permission-preset event invariants. @module @origin-ai/xhe-permission-presets/invariant */
+/** Package-owned permission-preset event invariants. @module @origin-ai/cf-permission-presets/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-permission-presets'
+const PACKAGE_NAME = '@origin-ai/cf-permission-presets'
 
 /** Cordis companion plugin name. */
 export const name = 'permission-presets-invariant'

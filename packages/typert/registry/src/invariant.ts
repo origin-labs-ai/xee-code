@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-typert-registry`.
- * @module @origin-ai/xhe-typert-registry/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-typert-registry`.
+ * @module @origin-ai/cf-typert-registry/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-typert-registry'
+const PACKAGE_NAME = '@origin-ai/cf-typert-registry'
 
 /** Cordis companion plugin name. */
 export const name = 'typert-registry-invariant'

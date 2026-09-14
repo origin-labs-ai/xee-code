@@ -5,16 +5,16 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { createUserMessage, CallId, StreamChunk  } from '@origin-ai/xhe-llm'
-import SessionStore, { SessionEvent, SessionId } from '@origin-ai/xhe-session'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import LlmRuntime from '@origin-ai/xhe-llm'
-import ToolRuntime, { defineContentToolFixture, TOOL_ABORTED_BEFORE_DISPATCH, TOOL_RUNTIME_SCHEDULER, type PostToolDecision, type PreToolDecision } from '@origin-ai/xhe-tools'
-import AgentRegistry, { type Agent } from '@origin-ai/xhe-agent'
-import AgentLoop, { DEFAULT_MAX_PARALLEL_TOOL_CALLS } from '@origin-ai/xhe-agent-loop'
+import { createUserMessage, CallId, StreamChunk  } from '@origin-ai/cf-llm'
+import SessionStore, { SessionEvent, SessionId } from '@origin-ai/cf-session'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import LlmRuntime from '@origin-ai/cf-llm'
+import ToolRuntime, { defineContentToolFixture, TOOL_ABORTED_BEFORE_DISPATCH, TOOL_RUNTIME_SCHEDULER, type PostToolDecision, type PreToolDecision } from '@origin-ai/cf-tools'
+import AgentRegistry, { type Agent } from '@origin-ai/cf-agent'
+import AgentLoop, { DEFAULT_MAX_PARALLEL_TOOL_CALLS } from '@origin-ai/cf-agent-loop'
 import { MockAdapter, textResponse } from './mock-adapter.ts'
-import { CodeRuntime } from '@origin-ai/xhe-code-runtime'
-import type { CodeRunRequest, CodeRunResult } from '@origin-ai/xhe-code-runtime'
+import { CodeRuntime } from '@origin-ai/cf-code-runtime'
+import type { CodeRunRequest, CodeRunResult } from '@origin-ai/cf-code-runtime'
 
 async function harness(adapter: MockAdapter, maxParallelToolCalls?: number) {
   const ctx = new Context()

@@ -9,9 +9,9 @@
 import { writeFile } from 'node:fs/promises'
 import { createServer } from 'node:http'
 import { once } from 'node:events'
-import { boot, resolveConfigPath } from '@origin-ai/xhe-app-boot'
-import { recordFeedback } from '@origin-ai/xhe-command-feedback'
-import { runFixtureTurn } from '@origin-ai/xhe-loader-smoke'
+import { boot, resolveConfigPath } from '@origin-ai/cf-app-boot'
+import { recordFeedback } from '@origin-ai/cf-command-feedback'
+import { runFixtureTurn } from '@origin-ai/cf-loader-smoke'
 
 const configPath = process.argv[2]
 if (configPath === undefined) throw new Error('session-telemetry-otel driver requires a config path')

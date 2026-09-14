@@ -8,7 +8,7 @@ Replace `scratch-plugin/src/my-plugin.ts` with:
 
 ```ts
 import type { Context } from '@deepseek-ai/cordis'
-import { defineTool } from '@origin-ai/xhe-tools'
+import { defineTool } from '@origin-ai/cf-tools'
 
 export const name = 'greet-tool'
 export const inject = ['tools']

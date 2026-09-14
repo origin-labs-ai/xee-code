@@ -8,101 +8,101 @@ The ACP demo exposes fresh baseline-prompt agent sessions to programmatic client
 ```mermaid
 flowchart LR
   cfg["examples/acp-agent<br/>cordis.yml"]
-  plugin_acp_llm_deepseek["llm-deepseek<br/>@origin-ai/xhe-llm-deepseek"]
+  plugin_acp_llm_deepseek["llm-deepseek<br/>@origin-ai/cf-llm-deepseek"]
   cfg --> plugin_acp_llm_deepseek
-  plugin_acp_sandbox["sandbox<br/>@origin-ai/xhe-sandbox-local"]
+  plugin_acp_sandbox["sandbox<br/>@origin-ai/cf-sandbox-local"]
   cfg --> plugin_acp_sandbox
-  plugin_acp_sandbox_policy["sandbox-policy<br/>@origin-ai/xhe-sandbox-policy"]
+  plugin_acp_sandbox_policy["sandbox-policy<br/>@origin-ai/cf-sandbox-policy"]
   cfg --> plugin_acp_sandbox_policy
-  plugin_acp_subprocess["subprocess<br/>@origin-ai/xhe-subprocess-local"]
+  plugin_acp_subprocess["subprocess<br/>@origin-ai/cf-subprocess-local"]
   cfg --> plugin_acp_subprocess
-  plugin_acp_bash["bash<br/>@origin-ai/xhe-bash-sandbox"]
+  plugin_acp_bash["bash<br/>@origin-ai/cf-bash-sandbox"]
   cfg --> plugin_acp_bash
-  plugin_acp_approval["approval<br/>@origin-ai/xhe-user-approval"]
+  plugin_acp_approval["approval<br/>@origin-ai/cf-user-approval"]
   cfg --> plugin_acp_approval
-  plugin_acp_acp_agent["acp-agent<br/>@origin-ai/xhe-acp-demo"]
+  plugin_acp_acp_agent["acp-agent<br/>@origin-ai/cf-acp-demo"]
   cfg --> plugin_acp_acp_agent
-  plugin_acp_acp_agent --> bundle_agent_core["@origin-ai/xhe-agent-spine-demo"]
-  plugin_acp_acp_agent --> bundle_jsonl["@origin-ai/xhe-session-persistence-jsonl"]
-  plugin_acp_acp_agent --> entrypoint_acp["@origin-ai/xhe-acp<br/>automation-only JSON-RPC stdio<br/>fresh sessions created by client"]
+  plugin_acp_acp_agent --> bundle_agent_core["@origin-ai/cf-agent-spine-demo"]
+  plugin_acp_acp_agent --> bundle_jsonl["@origin-ai/cf-session-persistence-jsonl"]
+  plugin_acp_acp_agent --> entrypoint_acp["@origin-ai/cf-acp<br/>automation-only JSON-RPC stdio<br/>fresh sessions created by client"]
   bundle_agent_core --> spine_llm["ctx.llm"]
   bundle_agent_core --> spine_sessions["ctx.sessions"]
   bundle_agent_core --> spine_tools["ctx.tools + tool-bash"]
   bundle_agent_core --> spine_loop["ctx.agents + ctx.agentLoop"]
-  plugin_acp_token_meter["token-meter<br/>@origin-ai/xhe-token-meter"]
+  plugin_acp_token_meter["token-meter<br/>@origin-ai/cf-token-meter"]
   cfg --> plugin_acp_token_meter
-  plugin_acp_compaction_basic["compaction-basic<br/>@origin-ai/xhe-compaction-basic"]
+  plugin_acp_compaction_basic["compaction-basic<br/>@origin-ai/cf-compaction-basic"]
   cfg --> plugin_acp_compaction_basic
-  plugin_acp_session_projection["session-projection<br/>@origin-ai/xhe-session-projection"]
+  plugin_acp_session_projection["session-projection<br/>@origin-ai/cf-session-projection"]
   cfg --> plugin_acp_session_projection
-  plugin_acp_subagent["subagent<br/>@origin-ai/xhe-subagent"]
+  plugin_acp_subagent["subagent<br/>@origin-ai/cf-subagent"]
   cfg --> plugin_acp_subagent
-  plugin_acp_subagent_spawn_in_process["subagent-spawn-in-process<br/>@origin-ai/xhe-subagent-spawn-in-process"]
+  plugin_acp_subagent_spawn_in_process["subagent-spawn-in-process<br/>@origin-ai/cf-subagent-spawn-in-process"]
   cfg --> plugin_acp_subagent_spawn_in_process
-  plugin_acp_subagent_fork_in_process["subagent-fork-in-process<br/>@origin-ai/xhe-subagent-fork-in-process"]
+  plugin_acp_subagent_fork_in_process["subagent-fork-in-process<br/>@origin-ai/cf-subagent-fork-in-process"]
   cfg --> plugin_acp_subagent_fork_in_process
-  plugin_acp_tool_subagent_control["tool-subagent-control<br/>@origin-ai/xhe-tool-subagent-control"]
+  plugin_acp_tool_subagent_control["tool-subagent-control<br/>@origin-ai/cf-tool-subagent-control"]
   cfg --> plugin_acp_tool_subagent_control
-  plugin_acp_tool_subagent_list_agents["tool-subagent-list-agents<br/>@origin-ai/xhe-tool-subagent-control/list-agents"]
+  plugin_acp_tool_subagent_list_agents["tool-subagent-list-agents<br/>@origin-ai/cf-tool-subagent-control/list-agents"]
   cfg --> plugin_acp_tool_subagent_list_agents
-  plugin_acp_tool_subagent_report["tool-subagent-report<br/>@origin-ai/xhe-tool-subagent-report"]
+  plugin_acp_tool_subagent_report["tool-subagent-report<br/>@origin-ai/cf-tool-subagent-report"]
   cfg --> plugin_acp_tool_subagent_report
-  plugin_acp_tool_subagent["tool-subagent<br/>@origin-ai/xhe-tool-subagent"]
+  plugin_acp_tool_subagent["tool-subagent<br/>@origin-ai/cf-tool-subagent"]
   cfg --> plugin_acp_tool_subagent
-  plugin_acp_tool_subagent_fork["tool-subagent-fork<br/>@origin-ai/xhe-tool-subagent"]
+  plugin_acp_tool_subagent_fork["tool-subagent-fork<br/>@origin-ai/cf-tool-subagent"]
   cfg --> plugin_acp_tool_subagent_fork
-  plugin_acp_workflow_worker_thread["workflow-worker-thread<br/>@origin-ai/xhe-workflow-worker-thread"]
+  plugin_acp_workflow_worker_thread["workflow-worker-thread<br/>@origin-ai/cf-workflow-worker-thread"]
   cfg --> plugin_acp_workflow_worker_thread
-  plugin_acp_tool_workflow["tool-workflow<br/>@origin-ai/xhe-tool-workflow"]
+  plugin_acp_tool_workflow["tool-workflow<br/>@origin-ai/cf-tool-workflow"]
   cfg --> plugin_acp_tool_workflow
-  plugin_acp_tool_ralph["tool-ralph<br/>@origin-ai/xhe-tool-ralph"]
+  plugin_acp_tool_ralph["tool-ralph<br/>@origin-ai/cf-tool-ralph"]
   cfg --> plugin_acp_tool_ralph
-  plugin_acp_tool_todo["tool-todo<br/>@origin-ai/xhe-tool-todo"]
+  plugin_acp_tool_todo["tool-todo<br/>@origin-ai/cf-tool-todo"]
   cfg --> plugin_acp_tool_todo
-  plugin_acp_repeat_tool_reminder["repeat-tool-reminder<br/>@origin-ai/xhe-repeat-tool-reminder"]
+  plugin_acp_repeat_tool_reminder["repeat-tool-reminder<br/>@origin-ai/cf-repeat-tool-reminder"]
   cfg --> plugin_acp_repeat_tool_reminder
-  plugin_acp_fs_sandbox["fs-sandbox<br/>@origin-ai/xhe-fs-sandbox"]
+  plugin_acp_fs_sandbox["fs-sandbox<br/>@origin-ai/cf-fs-sandbox"]
   cfg --> plugin_acp_fs_sandbox
-  plugin_acp_fs_observation_policy["fs-observation-policy<br/>@origin-ai/xhe-fs-observation-policy"]
+  plugin_acp_fs_observation_policy["fs-observation-policy<br/>@origin-ai/cf-fs-observation-policy"]
   cfg --> plugin_acp_fs_observation_policy
-  plugin_acp_tool_fs["tool-fs<br/>@origin-ai/xhe-tool-fs"]
+  plugin_acp_tool_fs["tool-fs<br/>@origin-ai/cf-tool-fs"]
   cfg --> plugin_acp_tool_fs
-  plugin_acp_hooks_claude_code["hooks-claude-code<br/>@origin-ai/xhe-hooks-claude-code"]
+  plugin_acp_hooks_claude_code["hooks-claude-code<br/>@origin-ai/cf-hooks-claude-code"]
   cfg --> plugin_acp_hooks_claude_code
-  plugin_acp_hooks_codex["hooks-codex<br/>@origin-ai/xhe-hooks-codex"]
+  plugin_acp_hooks_codex["hooks-codex<br/>@origin-ai/cf-hooks-codex"]
   cfg --> plugin_acp_hooks_codex
 ```
 
 | Plugin id | Package / module |
 | --- | --- |
-| `llm-deepseek` | `@origin-ai/xhe-llm-deepseek` |
-| `sandbox` | `@origin-ai/xhe-sandbox-local` |
-| `sandbox-policy` | `@origin-ai/xhe-sandbox-policy` |
-| `subprocess` | `@origin-ai/xhe-subprocess-local` |
-| `bash` | `@origin-ai/xhe-bash-sandbox` |
-| `approval` | `@origin-ai/xhe-user-approval` |
-| `acp-agent` | `@origin-ai/xhe-acp-demo` |
-| `token-meter` | `@origin-ai/xhe-token-meter` |
-| `compaction-basic` | `@origin-ai/xhe-compaction-basic` |
-| `session-projection` | `@origin-ai/xhe-session-projection` |
-| `subagent` | `@origin-ai/xhe-subagent` |
-| `subagent-spawn-in-process` | `@origin-ai/xhe-subagent-spawn-in-process` |
-| `subagent-fork-in-process` | `@origin-ai/xhe-subagent-fork-in-process` |
-| `tool-subagent-control` | `@origin-ai/xhe-tool-subagent-control` |
-| `tool-subagent-list-agents` | `@origin-ai/xhe-tool-subagent-control/list-agents` |
-| `tool-subagent-report` | `@origin-ai/xhe-tool-subagent-report` |
-| `tool-subagent` | `@origin-ai/xhe-tool-subagent` |
-| `tool-subagent-fork` | `@origin-ai/xhe-tool-subagent` |
-| `workflow-worker-thread` | `@origin-ai/xhe-workflow-worker-thread` |
-| `tool-workflow` | `@origin-ai/xhe-tool-workflow` |
-| `tool-ralph` | `@origin-ai/xhe-tool-ralph` |
-| `tool-todo` | `@origin-ai/xhe-tool-todo` |
-| `repeat-tool-reminder` | `@origin-ai/xhe-repeat-tool-reminder` |
-| `fs-sandbox` | `@origin-ai/xhe-fs-sandbox` |
-| `fs-observation-policy` | `@origin-ai/xhe-fs-observation-policy` |
-| `tool-fs` | `@origin-ai/xhe-tool-fs` |
-| `hooks-claude-code` | `@origin-ai/xhe-hooks-claude-code` |
-| `hooks-codex` | `@origin-ai/xhe-hooks-codex` |
+| `llm-deepseek` | `@origin-ai/cf-llm-deepseek` |
+| `sandbox` | `@origin-ai/cf-sandbox-local` |
+| `sandbox-policy` | `@origin-ai/cf-sandbox-policy` |
+| `subprocess` | `@origin-ai/cf-subprocess-local` |
+| `bash` | `@origin-ai/cf-bash-sandbox` |
+| `approval` | `@origin-ai/cf-user-approval` |
+| `acp-agent` | `@origin-ai/cf-acp-demo` |
+| `token-meter` | `@origin-ai/cf-token-meter` |
+| `compaction-basic` | `@origin-ai/cf-compaction-basic` |
+| `session-projection` | `@origin-ai/cf-session-projection` |
+| `subagent` | `@origin-ai/cf-subagent` |
+| `subagent-spawn-in-process` | `@origin-ai/cf-subagent-spawn-in-process` |
+| `subagent-fork-in-process` | `@origin-ai/cf-subagent-fork-in-process` |
+| `tool-subagent-control` | `@origin-ai/cf-tool-subagent-control` |
+| `tool-subagent-list-agents` | `@origin-ai/cf-tool-subagent-control/list-agents` |
+| `tool-subagent-report` | `@origin-ai/cf-tool-subagent-report` |
+| `tool-subagent` | `@origin-ai/cf-tool-subagent` |
+| `tool-subagent-fork` | `@origin-ai/cf-tool-subagent` |
+| `workflow-worker-thread` | `@origin-ai/cf-workflow-worker-thread` |
+| `tool-workflow` | `@origin-ai/cf-tool-workflow` |
+| `tool-ralph` | `@origin-ai/cf-tool-ralph` |
+| `tool-todo` | `@origin-ai/cf-tool-todo` |
+| `repeat-tool-reminder` | `@origin-ai/cf-repeat-tool-reminder` |
+| `fs-sandbox` | `@origin-ai/cf-fs-sandbox` |
+| `fs-observation-policy` | `@origin-ai/cf-fs-observation-policy` |
+| `tool-fs` | `@origin-ai/cf-tool-fs` |
+| `hooks-claude-code` | `@origin-ai/cf-hooks-claude-code` |
+| `hooks-codex` | `@origin-ai/cf-hooks-codex` |
 
 Source config: [`examples/acp-agent/cordis.yml`](cordis.yml).
 

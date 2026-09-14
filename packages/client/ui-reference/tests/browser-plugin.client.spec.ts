@@ -5,13 +5,13 @@
  */
 import { Context, Service } from '@deepseek-ai/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import { LocaleRuntime } from '@origin-ai/xhe-client-locale/client'
-import type { SessionId } from '@origin-ai/xhe-client-runtime/client'
+import { LocaleRuntime } from '@origin-ai/cf-client-locale/client'
+import type { SessionId } from '@origin-ai/cf-client-runtime/client'
 import type {
   CandidateRequest, ClientSessionContext, InputTriggerCandidate, InputTriggerSource,
-} from '@origin-ai/xhe-client-ui-input-trigger/client'
-import type { FileReferenceCandidate } from '@origin-ai/xhe-file-reference/types'
-import type { SessionReferenceMentionCandidate } from '@origin-ai/xhe-session-reference/types'
+} from '@origin-ai/cf-client-ui-input-trigger/client'
+import type { FileReferenceCandidate } from '@origin-ai/cf-file-reference/types'
+import type { SessionReferenceMentionCandidate } from '@origin-ai/cf-session-reference/types'
 import { apply, inject } from '../src/client/index.ts'
 import { apply as nodeApply } from '../src/index.ts'
 

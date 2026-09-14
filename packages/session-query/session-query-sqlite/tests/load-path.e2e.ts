@@ -1,17 +1,17 @@
-import { createUserMessage } from '@origin-ai/xhe-llm'
+import { createUserMessage } from '@origin-ai/cf-llm'
 /**
  * Keyless real-Loader-path smoke for the combined SQLite session-query service.
  *
- * @module @origin-ai/xhe-session-query-sqlite/tests/load-path
+ * @module @origin-ai/cf-session-query-sqlite/tests/load-path
  */
 
 import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
-import { SESSION_FORMAT_VERSION, SessionId } from '@origin-ai/xhe-session'
-import SessionStore from '@origin-ai/xhe-session'
-import SqliteSessionPersistence from '@origin-ai/xhe-session-persistence-sqlite'
-import SqliteSessionQueryEngine, * as queryModule from '@origin-ai/xhe-session-query-sqlite'
+import { SESSION_FORMAT_VERSION, SessionId } from '@origin-ai/cf-session'
+import SessionStore from '@origin-ai/cf-session'
+import SqliteSessionPersistence from '@origin-ai/cf-session-persistence-sqlite'
+import SqliteSessionQueryEngine, * as queryModule from '@origin-ai/cf-session-query-sqlite'
 import { mkdtemp, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'

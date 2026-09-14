@@ -2,7 +2,7 @@
  * Cordis-free local filesystem mechanics. This provider layer returns validated UTF-8 text,
  * streams large files, and rejects binary data; line windows belong to `xhe-tool-fs`. Writes
  * stage an exclusive owner-only file in a private sibling directory and atomically publish it.
- * @module @origin-ai/xhe-fs-local/fsio
+ * @module @origin-ai/cf-fs-local/fsio
  */
 
 import { randomUUID } from 'node:crypto'
@@ -11,7 +11,7 @@ import { chmod, link, lstat, mkdir, open, readFile, realpath, readdir, rename, r
 import type { BigIntStats, Dirent, Stats } from 'node:fs'
 import { basename, dirname, join, resolve } from 'node:path'
 import { TextDecoder } from 'node:util'
-import { FsError, FsTargetKey, FsVersion } from '@origin-ai/xhe-fs'
+import { FsError, FsTargetKey, FsVersion } from '@origin-ai/cf-fs'
 import { copyFileDaclWin32, replaceFileWin32 } from './win32.ts'
 
 const BINARY_SAMPLE_BYTES = 8192

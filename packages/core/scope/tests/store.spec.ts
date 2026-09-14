@@ -8,7 +8,7 @@ import {
   type Scope,
   type ScopeKey,
   type ScopeLayer,
-} from '@origin-ai/xhe-scope'
+} from '@origin-ai/cf-scope'
 
 class TestLayer implements ScopeLayer {
   readonly named: NamedEntries<number>

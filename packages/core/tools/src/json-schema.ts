@@ -11,8 +11,8 @@
  * @module xhe-tools/json-schema
  */
 
-import { assertNever, HarnessError } from '@origin-ai/xhe-llm'
-import { isJsonValue, type JsonValue } from '@origin-ai/xhe-session'
+import { assertNever, HarnessError } from '@origin-ai/cf-llm'
+import { isJsonValue, type JsonValue } from '@origin-ai/cf-session'
 
 /** Scalar JSON values supported by `enum` and `const`. */
 export type JsonSchemaScalar = string | number | boolean | null

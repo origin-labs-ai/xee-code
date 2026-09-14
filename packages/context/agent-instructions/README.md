@@ -1,4 +1,4 @@
-# @origin-ai/xhe-agent-instructions
+# @origin-ai/cf-agent-instructions
 
 Per-session workspace instruction loading for `AGENTS.md`-compatible files. The plugin injects the initial user-global and project instruction chain into durable history, then discovers nested files and reports later changes or removals after successful filesystem tool calls.
 

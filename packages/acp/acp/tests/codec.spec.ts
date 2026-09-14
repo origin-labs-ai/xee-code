@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import type { TurnEndReason } from '@origin-ai/xhe-session'
+import type { TurnEndReason } from '@origin-ai/cf-session'
 import { turnEndToStopReason } from '../src/codec.ts'
 
 describe('ACP codec', () => {

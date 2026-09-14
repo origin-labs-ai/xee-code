@@ -2,7 +2,7 @@
  * Scoped-context primitive: mint a Cordis context that tags registrations with
  * an opaque identity and build routing-only event carriers for that identity.
  *
- * @module @origin-ai/xhe-scope
+ * @module @origin-ai/cf-scope
  */
 
 import type { Context, Fiber } from '@deepseek-ai/cordis'

@@ -3,9 +3,9 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import type { SessionEvent } from '@origin-ai/xhe-session'
-import { CompactionId } from '@origin-ai/xhe-compaction'
-import LlmRuntime, { CallId, createUserMessage, GenerateOptions, LlmAdapter, StreamChunk } from '@origin-ai/xhe-llm'
+import type { SessionEvent } from '@origin-ai/cf-session'
+import { CompactionId } from '@origin-ai/cf-compaction'
+import LlmRuntime, { CallId, createUserMessage, GenerateOptions, LlmAdapter, StreamChunk } from '@origin-ai/cf-llm'
 import {
   type Config,
   type ReplayEntry,

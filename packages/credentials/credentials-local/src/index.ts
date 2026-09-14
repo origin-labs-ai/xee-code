@@ -32,7 +32,7 @@
  * as the user's environment layer; a store that doubled as the environment
  * layer would shadow non-secret entries behind its precedence, making them
  * silently unreachable.
- * @module @origin-ai/xhe-credentials-local
+ * @module @origin-ai/cf-credentials-local
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'
@@ -41,10 +41,10 @@ import { watch as chokidarWatch } from 'chokidar'
 import { mkdir, readFile, stat } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { Document, isMap, isScalar, parseDocument, type YAMLError } from 'yaml'
-import { withFileLock, writeFileAtomic } from '@origin-ai/xhe-atomic-write'
-import { canonicalizeWatchPath, resolveDshHome } from '@origin-ai/xhe-home-paths'
-import { launchEnvironmentOf } from '@origin-ai/xhe-launch-environment'
-import { CredentialProvider, credentialRef, parseCredentialKey } from '@origin-ai/xhe-credentials'
+import { withFileLock, writeFileAtomic } from '@origin-ai/cf-atomic-write'
+import { canonicalizeWatchPath, resolveDshHome } from '@origin-ai/cf-home-paths'
+import { launchEnvironmentOf } from '@origin-ai/cf-launch-environment'
+import { CredentialProvider, credentialRef, parseCredentialKey } from '@origin-ai/cf-credentials'
 import type {
   ApiKeyRecord,
   CredentialInfo,
@@ -54,8 +54,8 @@ import type {
   CredentialRecordInfo,
   CredentialRef,
   ResolvedCredential,
-} from '@origin-ai/xhe-credentials'
-import type { LaunchEnvironmentEntry } from '@origin-ai/xhe-launch-environment'
+} from '@origin-ai/cf-credentials'
+import type { LaunchEnvironmentEntry } from '@origin-ai/cf-launch-environment'
 
 /** Basename of the credentials document inside the harness home. */
 export const CREDENTIALS_FILENAME = '.credentials.yaml'

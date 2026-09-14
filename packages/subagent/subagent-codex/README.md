@@ -1,4 +1,4 @@
-# @origin-ai/xhe-subagent-codex
+# @origin-ai/cf-subagent-codex
 
 This package registers a Profile-named Codex subagent provider whose default name is `codex`. Each accepted run starts the official package-local Codex wrapper with `app-server --stdio` in the delegating Session's workspace, creates one ephemeral Codex thread, submits one self-contained text task, and returns either the selected final answer or a separate safe failure diagnostic through the shared [`xhe-subagent`](../subagent/README.md) result contract.
 
@@ -38,18 +38,18 @@ Production resolves the `codex` bin declared by its pinned `@openai/codex@0.147.
 This package is an optional Profile Bundle. Install it into the target Profile, then restart that Profile; installation brings the official wrapper and one compatible native platform payload into that Profile, while the declared `cordis.patch.yml` layer registers only the dormant `codex` Host provider and starts no Codex process. Removing the package withdraws that provider and its private runtime closure on the next Profile start.
 
 ```sh
-dsh plugin --profile <name> add @origin-ai/xhe-subagent-codex
-dsh plugin --profile <name> remove @origin-ai/xhe-subagent-codex
+dsh plugin --profile <name> add @origin-ai/cf-subagent-codex
+dsh plugin --profile <name> remove @origin-ai/cf-subagent-codex
 dsh --profile <name>
 ```
 
 Installation controls Host availability, not model permission. The Bundle supplies the dormant default `codex` row; the Profile may replace that row's complete config or mount additional rows with distinct `providerName`, `permissionMode`, and `env` values. Loading an instance starts no Codex process until a bound tool calls it. Each `xhe-tool-subagent` row names one provider and needs its own `toolName`, so the model sees static tools rather than a dynamic provider selector. Full Agent Presets carry a matching default product tool row with `disabled: true`; copy a preset and remove that field to expose `subagent_codex` only to agents composed from the copy. Its `one-shot` policy keeps omitted or `false` `run_in_background` calls in the foreground, while explicit `true` returns a parent-owned Job id for `job_output` or `job_kill`. The base host and full presets already provide the generic Job registry and controls.
 
-The standalone composition below shows the complete explicit capability. A Profile based on `@origin-ai/xhe-base` keeps its existing Job rows, adds the product provider and tool rows, and does not mount duplicate Job services.
+The standalone composition below shows the complete explicit capability. A Profile based on `@origin-ai/cf-base` keeps its existing Job rows, adds the product provider and tool rows, and does not mount duplicate Job services.
 
 ```yaml
 - id: subagent-codex-safe
-  name: '@origin-ai/xhe-subagent-codex'
+  name: '@origin-ai/cf-subagent-codex'
   config:
     providerName: codex-safe
     permissionMode: never
@@ -57,7 +57,7 @@ The standalone composition below shows the complete explicit capability. A Profi
       OPENAI_API_KEY: !!js process.env.OPENAI_API_KEY
 
 - id: subagent-codex-bypass
-  name: '@origin-ai/xhe-subagent-codex'
+  name: '@origin-ai/cf-subagent-codex'
   config:
     providerName: codex-bypass
     permissionMode: dangerously-bypass-approvals-and-sandbox
@@ -67,13 +67,13 @@ The standalone composition below shows the complete explicit capability. A Profi
 
 ```yaml
 - id: jobs
-  name: '@origin-ai/xhe-jobs-local'
+  name: '@origin-ai/cf-jobs-local'
 
 - id: tool-jobs
-  name: '@origin-ai/xhe-tool-jobs'
+  name: '@origin-ai/cf-tool-jobs'
 
 - id: tool-subagent-codex-safe
-  name: '@origin-ai/xhe-tool-subagent'
+  name: '@origin-ai/cf-tool-subagent'
   disabled: true
   config:
     provider: codex-safe
@@ -82,7 +82,7 @@ The standalone composition below shows the complete explicit capability. A Profi
     maxDepth: provider-managed
 
 - id: tool-subagent-codex-bypass
-  name: '@origin-ai/xhe-tool-subagent'
+  name: '@origin-ai/cf-tool-subagent'
   config:
     provider: codex-bypass
     toolName: subagent_codex_bypass

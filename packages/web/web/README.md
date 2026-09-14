@@ -1,4 +1,4 @@
-# @origin-ai/xhe-web
+# @origin-ai/cf-web
 
 The **`WebRuntime`** (`ctx.web`) defines WHAT web access the harness has — search the web, fetch a URL — over multiple providers, without binding the model contract to one vendor's API shape.
 
@@ -6,11 +6,11 @@ This package owns the Service Definition role of the web capability. Unlike shel
 
 | Package | Role |
 |---|---|
-| `@origin-ai/xhe-web` (this) | Service Definition: the service, provider registries, selection policy, request/result vocabulary, the `WebError` taxonomy |
-| `@origin-ai/xhe-web-search-exa` | Search provider: Exa |
-| `@origin-ai/xhe-web-search-perplexity` | Search provider: Perplexity |
-| `@origin-ai/xhe-web-fetch-http` | Fetch provider: anonymous public HTTP(S) |
-| `@origin-ai/xhe-tool-web` | Consumer: the model-facing `web_search` / `web_fetch` tool schemas over `ctx.web` |
+| `@origin-ai/cf-web` (this) | Service Definition: the service, provider registries, selection policy, request/result vocabulary, the `WebError` taxonomy |
+| `@origin-ai/cf-web-search-exa` | Search provider: Exa |
+| `@origin-ai/cf-web-search-perplexity` | Search provider: Perplexity |
+| `@origin-ai/cf-web-fetch-http` | Fetch provider: anonymous public HTTP(S) |
+| `@origin-ai/cf-tool-web` | Consumer: the model-facing `web_search` / `web_fetch` tool schemas over `ctx.web` |
 
 Search and fetch share no request schema and no business logic, but they are deliberately one seam: `ctx.web` is a single web-access middle layer with one provider-selection policy owner, one abort/error vocabulary, and one product-facing "how this harness reaches the web" config surface. The `Search`/`Fetch` method pairs are deliberately parallel.
 

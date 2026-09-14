@@ -9,12 +9,12 @@ import { randomBytes } from 'node:crypto'
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import { unzipSync, strFromU8 } from 'fflate'
-import type { ImageAttachmentRef } from '@origin-ai/xhe-attachment'
-import UserQuestionService from '@origin-ai/xhe-user-questions'
-import type { SessionHeader, SessionId } from '@origin-ai/xhe-session'
-import type { SessionLineageNode } from '@origin-ai/xhe-session-query'
-import type { SessionRawArtifact } from '@origin-ai/xhe-session-persistence'
-import ApiProxyService, { createApiProxy, toFetchHandler } from '@origin-ai/xhe-host-apiproxy'
+import type { ImageAttachmentRef } from '@origin-ai/cf-attachment'
+import UserQuestionService from '@origin-ai/cf-user-questions'
+import type { SessionHeader, SessionId } from '@origin-ai/cf-session'
+import type { SessionLineageNode } from '@origin-ai/cf-session-query'
+import type { SessionRawArtifact } from '@origin-ai/cf-session-persistence'
+import ApiProxyService, { createApiProxy, toFetchHandler } from '@origin-ai/cf-host-apiproxy'
 
 const sid = (id: string): SessionId => id as SessionId
 

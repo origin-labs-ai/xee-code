@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import * as AttachmentInvariant from '@origin-ai/xhe-client-ui-attachment/invariant'
-import InvariantRegistry from '@origin-ai/xhe-invariants'
+import * as AttachmentInvariant from '@origin-ai/cf-client-ui-attachment/invariant'
+import InvariantRegistry from '@origin-ai/cf-invariants'
 
 describe('invariant companion', () => {
   it('registers under the package name with an empty installer', async () => {

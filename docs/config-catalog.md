@@ -11,7 +11,7 @@ A `Requires:` line lists the service keys the plugin `inject`s: its `cordis.yml`
 
 <a id="deepseek-aixhe-acp"></a>
 
-## `@origin-ai/xhe-acp`
+## `@origin-ai/cf-acp`
 
 Requires: `agents`
 
@@ -33,7 +33,7 @@ Source: [`packages/acp/acp/src/index.ts:71`](../packages/acp/acp/src/index.ts)
 
 <a id="deepseek-aixhe-acp-demo"></a>
 
-## `@origin-ai/xhe-acp-demo`
+## `@origin-ai/cf-acp-demo`
 
 ```ts config-catalog
 /**
@@ -88,7 +88,7 @@ Source: [`packages/examples/acp-demo/src/index.ts:39`](../packages/examples/acp-
 
 <a id="deepseek-aixhe-agent-default-model"></a>
 
-## `@origin-ai/xhe-agent-default-model`
+## `@origin-ai/cf-agent-default-model`
 
 ```ts config-catalog
 /** Composition entry for the default model selection. */
@@ -104,7 +104,7 @@ Source: [`packages/core/agent-default-model/src/index.ts:41`](../packages/core/a
 
 <a id="deepseek-aixhe-agent-instructions"></a>
 
-## `@origin-ai/xhe-agent-instructions`
+## `@origin-ai/cf-agent-instructions`
 
 ```ts config-catalog
 /** User-facing workspace instruction loader configuration. */
@@ -134,7 +134,7 @@ Source: [`packages/context/agent-instructions/src/config.ts:18`](../packages/con
 
 <a id="deepseek-aixhe-agent-loop"></a>
 
-## `@origin-ai/xhe-agent-loop`
+## `@origin-ai/cf-agent-loop`
 
 Requires: `agents` · `sessions` · `llm` · `tools` · `systemPrompt`
 
@@ -166,7 +166,7 @@ Source: [`packages/core/agent-loop/src/index.ts:255`](../packages/core/agent-loo
 
 <a id="deepseek-aixhe-agent-presets"></a>
 
-## `@origin-ai/xhe-agent-presets`
+## `@origin-ai/cf-agent-presets`
 
 Requires: `loader`
 
@@ -204,7 +204,7 @@ Source: [`packages/preset/agent-presets/src/preset.ts:52`](../packages/preset/ag
 
 <a id="deepseek-aixhe-agent-spine-demo"></a>
 
-## `@origin-ai/xhe-agent-spine-demo`
+## `@origin-ai/cf-agent-spine-demo`
 
 ```ts config-catalog
 /**
@@ -296,7 +296,7 @@ Source: [`packages/examples/agent-spine-demo/src/index.ts:92`](../packages/examp
 
 <a id="deepseek-aixhe-agent-tool-presentation"></a>
 
-## `@origin-ai/xhe-agent-tool-presentation`
+## `@origin-ai/cf-agent-tool-presentation`
 
 Requires: `tools`
 
@@ -320,7 +320,7 @@ Source: [`packages/core/agent-tool-presentation/src/index.ts:38`](../packages/co
 
 <a id="deepseek-aixhe-attachment-local"></a>
 
-## `@origin-ai/xhe-attachment-local`
+## `@origin-ai/cf-attachment-local`
 
 ```ts config-catalog
 /** Local attachment backend configuration. */
@@ -350,7 +350,7 @@ Source: [`packages/attachment/attachment-local/src/index.ts:51`](../packages/att
 
 <a id="deepseek-aixhe-bash-local"></a>
 
-## `@origin-ai/xhe-bash-local`
+## `@origin-ai/cf-bash-local`
 
 Requires: `subprocess`
 
@@ -376,7 +376,7 @@ Source: [`packages/shell/bash-local/src/index.ts:41`](../packages/shell/bash-loc
 
 <a id="deepseek-aixhe-bash-sandbox"></a>
 
-## `@origin-ai/xhe-bash-sandbox`
+## `@origin-ai/cf-bash-sandbox`
 
 Requires: `subprocess` · `sandbox` · `sandboxPolicy`
 
@@ -384,7 +384,7 @@ Requires: `subprocess` · `sandbox` · `sandboxPolicy`
 /**
  * Plugin config: the local executor's knobs, verbatim. The sandbox policy —
  * the default mode and fallback `workspace-write` root — is NOT here: it lives
- * on `ctx.sandboxPolicy` (`@origin-ai/xhe-sandbox-policy`), which resolves
+ * on `ctx.sandboxPolicy` (`@origin-ai/cf-sandbox-policy`), which resolves
  * each calling session's mode and cwd for every enforcing capability. The runner
  * choice is likewise the `ctx.sandbox` provider's config, not this executor's.
  */
@@ -397,7 +397,7 @@ Source: [`packages/shell/bash-sandbox/src/index.ts:35`](../packages/shell/bash-s
 
 <a id="deepseek-aixhe-client-connection"></a>
 
-## `@origin-ai/xhe-client-connection`
+## `@origin-ai/cf-client-connection`
 
 Requires: `webServer`
 
@@ -422,7 +422,7 @@ Source: [`packages/client/connection/src/index.ts:50`](../packages/client/connec
 
 <a id="deepseek-aixhe-client-hmr"></a>
 
-## `@origin-ai/xhe-client-hmr`
+## `@origin-ai/cf-client-hmr`
 
 Requires: `clientModules` · `webServer`
 
@@ -438,7 +438,7 @@ Source: [`packages/client/hmr/src/index.ts:31`](../packages/client/hmr/src/index
 
 <a id="deepseek-aixhe-code-runtime-worker-thread"></a>
 
-## `@origin-ai/xhe-code-runtime-worker-thread`
+## `@origin-ai/cf-code-runtime-worker-thread`
 
 ```ts config-catalog
 /** Plugin config: every execution cap, changeable from `cordis.yml` (no hardcoded tunables). */
@@ -475,7 +475,7 @@ Source: [`packages/code-runtime/code-runtime-worker-thread/src/index.ts:25`](../
 
 <a id="deepseek-aixhe-compaction-basic"></a>
 
-## `@origin-ai/xhe-compaction-basic`
+## `@origin-ai/cf-compaction-basic`
 
 Requires: `llm` · `tokenMeter` · `sessions`
 
@@ -521,7 +521,7 @@ Source: [`packages/compaction/compaction-basic/src/types.ts:38`](../packages/com
 
 <a id="deepseek-aixhe-compaction-tool-result-pruner"></a>
 
-## `@origin-ai/xhe-compaction-tool-result-pruner`
+## `@origin-ai/cf-compaction-tool-result-pruner`
 
 Requires: `tokenMeter`
 
@@ -557,7 +557,7 @@ Source: [`packages/extensions/cordis-host-runner/src/index.ts:88`](../packages/e
 
 <a id="deepseek-aixhe-credentials-local"></a>
 
-## `@origin-ai/xhe-credentials-local`
+## `@origin-ai/cf-credentials-local`
 
 ```ts config-catalog
 /** Plugin config: file location and hot-reload behavior. */
@@ -577,7 +577,7 @@ Source: [`packages/credentials/credentials-local/src/index.ts:64`](../packages/c
 
 <a id="deepseek-aixhe-e2b"></a>
 
-## `@origin-ai/xhe-e2b`
+## `@origin-ai/cf-e2b`
 
 ```ts config-catalog
 /** Configuration for the shared E2B sandbox owner. */
@@ -595,7 +595,7 @@ Source: [`packages/e2b/e2b/src/index.ts:43`](../packages/e2b/e2b/src/index.ts)
 
 <a id="deepseek-aixhe-experimental-agent-team"></a>
 
-## `@origin-ai/xhe-experimental-agent-team`
+## `@origin-ai/cf-experimental-agent-team`
 
 Requires: `agents` · `sessions` · `sessionPersistence` · `subagents`
 
@@ -619,7 +619,7 @@ Source: [`packages/experimental/agent-team/src/types.ts:125`](../packages/experi
 
 <a id="deepseek-aixhe-experimental-tool-agent-team"></a>
 
-## `@origin-ai/xhe-experimental-tool-agent-team`
+## `@origin-ai/cf-experimental-tool-agent-team`
 
 Requires: `agents` · `agentTeams` · `tools` · `systemPrompt`
 
@@ -637,7 +637,7 @@ Source: [`packages/experimental/tool-agent-team/src/index.ts:17`](../packages/ex
 
 <a id="deepseek-aixhe-file-reference-local"></a>
 
-## `@origin-ai/xhe-file-reference-local`
+## `@origin-ai/cf-file-reference-local`
 
 Requires: `agents`
 
@@ -657,7 +657,7 @@ Source: [`packages/context/file-reference-local/src/index.ts:35`](../packages/co
 
 <a id="deepseek-aixhe-fs-local"></a>
 
-## `@origin-ai/xhe-fs-local`
+## `@origin-ai/cf-fs-local`
 
 ```ts config-catalog
 /** Configuration for the local filesystem backend. */
@@ -676,7 +676,7 @@ Source: [`packages/fs/fs-local/src/index.ts:41`](../packages/fs/fs-local/src/ind
 
 <a id="deepseek-aixhe-fs-sandbox"></a>
 
-## `@origin-ai/xhe-fs-sandbox`
+## `@origin-ai/cf-fs-sandbox`
 
 Requires: `sandboxPolicy`
 
@@ -696,7 +696,7 @@ Source: [`packages/fs/fs-sandbox/src/index.ts:49`](../packages/fs/fs-sandbox/src
 
 <a id="deepseek-aixhe-goal"></a>
 
-## `@origin-ai/xhe-goal`
+## `@origin-ai/cf-goal`
 
 Requires: `agents`
 
@@ -712,7 +712,7 @@ Source: [`packages/goal/goal/src/index.ts:116`](../packages/goal/goal/src/index.
 
 <a id="deepseek-aixhe-headless"></a>
 
-## `@origin-ai/xhe-headless`
+## `@origin-ai/cf-headless`
 
 Requires: `agentDefaultModel` · `agents` · `sessions`
 
@@ -728,7 +728,7 @@ Source: [`packages/bundle/headless/src/index.ts:31`](../packages/bundle/headless
 
 <a id="deepseek-aixhe-hooks-claude-code"></a>
 
-## `@origin-ai/xhe-hooks-claude-code`
+## `@origin-ai/cf-hooks-claude-code`
 
 Requires: `shell`
 
@@ -766,7 +766,7 @@ Source: [`packages/hooks/hooks-claude-code/src/index.ts:45`](../packages/hooks/h
 
 <a id="deepseek-aixhe-hooks-codex"></a>
 
-## `@origin-ai/xhe-hooks-codex`
+## `@origin-ai/cf-hooks-codex`
 
 Requires: `shell`
 
@@ -793,7 +793,7 @@ Source: [`packages/hooks/hooks-codex/src/index.ts:44`](../packages/hooks/hooks-c
 
 <a id="deepseek-aixhe-host-apiproxy"></a>
 
-## `@origin-ai/xhe-host-apiproxy`
+## `@origin-ai/cf-host-apiproxy`
 
 Requires: `agentDefaultModel` · `agents` · `attachments` · `directoryPicker` · `llm` · `sessions` · `subagents` · `sessionQuery` · `tools` · `userQuestions` · `workspaceRegistry`
 
@@ -827,7 +827,7 @@ Source: [`packages/host/apiproxy/src/index.ts:41`](../packages/host/apiproxy/src
 
 <a id="deepseek-aixhe-host-directory-picker-browse"></a>
 
-## `@origin-ai/xhe-host-directory-picker-browse`
+## `@origin-ai/cf-host-directory-picker-browse`
 
 ```ts config-catalog
 /** Validated plugin configuration. */
@@ -841,7 +841,7 @@ Source: [`packages/host/directory-picker-browse/src/index.ts:181`](../packages/h
 
 <a id="deepseek-aixhe-host-frontend-static"></a>
 
-## `@origin-ai/xhe-host-frontend-static`
+## `@origin-ai/cf-host-frontend-static`
 
 Requires: `webServer`
 
@@ -857,7 +857,7 @@ Source: [`packages/host/frontend-static/src/index.ts:28`](../packages/host/front
 
 <a id="deepseek-aixhe-host-webserver"></a>
 
-## `@origin-ai/xhe-host-webserver`
+## `@origin-ai/cf-host-webserver`
 
 ```ts config-catalog
 /** Gateway config: the listen address. */
@@ -873,7 +873,7 @@ Source: [`packages/host/webserver/src/index.ts:59`](../packages/host/webserver/s
 
 <a id="deepseek-aixhe-invariants"></a>
 
-## `@origin-ai/xhe-invariants`
+## `@origin-ai/cf-invariants`
 
 ```ts config-catalog
 /** Runtime invariant selection configured on the service plugin. */
@@ -891,7 +891,7 @@ Source: [`packages/runtime-diagnostics/invariants/src/index.ts:15`](../packages/
 
 <a id="deepseek-aixhe-jobs-local"></a>
 
-## `@origin-ai/xhe-jobs-local`
+## `@origin-ai/cf-jobs-local`
 
 ```ts config-catalog
 /** Configuration for the process-local job registry. */
@@ -908,7 +908,7 @@ Source: [`packages/jobs/jobs-local/src/index.ts:31`](../packages/jobs/jobs-local
 
 <a id="deepseek-aixhe-llm-deepseek"></a>
 
-## `@origin-ai/xhe-llm-deepseek`
+## `@origin-ai/cf-llm-deepseek`
 
 Requires: `llm`
 
@@ -991,7 +991,7 @@ Source: [`packages/llm/llm-deepseek/src/index.ts:106`](../packages/llm/llm-deeps
 
 <a id="deepseek-aixhe-llm-pi-ai"></a>
 
-## `@origin-ai/xhe-llm-pi-ai`
+## `@origin-ai/cf-llm-pi-ai`
 
 Requires: `llm`
 
@@ -1245,7 +1245,7 @@ Source: [`packages/llm/llm-pi-ai/src/config.ts:213`](../packages/llm/llm-pi-ai/s
 
 <a id="deepseek-aixhe-llm-replay"></a>
 
-## `@origin-ai/xhe-llm-replay`
+## `@origin-ai/cf-llm-replay`
 
 Requires: `llm`
 
@@ -1313,7 +1313,7 @@ Source: [`packages/test-support/llm-replay/src/index.ts:809`](../packages/test-s
 
 <a id="deepseek-aixhe-llm-retry"></a>
 
-## `@origin-ai/xhe-llm-retry`
+## `@origin-ai/cf-llm-retry`
 
 Requires: `agents`
 
@@ -1326,7 +1326,7 @@ Source: [`packages/llm/llm-retry/src/index.ts:24`](../packages/llm/llm-retry/src
 
 <a id="deepseek-aixhe-lsp-stdio"></a>
 
-## `@origin-ai/xhe-lsp-stdio`
+## `@origin-ai/cf-lsp-stdio`
 
 Requires: `fs` · `lsp` · `subprocess`
 
@@ -1368,7 +1368,7 @@ Source: [`packages/lsp/lsp-stdio/src/index.ts:82`](../packages/lsp/lsp-stdio/src
 
 <a id="deepseek-aixhe-mcp-client"></a>
 
-## `@origin-ai/xhe-mcp-client`
+## `@origin-ai/cf-mcp-client`
 
 Requires: `tools`
 
@@ -1441,7 +1441,7 @@ Source: [`packages/mcp/mcp-client/src/index.ts:98`](../packages/mcp/mcp-client/s
 
 <a id="deepseek-aixhe-message-feedback"></a>
 
-## `@origin-ai/xhe-message-feedback`
+## `@origin-ai/cf-message-feedback`
 
 Requires: `storageDomain` · `sessionPersistence` · `sessions`
 
@@ -1457,7 +1457,7 @@ Source: [`packages/feedback/message-feedback/src/index.ts:49`](../packages/feedb
 
 <a id="deepseek-aixhe-permission-presets"></a>
 
-## `@origin-ai/xhe-permission-presets`
+## `@origin-ai/cf-permission-presets`
 
 Requires: `shell` · `approval` · `sessions`
 
@@ -1496,7 +1496,7 @@ Source: [`packages/interaction/permission-presets/src/index.ts:156`](../packages
 
 <a id="deepseek-aixhe-persona"></a>
 
-## `@origin-ai/xhe-persona`
+## `@origin-ai/cf-persona`
 
 Requires: `systemPrompt`
 
@@ -1520,7 +1520,7 @@ Source: [`packages/preset/persona/src/index.ts:34`](../packages/preset/persona/s
 
 <a id="deepseek-aixhe-plan-mode"></a>
 
-## `@origin-ai/xhe-plan-mode`
+## `@origin-ai/cf-plan-mode`
 
 Requires: `tools` · `systemPrompt`
 
@@ -1536,7 +1536,7 @@ Source: [`packages/plan/plan-mode/src/index.ts:70`](../packages/plan/plan-mode/s
 
 <a id="deepseek-aixhe-pwsh-local"></a>
 
-## `@origin-ai/xhe-pwsh-local`
+## `@origin-ai/cf-pwsh-local`
 
 Requires: `subprocess`
 
@@ -1569,7 +1569,7 @@ Source: [`packages/shell/pwsh-local/src/index.ts:58`](../packages/shell/pwsh-loc
 
 <a id="deepseek-aixhe-pwsh-sandbox"></a>
 
-## `@origin-ai/xhe-pwsh-sandbox`
+## `@origin-ai/cf-pwsh-sandbox`
 
 Requires: `subprocess` · `sandbox` · `sandboxPolicy`
 
@@ -1577,7 +1577,7 @@ Requires: `subprocess` · `sandbox` · `sandboxPolicy`
 /**
  * Plugin config: the local executor's knobs, verbatim. The sandbox policy —
  * the default mode and fallback `workspace-write` root — is NOT here: it lives
- * on `ctx.sandboxPolicy` (`@origin-ai/xhe-sandbox-policy`), which resolves
+ * on `ctx.sandboxPolicy` (`@origin-ai/cf-sandbox-policy`), which resolves
  * each calling session's mode and cwd for every enforcing capability. The
  * runner choice is likewise the `ctx.sandbox` provider's config, not this
  * executor's.
@@ -1591,7 +1591,7 @@ Source: [`packages/shell/pwsh-sandbox/src/index.ts:40`](../packages/shell/pwsh-s
 
 <a id="deepseek-aixhe-repeat-tool-reminder"></a>
 
-## `@origin-ai/xhe-repeat-tool-reminder`
+## `@origin-ai/cf-repeat-tool-reminder`
 
 ```ts config-catalog
 /**
@@ -1625,7 +1625,7 @@ Source: [`packages/guard/repeat-tool-reminder/src/index.ts:28`](../packages/guar
 
 <a id="deepseek-aixhe-sandbox-local"></a>
 
-## `@origin-ai/xhe-sandbox-local`
+## `@origin-ai/cf-sandbox-local`
 
 ```ts config-catalog
 /** Plugin config. All optional — `static Config` supplies the defaults. */
@@ -1657,7 +1657,7 @@ Source: [`packages/sandbox/sandbox-local/src/index.ts:44`](../packages/sandbox/s
 
 <a id="deepseek-aixhe-sandbox-policy"></a>
 
-## `@origin-ai/xhe-sandbox-policy`
+## `@origin-ai/cf-sandbox-policy`
 
 ```ts config-catalog
 /**
@@ -1684,7 +1684,7 @@ Source: [`packages/sandbox/sandbox-policy/src/index.ts:67`](../packages/sandbox/
 
 <a id="deepseek-aixhe-sdk-jsonrpc-server"></a>
 
-## `@origin-ai/xhe-sdk-jsonrpc-server`
+## `@origin-ai/cf-sdk-jsonrpc-server`
 
 Requires: `agents`
 
@@ -1708,7 +1708,7 @@ Source: [`packages/sdk/server/src/index.ts:25`](../packages/sdk/server/src/index
 
 <a id="deepseek-aixhe-session-persistence-jsonl"></a>
 
-## `@origin-ai/xhe-session-persistence-jsonl`
+## `@origin-ai/cf-session-persistence-jsonl`
 
 Requires: `sessions`
 
@@ -1747,7 +1747,7 @@ Source: [`packages/session/session-persistence-jsonl/src/index.ts:60`](../packag
 
 <a id="deepseek-aixhe-session-persistence-sqlite"></a>
 
-## `@origin-ai/xhe-session-persistence-sqlite`
+## `@origin-ai/cf-session-persistence-sqlite`
 
 Requires: `sessions`
 
@@ -1774,7 +1774,7 @@ Source: [`packages/session/session-persistence-sqlite/src/index.ts:36`](../packa
 
 <a id="deepseek-aixhe-session-projection-cache"></a>
 
-## `@origin-ai/xhe-session-projection-cache`
+## `@origin-ai/cf-session-projection-cache`
 
 Requires: `storageDomain` · `sessionProjections` · `sessionPersistence` · `sessions`
 
@@ -1797,7 +1797,7 @@ Source: [`packages/session/session-projection-cache/src/index.ts:42`](../package
 
 <a id="deepseek-aixhe-session-query-sqlite"></a>
 
-## `@origin-ai/xhe-session-query-sqlite`
+## `@origin-ai/cf-session-query-sqlite`
 
 Requires: `sessions`
 
@@ -1843,7 +1843,7 @@ Source: [`packages/session-query/session-query-sqlite/src/index.ts:89`](../packa
 
 <a id="deepseek-aixhe-session-reference"></a>
 
-## `@origin-ai/xhe-session-reference`
+## `@origin-ai/cf-session-reference`
 
 Requires: `sessionQuery`
 
@@ -1863,7 +1863,7 @@ Source: [`packages/context/session-reference/src/config.ts:11`](../packages/cont
 
 <a id="deepseek-aixhe-session-telemetry-otel"></a>
 
-## `@origin-ai/xhe-session-telemetry-otel`
+## `@origin-ai/cf-session-telemetry-otel`
 
 Requires: `sessions`
 
@@ -1909,7 +1909,7 @@ Source: [`packages/session/session-telemetry-otel/src/index.ts:91`](../packages/
 
 <a id="deepseek-aixhe-session-title"></a>
 
-## `@origin-ai/xhe-session-title`
+## `@origin-ai/cf-session-title`
 
 Requires: `sessions`
 
@@ -1929,7 +1929,7 @@ Source: [`packages/session/session-title/src/index.ts:79`](../packages/session/s
 
 <a id="deepseek-aixhe-session-title-all-prompts-llm"></a>
 
-## `@origin-ai/xhe-session-title-all-prompts-llm`
+## `@origin-ai/cf-session-title-all-prompts-llm`
 
 Requires: `sessionTitle` · `llm` · `sessions`
 
@@ -1944,7 +1944,7 @@ Source: [`packages/session/session-title-all-prompts-llm/src/index.ts:15`](../pa
 
 <a id="deepseek-aixhe-session-title-first-prompt-llm"></a>
 
-## `@origin-ai/xhe-session-title-first-prompt-llm`
+## `@origin-ai/cf-session-title-first-prompt-llm`
 
 Requires: `sessionTitle` · `llm` · `sessions`
 
@@ -1959,7 +1959,7 @@ Source: [`packages/session/session-title-first-prompt-llm/src/index.ts:15`](../p
 
 <a id="deepseek-aixhe-settings-file"></a>
 
-## `@origin-ai/xhe-settings-file`
+## `@origin-ai/cf-settings-file`
 
 ```ts config-catalog
 /** Plugin config: file location and hot-reload behavior. */
@@ -1979,7 +1979,7 @@ Source: [`packages/settings/settings-file/src/index.ts:21`](../packages/settings
 
 <a id="deepseek-aixhe-shell-env"></a>
 
-## `@origin-ai/xhe-shell-env`
+## `@origin-ai/cf-shell-env`
 
 ```ts config-catalog
 /** Plugin config (all optional — the built-in facts resolve without defaults). */
@@ -1993,7 +1993,7 @@ Source: [`packages/shell/shell-env/src/index.ts:29`](../packages/shell/shell-env
 
 <a id="deepseek-aixhe-skill"></a>
 
-## `@origin-ai/xhe-skill`
+## `@origin-ai/cf-skill`
 
 ```ts config-catalog
 /** Skill registry configuration. */
@@ -2007,7 +2007,7 @@ Source: [`packages/skill/skill/src/index.ts:279`](../packages/skill/skill/src/in
 
 <a id="deepseek-aixhe-skill-filesystem"></a>
 
-## `@origin-ai/xhe-skill-filesystem`
+## `@origin-ai/cf-skill-filesystem`
 
 Requires: `skills`
 
@@ -2045,7 +2045,7 @@ Source: [`packages/skill/skill-filesystem/src/index.ts:49`](../packages/skill/sk
 
 <a id="deepseek-aixhe-spill-local"></a>
 
-## `@origin-ai/xhe-spill-local`
+## `@origin-ai/cf-spill-local`
 
 ```ts config-catalog
 /** Plugin config (all optional — `static Config` supplies the defaults). */
@@ -2063,7 +2063,7 @@ Source: [`packages/spill/spill-local/src/index.ts:22`](../packages/spill/spill-l
 
 <a id="deepseek-aixhe-spill-policy"></a>
 
-## `@origin-ai/xhe-spill-policy`
+## `@origin-ai/cf-spill-policy`
 
 Requires: `tools`
 
@@ -2083,7 +2083,7 @@ Source: [`packages/spill/spill-policy/src/index.ts:60`](../packages/spill/spill-
 
 <a id="deepseek-aixhe-storage-domain"></a>
 
-## `@origin-ai/xhe-storage-domain`
+## `@origin-ai/cf-storage-domain`
 
 Requires: `storage`
 
@@ -2106,7 +2106,7 @@ Source: [`packages/storage/storage-domain/src/index.ts:52`](../packages/storage/
 
 <a id="deepseek-aixhe-storage-json"></a>
 
-## `@origin-ai/xhe-storage-json`
+## `@origin-ai/cf-storage-json`
 
 Requires: `storage`
 
@@ -2127,7 +2127,7 @@ Source: [`packages/storage/storage-json/src/index.ts:27`](../packages/storage/st
 
 <a id="deepseek-aixhe-storage-sqlite"></a>
 
-## `@origin-ai/xhe-storage-sqlite`
+## `@origin-ai/cf-storage-sqlite`
 
 Requires: `storage`
 
@@ -2167,7 +2167,7 @@ Source: [`packages/storage/storage-sqlite/src/index.ts:24`](../packages/storage/
 
 <a id="deepseek-aixhe-subagent-acp"></a>
 
-## `@origin-ai/xhe-subagent-acp`
+## `@origin-ai/cf-subagent-acp`
 
 Requires: `subagents` · `subprocess`
 
@@ -2220,7 +2220,7 @@ Source: [`packages/subagent/subagent-acp/src/index.ts:27`](../packages/subagent/
 
 <a id="deepseek-aixhe-subagent-claude-code"></a>
 
-## `@origin-ai/xhe-subagent-claude-code`
+## `@origin-ai/cf-subagent-claude-code`
 
 Requires: `subagents` · `subprocess`
 
@@ -2253,7 +2253,7 @@ Source: [`packages/subagent/subagent-claude-code/src/index.ts:38`](../packages/s
 
 <a id="deepseek-aixhe-subagent-codex"></a>
 
-## `@origin-ai/xhe-subagent-codex`
+## `@origin-ai/cf-subagent-codex`
 
 Requires: `subagents` · `subprocess`
 
@@ -2284,7 +2284,7 @@ Source: [`packages/subagent/subagent-codex/src/index.ts:36`](../packages/subagen
 
 <a id="deepseek-aixhe-subagent-xhe-sdk"></a>
 
-## `@origin-ai/xhe-subagent-xhe-sdk`
+## `@origin-ai/cf-subagent-xhe-sdk`
 
 Requires: `subagents`
 
@@ -2337,7 +2337,7 @@ Source: [`packages/subagent/subagent-xhe-sdk/src/index.ts:29`](../packages/subag
 
 <a id="deepseek-aixhe-subagent-fork-in-process"></a>
 
-## `@origin-ai/xhe-subagent-fork-in-process`
+## `@origin-ai/cf-subagent-fork-in-process`
 
 Requires: `subagents`
 
@@ -2353,7 +2353,7 @@ Source: [`packages/subagent/subagent-fork-in-process/src/index.ts:31`](../packag
 
 <a id="deepseek-aixhe-subagent-spawn-in-process"></a>
 
-## `@origin-ai/xhe-subagent-spawn-in-process`
+## `@origin-ai/cf-subagent-spawn-in-process`
 
 Requires: `subagents`
 
@@ -2369,7 +2369,7 @@ Source: [`packages/subagent/subagent-spawn-in-process/src/index.ts:25`](../packa
 
 <a id="deepseek-aixhe-subprocess-e2b"></a>
 
-## `@origin-ai/xhe-subprocess-e2b`
+## `@origin-ai/cf-subprocess-e2b`
 
 Requires: `e2b`
 
@@ -2385,7 +2385,7 @@ Source: [`packages/e2b/subprocess-e2b/src/index.ts:25`](../packages/e2b/subproce
 
 <a id="deepseek-aixhe-system-prompt"></a>
 
-## `@origin-ai/xhe-system-prompt`
+## `@origin-ai/cf-system-prompt`
 
 ```ts config-catalog
 /** Plugin config: the deployment-authored fragment of the system prompt (see {@link Config.persona} for its contract). */
@@ -2412,7 +2412,7 @@ Source: [`packages/core/system-prompt/src/index.ts:186`](../packages/core/system
 
 <a id="deepseek-aixhe-terminal-bash"></a>
 
-## `@origin-ai/xhe-terminal-bash`
+## `@origin-ai/cf-terminal-bash`
 
 Requires: `terminals` · `sandboxPolicy` · `subprocess`
 
@@ -2462,7 +2462,7 @@ Source: [`packages/terminal/terminal-bash/src/config.ts:10`](../packages/termina
 
 <a id="deepseek-aixhe-time-context"></a>
 
-## `@origin-ai/xhe-time-context`
+## `@origin-ai/cf-time-context`
 
 Requires: `agents`
 
@@ -2480,7 +2480,7 @@ Source: [`packages/context/time-context/src/index.ts:27`](../packages/context/ti
 
 <a id="deepseek-aixhe-tmux-context"></a>
 
-## `@origin-ai/xhe-tmux-context`
+## `@origin-ai/cf-tmux-context`
 
 Requires: `agents`
 
@@ -2496,7 +2496,7 @@ Source: [`packages/context/tmux-context/src/index.ts:34`](../packages/context/tm
 
 <a id="deepseek-aixhe-token-meter"></a>
 
-## `@origin-ai/xhe-token-meter`
+## `@origin-ai/cf-token-meter`
 
 ```ts config-catalog
 /** Token-meter plugin configuration; the fixed estimator has no settings. */
@@ -2507,7 +2507,7 @@ Source: [`packages/llm/token-meter/src/types.ts:12`](../packages/llm/token-meter
 
 <a id="deepseek-aixhe-tool-bash"></a>
 
-## `@origin-ai/xhe-tool-bash`
+## `@origin-ai/cf-tool-bash`
 
 Requires: `tools` · `shell` · `systemPrompt` · `shellEnv`
 
@@ -2523,7 +2523,7 @@ Source: [`packages/shell/tool-bash/src/index.ts:34`](../packages/shell/tool-bash
 
 <a id="deepseek-aixhe-tool-bash-persistent"></a>
 
-## `@origin-ai/xhe-tool-bash-persistent`
+## `@origin-ai/cf-tool-bash-persistent`
 
 Requires: `tools` · `terminals`
 
@@ -2545,7 +2545,7 @@ Source: [`packages/shell/tool-bash-persistent/src/index.ts:432`](../packages/she
 
 <a id="deepseek-aixhe-tool-fs"></a>
 
-## `@origin-ai/xhe-tool-fs`
+## `@origin-ai/cf-tool-fs`
 
 Requires: `tools` · `fs` · `systemPrompt`
 
@@ -2567,7 +2567,7 @@ Source: [`packages/fs/tool-fs/src/index.ts:25`](../packages/fs/tool-fs/src/index
 
 <a id="deepseek-aixhe-tool-fs-search"></a>
 
-## `@origin-ai/xhe-tool-fs-search`
+## `@origin-ai/cf-tool-fs-search`
 
 Requires: `tools` · `systemPrompt` · `subprocess`
 
@@ -2592,7 +2592,7 @@ export interface Config {
   stderrMaxBytes?: number
   /**
    * Cooperative tool-call timeout budget (ms) on both tools, enforced by
-   * `@origin-ai/xhe-tool-call-timeout-policy` through `exec.signal`.
+   * `@origin-ai/cf-tool-call-timeout-policy` through `exec.signal`.
    */
   timeoutMs?: number
 }
@@ -2602,7 +2602,7 @@ Source: [`packages/fs/tool-fs-search/src/index.ts:73`](../packages/fs/tool-fs-se
 
 <a id="deepseek-aixhe-tool-goal"></a>
 
-## `@origin-ai/xhe-tool-goal`
+## `@origin-ai/cf-tool-goal`
 
 Requires: `agents` · `goals` · `tools` · `systemPrompt`
 
@@ -2618,7 +2618,7 @@ Source: [`packages/goal/tool-goal/src/index.ts:26`](../packages/goal/tool-goal/s
 
 <a id="deepseek-aixhe-tool-jobs"></a>
 
-## `@origin-ai/xhe-tool-jobs`
+## `@origin-ai/cf-tool-jobs`
 
 Requires: `tools` · `jobs` · `systemPrompt`
 
@@ -2652,7 +2652,7 @@ Source: [`packages/jobs/tool-jobs/src/index.ts:32`](../packages/jobs/tool-jobs/s
 
 <a id="deepseek-aixhe-tool-lsp"></a>
 
-## `@origin-ai/xhe-tool-lsp`
+## `@origin-ai/cf-tool-lsp`
 
 Requires: `tools` · `lsp` · `systemPrompt`
 
@@ -2672,7 +2672,7 @@ Source: [`packages/lsp/tool-lsp/src/index.ts:58`](../packages/lsp/tool-lsp/src/i
 
 <a id="deepseek-aixhe-tool-pwsh"></a>
 
-## `@origin-ai/xhe-tool-pwsh`
+## `@origin-ai/cf-tool-pwsh`
 
 Requires: `tools` · `shell` · `systemPrompt` · `shellEnv`
 
@@ -2688,7 +2688,7 @@ Source: [`packages/shell/tool-pwsh/src/index.ts:52`](../packages/shell/tool-pwsh
 
 <a id="deepseek-aixhe-tool-pwsh-persistent"></a>
 
-## `@origin-ai/xhe-tool-pwsh-persistent`
+## `@origin-ai/cf-tool-pwsh-persistent`
 
 Requires: `tools` · `terminals`
 
@@ -2710,7 +2710,7 @@ Source: [`packages/shell/tool-pwsh-persistent/src/index.ts:472`](../packages/she
 
 <a id="deepseek-aixhe-tool-ralph"></a>
 
-## `@origin-ai/xhe-tool-ralph`
+## `@origin-ai/cf-tool-ralph`
 
 Requires: `tools` · `workflowEngine` · `subagents` · `systemPrompt`
 
@@ -2732,7 +2732,7 @@ Source: [`packages/workflow/tool-ralph/src/index.ts:23`](../packages/workflow/to
 
 <a id="deepseek-aixhe-tool-session-query"></a>
 
-## `@origin-ai/xhe-tool-session-query`
+## `@origin-ai/cf-tool-session-query`
 
 Requires: `tools` · `systemPrompt` · `sessionQuery`
 
@@ -2750,7 +2750,7 @@ Source: [`packages/session-query/tool-session-query/src/index.ts:29`](../package
 
 <a id="deepseek-aixhe-tool-skill"></a>
 
-## `@origin-ai/xhe-tool-skill`
+## `@origin-ai/cf-tool-skill`
 
 Requires: `agents` · `tools` · `skills`
 
@@ -2766,7 +2766,7 @@ Source: [`packages/skill/tool-skill/src/index.ts:61`](../packages/skill/tool-ski
 
 <a id="deepseek-aixhe-tool-str-replace-editor"></a>
 
-## `@origin-ai/xhe-tool-str-replace-editor`
+## `@origin-ai/cf-tool-str-replace-editor`
 
 Requires: `tools` · `fs`
 
@@ -2784,7 +2784,7 @@ Source: [`packages/fs/tool-str-replace-editor/src/index.ts:497`](../packages/fs/
 
 <a id="deepseek-aixhe-tool-subagent"></a>
 
-## `@origin-ai/xhe-tool-subagent`
+## `@origin-ai/cf-tool-subagent`
 
 Requires: `tools` · `subagents` · `systemPrompt`
 
@@ -2849,7 +2849,7 @@ Source: [`packages/subagent/tool-subagent/src/index.ts:29`](../packages/subagent
 
 <a id="deepseek-aixhe-tool-subagent-report"></a>
 
-## `@origin-ai/xhe-tool-subagent-report`
+## `@origin-ai/cf-tool-subagent-report`
 
 Requires: `subagents` · `tools` · `systemPrompt`
 
@@ -2871,7 +2871,7 @@ Source: [`packages/subagent/tool-subagent-report/src/index.ts:27`](../packages/s
 
 <a id="deepseek-aixhe-tool-terminal"></a>
 
-## `@origin-ai/xhe-tool-terminal`
+## `@origin-ai/cf-tool-terminal`
 
 Requires: `terminals` · `tools` · `systemPrompt`
 
@@ -2889,7 +2889,7 @@ Source: [`packages/terminal/tool-terminal/src/index.ts:35`](../packages/terminal
 
 <a id="deepseek-aixhe-tool-todo"></a>
 
-## `@origin-ai/xhe-tool-todo`
+## `@origin-ai/cf-tool-todo`
 
 Requires: `tools`
 
@@ -2911,7 +2911,7 @@ Source: [`packages/todo/tool-todo/src/index.ts:29`](../packages/todo/tool-todo/s
 
 <a id="deepseek-aixhe-tool-web"></a>
 
-## `@origin-ai/xhe-tool-web`
+## `@origin-ai/cf-tool-web`
 
 Requires: `tools` · `web` · `systemPrompt`
 
@@ -2939,7 +2939,7 @@ Source: [`packages/web/tool-web/src/index.ts:37`](../packages/web/tool-web/src/i
 
 <a id="deepseek-aixhe-tool-workflow"></a>
 
-## `@origin-ai/xhe-tool-workflow`
+## `@origin-ai/cf-tool-workflow`
 
 Requires: `tools` · `workflowEngine` · `systemPrompt`
 
@@ -2957,7 +2957,7 @@ Source: [`packages/workflow/tool-workflow/src/index.ts:33`](../packages/workflow
 
 <a id="deepseek-aixhe-tools"></a>
 
-## `@origin-ai/xhe-tools`
+## `@origin-ai/cf-tools`
 
 Requires: `systemPrompt`
 
@@ -2993,7 +2993,7 @@ Source: [`packages/core/tools/src/index.ts:654`](../packages/core/tools/src/inde
 
 <a id="deepseek-aixhe-typert-loader"></a>
 
-## `@origin-ai/xhe-typert-loader`
+## `@origin-ai/cf-typert-loader`
 
 Requires: `typert` · `loader`
 
@@ -3009,7 +3009,7 @@ Source: [`packages/typert/loader/src/index.ts:47`](../packages/typert/loader/src
 
 <a id="deepseek-aixhe-user-approval"></a>
 
-## `@origin-ai/xhe-user-approval`
+## `@origin-ai/cf-user-approval`
 
 ```ts config-catalog
 /** Plugin config. All optional — `static Config` supplies the defaults. */
@@ -3040,7 +3040,7 @@ Source: [`packages/interaction/user-approval/src/index.ts:177`](../packages/inte
 
 <a id="deepseek-aixhe-web"></a>
 
-## `@origin-ai/xhe-web`
+## `@origin-ai/cf-web`
 
 ```ts config-catalog
 /**
@@ -3061,7 +3061,7 @@ Source: [`packages/web/web/src/index.ts:55`](../packages/web/web/src/index.ts)
 
 <a id="deepseek-aixhe-web-app"></a>
 
-## `@origin-ai/xhe-web-app`
+## `@origin-ai/cf-web-app`
 
 Requires: `webServer`
 
@@ -3088,7 +3088,7 @@ Source: [`packages/bundle/web-app/src/index.ts:42`](../packages/bundle/web-app/s
 
 <a id="deepseek-aixhe-web-fetch-http"></a>
 
-## `@origin-ai/xhe-web-fetch-http`
+## `@origin-ai/cf-web-fetch-http`
 
 Requires: `web`
 
@@ -3114,7 +3114,7 @@ Source: [`packages/web/web-fetch-http/src/index.ts:34`](../packages/web/web-fetc
 
 <a id="deepseek-aixhe-web-search-deepseek"></a>
 
-## `@origin-ai/xhe-web-search-deepseek`
+## `@origin-ai/cf-web-search-deepseek`
 
 Requires: `web`
 
@@ -3142,7 +3142,7 @@ Source: [`packages/web/web-search-deepseek/src/index.ts:46`](../packages/web/web
 
 <a id="deepseek-aixhe-web-search-exa"></a>
 
-## `@origin-ai/xhe-web-search-exa`
+## `@origin-ai/cf-web-search-exa`
 
 Requires: `web`
 
@@ -3166,7 +3166,7 @@ Source: [`packages/web/web-search-exa/src/index.ts:38`](../packages/web/web-sear
 
 <a id="deepseek-aixhe-web-search-perplexity"></a>
 
-## `@origin-ai/xhe-web-search-perplexity`
+## `@origin-ai/cf-web-search-perplexity`
 
 Requires: `web`
 
@@ -3190,7 +3190,7 @@ Source: [`packages/web/web-search-perplexity/src/index.ts:32`](../packages/web/w
 
 <a id="deepseek-aixhe-workflow-worker-thread"></a>
 
-## `@origin-ai/xhe-workflow-worker-thread`
+## `@origin-ai/cf-workflow-worker-thread`
 
 Requires: `subagents`
 
@@ -3222,131 +3222,131 @@ Source: [`packages/workflow/workflow-worker-thread/src/index.ts:32`](../packages
 
 These load from a `cordis.yml` entry with no `config:` block; they declare no configuration API.
 
-- `@origin-ai/xhe-agent` ([`packages/core/agent/src/index.ts`](../packages/core/agent/src/index.ts))
-- `@origin-ai/xhe-api-gateway` — requires `typert` ([`packages/api/gateway/src/index.ts`](../packages/api/gateway/src/index.ts))
-- `@origin-ai/xhe-api-remotes` ([`packages/api/remotes/src/index.ts`](../packages/api/remotes/src/index.ts))
-- `@origin-ai/xhe-authorization` — requires `credentials` ([`packages/credentials/authorization/src/index.ts`](../packages/credentials/authorization/src/index.ts))
-- `@origin-ai/xhe-client-locale` ([`packages/client/locale/src/index.ts`](../packages/client/locale/src/index.ts))
-- `@origin-ai/xhe-client-modules` — requires `webServer` · `loader` ([`packages/client/modules/src/index.ts`](../packages/client/modules/src/index.ts))
-- `@origin-ai/xhe-client-runtime` ([`packages/client/runtime/src/index.ts`](../packages/client/runtime/src/index.ts))
-- `@origin-ai/xhe-client-ui-agent-preset` ([`packages/client/ui-agent-preset/src/index.ts`](../packages/client/ui-agent-preset/src/index.ts))
-- `@origin-ai/xhe-client-ui-attachment` ([`packages/client/ui-attachment/src/index.ts`](../packages/client/ui-attachment/src/index.ts))
-- `@origin-ai/xhe-client-ui-brand-official` ([`packages/client/ui-brand-official/src/index.ts`](../packages/client/ui-brand-official/src/index.ts))
-- `@origin-ai/xhe-client-ui-commands` ([`packages/client/ui-commands/src/index.ts`](../packages/client/ui-commands/src/index.ts))
-- `@origin-ai/xhe-client-ui-conversation` ([`packages/client/ui-conversation/src/index.ts`](../packages/client/ui-conversation/src/index.ts))
-- `@origin-ai/xhe-client-ui-cordis` ([`packages/extensions/ui-cordis/src/index.ts`](../packages/extensions/ui-cordis/src/index.ts))
-- `@origin-ai/xhe-client-ui-deliverables` — requires `systemPrompt` ([`packages/client/ui-deliverables/src/index.ts`](../packages/client/ui-deliverables/src/index.ts))
-- `@origin-ai/xhe-client-ui-directory-picker-browse` ([`packages/client/ui-directory-picker-browse/src/index.ts`](../packages/client/ui-directory-picker-browse/src/index.ts))
-- `@origin-ai/xhe-client-ui-directory-picker-native` ([`packages/client/ui-directory-picker-native/src/index.ts`](../packages/client/ui-directory-picker-native/src/index.ts))
-- `@origin-ai/xhe-client-ui-goal` ([`packages/client/ui-goal/src/index.ts`](../packages/client/ui-goal/src/index.ts))
-- `@origin-ai/xhe-client-ui-input-trigger` ([`packages/client/ui-input-trigger/src/index.ts`](../packages/client/ui-input-trigger/src/index.ts))
-- `@origin-ai/xhe-client-ui-jobs` ([`packages/client/ui-jobs/src/index.ts`](../packages/client/ui-jobs/src/index.ts))
-- `@origin-ai/xhe-client-ui-layout` ([`packages/client/ui-layout/src/index.ts`](../packages/client/ui-layout/src/index.ts))
-- `@origin-ai/xhe-client-ui-message-feedback` ([`packages/client/ui-message-feedback/src/index.ts`](../packages/client/ui-message-feedback/src/index.ts))
-- `@origin-ai/xhe-client-ui-model-selection` ([`packages/client/ui-model-selection/src/index.ts`](../packages/client/ui-model-selection/src/index.ts))
-- `@origin-ai/xhe-client-ui-permission-presets` ([`packages/client/ui-permission-presets/src/index.ts`](../packages/client/ui-permission-presets/src/index.ts))
-- `@origin-ai/xhe-client-ui-plan` ([`packages/client/ui-plan/src/index.ts`](../packages/client/ui-plan/src/index.ts))
-- `@origin-ai/xhe-client-ui-reference` ([`packages/client/ui-reference/src/index.ts`](../packages/client/ui-reference/src/index.ts))
-- `@origin-ai/xhe-client-ui-renderer` ([`packages/client/ui-renderer/src/index.ts`](../packages/client/ui-renderer/src/index.ts))
-- `@origin-ai/xhe-client-ui-settings` ([`packages/client/ui-settings/src/index.ts`](../packages/client/ui-settings/src/index.ts))
-- `@origin-ai/xhe-client-ui-settings-general` ([`packages/client/ui-settings-general/src/index.ts`](../packages/client/ui-settings-general/src/index.ts))
-- `@origin-ai/xhe-client-ui-settings-models` ([`packages/client/ui-settings-models/src/index.ts`](../packages/client/ui-settings-models/src/index.ts))
-- `@origin-ai/xhe-client-ui-settings-plugin-inventory` ([`packages/client/ui-settings-plugin-inventory/src/index.ts`](../packages/client/ui-settings-plugin-inventory/src/index.ts))
-- `@origin-ai/xhe-client-ui-settings-plugins` ([`packages/client/ui-settings-plugins/src/index.ts`](../packages/client/ui-settings-plugins/src/index.ts))
-- `@origin-ai/xhe-client-ui-sidebar` ([`packages/client/ui-sidebar/src/index.ts`](../packages/client/ui-sidebar/src/index.ts))
-- `@origin-ai/xhe-client-ui-skill` ([`packages/client/ui-skill/src/index.ts`](../packages/client/ui-skill/src/index.ts))
-- `@origin-ai/xhe-client-ui-subagent` ([`packages/client/ui-subagent/src/index.ts`](../packages/client/ui-subagent/src/index.ts))
-- `@origin-ai/xhe-client-ui-theme` ([`packages/client/ui-theme/src/index.ts`](../packages/client/ui-theme/src/index.ts))
-- `@origin-ai/xhe-client-ui-tool` ([`packages/client/ui-tool/src/index.ts`](../packages/client/ui-tool/src/index.ts))
-- `@origin-ai/xhe-client-ui-trajectory` ([`packages/client/ui-trajectory/src/index.ts`](../packages/client/ui-trajectory/src/index.ts))
-- `@origin-ai/xhe-client-ui-user-questions` ([`packages/client/ui-user-questions/src/index.ts`](../packages/client/ui-user-questions/src/index.ts))
-- `@origin-ai/xhe-client-ui-workflow-run` ([`packages/client/ui-workflow-run/src/index.ts`](../packages/client/ui-workflow-run/src/index.ts))
-- `@origin-ai/xhe-client-ui-workspace` ([`packages/client/ui-workspace/src/index.ts`](../packages/client/ui-workspace/src/index.ts))
-- `@origin-ai/xhe-command-compact` — requires `commands` · `compaction` ([`packages/compaction/command-compact/src/index.ts`](../packages/compaction/command-compact/src/index.ts))
-- `@origin-ai/xhe-command-feedback` — requires `commands` ([`packages/feedback/command-feedback/src/index.ts`](../packages/feedback/command-feedback/src/index.ts))
-- `@origin-ai/xhe-command-goal` — requires `commands` · `goals` ([`packages/goal/command-goal/src/index.ts`](../packages/goal/command-goal/src/index.ts))
-- `@origin-ai/xhe-commands` ([`packages/interaction/commands/src/index.ts`](../packages/interaction/commands/src/index.ts))
+- `@origin-ai/cf-agent` ([`packages/core/agent/src/index.ts`](../packages/core/agent/src/index.ts))
+- `@origin-ai/cf-api-gateway` — requires `typert` ([`packages/api/gateway/src/index.ts`](../packages/api/gateway/src/index.ts))
+- `@origin-ai/cf-api-remotes` ([`packages/api/remotes/src/index.ts`](../packages/api/remotes/src/index.ts))
+- `@origin-ai/cf-authorization` — requires `credentials` ([`packages/credentials/authorization/src/index.ts`](../packages/credentials/authorization/src/index.ts))
+- `@origin-ai/cf-client-locale` ([`packages/client/locale/src/index.ts`](../packages/client/locale/src/index.ts))
+- `@origin-ai/cf-client-modules` — requires `webServer` · `loader` ([`packages/client/modules/src/index.ts`](../packages/client/modules/src/index.ts))
+- `@origin-ai/cf-client-runtime` ([`packages/client/runtime/src/index.ts`](../packages/client/runtime/src/index.ts))
+- `@origin-ai/cf-client-ui-agent-preset` ([`packages/client/ui-agent-preset/src/index.ts`](../packages/client/ui-agent-preset/src/index.ts))
+- `@origin-ai/cf-client-ui-attachment` ([`packages/client/ui-attachment/src/index.ts`](../packages/client/ui-attachment/src/index.ts))
+- `@origin-ai/cf-client-ui-brand-official` ([`packages/client/ui-brand-official/src/index.ts`](../packages/client/ui-brand-official/src/index.ts))
+- `@origin-ai/cf-client-ui-commands` ([`packages/client/ui-commands/src/index.ts`](../packages/client/ui-commands/src/index.ts))
+- `@origin-ai/cf-client-ui-conversation` ([`packages/client/ui-conversation/src/index.ts`](../packages/client/ui-conversation/src/index.ts))
+- `@origin-ai/cf-client-ui-cordis` ([`packages/extensions/ui-cordis/src/index.ts`](../packages/extensions/ui-cordis/src/index.ts))
+- `@origin-ai/cf-client-ui-deliverables` — requires `systemPrompt` ([`packages/client/ui-deliverables/src/index.ts`](../packages/client/ui-deliverables/src/index.ts))
+- `@origin-ai/cf-client-ui-directory-picker-browse` ([`packages/client/ui-directory-picker-browse/src/index.ts`](../packages/client/ui-directory-picker-browse/src/index.ts))
+- `@origin-ai/cf-client-ui-directory-picker-native` ([`packages/client/ui-directory-picker-native/src/index.ts`](../packages/client/ui-directory-picker-native/src/index.ts))
+- `@origin-ai/cf-client-ui-goal` ([`packages/client/ui-goal/src/index.ts`](../packages/client/ui-goal/src/index.ts))
+- `@origin-ai/cf-client-ui-input-trigger` ([`packages/client/ui-input-trigger/src/index.ts`](../packages/client/ui-input-trigger/src/index.ts))
+- `@origin-ai/cf-client-ui-jobs` ([`packages/client/ui-jobs/src/index.ts`](../packages/client/ui-jobs/src/index.ts))
+- `@origin-ai/cf-client-ui-layout` ([`packages/client/ui-layout/src/index.ts`](../packages/client/ui-layout/src/index.ts))
+- `@origin-ai/cf-client-ui-message-feedback` ([`packages/client/ui-message-feedback/src/index.ts`](../packages/client/ui-message-feedback/src/index.ts))
+- `@origin-ai/cf-client-ui-model-selection` ([`packages/client/ui-model-selection/src/index.ts`](../packages/client/ui-model-selection/src/index.ts))
+- `@origin-ai/cf-client-ui-permission-presets` ([`packages/client/ui-permission-presets/src/index.ts`](../packages/client/ui-permission-presets/src/index.ts))
+- `@origin-ai/cf-client-ui-plan` ([`packages/client/ui-plan/src/index.ts`](../packages/client/ui-plan/src/index.ts))
+- `@origin-ai/cf-client-ui-reference` ([`packages/client/ui-reference/src/index.ts`](../packages/client/ui-reference/src/index.ts))
+- `@origin-ai/cf-client-ui-renderer` ([`packages/client/ui-renderer/src/index.ts`](../packages/client/ui-renderer/src/index.ts))
+- `@origin-ai/cf-client-ui-settings` ([`packages/client/ui-settings/src/index.ts`](../packages/client/ui-settings/src/index.ts))
+- `@origin-ai/cf-client-ui-settings-general` ([`packages/client/ui-settings-general/src/index.ts`](../packages/client/ui-settings-general/src/index.ts))
+- `@origin-ai/cf-client-ui-settings-models` ([`packages/client/ui-settings-models/src/index.ts`](../packages/client/ui-settings-models/src/index.ts))
+- `@origin-ai/cf-client-ui-settings-plugin-inventory` ([`packages/client/ui-settings-plugin-inventory/src/index.ts`](../packages/client/ui-settings-plugin-inventory/src/index.ts))
+- `@origin-ai/cf-client-ui-settings-plugins` ([`packages/client/ui-settings-plugins/src/index.ts`](../packages/client/ui-settings-plugins/src/index.ts))
+- `@origin-ai/cf-client-ui-sidebar` ([`packages/client/ui-sidebar/src/index.ts`](../packages/client/ui-sidebar/src/index.ts))
+- `@origin-ai/cf-client-ui-skill` ([`packages/client/ui-skill/src/index.ts`](../packages/client/ui-skill/src/index.ts))
+- `@origin-ai/cf-client-ui-subagent` ([`packages/client/ui-subagent/src/index.ts`](../packages/client/ui-subagent/src/index.ts))
+- `@origin-ai/cf-client-ui-theme` ([`packages/client/ui-theme/src/index.ts`](../packages/client/ui-theme/src/index.ts))
+- `@origin-ai/cf-client-ui-tool` ([`packages/client/ui-tool/src/index.ts`](../packages/client/ui-tool/src/index.ts))
+- `@origin-ai/cf-client-ui-trajectory` ([`packages/client/ui-trajectory/src/index.ts`](../packages/client/ui-trajectory/src/index.ts))
+- `@origin-ai/cf-client-ui-user-questions` ([`packages/client/ui-user-questions/src/index.ts`](../packages/client/ui-user-questions/src/index.ts))
+- `@origin-ai/cf-client-ui-workflow-run` ([`packages/client/ui-workflow-run/src/index.ts`](../packages/client/ui-workflow-run/src/index.ts))
+- `@origin-ai/cf-client-ui-workspace` ([`packages/client/ui-workspace/src/index.ts`](../packages/client/ui-workspace/src/index.ts))
+- `@origin-ai/cf-command-compact` — requires `commands` · `compaction` ([`packages/compaction/command-compact/src/index.ts`](../packages/compaction/command-compact/src/index.ts))
+- `@origin-ai/cf-command-feedback` — requires `commands` ([`packages/feedback/command-feedback/src/index.ts`](../packages/feedback/command-feedback/src/index.ts))
+- `@origin-ai/cf-command-goal` — requires `commands` · `goals` ([`packages/goal/command-goal/src/index.ts`](../packages/goal/command-goal/src/index.ts))
+- `@origin-ai/cf-commands` ([`packages/interaction/commands/src/index.ts`](../packages/interaction/commands/src/index.ts))
 - `@deepseek-ai/cordis-client-runner` ([`packages/extensions/cordis-client-runner/src/index.ts`](../packages/extensions/cordis-client-runner/src/index.ts))
-- `@origin-ai/xhe-fs-e2b` — requires `e2b` ([`packages/e2b/fs-e2b/src/index.ts`](../packages/e2b/fs-e2b/src/index.ts))
-- `@origin-ai/xhe-fs-observation-policy` ([`packages/fs/fs-observation-policy/src/index.ts`](../packages/fs/fs-observation-policy/src/index.ts))
-- `@origin-ai/xhe-goal-round-driver` — requires `agents` · `goals` · `sessions` ([`packages/goal/goal-round-driver/src/index.ts`](../packages/goal/goal-round-driver/src/index.ts))
-- `@origin-ai/xhe-host-directory-picker-auto` — requires `webServer` · `loader` ([`packages/host/directory-picker-auto/src/index.ts`](../packages/host/directory-picker-auto/src/index.ts))
-- `@origin-ai/xhe-host-directory-picker-native` ([`packages/host/directory-picker-native/src/index.ts`](../packages/host/directory-picker-native/src/index.ts))
-- `@origin-ai/xhe-host-plugin-inventory` — requires `loader` ([`packages/host/plugin-inventory/src/index.ts`](../packages/host/plugin-inventory/src/index.ts))
-- `@origin-ai/xhe-llm` ([`packages/llm/llm/src/index.ts`](../packages/llm/llm/src/index.ts))
-- `@origin-ai/xhe-lsp` ([`packages/lsp/lsp/src/index.ts`](../packages/lsp/lsp/src/index.ts))
-- `@origin-ai/xhe-schedule` — requires `agents` · `sessions` · `tools` · `sessionPersistence` ([`packages/schedule/schedule/src/index.ts`](../packages/schedule/schedule/src/index.ts))
-- `@origin-ai/xhe-session` ([`packages/core/session/src/index.ts`](../packages/core/session/src/index.ts))
-- `@origin-ai/xhe-session-checkpoint-policy` — requires `llm` · `sessionPersistence` · `sessions` · `tools` ([`packages/session/session-checkpoint-policy/src/index.ts`](../packages/session/session-checkpoint-policy/src/index.ts))
-- `@origin-ai/xhe-session-log-export` — requires `commands` ([`packages/session-query/session-log-export/src/index.ts`](../packages/session-query/session-log-export/src/index.ts))
-- `@origin-ai/xhe-session-projection` ([`packages/session/session-projection/src/index.ts`](../packages/session/session-projection/src/index.ts))
-- `@origin-ai/xhe-session-stats` — requires `sessionProjections` ([`packages/session/session-stats/src/index.ts`](../packages/session/session-stats/src/index.ts))
-- `@origin-ai/xhe-skill-badge` — requires `skills` ([`packages/skill/skill-badge/src/index.ts`](../packages/skill/skill-badge/src/index.ts))
-- `@origin-ai/xhe-storage` ([`packages/storage/storage/src/index.ts`](../packages/storage/storage/src/index.ts))
-- `@origin-ai/xhe-subagent` ([`packages/subagent/subagent/src/index.ts`](../packages/subagent/subagent/src/index.ts))
-- `@origin-ai/xhe-subprocess-local` ([`packages/subprocess/subprocess-local/src/index.ts`](../packages/subprocess/subprocess-local/src/index.ts))
-- `@origin-ai/xhe-terminal` ([`packages/terminal/terminal/src/index.ts`](../packages/terminal/terminal/src/index.ts))
-- `@origin-ai/xhe-tool-ask-user` — requires `tools` · `userQuestions` ([`packages/interaction/tool-ask-user/src/index.ts`](../packages/interaction/tool-ask-user/src/index.ts))
-- `@origin-ai/xhe-tool-call-timeout-policy` — requires `tools` ([`packages/guard/timeout-policy/src/index.ts`](../packages/guard/timeout-policy/src/index.ts))
-- `@origin-ai/xhe-tool-cordis` — requires `tools` · `systemPrompt` · `dynamicCordisRunner` · `cordisInspect` ([`packages/extensions/tool-cordis/src/index.ts`](../packages/extensions/tool-cordis/src/index.ts))
-- `@origin-ai/xhe-tool-subagent-control` — requires `tools` · `subagents` ([`packages/subagent/tool-subagent-control/src/index.ts`](../packages/subagent/tool-subagent-control/src/index.ts))
-- `@origin-ai/xhe-user-questions` ([`packages/interaction/user-questions/src/index.ts`](../packages/interaction/user-questions/src/index.ts))
-- `@origin-ai/xhe-workspace` — requires `storageDomain` · `sessionPersistence` ([`packages/workspace/workspace/src/index.ts`](../packages/workspace/workspace/src/index.ts))
+- `@origin-ai/cf-fs-e2b` — requires `e2b` ([`packages/e2b/fs-e2b/src/index.ts`](../packages/e2b/fs-e2b/src/index.ts))
+- `@origin-ai/cf-fs-observation-policy` ([`packages/fs/fs-observation-policy/src/index.ts`](../packages/fs/fs-observation-policy/src/index.ts))
+- `@origin-ai/cf-goal-round-driver` — requires `agents` · `goals` · `sessions` ([`packages/goal/goal-round-driver/src/index.ts`](../packages/goal/goal-round-driver/src/index.ts))
+- `@origin-ai/cf-host-directory-picker-auto` — requires `webServer` · `loader` ([`packages/host/directory-picker-auto/src/index.ts`](../packages/host/directory-picker-auto/src/index.ts))
+- `@origin-ai/cf-host-directory-picker-native` ([`packages/host/directory-picker-native/src/index.ts`](../packages/host/directory-picker-native/src/index.ts))
+- `@origin-ai/cf-host-plugin-inventory` — requires `loader` ([`packages/host/plugin-inventory/src/index.ts`](../packages/host/plugin-inventory/src/index.ts))
+- `@origin-ai/cf-llm` ([`packages/llm/llm/src/index.ts`](../packages/llm/llm/src/index.ts))
+- `@origin-ai/cf-lsp` ([`packages/lsp/lsp/src/index.ts`](../packages/lsp/lsp/src/index.ts))
+- `@origin-ai/cf-schedule` — requires `agents` · `sessions` · `tools` · `sessionPersistence` ([`packages/schedule/schedule/src/index.ts`](../packages/schedule/schedule/src/index.ts))
+- `@origin-ai/cf-session` ([`packages/core/session/src/index.ts`](../packages/core/session/src/index.ts))
+- `@origin-ai/cf-session-checkpoint-policy` — requires `llm` · `sessionPersistence` · `sessions` · `tools` ([`packages/session/session-checkpoint-policy/src/index.ts`](../packages/session/session-checkpoint-policy/src/index.ts))
+- `@origin-ai/cf-session-log-export` — requires `commands` ([`packages/session-query/session-log-export/src/index.ts`](../packages/session-query/session-log-export/src/index.ts))
+- `@origin-ai/cf-session-projection` ([`packages/session/session-projection/src/index.ts`](../packages/session/session-projection/src/index.ts))
+- `@origin-ai/cf-session-stats` — requires `sessionProjections` ([`packages/session/session-stats/src/index.ts`](../packages/session/session-stats/src/index.ts))
+- `@origin-ai/cf-skill-badge` — requires `skills` ([`packages/skill/skill-badge/src/index.ts`](../packages/skill/skill-badge/src/index.ts))
+- `@origin-ai/cf-storage` ([`packages/storage/storage/src/index.ts`](../packages/storage/storage/src/index.ts))
+- `@origin-ai/cf-subagent` ([`packages/subagent/subagent/src/index.ts`](../packages/subagent/subagent/src/index.ts))
+- `@origin-ai/cf-subprocess-local` ([`packages/subprocess/subprocess-local/src/index.ts`](../packages/subprocess/subprocess-local/src/index.ts))
+- `@origin-ai/cf-terminal` ([`packages/terminal/terminal/src/index.ts`](../packages/terminal/terminal/src/index.ts))
+- `@origin-ai/cf-tool-ask-user` — requires `tools` · `userQuestions` ([`packages/interaction/tool-ask-user/src/index.ts`](../packages/interaction/tool-ask-user/src/index.ts))
+- `@origin-ai/cf-tool-call-timeout-policy` — requires `tools` ([`packages/guard/timeout-policy/src/index.ts`](../packages/guard/timeout-policy/src/index.ts))
+- `@origin-ai/cf-tool-cordis` — requires `tools` · `systemPrompt` · `dynamicCordisRunner` · `cordisInspect` ([`packages/extensions/tool-cordis/src/index.ts`](../packages/extensions/tool-cordis/src/index.ts))
+- `@origin-ai/cf-tool-subagent-control` — requires `tools` · `subagents` ([`packages/subagent/tool-subagent-control/src/index.ts`](../packages/subagent/tool-subagent-control/src/index.ts))
+- `@origin-ai/cf-user-questions` ([`packages/interaction/user-questions/src/index.ts`](../packages/interaction/user-questions/src/index.ts))
+- `@origin-ai/cf-workspace` — requires `storageDomain` · `sessionPersistence` ([`packages/workspace/workspace/src/index.ts`](../packages/workspace/workspace/src/index.ts))
 
 ## Seam packages (not directly loadable)
 
 Abstract service classes — a deployment loads a concrete implementation package instead ([capability seams](../.agents/notes/implemented/architecture/2026-06-13-capability-seams.md)).
 
-- `@origin-ai/xhe-attachment` — abstract `AttachmentStore` ([`packages/attachment/attachment/src/index.ts`](../packages/attachment/attachment/src/index.ts))
-- `@origin-ai/xhe-code-runtime` — abstract `CodeRuntime` ([`packages/code-runtime/code-runtime/src/index.ts`](../packages/code-runtime/code-runtime/src/index.ts))
-- `@origin-ai/xhe-compaction` — abstract `CompactionEngine` ([`packages/compaction/compaction/src/index.ts`](../packages/compaction/compaction/src/index.ts))
-- `@origin-ai/xhe-credentials` — abstract `CredentialProvider` ([`packages/credentials/credentials/src/index.ts`](../packages/credentials/credentials/src/index.ts))
-- `@origin-ai/xhe-file-reference` — abstract `FileReferenceService` ([`packages/context/file-reference/src/index.ts`](../packages/context/file-reference/src/index.ts))
-- `@origin-ai/xhe-fs` — abstract `FileSystem` ([`packages/fs/fs/src/index.ts`](../packages/fs/fs/src/index.ts))
-- `@origin-ai/xhe-host-directory-picker` — abstract `DirectoryPicker` ([`packages/host/directory-picker/src/index.ts`](../packages/host/directory-picker/src/index.ts))
-- `@origin-ai/xhe-jobs` — abstract `JobRegistry` ([`packages/jobs/jobs/src/index.ts`](../packages/jobs/jobs/src/index.ts))
-- `@origin-ai/xhe-sandbox` — abstract `SandboxProvider` ([`packages/sandbox/sandbox/src/index.ts`](../packages/sandbox/sandbox/src/index.ts))
-- `@origin-ai/xhe-session-persistence` — abstract `SessionPersistence` ([`packages/session/session-persistence/src/index.ts`](../packages/session/session-persistence/src/index.ts))
-- `@origin-ai/xhe-session-query` — abstract `SessionQueryEngine` ([`packages/session-query/session-query/src/index.ts`](../packages/session-query/session-query/src/index.ts))
-- `@origin-ai/xhe-settings` — abstract `SettingsProvider` ([`packages/settings/settings/src/index.ts`](../packages/settings/settings/src/index.ts))
-- `@origin-ai/xhe-shell` — abstract `ShellExecutor` ([`packages/shell/shell/src/index.ts`](../packages/shell/shell/src/index.ts))
-- `@origin-ai/xhe-spill` — abstract `SpillStore` ([`packages/spill/spill/src/index.ts`](../packages/spill/spill/src/index.ts))
-- `@origin-ai/xhe-subprocess` — abstract `SubprocessRuntime` ([`packages/subprocess/subprocess/src/index.ts`](../packages/subprocess/subprocess/src/index.ts))
-- `@origin-ai/xhe-workflow` — abstract `WorkflowEngine` ([`packages/workflow/workflow/src/index.ts`](../packages/workflow/workflow/src/index.ts))
+- `@origin-ai/cf-attachment` — abstract `AttachmentStore` ([`packages/attachment/attachment/src/index.ts`](../packages/attachment/attachment/src/index.ts))
+- `@origin-ai/cf-code-runtime` — abstract `CodeRuntime` ([`packages/code-runtime/code-runtime/src/index.ts`](../packages/code-runtime/code-runtime/src/index.ts))
+- `@origin-ai/cf-compaction` — abstract `CompactionEngine` ([`packages/compaction/compaction/src/index.ts`](../packages/compaction/compaction/src/index.ts))
+- `@origin-ai/cf-credentials` — abstract `CredentialProvider` ([`packages/credentials/credentials/src/index.ts`](../packages/credentials/credentials/src/index.ts))
+- `@origin-ai/cf-file-reference` — abstract `FileReferenceService` ([`packages/context/file-reference/src/index.ts`](../packages/context/file-reference/src/index.ts))
+- `@origin-ai/cf-fs` — abstract `FileSystem` ([`packages/fs/fs/src/index.ts`](../packages/fs/fs/src/index.ts))
+- `@origin-ai/cf-host-directory-picker` — abstract `DirectoryPicker` ([`packages/host/directory-picker/src/index.ts`](../packages/host/directory-picker/src/index.ts))
+- `@origin-ai/cf-jobs` — abstract `JobRegistry` ([`packages/jobs/jobs/src/index.ts`](../packages/jobs/jobs/src/index.ts))
+- `@origin-ai/cf-sandbox` — abstract `SandboxProvider` ([`packages/sandbox/sandbox/src/index.ts`](../packages/sandbox/sandbox/src/index.ts))
+- `@origin-ai/cf-session-persistence` — abstract `SessionPersistence` ([`packages/session/session-persistence/src/index.ts`](../packages/session/session-persistence/src/index.ts))
+- `@origin-ai/cf-session-query` — abstract `SessionQueryEngine` ([`packages/session-query/session-query/src/index.ts`](../packages/session-query/session-query/src/index.ts))
+- `@origin-ai/cf-settings` — abstract `SettingsProvider` ([`packages/settings/settings/src/index.ts`](../packages/settings/settings/src/index.ts))
+- `@origin-ai/cf-shell` — abstract `ShellExecutor` ([`packages/shell/shell/src/index.ts`](../packages/shell/shell/src/index.ts))
+- `@origin-ai/cf-spill` — abstract `SpillStore` ([`packages/spill/spill/src/index.ts`](../packages/spill/spill/src/index.ts))
+- `@origin-ai/cf-subprocess` — abstract `SubprocessRuntime` ([`packages/subprocess/subprocess/src/index.ts`](../packages/subprocess/subprocess/src/index.ts))
+- `@origin-ai/cf-workflow` — abstract `WorkflowEngine` ([`packages/workflow/workflow/src/index.ts`](../packages/workflow/workflow/src/index.ts))
 
 ## Library packages (no plugin entry)
 
 Imported as libraries by other packages; a `cordis.yml` cannot load them.
 
-- `@origin-ai/xhe-acp-snapshot` ([`packages/test-support/acp-snapshot/src/index.ts`](../packages/test-support/acp-snapshot/src/index.ts))
-- `@origin-ai/xhe-agent-loop-testkit` ([`packages/test-support/agent-loop-testkit/src/index.ts`](../packages/test-support/agent-loop-testkit/src/index.ts))
-- `@origin-ai/xhe-anonymous-user-id` ([`packages/identity/anonymous-user-id/src/index.ts`](../packages/identity/anonymous-user-id/src/index.ts))
-- `@origin-ai/xhe-app-boot` ([`packages/boot/app-boot/src/index.ts`](../packages/boot/app-boot/src/index.ts))
-- `@origin-ai/xhe-atomic-write` ([`packages/util/atomic-write/src/index.ts`](../packages/util/atomic-write/src/index.ts))
-- `@origin-ai/xhe-base` ([`packages/bundle/base/src/index.ts`](../packages/bundle/base/src/index.ts))
-- `@origin-ai/xhe-brand` ([`packages/util/brand/src/index.ts`](../packages/util/brand/src/index.ts))
-- `@origin-ai/xhe-client-test-runtime` ([`packages/test-support/client-runtime/src/index.ts`](../packages/test-support/client-runtime/src/index.ts))
-- `@origin-ai/xhe-client-ui-primitives` ([`packages/client/ui-primitives/src/index.ts`](../packages/client/ui-primitives/src/index.ts))
-- `@origin-ai/xhe-client-ui-slots` ([`packages/client/ui-slots/src/index.ts`](../packages/client/ui-slots/src/index.ts))
-- `@origin-ai/xhe-client-web` ([`packages/client/web/src/index.ts`](../packages/client/web/src/index.ts))
-- `@origin-ai/xhe-cmdline` ([`packages/boot/cmdline/src/index.ts`](../packages/boot/cmdline/src/index.ts))
-- `@origin-ai/xhe-code-runtime-python` ([`packages/code-runtime/code-runtime-python/src/index.ts`](../packages/code-runtime/code-runtime-python/src/index.ts))
-- `@origin-ai/xhe-home-paths` ([`packages/util/home-paths/src/index.ts`](../packages/util/home-paths/src/index.ts))
-- `@origin-ai/xhe-hook-protocol` ([`packages/hooks/hook-protocol/src/index.ts`](../packages/hooks/hook-protocol/src/index.ts))
-- `@origin-ai/xhe-launch-environment` ([`packages/util/launch-environment/src/index.ts`](../packages/util/launch-environment/src/index.ts))
-- `@origin-ai/xhe-llm-mock-server` ([`packages/test-support/llm-mock-server/src/index.ts`](../packages/test-support/llm-mock-server/src/index.ts))
-- `@origin-ai/xhe-loader-smoke` ([`packages/test-support/loader-smoke/src/index.ts`](../packages/test-support/loader-smoke/src/index.ts))
-- `@origin-ai/xhe-native-command` ([`packages/util/native-command/src/index.ts`](../packages/util/native-command/src/index.ts))
-- `@origin-ai/xhe-output-retention` ([`packages/util/output-retention/src/index.ts`](../packages/util/output-retention/src/index.ts))
-- `@origin-ai/xhe-sandbox-windows-acl` ([`packages/sandbox/sandbox-windows-acl/src/index.ts`](../packages/sandbox/sandbox-windows-acl/src/index.ts))
-- `@origin-ai/xhe-scope` ([`packages/core/scope/src/index.ts`](../packages/core/scope/src/index.ts))
-- `@origin-ai/xhe-sdk-client` ([`packages/sdk/client/src/index.ts`](../packages/sdk/client/src/index.ts))
-- `@origin-ai/xhe-sdk-jsonrpc-demo` ([`packages/examples/jsonrpc-demo/src/index.ts`](../packages/examples/jsonrpc-demo/src/index.ts))
-- `@origin-ai/xhe-sdk-protocol` ([`packages/sdk/protocol/src/index.ts`](../packages/sdk/protocol/src/index.ts))
-- `@origin-ai/xhe-session-telemetry` ([`packages/session/session-telemetry/src/index.ts`](../packages/session/session-telemetry/src/index.ts))
-- `@origin-ai/xhe-session-title-llm` ([`packages/session/session-title-llm/src/index.ts`](../packages/session/session-title-llm/src/index.ts))
-- `@origin-ai/xhe-subagent-in-process-driver` ([`packages/subagent/subagent-in-process-driver/src/index.ts`](../packages/subagent/subagent-in-process-driver/src/index.ts))
-- `@origin-ai/xhe-timeout` ([`packages/util/timeout/src/index.ts`](../packages/util/timeout/src/index.ts))
-- `@origin-ai/xhe-typert-generator` ([`packages/typert/generator/src/index.ts`](../packages/typert/generator/src/index.ts))
-- `@origin-ai/xhe-typert-protocol` ([`packages/typert/protocol/src/index.ts`](../packages/typert/protocol/src/index.ts))
-- `@origin-ai/xhe-typert-registry` ([`packages/typert/registry/src/index.ts`](../packages/typert/registry/src/index.ts))
+- `@origin-ai/cf-acp-snapshot` ([`packages/test-support/acp-snapshot/src/index.ts`](../packages/test-support/acp-snapshot/src/index.ts))
+- `@origin-ai/cf-agent-loop-testkit` ([`packages/test-support/agent-loop-testkit/src/index.ts`](../packages/test-support/agent-loop-testkit/src/index.ts))
+- `@origin-ai/cf-anonymous-user-id` ([`packages/identity/anonymous-user-id/src/index.ts`](../packages/identity/anonymous-user-id/src/index.ts))
+- `@origin-ai/cf-app-boot` ([`packages/boot/app-boot/src/index.ts`](../packages/boot/app-boot/src/index.ts))
+- `@origin-ai/cf-atomic-write` ([`packages/util/atomic-write/src/index.ts`](../packages/util/atomic-write/src/index.ts))
+- `@origin-ai/cf-base` ([`packages/bundle/base/src/index.ts`](../packages/bundle/base/src/index.ts))
+- `@origin-ai/cf-brand` ([`packages/util/brand/src/index.ts`](../packages/util/brand/src/index.ts))
+- `@origin-ai/cf-client-test-runtime` ([`packages/test-support/client-runtime/src/index.ts`](../packages/test-support/client-runtime/src/index.ts))
+- `@origin-ai/cf-client-ui-primitives` ([`packages/client/ui-primitives/src/index.ts`](../packages/client/ui-primitives/src/index.ts))
+- `@origin-ai/cf-client-ui-slots` ([`packages/client/ui-slots/src/index.ts`](../packages/client/ui-slots/src/index.ts))
+- `@origin-ai/cf-client-web` ([`packages/client/web/src/index.ts`](../packages/client/web/src/index.ts))
+- `@origin-ai/cf-cmdline` ([`packages/boot/cmdline/src/index.ts`](../packages/boot/cmdline/src/index.ts))
+- `@origin-ai/cf-code-runtime-python` ([`packages/code-runtime/code-runtime-python/src/index.ts`](../packages/code-runtime/code-runtime-python/src/index.ts))
+- `@origin-ai/cf-home-paths` ([`packages/util/home-paths/src/index.ts`](../packages/util/home-paths/src/index.ts))
+- `@origin-ai/cf-hook-protocol` ([`packages/hooks/hook-protocol/src/index.ts`](../packages/hooks/hook-protocol/src/index.ts))
+- `@origin-ai/cf-launch-environment` ([`packages/util/launch-environment/src/index.ts`](../packages/util/launch-environment/src/index.ts))
+- `@origin-ai/cf-llm-mock-server` ([`packages/test-support/llm-mock-server/src/index.ts`](../packages/test-support/llm-mock-server/src/index.ts))
+- `@origin-ai/cf-loader-smoke` ([`packages/test-support/loader-smoke/src/index.ts`](../packages/test-support/loader-smoke/src/index.ts))
+- `@origin-ai/cf-native-command` ([`packages/util/native-command/src/index.ts`](../packages/util/native-command/src/index.ts))
+- `@origin-ai/cf-output-retention` ([`packages/util/output-retention/src/index.ts`](../packages/util/output-retention/src/index.ts))
+- `@origin-ai/cf-sandbox-windows-acl` ([`packages/sandbox/sandbox-windows-acl/src/index.ts`](../packages/sandbox/sandbox-windows-acl/src/index.ts))
+- `@origin-ai/cf-scope` ([`packages/core/scope/src/index.ts`](../packages/core/scope/src/index.ts))
+- `@origin-ai/cf-sdk-client` ([`packages/sdk/client/src/index.ts`](../packages/sdk/client/src/index.ts))
+- `@origin-ai/cf-sdk-jsonrpc-demo` ([`packages/examples/jsonrpc-demo/src/index.ts`](../packages/examples/jsonrpc-demo/src/index.ts))
+- `@origin-ai/cf-sdk-protocol` ([`packages/sdk/protocol/src/index.ts`](../packages/sdk/protocol/src/index.ts))
+- `@origin-ai/cf-session-telemetry` ([`packages/session/session-telemetry/src/index.ts`](../packages/session/session-telemetry/src/index.ts))
+- `@origin-ai/cf-session-title-llm` ([`packages/session/session-title-llm/src/index.ts`](../packages/session/session-title-llm/src/index.ts))
+- `@origin-ai/cf-subagent-in-process-driver` ([`packages/subagent/subagent-in-process-driver/src/index.ts`](../packages/subagent/subagent-in-process-driver/src/index.ts))
+- `@origin-ai/cf-timeout` ([`packages/util/timeout/src/index.ts`](../packages/util/timeout/src/index.ts))
+- `@origin-ai/cf-typert-generator` ([`packages/typert/generator/src/index.ts`](../packages/typert/generator/src/index.ts))
+- `@origin-ai/cf-typert-protocol` ([`packages/typert/protocol/src/index.ts`](../packages/typert/protocol/src/index.ts))
+- `@origin-ai/cf-typert-registry` ([`packages/typert/registry/src/index.ts`](../packages/typert/registry/src/index.ts))

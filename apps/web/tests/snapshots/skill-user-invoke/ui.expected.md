@@ -12,10 +12,10 @@
 - text: /user-invoke-demo and confirm the fixture wiring {{clock}}
 - button "Copy":
   - img
-- button "Context injection @origin-ai/xhe-system-prompt":
+- button "Context injection @origin-ai/cf-system-prompt":
   - img
   - img
-  - text: Context injection @origin-ai/xhe-system-prompt
+  - text: Context injection @origin-ai/cf-system-prompt
 - button "Context injection user-invoke-demo":
   - img
   - img

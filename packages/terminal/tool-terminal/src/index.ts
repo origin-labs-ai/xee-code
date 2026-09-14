@@ -1,21 +1,21 @@
 /**
  * Six model-facing persistent terminal tools. Owner identity comes from the exact
  * tool execution Agent; generic `ctx.jobs` owns background ids and collection.
- * @module @origin-ai/xhe-tool-terminal
+ * @module @origin-ai/cf-tool-terminal
  */
 
 import { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import type { Agent } from '@origin-ai/xhe-agent'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import { TerminalSessionId } from '@origin-ai/xhe-terminal'
-import type { TerminalSendResult, TerminalSessionId as TerminalSessionIdType, TerminalSignal } from '@origin-ai/xhe-terminal'
-import type {} from '@origin-ai/xhe-jobs'
-import { defineTool } from '@origin-ai/xhe-tools'
-import type { ToolDefinition } from '@origin-ai/xhe-tools'
+import type { Agent } from '@origin-ai/cf-agent'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import { TerminalSessionId } from '@origin-ai/cf-terminal'
+import type { TerminalSendResult, TerminalSessionId as TerminalSessionIdType, TerminalSignal } from '@origin-ai/cf-terminal'
+import type {} from '@origin-ai/cf-jobs'
+import { defineTool } from '@origin-ai/cf-tools'
+import type { ToolDefinition } from '@origin-ai/cf-tools'
 import { boundTerminalText, renderList, renderRead, renderSend, renderSendRead, renderSpawn } from './render.ts'
 
-declare module '@origin-ai/xhe-jobs' {
+declare module '@origin-ai/cf-jobs' {
   interface JobKindMap {
     'pty-send': 'pty-send'
   }
@@ -250,7 +250,7 @@ export function apply(ctx: Context, config: Config = {}): void {
       if (args.run_in_background === true) {
         if (!enableRunInBackground) throw new Error('background terminal sends are disabled by tool-terminal configuration')
         const jobs = ctx.get('jobs')
-        if (jobs === undefined) throw new Error('background terminal sends require @origin-ai/xhe-jobs and @origin-ai/xhe-tool-jobs')
+        if (jobs === undefined) throw new Error('background terminal sends require @origin-ai/cf-jobs and @origin-ai/cf-tool-jobs')
         let cancelRequested = false
         const jobId = jobs.start({
           kind: 'pty-send',

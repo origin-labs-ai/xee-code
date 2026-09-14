@@ -9,8 +9,8 @@
  * through {@link SettingsDescribeMirror.acceptView}.
  */
 
-import type { IApiClient, SettingsNamespaceView } from '@origin-ai/xhe-api-remotes/client'
-import { createSnapshotStore, type SnapshotStore } from '@origin-ai/xhe-client-runtime/client'
+import type { IApiClient, SettingsNamespaceView } from '@origin-ai/cf-api-remotes/client'
+import { createSnapshotStore, type SnapshotStore } from '@origin-ai/cf-client-runtime/client'
 
 type SettingsFace = Pick<IApiClient, 'settings'>
 

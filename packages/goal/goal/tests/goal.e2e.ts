@@ -2,9 +2,9 @@ import { readFile, readdir } from 'node:fs/promises'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
-import type { SessionEvent } from '@origin-ai/xhe-session'
-import { decodeGoalChange } from '@origin-ai/xhe-goal'
-import { LOADER_SMOKE_TEST_TIMEOUT_MS, runLoaderSmoke } from '@origin-ai/xhe-loader-smoke'
+import type { SessionEvent } from '@origin-ai/cf-session'
+import { decodeGoalChange } from '@origin-ai/cf-goal'
+import { LOADER_SMOKE_TEST_TIMEOUT_MS, runLoaderSmoke } from '@origin-ai/cf-loader-smoke'
 
 const binScript = fileURLToPath(new URL('../../../../examples/headless-agent/tests/fixtures/headless-driver.ts', import.meta.url))
 const configPath = fileURLToPath(new URL(

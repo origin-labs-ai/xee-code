@@ -4,24 +4,24 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { z } from 'zod'
 import { Context } from '@deepseek-ai/cordis'
-import { createUserMessage } from '@origin-ai/xhe-llm'
-import AgentLoop from '@origin-ai/xhe-agent-loop'
-import { mountAgentLoopTestDependencies } from '@origin-ai/xhe-agent-loop-testkit'
-import SessionStore, { SESSION_FORMAT_VERSION, SessionId } from '@origin-ai/xhe-session'
-import type { SessionEvent, SessionHeader } from '@origin-ai/xhe-session'
-import JsonlSessionPersistence from '@origin-ai/xhe-session-persistence-jsonl'
-import SessionProjectionRegistry from '@origin-ai/xhe-session-projection'
-import type { ProjectionDefinition } from '@origin-ai/xhe-session-projection'
-import SessionProjectionCache from '@origin-ai/xhe-session-projection-cache'
-import Storage from '@origin-ai/xhe-storage'
-import { DomainFacility } from '@origin-ai/xhe-storage-domain'
+import { createUserMessage } from '@origin-ai/cf-llm'
+import AgentLoop from '@origin-ai/cf-agent-loop'
+import { mountAgentLoopTestDependencies } from '@origin-ai/cf-agent-loop-testkit'
+import SessionStore, { SESSION_FORMAT_VERSION, SessionId } from '@origin-ai/cf-session'
+import type { SessionEvent, SessionHeader } from '@origin-ai/cf-session'
+import JsonlSessionPersistence from '@origin-ai/cf-session-persistence-jsonl'
+import SessionProjectionRegistry from '@origin-ai/cf-session-projection'
+import type { ProjectionDefinition } from '@origin-ai/cf-session-projection'
+import SessionProjectionCache from '@origin-ai/cf-session-projection-cache'
+import Storage from '@origin-ai/cf-storage'
+import { DomainFacility } from '@origin-ai/cf-storage-domain'
 import { MemoryMediaPool, MemoryStorageBackend } from '../../../storage/storage-domain/tests/helpers/memory-backend.ts'
 import SubagentRuntime, {
   SUBAGENT_DESCRIPTOR_VERSION,
   SubagentError,
-} from '@origin-ai/xhe-subagent'
-import * as SubagentSpawn from '@origin-ai/xhe-subagent-spawn-in-process'
-import * as SubagentFork from '@origin-ai/xhe-subagent-fork-in-process'
+} from '@origin-ai/cf-subagent'
+import * as SubagentSpawn from '@origin-ai/cf-subagent-spawn-in-process'
+import * as SubagentFork from '@origin-ai/cf-subagent-fork-in-process'
 import { MockAdapter, textResponse } from '../../../core/agent-loop/tests/mock-adapter.ts'
 
 type Script = ConstructorParameters<typeof MockAdapter>[0]
@@ -117,7 +117,7 @@ function descriptorPayload(label: string, version = SUBAGENT_DESCRIPTOR_VERSION)
   return { version, mode: 'continuable' as const, provider: 'spawn', label }
 }
 
-declare module '@origin-ai/xhe-session-projection/types' {
+declare module '@origin-ai/cf-session-projection/types' {
   interface SessionProjectionStateMap {
     subagentListHostileProbe: { poisoned?: boolean | undefined }
   }

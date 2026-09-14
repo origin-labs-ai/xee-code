@@ -10,7 +10,7 @@
  * - Sophisticated code analysis and verification
  * - Multi-critic ensemble gauntlet system
  * 
- * @origin-ai/xhe/mad/utils
+ * @origin-ai/cf/mad/utils
  * @version 2.0.6-advanced
  * 
  * All utilities are designed to be:

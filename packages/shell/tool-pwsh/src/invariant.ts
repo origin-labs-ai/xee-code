@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-tool-pwsh`.
- * @module @origin-ai/xhe-tool-pwsh/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-tool-pwsh`.
+ * @module @origin-ai/cf-tool-pwsh/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-tool-pwsh'
+const PACKAGE_NAME = '@origin-ai/cf-tool-pwsh'
 
 /** Cordis companion plugin name. */
 export const name = 'tool-pwsh-invariant'

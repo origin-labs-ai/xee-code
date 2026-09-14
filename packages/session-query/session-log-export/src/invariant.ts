@@ -1,10 +1,10 @@
-/** Package invariant companion for `@origin-ai/xhe-session-log-export`. */
+/** Package invariant companion for `@origin-ai/cf-session-log-export`. */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-session-log-export'
+const PACKAGE_NAME = '@origin-ai/cf-session-log-export'
 
 export const name = 'session-export-invariant'
 export const inject = ['invariants']

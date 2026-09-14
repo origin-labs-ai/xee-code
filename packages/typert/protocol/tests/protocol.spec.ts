@@ -11,7 +11,7 @@ import {
   type TypertContext,
   type TypertForwardableEvent,
   type TypertRemoteEvent,
-} from '@origin-ai/xhe-typert-protocol'
+} from '@origin-ai/cf-typert-protocol'
 
 declare module '@deepseek-ai/cordis' {
   interface Events {
@@ -34,7 +34,7 @@ declare module '@deepseek-ai/cordis' {
   }
 }
 
-declare module '@origin-ai/xhe-typert-protocol' {
+declare module '@origin-ai/cf-typert-protocol' {
   interface TypertContextMap {
     metaFixture: TypertContext<string>
   }

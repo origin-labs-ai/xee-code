@@ -5,15 +5,15 @@
 // views. callId/approvalId stay plain string here (narrow to real brands when
 // convenient).
 
-import type { CommandId } from '@origin-ai/xhe-commands/brand'
-import type { MessageId } from '@origin-ai/xhe-llm/brand'
-import type { ContentBlock } from '@origin-ai/xhe-llm/types'
-import type { ImageAttachmentRef } from '@origin-ai/xhe-attachment'
-import type { LlmRetryEventData } from '@origin-ai/xhe-llm-retry/types'
-import type { TodoItem } from '@origin-ai/xhe-session/types'
+import type { CommandId } from '@origin-ai/cf-commands/brand'
+import type { MessageId } from '@origin-ai/cf-llm/brand'
+import type { ContentBlock } from '@origin-ai/cf-llm/types'
+import type { ImageAttachmentRef } from '@origin-ai/cf-attachment'
+import type { LlmRetryEventData } from '@origin-ai/cf-llm-retry/types'
+import type { TodoItem } from '@origin-ai/cf-session/types'
 import type {
   RpcError, SessionId, SubagentAddress, ToolCallView, ToolResultView,
-} from '@origin-ai/xhe-api-remotes/client'
+} from '@origin-ai/cf-api-remotes/client'
 import type { PendingInteraction } from './pending.ts'
 import type { ContextProvenanceView, KnownContextForm } from './context-provenance.ts'
 import type {

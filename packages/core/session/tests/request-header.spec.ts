@@ -1,10 +1,10 @@
 /** Request-header canonicalization, equality, snapshot folding, and format rejection. */
 
 import { describe, expect, it } from 'vitest'
-import { Session, SessionId, canonicalHeader, foldRequestHeader, headerEquals } from '@origin-ai/xhe-session'
-import type { EpochHeader, SessionEvent } from '@origin-ai/xhe-session'
-import { createUserMessage, ReasoningEffortId } from '@origin-ai/xhe-llm'
-import type { ToolSchema } from '@origin-ai/xhe-llm'
+import { Session, SessionId, canonicalHeader, foldRequestHeader, headerEquals } from '@origin-ai/cf-session'
+import type { EpochHeader, SessionEvent } from '@origin-ai/cf-session'
+import { createUserMessage, ReasoningEffortId } from '@origin-ai/cf-llm'
+import type { ToolSchema } from '@origin-ai/cf-llm'
 
 const CONFIG = { provider: 'mock', model: 'm' }
 

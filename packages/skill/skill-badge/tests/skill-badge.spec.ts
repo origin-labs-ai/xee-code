@@ -3,8 +3,8 @@ import { readFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it } from 'vitest'
-import SkillRegistry from '@origin-ai/xhe-skill'
-import * as SkillBadge from '@origin-ai/xhe-skill-badge'
+import SkillRegistry from '@origin-ai/cf-skill'
+import * as SkillBadge from '@origin-ai/cf-skill-badge'
 
 describe('xhe-skill-badge', () => {
   it('registers and disposes the bundled badge skill', async () => {

@@ -5,17 +5,17 @@
     path: ./cordis.yml
     patches:
       - id: llm-deepseek
-        name: '@origin-ai/xhe-llm-deepseek'
+        name: '@origin-ai/cf-llm-deepseek'
         disabled: true
       - id: compaction-basic
-        name: '@origin-ai/xhe-compaction-basic'
+        name: '@origin-ai/cf-compaction-basic'
         config:
           thresholdRatio: 0.99
           retainTokens: 20
           maxTokens: 32
       - insert:
           - id: llm-replay
-            name: '@origin-ai/xhe-llm-replay'
+            name: '@origin-ai/cf-llm-replay'
             config:
               providers:
                 - id: deepseek-official

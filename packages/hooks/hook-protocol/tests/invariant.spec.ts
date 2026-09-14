@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import SessionStore, { Session, SessionId } from '@origin-ai/xhe-session'
-import * as HookInvariant from '@origin-ai/xhe-hook-protocol/invariant'
-import InvariantRegistry from '@origin-ai/xhe-invariants'
+import SessionStore, { Session, SessionId } from '@origin-ai/cf-session'
+import * as HookInvariant from '@origin-ai/cf-hook-protocol/invariant'
+import InvariantRegistry from '@origin-ai/cf-invariants'
 
 async function setup(): Promise<Context> {
   const ctx = new Context()

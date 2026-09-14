@@ -1,15 +1,15 @@
 /**
  * Instruction-file discovery and bounded, abort-aware provider reads.
  *
- * @module @origin-ai/xhe-agent-instructions/files
+ * @module @origin-ai/cf-agent-instructions/files
  */
 
 import { createReadStream } from 'node:fs'
 import { stat } from 'node:fs/promises'
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
-import type { FileSystem, FsInfo, FsTarget, FsVersion } from '@origin-ai/xhe-fs'
-import { assertNever } from '@origin-ai/xhe-llm'
-import { dshHomeDisplay } from '@origin-ai/xhe-home-paths'
+import type { FileSystem, FsInfo, FsTarget, FsVersion } from '@origin-ai/cf-fs'
+import { assertNever } from '@origin-ai/cf-llm'
+import { dshHomeDisplay } from '@origin-ai/cf-home-paths'
 import { resolveConfig, resolveDiscoveryConfig, type ResolvedConfig } from './config.ts'
 import { trimmedInstructionDigest } from './digest.ts'
 import {

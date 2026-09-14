@@ -9,7 +9,7 @@
  * - Production deployment patterns
  * - Testing and debugging examples
  * 
- * @origin-ai/xhe/mad/utils
+ * @origin-ai/cf/mad/utils
  * @version 2.0.7-advanced
  */
 

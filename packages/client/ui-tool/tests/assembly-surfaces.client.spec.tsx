@@ -2,11 +2,11 @@
 /** Tool assembly acceptance through the real ui-conversation host. */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, fireEvent, waitFor } from '@testing-library/react'
-import { LocaleRuntime } from '@origin-ai/xhe-client-locale/client'
-import type { ISession, SessionId, TodoItem, ToolResultNode } from '@origin-ai/xhe-client-runtime/client'
-import type { PropsRenderSlots } from '@origin-ai/xhe-client-ui-slots'
-import { SlotTestRuntime, usePinnedBrowserLanguages, stubSettingsScope } from '@origin-ai/xhe-client-test-runtime'
-import { apply as applyConversation, inject as injectConversation } from '@origin-ai/xhe-client-ui-conversation/client'
+import { LocaleRuntime } from '@origin-ai/cf-client-locale/client'
+import type { ISession, SessionId, TodoItem, ToolResultNode } from '@origin-ai/cf-client-runtime/client'
+import type { PropsRenderSlots } from '@origin-ai/cf-client-ui-slots'
+import { SlotTestRuntime, usePinnedBrowserLanguages, stubSettingsScope } from '@origin-ai/cf-client-test-runtime'
+import { apply as applyConversation, inject as injectConversation } from '@origin-ai/cf-client-ui-conversation/client'
 import { apply as applyTool, inject as injectTool } from '../src/client/apply.ts'
 import { toolChatSnapshot } from './tool-details-render.client.tsx'
 

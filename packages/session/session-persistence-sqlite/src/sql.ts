@@ -1,6 +1,6 @@
 /**
  * Closed, package-owned SQL resource loading for SQLite.
- * @module @origin-ai/xhe-session-persistence-sqlite/sql
+ * @module @origin-ai/cf-session-persistence-sqlite/sql
  */
 
 import { readFileSync } from 'node:fs'

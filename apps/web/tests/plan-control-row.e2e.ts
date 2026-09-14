@@ -28,8 +28,8 @@ import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
 // Type-only: pulls the plan/mode SessionEventMap merge so the discriminant
 // filter below types as the plan-mode event in the host aggregate.
-import type {} from '@origin-ai/xhe-plan-mode'
-import type { SessionEvent } from '@origin-ai/xhe-session'
+import type {} from '@origin-ai/cf-plan-mode'
+import type { SessionEvent } from '@origin-ai/cf-session'
 import {
   assertFixtureInventory, compareOrRefreshGolden,
   launchWebScaffold, watchConsole, webSnapshotMode, type WebScaffold,

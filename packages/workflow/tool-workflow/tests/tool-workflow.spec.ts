@@ -1,20 +1,20 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ToolRuntime, { TOOL_ABORTED_BEFORE_DISPATCH } from '@origin-ai/xhe-tools'
-import type { ToolExecutionResult, ToolExecutionToken } from '@origin-ai/xhe-tools'
-import type { Agent } from '@origin-ai/xhe-agent'
-import { WorkflowRunId, WorkflowEngine } from '@origin-ai/xhe-workflow'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ToolRuntime, { TOOL_ABORTED_BEFORE_DISPATCH } from '@origin-ai/cf-tools'
+import type { ToolExecutionResult, ToolExecutionToken } from '@origin-ai/cf-tools'
+import type { Agent } from '@origin-ai/cf-agent'
+import { WorkflowRunId, WorkflowEngine } from '@origin-ai/cf-workflow'
 import type {
   WorkflowAgentEndInfo, WorkflowAgentInfo, WorkflowResult, WorkflowRun,
   WorkflowRunId as WorkflowRunIdType, WorkflowStartRequest,
-} from '@origin-ai/xhe-workflow'
-import { CallId } from '@origin-ai/xhe-llm'
-import SubagentRuntime from '@origin-ai/xhe-subagent'
-import WorkerThreadWorkflowEngine from '@origin-ai/xhe-workflow-worker-thread'
+} from '@origin-ai/cf-workflow'
+import { CallId } from '@origin-ai/cf-llm'
+import SubagentRuntime from '@origin-ai/cf-subagent'
+import WorkerThreadWorkflowEngine from '@origin-ai/cf-workflow-worker-thread'
 import * as toolWorkflow from '../src/index.ts'
-import { Session, SessionId } from '@origin-ai/xhe-session'
+import { Session, SessionId } from '@origin-ai/cf-session'
 
 const testToolSignal = new AbortController().signal
 

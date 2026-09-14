@@ -1,8 +1,8 @@
 /** Assistant block classifier (moved here with sessions/conversation.ts). */
 
 import { describe, expect, it } from 'vitest'
-import { AttachmentId } from '@origin-ai/xhe-attachment'
-import type { ContentBlock } from '@origin-ai/xhe-api-remotes/client'
+import { AttachmentId } from '@origin-ai/cf-attachment'
+import type { ContentBlock } from '@origin-ai/cf-api-remotes/client'
 import { toAssistantBlock, toAssistantBlocks } from '../src/client/sessions/conversation.ts'
 
 describe('toAssistantBlock', () => {

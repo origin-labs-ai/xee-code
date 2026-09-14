@@ -1,12 +1,12 @@
 /** Trajectory view: compact summary over a turn-aware event ledger. */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import type { ConvViewProps } from '@origin-ai/xhe-client-ui-conversation/client'
-import type { InjectFace, PropsLocale } from '@origin-ai/xhe-client-ui-slots'
+import type { ConvViewProps } from '@origin-ai/cf-client-ui-conversation/client'
+import type { InjectFace, PropsLocale } from '@origin-ai/cf-client-ui-slots'
 import type {
   AssistantBlock, AssistantMessageNode, ConversationSnapshot,
   SnapshotStore,
-} from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-runtime/client'
 import {
   TrajectoryTable,
   type TrajectoryRequestNumber,

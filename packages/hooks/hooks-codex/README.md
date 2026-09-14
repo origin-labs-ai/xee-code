@@ -1,6 +1,6 @@
-# @origin-ai/xhe-hooks-codex
+# @origin-ai/cf-hooks-codex
 
-A cordis plugin that runs the supported subset of a user's existing **Codex** hook config on the harness's canonical interception points. The **Codex dialect** half of the hooks subsystem. The dialect-agnostic primitives come from [`@origin-ai/xhe-hook-protocol`](../hook-protocol/README.md); this bridge owns the Codex-shaped payloads, matcher mode, and decision mapping.
+A cordis plugin that runs the supported subset of a user's existing **Codex** hook config on the harness's canonical interception points. The **Codex dialect** half of the hooks subsystem. The dialect-agnostic primitives come from [`@origin-ai/cf-hook-protocol`](../hook-protocol/README.md); this bridge owns the Codex-shaped payloads, matcher mode, and decision mapping.
 
 This bridge implements a deliberate subset of Codex's current hook protocol:
 
@@ -15,7 +15,7 @@ A native cordis plugin could do everything this bridge does, more powerfully; th
 ## Config
 
 ```ts
-import type { Config } from '@origin-ai/xhe-hooks-codex'
+import type { Config } from '@origin-ai/cf-hooks-codex'
 const config: Config = {
   configPath: '/path/to/.codex/hooks.json', // required
   model: 'deepseek-v4',                      // optional: stamped on every payload (Codex includes `model`)

@@ -6,20 +6,20 @@
  * Registrations outlive producer and controller fibers. Agent or service
  * disposal cancels live work and awaits compliant producers; a throwing
  * teardown cancel force-fails only the record and reports a possible orphan.
- * @module @origin-ai/xhe-jobs-local
+ * @module @origin-ai/cf-jobs-local
  */
 
 import { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import type { Agent } from '@origin-ai/xhe-agent'
-import { AnonymousEntries, ScopedLayers, scopeOf } from '@origin-ai/xhe-scope'
-import type { ScopeLayer } from '@origin-ai/xhe-scope'
-import { deadline, timeoutOf } from '@origin-ai/xhe-timeout'
-import { JobRegistry, JobId } from '@origin-ai/xhe-jobs'
+import type { Agent } from '@origin-ai/cf-agent'
+import { AnonymousEntries, ScopedLayers, scopeOf } from '@origin-ai/cf-scope'
+import type { ScopeLayer } from '@origin-ai/cf-scope'
+import { deadline, timeoutOf } from '@origin-ai/cf-timeout'
+import { JobRegistry, JobId } from '@origin-ai/cf-jobs'
 import type {
   JobDoneListener, JobKind, JobOutcome, JobRead, JobSnapshot, JobStart, JobStatus,
   JobsChangedListener,
-} from '@origin-ai/xhe-jobs'
+} from '@origin-ai/cf-jobs'
 
 /** Timeout code that distinguishes a bounded wait from caller cancellation. */
 export const TASK_WAIT_TIMEOUT = 'TASK_WAIT_TIMEOUT'
@@ -85,7 +85,7 @@ class JobLayer implements ScopeLayer {
 
 /**
  * The in-memory `jobs` registry. See the Service Definition contract in
- * `@origin-ai/xhe-jobs` for the ownership, isolation, and lifecycle
+ * `@origin-ai/cf-jobs` for the ownership, isolation, and lifecycle
  * semantics this implementation honors.
  */
 export class LocalJobRegistry extends JobRegistry {
@@ -130,7 +130,7 @@ export class LocalJobRegistry extends JobRegistry {
 
   start(spec: JobStart): JobId {
     if (!this.servesOwner(spec.owner)) {
-      throw new Error('background jobs unavailable: no job controller serves this agent (load @origin-ai/xhe-tool-jobs in its composition)')
+      throw new Error('background jobs unavailable: no job controller serves this agent (load @origin-ai/cf-tool-jobs in its composition)')
     }
     if (spec.kind.length === 0) throw new Error('invalid job kind: expected a non-empty string')
     if (spec.label.length === 0) throw new Error('invalid job label: expected a non-empty string')
@@ -449,7 +449,7 @@ export class LocalJobRegistry extends JobRegistry {
     const ownerId = owner.id
     const agents = this.selfCtx.get('agents')
     if (agents === undefined) {
-      throw new Error('background job ownership requires the agent registry (load @origin-ai/xhe-agent)')
+      throw new Error('background job ownership requires the agent registry (load @origin-ai/cf-agent)')
     }
     if (agents.get(ownerId) !== owner) {
       throw new Error(`agent "${ownerId}" is not the registered agent instance (background job owner must be live)`)

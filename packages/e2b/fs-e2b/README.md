@@ -1,6 +1,6 @@
-# @origin-ai/xhe-fs-e2b
+# @origin-ai/cf-fs-e2b
 
-E2B implementation of the [`@origin-ai/xhe-fs`](../../fs/fs/README.md) provider contract. It has no config: load [`@origin-ai/xhe-e2b`](../e2b/README.md) first, then this service in place of `xhe-fs-local`. The provider uses the owner's remote cwd and SDK handle, so file tools observe the same world as E2B-backed Bash processes.
+E2B implementation of the [`@origin-ai/cf-fs`](../../fs/fs/README.md) provider contract. It has no config: load [`@origin-ai/cf-e2b`](../e2b/README.md) first, then this service in place of `xhe-fs-local`. The provider uses the owner's remote cwd and SDK handle, so file tools observe the same world as E2B-backed Bash processes.
 
 ## Behavior
 

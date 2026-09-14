@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import * as WorkspaceInvariant from '@origin-ai/xhe-client-ui-workspace/invariant'
-import InvariantRegistry from '@origin-ai/xhe-invariants'
+import * as WorkspaceInvariant from '@origin-ai/cf-client-ui-workspace/invariant'
+import InvariantRegistry from '@origin-ai/cf-invariants'
 
 describe('invariant companion', () => {
   it('registers under the package name with an empty installer', async () => {
@@ -11,7 +11,7 @@ describe('invariant companion', () => {
   })
 
   it('node-half apply is a no-op host placeholder', async () => {
-    const { apply } = await import('@origin-ai/xhe-client-ui-workspace')
+    const { apply } = await import('@origin-ai/cf-client-ui-workspace')
     apply()
     expect(true).toBe(true) // reaching here without throw is the contract
   })

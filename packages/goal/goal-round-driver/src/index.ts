@@ -1,16 +1,16 @@
 /**
  * Same-session goal-round driver over public agent, session, and goal services.
- * @module @origin-ai/xhe-goal-round-driver
+ * @module @origin-ai/cf-goal-round-driver
  */
 
 import { isDeepStrictEqual } from 'node:util'
 import { FiberState } from '@deepseek-ai/cordis'
 import type { Context } from '@deepseek-ai/cordis'
-import type { Agent, PreStepDecision } from '@origin-ai/xhe-agent'
-import type { GoalMessageSource, GoalRef, GoalView } from '@origin-ai/xhe-goal'
-import { createUserMessage } from '@origin-ai/xhe-llm'
-import type { ContentBlock, MessageId, MessageSource } from '@origin-ai/xhe-llm'
-import type { Session, SessionEvent, UserMessage } from '@origin-ai/xhe-session'
+import type { Agent, PreStepDecision } from '@origin-ai/cf-agent'
+import type { GoalMessageSource, GoalRef, GoalView } from '@origin-ai/cf-goal'
+import { createUserMessage } from '@origin-ai/cf-llm'
+import type { ContentBlock, MessageId, MessageSource } from '@origin-ai/cf-llm'
+import type { Session, SessionEvent, UserMessage } from '@origin-ai/cf-session'
 import { renderGoalRoundPrompt } from './prompt.ts'
 
 export { renderGoalRoundPrompt } from './prompt.ts'

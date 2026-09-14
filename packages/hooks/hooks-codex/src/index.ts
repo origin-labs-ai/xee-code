@@ -6,7 +6,7 @@
  * blocking decisions are honored. Shared execution and parsing live in
  * `xhe-hook-protocol`; see the
  * [hook-bridges Agent Note](../../../../.agents/notes/implemented/feature/2026-06-30-hook-bridges.md).
- * @module @origin-ai/xhe-hooks-codex
+ * @module @origin-ai/cf-hooks-codex
  */
 
 // Each dialect bridge keeps its complete dependency list visible at the entry
@@ -15,12 +15,12 @@
 import { readFileSync } from 'node:fs'
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import type { Agent, PreStepDecision } from '@origin-ai/xhe-agent'
-import { createUserMessage } from '@origin-ai/xhe-llm'
-import type { ContentBlock, MessageSource } from '@origin-ai/xhe-llm'
-import type { UserMessage } from '@origin-ai/xhe-session'
-import type {} from '@origin-ai/xhe-session-persistence'
-import type { PostToolDecision, PreToolDecision, ToolExecution, ToolExecutionResult } from '@origin-ai/xhe-tools'
+import type { Agent, PreStepDecision } from '@origin-ai/cf-agent'
+import { createUserMessage } from '@origin-ai/cf-llm'
+import type { ContentBlock, MessageSource } from '@origin-ai/cf-llm'
+import type { UserMessage } from '@origin-ai/cf-session'
+import type {} from '@origin-ai/cf-session-persistence'
+import type { PostToolDecision, PreToolDecision, ToolExecution, ToolExecutionResult } from '@origin-ai/cf-tools'
 import {
   appendHookInvoked,
   appendHookResult,
@@ -33,7 +33,7 @@ import {
   type HookOutput,
   type MatcherGroup,
   type MergedHookOutcome,
-} from '@origin-ai/xhe-hook-protocol'
+} from '@origin-ai/cf-hook-protocol'
 import { parseCodexConfig, type CodexHookConfig } from './config.ts'
 /* jscpd:ignore-end */
 

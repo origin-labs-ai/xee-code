@@ -8,85 +8,85 @@ The headless snapshot composition combines the real DeepSeek adapter and coding 
 ```mermaid
 flowchart LR
   cfg["examples/headless-agent<br/>cordis.yml"]
-  plugin_headless_settings["settings<br/>@origin-ai/xhe-settings-file"]
+  plugin_headless_settings["settings<br/>@origin-ai/cf-settings-file"]
   cfg --> plugin_headless_settings
-  plugin_headless_credentials["credentials<br/>@origin-ai/xhe-credentials-local"]
+  plugin_headless_credentials["credentials<br/>@origin-ai/cf-credentials-local"]
   cfg --> plugin_headless_credentials
-  plugin_headless_llm_deepseek["llm-deepseek<br/>@origin-ai/xhe-llm-deepseek"]
+  plugin_headless_llm_deepseek["llm-deepseek<br/>@origin-ai/cf-llm-deepseek"]
   cfg --> plugin_headless_llm_deepseek
-  plugin_headless_subprocess["subprocess<br/>@origin-ai/xhe-subprocess-local"]
+  plugin_headless_subprocess["subprocess<br/>@origin-ai/cf-subprocess-local"]
   cfg --> plugin_headless_subprocess
-  plugin_headless_bash["bash<br/>@origin-ai/xhe-bash-local"]
+  plugin_headless_bash["bash<br/>@origin-ai/cf-bash-local"]
   cfg --> plugin_headless_bash
-  plugin_headless_agent_spine["agent-spine<br/>@origin-ai/xhe-agent-spine-demo"]
+  plugin_headless_agent_spine["agent-spine<br/>@origin-ai/cf-agent-spine-demo"]
   cfg --> plugin_headless_agent_spine
-  plugin_headless_persistence["persistence<br/>@origin-ai/xhe-session-persistence-jsonl"]
+  plugin_headless_persistence["persistence<br/>@origin-ai/cf-session-persistence-jsonl"]
   cfg --> plugin_headless_persistence
-  plugin_headless_checkpoint_policy["checkpoint-policy<br/>@origin-ai/xhe-session-checkpoint-policy"]
+  plugin_headless_checkpoint_policy["checkpoint-policy<br/>@origin-ai/cf-session-checkpoint-policy"]
   cfg --> plugin_headless_checkpoint_policy
-  plugin_headless_token_meter["token-meter<br/>@origin-ai/xhe-token-meter"]
+  plugin_headless_token_meter["token-meter<br/>@origin-ai/cf-token-meter"]
   cfg --> plugin_headless_token_meter
-  plugin_headless_compaction_basic["compaction-basic<br/>@origin-ai/xhe-compaction-basic"]
+  plugin_headless_compaction_basic["compaction-basic<br/>@origin-ai/cf-compaction-basic"]
   cfg --> plugin_headless_compaction_basic
-  plugin_headless_session_projection["session-projection<br/>@origin-ai/xhe-session-projection"]
+  plugin_headless_session_projection["session-projection<br/>@origin-ai/cf-session-projection"]
   cfg --> plugin_headless_session_projection
-  plugin_headless_subagent["subagent<br/>@origin-ai/xhe-subagent"]
+  plugin_headless_subagent["subagent<br/>@origin-ai/cf-subagent"]
   cfg --> plugin_headless_subagent
-  plugin_headless_subagent_spawn_in_process["subagent-spawn-in-process<br/>@origin-ai/xhe-subagent-spawn-in-process"]
+  plugin_headless_subagent_spawn_in_process["subagent-spawn-in-process<br/>@origin-ai/cf-subagent-spawn-in-process"]
   cfg --> plugin_headless_subagent_spawn_in_process
-  plugin_headless_subagent_fork_in_process["subagent-fork-in-process<br/>@origin-ai/xhe-subagent-fork-in-process"]
+  plugin_headless_subagent_fork_in_process["subagent-fork-in-process<br/>@origin-ai/cf-subagent-fork-in-process"]
   cfg --> plugin_headless_subagent_fork_in_process
-  plugin_headless_tool_subagent_control["tool-subagent-control<br/>@origin-ai/xhe-tool-subagent-control"]
+  plugin_headless_tool_subagent_control["tool-subagent-control<br/>@origin-ai/cf-tool-subagent-control"]
   cfg --> plugin_headless_tool_subagent_control
-  plugin_headless_tool_subagent_report["tool-subagent-report<br/>@origin-ai/xhe-tool-subagent-report"]
+  plugin_headless_tool_subagent_report["tool-subagent-report<br/>@origin-ai/cf-tool-subagent-report"]
   cfg --> plugin_headless_tool_subagent_report
-  plugin_headless_tool_subagent["tool-subagent<br/>@origin-ai/xhe-tool-subagent"]
+  plugin_headless_tool_subagent["tool-subagent<br/>@origin-ai/cf-tool-subagent"]
   cfg --> plugin_headless_tool_subagent
-  plugin_headless_tool_subagent_fork["tool-subagent-fork<br/>@origin-ai/xhe-tool-subagent"]
+  plugin_headless_tool_subagent_fork["tool-subagent-fork<br/>@origin-ai/cf-tool-subagent"]
   cfg --> plugin_headless_tool_subagent_fork
-  plugin_headless_workflow_worker_thread["workflow-worker-thread<br/>@origin-ai/xhe-workflow-worker-thread"]
+  plugin_headless_workflow_worker_thread["workflow-worker-thread<br/>@origin-ai/cf-workflow-worker-thread"]
   cfg --> plugin_headless_workflow_worker_thread
-  plugin_headless_tool_workflow["tool-workflow<br/>@origin-ai/xhe-tool-workflow"]
+  plugin_headless_tool_workflow["tool-workflow<br/>@origin-ai/cf-tool-workflow"]
   cfg --> plugin_headless_tool_workflow
-  plugin_headless_tool_ralph["tool-ralph<br/>@origin-ai/xhe-tool-ralph"]
+  plugin_headless_tool_ralph["tool-ralph<br/>@origin-ai/cf-tool-ralph"]
   cfg --> plugin_headless_tool_ralph
-  plugin_headless_tool_todo["tool-todo<br/>@origin-ai/xhe-tool-todo"]
+  plugin_headless_tool_todo["tool-todo<br/>@origin-ai/cf-tool-todo"]
   cfg --> plugin_headless_tool_todo
-  plugin_headless_fs_local["fs-local<br/>@origin-ai/xhe-fs-local"]
+  plugin_headless_fs_local["fs-local<br/>@origin-ai/cf-fs-local"]
   cfg --> plugin_headless_fs_local
-  plugin_headless_fs_observation_policy["fs-observation-policy<br/>@origin-ai/xhe-fs-observation-policy"]
+  plugin_headless_fs_observation_policy["fs-observation-policy<br/>@origin-ai/cf-fs-observation-policy"]
   cfg --> plugin_headless_fs_observation_policy
-  plugin_headless_tool_fs["tool-fs<br/>@origin-ai/xhe-tool-fs"]
+  plugin_headless_tool_fs["tool-fs<br/>@origin-ai/cf-tool-fs"]
   cfg --> plugin_headless_tool_fs
 ```
 
 | Plugin id | Package / module |
 | --- | --- |
-| `settings` | `@origin-ai/xhe-settings-file` |
-| `credentials` | `@origin-ai/xhe-credentials-local` |
-| `llm-deepseek` | `@origin-ai/xhe-llm-deepseek` |
-| `subprocess` | `@origin-ai/xhe-subprocess-local` |
-| `bash` | `@origin-ai/xhe-bash-local` |
-| `agent-spine` | `@origin-ai/xhe-agent-spine-demo` |
-| `persistence` | `@origin-ai/xhe-session-persistence-jsonl` |
-| `checkpoint-policy` | `@origin-ai/xhe-session-checkpoint-policy` |
-| `token-meter` | `@origin-ai/xhe-token-meter` |
-| `compaction-basic` | `@origin-ai/xhe-compaction-basic` |
-| `session-projection` | `@origin-ai/xhe-session-projection` |
-| `subagent` | `@origin-ai/xhe-subagent` |
-| `subagent-spawn-in-process` | `@origin-ai/xhe-subagent-spawn-in-process` |
-| `subagent-fork-in-process` | `@origin-ai/xhe-subagent-fork-in-process` |
-| `tool-subagent-control` | `@origin-ai/xhe-tool-subagent-control` |
-| `tool-subagent-report` | `@origin-ai/xhe-tool-subagent-report` |
-| `tool-subagent` | `@origin-ai/xhe-tool-subagent` |
-| `tool-subagent-fork` | `@origin-ai/xhe-tool-subagent` |
-| `workflow-worker-thread` | `@origin-ai/xhe-workflow-worker-thread` |
-| `tool-workflow` | `@origin-ai/xhe-tool-workflow` |
-| `tool-ralph` | `@origin-ai/xhe-tool-ralph` |
-| `tool-todo` | `@origin-ai/xhe-tool-todo` |
-| `fs-local` | `@origin-ai/xhe-fs-local` |
-| `fs-observation-policy` | `@origin-ai/xhe-fs-observation-policy` |
-| `tool-fs` | `@origin-ai/xhe-tool-fs` |
+| `settings` | `@origin-ai/cf-settings-file` |
+| `credentials` | `@origin-ai/cf-credentials-local` |
+| `llm-deepseek` | `@origin-ai/cf-llm-deepseek` |
+| `subprocess` | `@origin-ai/cf-subprocess-local` |
+| `bash` | `@origin-ai/cf-bash-local` |
+| `agent-spine` | `@origin-ai/cf-agent-spine-demo` |
+| `persistence` | `@origin-ai/cf-session-persistence-jsonl` |
+| `checkpoint-policy` | `@origin-ai/cf-session-checkpoint-policy` |
+| `token-meter` | `@origin-ai/cf-token-meter` |
+| `compaction-basic` | `@origin-ai/cf-compaction-basic` |
+| `session-projection` | `@origin-ai/cf-session-projection` |
+| `subagent` | `@origin-ai/cf-subagent` |
+| `subagent-spawn-in-process` | `@origin-ai/cf-subagent-spawn-in-process` |
+| `subagent-fork-in-process` | `@origin-ai/cf-subagent-fork-in-process` |
+| `tool-subagent-control` | `@origin-ai/cf-tool-subagent-control` |
+| `tool-subagent-report` | `@origin-ai/cf-tool-subagent-report` |
+| `tool-subagent` | `@origin-ai/cf-tool-subagent` |
+| `tool-subagent-fork` | `@origin-ai/cf-tool-subagent` |
+| `workflow-worker-thread` | `@origin-ai/cf-workflow-worker-thread` |
+| `tool-workflow` | `@origin-ai/cf-tool-workflow` |
+| `tool-ralph` | `@origin-ai/cf-tool-ralph` |
+| `tool-todo` | `@origin-ai/cf-tool-todo` |
+| `fs-local` | `@origin-ai/cf-fs-local` |
+| `fs-observation-policy` | `@origin-ai/cf-fs-observation-policy` |
+| `tool-fs` | `@origin-ai/cf-tool-fs` |
 
 Source config: [`examples/headless-agent/cordis.yml`](cordis.yml).
 

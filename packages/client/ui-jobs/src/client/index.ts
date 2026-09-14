@@ -4,12 +4,12 @@
  * through the `jobsBySession` list mirror, so the plugin issues no RPC and
  * holds no state of its own beyond popover visibility.
  */
-import type { ClientContext } from '@origin-ai/xhe-client-runtime/client'
+import type { ClientContext } from '@origin-ai/cf-client-runtime/client'
 import { JobListAction } from './JobListAction.tsx'
-import type {} from '@origin-ai/xhe-client-locale/client'
+import type {} from '@origin-ai/cf-client-locale/client'
 import { en, NS, zh, type JobKey } from './locales.ts'
 
-declare module '@origin-ai/xhe-client-ui-slots' {
+declare module '@origin-ai/cf-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Background-job list copy. */
     'job': JobKey

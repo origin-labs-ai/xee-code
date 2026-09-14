@@ -1,5 +1,5 @@
 /**
- * Real-load-path guard for @origin-ai/xhe-tool-fs-search. `tool-fs-search` is
+ * Real-load-path guard for @origin-ai/cf-tool-fs-search. `tool-fs-search` is
  * a NAMESPACE plugin with `inject` — so a stray `export default apply` would
  * make the cordis Loader's `unwrapExports` (`exports.default ?? exports`)
  * collapse the module to the bare `apply` function, DROPPING `inject`. The
@@ -17,10 +17,10 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ToolRuntime from '@origin-ai/xhe-tools'
-import LocalSubprocessRuntime from '@origin-ai/xhe-subprocess-local'
-import * as toolFsSearch from '@origin-ai/xhe-tool-fs-search'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ToolRuntime from '@origin-ai/cf-tools'
+import LocalSubprocessRuntime from '@origin-ai/cf-subprocess-local'
+import * as toolFsSearch from '@origin-ai/cf-tool-fs-search'
 
 describe('xhe-tool-fs-search real-load-path guard', () => {
   it('has no default export and keeps name/inject/Config through unwrapExports', () => {

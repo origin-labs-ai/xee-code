@@ -1,7 +1,7 @@
 /** Shared event metadata and semantic-document projection. */
 
-import { foldSurface } from '@origin-ai/xhe-session'
-import type { SessionEvent, SessionId } from '@origin-ai/xhe-session'
+import { foldSurface } from '@origin-ai/cf-session'
+import type { SessionEvent, SessionId } from '@origin-ai/cf-session'
 import type { SessionEventRecord, SessionEventSearchDocument, SessionEventSurface } from './types.ts'
 import { SessionQueryError } from './config.ts'
 import { extractSessionEventText } from './extraction.ts'

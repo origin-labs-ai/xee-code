@@ -5,7 +5,7 @@
  * resolved differently from the code under test could exempt a file whose
  * suites actually run.
  *
- * @module @origin-ai/xhe-pwsh-local/resolve
+ * @module @origin-ai/cf-pwsh-local/resolve
  */
 
 import { lstatSync } from 'node:fs'

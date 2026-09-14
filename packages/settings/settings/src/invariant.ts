@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-settings`.
- * @module @origin-ai/xhe-settings/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-settings`.
+ * @module @origin-ai/cf-settings/invariant
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 import { deepEqualJson } from './index.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-settings'
+const PACKAGE_NAME = '@origin-ai/cf-settings'
 
 /** Cordis companion plugin name. */
 export const name = 'settings-invariant'

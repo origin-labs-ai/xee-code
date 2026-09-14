@@ -11,30 +11,30 @@ import { Context } from '@deepseek-ai/cordis'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { createElement, type ComponentProps, type FC, type ReactNode } from 'react'
-import { bindSnapshotSelector } from '@origin-ai/xhe-client-test-runtime'
-import { resolveSlotLabel } from '@origin-ai/xhe-client-ui-slots'
+import { bindSnapshotSelector } from '@origin-ai/cf-client-test-runtime'
+import { resolveSlotLabel } from '@origin-ai/cf-client-ui-slots'
 import {
   ConversationEventRegistry, ConversationViewRegistry, createSnapshotStore,
   EMPTY_CHAT_SNAPSHOT,
-} from '@origin-ai/xhe-client-runtime/client'
-import { SlotRegistry } from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-runtime/client'
+import { SlotRegistry } from '@origin-ai/cf-client-runtime/client'
 import type {
   ConversationSnapshot, RequestView,
   SessionId, SessionListState, SnapshotStore, WorkspaceListState,
-} from '@origin-ai/xhe-client-runtime/client'
-import type { ConvViewProps, ViewTab } from '@origin-ai/xhe-client-ui-conversation/client'
+} from '@origin-ai/cf-client-runtime/client'
+import type { ConvViewProps, ViewTab } from '@origin-ai/cf-client-ui-conversation/client'
 import {
   ConversationSession, ConversationSessionHeader,
   type ConversationSessionHeaderProps, type ConversationSessionProps,
-} from '@origin-ai/xhe-client-ui-conversation/src/client/skeleton/ConversationSession.tsx'
-import { createChatStore } from '@origin-ai/xhe-client-ui-conversation/src/client/stores.ts'
-import { zh as conversationZh } from '@origin-ai/xhe-client-ui-conversation/src/client/locales.ts'
-import { apply as localeApply, inject as localeInject } from '@origin-ai/xhe-client-locale/client'
-import { stubSettingsScope } from '@origin-ai/xhe-client-test-runtime'
-import type { LocaleKeysOf } from '@origin-ai/xhe-client-ui-slots'
+} from '@origin-ai/cf-client-ui-conversation/src/client/skeleton/ConversationSession.tsx'
+import { createChatStore } from '@origin-ai/cf-client-ui-conversation/src/client/stores.ts'
+import { zh as conversationZh } from '@origin-ai/cf-client-ui-conversation/src/client/locales.ts'
+import { apply as localeApply, inject as localeInject } from '@origin-ai/cf-client-locale/client'
+import { stubSettingsScope } from '@origin-ai/cf-client-test-runtime'
+import type { LocaleKeysOf } from '@origin-ai/cf-client-ui-slots'
 import { zh, type TrajectoryKey } from '../src/client/locales.ts'
-import { apply, inject } from '@origin-ai/xhe-client-ui-trajectory/client'
-import { apply as nodeApply } from '@origin-ai/xhe-client-ui-trajectory'
+import { apply, inject } from '@origin-ai/cf-client-ui-trajectory/client'
+import { apply as nodeApply } from '@origin-ai/cf-client-ui-trajectory'
 import type { TrajectoryTurnModel } from '../src/client/layout.ts'
 import { TrajectoryTimeline } from '../src/client/TrajectoryTimeline.tsx'
 import {

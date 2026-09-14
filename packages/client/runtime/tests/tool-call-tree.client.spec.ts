@@ -1,4 +1,4 @@
-import type { SessionEvent } from '@origin-ai/xhe-session/types'
+import type { SessionEvent } from '@origin-ai/cf-session/types'
 import { describe, expect, it } from 'vitest'
 import type { RunningToolCall, ToolCallBlock } from '../src/client/sessions/conversation.ts'
 import {

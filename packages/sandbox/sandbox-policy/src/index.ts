@@ -15,16 +15,16 @@
  * reads session state once at each operation boundary; executors and providers
  * remain session-free.
  *
- * @module @origin-ai/xhe-sandbox-policy
+ * @module @origin-ai/cf-sandbox-policy
  */
 
 import { resolve as resolvePath } from 'node:path'
 import { Context, Service } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import type {} from '@origin-ai/xhe-agent'
-import { canonicalPath, type SandboxExecutionPolicy, type SandboxMode } from '@origin-ai/xhe-sandbox'
-import type { Session } from '@origin-ai/xhe-session'
-import type {} from '@origin-ai/xhe-system-prompt'
+import type {} from '@origin-ai/cf-agent'
+import { canonicalPath, type SandboxExecutionPolicy, type SandboxMode } from '@origin-ai/cf-sandbox'
+import type { Session } from '@origin-ai/cf-session'
+import type {} from '@origin-ai/cf-system-prompt'
 import { effectiveSandboxMode } from './session-mode.ts'
 
 export { SANDBOX_MODES, effectiveSandboxMode, setSandboxMode } from './session-mode.ts'

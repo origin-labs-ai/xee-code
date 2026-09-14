@@ -7,20 +7,20 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import Include from '@deepseek-ai/cordis-plugin-include'
-import { CallId } from '@origin-ai/xhe-llm'
-import { Session, SessionId } from '@origin-ai/xhe-session'
-import AgentRegistry, { Inbox } from '@origin-ai/xhe-agent'
-import type { Agent } from '@origin-ai/xhe-agent'
-import TerminalSessionService from '@origin-ai/xhe-terminal'
-import * as TerminalBash from '@origin-ai/xhe-terminal-bash'
-import SandboxProvider from '@origin-ai/xhe-sandbox'
-import type { ConfinedArgv, SandboxPolicy } from '@origin-ai/xhe-sandbox'
-import SandboxPolicyService from '@origin-ai/xhe-sandbox-policy'
-import LocalSubprocessService from '@origin-ai/xhe-subprocess-local'
-import { resolvePwshPath } from '@origin-ai/xhe-pwsh-local/src/resolve.ts'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ToolRegistry from '@origin-ai/xhe-tools'
-import * as ToolPwshPersistent from '@origin-ai/xhe-tool-pwsh-persistent'
+import { CallId } from '@origin-ai/cf-llm'
+import { Session, SessionId } from '@origin-ai/cf-session'
+import AgentRegistry, { Inbox } from '@origin-ai/cf-agent'
+import type { Agent } from '@origin-ai/cf-agent'
+import TerminalSessionService from '@origin-ai/cf-terminal'
+import * as TerminalBash from '@origin-ai/cf-terminal-bash'
+import SandboxProvider from '@origin-ai/cf-sandbox'
+import type { ConfinedArgv, SandboxPolicy } from '@origin-ai/cf-sandbox'
+import SandboxPolicyService from '@origin-ai/cf-sandbox-policy'
+import LocalSubprocessService from '@origin-ai/cf-subprocess-local'
+import { resolvePwshPath } from '@origin-ai/cf-pwsh-local/src/resolve.ts'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ToolRegistry from '@origin-ai/cf-tools'
+import * as ToolPwshPersistent from '@origin-ai/cf-tool-pwsh-persistent'
 
 const hasPwsh = spawnSync(
   resolvePwshPath(), ['-NoLogo', '-NoProfile', '-NonInteractive', '-Command', '$true'],
@@ -75,17 +75,17 @@ describe.skipIf(!hasPwsh)('persistent pwsh through a real cordis.yml Loader comp
     root = await mkdtemp(join(tmpdir(), 'xhe-persistent-pwsh-loader-'))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@origin-ai/xhe-agent'",
-      "- name: '@origin-ai/xhe-system-prompt'",
-      "- name: '@origin-ai/xhe-tools'",
-      "- name: '@origin-ai/xhe-terminal'",
-      "- name: '@origin-ai/xhe-test-sandbox'",
-      "- name: '@origin-ai/xhe-sandbox-policy'",
+      "- name: '@origin-ai/cf-agent'",
+      "- name: '@origin-ai/cf-system-prompt'",
+      "- name: '@origin-ai/cf-tools'",
+      "- name: '@origin-ai/cf-terminal'",
+      "- name: '@origin-ai/cf-test-sandbox'",
+      "- name: '@origin-ai/cf-sandbox-policy'",
       '  config:',
       '    mode: danger-full-access',
       `    workspaceRoot: ${JSON.stringify(root)}`,
-      "- name: '@origin-ai/xhe-subprocess-local'",
-      "- name: '@origin-ai/xhe-terminal-bash'",
+      "- name: '@origin-ai/cf-subprocess-local'",
+      "- name: '@origin-ai/cf-terminal-bash'",
       '  config:',
       '    shellDialect: pwsh',
       '    pollIntervalMs: 10',
@@ -95,7 +95,7 @@ describe.skipIf(!hasPwsh)('persistent pwsh through a real cordis.yml Loader comp
       '    scrollbackLines: 20000',
       '    timeoutMs: 8000',
       '    disposeGraceMs: 500',
-      "- name: '@origin-ai/xhe-tool-pwsh-persistent'",
+      "- name: '@origin-ai/cf-tool-pwsh-persistent'",
       '  config:',
       '    timeoutMs: 20000',
       '',
@@ -106,15 +106,15 @@ describe.skipIf(!hasPwsh)('persistent pwsh through a real cordis.yml Loader comp
     await context.plugin(Loader)
     context.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
-      ['@origin-ai/xhe-agent', AgentRegistry],
-      ['@origin-ai/xhe-system-prompt', SystemPrompt],
-      ['@origin-ai/xhe-tools', ToolRegistry],
-      ['@origin-ai/xhe-terminal', TerminalSessionService],
-      ['@origin-ai/xhe-test-sandbox', PassthroughSandbox],
-      ['@origin-ai/xhe-sandbox-policy', SandboxPolicyService],
-      ['@origin-ai/xhe-subprocess-local', LocalSubprocessService],
-      ['@origin-ai/xhe-terminal-bash', TerminalBash],
-      ['@origin-ai/xhe-tool-pwsh-persistent', ToolPwshPersistent],
+      ['@origin-ai/cf-agent', AgentRegistry],
+      ['@origin-ai/cf-system-prompt', SystemPrompt],
+      ['@origin-ai/cf-tools', ToolRegistry],
+      ['@origin-ai/cf-terminal', TerminalSessionService],
+      ['@origin-ai/cf-test-sandbox', PassthroughSandbox],
+      ['@origin-ai/cf-sandbox-policy', SandboxPolicyService],
+      ['@origin-ai/cf-subprocess-local', LocalSubprocessService],
+      ['@origin-ai/cf-terminal-bash', TerminalBash],
+      ['@origin-ai/cf-tool-pwsh-persistent', ToolPwshPersistent],
     ])
     context.loader.internal = {
       version: 'v2',

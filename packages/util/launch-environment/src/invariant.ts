@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-launch-environment`.
- * @module @origin-ai/xhe-launch-environment/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-launch-environment`.
+ * @module @origin-ai/cf-launch-environment/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-launch-environment'
+const PACKAGE_NAME = '@origin-ai/cf-launch-environment'
 
 /** Cordis companion plugin name. */
 export const name = 'launch-environment-invariant'

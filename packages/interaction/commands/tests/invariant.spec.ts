@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import * as CommandInvariant from '@origin-ai/xhe-commands/invariant'
-import InvariantRegistry, { InvariantError } from '@origin-ai/xhe-invariants'
-import SessionStore, { SessionId, type Session } from '@origin-ai/xhe-session'
-import { CommandId } from '@origin-ai/xhe-commands'
+import * as CommandInvariant from '@origin-ai/cf-commands/invariant'
+import InvariantRegistry, { InvariantError } from '@origin-ai/cf-invariants'
+import SessionStore, { SessionId, type Session } from '@origin-ai/cf-session'
+import { CommandId } from '@origin-ai/cf-commands'
 
 async function mount(installCompanion = true): Promise<{ ctx: Context; session: Session }> {
   const ctx = new Context()
@@ -50,7 +50,7 @@ describe('command lifecycle invariants', () => {
       })
     }).toThrow(expect.objectContaining<Partial<InvariantError>>({
       code: 'INVARIANT',
-      packageName: '@origin-ai/xhe-commands',
+      packageName: '@origin-ai/cf-commands',
     }))
   })
 
@@ -68,7 +68,7 @@ describe('command lifecycle invariants', () => {
       })
     }).toThrow(expect.objectContaining<Partial<InvariantError>>({
       code: 'INVARIANT',
-      packageName: '@origin-ai/xhe-commands',
+      packageName: '@origin-ai/cf-commands',
     }))
   })
 
@@ -83,7 +83,7 @@ describe('command lifecycle invariants', () => {
 
     await expect(ctx.plugin(CommandInvariant)).rejects.toMatchObject({
       code: 'INVARIANT',
-      packageName: '@origin-ai/xhe-commands',
+      packageName: '@origin-ai/cf-commands',
     })
   })
 })

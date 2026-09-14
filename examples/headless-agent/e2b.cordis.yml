@@ -13,36 +13,36 @@
     path: ./advanced.cordis.yml
     patches:
       - id: subprocess
-        name: '@origin-ai/xhe-subprocess-local'
+        name: '@origin-ai/cf-subprocess-local'
         disabled: true
       - id: fs-local
-        name: '@origin-ai/xhe-fs-local'
+        name: '@origin-ai/cf-fs-local'
         disabled: true
       - insert:
           - id: e2b
-            name: '@origin-ai/xhe-e2b'
+            name: '@origin-ai/cf-e2b'
             config:
               cwd: !!js process.cwd()
               timeoutMs: 300000
           - id: subprocess-e2b
-            name: '@origin-ai/xhe-subprocess-e2b'
+            name: '@origin-ai/cf-subprocess-e2b'
           - id: fs-e2b
-            name: '@origin-ai/xhe-fs-e2b'
+            name: '@origin-ai/cf-fs-e2b'
           - id: sandbox-policy
-            name: '@origin-ai/xhe-sandbox-policy'
+            name: '@origin-ai/cf-sandbox-policy'
             config:
               mode: danger-full-access
               workspaceRoot: !!js process.cwd()
           - id: pty
-            name: '@origin-ai/xhe-terminal'
+            name: '@origin-ai/cf-terminal'
           - id: terminal-bash
-            name: '@origin-ai/xhe-terminal-bash'
+            name: '@origin-ai/cf-terminal-bash'
           - id: tool-terminal
-            name: '@origin-ai/xhe-tool-terminal'
+            name: '@origin-ai/cf-tool-terminal'
           - id: lsp
-            name: '@origin-ai/xhe-lsp'
+            name: '@origin-ai/cf-lsp'
           - id: lsp-stdio
-            name: '@origin-ai/xhe-lsp-stdio'
+            name: '@origin-ai/cf-lsp-stdio'
             config:
               servers:
                 typescript:
@@ -54,4 +54,4 @@
                     .js: javascript
                     .jsx: javascriptreact
           - id: tool-lsp
-            name: '@origin-ai/xhe-tool-lsp'
+            name: '@origin-ai/cf-tool-lsp'

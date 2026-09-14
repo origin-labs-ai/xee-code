@@ -5,12 +5,12 @@
  * conversation wiring layer alone sees the full SessionInput. InputMachine
  * (machine.ts) is package-private and never exported.
  */
-import type { ClientContext, SnapshotStore } from '@origin-ai/xhe-client-runtime/client'
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { ClientContext, SnapshotStore } from '@origin-ai/cf-client-runtime/client'
+import type { Branded } from '@origin-ai/cf-brand'
 import type {
   ArbitrateKey, ArbitrateOutcome, CommandClaim, ConsumeTokenRequest, PickOutcome,
   ReferenceInsert, SubmitOutcome, TokenSpan,
-} from '@origin-ai/xhe-client-ui-input-trigger/client'
+} from '@origin-ai/cf-client-ui-input-trigger/client'
 import type { QueueRow } from '../contract/queue.ts'
 import type { InputSubmitMode } from '../contract/composer-submission.ts'
 

@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-jobs-local",
+  "name": "@origin-ai/cf-jobs-local",
   "description": "Process-local implementation of the Xee Harness Enhanced background job registry seam",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -32,11 +32,11 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-scope": "workspace:^",
-    "@origin-ai/xhe-jobs": "workspace:^",
-    "@origin-ai/xhe-timeout": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-scope": "workspace:^",
+    "@origin-ai/cf-jobs": "workspace:^",
+    "@origin-ai/cf-timeout": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "dependencies": {
@@ -45,13 +45,13 @@
   "devDependencies": {
     "@deepseek-ai/cordis-plugin-include": "workspace:^",
     "@deepseek-ai/cordis-plugin-loader": "workspace:^",
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-scope": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-jobs": "workspace:^",
-    "@origin-ai/xhe-timeout": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-scope": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-jobs": "workspace:^",
+    "@origin-ai/cf-timeout": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

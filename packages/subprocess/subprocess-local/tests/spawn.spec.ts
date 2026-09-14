@@ -9,8 +9,8 @@ import {
   spawnSubprocess,
   taskkillProcessTree,
 } from '../src/spawn.ts'
-import type { SubprocessHandle, SubprocessOutputReader } from '@origin-ai/xhe-subprocess'
-import { MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
+import type { SubprocessHandle, SubprocessOutputReader } from '@origin-ai/cf-subprocess'
+import { MAX_TIMER_DELAY_MS } from '@origin-ai/cf-timeout'
 
 /**
  * Translate the suite's POSIX command strings into node one-liners on Windows,
@@ -755,7 +755,7 @@ describe.skipIf(process.platform === 'win32')('tree-survivor escalation (termina
 
   it('service teardown awaits tree survivors, not just handle settlement', async () => {
     const { Context } = await import('@deepseek-ai/cordis')
-    const { default: LocalSubprocessRuntime } = await import('@origin-ai/xhe-subprocess-local')
+    const { default: LocalSubprocessRuntime } = await import('@origin-ai/cf-subprocess-local')
     const ctx = new Context()
     const fiber = await ctx.plugin(LocalSubprocessRuntime)
     ;(ctx.subprocess as InstanceType<typeof LocalSubprocessRuntime>).internals = { spillDir }

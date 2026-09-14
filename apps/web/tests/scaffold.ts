@@ -37,21 +37,21 @@ import {
   scrubRequestHeaders,
   scrubSessionSnapshot,
   stabilizeFixtureMessageIds,
-} from '@origin-ai/xhe-acp-snapshot'
+} from '@origin-ai/cf-acp-snapshot'
 import {
   assertEntriesLoaded,
   composeEntries,
   healProfilesModuleFallback,
   loadOverlayPatches,
-} from '@origin-ai/xhe-app-boot'
-import { dshHomePath } from '@origin-ai/xhe-home-paths'
-import { settingsNamespace } from '@origin-ai/xhe-settings'
-import { LlmAdapter } from '@origin-ai/xhe-llm'
+} from '@origin-ai/cf-app-boot'
+import { dshHomePath } from '@origin-ai/cf-home-paths'
+import { settingsNamespace } from '@origin-ai/cf-settings'
+import { LlmAdapter } from '@origin-ai/cf-llm'
 import type {
   LlmModelInfo, LlmProviderInfo, LlmResolvedModelInfo, RetryPolicyConfig, StreamChunk,
-} from '@origin-ai/xhe-llm'
-import type { ReplayHandle } from '@origin-ai/xhe-llm-replay'
-import { installLlmReplay, parseSessionLog } from '@origin-ai/xhe-llm-replay'
+} from '@origin-ai/cf-llm'
+import type { ReplayHandle } from '@origin-ai/cf-llm-replay'
+import { installLlmReplay, parseSessionLog } from '@origin-ai/cf-llm-replay'
 import SessionStore, {
   packChunkRuns,
   SESSION_FORMAT_VERSION,
@@ -59,12 +59,12 @@ import SessionStore, {
   type Session,
   type SessionEvent,
   type SessionHeader,
-} from '@origin-ai/xhe-session'
-import JsonlSessionPersistence from '@origin-ai/xhe-session-persistence-jsonl'
+} from '@origin-ai/cf-session'
+import JsonlSessionPersistence from '@origin-ai/cf-session-persistence-jsonl'
 // Empty type imports carry the webServer/agents/sessionPersistence Context merges.
-import type {} from '@origin-ai/xhe-host-webserver'
-import type {} from '@origin-ai/xhe-agent'
-import { provideCmdline } from '@origin-ai/xhe-cmdline'
+import type {} from '@origin-ai/cf-host-webserver'
+import type {} from '@origin-ai/cf-agent'
+import { provideCmdline } from '@origin-ai/cf-cmdline'
 import { REPO_ROOT, requireDist } from './support.ts'
 
 // Host-side web e2e cannot import a browser package: doing so would pull that
@@ -74,7 +74,7 @@ import { REPO_ROOT, requireDist } from './support.ts'
 // import {
 //   WELCOME_NOTICE_ACK_FIELD, WELCOME_NOTICE_SETTINGS_NAMESPACE,
 //   WELCOME_NOTICE_VERSION, WELCOME_NOTICE_COPY,
-// } from '@origin-ai/xhe-client-ui-settings-models'
+// } from '@origin-ai/cf-client-ui-settings-models'
 export const WELCOME_NOTICE_SETTINGS_NAMESPACE = 'ui-onboarding'
 export const WELCOME_NOTICE_ACK_FIELD = 'welcomeNoticeVersion'
 export const WELCOME_NOTICE_VERSION = '2026-08-13.1'
@@ -468,7 +468,7 @@ export async function launchWebScaffold(options: LaunchOptions = {}): Promise<We
       config: { host: '127.0.0.1', port: 0 },
     },
     // The bundle's web-runtime row resolves the same built dist under test
-    // (apps/web IS @origin-ai/xhe-web-frontend); native browser opening and the
+    // (apps/web IS @origin-ai/cf-web-frontend); native browser opening and the
     // URL line are disabled because this scaffold owns its Playwright browser.
     // Preserve the composed surface-context choice because a patch replaces
     // the row's complete config.
@@ -486,8 +486,8 @@ export async function launchWebScaffold(options: LaunchOptions = {}): Promise<We
     // disable+insert pair.
     { id: 'directory-picker', disabled: true },
     { insert: [
-      { id: 'directory-picker-browse', name: '@origin-ai/xhe-host-directory-picker-browse' },
-      { id: 'ui-directory-picker-browse', name: '@origin-ai/xhe-client-ui-directory-picker-browse' },
+      { id: 'directory-picker-browse', name: '@origin-ai/cf-host-directory-picker-browse' },
+      { id: 'ui-directory-picker-browse', name: '@origin-ai/cf-client-ui-directory-picker-browse' },
     ] },
     ...options.agentPresets === undefined
       ? []
@@ -499,7 +499,7 @@ export async function launchWebScaffold(options: LaunchOptions = {}): Promise<We
     // scenario adds only the model-facing tools that exercise those services.
     ...options.cordisTools === true
       ? [{ insert: [
-        { id: 'tool-cordis', name: '@origin-ai/xhe-tool-cordis' },
+        { id: 'tool-cordis', name: '@origin-ai/cf-tool-cordis' },
       ] }]
       : [],
     ...options.deepSeekSearch === undefined

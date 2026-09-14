@@ -1,4 +1,4 @@
-# @origin-ai/xhe-llm-replay
+# @origin-ai/cf-llm-replay
 
 A replay LLM plugin for keyless snapshot tests. It yields model streams reconstructed from a recorded **session JSONL** fixture, so a test can boot the real agent against a fixed model transcript with no API key. With `providers` configured it registers a replay-only adapter whose catalog is available to scenarios that exercise model discovery; without `providers` it installs the catch-all `llm/stream` waterfall used by tests that do not need discovery.
 
@@ -32,7 +32,7 @@ Replay keys every call by its calling session id (`GenerateOptions.sessionId`, s
 
 ```yaml
 - id: llm-replay
-  name: '@origin-ai/xhe-llm-replay'
+  name: '@origin-ai/cf-llm-replay'
   config:
     providers:
       - id: deepseek-official

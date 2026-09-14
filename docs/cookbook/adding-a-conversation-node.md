@@ -26,12 +26,12 @@ The example keeps the producer declarations and client contribution in one block
 
 ```ts ignore-check
 import { createElement } from 'react'
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 import type {
   ClientContext, ConversationLocation, ConversationNodeContext,
   ConversationNodeDefinition,
-} from '@origin-ai/xhe-client-runtime/client'
-import type { ChatNodeViewProps } from '@origin-ai/xhe-client-ui-conversation/client'
+} from '@origin-ai/cf-client-runtime/client'
+import type { ChatNodeViewProps } from '@origin-ai/cf-client-ui-conversation/client'
 
 type ReviewId = Branded<'ReviewId'>
 
@@ -56,7 +56,7 @@ interface ReviewEndData {
   readonly summary: string
 }
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     /**
      * Opens one durable review job.
@@ -86,13 +86,13 @@ interface ReviewChatData {
   readonly summary?: string
 }
 
-declare module '@origin-ai/xhe-client-ui-conversation/client' {
+declare module '@origin-ai/cf-client-ui-conversation/client' {
   interface ChatNodeDataMap {
     'review-job': ReviewChatData
   }
 }
 
-declare module '@origin-ai/xhe-client-runtime/client' {
+declare module '@origin-ai/cf-client-runtime/client' {
   interface ConversationStepDataMap {
     'review-job': ReviewChatData
   }

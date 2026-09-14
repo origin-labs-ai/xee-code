@@ -1,4 +1,4 @@
-# @origin-ai/xhe-subagent-xhe-sdk
+# @origin-ai/cf-subagent-xhe-sdk
 
 The SDK provider runs each subagent as a complete Xee Harness Enhanced runtime in a fresh subprocess, driven over stdio JSON-RPC through the [TypeScript SDK client](../../sdk/client/README.md). It is the second out-of-process backend beside [`subagent-acp`](../subagent-acp/README.md), differing in the wire and the child contract: the ACP backend drives any Agent Client Protocol agent; this backend drives specifically a harness SDK runtime (`xhe-jsonrpc-agent` bin or packaged executable), so the child is a full peer harness — own `cordis.yml`-decided composition, session persistence, model route, and tools.
 
@@ -38,7 +38,7 @@ The provider advertises no start-time capabilities (`outputSchema`/`depthLimit`/
 
 ```yaml
 - id: subagent-xhe-sdk
-  name: '@origin-ai/xhe-subagent-xhe-sdk'
+  name: '@origin-ai/cf-subagent-xhe-sdk'
   config:
     providerName: xhe-sdk
     command: node
@@ -47,7 +47,7 @@ The provider advertises no start-time capabilities (`outputSchema`/`depthLimit`/
     env:
       DEEPSEEK_API_KEY: !!js process.env.DEEPSEEK_API_KEY
 - id: tool-subagent
-  name: '@origin-ai/xhe-tool-subagent'
+  name: '@origin-ai/cf-tool-subagent'
   config: { provider: xhe-sdk, toolName: subagent, maxDepth: 'provider-managed' }
 ```
 

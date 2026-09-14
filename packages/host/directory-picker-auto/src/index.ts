@@ -8,13 +8,13 @@
  * entries, so the surface is discovered exactly as a config-row's would be
  * and one resolved choice still swaps both faces; pinning an interaction
  * remains composing that pair directly instead of this row.
- * @module @origin-ai/xhe-host-directory-picker-auto
+ * @module @origin-ai/cf-host-directory-picker-auto
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 // Empty type imports carry the `loader` and `webServer` Context merges for the reads below.
 import type {} from '@deepseek-ai/cordis-plugin-loader'
-import type {} from '@origin-ai/xhe-host-webserver'
+import type {} from '@origin-ai/cf-host-webserver'
 import { canExecute, hasLinuxChooserBinary } from './probe.ts'
 import type { DirectoryPickerBackendKind } from './resolve.ts'
 import { resolveDirectoryPickerBackend } from './resolve.ts'
@@ -35,8 +35,8 @@ export const inject = ['webServer', 'loader']
  * app composing this chooser to declare both values as dependencies.
  */
 export const BACKEND_PACKAGES: Record<DirectoryPickerBackendKind, string> = {
-  native: '@origin-ai/xhe-host-directory-picker-native',
-  browse: '@origin-ai/xhe-host-directory-picker-browse',
+  native: '@origin-ai/cf-host-directory-picker-native',
+  browse: '@origin-ai/cf-host-directory-picker-browse',
 }
 
 /**
@@ -48,8 +48,8 @@ export const BACKEND_PACKAGES: Record<DirectoryPickerBackendKind, string> = {
  * workspace.
  */
 export const SURFACE_PACKAGES: Record<DirectoryPickerBackendKind, string> = {
-  native: '@origin-ai/xhe-client-ui-directory-picker-native',
-  browse: '@origin-ai/xhe-client-ui-directory-picker-browse',
+  native: '@origin-ai/cf-client-ui-directory-picker-native',
+  browse: '@origin-ai/cf-client-ui-directory-picker-browse',
 }
 
 /**

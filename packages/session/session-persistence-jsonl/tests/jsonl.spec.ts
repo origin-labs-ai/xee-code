@@ -1,12 +1,12 @@
-import { MessageId, createUserMessage, createMessage } from '@origin-ai/xhe-llm'
+import { MessageId, createUserMessage, createMessage } from '@origin-ai/cf-llm'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import { appendFile, mkdtemp, mkdir, rm, readFile, writeFile, readdir, stat, symlink } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
-import SessionStore, { SessionId } from '@origin-ai/xhe-session'
-import type { Session, SessionEvent, SessionHeader } from '@origin-ai/xhe-session'
-import JsonlSessionPersistence from '@origin-ai/xhe-session-persistence-jsonl'
+import SessionStore, { SessionId } from '@origin-ai/cf-session'
+import type { Session, SessionEvent, SessionHeader } from '@origin-ai/cf-session'
+import JsonlSessionPersistence from '@origin-ai/cf-session-persistence-jsonl'
 import {
   encodeSegment, eventLines, logPath, projectDir, projectKey, scanLog, sessionDir, SessionLogScanner, toHeaderLine,
 } from '../src/format.ts'

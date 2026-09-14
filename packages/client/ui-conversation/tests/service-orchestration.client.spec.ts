@@ -5,9 +5,9 @@
 // tag probe).
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import { AttachmentId } from '@origin-ai/xhe-attachment'
-import { makeTranslate, SlotTestRuntime } from '@origin-ai/xhe-client-test-runtime'
-import type { QueuedMessage, SessionFace } from '@origin-ai/xhe-client-runtime/client'
+import { AttachmentId } from '@origin-ai/cf-attachment'
+import { makeTranslate, SlotTestRuntime } from '@origin-ai/cf-client-test-runtime'
+import type { QueuedMessage, SessionFace } from '@origin-ai/cf-client-runtime/client'
 import { ComposerBlockRegistry } from '../src/client/input/blocks.ts'
 import { InputHub } from '../src/client/input/hub.ts'
 import { ConversationController, UnsupportedImageMediaTypeError } from '../src/client/service.ts'

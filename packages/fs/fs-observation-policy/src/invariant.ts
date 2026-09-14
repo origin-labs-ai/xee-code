@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-fs-observation-policy`.
- * @module @origin-ai/xhe-fs-observation-policy/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-fs-observation-policy`.
+ * @module @origin-ai/cf-fs-observation-policy/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-fs-observation-policy'
+const PACKAGE_NAME = '@origin-ai/cf-fs-observation-policy'
 
 /** Cordis companion plugin name. */
 export const name = 'fs-observation-policy-invariant'

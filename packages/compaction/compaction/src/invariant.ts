@@ -1,15 +1,15 @@
-/** Package-owned compaction log-stream invariants. @module @origin-ai/xhe-compaction/invariant */
+/** Package-owned compaction log-stream invariants. @module @origin-ai/cf-compaction/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import { isReplacementSurfaceEvent } from '@origin-ai/xhe-session'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import { isReplacementSurfaceEvent } from '@origin-ai/cf-session'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 import type { CompactionId } from './brand.ts'
 import { isCompactCheckpointSource } from './checkpoint.ts'
 import type { CompactionCheckpointSource } from './checkpoint.ts'
 import type {} from './types.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-compaction'
+const PACKAGE_NAME = '@origin-ai/cf-compaction'
 
 /** Cordis companion plugin name. */
 export const name = 'compaction-invariant'

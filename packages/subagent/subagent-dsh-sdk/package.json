@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-subagent-xhe-sdk",
+  "name": "@origin-ai/cf-subagent-xhe-sdk",
   "description": "Out-of-process SDK subagent backend: drives a child Xee Harness Enhanced runtime subprocess over stdio JSON-RPC through the TypeScript SDK client",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -32,13 +32,13 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-sdk-client": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-subagent": "workspace:^",
-    "@origin-ai/xhe-subprocess": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-sdk-client": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-subagent": "workspace:^",
+    "@origin-ai/cf-subprocess": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "dependencies": {
@@ -46,15 +46,15 @@
   },
   "devDependencies": {
     "@deepseek-ai/cordis-plugin-loader": "workspace:^",
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-loader-smoke": "workspace:^",
-    "@origin-ai/xhe-sdk-client": "workspace:^",
-    "@origin-ai/xhe-sdk-protocol": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-subagent": "workspace:^",
-    "@origin-ai/xhe-subprocess": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-loader-smoke": "workspace:^",
+    "@origin-ai/cf-sdk-client": "workspace:^",
+    "@origin-ai/cf-sdk-protocol": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-subagent": "workspace:^",
+    "@origin-ai/cf-subprocess": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

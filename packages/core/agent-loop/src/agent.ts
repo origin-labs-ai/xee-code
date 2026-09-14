@@ -14,9 +14,9 @@ import type {
   InboxTarget,
   PreStepDecision,
   RequestErrorAction,
-} from '@origin-ai/xhe-agent'
-import { Inbox, agentEvents, assembleContextFor } from '@origin-ai/xhe-agent'
-import type { GenerateOptions, LlmCallConfig, Message, PreparedLlmCall } from '@origin-ai/xhe-llm'
+} from '@origin-ai/cf-agent'
+import { Inbox, agentEvents, assembleContextFor } from '@origin-ai/cf-agent'
+import type { GenerateOptions, LlmCallConfig, Message, PreparedLlmCall } from '@origin-ai/cf-llm'
 import {
   BlockAssembler,
   LlmError,
@@ -24,13 +24,13 @@ import {
   deepFreeze,
   errorChain,
   markAgentLoopRequest,
-} from '@origin-ai/xhe-llm'
-import type { Scope } from '@origin-ai/xhe-scope'
-import { createScope } from '@origin-ai/xhe-scope'
-import type { EpochHeader, RequestContext, Session, SessionId, TurnEndReason, UserMessage } from '@origin-ai/xhe-session'
-import { canonicalHeader, headerEquals } from '@origin-ai/xhe-session'
-import { joinContextSections, renderContextSections, renderPrompt } from '@origin-ai/xhe-system-prompt'
-import type { PromptAssembly } from '@origin-ai/xhe-system-prompt'
+} from '@origin-ai/cf-llm'
+import type { Scope } from '@origin-ai/cf-scope'
+import { createScope } from '@origin-ai/cf-scope'
+import type { EpochHeader, RequestContext, Session, SessionId, TurnEndReason, UserMessage } from '@origin-ai/cf-session'
+import { canonicalHeader, headerEquals } from '@origin-ai/cf-session'
+import { joinContextSections, renderContextSections, renderPrompt } from '@origin-ai/cf-system-prompt'
+import type { PromptAssembly } from '@origin-ai/cf-system-prompt'
 import type { Context } from '@deepseek-ai/cordis'
 import { RuntimeContextProjection } from './runtime-context.ts'
 import { executeToolCalls } from './tool-calls.ts'

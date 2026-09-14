@@ -1,7 +1,7 @@
 /**
  * Remote decorators and explicit Gateway bindings backed only by private
  * module state. Strict reflection remains a Typert compiler responsibility.
- * @module @origin-ai/xhe-typert-protocol
+ * @module @origin-ai/cf-typert-protocol
  */
 
 import { Service, type Context } from '@deepseek-ai/cordis'

@@ -11,10 +11,10 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import SessionStore, { SessionId } from '@origin-ai/xhe-session'
-import type { Session } from '@origin-ai/xhe-session'
-import SessionProjectionRegistry from '@origin-ai/xhe-session-projection'
-import SessionTitleService from '@origin-ai/xhe-session-title'
+import SessionStore, { SessionId } from '@origin-ai/cf-session'
+import type { Session } from '@origin-ai/cf-session'
+import SessionProjectionRegistry from '@origin-ai/cf-session-projection'
+import SessionTitleService from '@origin-ai/cf-session-title'
 
 const CONFIG = { fallbackMaxWords: 8, fallbackMaxBytes: 64, maxTitleBytes: 256 }
 

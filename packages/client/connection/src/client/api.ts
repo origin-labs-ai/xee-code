@@ -18,12 +18,12 @@ export type {
   CredentialsApi, CredentialView, ConfigurableProviderView, DiscoveredModelView, LlmApi,
   SubagentsApi, SubagentAddress, SubagentCatalog, SubagentListEntry, SubagentPromptReceipt,
   JobView,
-} from '@origin-ai/xhe-host-apiproxy/api'
-export type { ToolCallView, ToolResultView } from '@origin-ai/xhe-tools/presentation'
+} from '@origin-ai/cf-host-apiproxy/api'
+export type { ToolCallView, ToolResultView } from '@origin-ai/cf-tools/presentation'
 export type {
   RpcRequest, RpcResponse, RpcResult, RpcError, RpcErrorCode,
   ClientRequest, ServerResponse, ServerRequest, ClientResponse, RpcMessage, RpcReceipt,
-} from '@origin-ai/xhe-host-apiproxy/api'
+} from '@origin-ai/cf-host-apiproxy/api'
 // transportError lives in the apiproxy api layer (beside RpcResult, its
 // subject); re-exported here so connection consumers keep one contract
 // entry point.
@@ -31,17 +31,17 @@ export {
   RpcId,
   SESSION_SEARCH_RESULT_LIMIT,
   transportError,
-} from '@origin-ai/xhe-host-apiproxy/api'
-export { AbstractApiClient } from '@origin-ai/xhe-host-apiproxy/client'
-export type { IApiClient } from '@origin-ai/xhe-host-apiproxy/client'
-export type { SessionId, SessionEvent } from '@origin-ai/xhe-session/types'
-export type { MessageId } from '@origin-ai/xhe-llm/brand'
-export type { ContentBlock, StreamChunk } from '@origin-ai/xhe-llm/types'
+} from '@origin-ai/cf-host-apiproxy/api'
+export { AbstractApiClient } from '@origin-ai/cf-host-apiproxy/client'
+export type { IApiClient } from '@origin-ai/cf-host-apiproxy/client'
+export type { SessionId, SessionEvent } from '@origin-ai/cf-session/types'
+export type { MessageId } from '@origin-ai/cf-llm/brand'
+export type { ContentBlock, StreamChunk } from '@origin-ai/cf-llm/types'
 
 /** Successful value returned by the connection-generation host handshake. */
-export type HostDescription = import('@origin-ai/xhe-host-apiproxy/api').ResponseValue<'host.describe'>
+export type HostDescription = import('@origin-ai/cf-host-apiproxy/api').ResponseValue<'host.describe'>
 
-import type { RpcResponse, RpcResult } from '@origin-ai/xhe-host-apiproxy/api'
+import type { RpcResponse, RpcResult } from '@origin-ai/cf-host-apiproxy/api'
 
 /**
  * Unwrap a unary response: RpcResponse<T> -> RpcResult<T> (business code only

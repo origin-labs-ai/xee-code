@@ -1,7 +1,7 @@
 /**
  * Shared ownership of one E2B sandbox. Capability adapters await the same SDK
  * handle, so filesystem and process operations inhabit one remote Linux world.
- * @module @origin-ai/xhe-e2b
+ * @module @origin-ai/cf-e2b
  */
 
 import { randomUUID } from 'node:crypto'

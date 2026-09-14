@@ -1,4 +1,4 @@
-# @origin-ai/xhe-subagent-spawn-in-process
+# @origin-ai/cf-subagent-spawn-in-process
 
 The spawn provider creates a fresh child `Agent` in the current process. The child has its own session, sees no parent conversation history, and reuses the host's agent factory and LLM/tool services.
 

@@ -1,11 +1,11 @@
-/** Package-owned durable workflow-record invariants. @module @origin-ai/xhe-tool-workflow/invariant */
+/** Package-owned durable workflow-record invariants. @module @origin-ai/cf-tool-workflow/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 import type {} from './types.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-tool-workflow'
+const PACKAGE_NAME = '@origin-ai/cf-tool-workflow'
 
 /** Cordis companion plugin name. */
 export const name = 'tool-workflow-invariant'

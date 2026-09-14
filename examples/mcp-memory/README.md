@@ -1,6 +1,6 @@
 # Third-party memory MCP examples
 
-These three **default-off reference configurations** connect one memory system to XHE through [`@origin-ai/xhe-mcp-client`](../../packages/mcp/mcp-client/README.md). Pick one, or copy the same generic MCP row for another server.
+These three **default-off reference configurations** connect one memory system to XHE through [`@origin-ai/cf-mcp-client`](../../packages/mcp/mcp-client/README.md). Pick one, or copy the same generic MCP row for another server.
 
 These third-party configurations are provided as interoperability examples only. Their inclusion does not imply endorsement, recommendation, partnership, or ongoing support by any upstream provider.
 
@@ -86,7 +86,7 @@ Copy the same entry fields and use a unique `id` and `serverName`:
 ```yaml
 - insert:
     - id: memory-my-server
-      name: '@origin-ai/xhe-mcp-client'
+      name: '@origin-ai/cf-mcp-client'
       config:
         serverName: my-memory
         transport: stdio

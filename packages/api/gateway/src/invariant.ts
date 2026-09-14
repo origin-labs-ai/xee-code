@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-api-gateway`.
- * @module @origin-ai/xhe-api-gateway/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-api-gateway`.
+ * @module @origin-ai/cf-api-gateway/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-api-gateway'
+const PACKAGE_NAME = '@origin-ai/cf-api-gateway'
 
 /** Cordis companion plugin name. */
 export const name = 'api-gateway-invariant'

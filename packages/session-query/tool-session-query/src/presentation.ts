@@ -1,7 +1,7 @@
 /**
  * Model text rendering and generic tool-call presentation.
  *
- * @module @origin-ai/xhe-tool-session-query/presentation
+ * @module @origin-ai/cf-tool-session-query/presentation
  */
 
 import {
@@ -12,12 +12,12 @@ import {
   type SessionLineageTrace,
   type SessionRecord,
   type SessionSearchHit,
-} from '@origin-ai/xhe-session-query'
+} from '@origin-ai/cf-session-query'
 import type {
   SessionEvent,
   SessionId,
-} from '@origin-ai/xhe-session'
-import type { GenericCallView } from '@origin-ai/xhe-tools'
+} from '@origin-ai/cf-session'
+import type { GenericCallView } from '@origin-ai/cf-tools'
 import { workspaceAccess } from './workspace-access.ts'
 
 type TitleView = Awaited<ReturnType<typeof workspaceAccess.readTitle>>

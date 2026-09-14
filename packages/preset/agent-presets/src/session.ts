@@ -10,12 +10,12 @@
  * preset decides the tool schemas and prompt sections the model sees.
  *
  * Reconstruction reads {@link resolveSessionPreset}, never the header alone.
- * @module @origin-ai/xhe-agent-presets/session
+ * @module @origin-ai/cf-agent-presets/session
  */
 
-import type { SessionEvent, SessionHeader } from '@origin-ai/xhe-session'
+import type { SessionEvent, SessionHeader } from '@origin-ai/cf-session'
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     /**
      * The session's agent preset was chosen after creation, while the session

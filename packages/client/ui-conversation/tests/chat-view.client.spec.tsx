@@ -10,17 +10,17 @@ import type {
   AssistantMessageNode, CommandNode, CompactionSummaryNode, ConversationNode, ConversationSnapshot,
   ModelRetryNode, RunningToolCall, SessionId, SessionListState, ToolCallBlock, ToolResultNode, TurnErrorNode,
   TurnMaxTokensNode, UserMessageNode, WorkspaceListState,
-} from '@origin-ai/xhe-client-runtime/client'
-import { bindSnapshotSelector } from '@origin-ai/xhe-client-test-runtime'
+} from '@origin-ai/cf-client-runtime/client'
+import { bindSnapshotSelector } from '@origin-ai/cf-client-test-runtime'
 import {
   createSnapshotStore, EMPTY_CONVERSATION_VIEWS, PendingWait,
-} from '@origin-ai/xhe-client-runtime/client'
-import { RpcId } from '@origin-ai/xhe-client-connection/client'
+} from '@origin-ai/cf-client-runtime/client'
+import { RpcId } from '@origin-ai/cf-client-connection/client'
 import type {
   ChatNode, ChatNodeOwnerProps, ChatNodeViewProps, ChatViewSlotProps, SelectionTarget, UseChatNodeTurnData,
-} from '@origin-ai/xhe-client-ui-conversation/client'
-import { makeTranslate } from '@origin-ai/xhe-client-test-runtime'
-import { zh as commonZh } from '@origin-ai/xhe-client-locale/src/locales/zh.ts'
+} from '@origin-ai/cf-client-ui-conversation/client'
+import { makeTranslate } from '@origin-ai/cf-client-test-runtime'
+import { zh as commonZh } from '@origin-ai/cf-client-locale/src/locales/zh.ts'
 import { createChatStore } from '../src/client/stores.ts'
 import { ChatView } from '../src/client/chat/ChatView.tsx'
 import { zh } from '../src/client/locales.ts'

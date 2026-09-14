@@ -1,8 +1,8 @@
-# @origin-ai/xhe-llm-deepseek
+# @origin-ai/cf-llm-deepseek
 
 DeepSeek chat-completions adapter for the harness LLM seam: direct `fetch` + SSE (framed by `eventsource-parser`) translating the official wire format (source of truth: the API docs — guides/thinking_mode, guides/tool_calls, api/create-chat-completion) into the `StreamChunk` protocol.
 
-A second, library-backed implementation of the same seam exists in `@origin-ai/xhe-llm-pi-ai`. This package owns the `deepseek-official` provider route — deliberately distinct from pi-ai's catalog name `deepseek`, so one composition can mount both DeepSeek paths side by side; registering another adapter for `deepseek-official` itself still throws `LlmError('DUPLICATE_ADAPTER')`.
+A second, library-backed implementation of the same seam exists in `@origin-ai/cf-llm-pi-ai`. This package owns the `deepseek-official` provider route — deliberately distinct from pi-ai's catalog name `deepseek`, so one composition can mount both DeepSeek paths side by side; registering another adapter for `deepseek-official` itself still throws `LlmError('DUPLICATE_ADAPTER')`.
 
 The package root exposes the Cordis plugin contract and `DeepSeekAdapter`; wire serialization, SSE parsing, and chunk translation helpers are not part of that root contract.
 
@@ -10,7 +10,7 @@ The package root exposes the Cordis plugin contract and `DeepSeekAdapter`; wire 
 
 ```yaml
 - id: llm-deepseek
-  name: '@origin-ai/xhe-llm-deepseek'
+  name: '@origin-ai/cf-llm-deepseek'
   config:
     apiKeyEnv: DEEPSEEK_API_KEY  # default; resolved per request via ctx.credentials, then the environment
     baseURL: https://api.deepseek.com # optional; $DEEPSEEK_BASE_URL then the public API when omitted
@@ -86,7 +86,7 @@ The plugin also declares its route in the configurable-provider directory (`ctx.
 
 Every chat and Files API request carries the shared attribution header from xhe-llm's `attributionHeaders()`, the mandatory `User-Agent` baseline identifying the harness (see [xhe-llm § App attribution](../llm/README.md#app-attribution-attributionts)). Direct DeepSeek requests and OpenAI-compatible gateway requests get no provider-specific app-attribution headers under this adapter contract; OpenRouter app attribution is deferred to a future explicit OpenRouter adapter or mode. A request whose `GenerateOptions.purpose` is `compaction` (xhe-compaction-basic's auxiliary summarization call) additionally carries `x-xhe-compact: 1`, so the host can separate compaction traffic from conversation requests.
 
-DeepSeek request identity is separate from app attribution. After credential resolution, every provider request carries `x-xhe-user-id` with the stable anonymous id from [`@origin-ai/xhe-anonymous-user-id`](../../identity/anonymous-user-id/README.md); a request carrying `GenerateOptions.sessionId` also sends that exact value as `x-xhe-session-id`, while a direct call without a session omits the session header. Both headers go to the resolved `baseURL`, including a configured gateway, and remain outside the request body and model-visible content.
+DeepSeek request identity is separate from app attribution. After credential resolution, every provider request carries `x-xhe-user-id` with the stable anonymous id from [`@origin-ai/cf-anonymous-user-id`](../../identity/anonymous-user-id/README.md); a request carrying `GenerateOptions.sessionId` also sends that exact value as `x-xhe-session-id`, while a direct call without a session omits the session header. Both headers go to the resolved `baseURL`, including a configured gateway, and remain outside the request body and model-visible content.
 
 ## Wire-format notes
 

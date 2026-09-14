@@ -9,7 +9,7 @@
  * - Multi-dimensional consensus algorithms
  * - Argument mapping and logical coherence scoring
  * 
- * @origin-ai/xhe/mad/utils
+ * @origin-ai/cf/mad/utils
  * @version 2.0.2-advanced
  */
 

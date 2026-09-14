@@ -9,33 +9,33 @@ import { homedir } from 'node:os'
 import { dirname } from 'node:path'
 import { z as zod } from 'zod'
 import type { Context } from '@deepseek-ai/cordis'
-import { installModelSelection } from '@origin-ai/xhe-agent'
-import type { Agent, ModelSelection, ModelSelectionRef, AgentOptions, AgentStatus } from '@origin-ai/xhe-agent'
-import type {} from '@origin-ai/xhe-agent-presets/types'
-import { AttachmentError, admitEncodedImages } from '@origin-ai/xhe-attachment'
-import type { ImageAttachmentRef } from '@origin-ai/xhe-attachment'
-import { createUserMessage, freezeMessage, ReasoningEffortId } from '@origin-ai/xhe-llm'
-import { errorChain } from '@origin-ai/xhe-llm'
-import type { ContentBlock, MessageSource } from '@origin-ai/xhe-llm'
-import { isAppendSurfaceEvent, isJsonValue } from '@origin-ai/xhe-session'
-import type { JsonValue, Session, SessionEvent, SessionEventMap, SessionHeader, SessionId, UserMessage } from '@origin-ai/xhe-session'
-import type { SessionPersistence } from '@origin-ai/xhe-session-persistence'
-import { SessionQueryError, type SessionSearchCursor } from '@origin-ai/xhe-session-query'
-import { SubagentError } from '@origin-ai/xhe-subagent'
-import type { SubagentListEntry as CatalogSubagentListEntry } from '@origin-ai/xhe-subagent'
-import { isUserInvocable } from '@origin-ai/xhe-skill'
-import type { Workspace, WorkspaceRecord } from '@origin-ai/xhe-workspace'
+import { installModelSelection } from '@origin-ai/cf-agent'
+import type { Agent, ModelSelection, ModelSelectionRef, AgentOptions, AgentStatus } from '@origin-ai/cf-agent'
+import type {} from '@origin-ai/cf-agent-presets/types'
+import { AttachmentError, admitEncodedImages } from '@origin-ai/cf-attachment'
+import type { ImageAttachmentRef } from '@origin-ai/cf-attachment'
+import { createUserMessage, freezeMessage, ReasoningEffortId } from '@origin-ai/cf-llm'
+import { errorChain } from '@origin-ai/cf-llm'
+import type { ContentBlock, MessageSource } from '@origin-ai/cf-llm'
+import { isAppendSurfaceEvent, isJsonValue } from '@origin-ai/cf-session'
+import type { JsonValue, Session, SessionEvent, SessionEventMap, SessionHeader, SessionId, UserMessage } from '@origin-ai/cf-session'
+import type { SessionPersistence } from '@origin-ai/cf-session-persistence'
+import { SessionQueryError, type SessionSearchCursor } from '@origin-ai/cf-session-query'
+import { SubagentError } from '@origin-ai/cf-subagent'
+import type { SubagentListEntry as CatalogSubagentListEntry } from '@origin-ai/cf-subagent'
+import { isUserInvocable } from '@origin-ai/cf-skill'
+import type { Workspace, WorkspaceRecord } from '@origin-ai/cf-workspace'
 import {
   workspaceDomainState, workspaceRecord, WorkspaceId as brandWorkspaceId,
   WorkspaceMoveInvalidError, WorkspaceOrderInvalidError, WorkspaceUnknownSessionError,
-} from '@origin-ai/xhe-workspace'
+} from '@origin-ai/cf-workspace'
 // Type-only: brings the `ctx.tools` Context merge into this program (viewFor reads presenters).
 import {
   InvalidPresetIdError, PresetExistsError, PresetMountError,
   PresetNotWritableError, resolveSessionPreset, UnknownPresetError,
-} from '@origin-ai/xhe-agent-presets'
-import type { PresetBearingSession } from '@origin-ai/xhe-agent-presets'
-import type {} from '@origin-ai/xhe-tools'
+} from '@origin-ai/cf-agent-presets'
+import type { PresetBearingSession } from '@origin-ai/cf-agent-presets'
+import type {} from '@origin-ai/cf-tools'
 import type {
   ApiProxy, ConfigurableProviderView, CredentialView, GoalRef, HistoryEntry, HostFrame,
   ModelCatalogFailure, ModelProviderGroup,
@@ -52,44 +52,44 @@ import {
   type SessionLogExportReady,
   type SessionLogCompressionLevel,
 } from './session-export.ts'
-import type { SessionRawArtifact } from '@origin-ai/xhe-session-persistence'
+import type { SessionRawArtifact } from '@origin-ai/cf-session-persistence'
 import {
   SESSION_SEARCH_RESULT_LIMIT,
   SESSION_SEARCH_SNIPPET_MAX_CODE_POINTS,
   truncateUnicodeCodePoints,
 } from './api/session-search.ts'
 // Type-only: resolves `ctx.get('sessionProjections')` to the projection registry.
-import type {} from '@origin-ai/xhe-session-projection'
+import type {} from '@origin-ai/cf-session-projection'
 // Type-only: resolves `ctx.get('tasks')` to the background job registry.
-import type {} from '@origin-ai/xhe-jobs'
-import type { JobSnapshot } from '@origin-ai/xhe-jobs'
+import type {} from '@origin-ai/cf-jobs'
+import type { JobSnapshot } from '@origin-ai/cf-jobs'
 // Type-only: resolves `ctx.get('sessionProjectionCache')` (the cold listing column).
-import type {} from '@origin-ai/xhe-session-projection-cache'
+import type {} from '@origin-ai/cf-session-projection-cache'
 // GoalError narrows domain rejections to their stable codes at the wire boundary.
-import { GoalError } from '@origin-ai/xhe-goal'
-import type { GoalRef as CoreGoalRef } from '@origin-ai/xhe-goal'
+import { GoalError } from '@origin-ai/cf-goal'
+import type { GoalRef as CoreGoalRef } from '@origin-ai/cf-goal'
 // Type-only edges: resolve the command-change stream and `ctx.get('skills')`.
-import type {} from '@origin-ai/xhe-commands'
+import type {} from '@origin-ai/cf-commands'
 // Type-only: the dynamic-package runner's forwarded-event declarations. Its
 // client-safe `./types` subpath deliberately, not the package root — the root
 // merges `ctx.dynamicCordisRunner`, and a dependency on that package would
 // rebuild the api-remotes cycle this direction exists to avoid.
 import type {} from '@deepseek-ai/cordis-host-runner/types'
-import type {} from '@origin-ai/xhe-skill'
+import type {} from '@origin-ai/cf-skill'
 // The settings/credentials seams: brand guards run at this wire boundary; the
 // service reads stay optional (`ctx.get`) so a composition without either
 // provider still serves every other domain.
-import { SettingsConflictError, settingsNamespace } from '@origin-ai/xhe-settings'
-import type { SettingsDescriptor, SettingsNamespace, SettingsPathOp } from '@origin-ai/xhe-settings'
-import { credentialRef } from '@origin-ai/xhe-credentials'
+import { SettingsConflictError, settingsNamespace } from '@origin-ai/cf-settings'
+import type { SettingsDescriptor, SettingsNamespace, SettingsPathOp } from '@origin-ai/cf-settings'
+import { credentialRef } from '@origin-ai/cf-credentials'
 // Value edge: the rename impl narrows the title service's validation failure; the import also resolves `ctx.get('sessionTitle')`.
-import { SessionTitleInvalidError } from '@origin-ai/xhe-session-title'
-import type { CallId } from '@origin-ai/xhe-llm/brand'
-import type { ScopeKey } from '@origin-ai/xhe-scope'
-import type { ApprovalOutcome, ApprovalRequestId } from '@origin-ai/xhe-user-approval'
+import { SessionTitleInvalidError } from '@origin-ai/cf-session-title'
+import type { CallId } from '@origin-ai/cf-llm/brand'
+import type { ScopeKey } from '@origin-ai/cf-scope'
+import type { ApprovalOutcome, ApprovalRequestId } from '@origin-ai/cf-user-approval'
 // Side-effect type import: resolves the `approval/request` waterfall and
 // `ctx.get('approval')` without a value dependency on the seam (optional composition).
-import type {} from '@origin-ai/xhe-user-approval'
+import type {} from '@origin-ai/cf-user-approval'
 import { approvalResponsePayloadSchema } from './api/approvals.schema.ts'
 import { imageLimitsProjectionSchema, sessionListMetadataProjectionSchema } from './api/sessions.schema.ts'
 import { questionResponsePayloadSchema } from './api/questions.schema.ts'
@@ -97,9 +97,9 @@ import type { ClientResponse, RpcError, RpcReceipt, RpcRequest, RpcResponse } fr
 import { RpcId } from './api/rpc.ts'
 import type {
   AskUserQuestionAnswer, AskUserQuestionItem, AskUserQuestionRequest,
-} from '@origin-ai/xhe-user-questions'
-import { UserQuestionError } from '@origin-ai/xhe-user-questions'
-import { DirectoryPickerError } from '@origin-ai/xhe-host-directory-picker'
+} from '@origin-ai/cf-user-questions'
+import { UserQuestionError } from '@origin-ai/cf-user-questions'
+import { DirectoryPickerError } from '@origin-ai/cf-host-directory-picker'
 import {
   ApiRemoteSessionNotFound as SessionNotFound,
   ApiRemoteSubagentSessionOwnership as SubagentSessionOwnership,
@@ -108,7 +108,7 @@ import {
   createApiRemoteAgentResolver,
   hasApiRemoteSubagentOwner,
   inspectApiRemoteSession,
-} from '@origin-ai/xhe-api-remotes'
+} from '@origin-ai/cf-api-remotes'
 import { canOpenNativePath, openNativePath, openNativeTextFile } from './native-path-opener.ts'
 
 /** Page size when history is called without maxMessages. */
@@ -883,7 +883,7 @@ function subagentPromptError(
 function projectionsUnavailableError(): RpcError {
   return {
     code: 'internal',
-    message: 'subagent catalog is unavailable: this deployment does not mount the sessionProjections registry (load @origin-ai/xhe-session-projection)',
+    message: 'subagent catalog is unavailable: this deployment does not mount the sessionProjections registry (load @origin-ai/cf-session-projection)',
     details: {},
   }
 }
@@ -1738,7 +1738,7 @@ export function createApiProxy(ctx: Context, defaults: ApiProxyDefaults): ApiPro
     const presets = ctx.get('agentPresets')
     const goals = presets?.serviceFor(agent, 'goals') ?? ctx.get('goals')
     if (goals === undefined) {
-      return { error: { code: 'internal', message: 'goal service is absent: neither this session\'s agent preset nor the host composition mounts @origin-ai/xhe-goal', details: {} } }
+      return { error: { code: 'internal', message: 'goal service is absent: neither this session\'s agent preset nor the host composition mounts @origin-ai/cf-goal', details: {} } }
     }
     return goals
   }
@@ -1809,7 +1809,7 @@ export function createApiProxy(ctx: Context, defaults: ApiProxyDefaults): ApiPro
 
   /** Missing-service report shared by the settings domain (skills-domain stance). */
   function settingsAbsent(): RpcError {
-    return { code: 'internal', message: 'settings service is absent: this deployment does not mount a settings provider (e.g. @origin-ai/xhe-settings-file) in its composition', details: {} }
+    return { code: 'internal', message: 'settings service is absent: this deployment does not mount a settings provider (e.g. @origin-ai/cf-settings-file) in its composition', details: {} }
   }
 
   /** Open one Host-resolved target and map native failures onto the wire vocabulary. */
@@ -1863,7 +1863,7 @@ export function createApiProxy(ctx: Context, defaults: ApiProxyDefaults): ApiPro
 
   /** Missing-service report shared by the credentials domain. */
   function credentialsAbsent(): RpcError {
-    return { code: 'internal', message: 'credentials service is absent: this deployment does not mount a credential provider (e.g. @origin-ai/xhe-credentials-local) in its composition', details: {} }
+    return { code: 'internal', message: 'credentials service is absent: this deployment does not mount a credential provider (e.g. @origin-ai/cf-credentials-local) in its composition', details: {} }
   }
 
   /** Map one redacted settings descriptor to its wire view. */
@@ -1956,7 +1956,7 @@ export function createApiProxy(ctx: Context, defaults: ApiProxyDefaults): ApiPro
         if (sessionQuery === undefined) {
           return err(request, {
             code: 'internal',
-            message: 'session search is unavailable: this deployment does not mount @origin-ai/xhe-session-query',
+            message: 'session search is unavailable: this deployment does not mount @origin-ai/cf-session-query',
             details: {},
           })
         }
@@ -3136,7 +3136,7 @@ export function createApiProxy(ctx: Context, defaults: ApiProxyDefaults): ApiPro
         // (an undeclared `ctx.skills` property read fails the reflect proxy).
         const skillRegistry = scoped ?? ctx.get('skills')
         if (skillRegistry === undefined) {
-          return err(request, { code: 'internal', message: 'skill registry is absent: neither this session\'s agent preset nor the host composition mounts @origin-ai/xhe-skill', details: {} })
+          return err(request, { code: 'internal', message: 'skill registry is absent: neither this session\'s agent preset nor the host composition mounts @origin-ai/cf-skill', details: {} })
         }
         // The scope presenters resolve in — the live agent, else the recorded
         // preset's standing key, else the global layer — so a cold session's

@@ -3,15 +3,15 @@
  * spill backend does — persist a tool's oversized text and return a model-facing
  * locator plus retrieval guidance — without saying HOW. Implementations
  * subclass {@link SpillStore} and register as the `spillStore` service;
- * `@origin-ai/xhe-spill-local` (host filesystem) is the first.
+ * `@origin-ai/cf-spill-local` (host filesystem) is the first.
  *
  * The Service Definition is deliberately minimal: `saveText` and nothing else. It owns NO
- * retention policy (that is `@origin-ai/xhe-output-retention`), NO tool-result
- * replacement (that is `@origin-ai/xhe-spill-policy`), and NO retrieval or
+ * retention policy (that is `@origin-ai/cf-output-retention`), NO tool-result
+ * replacement (that is `@origin-ai/cf-spill-policy`), and NO retrieval or
  * search API. The backend supplies the locator and retrieval hint appropriate
  * for its storage substrate.
  *
- * @module @origin-ai/xhe-spill
+ * @module @origin-ai/cf-spill
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'

@@ -9,18 +9,18 @@
  * `ver` mismatch discards the row instead of migrating it. Design
  * authority: the session-projection RFC
  * (.agents/notes/proposed/architecture/2026-07-27-session-projection-and-command-log.md).
- * @module @origin-ai/xhe-session-projection-cache
+ * @module @origin-ai/cf-session-projection-cache
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { snapshotJsonValue } from '@origin-ai/xhe-session'
-import type { Session, SessionEvent, SessionHeader, SessionId } from '@origin-ai/xhe-session'
+import { snapshotJsonValue } from '@origin-ai/cf-session'
+import type { Session, SessionEvent, SessionHeader, SessionId } from '@origin-ai/cf-session'
 // Empty type import: applies the package's cordis Context merge
 // (`ctx.sessionPersistence`), which this service reads on the cold path.
-import type {} from '@origin-ai/xhe-session-persistence'
-import type { ProjectionCheckpoint, ProjectionSnapshot } from '@origin-ai/xhe-session-projection'
-import type { KvTable } from '@origin-ai/xhe-storage-domain'
+import type {} from '@origin-ai/cf-session-persistence'
+import type { ProjectionCheckpoint, ProjectionSnapshot } from '@origin-ai/cf-session-projection'
+import type { KvTable } from '@origin-ai/cf-storage-domain'
 import { projectionCacheDomainSpec } from './spec.ts'
 import type { CheckpointIdentity, CheckpointRecord } from './spec.ts'
 

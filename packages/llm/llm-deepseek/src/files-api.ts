@@ -1,7 +1,7 @@
 /** OpenAI-compatible DeepSeek Files API transport. @module xhe-llm-deepseek/files-api */
 
-import { attributionHeaders, LlmError } from '@origin-ai/xhe-llm'
-import type { ImageMediaType } from '@origin-ai/xhe-attachment'
+import { attributionHeaders, LlmError } from '@origin-ai/cf-llm'
+import type { ImageMediaType } from '@origin-ai/cf-attachment'
 import { DeepSeekFileId } from './file-id.ts'
 import type { DeepSeekFileId as DeepSeekFileIdType } from './file-id.ts'
 

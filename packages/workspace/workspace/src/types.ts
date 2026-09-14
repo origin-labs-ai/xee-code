@@ -2,11 +2,11 @@
  * Public type vocabulary of the workspace entity: the `WorkspaceId` brand and
  * the `Workspace` consumer interface. Types only — the `WorkspaceId` factory
  * lives in `index.ts` (this file carries no runtime code).
- * @module @origin-ai/xhe-workspace/src/types
+ * @module @origin-ai/cf-workspace/src/types
  */
 
-import type { Branded } from '@origin-ai/xhe-brand'
-import type { SessionId } from '@origin-ai/xhe-session'
+import type { Branded } from '@origin-ai/cf-brand'
+import type { SessionId } from '@origin-ai/cf-session'
 
 /**
  * Identifies one workspace record. A generated uuid, never the path: path

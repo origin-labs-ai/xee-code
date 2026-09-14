@@ -5,8 +5,8 @@
 // even when this UI version has never seen its producer.
 
 import type { ReactNode } from 'react'
-import type { ContextMessageNode, KnownContextForm } from '@origin-ai/xhe-client-runtime/client'
-import { JsonBlock } from '@origin-ai/xhe-client-ui-primitives'
+import type { ContextMessageNode, KnownContextForm } from '@origin-ai/cf-client-runtime/client'
+import { JsonBlock } from '@origin-ai/cf-client-ui-primitives'
 import type { ChatViewSlotProps } from '../contract/slots.ts'
 import css from './ContextBody.module.css'
 

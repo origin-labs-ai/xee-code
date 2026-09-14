@@ -7,7 +7,7 @@
  * locator and retrieval guidance.
  *
  * It registers NO service and owns NO storage or preview mechanics: preview is
- * `@origin-ai/xhe-output-retention` (`TextRetainer`), storage is `ctx.spillStore`.
+ * `@origin-ai/cf-output-retention` (`TextRetainer`), storage is `ctx.spillStore`.
  * The policy only decides WHEN to spill and composes the notice.
  *
  * A second arm applies the SAME cap to the durable log: the
@@ -40,18 +40,18 @@
  * replaced content still has its replacement bounded, and value replacements
  * and `block` decisions pass through unchanged.
  *
- * @module @origin-ai/xhe-spill-policy
+ * @module @origin-ai/cf-spill-policy
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import { TextRetainer, describeOmitted } from '@origin-ai/xhe-output-retention'
-import type { Omitted } from '@origin-ai/xhe-output-retention'
-import type { SaveTextSpill, SpillRef } from '@origin-ai/xhe-spill'
-import type { SessionId } from '@origin-ai/xhe-session'
-import type { CallId } from '@origin-ai/xhe-llm'
-import type { PostToolDecision, ToolExecution } from '@origin-ai/xhe-tools'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import { TextRetainer, describeOmitted } from '@origin-ai/cf-output-retention'
+import type { Omitted } from '@origin-ai/cf-output-retention'
+import type { SaveTextSpill, SpillRef } from '@origin-ai/cf-spill'
+import type { SessionId } from '@origin-ai/cf-session'
+import type { CallId } from '@origin-ai/cf-llm'
+import type { PostToolDecision, ToolExecution } from '@origin-ai/cf-tools'
 import type { SpillPolicyExec } from './types.ts'
 
 export type { SpillPolicyExec } from './types.ts'

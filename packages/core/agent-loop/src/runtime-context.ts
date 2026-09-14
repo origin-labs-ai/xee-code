@@ -1,19 +1,19 @@
 /**
  * Durable projection state for dynamic runtime context.
- * @module @origin-ai/xhe-agent-loop/runtime-context
+ * @module @origin-ai/cf-agent-loop/runtime-context
  */
 
-import { createUserMessage } from '@origin-ai/xhe-llm'
-import type { ContextSnapshotSection } from '@origin-ai/xhe-llm'
-import type { Session, UserMessage } from '@origin-ai/xhe-session'
-import { isReplacementSurfaceEvent } from '@origin-ai/xhe-session'
+import { createUserMessage } from '@origin-ai/cf-llm'
+import type { ContextSnapshotSection } from '@origin-ai/cf-llm'
+import type { Session, UserMessage } from '@origin-ai/cf-session'
+import { isReplacementSurfaceEvent } from '@origin-ai/cf-session'
 import type { Context } from '@deepseek-ai/cordis'
 
 const SOURCE = '@origin-ai/cf-system-prompt'
 // Legacy writer ids still recognized when restoring retained snapshots, so
 // logs written before the CodeFusion rename keep projecting. New snapshots
 // always carry SOURCE, which is also the label the conversation UI shows.
-const LEGACY_SOURCES: readonly string[] = ['@origin-ai/xhe-system-prompt', '@deepseek-ai/dsh-system-prompt', '@deepseek-ai/xhe-system-prompt']
+const LEGACY_SOURCES: readonly string[] = ['@origin-ai/cf-system-prompt', '@deepseek-ai/dsh-system-prompt', '@deepseek-ai/xhe-system-prompt']
 const CLEARED = 'Current runtime context: none. Earlier runtime-context snapshots no longer apply.'
 
 function isOwned(message: UserMessage): boolean {

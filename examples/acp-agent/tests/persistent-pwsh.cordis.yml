@@ -1,30 +1,30 @@
 # Minimal live counterpart for the persistent-pwsh-tool-turn snapshot composition.
 - id: llm-deepseek
-  name: '@origin-ai/xhe-llm-deepseek'
+  name: '@origin-ai/cf-llm-deepseek'
   config:
     models:
       - id: deepseek-v4-pro
 
 - id: sandbox-policy
-  name: '@origin-ai/xhe-sandbox-policy'
+  name: '@origin-ai/cf-sandbox-policy'
   config:
     mode: danger-full-access
     workspaceRoot: !!js process.cwd()
 
 - id: subprocess
-  name: '@origin-ai/xhe-subprocess-local'
+  name: '@origin-ai/cf-subprocess-local'
 
 - id: terminal
-  name: '@origin-ai/xhe-terminal'
+  name: '@origin-ai/cf-terminal'
 
 - id: terminal-pwsh
-  name: '@origin-ai/xhe-terminal-bash'
+  name: '@origin-ai/cf-terminal-bash'
   config:
     shellDialect: pwsh
     timeoutMs: 30000
 
 - id: acp-agent
-  name: '@origin-ai/xhe-acp-demo'
+  name: '@origin-ai/cf-acp-demo'
   config:
     provider: deepseek-official
     model: deepseek-v4-pro
@@ -39,4 +39,4 @@
     persona: You are a concise snapshot agent working in {{cwd}}.
 
 - id: tool-pwsh-persistent
-  name: '@origin-ai/xhe-tool-pwsh-persistent'
+  name: '@origin-ai/cf-tool-pwsh-persistent'

@@ -366,7 +366,7 @@ describe('docsPages locale routes', () => {
     const catalog = readFileSync(resolve(repositoryRoot, 'docs/tool-catalog.zh.md'), 'utf8')
     expect(catalog.match(/<a id="deepseek-aixhe-tool-todo"><\/a>/g)).toHaveLength(1)
     expect(catalog).toContain(
-      '<a id="deepseek-aixhe-tool-todo"></a>\n\n## `@origin-ai/xhe-tool-todo`',
+      '<a id="deepseek-aixhe-tool-todo"></a>\n\n## `@origin-ai/cf-tool-todo`',
     )
   })
 

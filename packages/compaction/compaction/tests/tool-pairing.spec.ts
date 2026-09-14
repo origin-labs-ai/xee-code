@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { createUserMessage, CallId , createMessage, createToolResultMessage } from '@origin-ai/xhe-llm'
-import { toolPairingBalancedAfter, toolPairingBalancedBefore } from '@origin-ai/xhe-compaction'
-import { Session, SessionId } from '@origin-ai/xhe-session'
-import type { SessionEvent } from '@origin-ai/xhe-session'
+import { createUserMessage, CallId , createMessage, createToolResultMessage } from '@origin-ai/cf-llm'
+import { toolPairingBalancedAfter, toolPairingBalancedBefore } from '@origin-ai/cf-compaction'
+import { Session, SessionId } from '@origin-ai/cf-session'
+import type { SessionEvent } from '@origin-ai/cf-session'
 
 const SURFACE = { surfaceOp: 'append' as const }
 

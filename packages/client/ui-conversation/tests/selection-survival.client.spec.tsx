@@ -4,8 +4,8 @@
  * component stubs cannot prove per-session identity or disposal.
  */
 import { beforeEach, describe, expect, it } from 'vitest'
-import type { SessionId } from '@origin-ai/xhe-client-runtime/client'
-import { SlotTestRuntime } from '@origin-ai/xhe-client-test-runtime'
+import type { SessionId } from '@origin-ai/cf-client-runtime/client'
+import { SlotTestRuntime } from '@origin-ai/cf-client-test-runtime'
 import { createChatStore } from '../src/client/stores.ts'
 
 const sid = (s: string): SessionId => s as SessionId

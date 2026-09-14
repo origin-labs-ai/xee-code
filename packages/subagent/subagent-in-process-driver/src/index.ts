@@ -8,15 +8,15 @@
  * composes and drives them directly, so this driver owns exactly one turn with
  * one result.
  *
- * @module @origin-ai/xhe-subagent-in-process-driver
+ * @module @origin-ai/cf-subagent-in-process-driver
  */
 
 import { randomUUID } from 'node:crypto'
 import type { Context } from '@deepseek-ai/cordis'
-import { foldConsumedWork } from '@origin-ai/xhe-agent'
-import type { Agent, AgentHandle } from '@origin-ai/xhe-agent'
-import { SessionId, type SessionEvent, type TurnEndReason } from '@origin-ai/xhe-session'
-import { createUserMessage, type ContentBlock } from '@origin-ai/xhe-llm'
+import { foldConsumedWork } from '@origin-ai/cf-agent'
+import type { Agent, AgentHandle } from '@origin-ai/cf-agent'
+import { SessionId, type SessionEvent, type TurnEndReason } from '@origin-ai/cf-session'
+import { createUserMessage, type ContentBlock } from '@origin-ai/cf-llm'
 import {
   appendDelegatedPolicyOverrides,
   applyChildComposition,
@@ -26,14 +26,14 @@ import {
   finalAssistantOutput,
   resolveChildAgentOptions,
   resolveChildDepth,
-} from '@origin-ai/xhe-subagent'
+} from '@origin-ai/cf-subagent'
 import type {
   ResolvedSubagentStartRequest,
   SubagentDescriptorData,
   SubagentResult,
   SubagentRun,
   SubagentStopReason,
-} from '@origin-ai/xhe-subagent'
+} from '@origin-ai/cf-subagent'
 import {
   attachStructuredRuntime,
   type StructuredAttachment,

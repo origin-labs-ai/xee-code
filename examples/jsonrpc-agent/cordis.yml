@@ -2,7 +2,7 @@
 # stdout is reserved for JSON-RPC; do not add a console logger or terminal UI.
 
 - id: sdk-jsonrpc-server
-  name: '@origin-ai/xhe-sdk-jsonrpc-server'
+  name: '@origin-ai/cf-sdk-jsonrpc-server'
   config:
     maxTokensAsSuccess: !!js "process.env.XHE_MAX_TOKENS_AS_SUCCESS === undefined ? true : JSON.parse(process.env.XHE_MAX_TOKENS_AS_SUCCESS)"
 
@@ -10,23 +10,23 @@
 # request; exact-model resolution materializes request defaults before logging.
 # The model arrives per session over JSON-RPC, so it is not pinned here.
 - id: llm-deepseek
-  name: '@origin-ai/xhe-llm-deepseek'
+  name: '@origin-ai/cf-llm-deepseek'
   config:
     thinking: enabled
     reasoningEffort: max
 
 # Managed child-process groups for the bash executor (spawn/kill/output plumbing).
 - id: subprocess
-  name: '@origin-ai/xhe-subprocess-local'
+  name: '@origin-ai/cf-subprocess-local'
 
 - id: bash
-  name: '@origin-ai/xhe-bash-local'
+  name: '@origin-ai/cf-bash-local'
   config:
     cwd: !!js process.env.XHE_CWD ?? process.cwd()
     timeoutMs: 60000
 
 - id: agent-spine
-  name: '@origin-ai/xhe-agent-spine-demo'
+  name: '@origin-ai/cf-agent-spine-demo'
   config:
     persona: !!js process.env.XHE_SYSTEM_PROMPT ?? 'You are a coding agent.'
     workspaceContext: false
@@ -37,51 +37,51 @@
     toolJobs: false
 
 - id: sessions
-  name: '@origin-ai/xhe-session-persistence-jsonl'
+  name: '@origin-ai/cf-session-persistence-jsonl'
   config:
     root: !!js process.env.XHE_SESSION_ROOT ?? './.sessions'
     # Snapshot runs read the raw JSONL back; production keeps zstd frames.
     compression: !!js "process.env.XHE_SNAPSHOT === undefined ? 'zstd' : 'none'"
 
 - id: session-checkpoints
-  name: '@origin-ai/xhe-session-checkpoint-policy'
+  name: '@origin-ai/cf-session-checkpoint-policy'
 
 - id: subagent
-  name: '@origin-ai/xhe-subagent'
+  name: '@origin-ai/cf-subagent'
 
 - id: subagent-spawn-in-process
-  name: '@origin-ai/xhe-subagent-spawn-in-process'
+  name: '@origin-ai/cf-subagent-spawn-in-process'
   config:
     providerName: spawn
 
 - id: tool-subagent
-  name: '@origin-ai/xhe-tool-subagent'
+  name: '@origin-ai/cf-tool-subagent'
   config:
     provider: spawn
     toolName: subagent
     enableRunInBackground: false
 
 - id: tool-todo
-  name: '@origin-ai/xhe-tool-todo'
+  name: '@origin-ai/cf-tool-todo'
   config:
     allowParallelInProgress: true
 
 - id: fs-local
-  name: '@origin-ai/xhe-fs-local'
+  name: '@origin-ai/cf-fs-local'
   config:
     cwd: !!js process.env.XHE_CWD ?? process.cwd()
 
 - id: fs-observation-policy
-  name: '@origin-ai/xhe-fs-observation-policy'
+  name: '@origin-ai/cf-fs-observation-policy'
 
 - id: tool-fs
-  name: '@origin-ai/xhe-tool-fs'
+  name: '@origin-ai/cf-tool-fs'
 
 - id: token-meter
-  name: '@origin-ai/xhe-token-meter'
+  name: '@origin-ai/cf-token-meter'
 
 - id: compaction-basic
-  name: '@origin-ai/xhe-compaction-basic'
+  name: '@origin-ai/cf-compaction-basic'
   config:
     thresholdRatio: 0.8
     retainRatio: 0.16

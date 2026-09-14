@@ -1,6 +1,6 @@
 /**
  * Workspace-level discovery and model-driven Typert generation.
- * @module @origin-ai/xhe-typert-generator/workspace
+ * @module @origin-ai/cf-typert-generator/workspace
  */
 
 import { readFileSync } from 'node:fs'

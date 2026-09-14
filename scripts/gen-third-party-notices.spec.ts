@@ -46,12 +46,12 @@ describe('tierExternalDeps', () => {
     const { manifests, names } = workspace({
       // Root tooling and test infrastructure never ship, whichever section declares them.
       'package.json': { dependencies: { 'root-runtime-looking': '^1' }, devDependencies: { 'lint-tool': '^1' } },
-      'packages/test-support/loader-smoke/package.json': { name: '@origin-ai/xhe-loader-smoke', dependencies: { 'smoke-helper': '^1' } },
-      'packages/test-support/client-runtime/package.json': { name: '@origin-ai/xhe-client-test-runtime', dependencies: { 'test-lib': '^1' } },
+      'packages/test-support/loader-smoke/package.json': { name: '@origin-ai/cf-loader-smoke', dependencies: { 'smoke-helper': '^1' } },
+      'packages/test-support/client-runtime/package.json': { name: '@origin-ai/cf-client-test-runtime', dependencies: { 'test-lib': '^1' } },
       'website/package.json': { devDependencies: { 'site-tool': '^1' } },
       // A plugin package's runtime dependency ships even when no app mounts it by default.
-      'packages/mcp/mcp-client/package.json': { name: '@origin-ai/xhe-mcp-client', dependencies: { 'protocol-sdk': '^1' }, devDependencies: { 'protocol-fixture-server': '^1' } },
-      'apps/cli/package.json': { name: '@origin-ai/xhe-cli', dependencies: { 'cli-lib': '^1', '@origin-ai/xhe-mcp-client': 'workspace:^' } },
+      'packages/mcp/mcp-client/package.json': { name: '@origin-ai/cf-mcp-client', dependencies: { 'protocol-sdk': '^1' }, devDependencies: { 'protocol-fixture-server': '^1' } },
+      'apps/cli/package.json': { name: '@origin-ai/cf-cli', dependencies: { 'cli-lib': '^1', '@origin-ai/cf-mcp-client': 'workspace:^' } },
     })
 
     expect(tierExternalDeps(manifests, names)).toEqual(new Map([
@@ -70,12 +70,12 @@ describe('tierExternalDeps', () => {
   it('keeps a package runtime when any shipping area declares it, and excludes workspace links', () => {
     const { manifests, names } = workspace({
       'package.json': { devDependencies: { shared: '^1' } },
-      'packages/interaction/tui/package.json': { name: '@origin-ai/xhe-tui', dependencies: { shared: '^1', '@origin-ai/xhe-cli': 'workspace:^' } },
-      'apps/cli/package.json': { name: '@origin-ai/xhe-cli' },
+      'packages/interaction/tui/package.json': { name: '@origin-ai/cf-tui', dependencies: { shared: '^1', '@origin-ai/cf-cli': 'workspace:^' } },
+      'apps/cli/package.json': { name: '@origin-ai/cf-cli' },
     })
 
     expect(tierExternalDeps(manifests, names).get('shared')).toBe(true)
-    expect(tierExternalDeps(manifests, names).has('@origin-ai/xhe-cli')).toBe(false)
+    expect(tierExternalDeps(manifests, names).has('@origin-ai/cf-cli')).toBe(false)
   })
 })
 

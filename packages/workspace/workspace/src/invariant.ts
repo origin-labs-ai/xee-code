@@ -1,14 +1,14 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-workspace`.
- * @module @origin-ai/xhe-workspace/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-workspace`.
+ * @module @origin-ai/cf-workspace/invariant
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
-import type { DomainChanged } from '@origin-ai/xhe-storage-domain'
-import { WorkspaceId } from '@origin-ai/xhe-workspace'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
+import type { DomainChanged } from '@origin-ai/cf-storage-domain'
+import { WorkspaceId } from '@origin-ai/cf-workspace'
 
-const PACKAGE_NAME = '@origin-ai/xhe-workspace'
+const PACKAGE_NAME = '@origin-ai/cf-workspace'
 
 /** Cordis companion plugin name. */
 export const name = 'workspace-invariant'

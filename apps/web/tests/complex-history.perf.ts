@@ -9,22 +9,22 @@ import { performance } from 'node:perf_hooks'
 import type { Browser, CDPSession, Locator, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import type { StreamChunk } from '@origin-ai/xhe-llm'
+import type { StreamChunk } from '@origin-ai/cf-llm'
 import {
   CallId,
   createAssistantMessage,
   createToolResultMessage,
   createUserMessage,
-} from '@origin-ai/xhe-llm'
-import type { ReplayEntry, ReplayOverrideDoc } from '@origin-ai/xhe-llm-replay'
-import type { SessionEvent } from '@origin-ai/xhe-session'
+} from '@origin-ai/cf-llm'
+import type { ReplayEntry, ReplayOverrideDoc } from '@origin-ai/cf-llm-replay'
+import type { SessionEvent } from '@origin-ai/cf-session'
 import {
   SESSION_FORMAT_VERSION,
   Session,
   SessionId,
-} from '@origin-ai/xhe-session'
+} from '@origin-ai/cf-session'
 // Carries the session/title event declaration into the fixture builder.
-import type {} from '@origin-ai/xhe-session-title'
+import type {} from '@origin-ai/cf-session-title'
 import {
   launchWebScaffold,
   seedSession,

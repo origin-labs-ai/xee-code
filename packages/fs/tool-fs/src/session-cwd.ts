@@ -5,11 +5,11 @@
  * `xhe-tool-bash` defaults a bash `workdir` to the session cwd.
  * Non-agent calls return `undefined`, leaving the fallback in the provider rather than reading
  * `process.cwd()` at the tool boundary.
- * @module @origin-ai/xhe-tool-fs/session-cwd
+ * @module @origin-ai/cf-tool-fs/session-cwd
  */
 
-import type { ToolExecution } from '@origin-ai/xhe-tools'
-import { canonicalPath } from '@origin-ai/xhe-sandbox'
+import type { ToolExecution } from '@origin-ai/cf-tools'
+import { canonicalPath } from '@origin-ai/cf-sandbox'
 
 const PARENT_PATH_SEGMENT = /(?:^|[\\/])\.\.(?:[\\/]|$)/
 

@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-fs-sandbox`.
- * @module @origin-ai/xhe-fs-sandbox/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-fs-sandbox`.
+ * @module @origin-ai/cf-fs-sandbox/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-fs-sandbox'
+const PACKAGE_NAME = '@origin-ai/cf-fs-sandbox'
 
 /** Cordis companion plugin name. */
 export const name = 'fs-sandbox-invariant'

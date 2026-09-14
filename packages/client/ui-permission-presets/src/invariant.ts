@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-client-ui-permission-presets`.
- * @module @origin-ai/xhe-client-ui-permission-presets/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-client-ui-permission-presets`.
+ * @module @origin-ai/cf-client-ui-permission-presets/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-client-ui-permission-presets'
+const PACKAGE_NAME = '@origin-ai/cf-client-ui-permission-presets'
 
 /** Cordis companion plugin name. */
 export const name = 'client-ui-permission-presets-invariant'

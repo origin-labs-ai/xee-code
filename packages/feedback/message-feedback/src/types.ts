@@ -2,12 +2,12 @@
  * Public request, value, and failure vocabulary for per-message feedback.
  * This module contains types only so generated Remote clients can consume it
  * without importing Host runtime code.
- * @module @origin-ai/xhe-message-feedback/types
+ * @module @origin-ai/cf-message-feedback/types
  */
 
-import type { Branded } from '@origin-ai/xhe-brand'
-import type { MessageId } from '@origin-ai/xhe-llm/brand'
-import type { SessionId } from '@origin-ai/xhe-session/types'
+import type { Branded } from '@origin-ai/cf-brand'
+import type { MessageId } from '@origin-ai/cf-llm/brand'
+import type { SessionId } from '@origin-ai/cf-session/types'
 
 /** Opaque compare-and-set token for one exact feedback item revision. */
 export type MessageFeedbackVersion = Branded<'MessageFeedbackVersion'>

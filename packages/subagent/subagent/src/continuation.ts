@@ -18,7 +18,7 @@
  * disposed by then, and the release that wakes the parent's own settlement
  * watcher has already run. See {@link SubagentContinuationManager.notifySettlement}.
  *
- * @module @origin-ai/xhe-subagent
+ * @module @origin-ai/cf-subagent
  */
 
 import { randomUUID } from 'node:crypto'
@@ -29,13 +29,13 @@ import type {
   AgentOptions,
   AgentSetupCommit,
   CreateAgentOptions,
-} from '@origin-ai/xhe-agent'
-import { boundContextSummary, createUserMessage, errorChain } from '@origin-ai/xhe-llm'
-import type { ContentBlock, MessageId, MessageSource } from '@origin-ai/xhe-llm'
-import { SessionId } from '@origin-ai/xhe-session'
-import type { SessionEvent } from '@origin-ai/xhe-session'
-import type { SessionPersistence } from '@origin-ai/xhe-session-persistence'
-import type { ToolRestriction } from '@origin-ai/xhe-tools'
+} from '@origin-ai/cf-agent'
+import { boundContextSummary, createUserMessage, errorChain } from '@origin-ai/cf-llm'
+import type { ContentBlock, MessageId, MessageSource } from '@origin-ai/cf-llm'
+import { SessionId } from '@origin-ai/cf-session'
+import type { SessionEvent } from '@origin-ai/cf-session'
+import type { SessionPersistence } from '@origin-ai/cf-session-persistence'
+import type { ToolRestriction } from '@origin-ai/cf-tools'
 import { foldSubagentDescriptor, snapshotSubagentDescriptor } from './descriptor.ts'
 import type { SubagentDescriptorData } from './descriptor.ts'
 import {
@@ -89,7 +89,7 @@ export interface SubagentSettledMessageSource {
   readonly senderSessionId: SessionId
 }
 
-declare module '@origin-ai/xhe-llm' {
+declare module '@origin-ai/cf-llm' {
   interface MessageSourceMap {
     coordinator: CoordinatorMessageSource
     'subagent-report': SubagentReportMessageSource

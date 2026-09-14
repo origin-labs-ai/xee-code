@@ -8,10 +8,10 @@
 
 import type {
   ConfigurableProviderView, CredentialView, IApiClient, SettingsNamespaceView,
-} from '@origin-ai/xhe-api-remotes/client'
-import type { SnapshotStore } from '@origin-ai/xhe-client-runtime/client'
-import { createSnapshotStore } from '@origin-ai/xhe-client-runtime/client'
-import type { SettingsDescribeFace } from '@origin-ai/xhe-client-ui-settings/client'
+} from '@origin-ai/cf-api-remotes/client'
+import type { SnapshotStore } from '@origin-ai/cf-client-runtime/client'
+import { createSnapshotStore } from '@origin-ai/cf-client-runtime/client'
+import type { SettingsDescribeFace } from '@origin-ai/cf-client-ui-settings/client'
 import type { SettingsSchemaOperations } from './schema-operations.ts'
 
 /**

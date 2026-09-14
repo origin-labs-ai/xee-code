@@ -4,19 +4,19 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
-import { credentialRef } from '@origin-ai/xhe-credentials'
-import LocalCredentialProvider from '@origin-ai/xhe-credentials-local'
-import WebRuntime from '@origin-ai/xhe-web'
+import { credentialRef } from '@origin-ai/cf-credentials'
+import LocalCredentialProvider from '@origin-ai/cf-credentials-local'
+import WebRuntime from '@origin-ai/cf-web'
 import {
   DeepSeekSearchProvider,
   DEEPSEEK_PROVIDER_ID,
-} from '@origin-ai/xhe-web-search-deepseek'
-import * as deepseekPlugin from '@origin-ai/xhe-web-search-deepseek'
+} from '@origin-ai/cf-web-search-deepseek'
+import * as deepseekPlugin from '@origin-ai/cf-web-search-deepseek'
 import { citationSnippets, mapAnthropicResponse } from '../src/provider.ts'
-import type { AnthropicResponse } from '@origin-ai/xhe-web-search-deepseek/src/types.ts'
+import type { AnthropicResponse } from '@origin-ai/cf-web-search-deepseek/src/types.ts'
 
 /** Construct the provider over a fixed options value; production passes a live thunk. */
-import type { DeepSeekSearchProviderOptions } from '@origin-ai/xhe-web-search-deepseek'
+import type { DeepSeekSearchProviderOptions } from '@origin-ai/cf-web-search-deepseek'
 
 const searchProvider = (options: DeepSeekSearchProviderOptions): DeepSeekSearchProvider =>
   new DeepSeekSearchProvider(() => options)

@@ -1,10 +1,10 @@
-/** Package-owned prompt-assembly invariants. @module @origin-ai/xhe-system-prompt/invariant */
+/** Package-owned prompt-assembly invariants. @module @origin-ai/cf-system-prompt/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 import type { PromptAssembly } from './index.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-system-prompt'
+const PACKAGE_NAME = '@origin-ai/cf-system-prompt'
 const VARIABLE_NAME = /^[a-z][a-z0-9_]*$/
 
 /** Cordis companion plugin name. */

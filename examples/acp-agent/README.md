@@ -11,9 +11,9 @@ The leaf loads the ACP app, DeepSeek adapter, sandboxed bash and filesystem stac
 
 ## Protocol channel
 
-Stdout carries only newline-delimited ACP JSON-RPC. `@origin-ai/xhe-acp-demo` installs no stdout logger; leaf additions must use stderr for diagnostics.
+Stdout carries only newline-delimited ACP JSON-RPC. `@origin-ai/cf-acp-demo` installs no stdout logger; leaf additions must use stderr for diagnostics.
 
-The automation contract — supported methods, baseline prompt content, committed-text output, and the intentionally absent UI surfaces — lives in [`@origin-ai/xhe-acp`](../../packages/acp/acp/README.md).
+The automation contract — supported methods, baseline prompt content, committed-text output, and the intentionally absent UI surfaces — lives in [`@origin-ai/cf-acp`](../../packages/acp/acp/README.md).
 
 ## Session workspaces and permissions
 

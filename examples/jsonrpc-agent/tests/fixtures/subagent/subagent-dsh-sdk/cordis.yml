@@ -10,12 +10,12 @@
   name: './mock-delegating-llm.ts'
 
 - id: subagent
-  name: '@origin-ai/xhe-subagent'
+  name: '@origin-ai/cf-subagent'
 
 # providerName is omitted: the composition exercises the shipped default
 # (`xhe-sdk`) through the real Loader.
 - id: subagent-xhe-sdk
-  name: '@origin-ai/xhe-subagent-xhe-sdk'
+  name: '@origin-ai/cf-subagent-xhe-sdk'
   config:
     command: !!js process.env.XHE_TEST_CHILD_COMMAND
     args: !!js JSON.parse(process.env.XHE_TEST_CHILD_ARGS ?? '[]')
@@ -24,7 +24,7 @@
     env: !!js JSON.parse(process.env.XHE_TEST_CHILD_ENV ?? '{}')
 
 - id: tool-subagent
-  name: '@origin-ai/xhe-tool-subagent'
+  name: '@origin-ai/cf-tool-subagent'
   config:
     provider: xhe-sdk
     toolName: subagent
@@ -33,7 +33,7 @@
     maxDepth: 'provider-managed'
 
 - id: agent-spine
-  name: '@origin-ai/xhe-agent-spine-demo'
+  name: '@origin-ai/cf-agent-spine-demo'
   config:
     agents:
       - id: main
@@ -44,10 +44,10 @@
     workspaceContext: false
 
 - id: persistence
-  name: '@origin-ai/xhe-session-persistence-jsonl'
+  name: '@origin-ai/cf-session-persistence-jsonl'
   config:
     root: './.sessions'
     compression: 'none'
 
 - id: checkpoint-policy
-  name: '@origin-ai/xhe-session-checkpoint-policy'
+  name: '@origin-ai/cf-session-checkpoint-policy'

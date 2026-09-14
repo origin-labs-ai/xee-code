@@ -11,10 +11,10 @@ import { Context } from '@deepseek-ai/cordis'
 import { mkdtempSync, readFileSync, rmSync, statSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { basename, dirname, isAbsolute, join, normalize } from 'node:path'
-import { CallId } from '@origin-ai/xhe-llm'
-import { SessionId } from '@origin-ai/xhe-session'
-import type { SaveTextSpill } from '@origin-ai/xhe-spill'
-import LocalSpillStore, { encodeSegment, privateRoot, saveTextFile, sessionDir } from '@origin-ai/xhe-spill-local'
+import { CallId } from '@origin-ai/cf-llm'
+import { SessionId } from '@origin-ai/cf-session'
+import type { SaveTextSpill } from '@origin-ai/cf-spill'
+import LocalSpillStore, { encodeSegment, privateRoot, saveTextFile, sessionDir } from '@origin-ai/cf-spill-local'
 
 let root: string
 

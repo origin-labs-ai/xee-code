@@ -7,10 +7,10 @@
     path: ./cordis.yml
     patches:
       - id: llm-deepseek
-        name: '@origin-ai/xhe-llm-deepseek'
+        name: '@origin-ai/cf-llm-deepseek'
         disabled: true
       - id: acp-agent
-        name: '@origin-ai/xhe-acp-demo'
+        name: '@origin-ai/cf-acp-demo'
         config:
           provider: deepseek-official
           model: deepseek-v4-flash
@@ -27,6 +27,6 @@
             Verify your work by running the code or tests. Keep answers brief and factual.
       - insert:
           - id: llm-replay
-            name: '@origin-ai/xhe-llm-replay'
+            name: '@origin-ai/cf-llm-replay'
           - id: workspace-context-compaction
             name: './tests/fixtures/workspace-context-compaction.ts'

@@ -40,7 +40,7 @@
  * 
  * TOTAL: 12 Core + 16 Advanced Systems = 28 COMPONENTS
  * 
- * @origin-ai/xhe/mad/core
+ * @origin-ai/cf/mad/core
  * @version 4.0.0-ultimate (R1 + R2 = 16 Rounds of Improvements)
  */
 

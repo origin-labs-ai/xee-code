@@ -8,7 +8,7 @@
  * App flags are not the launcher's business: the invocation's inner arguments
  * are provided to the tree through `ctx.cmdlineArgs`, where any injected app
  * plugin may read the same immutable snapshot.
- * @module @origin-ai/xhe/profile-boot
+ * @module @origin-ai/cf/profile-boot
  */
 
 import { writeFileSync } from 'node:fs'
@@ -28,14 +28,14 @@ import {
   PROFILE_PATCH_FILENAME,
   watchUserPatches,
   type Profile,
-} from '@origin-ai/xhe-app-boot'
-import { resolveDshHome, migrateLegacyDshHome } from '@origin-ai/xhe-home-paths'
+} from '@origin-ai/cf-app-boot'
+import { resolveDshHome, migrateLegacyDshHome } from '@origin-ai/cf-home-paths'
 
 /** Shipped agent-preset root: beside this app's own config, in both source and built layouts. */
 const SHIPPED_PRESET_ROOT = fileURLToPath(new URL('../config/agent-presets/', import.meta.url))
 
-import { XHE_LAUNCH_ENVIRONMENT_KEY, type LaunchEnvironmentSnapshot } from '@origin-ai/xhe-launch-environment'
-import { provideCmdline } from '@origin-ai/xhe-cmdline'
+import { XHE_LAUNCH_ENVIRONMENT_KEY, type LaunchEnvironmentSnapshot } from '@origin-ai/cf-launch-environment'
+import { provideCmdline } from '@origin-ai/cf-cmdline'
 import { createProcessShutdown, type ProcessShutdown } from './process-shutdown.ts'
 
 const NAME = 'dsh'

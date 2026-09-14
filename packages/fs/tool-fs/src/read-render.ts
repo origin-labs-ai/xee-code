@@ -2,10 +2,10 @@
  * Pure read presentation: turn provider-decoded text into a bounded, line-numbered window and
  * model-facing envelope. Chunk scanning caps the current line, so even one newline-free giant
  * line cannot grow memory without bound.
- * @module @origin-ai/xhe-tool-fs/read-render
+ * @module @origin-ai/cf-tool-fs/read-render
  */
 
-import { FsError } from '@origin-ai/xhe-fs'
+import { FsError } from '@origin-ai/cf-fs'
 
 /** Default maximum characters returned for a single line (the `readMaxLineLength` config). */
 export const READ_MAX_LINE_LENGTH = 2000

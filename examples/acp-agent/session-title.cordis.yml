@@ -8,7 +8,7 @@
     patches:
       - insert:
           - id: session-title-provider
-            name: '@origin-ai/xhe-session-title-first-prompt-llm'
+            name: '@origin-ai/cf-session-title-first-prompt-llm'
             config:
               targetWords: 5
               targetCjkCharacters: 10

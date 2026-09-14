@@ -7,17 +7,17 @@
  * imports no provider.
  *
  * Namespace plugin (named exports, no default export).
- * @module @origin-ai/xhe-tool-lsp
+ * @module @origin-ai/cf-tool-lsp
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { defineTool } from '@origin-ai/xhe-tools'
-import { assertNever } from '@origin-ai/xhe-llm'
-import { LspError } from '@origin-ai/xhe-lsp'
-import type {} from '@origin-ai/xhe-lsp'
-import type {} from '@origin-ai/xhe-system-prompt'
-import { MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
+import { defineTool } from '@origin-ai/cf-tools'
+import { assertNever } from '@origin-ai/cf-llm'
+import { LspError } from '@origin-ai/cf-lsp'
+import type {} from '@origin-ai/cf-lsp'
+import type {} from '@origin-ai/cf-system-prompt'
+import { MAX_TIMER_DELAY_MS } from '@origin-ai/cf-timeout'
 import {
   DEFAULT_MAX_LOCATIONS,
   DEFAULT_MAX_RESULT_CHARS,

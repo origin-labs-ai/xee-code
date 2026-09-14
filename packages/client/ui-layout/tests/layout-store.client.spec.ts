@@ -6,11 +6,11 @@
  * real engine instance (same create path as production).
  */
 import { beforeEach, describe, expect, it } from 'vitest'
-import { createLayoutStore } from '@origin-ai/xhe-client-ui-layout/src/client/stores.ts'
+import { createLayoutStore } from '@origin-ai/cf-client-ui-layout/src/client/stores.ts'
 import {
   DETAILS_DEFAULT, DETAILS_MAX, DETAILS_MIN,
   SIDEBAR_DEFAULT, SIDEBAR_MAX, SIDEBAR_MIN,
-} from '@origin-ai/xhe-client-ui-layout/src/client/columns.ts'
+} from '@origin-ai/cf-client-ui-layout/src/client/columns.ts'
 
 const PERSIST_KEY = 'dsh.layout.panels'
 

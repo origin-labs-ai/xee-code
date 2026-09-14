@@ -5,11 +5,11 @@
  */
 
 import { useEffect, useState } from 'react'
-import type { SnapshotStore } from '@origin-ai/xhe-client-runtime/client'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@origin-ai/xhe-client-ui-slots'
+import type { SnapshotStore } from '@origin-ai/cf-client-runtime/client'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@origin-ai/cf-client-ui-slots'
 import {
   IconChevronDownOutline14, Menu, RiskConfirmation,
-} from '@origin-ai/xhe-client-ui-primitives'
+} from '@origin-ai/cf-client-ui-primitives'
 import type { PermissionSettingsState } from './settings-store.ts'
 import type { PermissionSettingsKey } from './locales.ts'
 import { FULL_ACCESS_PRESET } from './presentation.ts'
@@ -125,7 +125,7 @@ export function PermissionRow({ load, select, usePermission, t }: PermissionRowP
   )
 }
 
-declare module '@origin-ai/xhe-client-ui-slots' {
+declare module '@origin-ai/cf-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Permission row copy. */
     'settings.permission': PermissionSettingsKey

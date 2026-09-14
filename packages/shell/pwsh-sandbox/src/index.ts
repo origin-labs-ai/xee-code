@@ -1,6 +1,6 @@
 /**
  * Sandbox-consuming PowerShell executor — the pwsh twin of
- * `@origin-ai/xhe-bash-sandbox`. It wraps the exact local pwsh argv through
+ * `@origin-ai/cf-bash-sandbox`. It wraps the exact local pwsh argv through
  * `ctx.sandbox` (which on Windows resolves to the ACL restricted-token runner
  * chain), inherits local process mechanics, and reports the selected mode,
  * enforcement, and denial facts. Positive runner-launch evidence means the
@@ -9,12 +9,12 @@
  * local-executor semantics. The tool layer owns the escalation approval flow
  * through `ctx.approval`; this executor reports the sandbox facts the tool
  * renders.
- * @module @origin-ai/xhe-pwsh-sandbox
+ * @module @origin-ai/cf-pwsh-sandbox
  */
 
 import { Context } from '@deepseek-ai/cordis'
-import type { ShellExecRequest, ShellExecSpec, ShellProcess, ShellRunResult } from '@origin-ai/xhe-shell'
-import { SandboxUnavailableError } from '@origin-ai/xhe-sandbox'
+import type { ShellExecRequest, ShellExecSpec, ShellProcess, ShellRunResult } from '@origin-ai/cf-shell'
+import { SandboxUnavailableError } from '@origin-ai/cf-sandbox'
 import type {
   ConfinedArgv,
   ConfinedSandboxMode,
@@ -23,16 +23,16 @@ import type {
   SandboxExecutionPolicy,
   SandboxMode,
   SandboxPolicy,
-} from '@origin-ai/xhe-sandbox'
-import type {} from '@origin-ai/xhe-sandbox-policy'
-import { PwshLocalExecutor } from '@origin-ai/xhe-pwsh-local'
-import type { Config as LocalConfig } from '@origin-ai/xhe-pwsh-local'
+} from '@origin-ai/cf-sandbox'
+import type {} from '@origin-ai/cf-sandbox-policy'
+import { PwshLocalExecutor } from '@origin-ai/cf-pwsh-local'
+import type { Config as LocalConfig } from '@origin-ai/cf-pwsh-local'
 import { classifyDenial, classifyRunnerFailure, isRunnerSpawnFailure, matchesSignature } from './helpers.ts'
 
 /**
  * Plugin config: the local executor's knobs, verbatim. The sandbox policy —
  * the default mode and fallback `workspace-write` root — is NOT here: it lives
- * on `ctx.sandboxPolicy` (`@origin-ai/xhe-sandbox-policy`), which resolves
+ * on `ctx.sandboxPolicy` (`@origin-ai/cf-sandbox-policy`), which resolves
  * each calling session's mode and cwd for every enforcing capability. The
  * runner choice is likewise the `ctx.sandbox` provider's config, not this
  * executor's.

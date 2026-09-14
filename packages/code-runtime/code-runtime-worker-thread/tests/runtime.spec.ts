@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { WorkerThreadCodeRuntime } from '@origin-ai/xhe-code-runtime-worker-thread'
-import type { Config } from '@origin-ai/xhe-code-runtime-worker-thread'
-import type { CodeBindingFunction, CodeBindingNamespace, CodeRunResult } from '@origin-ai/xhe-code-runtime'
+import { WorkerThreadCodeRuntime } from '@origin-ai/cf-code-runtime-worker-thread'
+import type { Config } from '@origin-ai/cf-code-runtime-worker-thread'
+import type { CodeBindingFunction, CodeBindingNamespace, CodeRunResult } from '@origin-ai/cf-code-runtime'
 
 /**
  * Integration suite over REAL worker threads (no mocks — workers are cheap

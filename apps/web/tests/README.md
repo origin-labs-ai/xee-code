@@ -16,13 +16,13 @@ not make a file part of the Client program — the two faces merge cordis
 both. Moving these files into the Client aggregate makes every Host-service
 access fail to compile.
 
-## Do not import `@origin-ai/xhe-client-*` here
+## Do not import `@origin-ai/cf-client-*` here
 
 Importing a Client package — a value or a type — pulls its whole TypeScript
 project, and every project it references, into the **Host build graph**. That has
 bitten this lane once already: four Client consumer packages reference
 `api/remotes`' Client face, which cannot compile until Host tsdown has generated
-`@origin-ai/xhe-goal/remote`, so the Host build phase ended up waiting on an
+`@origin-ai/cf-goal/remote`, so the Host build phase ended up waiting on an
 artifact it produces itself.
 
 When a scenario needs a Client-owned constant or pure function, mirror it here
@@ -32,11 +32,11 @@ never a silent pass. `scaffold.ts` follows this rule for the welcome-notice
 namespace, acknowledgement field, version, and asserted Chinese copy.
 
 Two kinds of Client import stand. `assembled-boot.ts` drives the shell itself, so
-it imports `AppWebEntry` from `@origin-ai/xhe-client-web` and the boot-manifest
-type from `@origin-ai/xhe-client-modules/client`: booting the real shell is what
+it imports `AppWebEntry` from `@origin-ai/cf-client-web` and the boot-manifest
+type from `@origin-ai/cf-client-modules/client`: booting the real shell is what
 that harness is for, and both packages are already in the Host graph. Separately,
 the chat scenarios import `conversationContextKey` from
-`@origin-ai/xhe-client-runtime/client` because `client/runtime` is reachable
+`@origin-ai/cf-client-runtime/client` because `client/runtime` is reachable
 through the unsplit `directory-picker` packages and pulls nothing further in.
 That reachability is incidental, not a guarantee — if it ever leaves the graph,
 mirror the helper like the rest.

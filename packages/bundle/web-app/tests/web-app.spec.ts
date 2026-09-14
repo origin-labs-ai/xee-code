@@ -13,9 +13,9 @@ import { join } from 'node:path'
 import { PassThrough } from 'node:stream'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { createLaunchEnvironmentSnapshot, XHE_LAUNCH_ENVIRONMENT_KEY } from '@origin-ai/xhe-launch-environment'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import type { WebServer } from '@origin-ai/xhe-host-webserver'
+import { createLaunchEnvironmentSnapshot, XHE_LAUNCH_ENVIRONMENT_KEY } from '@origin-ai/cf-launch-environment'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import type { WebServer } from '@origin-ai/cf-host-webserver'
 import { apply, Config, internals } from '../src/index.ts'
 
 vi.mock('node:child_process', async importOriginal => ({

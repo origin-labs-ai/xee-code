@@ -1,18 +1,18 @@
 /**
  * Persistent shell PTY backend over the subprocess terminal primitive, shared
  * sandbox policy, bounded output, and provider-owned session cleanup.
- * @module @origin-ai/xhe-terminal-bash
+ * @module @origin-ai/cf-terminal-bash
  */
 
 import { Context } from '@deepseek-ai/cordis'
-import type { Agent } from '@origin-ai/xhe-agent'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import { TerminalBackendCleanupError } from '@origin-ai/xhe-terminal'
-import type { TerminalBackend, TerminalBackendSpawnSpec } from '@origin-ai/xhe-terminal'
-import type { SubprocessTerminalHandle, SubprocessTerminalSpawnSpec } from '@origin-ai/xhe-subprocess'
-import type { SandboxExecutionPolicy } from '@origin-ai/xhe-sandbox'
-import { effectiveSandboxMode } from '@origin-ai/xhe-sandbox-policy'
-import { ENCODING_PREAMBLE } from '@origin-ai/xhe-pwsh-local'
+import type { Agent } from '@origin-ai/cf-agent'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import { TerminalBackendCleanupError } from '@origin-ai/cf-terminal'
+import type { TerminalBackend, TerminalBackendSpawnSpec } from '@origin-ai/cf-terminal'
+import type { SubprocessTerminalHandle, SubprocessTerminalSpawnSpec } from '@origin-ai/cf-subprocess'
+import type { SandboxExecutionPolicy } from '@origin-ai/cf-sandbox'
+import { effectiveSandboxMode } from '@origin-ai/cf-sandbox-policy'
+import { ENCODING_PREAMBLE } from '@origin-ai/cf-pwsh-local'
 import { type Config, type ResolvedConfig, resolveConfig, type ShellDialect, validateConfig } from './config.ts'
 import { LocalPtySession } from './session.ts'
 import { CONTROLLED_PROMPT } from './sanitize.ts'

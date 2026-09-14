@@ -146,7 +146,7 @@ SAVINGS: ~70% token reduction! 🎉
 
 **Integration:**
 ```tsx
-import { CommandPalette, SkillBrowser, GauntletProgressViewer } from '@origin-ai/xhe-popular-skills/ui'
+import { CommandPalette, SkillBrowser, GauntletProgressViewer } from '@origin-ai/cf-popular-skills/ui'
 
 // Use in your XHE Web UI!
 ```
@@ -335,7 +335,7 @@ pnpm xhe --profile headless "/help"
 
 ### Adjusting Token Optimizer:
 ```typescript
-import { getTokenOptimizer } from '@origin-ai/xhe-popular-skills'
+import { getTokenOptimizer } from '@origin-ai/cf-popular-skills'
 
 const optimizer = getTokenOptimizer({
   maxTotalTokens: 75000,          // Increase budget

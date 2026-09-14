@@ -7,21 +7,21 @@
 # `llm-deepseek:` section there overrides the adapter entry below without a
 # restart.
 - id: settings
-  name: '@origin-ai/xhe-settings-file'
+  name: '@origin-ai/cf-settings-file'
 
 # Credential store: the live process environment over `$XHE_HOME/.credentials.yaml`
 # (owner-only file, hot-reloaded). The adapter resolves `DEEPSEEK_API_KEY`
 # through it at each request, so no key is inlined in this file.
 - id: credentials
-  name: '@origin-ai/xhe-credentials-local'
+  name: '@origin-ai/cf-credentials-local'
 
-# The DeepSeek adapter. Swap to '@origin-ai/xhe-llm-pi-ai' for the pi-ai-backed
+# The DeepSeek adapter. Swap to '@origin-ai/cf-llm-pi-ai' for the pi-ai-backed
 # twin (a `providers` dict keyed by route; `reasoning: high` replaces
 # thinking/reasoningEffort). Shipped default: full thinking at max effort on
 # every request. Exact-model resolution materializes request defaults before
 # the request header is logged.
 - id: llm-deepseek
-  name: '@origin-ai/xhe-llm-deepseek'
+  name: '@origin-ai/cf-llm-deepseek'
   config:
     thinking: enabled
     reasoningEffort: max
@@ -33,16 +33,16 @@
 
 # Managed child-process groups for the bash executor (spawn/kill/output plumbing).
 - id: subprocess
-  name: '@origin-ai/xhe-subprocess-local'
+  name: '@origin-ai/cf-subprocess-local'
 
 - id: bash
-  name: '@origin-ai/xhe-bash-local'
+  name: '@origin-ai/cf-bash-local'
   config:
     timeoutMs: 60000
 
 # The example composition pre-creates one fresh `main` agent for its test driver.
 - id: agent-spine
-  name: '@origin-ai/xhe-agent-spine-demo'
+  name: '@origin-ai/cf-agent-spine-demo'
   config:
     agents:
       - id: main
@@ -61,20 +61,20 @@
       factual.
 
 - id: persistence
-  name: '@origin-ai/xhe-session-persistence-jsonl'
+  name: '@origin-ai/cf-session-persistence-jsonl'
   config:
     root: './.sessions'
     compression: !!js "process.env.XHE_SNAPSHOT === undefined ? 'zstd' : 'none'"
 
 - id: checkpoint-policy
-  name: '@origin-ai/xhe-session-checkpoint-policy'
+  name: '@origin-ai/cf-session-checkpoint-policy'
 
 # Summarize an older range when derived history approaches the context window.
 - id: token-meter
-  name: '@origin-ai/xhe-token-meter'
+  name: '@origin-ai/cf-token-meter'
 
 - id: compaction-basic
-  name: '@origin-ai/xhe-compaction-basic'
+  name: '@origin-ai/cf-compaction-basic'
   config:
     thresholdRatio: 0.8
     retainRatio: 0.16
@@ -84,20 +84,20 @@
 # Projection registry: durable subagent identity (mode/label) folds through
 # its registered units; subagent catalog reads fail loud without the capability.
 - id: session-projection
-  name: '@origin-ai/xhe-session-projection'
+  name: '@origin-ai/cf-session-projection'
 
 # Expose fresh-child `spawn` and completed-prefix `fork` through independent
 # in-process backends.
 - id: subagent
-  name: '@origin-ai/xhe-subagent'
+  name: '@origin-ai/cf-subagent'
 
 - id: subagent-spawn-in-process
-  name: '@origin-ai/xhe-subagent-spawn-in-process'
+  name: '@origin-ai/cf-subagent-spawn-in-process'
   config:
     providerName: spawn
 
 - id: subagent-fork-in-process
-  name: '@origin-ai/xhe-subagent-fork-in-process'
+  name: '@origin-ai/cf-subagent-fork-in-process'
   config:
     providerName: fork
 
@@ -105,13 +105,13 @@
 # separately loaded control registers global `send_message`; `report` is
 # installed only in continuable child scopes.
 - id: tool-subagent-control
-  name: '@origin-ai/xhe-tool-subagent-control'
+  name: '@origin-ai/cf-tool-subagent-control'
 
 - id: tool-subagent-report
-  name: '@origin-ai/xhe-tool-subagent-report'
+  name: '@origin-ai/cf-tool-subagent-report'
 
 - id: tool-subagent
-  name: '@origin-ai/xhe-tool-subagent'
+  name: '@origin-ai/cf-tool-subagent'
   config:
     provider: spawn
     toolName: subagent
@@ -123,7 +123,7 @@
 # as an explicit foreground-only choice even though agent-spine-demo mounts the
 # generic Job runtime. See .agents/notes/implemented/architecture/2026-08-10-fork-children-stay-one-shot.md.
 - id: tool-subagent-fork
-  name: '@origin-ai/xhe-tool-subagent'
+  name: '@origin-ai/cf-tool-subagent'
   config:
     provider: fork
     toolName: subagent_fork
@@ -134,33 +134,33 @@
 # The worker-thread workflow engine fans a model-written JavaScript script's
 # `agent()` calls out through the spawn backend.
 - id: workflow-worker-thread
-  name: '@origin-ai/xhe-workflow-worker-thread'
+  name: '@origin-ai/cf-workflow-worker-thread'
   config:
     provider: spawn
 
 - id: tool-workflow
-  name: '@origin-ai/xhe-tool-workflow'
+  name: '@origin-ai/cf-tool-workflow'
 
 # A separate fixed consumer demonstrates fresh-agent Ralph iteration without
 # changing the workflow tool or same-session goal behavior.
 - id: tool-ralph
-  name: '@origin-ai/xhe-tool-ralph'
+  name: '@origin-ai/cf-tool-ralph'
 
 # `todo_write` replaces the logged whole list.
 - id: tool-todo
-  name: '@origin-ai/xhe-tool-todo'
+  name: '@origin-ai/cf-tool-todo'
   config:
     allowParallelInProgress: true
 
 # Policy loads before the model-facing filesystem tools so writes and edits
 # require an observed file. Relative paths resolve from the process cwd.
 - id: fs-local
-  name: '@origin-ai/xhe-fs-local'
+  name: '@origin-ai/cf-fs-local'
   config:
     cwd: !!js process.cwd()
 
 - id: fs-observation-policy
-  name: '@origin-ai/xhe-fs-observation-policy'
+  name: '@origin-ai/cf-fs-observation-policy'
 
 - id: tool-fs
-  name: '@origin-ai/xhe-tool-fs'
+  name: '@origin-ai/cf-tool-fs'

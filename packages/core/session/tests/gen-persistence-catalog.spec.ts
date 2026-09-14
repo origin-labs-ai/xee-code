@@ -35,14 +35,14 @@ const make = (files: Record<string, string>): string => {
 
 /** A merge-form declaration file wrapping `members` in the session module. */
 const merge = (members: string): string =>
-  `declare module '@origin-ai/xhe-session/types' {\n  interface SessionEventMap {\n${members}\n  }\n}\n`
+  `declare module '@origin-ai/cf-session/types' {\n  interface SessionEventMap {\n${members}\n  }\n}\n`
 
 afterEach(() => {
   while (roots.length) rmSync(roots.pop()!, { recursive: true, force: true })
 })
 
 /** The manifest that marks a fixture package as the owning session package. */
-const OWNER_MANIFEST = '{ "name": "@origin-ai/xhe-session" }\n'
+const OWNER_MANIFEST = '{ "name": "@origin-ai/cf-session" }\n'
 
 describe('gen-persistence-catalog collectLogEvents', () => {
   it('extracts a documented member of the owning top-level interface', () => {
@@ -64,7 +64,7 @@ describe('gen-persistence-catalog collectLogEvents', () => {
 
   it('hard-errors on a top-level interface outside the owning package', () => {
     expect(() => collectLogEvents(make({
-      'packages/group/alien/package.json': '{ "name": "@origin-ai/xhe-alien" }\n',
+      'packages/group/alien/package.json': '{ "name": "@origin-ai/cf-alien" }\n',
       'packages/group/alien/src/types.ts':
         'export interface SessionEventMap {\n  /** Not the real vocabulary. */\n  \'alien/event\': { turn: number }\n}\n',
     }))).toThrow(/top-level interface SessionEventMap .* is outside @deepseek-ai\/xhe-session \(package @deepseek-ai\/xhe-alien\)/)
@@ -89,7 +89,7 @@ describe('gen-persistence-catalog collectLogEvents', () => {
   it('hard-errors on an extends clause (inherited keys would escape the catalog)', () => {
     expect(() => collectLogEvents(make({
       'packages/group/fix/src/types.ts':
-        'interface Extra { \'fix/hidden\': { turn: number } }\ndeclare module \'@origin-ai/xhe-session/types\' {\n  interface SessionEventMap extends Extra {\n    /** Declared directly. */\n    \'fix/direct\': { turn: number }\n  }\n}\n',
+        'interface Extra { \'fix/hidden\': { turn: number } }\ndeclare module \'@origin-ai/cf-session/types\' {\n  interface SessionEventMap extends Extra {\n    /** Declared directly. */\n    \'fix/direct\': { turn: number }\n  }\n}\n',
     }))).toThrow(/uses extends; inherited keys would join keyof SessionEventMap without a catalog row/)
   })
 

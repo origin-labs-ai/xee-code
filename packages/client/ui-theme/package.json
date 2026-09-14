@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-client-ui-theme",
+  "name": "@origin-ai/cf-client-ui-theme",
   "description": "Theme plugin: Host bootstrap for the pre-plugin palette; DOM-free ThemeRuntime for light/dark/system state; --dsw-* token styles and Appearance settings row",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -32,11 +32,11 @@
   "xhe": {
     "client": {
       "inject": [
-        "@origin-ai/xhe-client-connection",
-        "@origin-ai/xhe-client-runtime",
-        "@origin-ai/xhe-client-locale",
-        "@origin-ai/xhe-client-ui-settings",
-        "@origin-ai/xhe-api-remotes"
+        "@origin-ai/cf-client-connection",
+        "@origin-ai/cf-client-runtime",
+        "@origin-ai/cf-client-locale",
+        "@origin-ai/cf-client-ui-settings",
+        "@origin-ai/cf-api-remotes"
       ],
       "platform": "web",
       "immediately": true
@@ -45,28 +45,28 @@
   "license": "MIT",
   "peerDependencies": {
     "@deepseek-ai/cordis": "workspace:^",
-    "@origin-ai/xhe-api-remotes": "workspace:^",
-    "@origin-ai/xhe-client-connection": "workspace:^",
-    "@origin-ai/xhe-client-locale": "workspace:^",
-    "@origin-ai/xhe-client-runtime": "workspace:^",
-    "@origin-ai/xhe-client-ui-settings": "workspace:^",
-    "@origin-ai/xhe-host-webserver": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-settings": "workspace:^"
+    "@origin-ai/cf-api-remotes": "workspace:^",
+    "@origin-ai/cf-client-connection": "workspace:^",
+    "@origin-ai/cf-client-locale": "workspace:^",
+    "@origin-ai/cf-client-runtime": "workspace:^",
+    "@origin-ai/cf-client-ui-settings": "workspace:^",
+    "@origin-ai/cf-host-webserver": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-settings": "workspace:^"
   },
   "devDependencies": {
     "@deepseek-ai/cordis": "workspace:^",
-    "@origin-ai/xhe-api-remotes": "workspace:^",
-    "@origin-ai/xhe-client-connection": "workspace:^",
-    "@origin-ai/xhe-client-locale": "workspace:^",
-    "@origin-ai/xhe-client-runtime": "workspace:^",
-    "@origin-ai/xhe-client-test-runtime": "workspace:^",
-    "@origin-ai/xhe-client-ui-primitives": "workspace:^",
-    "@origin-ai/xhe-client-ui-settings": "workspace:^",
-    "@origin-ai/xhe-client-ui-slots": "workspace:^",
-    "@origin-ai/xhe-host-webserver": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-settings": "workspace:^",
+    "@origin-ai/cf-api-remotes": "workspace:^",
+    "@origin-ai/cf-client-connection": "workspace:^",
+    "@origin-ai/cf-client-locale": "workspace:^",
+    "@origin-ai/cf-client-runtime": "workspace:^",
+    "@origin-ai/cf-client-test-runtime": "workspace:^",
+    "@origin-ai/cf-client-ui-primitives": "workspace:^",
+    "@origin-ai/cf-client-ui-settings": "workspace:^",
+    "@origin-ai/cf-client-ui-slots": "workspace:^",
+    "@origin-ai/cf-host-webserver": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-settings": "workspace:^",
     "@types/react": "~18.3.1",
     "react": "^18.2.0"
   },

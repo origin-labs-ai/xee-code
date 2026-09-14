@@ -1,4 +1,4 @@
-# @origin-ai/xhe-compaction-tool-result-pruner
+# @origin-ai/cf-compaction-tool-result-pruner
 
 The replay-safe model-free pruning service (`ctx.toolResultPruner`). It rewrites over-budget `tool/result` surface nodes to a bounded head, a fixed omission marker, and a bounded tail while retaining the full original event in the append-only session log.
 
@@ -30,7 +30,7 @@ All values are integers; the threshold is positive and head/tail are non-negativ
 
 ```ts
 import type { Context } from '@deepseek-ai/cordis'
-import ToolResultPruner from '@origin-ai/xhe-compaction-tool-result-pruner'
+import ToolResultPruner from '@origin-ai/cf-compaction-tool-result-pruner'
 
 export function apply(ctx: Context): void {
   ctx.plugin(ToolResultPruner)

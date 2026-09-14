@@ -4,7 +4,7 @@
  */
 
 import type { Fiber } from '@deepseek-ai/cordis'
-import type { SessionId } from '@origin-ai/xhe-session/types'
+import type { SessionId } from '@origin-ai/cf-session/types'
 import type {
   ApprovalRequestId, CordisDynamicPackageId, CordisDynamicPluginId, CordisDynamicPluginRunId,
   CordisDynamicRunMode, DynamicCordisRenderFailure, DynamicCordisRunAttempt,

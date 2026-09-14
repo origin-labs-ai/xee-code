@@ -3,8 +3,8 @@ import { Context } from '@deepseek-ai/cordis'
 import { access, mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import LlmRuntime, { createUserMessage, INVALID_CREDENTIAL_CODE } from '@origin-ai/xhe-llm'
-import AttachmentStore, { AttachmentId, ImageVariantId } from '@origin-ai/xhe-attachment'
+import LlmRuntime, { createUserMessage, INVALID_CREDENTIAL_CODE } from '@origin-ai/cf-llm'
+import AttachmentStore, { AttachmentId, ImageVariantId } from '@origin-ai/cf-attachment'
 import type {
   ImageAttachmentLimits,
   ImageAttachmentRef,
@@ -12,12 +12,12 @@ import type {
   RequestImageAttachment,
   SaveImageAttachment,
   StoredImageAttachment,
-} from '@origin-ai/xhe-attachment'
-import { credentialRef } from '@origin-ai/xhe-credentials'
-import { LocalCredentialProvider } from '@origin-ai/xhe-credentials-local'
-import { settingsNamespace } from '@origin-ai/xhe-settings'
-import { FileSettingsProvider } from '@origin-ai/xhe-settings-file'
-import * as LlmDeepSeek from '@origin-ai/xhe-llm-deepseek'
+} from '@origin-ai/cf-attachment'
+import { credentialRef } from '@origin-ai/cf-credentials'
+import { LocalCredentialProvider } from '@origin-ai/cf-credentials-local'
+import { settingsNamespace } from '@origin-ai/cf-settings'
+import { FileSettingsProvider } from '@origin-ai/cf-settings-file'
+import * as LlmDeepSeek from '@origin-ai/cf-llm-deepseek'
 import { assemble } from './assemble.ts'
 import { closeMockServers, mockServer, textEvents } from './mock-server.ts'
 

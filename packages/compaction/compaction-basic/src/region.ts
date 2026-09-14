@@ -2,7 +2,7 @@
  * Surface retention selection and the shared log-recorded compaction
  * transaction for automatic open-turn and manual idle-session compaction.
  *
- * @module @origin-ai/xhe-compaction-basic/region
+ * @module @origin-ai/cf-compaction-basic/region
  */
 
 import { randomUUID } from 'node:crypto'
@@ -13,14 +13,14 @@ import {
   compactCheckpointSource,
   toolPairingBalancedAfter,
   toolPairingBalancedBefore,
-} from '@origin-ai/xhe-compaction'
-import type { CompactionResult } from '@origin-ai/xhe-compaction'
-import type { CommandId } from '@origin-ai/xhe-commands/brand'
-import { createUserMessage, errorChain } from '@origin-ai/xhe-llm'
-import type { Message, UserMessage } from '@origin-ai/xhe-llm'
-import type { TokenMeasurement, TokenMeter } from '@origin-ai/xhe-token-meter'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type { Agent } from '@origin-ai/xhe-agent'
+} from '@origin-ai/cf-compaction'
+import type { CompactionResult } from '@origin-ai/cf-compaction'
+import type { CommandId } from '@origin-ai/cf-commands/brand'
+import { createUserMessage, errorChain } from '@origin-ai/cf-llm'
+import type { Message, UserMessage } from '@origin-ai/cf-llm'
+import type { TokenMeasurement, TokenMeter } from '@origin-ai/cf-token-meter'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type { Agent } from '@origin-ai/cf-agent'
 import { frameSummary } from './summarizer.ts'
 import type { SummarizationInput, SummaryResult } from './summarizer.ts'
 

@@ -1,11 +1,11 @@
 /**
  * Load-time validation and routed-model policy resolution for compaction-basic.
  *
- * @module @origin-ai/xhe-compaction-basic/config
+ * @module @origin-ai/cf-compaction-basic/config
  */
 
-import { deepFreeze } from '@origin-ai/xhe-llm'
-import type { LlmCallConfig } from '@origin-ai/xhe-llm'
+import { deepFreeze } from '@origin-ai/cf-llm'
+import type { LlmCallConfig } from '@origin-ai/cf-llm'
 import type {
   BasicCompactionConfig,
   CompactionPolicyConfig,

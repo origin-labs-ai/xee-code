@@ -4,23 +4,23 @@
   name: './fixture.ts'
 
 - id: subagent
-  name: '@origin-ai/xhe-subagent'
+  name: '@origin-ai/cf-subagent'
 
 - id: subprocess
-  name: '@origin-ai/xhe-subprocess-local'
+  name: '@origin-ai/cf-subprocess-local'
 
 - id: subagent-codex-primary
-  name: '@origin-ai/xhe-subagent-codex'
+  name: '@origin-ai/cf-subagent-codex'
   config:
     providerName: codex-primary
 
 - id: subagent-codex-secondary
-  name: '@origin-ai/xhe-subagent-codex'
+  name: '@origin-ai/cf-subagent-codex'
   config:
     providerName: codex-secondary
 
 - id: tool-subagent-codex
-  name: '@origin-ai/xhe-tool-subagent'
+  name: '@origin-ai/cf-tool-subagent'
   config:
     provider: codex
     toolName: subagent_codex
@@ -28,7 +28,7 @@
     maxDepth: 'provider-managed'
 
 - id: tool-subagent-codex-primary
-  name: '@origin-ai/xhe-tool-subagent'
+  name: '@origin-ai/cf-tool-subagent'
   config:
     provider: codex-primary
     toolName: subagent_codex_primary
@@ -36,7 +36,7 @@
     maxDepth: 'provider-managed'
 
 - id: tool-subagent-codex-secondary
-  name: '@origin-ai/xhe-tool-subagent'
+  name: '@origin-ai/cf-tool-subagent'
   config:
     provider: codex-secondary
     toolName: subagent_codex_secondary
@@ -44,7 +44,7 @@
     maxDepth: 'provider-managed'
 
 - id: agent-spine
-  name: '@origin-ai/xhe-agent-spine-demo'
+  name: '@origin-ai/cf-agent-spine-demo'
   config:
     agents:
       - id: main
@@ -55,9 +55,9 @@
     workspaceContext: false
 
 - id: persistence
-  name: '@origin-ai/xhe-session-persistence-jsonl'
+  name: '@origin-ai/cf-session-persistence-jsonl'
   config:
     root: './.sessions'
 
 - id: checkpoint-policy
-  name: '@origin-ai/xhe-session-checkpoint-policy'
+  name: '@origin-ai/cf-session-checkpoint-policy'

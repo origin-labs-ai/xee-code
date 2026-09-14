@@ -1,8 +1,8 @@
-/** Content-block structure helpers. @module @origin-ai/xhe-llm/content */
+/** Content-block structure helpers. @module @origin-ai/cf-llm/content */
 
 import type { ContentBlock } from './types.ts'
 import type { Message } from './message.ts'
-import type { ImageAttachmentRef, RequestImageAttachment } from '@origin-ai/xhe-attachment'
+import type { ImageAttachmentRef, RequestImageAttachment } from '@origin-ai/cf-attachment'
 
 /** Model-facing stand-in for an image removed to fit a provider request bound. */
 export const OFFLOADED_IMAGE_TEXT

@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-tool-str-replace-editor`.
- * @module @origin-ai/xhe-tool-str-replace-editor/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-tool-str-replace-editor`.
+ * @module @origin-ai/cf-tool-str-replace-editor/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-tool-str-replace-editor'
+const PACKAGE_NAME = '@origin-ai/cf-tool-str-replace-editor'
 
 /** Cordis companion plugin name. */
 export const name = 'tool-str-replace-editor-invariant'

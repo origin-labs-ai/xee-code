@@ -7,9 +7,9 @@ import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
 import {
   SESSION_FORMAT_VERSION, SessionId as sessionId, type SessionEvent, type SessionId,
-} from '@origin-ai/xhe-session'
-import type {} from '@origin-ai/xhe-agent'
-import { snapshotSubagentDescriptor } from '@origin-ai/xhe-subagent'
+} from '@origin-ai/cf-session'
+import type {} from '@origin-ai/cf-agent'
+import { snapshotSubagentDescriptor } from '@origin-ai/cf-subagent'
 import {
   acknowledgeReloadConnectionLoss, captureStableAria, compareOrRefreshGolden,
   launchWebScaffold, watchConsole,

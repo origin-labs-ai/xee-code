@@ -1,4 +1,4 @@
-# @origin-ai/xhe-session-title-first-prompt-llm
+# @origin-ai/cf-session-title-first-prompt-llm
 
 Optional `ctx.sessionTitle` provider that summarizes the first eligible human message through `ctx.llm`. It registers the `first-prompt` cadence, runs automatically only when a fresh non-fork session first creates its fallback, and attributes the result to that message's exact seq. An automatic failure retains the fallback and is retried only through `ctx.sessionTitle.refresh()`.
 

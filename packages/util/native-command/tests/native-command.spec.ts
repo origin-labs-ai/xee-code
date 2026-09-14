@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { runNativeCommand } from '@origin-ai/xhe-native-command'
+import { runNativeCommand } from '@origin-ai/cf-native-command'
 
 const node = process.execPath
 

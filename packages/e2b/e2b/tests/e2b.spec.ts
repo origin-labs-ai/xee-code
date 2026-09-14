@@ -7,9 +7,9 @@ import E2BRuntime, {
   FileType,
   SandboxNotFoundError,
   quoteE2BShellArg,
-} from '@origin-ai/xhe-e2b'
+} from '@origin-ai/cf-e2b'
 import * as E2BInvariant from '../src/invariant.ts'
-import InvariantRegistry from '@origin-ai/xhe-invariants'
+import InvariantRegistry from '@origin-ai/cf-invariants'
 
 const sdk = vi.hoisted(() => ({
   create: vi.fn(),

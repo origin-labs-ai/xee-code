@@ -9,16 +9,16 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import { z } from 'zod'
-import Storage from '@origin-ai/xhe-storage'
-import { DomainFacility } from '@origin-ai/xhe-storage-domain'
-import SessionStore, { SessionId } from '@origin-ai/xhe-session'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import SessionProjectionRegistry from '@origin-ai/xhe-session-projection'
-import type { ProjectionDefinition } from '@origin-ai/xhe-session-projection'
+import Storage from '@origin-ai/cf-storage'
+import { DomainFacility } from '@origin-ai/cf-storage-domain'
+import SessionStore, { SessionId } from '@origin-ai/cf-session'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import SessionProjectionRegistry from '@origin-ai/cf-session-projection'
+import type { ProjectionDefinition } from '@origin-ai/cf-session-projection'
 import { MemoryMediaPool, MemoryStorageBackend } from '../../../storage/storage-domain/tests/helpers/memory-backend.ts'
 import SessionProjectionCache from '../src/index.ts'
 
-declare module '@origin-ai/xhe-session-projection/types' {
+declare module '@origin-ai/cf-session-projection/types' {
   interface SessionProjectionStateMap {
     'cache-test/marks': MarksState
     'cache-test/marks2': Map<string, string>
@@ -28,7 +28,7 @@ declare module '@origin-ai/xhe-session-projection/types' {
   }
 }
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     'cache-test/mark': { marks: string[] }
   }

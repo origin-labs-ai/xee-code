@@ -1,17 +1,17 @@
 /** Test-owned sessions face: the SlotRegistry host contract over declarative fixtures. */
 import type { Context } from '@deepseek-ai/cordis'
-import type { AttachmentIdType } from '@origin-ai/xhe-attachment'
-import { createScope, scopeOf, SessionProvideChannel } from '@origin-ai/xhe-client-runtime/client'
-import { createSnapshotStore } from '@origin-ai/xhe-client-runtime/client'
+import type { AttachmentIdType } from '@origin-ai/cf-attachment'
+import { createScope, scopeOf, SessionProvideChannel } from '@origin-ai/cf-client-runtime/client'
+import { createSnapshotStore } from '@origin-ai/cf-client-runtime/client'
 import type {
   AgentContext, ConversationSnapshot, ISessions, ObservableSnapshot, ProjectionsFace, SessionFace, SessionId,
   SessionListState, SessionProvideDescriptor, SessionSearchResultItem, SessionSummary, SnapshotStore,
   SubagentAddress,
-} from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-runtime/client'
 // The double reports the wire schema's own search bound, like the production
 // service — a transport-varying limit would be a fiction no client can see.
-import { SESSION_SEARCH_RESULT_LIMIT } from '@origin-ai/xhe-host-apiproxy/api'
-import type { HostObservable, SessionMaybeProvideInfo, SessionProvideInfo } from '@origin-ai/xhe-client-ui-slots'
+import { SESSION_SEARCH_RESULT_LIMIT } from '@origin-ai/cf-host-apiproxy/api'
+import type { HostObservable, SessionMaybeProvideInfo, SessionProvideInfo } from '@origin-ai/cf-client-ui-slots'
 import { conversationSnapshot } from './fixtures.ts'
 import type { SessionFixture, Stabilizer } from './fixtures.ts'
 

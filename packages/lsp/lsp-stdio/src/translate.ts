@@ -2,7 +2,7 @@
  * Pure protocol translation for the local host: what the server's capabilities allow, and how its
  * `Location`/`LocationLink`/`Hover` payloads normalize into the seam's closed result unions. No I/O
  * or process state — every function here is a pure transform, which the fake-stdio tests pin exactly.
- * @module @origin-ai/xhe-lsp-stdio/translate
+ * @module @origin-ai/cf-lsp-stdio/translate
  */
 
 import type {
@@ -10,9 +10,9 @@ import type {
   LspLocation,
   LspOperation,
   LspRange,
-} from '@origin-ai/xhe-lsp'
-import { LspError } from '@origin-ai/xhe-lsp'
-import { assertNever } from '@origin-ai/xhe-llm'
+} from '@origin-ai/cf-lsp'
+import { LspError } from '@origin-ai/cf-lsp'
+import { assertNever } from '@origin-ai/cf-llm'
 import type {
   WireHover,
   WireLocation,

@@ -5,8 +5,8 @@
  * RpcReceipt carrier receipt as the HTTP response body; the final outcome arrives in the resolved frame.
  */
 
-import type { ApprovalRequestId } from '@origin-ai/xhe-user-approval/types'
-import type { SessionId } from '@origin-ai/xhe-session/types'
+import type { ApprovalRequestId } from '@origin-ai/cf-user-approval/types'
+import type { SessionId } from '@origin-ai/cf-session/types'
 
 /**
  * Approval answer payload (the result.value slot of a client-response). outcome accepts only

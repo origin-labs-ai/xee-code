@@ -1,4 +1,4 @@
-import { createToolResultMessage, createUserMessage } from '@origin-ai/xhe-llm'
+import { createToolResultMessage, createUserMessage } from '@origin-ai/cf-llm'
 /**
  * Coordinator semantics against a bare fake backend — the RFC's named unit
  * tier for the seam: adoption (fresh, seeded, re-adoption via the handoff
@@ -8,8 +8,8 @@ import { createToolResultMessage, createUserMessage } from '@origin-ai/xhe-llm'
 
 import { describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import SessionStore, { SessionId, type Session, type SessionEvent } from '@origin-ai/xhe-session'
-import type { Agent } from '@origin-ai/xhe-agent'
+import SessionStore, { SessionId, type Session, type SessionEvent } from '@origin-ai/cf-session'
+import type { Agent } from '@origin-ai/cf-agent'
 import {
   SessionTelemetryCoordinator,
   type SessionTelemetrySink,
@@ -17,7 +17,7 @@ import {
   type SessionTelemetryRecord,
 } from '../src/index.ts'
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     /**
      * Test-only merged event proving unknown types flow through unchanged.

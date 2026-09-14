@@ -2,16 +2,16 @@
    the PowerShell counterpart shares the session registry, polling loop, and reset contract by design. */
 /**
  * Model-facing persistent `pwsh` tool over the owner-scoped PTY seam.
- * @module @origin-ai/xhe-tool-pwsh-persistent
+ * @module @origin-ai/cf-tool-pwsh-persistent
  */
 
 import { randomUUID } from 'node:crypto'
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import type { Agent } from '@origin-ai/xhe-agent'
-import type { TerminalReadResult, TerminalSendResult, TerminalSessionId } from '@origin-ai/xhe-terminal'
-import { deadline, timeoutOf } from '@origin-ai/xhe-timeout'
-import { defineTool } from '@origin-ai/xhe-tools'
+import type { Agent } from '@origin-ai/cf-agent'
+import type { TerminalReadResult, TerminalSendResult, TerminalSessionId } from '@origin-ai/cf-terminal'
+import { deadline, timeoutOf } from '@origin-ai/cf-timeout'
+import { defineTool } from '@origin-ai/cf-tools'
 
 // TODO: Replace the file-search advice; arbitrary command output need not come from a searchable file.
 const TRUNCATED_MESSAGE = '<response clipped><NOTE>To save on context only part of this file has been shown to you. You should retry this tool after you have searched inside the file with Select-String in order to find the line numbers of what you are looking for.</NOTE>'

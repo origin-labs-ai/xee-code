@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { createUserMessage } from '@origin-ai/xhe-llm'
-import { Session, SessionId } from '@origin-ai/xhe-session'
-import type { TurnEndReason } from '@origin-ai/xhe-session'
-import { foldConsumedWork } from '@origin-ai/xhe-agent'
+import { createUserMessage } from '@origin-ai/cf-llm'
+import { Session, SessionId } from '@origin-ai/cf-session'
+import type { TurnEndReason } from '@origin-ai/cf-session'
+import { foldConsumedWork } from '@origin-ai/cf-agent'
 
 /** One pending message, as the inbox records it. */
 function message(text: string) {

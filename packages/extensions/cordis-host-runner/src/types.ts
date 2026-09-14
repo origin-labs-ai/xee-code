@@ -3,8 +3,8 @@
  * @module @deepseek-ai/cordis-host-runner/types
  */
 
-import type { Branded } from '@origin-ai/xhe-brand'
-import type { JsonValue, SessionId } from '@origin-ai/xhe-session/types'
+import type { Branded } from '@origin-ai/cf-brand'
+import type { JsonValue, SessionId } from '@origin-ai/cf-session/types'
 
 /** Stable identity of one dynamic plugin instance. */
 export type CordisDynamicPluginId = Branded<'CordisDynamicPluginId'>

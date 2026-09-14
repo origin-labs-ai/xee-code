@@ -6,11 +6,11 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import Include from '@deepseek-ai/cordis-plugin-include'
-import LlmRuntime from '@origin-ai/xhe-llm'
-import SessionStore from '@origin-ai/xhe-session'
-import TokenMeter from '@origin-ai/xhe-token-meter'
-import BasicCompactionEngine from '@origin-ai/xhe-compaction-basic'
-import ToolResultPruner from '@origin-ai/xhe-compaction-tool-result-pruner'
+import LlmRuntime from '@origin-ai/cf-llm'
+import SessionStore from '@origin-ai/cf-session'
+import TokenMeter from '@origin-ai/cf-token-meter'
+import BasicCompactionEngine from '@origin-ai/cf-compaction-basic'
+import ToolResultPruner from '@origin-ai/cf-compaction-tool-result-pruner'
 
 let root: string | undefined
 let context: Context | undefined
@@ -32,11 +32,11 @@ async function loadYaml(lines: readonly string[]): Promise<Context> {
   await context.plugin(Loader)
   context.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@origin-ai/xhe-llm', LlmRuntime],
-    ['@origin-ai/xhe-session', SessionStore],
-    ['@origin-ai/xhe-token-meter', TokenMeter],
-    ['@origin-ai/xhe-compaction-tool-result-pruner', ToolResultPruner],
-    ['@origin-ai/xhe-compaction-basic', BasicCompactionEngine],
+    ['@origin-ai/cf-llm', LlmRuntime],
+    ['@origin-ai/cf-session', SessionStore],
+    ['@origin-ai/cf-token-meter', TokenMeter],
+    ['@origin-ai/cf-compaction-tool-result-pruner', ToolResultPruner],
+    ['@origin-ai/cf-compaction-basic', BasicCompactionEngine],
   ])
   context.loader.internal = {
     version: 'v2',
@@ -56,15 +56,15 @@ async function loadYaml(lines: readonly string[]): Promise<Context> {
 describe('real Loader composition', () => {
   it('loads the shipped token-meter, pruning, and compaction-basic YAML order', async () => {
     const loaded = await loadYaml([
-      "- name: '@origin-ai/xhe-llm'",
-      "- name: '@origin-ai/xhe-session'",
-      "- name: '@origin-ai/xhe-token-meter'",
-      "- name: '@origin-ai/xhe-compaction-tool-result-pruner'",
+      "- name: '@origin-ai/cf-llm'",
+      "- name: '@origin-ai/cf-session'",
+      "- name: '@origin-ai/cf-token-meter'",
+      "- name: '@origin-ai/cf-compaction-tool-result-pruner'",
       '  config:',
       '    thresholdChars: 100',
       '    headChars: 20',
       '    tailChars: 10',
-      "- name: '@origin-ai/xhe-compaction-basic'",
+      "- name: '@origin-ai/cf-compaction-basic'",
       '  config:',
       '    thresholdRatio: 0.5',
       '    retainRatio: 0.125',

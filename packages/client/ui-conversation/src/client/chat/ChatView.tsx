@@ -14,8 +14,8 @@
 // lifecycle updates replace only their own row without remounting it.
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
-import type { ConversationTimelineSnapshot } from '@origin-ai/xhe-client-runtime/client'
-import { Button, IconChevronDownOutline14, Modal } from '@origin-ai/xhe-client-ui-primitives'
+import type { ConversationTimelineSnapshot } from '@origin-ai/cf-client-runtime/client'
+import { Button, IconChevronDownOutline14, Modal } from '@origin-ai/cf-client-ui-primitives'
 import type { ChatViewSlotProps, RenderMessageImages } from '../contract/slots.ts'
 import { PendingSteeringBubble } from './MessageItem.tsx'
 import { ChatNodeSeat } from './ChatNodeSeat.tsx'

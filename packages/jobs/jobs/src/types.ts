@@ -1,11 +1,11 @@
 /**
  * Types shared by job producers, the registry, and controllers. The
  * service implementation lives in `./index.ts`.
- * @module @origin-ai/xhe-jobs/types
+ * @module @origin-ai/cf-jobs/types
  */
 
-import type { Agent } from '@origin-ai/xhe-agent'
-import type { SessionId } from '@origin-ai/xhe-session'
+import type { Agent } from '@origin-ai/cf-agent'
+import type { SessionId } from '@origin-ai/cf-session'
 import type { JobId } from './brand.ts'
 
 export { JobId } from './brand.ts'

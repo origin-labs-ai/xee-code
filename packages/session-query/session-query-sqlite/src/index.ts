@@ -1,19 +1,19 @@
 /**
  * Concrete session-query service with SQLite FTS5 over the live-preferred corpus.
  *
- * @module @origin-ai/xhe-session-query-sqlite
+ * @module @origin-ai/cf-session-query-sqlite
  */
 
 import { createHash, randomUUID } from 'node:crypto'
 import type { DatabaseSync } from 'node:sqlite'
 import { Context, Service, type Fiber } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import type { Session, SessionEvent, SessionHeader, SessionId } from '@origin-ai/xhe-session'
-import type SessionPersistence from '@origin-ai/xhe-session-persistence'
+import type { Session, SessionEvent, SessionHeader, SessionId } from '@origin-ai/cf-session'
+import type SessionPersistence from '@origin-ai/cf-session-persistence'
 import type {
   SessionPersistenceRevision,
   SessionPersistenceSnapshot,
-} from '@origin-ai/xhe-session-persistence'
+} from '@origin-ai/cf-session-persistence'
 import SessionQueryEngine, {
   SESSION_QUERY_DEFAULT_PERSISTED_INSPECT_CONCURRENCY,
   SESSION_QUERY_READ_WINDOW_MAX,
@@ -21,7 +21,7 @@ import SessionQueryEngine, {
   SessionSearchCursor,
   assertSessionHeadersCompatible,
   buildSessionEventSearchDocuments,
-} from '@origin-ai/xhe-session-query'
+} from '@origin-ai/cf-session-query'
 import type {
   Config as SessionQueryConfig,
   SessionEventSearchDocument,
@@ -33,7 +33,7 @@ import type {
   SessionSearchCursor as SessionSearchCursorValue,
   SessionSearchPage,
   SessionSearchRequest,
-} from '@origin-ai/xhe-session-query'
+} from '@origin-ai/cf-session-query'
 import {
   type JournalMode,
   openSearchDatabase,

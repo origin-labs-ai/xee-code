@@ -8,8 +8,8 @@
  */
 
 import { describe, expect, it } from 'vitest'
-import { SessionId } from '@origin-ai/xhe-session'
-import type { SessionEvent, SessionHeader } from '@origin-ai/xhe-session'
+import { SessionId } from '@origin-ai/cf-session'
+import type { SessionEvent, SessionHeader } from '@origin-ai/cf-session'
 import { resolveSessionPreset } from '../src/session.ts'
 
 /** A header carrying the creation-time preset, if any. */

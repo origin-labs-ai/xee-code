@@ -1,4 +1,4 @@
-# @origin-ai/xhe-agent-spine-demo
+# @origin-ai/cf-agent-spine-demo
 
 The **default executor-less, UI-less agent spine** as ONE Cordis bundle plugin. It loads the fixed set of services every harness agent needs, including the local skill provider, and forwards the loop's `agents` list as its own config — so an app package composes a working agent by adding only an entry point and the swappable backends.
 
@@ -10,30 +10,30 @@ Read this package for the whole plugin tree and its composition order.
 
 ```
 @deepseek-ai/cordis-plugin-timer  timer service (writes nothing to stdout)
-@origin-ai/xhe-llm              abstract LLM service + content-block vocabulary
-@origin-ai/xhe-session          event-sourced session log + store
-@origin-ai/xhe-session-title    log-backed title service + deterministic fallback
-@origin-ai/xhe-system-prompt    prompt-section + tool-schema assembly
-@origin-ai/xhe-tools            registry + guarded pre/around/post/final-result pipeline
-@origin-ai/xhe-skill            skill provider registry
-@origin-ai/xhe-skill-filesystem      local filesystem skill provider
-@origin-ai/xhe-agent            agent registry + initiator scope + agent/* events
-@origin-ai/xhe-goal             optional persisted same-session goal domain
-@origin-ai/xhe-tool-goal        optional model-facing goal controls
-@origin-ai/xhe-goal-round-driver     optional same-session goal-round driver
-@origin-ai/xhe-llm-retry        provider-routed request retry policy
-@origin-ai/xhe-jobs-local      generic background-job registry
-@origin-ai/xhe-invariants       configurable invariant registry service
-@origin-ai/xhe-session/invariant
-@origin-ai/xhe-agent/invariant
-@origin-ai/xhe-scope/invariant
-@origin-ai/xhe-agent-loop/invariant
+@origin-ai/cf-llm              abstract LLM service + content-block vocabulary
+@origin-ai/cf-session          event-sourced session log + store
+@origin-ai/cf-session-title    log-backed title service + deterministic fallback
+@origin-ai/cf-system-prompt    prompt-section + tool-schema assembly
+@origin-ai/cf-tools            registry + guarded pre/around/post/final-result pipeline
+@origin-ai/cf-skill            skill provider registry
+@origin-ai/cf-skill-filesystem      local filesystem skill provider
+@origin-ai/cf-agent            agent registry + initiator scope + agent/* events
+@origin-ai/cf-goal             optional persisted same-session goal domain
+@origin-ai/cf-tool-goal        optional model-facing goal controls
+@origin-ai/cf-goal-round-driver     optional same-session goal-round driver
+@origin-ai/cf-llm-retry        provider-routed request retry policy
+@origin-ai/cf-jobs-local      generic background-job registry
+@origin-ai/cf-invariants       configurable invariant registry service
+@origin-ai/cf-session/invariant
+@origin-ai/cf-agent/invariant
+@origin-ai/cf-scope/invariant
+@origin-ai/cf-agent-loop/invariant
                                   package-owned relational checks
-@origin-ai/xhe-tool-bash        the model-facing bash schema (unless toolBash=false)
-@origin-ai/xhe-agent-instructions  AGENTS.md/CLAUDE.md workspace context loader
-@origin-ai/xhe-tool-skill       session-prefix skill catalog + model-facing loader schema
-@origin-ai/xhe-tool-jobs       job_output/job_list/job_kill schemas + completion notices
-@origin-ai/xhe-agent-loop       THE concrete loop (gets the forwarded `agents`)
+@origin-ai/cf-tool-bash        the model-facing bash schema (unless toolBash=false)
+@origin-ai/cf-agent-instructions  AGENTS.md/CLAUDE.md workspace context loader
+@origin-ai/cf-tool-skill       session-prefix skill catalog + model-facing loader schema
+@origin-ai/cf-tool-jobs       job_output/job_list/job_kill schemas + completion notices
+@origin-ai/cf-agent-loop       THE concrete loop (gets the forwarded `agents`)
                                   (xhe-system-prompt gets the forwarded `persona`)
 ```
 
@@ -52,14 +52,14 @@ This applies the [Service Definition / Service Provider / Consumer separation](.
 ## Config
 
 ```ts
-import type { Config } from '@origin-ai/xhe-agent-spine-demo'
+import type { Config } from '@origin-ai/cf-agent-spine-demo'
 // { agents?, maxParallelToolCalls?, includeHarnessIdentity?, includeRuntimeContext?, persona?, toolOrder?, tools?, dshHome?, sessionTitle?, skills?, workspaceContext, toolBash?, jobs?, toolJobs?, goals?, invariants? }
 // workspaceContext requires { maxBytes } or false; the other owner schemas supply defaults.
 ```
 
 The bundle forwards each field to the child that owns it. App packages supply any pre-created agents: headless and JSON-RPC compositions create `main`, while the ACP app creates agents on demand at `session/new`. `includeRuntimeContext: false` is forwarded to `xhe-system-prompt` and suppresses all dynamic context snapshots for fresh sessions without disabling their policy services. Prompt, tool, title, skill, agent-instructions, invariant, goal, and task settings retain the schemas and defaults documented by their owning packages; `jobs.maxConcurrentJobsPerOwner` configures the local provider independently of the model-facing `toolJobs` controls. `pickSpineConfig()` copies only fields owned by this bundle, and conflicting `dshHome` values fail during composition.
 
-For example, `{ invariants: { enabled: true, package_allowlist: ['^@origin-ai/xhe-'], package_blocklist: ['agent-loop$'] } }` keeps the package-owned companions mounted but suppresses the blocked owner. Blocklist matches override allowlist matches; see [`xhe-invariants`](../../runtime-diagnostics/invariants/README.md) for regex and lifecycle rules.
+For example, `{ invariants: { enabled: true, package_allowlist: ['^@origin-ai/cf-'], package_blocklist: ['agent-loop$'] } }` keeps the package-owned companions mounted but suppresses the blocked owner. Blocklist matches override allowlist matches; see [`xhe-invariants`](../../runtime-diagnostics/invariants/README.md) for regex and lifecycle rules.
 
 ## Why a code bundle, not a shared YAML include
 

@@ -1,6 +1,6 @@
-# @origin-ai/xhe-subprocess-local
+# @origin-ai/cf-subprocess-local
 
-Local Service Provider for the [`@origin-ai/xhe-subprocess`](../subprocess/README.md) seam. `LocalSubprocessRuntime` resolves local executables, spawns ordinary detached process trees with explicit stdio, and implements terminal processes through `node-pty` plus platform process inspection. It has no config: every disposition, limit, terminal dimension, grace, and directory arrives from the calling capability seams ([`xhe-bash-local`](../../shell/bash-local/README.md), [`xhe-lsp-stdio`](../../lsp/lsp-stdio/README.md), and [`xhe-terminal-bash`](../../terminal/terminal-bash/README.md)).
+Local Service Provider for the [`@origin-ai/cf-subprocess`](../subprocess/README.md) seam. `LocalSubprocessRuntime` resolves local executables, spawns ordinary detached process trees with explicit stdio, and implements terminal processes through `node-pty` plus platform process inspection. It has no config: every disposition, limit, terminal dimension, grace, and directory arrives from the calling capability seams ([`xhe-bash-local`](../../shell/bash-local/README.md), [`xhe-lsp-stdio`](../../lsp/lsp-stdio/README.md), and [`xhe-terminal-bash`](../../terminal/terminal-bash/README.md)).
 
 ## Behavior
 

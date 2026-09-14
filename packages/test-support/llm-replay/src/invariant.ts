@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-llm-replay`.
- * @module @origin-ai/xhe-llm-replay/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-llm-replay`.
+ * @module @origin-ai/cf-llm-replay/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-llm-replay'
+const PACKAGE_NAME = '@origin-ai/cf-llm-replay'
 
 /** Cordis companion plugin name. */
 export const name = 'llm-replay-invariant'

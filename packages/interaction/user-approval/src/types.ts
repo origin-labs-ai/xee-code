@@ -2,10 +2,10 @@
  * Wire-safe approval identifiers and outcome vocabulary, free of
  * cordis/service imports so browser type chains (apiproxy api → client) can
  * consume them without loading this package's Context augmentation.
- * @module @origin-ai/xhe-user-approval/types
+ * @module @origin-ai/cf-user-approval/types
  */
 
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 
 /**
  * Pairs one `approval/asked` audit event with its `approval/decided`.

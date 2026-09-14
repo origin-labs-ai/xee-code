@@ -3,11 +3,11 @@
  * pure context-breakdown projection, so both surfaces price identical content
  * to identical numbers.
  *
- * @module @origin-ai/xhe-token-meter/estimate
+ * @module @origin-ai/cf-token-meter/estimate
  */
 
-import type { ContentBlock, Message } from '@origin-ai/xhe-llm'
-import type { EpochHeader } from '@origin-ai/xhe-session'
+import type { ContentBlock, Message } from '@origin-ai/cf-llm'
+import type { EpochHeader } from '@origin-ai/cf-session'
 
 /** Fixed text-density estimate used until exact tokenization is needed. */
 const CHARS_PER_TOKEN = 4

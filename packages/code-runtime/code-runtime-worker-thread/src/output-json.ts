@@ -1,6 +1,6 @@
-/** JSON string-prefix accounting for the outer-output ledger. @module @origin-ai/xhe-code-runtime-worker-thread/output-json */
+/** JSON string-prefix accounting for the outer-output ledger. @module @origin-ai/cf-code-runtime-worker-thread/output-json */
 
-import type { CodeJsonValue } from '@origin-ai/xhe-code-runtime'
+import type { CodeJsonValue } from '@origin-ai/cf-code-runtime'
 
 type IntrinsicCallable = (this: unknown, ...args: unknown[]) => unknown
 

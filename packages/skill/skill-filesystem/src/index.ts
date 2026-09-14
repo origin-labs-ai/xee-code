@@ -6,7 +6,7 @@
  * user roots, parses YAML frontmatter, and loads bodies through `ctx.fs` when a
  * filesystem service is present.
  *
- * @module @origin-ai/xhe-skill-filesystem
+ * @module @origin-ai/cf-skill-filesystem
  */
 
 import { access, lstat, readdir, readFile, stat } from 'node:fs/promises'
@@ -18,8 +18,8 @@ import chokidar from 'chokidar'
 import z from '@deepseek-ai/schemastery'
 import type Schema from '@deepseek-ai/schemastery'
 import { parse as parseYaml } from 'yaml'
-import type { FileSystem, FsDirEntry, FsTarget } from '@origin-ai/xhe-fs'
-import { canonicalizeWatchPath, resolveDshHome } from '@origin-ai/xhe-home-paths'
+import type { FileSystem, FsDirEntry, FsTarget } from '@origin-ai/cf-fs'
+import { canonicalizeWatchPath, resolveDshHome } from '@origin-ai/cf-home-paths'
 import {
   BUNDLED_SKILL_RANK,
   isSkillName,
@@ -31,7 +31,7 @@ import {
   type SkillProviderControl,
   type SkillProviderObservation,
   type SkillSource,
-} from '@origin-ai/xhe-skill'
+} from '@origin-ai/cf-skill'
 
 const PROJECT_XHE_RANK = 100
 const PROJECT_AGENTS_RANK = 200

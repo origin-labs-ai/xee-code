@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { mergeHookOutputs } from '@origin-ai/xhe-hook-protocol'
-import type { HookOutput } from '@origin-ai/xhe-hook-protocol'
+import { mergeHookOutputs } from '@origin-ai/cf-hook-protocol'
+import type { HookOutput } from '@origin-ai/cf-hook-protocol'
 
 function out(over: Partial<HookOutput> = {}): HookOutput {
   return { exitCode: 0, stderr: '', stdout: '', ...over }

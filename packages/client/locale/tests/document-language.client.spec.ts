@@ -10,11 +10,11 @@
  */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { SlotRegistry } from '@origin-ai/xhe-client-runtime/client'
-import { apply as settingsApply, inject as settingsInject } from '@origin-ai/xhe-client-ui-settings/client'
-import { TestRemote } from '@origin-ai/xhe-client-test-runtime'
-import { apply, inject } from '@origin-ai/xhe-client-locale/client'
-import type { LocaleRuntime } from '@origin-ai/xhe-client-locale/client'
+import { SlotRegistry } from '@origin-ai/cf-client-runtime/client'
+import { apply as settingsApply, inject as settingsInject } from '@origin-ai/cf-client-ui-settings/client'
+import { TestRemote } from '@origin-ai/cf-client-test-runtime'
+import { apply, inject } from '@origin-ai/cf-client-locale/client'
+import type { LocaleRuntime } from '@origin-ai/cf-client-locale/client'
 import { LOCALE_SETTINGS_NAMESPACE, LocaleSettingsSchema } from '../src/locale-settings.ts'
 
 /** Boot the plugin over a stub Host settings document. */

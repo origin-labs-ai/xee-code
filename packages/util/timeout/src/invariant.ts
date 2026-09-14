@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-timeout`.
- * @module @origin-ai/xhe-timeout/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-timeout`.
+ * @module @origin-ai/cf-timeout/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-timeout'
+const PACKAGE_NAME = '@origin-ai/cf-timeout'
 
 /** Cordis companion plugin name. */
 export const name = 'timeout-invariant'

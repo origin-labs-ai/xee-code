@@ -4,22 +4,22 @@ import { tmpdir } from 'node:os'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { Context } from '@deepseek-ai/cordis'
-import { boot, healProfilesModuleFallback, loadOverlayPatches, loadProfile } from '@origin-ai/xhe-app-boot'
-import { provideCmdline } from '@origin-ai/xhe-cmdline'
-import { SessionId } from '@origin-ai/xhe-session'
-import type { Agent } from '@origin-ai/xhe-agent'
+import { boot, healProfilesModuleFallback, loadOverlayPatches, loadProfile } from '@origin-ai/cf-app-boot'
+import { provideCmdline } from '@origin-ai/cf-cmdline'
+import { SessionId } from '@origin-ai/cf-session'
+import type { Agent } from '@origin-ai/cf-agent'
 import type { PatchOptions } from '@deepseek-ai/cordis-plugin-include'
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
-import { settingsNamespace } from '@origin-ai/xhe-settings'
-import { resolveSessionPreset, SETTINGS_NAMESPACE } from '@origin-ai/xhe-agent-presets'
-import { applyChildComposition, childSessionMeta } from '@origin-ai/xhe-subagent'
-import { CallId } from '@origin-ai/xhe-llm'
-import type {} from '@origin-ai/xhe-compaction-basic'
-import type {} from '@origin-ai/xhe-skill'
-import type {} from '@origin-ai/xhe-tools'
+import { settingsNamespace } from '@origin-ai/cf-settings'
+import { resolveSessionPreset, SETTINGS_NAMESPACE } from '@origin-ai/cf-agent-presets'
+import { applyChildComposition, childSessionMeta } from '@origin-ai/cf-subagent'
+import { CallId } from '@origin-ai/cf-llm'
+import type {} from '@origin-ai/cf-compaction-basic'
+import type {} from '@origin-ai/cf-skill'
+import type {} from '@origin-ai/cf-tools'
 // Type-only: resolves `ctx.get('sessionProjections')` and `ctx.get('tokenMeter')`.
-import type {} from '@origin-ai/xhe-session-projection'
-import type {} from '@origin-ai/xhe-token-meter'
+import type {} from '@origin-ai/cf-session-projection'
+import type {} from '@origin-ai/cf-token-meter'
 
 const CONFIG_DIR = fileURLToPath(new URL('../config/', import.meta.url))
 const REPO_ROOT = fileURLToPath(new URL('../../..', import.meta.url))
@@ -92,8 +92,8 @@ async function bootWeb(
     // supplies `directoryPicker` without one.
     { id: 'directory-picker', disabled: true },
     { insert: [
-      { id: 'directory-picker-browse', name: '@origin-ai/xhe-host-directory-picker-browse' },
-      { id: 'ui-directory-picker-browse', name: '@origin-ai/xhe-client-ui-directory-picker-browse' },
+      { id: 'directory-picker-browse', name: '@origin-ai/cf-host-directory-picker-browse' },
+      { id: 'ui-directory-picker-browse', name: '@origin-ai/cf-client-ui-directory-picker-browse' },
     ] },
     // The roster AppCLIEntry would patch in; only the shipped root, so a
     // developer's own `~/.dsh/.preset` cannot change this test's outcome.
@@ -484,8 +484,8 @@ describe('product Bundle and user-preset intersection', () => {
     )
     const packageName = (product: Product): string => (
       product === 'codex'
-        ? '@origin-ai/xhe-subagent-codex'
-        : '@origin-ai/xhe-subagent-claude-code'
+        ? '@origin-ai/cf-subagent-codex'
+        : '@origin-ai/cf-subagent-claude-code'
     )
     return await bootWeb(settingsFile, [
       {
@@ -500,8 +500,8 @@ describe('product Bundle and user-preset intersection', () => {
         },
       },
     ], installed.map(packageDir), [
-      '@origin-ai/xhe-base',
-      '@origin-ai/xhe-web-app',
+      '@origin-ai/cf-base',
+      '@origin-ai/cf-web-app',
       ...installed.map(packageName),
     ])
   }
@@ -726,7 +726,7 @@ describe('a launcher that configures no writable root', () => {
     await mkdir(join(home, '.agent-presets', 'derived-mine'), { recursive: true })
     await writeFile(
       join(home, '.agent-presets', 'derived-mine', 'agent.cordis.yml'),
-      '- id: tool-todo\n  name: \'@origin-ai/xhe-tool-todo\'\n  config:\n    allowParallelInProgress: true\n',
+      '- id: tool-todo\n  name: \'@origin-ai/cf-tool-todo\'\n  config:\n    allowParallelInProgress: true\n',
     )
     const settingsFile = join(await mkdtemp(join(tmpdir(), 'xhe-preset-derived-settings-')), 'settings.yaml')
     await writeFile(settingsFile, '{}\n')

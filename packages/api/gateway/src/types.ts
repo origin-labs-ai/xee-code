@@ -1,6 +1,6 @@
 /**
  * Carrier-independent Typert Gateway request, service, and error contracts.
- * @module @origin-ai/xhe-api-gateway/types
+ * @module @origin-ai/cf-api-gateway/types
  */
 
 /** One Remote method request after a carrier has decoded its envelope. */

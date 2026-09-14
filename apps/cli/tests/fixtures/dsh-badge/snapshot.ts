@@ -1,11 +1,11 @@
 import { fileURLToPath } from 'node:url'
 import { Context } from '@deepseek-ai/cordis'
-import { agentEvents, Inbox, type Agent } from '@origin-ai/xhe-agent'
-import { CallId } from '@origin-ai/xhe-llm'
-import { boot, loadOverlayPatches } from '@origin-ai/xhe-app-boot'
-import { SessionId } from '@origin-ai/xhe-session'
-import type {} from '@origin-ai/xhe-skill'
-import type {} from '@origin-ai/xhe-tools'
+import { agentEvents, Inbox, type Agent } from '@origin-ai/cf-agent'
+import { CallId } from '@origin-ai/cf-llm'
+import { boot, loadOverlayPatches } from '@origin-ai/cf-app-boot'
+import { SessionId } from '@origin-ai/cf-session'
+import type {} from '@origin-ai/cf-skill'
+import type {} from '@origin-ai/cf-tools'
 
 const overlayPath = process.argv[2]
 if (overlayPath === undefined) throw new Error('cf-badge snapshot requires an overlay path')

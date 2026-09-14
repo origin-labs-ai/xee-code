@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-anonymous-user-id`.
- * @module @origin-ai/xhe-anonymous-user-id/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-anonymous-user-id`.
+ * @module @origin-ai/cf-anonymous-user-id/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-anonymous-user-id'
+const PACKAGE_NAME = '@origin-ai/cf-anonymous-user-id'
 
 /** Cordis companion plugin name. */
 export const name = 'anonymous-user-id-invariant'

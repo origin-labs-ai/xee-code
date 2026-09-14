@@ -8,9 +8,9 @@
  * are derived once.
  * @module
  */
-import { resolveWorkspacePath } from '@origin-ai/xhe-client-runtime/client'
-import type { TerminalBlockLabels, TerminalBlockProps } from '@origin-ai/xhe-client-ui-primitives'
-import type { TranslateNS } from '@origin-ai/xhe-client-ui-slots'
+import { resolveWorkspacePath } from '@origin-ai/cf-client-runtime/client'
+import type { TerminalBlockLabels, TerminalBlockProps } from '@origin-ai/cf-client-ui-primitives'
+import type { TranslateNS } from '@origin-ai/cf-client-ui-slots'
 import type { ToolCallBlock } from './tool-call-model.ts'
 
 /**

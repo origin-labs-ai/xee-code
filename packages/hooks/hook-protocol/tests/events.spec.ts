@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { Session, SessionId } from '@origin-ai/xhe-session'
-import { appendHookInvoked, appendHookResult, summarizeStderr, type HookOutput } from '@origin-ai/xhe-hook-protocol'
+import { Session, SessionId } from '@origin-ai/cf-session'
+import { appendHookInvoked, appendHookResult, summarizeStderr, type HookOutput } from '@origin-ai/cf-hook-protocol'
 
 /** A {@link HookOutput} with the required stream fields defaulted. */
 function output(over: Partial<HookOutput> = {}): HookOutput {

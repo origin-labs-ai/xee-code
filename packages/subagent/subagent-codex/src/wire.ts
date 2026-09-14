@@ -4,13 +4,13 @@
  * product methods, current thread/turn association, unattended approval
  * responses, and terminal-answer selection.
  *
- * @module @origin-ai/xhe-subagent-codex/wire
+ * @module @origin-ai/cf-subagent-codex/wire
  */
 
 import type { Readable, Writable } from 'node:stream'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import type { SubagentResult } from '@origin-ai/xhe-subagent'
-import { JsonRpcLineTransport } from '@origin-ai/xhe-sdk-protocol'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import type { SubagentResult } from '@origin-ai/cf-subagent'
+import { JsonRpcLineTransport } from '@origin-ai/cf-sdk-protocol'
 import type { CodexPermissionMode } from './run.ts'
 
 type JsonObject = Record<string, unknown>

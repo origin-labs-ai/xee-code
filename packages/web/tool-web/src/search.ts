@@ -6,10 +6,10 @@
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import { defineTool } from '@origin-ai/xhe-tools'
-import type { GenericCallView, JsonValue, ToolResult, WebSearchResultView, WebSource } from '@origin-ai/xhe-tools'
-import type { WebSearchResult, WebSearchSource } from '@origin-ai/xhe-web'
-import type {} from '@origin-ai/xhe-system-prompt'
+import { defineTool } from '@origin-ai/cf-tools'
+import type { GenericCallView, JsonValue, ToolResult, WebSearchResultView, WebSource } from '@origin-ai/cf-tools'
+import type { WebSearchResult, WebSearchSource } from '@origin-ai/cf-web'
+import type {} from '@origin-ai/cf-system-prompt'
 
 /**
  * Default upper bound on returned sources (the `searchMaxResults` config).
@@ -302,7 +302,7 @@ function mergeSearchResults(
  *   request's `maxResults`.
  * @param maxQueries - the deployment's query cap enforced before provider calls.
  * @param timeoutMs - the cooperative tool-call budget (ms) attached as the tool's
- *   `ToolDefinition.timeoutMs` for `@origin-ai/xhe-tool-call-timeout-policy` to enforce.
+ *   `ToolDefinition.timeoutMs` for `@origin-ai/cf-tool-call-timeout-policy` to enforce.
  * @param fetchEnabled - whether the same composition exposes `web_fetch`, which
  *   controls whether search guidance may recommend that follow-up tool.
  */

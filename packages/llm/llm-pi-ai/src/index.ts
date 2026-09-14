@@ -11,7 +11,7 @@
  *
  * ```yaml
  * - id: llm
- *   name: '@origin-ai/xhe-llm-pi-ai'
+ *   name: '@origin-ai/cf-llm-pi-ai'
  *   config:
  *     providers:
  *       # Catalog route: everything but the credential comes from pi-ai.
@@ -52,14 +52,14 @@
  *               max: ultra
  * ```
  *
- * @module @origin-ai/xhe-llm-pi-ai
+ * @module @origin-ai/cf-llm-pi-ai
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import { launchEnvironmentOf } from '@origin-ai/xhe-launch-environment'
-import { assertUsableApiKey, LlmError } from '@origin-ai/xhe-llm'
-import type { AdapterRegistrationHandle, DirectoryRegistrationHandle, LlmConfigurableProvider } from '@origin-ai/xhe-llm'
-import { deepEqualJson, installSettingsSection, settingsNamespace } from '@origin-ai/xhe-settings'
+import { launchEnvironmentOf } from '@origin-ai/cf-launch-environment'
+import { assertUsableApiKey, LlmError } from '@origin-ai/cf-llm'
+import type { AdapterRegistrationHandle, DirectoryRegistrationHandle, LlmConfigurableProvider } from '@origin-ai/cf-llm'
+import { deepEqualJson, installSettingsSection, settingsNamespace } from '@origin-ai/cf-settings'
 import { PiAiAdapter } from './adapter.ts'
 import { authContextFrom, credentialStoreFrom } from './auth.ts'
 import { catalogProviderIds } from './catalog.ts'

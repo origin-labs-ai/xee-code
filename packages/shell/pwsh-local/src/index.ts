@@ -10,18 +10,18 @@
  * shell-quoting layer to escape (the `bash -c` string domain has no
  * equivalent here). Native Win32 paths (`C:\...`) pass through unchanged.
  *
- * @module @origin-ai/xhe-pwsh-local
+ * @module @origin-ai/cf-pwsh-local
  */
 
 /* jscpd:ignore-start -- this executor mirrors xhe-bash-local call-for-call by
    design (see this package's README), so the two import the same seam surface */
 import { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { SHELL_SETTINGS_NAMESPACE, ShellExecutor } from '@origin-ai/xhe-shell'
-import type { ShellExecRequest, ShellExecSpec, ShellProcess, ShellProcessRead, ShellRunResult, CollectedOutput } from '@origin-ai/xhe-shell'
-import type { SubprocessCollect, SubprocessHandle, SubprocessOutputReader, SubprocessSpawnSpec } from '@origin-ai/xhe-subprocess'
-import { installSettingsSection } from '@origin-ai/xhe-settings'
-import { clampTimeout, deadline, MAX_TIMER_DELAY_MS, timeoutOf } from '@origin-ai/xhe-timeout'
+import { SHELL_SETTINGS_NAMESPACE, ShellExecutor } from '@origin-ai/cf-shell'
+import type { ShellExecRequest, ShellExecSpec, ShellProcess, ShellProcessRead, ShellRunResult, CollectedOutput } from '@origin-ai/cf-shell'
+import type { SubprocessCollect, SubprocessHandle, SubprocessOutputReader, SubprocessSpawnSpec } from '@origin-ai/cf-subprocess'
+import { installSettingsSection } from '@origin-ai/cf-settings'
+import { clampTimeout, deadline, MAX_TIMER_DELAY_MS, timeoutOf } from '@origin-ai/cf-timeout'
 /* jscpd:ignore-end */
 import { resolvePwshPath } from './resolve.ts'
 
@@ -212,7 +212,7 @@ export class PwshLocalExecutor extends ShellExecutor {
    * The pwsh invocation argv for one resolved spec — the argv-level seam a
    * confining subclass wraps through `ctx.sandbox.confine` (the pwsh twin of
    * `xhe-bash-local`'s `runArgv`/`startArgv` hooks; see
-   * `@origin-ai/xhe-pwsh-sandbox`).
+   * `@origin-ai/cf-pwsh-sandbox`).
    */
   protected argv(spec: ShellExecSpec): string[] {
     return [this.pwshPath, '-NoLogo', '-NoProfile', '-NonInteractive', '-Command', `${ENCODING_PREAMBLE}${spec.command}`]
@@ -350,7 +350,7 @@ export class PwshLocalExecutor extends ShellExecutor {
    * Settlement hook for subclasses that attach execution facts to a process.
    * The base implementation is intentionally empty. Mirrored from
    * `xhe-bash-local` (whose sandboxing subclass consumes the same hook); the
-   * pwsh-confining consumer is `@origin-ai/xhe-pwsh-sandbox`.
+   * pwsh-confining consumer is `@origin-ai/cf-pwsh-sandbox`.
    * @param _proc - the settled process handle.
    * @param _stderr - the process's retained stderr tail used by subclasses for settlement classification.
    * @param _spawnFailed - whether the spawn rejected before any process existed.

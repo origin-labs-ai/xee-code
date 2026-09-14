@@ -1,7 +1,7 @@
 /** DeepSeek Files API upload reuse, invalidation, and quota recovery. @module xhe-llm-deepseek/file-store */
 
-import type { RequestImageAttachment } from '@origin-ai/xhe-attachment'
-import { LlmError } from '@origin-ai/xhe-llm'
+import type { RequestImageAttachment } from '@origin-ai/cf-attachment'
+import { LlmError } from '@origin-ai/cf-llm'
 import { DeepSeekFilesClient, isFilesQuotaError } from './files-api.ts'
 import type { DeepSeekFileId } from './file-id.ts'
 import { deepSeekFileScope, DeepSeekUploadIndex } from './upload-index.ts'

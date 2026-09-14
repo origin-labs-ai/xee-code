@@ -1,10 +1,10 @@
 /** Test adapter for the production conversation.details.tool registration. */
-import type { HostDescription } from '@origin-ai/xhe-client-connection/client'
+import type { HostDescription } from '@origin-ai/cf-client-connection/client'
 import type {
   ChatConversationViewNode, ChatSnapshot, ConversationNode, RunningToolCall, SessionId,
-} from '@origin-ai/xhe-client-runtime/client'
-import type { SessionProviderComponent, TranslateNS } from '@origin-ai/xhe-client-ui-slots'
-import type { DetailsSlotProps, DetailsToolOwnerProps } from '@origin-ai/xhe-client-ui-conversation/src/client/contract/slots.ts'
+} from '@origin-ai/cf-client-runtime/client'
+import type { SessionProviderComponent, TranslateNS } from '@origin-ai/cf-client-ui-slots'
+import type { DetailsSlotProps, DetailsToolOwnerProps } from '@origin-ai/cf-client-ui-conversation/src/client/contract/slots.ts'
 import { ToolDetails } from '../src/client/tool/ToolDetails.tsx'
 
 /** Framework session-area seat used by direct DetailsPanel tests. */

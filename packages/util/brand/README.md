@@ -7,7 +7,7 @@ The `Branded<B>` nominal-typing primitive — a tiny, **type-only** package (no 
 A brand makes structurally-identical strings non-interchangeable at the type level: a `SessionId` cannot be passed where a `CallId` is expected, even though both are plain `string`s at runtime.
 
 ```ts
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 
 export type SessionId = Branded<'SessionId'>
 

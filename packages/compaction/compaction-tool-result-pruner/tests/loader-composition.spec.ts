@@ -6,8 +6,8 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import Include from '@deepseek-ai/cordis-plugin-include'
-import TokenMeter from '@origin-ai/xhe-token-meter'
-import ToolResultPruner from '@origin-ai/xhe-compaction-tool-result-pruner'
+import TokenMeter from '@origin-ai/cf-token-meter'
+import ToolResultPruner from '@origin-ai/cf-compaction-tool-result-pruner'
 
 let root: string | undefined
 let context: Context | undefined
@@ -24,8 +24,8 @@ describe('compaction-tool-result-pruner real Loader composition', () => {
     root = await mkdtemp(join(tmpdir(), 'xhe-compact-tool-result-prune-loader-'))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@origin-ai/xhe-token-meter'",
-      "- name: '@origin-ai/xhe-compaction-tool-result-pruner'",
+      "- name: '@origin-ai/cf-token-meter'",
+      "- name: '@origin-ai/cf-compaction-tool-result-pruner'",
       '  config:',
       '    thresholdChars: 100',
       '    headChars: 20',
@@ -40,8 +40,8 @@ describe('compaction-tool-result-pruner real Loader composition', () => {
     context.loader.internal = {
       version: 'v2',
       async import(specifier: string) {
-        if (specifier === '@origin-ai/xhe-token-meter') return TokenMeter
-        if (specifier === '@origin-ai/xhe-compaction-tool-result-pruner') return ToolResultPruner
+        if (specifier === '@origin-ai/cf-token-meter') return TokenMeter
+        if (specifier === '@origin-ai/cf-compaction-tool-result-pruner') return ToolResultPruner
         throw new Error(`unexpected Loader import: ${specifier}`)
       },
     } as unknown as NonNullable<typeof context.loader.internal>

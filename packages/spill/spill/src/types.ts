@@ -1,14 +1,14 @@
 /**
  * Vocabulary for the spill storage Service Definition. Types only — the abstract service
  * lives in `./index.ts`, implementations in sibling packages
- * (`@origin-ai/xhe-spill-local` first).
+ * (`@origin-ai/cf-spill-local` first).
  *
- * @module @origin-ai/xhe-spill/types
+ * @module @origin-ai/cf-spill/types
  */
 
-import type { Branded } from '@origin-ai/xhe-brand'
-import type { CallId } from '@origin-ai/xhe-llm'
-import type { SessionId } from '@origin-ai/xhe-session'
+import type { Branded } from '@origin-ai/cf-brand'
+import type { CallId } from '@origin-ai/cf-llm'
+import type { SessionId } from '@origin-ai/cf-session'
 
 /**
  * Opaque model-facing handle for one spilled artifact. A local backend may use a

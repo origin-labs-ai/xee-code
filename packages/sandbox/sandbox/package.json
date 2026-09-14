@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-sandbox",
+  "name": "@origin-ai/cf-sandbox",
   "description": "Abstract process-sandbox seam (ctx.sandbox) for the Xee Harness Enhanced: same-world confinement vocabulary and the SandboxProvider contract",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -32,15 +32,15 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "devDependencies": {
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

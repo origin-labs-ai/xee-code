@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-tool-skill`.
- * @module @origin-ai/xhe-tool-skill/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-tool-skill`.
+ * @module @origin-ai/cf-tool-skill/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-tool-skill'
+const PACKAGE_NAME = '@origin-ai/cf-tool-skill'
 
 /** Cordis companion plugin name. */
 export const name = 'tool-skill-invariant'

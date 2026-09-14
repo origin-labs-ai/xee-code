@@ -1,4 +1,4 @@
-# @origin-ai/xhe-session-persistence-sqlite
+# @origin-ai/cf-session-persistence-sqlite
 
 An opt-in SQLite `SessionPersistence` provider. It stores eligible `assistant/chunk` runs in packed physical rows, selectively Zstandard-compresses large payloads, and delta-encodes provenance sequences while restoring the exact logical `SessionEvent[]`. No shipped composition selects it; deployments mount this package explicitly and provide its database path.
 

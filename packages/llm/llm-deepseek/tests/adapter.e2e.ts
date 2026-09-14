@@ -5,9 +5,9 @@ import { join } from 'node:path'
 import { randomBytes } from 'node:crypto'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import LlmRuntime, { createUserMessage, CallId, ReasoningEffortId, createMessage } from '@origin-ai/xhe-llm'
-import type { Message, ToolSchema } from '@origin-ai/xhe-llm'
-import AttachmentStore, { AttachmentId, ImageVariantId } from '@origin-ai/xhe-attachment'
+import LlmRuntime, { createUserMessage, CallId, ReasoningEffortId, createMessage } from '@origin-ai/cf-llm'
+import type { Message, ToolSchema } from '@origin-ai/cf-llm'
+import AttachmentStore, { AttachmentId, ImageVariantId } from '@origin-ai/cf-attachment'
 import type {
   ImageAttachmentLimits,
   ImageAttachmentRef,
@@ -15,10 +15,10 @@ import type {
   RequestImageAttachment,
   SaveImageAttachment,
   StoredImageAttachment,
-} from '@origin-ai/xhe-attachment'
-import { LocalCredentialProvider } from '@origin-ai/xhe-credentials-local'
-import * as LlmDeepSeek from '@origin-ai/xhe-llm-deepseek'
-import type { Config } from '@origin-ai/xhe-llm-deepseek'
+} from '@origin-ai/cf-attachment'
+import { LocalCredentialProvider } from '@origin-ai/cf-credentials-local'
+import * as LlmDeepSeek from '@origin-ai/cf-llm-deepseek'
+import type { Config } from '@origin-ai/cf-llm-deepseek'
 import { assemble, type AssembledResult } from './assemble.ts'
 
 /**

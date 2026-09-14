@@ -1,12 +1,12 @@
 /**
  * workspace domain contract. Wire projection of the host-side workspace
- * entity (@origin-ai/xhe-workspace): a stable id over a directory path,
+ * entity (@origin-ai/cf-workspace): a stable id over a directory path,
  * a display title, and the ordered session account. Method signatures are the
  * source of truth, same as the sessions domain.
  */
 
-import type { SessionId } from '@origin-ai/xhe-session/types'
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { SessionId } from '@origin-ai/cf-session/types'
+import type { Branded } from '@origin-ai/cf-brand'
 import type { RpcRequest, RpcResponse } from './rpc.ts'
 
 /**

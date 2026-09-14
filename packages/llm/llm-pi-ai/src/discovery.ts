@@ -22,9 +22,9 @@
  * @module xhe-llm-pi-ai/discovery
  */
 
-import { INVALID_CREDENTIAL_CODE, LlmError, normalizeApiKey } from '@origin-ai/xhe-llm'
-import type { LlmDiscoveredModel, LlmModelDiscoveryRequest } from '@origin-ai/xhe-llm'
-import { attributionHeaders } from '@origin-ai/xhe-llm'
+import { INVALID_CREDENTIAL_CODE, LlmError, normalizeApiKey } from '@origin-ai/cf-llm'
+import type { LlmDiscoveredModel, LlmModelDiscoveryRequest } from '@origin-ai/cf-llm'
+import { attributionHeaders } from '@origin-ai/cf-llm'
 import { catalogModels } from './catalog.ts'
 
 /**

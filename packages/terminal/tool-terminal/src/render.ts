@@ -1,6 +1,6 @@
 /** Model and UI rendering for persistent terminal tool results. */
 
-import { TextRetainer } from '@origin-ai/xhe-output-retention'
+import { TextRetainer } from '@origin-ai/cf-output-retention'
 
 interface RenderedSessionStatusRunning {
   kind: 'running'

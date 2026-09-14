@@ -12,11 +12,11 @@ It is a **library, not a service or plugin**: no `ctx`, registers nothing, emits
 import {
   ItemRetainer, TextRetainer,
   describeOmitted, formatRetentionNotice,
-} from '@origin-ai/xhe-output-retention'
+} from '@origin-ai/cf-output-retention'
 import type {
   Omitted, PushDecision, RetainedItems, RetainedText,
   ItemRetentionStrategy, TextRetentionStrategy, RetentionNotice,
-} from '@origin-ai/xhe-output-retention'
+} from '@origin-ai/cf-output-retention'
 ```
 
 | Export | Role |

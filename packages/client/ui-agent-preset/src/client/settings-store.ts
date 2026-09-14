@@ -7,9 +7,9 @@
  * namespace's `default` field, which is what the host resolves at creation.
  */
 
-import type { IApiClient } from '@origin-ai/xhe-api-remotes/client'
-import { createSnapshotStore, type SnapshotStore } from '@origin-ai/xhe-client-runtime/client'
-import type { SettingsDescribeFace } from '@origin-ai/xhe-client-ui-settings/client'
+import type { IApiClient } from '@origin-ai/cf-api-remotes/client'
+import { createSnapshotStore, type SnapshotStore } from '@origin-ai/cf-client-runtime/client'
+import type { SettingsDescribeFace } from '@origin-ai/cf-client-ui-settings/client'
 
 /** The agent-preset settings namespace on the host wire. */
 export const AGENT_PRESET_SETTINGS_NS = 'agent-presets'

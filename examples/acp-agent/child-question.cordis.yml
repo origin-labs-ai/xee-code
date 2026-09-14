@@ -7,8 +7,8 @@
     patches:
       - insert:
           - id: user-questions
-            name: '@origin-ai/xhe-user-questions'
+            name: '@origin-ai/cf-user-questions'
           - id: tool-ask-user
-            name: '@origin-ai/xhe-tool-ask-user'
+            name: '@origin-ai/cf-tool-ask-user'
           - id: child-question-tripwire
             name: './tests/fixtures/child-question-tripwire.ts'

@@ -9,16 +9,16 @@ import {
   FileNotFoundError,
   SandboxNotFoundError,
   quoteE2BShellArg,
-} from '@origin-ai/xhe-e2b'
-import type { CommandHandle, CommandResult, Sandbox } from '@origin-ai/xhe-e2b'
+} from '@origin-ai/cf-e2b'
+import type { CommandHandle, CommandResult, Sandbox } from '@origin-ai/cf-e2b'
 import type {
   SubprocessCollect,
   SubprocessHandle,
   SubprocessOutcome,
   SubprocessOutputMode,
   SubprocessSpawnSpec,
-} from '@origin-ai/xhe-subprocess'
-import type E2BRuntime from '@origin-ai/xhe-e2b'
+} from '@origin-ai/cf-subprocess'
+import type E2BRuntime from '@origin-ai/cf-e2b'
 import { bootstrapEnvironment, readRemoteEnvironment, serializeRemoteEnvironment } from './environment.ts'
 import { E2BBase64Decoder, E2B_OUTPUT_COMPLETE_FRAME, E2BOutputReader } from './output.ts'
 import { asError, commandOpts, signalRemoteGroups, waitTick } from './remote.ts'

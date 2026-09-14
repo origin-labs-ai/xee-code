@@ -11,13 +11,13 @@
  * ui-sidebar would close a reference cycle through ui-layout and ui-theme.
  * Export discipline: packages/client/AGENTS.md.
  */
-import type { ClientContext } from '@origin-ai/xhe-client-runtime/client'
-import type { ConnectionHandle } from '@origin-ai/xhe-api-remotes/client'
+import type { ClientContext } from '@origin-ai/cf-client-runtime/client'
+import type { ConnectionHandle } from '@origin-ai/cf-api-remotes/client'
 // Type-only pair supplying `$on` and its key face without dragging a build
 // artifact into the Host graph (rationale beside the same pair in
 // settings-scope.ts).
-import type {} from '@origin-ai/xhe-api-remotes/types'
-import type {} from '@origin-ai/xhe-settings/types'
+import type {} from '@origin-ai/cf-api-remotes/types'
+import type {} from '@origin-ai/cf-settings/types'
 import { SettingsSchemaService } from './schema.ts'
 import { SettingsScopeBinder } from './settings-scope.ts'
 import { SettingsDescribeMirror } from './settings-mirror.ts'

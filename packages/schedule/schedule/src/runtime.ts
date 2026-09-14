@@ -1,11 +1,11 @@
 /**
  * Disposable live timer projection for one exact root agent.
- * @module @origin-ai/xhe-schedule
+ * @module @origin-ai/cf-schedule
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Agent } from '@origin-ai/xhe-agent'
-import { createUserMessage } from '@origin-ai/xhe-llm'
+import type { Agent } from '@origin-ai/cf-agent'
+import { createUserMessage } from '@origin-ai/cf-llm'
 import type { EveryScheduleRecord, OneShotScheduleRecord } from './types.ts'
 import {
   foldScheduleEvents,

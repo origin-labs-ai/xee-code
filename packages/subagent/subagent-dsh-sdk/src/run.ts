@@ -1,23 +1,23 @@
 /**
  * Fresh-process SDK subagent client. Drives one child Xee Harness Enhanced
- * runtime over stdio JSON-RPC through `@origin-ai/xhe-sdk-client` and owns
+ * runtime over stdio JSON-RPC through `@origin-ai/cf-sdk-client` and owns
  * cancellation and quiescent disposal. Structure mirrors the ACP backend
- * (`@origin-ai/xhe-subagent-acp`): publish after the child handshake,
+ * (`@origin-ai/cf-subagent-acp`): publish after the child handshake,
  * flatten child failures into stop reasons, tear down to quiescence. The
  * child is spawned BY the SDK client rather than through `ctx.subprocess` —
  * the subprocess seam's documented exception for SDK-managed transports —
  * so this driver applies the seam's shared env scrub itself.
  *
- * @module @origin-ai/xhe-subagent-xhe-sdk/run
+ * @module @origin-ai/cf-subagent-xhe-sdk/run
  */
 
 import { randomUUID } from 'node:crypto'
-import { DeepSeekHarness, type HarnessNotification } from '@origin-ai/xhe-sdk-client'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import { SessionId, type SessionEvent, type TurnEndReason } from '@origin-ai/xhe-session'
-import type { SubagentResult, SubagentRun, SubagentStartRequest, SubagentStopReason } from '@origin-ai/xhe-subagent'
-import { AssistantOutputFold, settleRunResult, subprocessRunHandle } from '@origin-ai/xhe-subagent'
-import { scrubbedParentEnv } from '@origin-ai/xhe-subprocess'
+import { DeepSeekHarness, type HarnessNotification } from '@origin-ai/cf-sdk-client'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import { SessionId, type SessionEvent, type TurnEndReason } from '@origin-ai/cf-session'
+import type { SubagentResult, SubagentRun, SubagentStartRequest, SubagentStopReason } from '@origin-ai/cf-subagent'
+import { AssistantOutputFold, settleRunResult, subprocessRunHandle } from '@origin-ai/cf-subagent'
+import { scrubbedParentEnv } from '@origin-ai/cf-subprocess'
 
 /** Resolved spawn spec for an SDK runtime child process (no defaults — see Config). */
 export interface SdkRunSpec {

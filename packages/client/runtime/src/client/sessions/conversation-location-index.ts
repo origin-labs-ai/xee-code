@@ -1,4 +1,4 @@
-import type { SessionEvent } from '@origin-ai/xhe-session/types'
+import type { SessionEvent } from '@origin-ai/cf-session/types'
 import type {
   ConversationEventInput, ConversationLocation, ConversationLocationData,
   ConversationLocationDataStore, ConversationStepDataMap, ConversationTimelineSnapshot,

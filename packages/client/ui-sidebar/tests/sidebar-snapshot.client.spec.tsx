@@ -10,9 +10,9 @@
  */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, waitFor } from '@testing-library/react'
-import { SlotTestRuntime, usePinnedBrowserLanguages } from '@origin-ai/xhe-client-test-runtime'
-import { LocaleRuntime } from '@origin-ai/xhe-client-locale/client'
-import { apply, inject } from '@origin-ai/xhe-client-ui-sidebar/client'
+import { SlotTestRuntime, usePinnedBrowserLanguages } from '@origin-ai/cf-client-test-runtime'
+import { LocaleRuntime } from '@origin-ai/cf-client-locale/client'
+import { apply, inject } from '@origin-ai/cf-client-ui-sidebar/client'
 
 // The service reads its initial locale from the browser; these specs assert
 // the shipped Chinese copy, so they state the browser they assume.

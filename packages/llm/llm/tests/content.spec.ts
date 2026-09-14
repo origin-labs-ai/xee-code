@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { AttachmentId } from '@origin-ai/xhe-attachment'
+import { AttachmentId } from '@origin-ai/cf-attachment'
 import {
   CallId,
   createUserMessage,

@@ -5,7 +5,7 @@
  * packages may declare-merge through either the package root or this outlet —
  * re-export preserves symbol identity, so both land on the same table.
  *
- * @module @origin-ai/xhe-session-projection/types
+ * @module @origin-ai/cf-session-projection/types
  */
 
 /**

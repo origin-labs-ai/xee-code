@@ -7,8 +7,8 @@
  * @module xhe-session/request-header
  */
 
-import { callConfigEquals } from '@origin-ai/xhe-llm'
-import type { ToolSchema } from '@origin-ai/xhe-llm'
+import { callConfigEquals } from '@origin-ai/cf-llm'
+import type { ToolSchema } from '@origin-ai/cf-llm'
 import type { EpochHeader, SessionEvent } from './types.ts'
 
 /**

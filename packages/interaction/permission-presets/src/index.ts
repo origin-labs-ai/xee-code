@@ -13,18 +13,18 @@
 import { Context, Service } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
 import { z as zod } from 'zod'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type { SandboxMode } from '@origin-ai/xhe-sandbox'
-import { SANDBOX_MODES, effectiveSandboxMode, setSandboxMode } from '@origin-ai/xhe-sandbox-policy'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type { SandboxMode } from '@origin-ai/cf-sandbox'
+import { SANDBOX_MODES, effectiveSandboxMode, setSandboxMode } from '@origin-ai/cf-sandbox-policy'
 // Side-effect type import: declaration-merges `ctx.shell` (the capability fact
 // `sandboxMode` this service reads), without a value dependency on the seam.
-import type {} from '@origin-ai/xhe-shell'
-import type { ApprovalPolicy } from '@origin-ai/xhe-user-approval'
-import { APPROVAL_POLICIES, effectiveApprovalPolicy, setApprovalPolicy } from '@origin-ai/xhe-user-approval'
-import { installSettingsSection, settingsNamespace } from '@origin-ai/xhe-settings'
+import type {} from '@origin-ai/cf-shell'
+import type { ApprovalPolicy } from '@origin-ai/cf-user-approval'
+import { APPROVAL_POLICIES, effectiveApprovalPolicy, setApprovalPolicy } from '@origin-ai/cf-user-approval'
+import { installSettingsSection, settingsNamespace } from '@origin-ai/cf-settings'
 // Type-only: resolves ctx.sessionProjections / ctx.commands for the optional children.
-import type {} from '@origin-ai/xhe-session-projection'
-import type {} from '@origin-ai/xhe-commands'
+import type {} from '@origin-ai/cf-session-projection'
+import type {} from '@origin-ai/cf-commands'
 import type { PermissionSelect, PresetOption } from './types.ts'
 
 // The `permissions` projection-key declaration lives in src/types.ts (its one
@@ -39,7 +39,7 @@ declare module '@deepseek-ai/cordis' {
   }
 }
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     /**
      * Records the selected preset as durable, log-only user intent. The knob
@@ -100,7 +100,7 @@ export interface KnobState {
   approval: ApprovalPolicy | null
 }
 
-declare module '@origin-ai/xhe-session-projection/types' {
+declare module '@origin-ai/cf-session-projection/types' {
   interface SessionProjectionStateMap {
     permissions: KnobState
   }

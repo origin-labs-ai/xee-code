@@ -1,11 +1,11 @@
 /** Package-owned relational checks for Agent Teams durable records. */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
 import { applyTeamEvent, foldTeam, isTeamEvent } from './fold.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-experimental-agent-team'
+const PACKAGE_NAME = '@origin-ai/cf-experimental-agent-team'
 
 /** Cordis companion plugin name. */
 export const name = 'team-invariant'

@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-hooks-claude-code`.
- * @module @origin-ai/xhe-hooks-claude-code/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-hooks-claude-code`.
+ * @module @origin-ai/cf-hooks-claude-code/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-hooks-claude-code'
+const PACKAGE_NAME = '@origin-ai/cf-hooks-claude-code'
 
 /** Cordis companion plugin name. */
 export const name = 'hooks-claude-code-invariant'

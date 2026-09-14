@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest'
-import { AttachmentId, ImageVariantId } from '@origin-ai/xhe-attachment'
-import type { ImageAttachmentRef, ImageMediaType, RequestImageAttachment } from '@origin-ai/xhe-attachment'
-import { createUserMessage, CallId, ReasoningEffortId, createMessage } from '@origin-ai/xhe-llm'
-import type { ContentBlock, GenerateOptions, Message } from '@origin-ai/xhe-llm'
+import { AttachmentId, ImageVariantId } from '@origin-ai/cf-attachment'
+import type { ImageAttachmentRef, ImageMediaType, RequestImageAttachment } from '@origin-ai/cf-attachment'
+import { createUserMessage, CallId, ReasoningEffortId, createMessage } from '@origin-ai/cf-llm'
+import type { ContentBlock, GenerateOptions, Message } from '@origin-ai/cf-llm'
 import {
   serializeMessages,
   serializeMessagesWithImages,

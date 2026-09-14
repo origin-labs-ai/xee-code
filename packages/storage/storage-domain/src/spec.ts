@@ -5,11 +5,11 @@
  * (validation, descriptor projection) derive from it. Record schemas are zod
  * (`z.infer` keeps types un-duplicated and the same schemas later project to
  * RPC wire schemas); plugin `Config` stays schemastery.
- * @module @origin-ai/xhe-storage-domain/src/spec
+ * @module @origin-ai/cf-storage-domain/src/spec
  */
 
 import type { ZodType } from 'zod'
-import { UNIT_NAME_RE, type KvUnitDescriptor } from '@origin-ai/xhe-storage'
+import { UNIT_NAME_RE, type KvUnitDescriptor } from '@origin-ai/cf-storage'
 
 /** Global singleton declaration: schema plus the value used before the first write. */
 export interface DomainGlobalSpec<G> {

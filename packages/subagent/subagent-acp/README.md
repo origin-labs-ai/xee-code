@@ -1,4 +1,4 @@
-# @origin-ai/xhe-subagent-acp
+# @origin-ai/cf-subagent-acp
 
 The ACP provider runs each subagent in a fresh subprocess and drives it as an Agent Client Protocol client. It is the out-of-process alternative to spawn and fork: the child has its own runtime, session, model configuration, and tools.
 
@@ -33,7 +33,7 @@ ACP advertises no start-time capabilities because this process cannot enforce th
 
 ```yaml
 - id: subagent-acp
-  name: '@origin-ai/xhe-subagent-acp'
+  name: '@origin-ai/cf-subagent-acp'
   config:
     providerName: acp
     command: node

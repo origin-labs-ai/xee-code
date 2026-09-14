@@ -5,9 +5,9 @@ import {
 import {
   DisclosureRow, IconChevronRightOutline14, StateDot,
   type DisclosureRowProps, type StateDotState,
-} from '@origin-ai/xhe-client-ui-primitives'
-import type { PropsLocale, PropsRuntime } from '@origin-ai/xhe-client-ui-slots'
-import { shallowEqual, type SessionId, type SessionListState } from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-ui-primitives'
+import type { PropsLocale, PropsRuntime } from '@origin-ai/cf-client-ui-slots'
+import { shallowEqual, type SessionId, type SessionListState } from '@origin-ai/cf-client-runtime/client'
 import type { WorkflowRunKey } from './locales.ts'
 import type {
   WorkflowRunMemberData, WorkflowRunPhaseData, WorkflowRunStatus,

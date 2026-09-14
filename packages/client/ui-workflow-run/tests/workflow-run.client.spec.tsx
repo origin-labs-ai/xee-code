@@ -4,13 +4,13 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import {
   ConversationEventRegistry, ConversationNodeAssembler, SlotRegistry,
-} from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-runtime/client'
 import type {
   ChatConversationViewNode, ConversationEventInput, ConversationMatch, ConversationNodeDefinition,
   ConversationViewDefinition, SessionId, SessionListState,
-} from '@origin-ai/xhe-client-runtime/client'
-import { apply as applyLocale, inject as localeInject } from '@origin-ai/xhe-client-locale/client'
-import { makeTranslate, stubSettingsScope } from '@origin-ai/xhe-client-test-runtime'
+} from '@origin-ai/cf-client-runtime/client'
+import { apply as applyLocale, inject as localeInject } from '@origin-ai/cf-client-locale/client'
+import { makeTranslate, stubSettingsScope } from '@origin-ai/cf-client-test-runtime'
 import {
   WorkflowRunPanel, type WorkflowRunInjected, type WorkflowRunPanelProps,
 } from '../src/client/WorkflowRunPanel.tsx'
@@ -880,6 +880,6 @@ describe('plugin lifecycle', () => {
       register: (pkg: string) => { registered.push(pkg); return () => {} },
     } as never)
     await applyInvariant(ctx)
-    expect(registered).toEqual(['@origin-ai/xhe-client-ui-workflow-run'])
+    expect(registered).toEqual(['@origin-ai/cf-client-ui-workflow-run'])
   })
 })

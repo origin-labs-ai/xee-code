@@ -7,11 +7,11 @@
  * `cordis.snapshot.yml` so a stray key cannot trigger a model call. EOF disposes
  * and flushes snapshot runs; the calling automation owns process lifetime. Stdout is
  * reserved for JSON-RPC, so diagnostics go only to stderr.
- * @module @origin-ai/xhe-acp-demo/bin
+ * @module @origin-ai/cf-acp-demo/bin
  */
 
 import { parseArgs } from 'node:util'
-import { boot, installFailLoud, loadEnv, resolveConfigPath } from '@origin-ai/xhe-app-boot'
+import { boot, installFailLoud, loadEnv, resolveConfigPath } from '@origin-ai/cf-app-boot'
 
 const NAME = 'xhe-acp-demo'
 

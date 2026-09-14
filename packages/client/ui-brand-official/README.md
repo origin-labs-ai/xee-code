@@ -1,4 +1,4 @@
-# @origin-ai/xhe-client-ui-brand-official
+# @origin-ai/cf-client-ui-brand-official
 
 This package fills `sidebar.brand.mark`, `sidebar.brand.name`, and `conversation.hero.brand.mark` only when `XHE_CLIENT_BUILD_PROFILE` is `official`. Other builds load the plugin but register no occupants, leaving the shell fallbacks visible.
 

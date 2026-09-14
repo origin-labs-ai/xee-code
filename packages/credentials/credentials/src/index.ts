@@ -5,7 +5,7 @@
  * operation, so a changed credential reaches the next operation without any
  * plugin restart, and configuration surfaces describe a reference without
  * ever seeing its value.
- * @module @origin-ai/xhe-credentials
+ * @module @origin-ai/cf-credentials
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'

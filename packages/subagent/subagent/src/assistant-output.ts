@@ -7,11 +7,11 @@
  * select the accumulated assistant text. Selection is independent of the
  * run's stop reason.
  *
- * @module @origin-ai/xhe-subagent/assistant-output
+ * @module @origin-ai/cf-subagent/assistant-output
  */
 
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import type { SessionEvent } from '@origin-ai/xhe-session'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import type { SessionEvent } from '@origin-ai/cf-session'
 
 /**
  * Incremental fold of the selection rule, for backends that observe a child's

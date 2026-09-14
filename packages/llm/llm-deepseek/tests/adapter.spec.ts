@@ -3,9 +3,9 @@ import { mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Context } from '@deepseek-ai/cordis'
-import { AttachmentId, ImageVariantId } from '@origin-ai/xhe-attachment'
-import type { AttachmentStore, ImageAttachmentRef, RequestImageAttachment } from '@origin-ai/xhe-attachment'
-import { createLaunchEnvironmentSnapshot } from '@origin-ai/xhe-launch-environment'
+import { AttachmentId, ImageVariantId } from '@origin-ai/cf-attachment'
+import type { AttachmentStore, ImageAttachmentRef, RequestImageAttachment } from '@origin-ai/cf-attachment'
+import { createLaunchEnvironmentSnapshot } from '@origin-ai/cf-launch-environment'
 import LlmRuntime, { CallId, createUserMessage,
   CONTEXT_WINDOW_EXCEEDED_CODE,
   LlmError,
@@ -13,12 +13,12 @@ import LlmRuntime, { CallId, createUserMessage,
   QUOTA_EXCEEDED_CODE,
   ReasoningEffortId,
   userAgent,
-} from '@origin-ai/xhe-llm'
-import { MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
-import { getOrCreateAnonymousUserId, type AnonymousUserId } from '@origin-ai/xhe-anonymous-user-id'
-import { SessionId } from '@origin-ai/xhe-session'
-import * as LlmDeepSeek from '@origin-ai/xhe-llm-deepseek'
-import { DeepSeekAdapter, resolveAdapterOptions } from '@origin-ai/xhe-llm-deepseek'
+} from '@origin-ai/cf-llm'
+import { MAX_TIMER_DELAY_MS } from '@origin-ai/cf-timeout'
+import { getOrCreateAnonymousUserId, type AnonymousUserId } from '@origin-ai/cf-anonymous-user-id'
+import { SessionId } from '@origin-ai/cf-session'
+import * as LlmDeepSeek from '@origin-ai/cf-llm-deepseek'
+import { DeepSeekAdapter, resolveAdapterOptions } from '@origin-ai/cf-llm-deepseek'
 import { httpErrorCode, resolveRequestImagePolicy } from '../src/adapter.ts'
 import { assemble } from './assemble.ts'
 import { closeMockServers, mockServer, textEvents } from './mock-server.ts'

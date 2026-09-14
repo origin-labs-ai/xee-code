@@ -1,7 +1,7 @@
 /**
  * Model-facing PowerShell Consumer of the `ctx.shell` capability seam. Intended for
  * Windows compositions where a PowerShell executor (e.g.
- * `@origin-ai/xhe-pwsh-local`) backs `ctx.shell`; the tool contract is
+ * `@origin-ai/cf-pwsh-local`) backs `ctx.shell`; the tool contract is
  * PowerShell-dialect: native `C:\...` paths and `$env:NAME` variables.
  *
  * Behavior mirrors `xhe-tool-bash` call-for-call: foreground and
@@ -14,32 +14,32 @@
  * `ctx.approval`), and the bash marker/truncation rendering story. UI
  * presentation mirrors the bash tool's too: a completed foreground call is
  * a terminal card with the parsed exit-status pill, using the shared
- * exit-status parse from `@origin-ai/xhe-shell`.
+ * exit-status parse from `@origin-ai/cf-shell`.
  *
- * @module @origin-ai/xhe-tool-pwsh
+ * @module @origin-ai/cf-tool-pwsh
  */
 
 import { isAbsolute, resolve as resolvePath } from 'node:path'
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { defineTool, TOOL_ABORTED } from '@origin-ai/xhe-tools'
-import type { GenericCallView, TerminalCallView, ToolExecution, ToolResult, ToolResultView } from '@origin-ai/xhe-tools'
-import { HarnessError } from '@origin-ai/xhe-llm'
-import type { Agent } from '@origin-ai/xhe-agent'
-import type {} from '@origin-ai/xhe-system-prompt'
-import type {} from '@origin-ai/xhe-jobs'
-import type {} from '@origin-ai/xhe-shell-env'
-import type {} from '@origin-ai/xhe-user-approval'
-import type { SandboxExecutionPolicy, SandboxMode } from '@origin-ai/xhe-sandbox'
-import { ESCALATION_TARGETS, approveEscalation, validateEscalationArgs } from '@origin-ai/xhe-sandbox'
-import type { SandboxPolicyService } from '@origin-ai/xhe-sandbox-policy'
-import type { ShellRunResult } from '@origin-ai/xhe-shell'
-import { parseExitStatus } from '@origin-ai/xhe-shell'
+import { defineTool, TOOL_ABORTED } from '@origin-ai/cf-tools'
+import type { GenericCallView, TerminalCallView, ToolExecution, ToolResult, ToolResultView } from '@origin-ai/cf-tools'
+import { HarnessError } from '@origin-ai/cf-llm'
+import type { Agent } from '@origin-ai/cf-agent'
+import type {} from '@origin-ai/cf-system-prompt'
+import type {} from '@origin-ai/cf-jobs'
+import type {} from '@origin-ai/cf-shell-env'
+import type {} from '@origin-ai/cf-user-approval'
+import type { SandboxExecutionPolicy, SandboxMode } from '@origin-ai/cf-sandbox'
+import { ESCALATION_TARGETS, approveEscalation, validateEscalationArgs } from '@origin-ai/cf-sandbox'
+import type { SandboxPolicyService } from '@origin-ai/cf-sandbox-policy'
+import type { ShellRunResult } from '@origin-ai/cf-shell'
+import { parseExitStatus } from '@origin-ai/cf-shell'
 import { processOutcome } from './background.ts'
 import { renderPwshProcessRead, renderPwshResult } from './render.ts'
 import type { RenderablePwshResult } from './render.ts'
 
-declare module '@origin-ai/xhe-jobs' {
+declare module '@origin-ai/cf-jobs' {
   interface JobKindMap {
     pwsh: 'pwsh'
   }
@@ -370,7 +370,7 @@ export function apply(ctx: Context, config: Config = {}): void {
         }
         const jobs = ctx.get('jobs')
         if (jobs === undefined) {
-          throw new Error('background jobs unavailable: load @origin-ai/xhe-jobs and @origin-ai/xhe-tool-jobs')
+          throw new Error('background jobs unavailable: load @origin-ai/cf-jobs and @origin-ai/cf-tool-jobs')
         }
         // The caller owns cancellation until ctx.jobs commits detached ownership.
         if (exec.signal.aborted) {

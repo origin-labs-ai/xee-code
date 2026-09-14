@@ -1,4 +1,4 @@
-# @origin-ai/xhe-workspace
+# @origin-ai/cf-workspace
 
 Workspace entity registry (`ctx.workspaceRegistry`) for the Xee Harness Enhanced: durable workspace records, stable workspace order, and a newest-first candidate session index stored through the domain data form. Consumers see the `Workspace` interface; the entity implementation stays package-private.
 

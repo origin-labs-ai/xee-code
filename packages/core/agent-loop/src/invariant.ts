@@ -1,14 +1,14 @@
 /**
  * Package-owned request-reconstruction invariant for loop-built LLM calls.
- * @module @origin-ai/xhe-agent-loop/invariant
+ * @module @origin-ai/cf-agent-loop/invariant
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import { isAgentLoopRequest, type GenerateOptions } from '@origin-ai/xhe-llm'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
-import { foldRequestHeader } from '@origin-ai/xhe-session'
+import { isAgentLoopRequest, type GenerateOptions } from '@origin-ai/cf-llm'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
+import { foldRequestHeader } from '@origin-ai/cf-session'
 
-const PACKAGE_NAME = '@origin-ai/xhe-agent-loop'
+const PACKAGE_NAME = '@origin-ai/cf-agent-loop'
 
 /** Cordis companion plugin name. */
 export const name = 'agent-loop-invariant'

@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-repeat-tool-reminder`.
- * @module @origin-ai/xhe-repeat-tool-reminder/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-repeat-tool-reminder`.
+ * @module @origin-ai/cf-repeat-tool-reminder/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-repeat-tool-reminder'
+const PACKAGE_NAME = '@origin-ai/cf-repeat-tool-reminder'
 
 /** Cordis companion plugin name. */
 export const name = 'repeat-tool-reminder-invariant'

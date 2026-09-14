@@ -21,10 +21,10 @@
 
 import { Zip, ZipDeflate } from 'fflate'
 import type { Context } from '@deepseek-ai/cordis'
-import type { AttachmentStore, ImageAttachmentRef } from '@origin-ai/xhe-attachment'
-import type { SessionLineageNode, SessionQueryEngine } from '@origin-ai/xhe-session-query'
-import type { SessionId, SessionStore } from '@origin-ai/xhe-session'
-import type { SessionPersistence, SessionRawArtifact } from '@origin-ai/xhe-session-persistence'
+import type { AttachmentStore, ImageAttachmentRef } from '@origin-ai/cf-attachment'
+import type { SessionLineageNode, SessionQueryEngine } from '@origin-ai/cf-session-query'
+import type { SessionId, SessionStore } from '@origin-ai/cf-session'
+import type { SessionPersistence, SessionRawArtifact } from '@origin-ai/cf-session-persistence'
 
 /** Valid fflate DEFLATE levels accepted by session-log export. */
 export type SessionLogCompressionLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9

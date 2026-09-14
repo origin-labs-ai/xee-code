@@ -158,7 +158,7 @@
 | opt-out ratio | opt-out  | |  | |
 | orphan |  | | 、 |  `.zh.md`（「」）； OS 「」 |
 | orphan branch |  | |  |  git  |
-| package |  | | |  npm （`@origin-ai/xhe-*`）；`package.json`  |
+| package |  | | |  npm （`@origin-ai/cf-*`）；`package.json`  |
 | pairing |  | | | |
 | parent-subset grants |  | |  |  |
 | peer dependency |  | （peer dependency） | | |

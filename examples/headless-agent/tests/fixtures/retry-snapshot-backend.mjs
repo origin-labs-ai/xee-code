@@ -4,7 +4,7 @@ import {
   LlmAdapter,
   LlmError,
   resolveRetryPolicy,
-} from '@origin-ai/xhe-llm'
+} from '@origin-ai/cf-llm'
 
 class RetrySnapshotAdapter extends LlmAdapter {
   requests = 0

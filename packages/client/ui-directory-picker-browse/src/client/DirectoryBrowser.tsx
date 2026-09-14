@@ -39,10 +39,10 @@ import clsx from 'clsx'
 import {
   Button, IconCheckOutline16, IconChevronRightOutline14, IconEditOutline16, IconFolderClose16, IconFolderOpen16,
   IconPlusOutline16, Modal,
-} from '@origin-ai/xhe-client-ui-primitives'
-import type { DirectoryEntry, DirectoryListing } from '@origin-ai/xhe-client-runtime/client'
-import { DirectoryBrowseError } from '@origin-ai/xhe-client-runtime/client'
-import type { Translate } from '@origin-ai/xhe-client-locale/client'
+} from '@origin-ai/cf-client-ui-primitives'
+import type { DirectoryEntry, DirectoryListing } from '@origin-ai/cf-client-runtime/client'
+import { DirectoryBrowseError } from '@origin-ai/cf-client-runtime/client'
+import type { Translate } from '@origin-ai/cf-client-locale/client'
 import css from './DirectoryBrowser.module.css'
 
 /** Owner-supplied browser props: browse calls, pick semantics, and copy. */

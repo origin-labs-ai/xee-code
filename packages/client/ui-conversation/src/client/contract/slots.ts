@@ -1,18 +1,18 @@
 /** Conversation slot declarations and their composed component props. */
 import type { ReactNode, RefObject } from 'react'
-import type { ImageAttachmentRef } from '@origin-ai/xhe-attachment'
+import type { ImageAttachmentRef } from '@origin-ai/cf-attachment'
 import type {
   InjectFace, MaybeSnapshotSelectorHook, PropsLocale, PropsRenderSlots, PropsRuntime, PropsStore,
   SlotHookFactory, SnapshotSelectorHook,
-} from '@origin-ai/xhe-client-ui-slots'
+} from '@origin-ai/cf-client-ui-slots'
 import type {
   CommandNode, CompactionSummaryNode, ConversationSnapshot, ConversationTurnDataMap,
   ObservableSnapshot, PendingInteraction, PendingWait, SessionId, ToolCallBlock,
   TurnLocation, WorkspaceId,
-} from '@origin-ai/xhe-client-runtime/client'
-import type { MarkdownFileMentions } from '@origin-ai/xhe-client-ui-primitives'
-import type { MessageId } from '@origin-ai/xhe-client-connection/client'
-import type {} from '@origin-ai/xhe-client-ui-layout/client'
+} from '@origin-ai/cf-client-runtime/client'
+import type { MarkdownFileMentions } from '@origin-ai/cf-client-ui-primitives'
+import type { MessageId } from '@origin-ai/cf-client-connection/client'
+import type {} from '@origin-ai/cf-client-ui-layout/client'
 import type { ComposerBlock } from '../input/blocks.ts'
 import type {
   ComposerKeyboard, DraftAttachmentId, EditSelection, InputActions, InputNotice, InputState,
@@ -57,7 +57,7 @@ export interface MessageImagesOwnerProps {
 /** Slot-backed renderer used by chat nodes without importing an attachment implementation. */
 export type RenderMessageImages = (owner: Omit<MessageImagesOwnerProps, 'loadImage'>) => ReactNode
 
-declare module '@origin-ai/xhe-client-ui-slots' {
+declare module '@origin-ai/cf-client-ui-slots' {
   interface SlotMap {
     /**
      * The entire body of one session: taking this seat means rendering that

@@ -8,7 +8,7 @@
  * - Timeout wrappers
  * - Graceful degradation
  * 
- * @origin-ai/xhe/mad/utils
+ * @origin-ai/cf/mad/utils
  * @version 2.0.1-advanced
  */
 

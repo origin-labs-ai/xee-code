@@ -1,4 +1,4 @@
-# @origin-ai/xhe-subagent-fork-in-process
+# @origin-ai/cf-subagent-fork-in-process
 
 The fork provider creates an in-process child seeded with the parent's completed conversation turns. It shares all run mechanics with spawn; the session seed is the only behavioral difference.
 

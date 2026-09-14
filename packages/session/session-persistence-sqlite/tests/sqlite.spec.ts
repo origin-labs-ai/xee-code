@@ -10,11 +10,11 @@ import { pathToFileURL } from 'node:url'
 import { DatabaseSync } from 'node:sqlite'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import Include from '@deepseek-ai/cordis-plugin-include'
-import SessionStore, { SessionId, type SessionEvent } from '@origin-ai/xhe-session'
+import SessionStore, { SessionId, type SessionEvent } from '@origin-ai/cf-session'
 import SessionPersistenceSqlite, {
   DEFAULT_BUSY_TIMEOUT_MS,
   SCHEMA_VERSION,
-} from '@origin-ai/xhe-session-persistence-sqlite'
+} from '@origin-ai/cf-session-persistence-sqlite'
 import {
   runCoordinatorContract,
   type CoordinatorFixture,
@@ -235,8 +235,8 @@ describe('SessionPersistenceSqlite physical packing', () => {
     const path = await freshDbPath('xhe-sqlite-loader-')
     const configPath = join(path, '..', 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@origin-ai/xhe-session'",
-      "- name: '@origin-ai/xhe-session-persistence-sqlite'",
+      "- name: '@origin-ai/cf-session'",
+      "- name: '@origin-ai/cf-session-persistence-sqlite'",
       '  config:',
       `    path: ${JSON.stringify(path)}`,
       '',
@@ -249,8 +249,8 @@ describe('SessionPersistenceSqlite physical packing', () => {
     ctx.loader.internal = {
       version: 'sqlite',
       async import(specifier: string) {
-        if (specifier === '@origin-ai/xhe-session') return SessionStore
-        if (specifier === '@origin-ai/xhe-session-persistence-sqlite') {
+        if (specifier === '@origin-ai/cf-session') return SessionStore
+        if (specifier === '@origin-ai/cf-session-persistence-sqlite') {
           return SessionPersistenceSqlite
         }
         throw new Error(`unexpected Loader import: ${specifier}`)

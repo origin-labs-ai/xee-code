@@ -3,4 +3,4 @@
 
 - insert:
     - id: subagent-claude-code
-      name: '@origin-ai/xhe-subagent-claude-code'
+      name: '@origin-ai/cf-subagent-claude-code'

@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
-import { LOADER_SMOKE_TEST_TIMEOUT_MS, runLoaderSmoke } from '@origin-ai/xhe-loader-smoke'
+import { LOADER_SMOKE_TEST_TIMEOUT_MS, runLoaderSmoke } from '@origin-ai/cf-loader-smoke'
 const binScript = fileURLToPath(new URL('./fixtures/xhe-badge/snapshot.ts', import.meta.url))
 const configPath = fileURLToPath(new URL('./fixtures/xhe-badge/cordis.yml', import.meta.url))
 const defaultConfigPath = fileURLToPath(new URL('./fixtures/xhe-badge/default.cordis.yml', import.meta.url))

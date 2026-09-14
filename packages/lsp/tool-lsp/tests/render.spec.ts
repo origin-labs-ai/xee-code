@@ -10,8 +10,8 @@ import {
   parseLspArgs,
   presentLspCall,
   renderUri,
-} from '@origin-ai/xhe-tool-lsp'
-import type { LspLocation } from '@origin-ai/xhe-lsp'
+} from '@origin-ai/cf-tool-lsp'
+import type { LspLocation } from '@origin-ai/cf-lsp'
 
 const WS = resolve('/home/u/proj')
 const WS_URI = pathToFileURL(WS).href

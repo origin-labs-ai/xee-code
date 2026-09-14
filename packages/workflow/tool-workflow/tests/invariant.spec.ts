@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import InvariantRegistry, { InvariantError } from '@origin-ai/xhe-invariants'
-import SessionStore, { SessionId, type Session } from '@origin-ai/xhe-session'
-import { WorkflowRunId, type WorkflowRunId as WorkflowRunIdType } from '@origin-ai/xhe-workflow/types'
+import InvariantRegistry, { InvariantError } from '@origin-ai/cf-invariants'
+import SessionStore, { SessionId, type Session } from '@origin-ai/cf-session'
+import { WorkflowRunId, type WorkflowRunId as WorkflowRunIdType } from '@origin-ai/cf-workflow/types'
 import * as ToolWorkflowInvariant from '../src/invariant.ts'
 import type {} from '../src/types.ts'
 
@@ -53,7 +53,7 @@ describe('durable workflow-record invariants', () => {
       runId, seq: 1, outcome: 'completed',
     })).toThrow(expect.objectContaining<Partial<InvariantError>>({
       code: 'INVARIANT',
-      packageName: '@origin-ai/xhe-tool-workflow',
+      packageName: '@origin-ai/cf-tool-workflow',
     }))
     expect(session.seq).toBe(before)
     expect(() => session.append('tool-workflow/run-end', {

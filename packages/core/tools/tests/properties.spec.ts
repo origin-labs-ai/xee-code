@@ -7,9 +7,9 @@
 
 import { describe, expect, it } from 'vitest'
 import fc from 'fast-check'
-import { isJsonValue } from '@origin-ai/xhe-session'
-import { parameterSchemaSpecToJsonSchema, validateArgs } from '@origin-ai/xhe-tools'
-import type { ParameterPropertySpec, ParameterSchemaSpec, ValueSchemaSpec } from '@origin-ai/xhe-tools'
+import { isJsonValue } from '@origin-ai/cf-session'
+import { parameterSchemaSpecToJsonSchema, validateArgs } from '@origin-ai/cf-tools'
+import type { ParameterPropertySpec, ParameterSchemaSpec, ValueSchemaSpec } from '@origin-ai/cf-tools'
 
 /** Remove parameter-only requiredness before nesting a schema as an array item. */
 function asValueSchema(prop: ParameterPropertySpec): ValueSchemaSpec {

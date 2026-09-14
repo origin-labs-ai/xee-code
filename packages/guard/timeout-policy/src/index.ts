@@ -3,17 +3,17 @@
  * promises to honor `exec.signal`; this wrapper arms that deadline and maps its
  * own expiry to `TOOL_TIMEOUT` without racing or abandoning the tool promise.
  *
- * FIXME: settle the intended `@origin-ai/xhe-timeout-guard` rename before the
+ * FIXME: settle the intended `@origin-ai/cf-timeout-guard` rename before the
  * first tagged release — suggestion only, aligning the name with its `guard/`
  * home; decide at resolution time
  * ([regrouping Agent Note](../../../../.agents/notes/implemented/architecture/2026-07-29-package-regrouping.md)).
  *
- * @module @origin-ai/xhe-tool-call-timeout-policy
+ * @module @origin-ai/cf-tool-call-timeout-policy
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import { deadline, timeoutOf } from '@origin-ai/xhe-timeout'
-import type { ToolExecutionResult } from '@origin-ai/xhe-tools'
+import { deadline, timeoutOf } from '@origin-ai/cf-timeout'
+import type { ToolExecutionResult } from '@origin-ai/cf-tools'
 
 /**
  * The code owned by this plugin, used BOTH as the internal {@link deadline}

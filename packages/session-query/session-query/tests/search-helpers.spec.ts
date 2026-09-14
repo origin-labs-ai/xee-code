@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { createUserMessage, CallId , createMessage, createToolResultMessage } from '@origin-ai/xhe-llm'
+import { createUserMessage, CallId , createMessage, createToolResultMessage } from '@origin-ai/cf-llm'
 import SessionStore, {
   SESSION_FORMAT_VERSION,
   SessionId,
-} from '@origin-ai/xhe-session'
-import type { SessionEvent, SessionHeader } from '@origin-ai/xhe-session'
+} from '@origin-ai/cf-session'
+import type { SessionEvent, SessionHeader } from '@origin-ai/cf-session'
 import {
   buildSessionEventRecords,
   buildSessionEventSearchDocuments,
@@ -16,7 +16,7 @@ import {
   materializeSessionEventResultFilters,
   materializeSessionResultFilters,
   type SessionQueryErrorCode,
-} from '@origin-ai/xhe-session-query'
+} from '@origin-ai/cf-session-query'
 import { TestSessionQueryEngine } from './test-service.ts'
 
 const id = SessionId('session')

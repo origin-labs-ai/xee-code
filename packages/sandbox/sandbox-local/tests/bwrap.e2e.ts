@@ -5,8 +5,8 @@ import { homedir, tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import type { SandboxPolicy } from '@origin-ai/xhe-sandbox'
-import { LocalSandboxProvider } from '@origin-ai/xhe-sandbox-local'
+import type { SandboxPolicy } from '@origin-ai/cf-sandbox'
+import { LocalSandboxProvider } from '@origin-ai/cf-sandbox-local'
 import { bwrapProfileArgs } from '../src/profiles.ts'
 
 /**

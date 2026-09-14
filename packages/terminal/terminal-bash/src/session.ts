@@ -5,8 +5,8 @@ import type {
   SubprocessOutcome,
   SubprocessTerminalForeground,
   SubprocessTerminalHandle,
-} from '@origin-ai/xhe-subprocess'
-import { TerminalError } from '@origin-ai/xhe-terminal'
+} from '@origin-ai/cf-subprocess'
+import { TerminalError } from '@origin-ai/cf-terminal'
 import type {
   TerminalBackendSession,
   TerminalReadRequest,
@@ -19,7 +19,7 @@ import type {
   TerminalSignal,
   TerminalSignalResult,
   TerminalWaitReason,
-} from '@origin-ai/xhe-terminal'
+} from '@origin-ai/cf-terminal'
 import type { ResolvedConfig } from './config.ts'
 import { CONTROLLED_PROMPT, TerminalSanitizer } from './sanitize.ts'
 

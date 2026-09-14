@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-session-reference`.
- * @module @origin-ai/xhe-session-reference/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-session-reference`.
+ * @module @origin-ai/cf-session-reference/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-session-reference'
+const PACKAGE_NAME = '@origin-ai/cf-session-reference'
 
 /** Cordis companion plugin name. */
 export const name = 'session-reference-invariant'

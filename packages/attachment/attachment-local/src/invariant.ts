@@ -1,10 +1,10 @@
-/** Package-owned invariant companion for `@origin-ai/xhe-attachment-local`. @module @origin-ai/xhe-attachment-local/invariant */
+/** Package-owned invariant companion for `@origin-ai/cf-attachment-local`. @module @origin-ai/cf-attachment-local/invariant */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-attachment-local'
+const PACKAGE_NAME = '@origin-ai/cf-attachment-local'
 /** Cordis companion plugin name. */
 export const name = 'attachment-local-invariant'
 /** Services required before package ownership can be reserved. */

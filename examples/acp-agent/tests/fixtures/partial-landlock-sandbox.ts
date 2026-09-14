@@ -1,6 +1,6 @@
 import { join } from 'node:path'
-import type { ConfinedArgv, SandboxPolicy } from '@origin-ai/xhe-sandbox'
-import { SandboxProvider } from '@origin-ai/xhe-sandbox'
+import type { ConfinedArgv, SandboxPolicy } from '@origin-ai/cf-sandbox'
+import { SandboxProvider } from '@origin-ai/cf-sandbox'
 
 const NOTICE = 'landlock-run: partial enforcement (older Landlock ABI)'
 const MISSING_RUNNER_ENV = 'XHE_SNAPSHOT_MISSING_SANDBOX_RUNNER'

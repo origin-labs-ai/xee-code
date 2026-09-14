@@ -1,6 +1,6 @@
 import type {
   SettingsSchemaService,
-} from '@origin-ai/xhe-client-ui-settings/client'
+} from '@origin-ai/cf-client-ui-settings/client'
 
 /** Plain schema callbacks exposed to Models stores and presentation components. */
 export type SettingsSchemaOperations = Pick<

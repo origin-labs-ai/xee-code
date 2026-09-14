@@ -1,4 +1,4 @@
-# @origin-ai/xhe-tmux-context
+# @origin-ai/cf-tmux-context
 
 Opt-in durable context naming the tmux session, window, and pane this agent process runs in, plus the window's pane-tree layout. It is sampled once per turn during model-request preparation and is not part of the shipped Web/headless composition. Decision record: [the tmux-context Agent Note](../../../.agents/notes/implemented/feature/2026-07-27-tmux-location-context.md).
 
@@ -6,7 +6,7 @@ Opt-in durable context naming the tmux session, window, and pane this agent proc
 
 ```yaml
 - id: tmux-context
-  name: '@origin-ai/xhe-tmux-context'
+  name: '@origin-ai/cf-tmux-context'
   config:
     refreshIntervalMs: 60000 # optional; omit or set to 0 to inject on every changed turn
 ```

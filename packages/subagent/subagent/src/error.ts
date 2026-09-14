@@ -1,10 +1,10 @@
 /**
  * Typed failures shared by subagent service and provider operations.
  *
- * @module @origin-ai/xhe-subagent
+ * @module @origin-ai/cf-subagent
  */
 
-import { HarnessError } from '@origin-ai/xhe-llm'
+import { HarnessError } from '@origin-ai/cf-llm'
 
 /** Typed failure for the subagent seam. */
 export class SubagentError extends HarnessError {

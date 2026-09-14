@@ -5,7 +5,7 @@
  * TODO(acp-subagent-replay): add snapshot-tier coverage with a separate replay fixture and
  * sessions root inside each child process. Current keyless coverage uses a scripted ACP child;
  * with-key coverage drives the real ACP example.
- * @module @origin-ai/xhe-subagent-acp/run
+ * @module @origin-ai/cf-subagent-acp/run
  */
 
 import { randomUUID } from 'node:crypto'
@@ -22,11 +22,11 @@ import {
   type SessionNotification,
   type StopReason,
 } from '@agentclientprotocol/sdk'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import { SessionId } from '@origin-ai/xhe-session'
-import { AssistantOutputFold } from '@origin-ai/xhe-subagent'
-import type { SubagentResult, SubagentRun, SubagentStartRequest, SubagentStopReason } from '@origin-ai/xhe-subagent'
-import type { SubprocessHandle, SubprocessSpawnSpec } from '@origin-ai/xhe-subprocess'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import { SessionId } from '@origin-ai/cf-session'
+import { AssistantOutputFold } from '@origin-ai/cf-subagent'
+import type { SubagentResult, SubagentRun, SubagentStartRequest, SubagentStopReason } from '@origin-ai/cf-subagent'
+import type { SubprocessHandle, SubprocessSpawnSpec } from '@origin-ai/cf-subprocess'
 
 /** Fixed response to child permission requests: reject by default, or select the first allow option. */
 export type PermissionPolicy = 'allow' | 'reject'

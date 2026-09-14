@@ -5,13 +5,13 @@
     path: ../cordis.yml
     patches:
       - id: llm-deepseek
-        name: '@origin-ai/xhe-llm-deepseek'
+        name: '@origin-ai/cf-llm-deepseek'
         disabled: true
       - insert:
           - id: lsp
-            name: '@origin-ai/xhe-lsp'
+            name: '@origin-ai/cf-lsp'
           - id: lsp-stdio
-            name: '@origin-ai/xhe-lsp-stdio'
+            name: '@origin-ai/cf-lsp-stdio'
             config:
               servers:
                 fixture:
@@ -20,10 +20,10 @@
                   extensionToLanguage:
                     '.ts': typescript
           - id: timeout-policy
-            name: '@origin-ai/xhe-tool-call-timeout-policy'
+            name: '@origin-ai/cf-tool-call-timeout-policy'
           - id: tool-lsp
-            name: '@origin-ai/xhe-tool-lsp'
+            name: '@origin-ai/cf-tool-lsp'
             config:
               maxLocations: 1
           - id: llm-replay
-            name: '@origin-ai/xhe-llm-replay'
+            name: '@origin-ai/cf-llm-replay'

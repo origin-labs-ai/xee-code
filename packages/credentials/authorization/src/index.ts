@@ -23,12 +23,12 @@
  * })
  * ```
  *
- * @module @origin-ai/xhe-authorization
+ * @module @origin-ai/cf-authorization
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'
-import type { CredentialKey } from '@origin-ai/xhe-credentials'
-import { HarnessError } from '@origin-ai/xhe-llm'
+import type { CredentialKey } from '@origin-ai/cf-credentials'
+import { HarnessError } from '@origin-ai/cf-llm'
 
 import type {
   AuthorizationEntry, AuthorizationMethod, AuthorizationNotice, AuthorizationOutcome, AuthorizationPrompt,

@@ -10,8 +10,8 @@
  * (`LlmRuntime.registerAdapter`), not the single-service bash executor.
  *
  * This package owns the Service Definition role of the capability seam. Service Providers
- * (`@origin-ai/xhe-subagent-spawn-in-process`, `-fork`, `-acp`) and the model-facing
- * consumer (`@origin-ai/xhe-tool-subagent`) are separate packages.
+ * (`@origin-ai/cf-subagent-spawn-in-process`, `-fork`, `-acp`) and the model-facing
+ * consumer (`@origin-ai/cf-tool-subagent`) are separate packages.
  *
  * Public operations express caller intent: `start` returns one published owned
  * one-shot run, `startContinuable` establishes a durable continuable child, and
@@ -28,16 +28,16 @@
  * serialization and hostile-input validation belong at real process, worker,
  * persistence, and model boundaries.
  *
- * @module @origin-ai/xhe-subagent
+ * @module @origin-ai/cf-subagent
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'
-import { scopeTarget } from '@origin-ai/xhe-scope'
-import type { Scoped } from '@origin-ai/xhe-scope'
-import { assertObjectJsonSchema } from '@origin-ai/xhe-tools'
-import type { ContentBlock, MessageId } from '@origin-ai/xhe-llm'
-import type { Agent } from '@origin-ai/xhe-agent'
-import type { SessionId } from '@origin-ai/xhe-session'
+import { scopeTarget } from '@origin-ai/cf-scope'
+import type { Scoped } from '@origin-ai/cf-scope'
+import { assertObjectJsonSchema } from '@origin-ai/cf-tools'
+import type { ContentBlock, MessageId } from '@origin-ai/cf-llm'
+import type { Agent } from '@origin-ai/cf-agent'
+import type { SessionId } from '@origin-ai/cf-session'
 import type {
   ContinuableCreateRequest,
   ContinuableCreateSpec,

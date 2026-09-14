@@ -1,4 +1,4 @@
-# `@origin-ai/xhe-cli`
+# `@origin-ai/cf-cli`
 
 The `xhe` command is the product launcher for profiles: ordered stacks of plugin-bundle patch layers under the user's own overrides. [`src/args.ts`](src/args.ts) owns the command grammar, and [`src/bin.ts`](src/bin.ts) loads only the selected runner. Invalid commands, options from another mode, configuration errors, and boot failures exit nonzero.
 
@@ -34,7 +34,7 @@ The tree composes over an empty root:
 - then the profile's `cordis.patch.yml`, then the home-level `$XHE_HOME/cordis.patch.yml`
 - then `--patch` overlays
 
-Bundles named in `xhe.profile.bundles` resolve from the xhe installation first (`@origin-ai/xhe-base`, `@origin-ai/xhe-web-app`, `@origin-ai/xhe-headless`), then from the profile's own `node_modules`, where pnpm installs out-of-tree plugins.
+Bundles named in `xhe.profile.bundles` resolve from the xhe installation first (`@origin-ai/cf-base`, `@origin-ai/cf-web-app`, `@origin-ai/cf-headless`), then from the profile's own `node_modules`, where pnpm installs out-of-tree plugins.
 
 Use `--dump-default-config` and `--dump-config` to inspect the composed tree without booting it.
 

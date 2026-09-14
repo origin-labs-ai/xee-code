@@ -1,4 +1,4 @@
-# @origin-ai/xhe-mcp-client
+# @origin-ai/cf-mcp-client
 
 MCP client bridge plugin: connects to external [Model Context Protocol](https://modelcontextprotocol.io/) servers and registers their tools on `ctx.tools`, making them available to the model as native tools under server-qualified names (`mcp__<serverName>__<rawName>`).
 
@@ -8,7 +8,7 @@ One plugin instance per MCP server in `cordis.yml`:
 
 ```yaml
 - id: mcp-github
-  name: '@origin-ai/xhe-mcp-client'
+  name: '@origin-ai/cf-mcp-client'
   config:
     serverName: github
     transport: stdio
@@ -18,7 +18,7 @@ One plugin instance per MCP server in `cordis.yml`:
       GITHUB_TOKEN: !!js process.env.GITHUB_TOKEN
 
 - id: mcp-web
-  name: '@origin-ai/xhe-mcp-client'
+  name: '@origin-ai/cf-mcp-client'
   config:
     serverName: web
     transport: streamable-http

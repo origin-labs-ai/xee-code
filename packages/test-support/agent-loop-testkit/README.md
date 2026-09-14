@@ -1,4 +1,4 @@
-# `@origin-ai/xhe-agent-loop-testkit`
+# `@origin-ai/cf-agent-loop-testkit`
 
 Shared prerequisite mounting for tests that exercise the concrete `AgentLoop`. `mountAgentLoopTestDependencies(ctx, options?)` installs the LLM, session, system-prompt, tool, and agent services in dependency order, then returns before the loop is mounted.
 
@@ -6,8 +6,8 @@ The caller registers adapters and optional plugins, mounts `AgentLoop` with the 
 
 ```ts
 import { Context } from '@deepseek-ai/cordis'
-import AgentLoop from '@origin-ai/xhe-agent-loop'
-import { mountAgentLoopTestDependencies } from '@origin-ai/xhe-agent-loop-testkit'
+import AgentLoop from '@origin-ai/cf-agent-loop'
+import { mountAgentLoopTestDependencies } from '@origin-ai/cf-agent-loop-testkit'
 
 const ctx = new Context()
 

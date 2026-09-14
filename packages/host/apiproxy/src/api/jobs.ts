@@ -4,7 +4,7 @@
  * per push.
  */
 
-import type { JobId } from '@origin-ai/xhe-jobs/brand'
+import type { JobId } from '@origin-ai/cf-jobs/brand'
 
 /**
  * One background job as the client sees it.

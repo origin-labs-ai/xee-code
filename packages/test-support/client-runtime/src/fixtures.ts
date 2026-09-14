@@ -1,10 +1,10 @@
 /** Session/workspace fixture shapes and snapshot defaults for the test runtime. */
 import type {
   ConversationSnapshot, ISession, SessionId, SessionSummary, WorkspaceListState,
-} from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-runtime/client'
 import {
   EMPTY_CHAT_SNAPSHOT, EMPTY_CONVERSATION_VIEWS,
-} from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-runtime/client'
 
 /**
  * Fixture overrides for the session behavior face: any subset of the

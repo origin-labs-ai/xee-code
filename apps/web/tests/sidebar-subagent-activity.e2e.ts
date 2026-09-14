@@ -4,12 +4,12 @@ import { fileURLToPath } from 'node:url'
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import type { AgentHandle } from '@origin-ai/xhe-agent'
-import { createUserMessage, LlmAdapter } from '@origin-ai/xhe-llm'
-import type { GenerateOptions, StreamChunk } from '@origin-ai/xhe-llm'
-import { SessionId, type SessionId as SessionIdValue } from '@origin-ai/xhe-session'
-import type {} from '@origin-ai/xhe-subagent'
-import type {} from '@origin-ai/xhe-workspace'
+import type { AgentHandle } from '@origin-ai/cf-agent'
+import { createUserMessage, LlmAdapter } from '@origin-ai/cf-llm'
+import type { GenerateOptions, StreamChunk } from '@origin-ai/cf-llm'
+import { SessionId, type SessionId as SessionIdValue } from '@origin-ai/cf-session'
+import type {} from '@origin-ai/cf-subagent'
+import type {} from '@origin-ai/cf-workspace'
 import {
   assertFixtureInventory,
   captureStableAria,

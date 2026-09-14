@@ -2,17 +2,17 @@
  * Agent service: live registry, factory delegation, and process-local
  * initiator scope. Concrete creation and driving belong to the loop.
  *
- * @module @origin-ai/xhe-agent
+ * @module @origin-ai/cf-agent
  */
 
 import { Context, FiberState, getTraceable, Service, symbols } from '@deepseek-ai/cordis'
 import type { Fiber } from '@deepseek-ai/cordis'
 import { AsyncLocalStorage } from 'node:async_hooks'
 import { isPromise } from 'node:util/types'
-import { scopeTarget } from '@origin-ai/xhe-scope'
-import type { Scoped } from '@origin-ai/xhe-scope'
-import type { SessionEvent, SessionId } from '@origin-ai/xhe-session'
-import type { TypertContext, TypertLookup } from '@origin-ai/xhe-typert-protocol'
+import { scopeTarget } from '@origin-ai/cf-scope'
+import type { Scoped } from '@origin-ai/cf-scope'
+import type { SessionEvent, SessionId } from '@origin-ai/cf-session'
+import type { TypertContext, TypertLookup } from '@origin-ai/cf-typert-protocol'
 import type { Agent, AgentOptions } from './runtime-types.ts'
 
 export * from './runtime-types.ts'
@@ -23,7 +23,7 @@ export * from './model-selection.ts'
 export { agentCarrier, agentEvents, assembleContextFor, emitAgentEvent } from './dispatch.ts'
 export type { AgentEventDispatch, AgentSubjectEvent } from './dispatch.ts'
 
-declare module '@origin-ai/xhe-typert-protocol' {
+declare module '@origin-ai/cf-typert-protocol' {
   interface TypertLookupMap {
     agent: TypertLookup<Agent, SessionId>
   }
@@ -245,7 +245,7 @@ interface FactorySlot {
  * Agent service (`ctx.agents`): tracks live agents and carries the initiating
  * Agent through one process-local asynchronous driver chain. Agent *creation*
  * is provided by whichever plugin implements the {@link AgentFactory}
- * (`@origin-ai/xhe-agent-loop`), registered via {@link setFactory}.
+ * (`@origin-ai/cf-agent-loop`), registered via {@link setFactory}.
  *
  * Initiator methods provide same-process causal attribution only. Ambient
  * presence is neither liveness proof nor authorization; subjects and owners
@@ -269,13 +269,13 @@ export class AgentRegistry extends Service {
       typeCtx.typert.lookups.register('agent', {
         parameter: 'agent',
         wire: 'agentId',
-        hostTypeSymbol: '@origin-ai/xhe-agent#Agent',
-        wireTypeSymbol: '@origin-ai/xhe-session/types#SessionId',
+        hostTypeSymbol: '@origin-ai/cf-agent#Agent',
+        wireTypeSymbol: '@origin-ai/cf-session/types#SessionId',
         resolve: sessionId => this.get(sessionId),
       })
       typeCtx.typert.contexts.registerHost('agent', {
         wire: 'agentId',
-        wireTypeSymbol: '@origin-ai/xhe-session/types#SessionId',
+        wireTypeSymbol: '@origin-ai/cf-session/types#SessionId',
         resolve: sessionId => this.get(sessionId)?.ctx,
       })
     })

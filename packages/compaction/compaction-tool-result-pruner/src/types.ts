@@ -1,4 +1,4 @@
-import type { CallId } from '@origin-ai/xhe-llm'
+import type { CallId } from '@origin-ai/cf-llm'
 
 /** Character-budget policy for deterministic tool-result pruning. */
 export interface ToolResultPruneConfig {

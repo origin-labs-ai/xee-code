@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-host-apiproxy`.
- * @module @origin-ai/xhe-host-apiproxy/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-host-apiproxy`.
+ * @module @origin-ai/cf-host-apiproxy/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-host-apiproxy'
+const PACKAGE_NAME = '@origin-ai/cf-host-apiproxy'
 
 /** Cordis companion plugin name. */
 export const name = 'host-apiproxy-invariant'

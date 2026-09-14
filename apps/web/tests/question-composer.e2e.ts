@@ -13,8 +13,8 @@ import { join } from 'node:path'
 import type { Browser, Locator, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import type { SessionEvent } from '@origin-ai/xhe-session'
-import type { SessionId } from '@origin-ai/xhe-session/types'
+import type { SessionEvent } from '@origin-ai/cf-session'
+import type { SessionId } from '@origin-ai/cf-session/types'
 import {
   assertFixtureInventory, captureStableAria, compareOrRefreshGolden, fixtureUserPrompts,
   launchWebScaffold, recordFixture, watchConsole, webSnapshotMode, type WebScaffold,

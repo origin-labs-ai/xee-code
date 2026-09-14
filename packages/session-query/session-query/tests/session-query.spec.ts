@@ -1,15 +1,15 @@
-import { createUserMessage, createMessage } from '@origin-ai/xhe-llm'
+import { createUserMessage, createMessage } from '@origin-ai/cf-llm'
 import { describe, expect, it, vi } from 'vitest'
 import { Context, type Fiber } from '@deepseek-ai/cordis'
-import SessionStore, { SESSION_FORMAT_VERSION, SessionId } from '@origin-ai/xhe-session'
-import type { SessionEvent, SessionHeader, SessionId as SessionIdType } from '@origin-ai/xhe-session'
-import SessionPersistence, { SessionPersistenceCorruptionError, SessionPersistenceRevision } from '@origin-ai/xhe-session-persistence'
+import SessionStore, { SESSION_FORMAT_VERSION, SessionId } from '@origin-ai/cf-session'
+import type { SessionEvent, SessionHeader, SessionId as SessionIdType } from '@origin-ai/cf-session'
+import SessionPersistence, { SessionPersistenceCorruptionError, SessionPersistenceRevision } from '@origin-ai/cf-session-persistence'
 import SessionQueryEngine, {
   SESSION_QUERY_DEFAULT_PERSISTED_INSPECT_CONCURRENCY,
   type SessionEventSurface,
   type SessionQueryErrorCode,
-} from '@origin-ai/xhe-session-query'
-import { SessionTitleProviderId } from '@origin-ai/xhe-session-title'
+} from '@origin-ai/cf-session-query'
+import { SessionTitleProviderId } from '@origin-ai/cf-session-title'
 import { TestSessionQueryEngine } from './test-service.ts'
 
 function header(id: string, createdAt = 1, extra: Partial<SessionHeader> = {}): SessionHeader {

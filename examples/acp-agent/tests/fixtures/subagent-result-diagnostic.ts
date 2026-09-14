@@ -5,8 +5,8 @@ import {
   NO_START_CAPABILITIES,
   type ResolvedSubagentStartRequest,
   type SubagentProvider,
-} from '@origin-ai/xhe-subagent'
-import { SessionId } from '@origin-ai/xhe-session'
+} from '@origin-ai/cf-subagent'
+import { SessionId } from '@origin-ai/cf-session'
 
 export const name = 'subagent-result-diagnostic'
 export const inject = ['subagents']

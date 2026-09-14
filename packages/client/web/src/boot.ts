@@ -2,14 +2,14 @@
  * Web boot kernel. It owns only the module system, Cordis loader, and a
  * framework-free boot page. The dynamic UI renderer receives the mount
  * point after every client entry activates.
- * @module @origin-ai/xhe-client-web/src/boot
+ * @module @origin-ai/cf-client-web/src/boot
  */
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import type {
   BootManifest, ClientModuleCreateOptions, ClientModuleSystem, DshWindow,
-} from '@origin-ai/xhe-client-modules/client'
-import type {} from '@origin-ai/xhe-client-ui-renderer/client'
+} from '@origin-ai/cf-client-modules/client'
+import type {} from '@origin-ai/cf-client-ui-renderer/client'
 import { BootPage } from './boot-page.ts'
 import { getStaticModules } from './seed.ts'
 import { STATE_LABELS } from './loader-status.ts'
@@ -52,7 +52,7 @@ export class AppWebEntry {
       }
       // A pre-injected transport (the worker preview page) owns bundle bytes;
       // its loadBundle is the default and explicit seams still win. The global
-      // is `ClientTransportHooks`, owned by @origin-ai/xhe-client-connection;
+      // is `ClientTransportHooks`, owned by @origin-ai/cf-client-connection;
       // this structural slice reads one optional member without adding a
       // package edge.
       const transport = (globalThis as {

@@ -9,16 +9,16 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import SessionStore from '@origin-ai/xhe-session'
-import AgentRegistry from '@origin-ai/xhe-agent'
-import type { Agent, AgentHandle, CreateAgentOptions } from '@origin-ai/xhe-agent'
-import { createUserMessage } from '@origin-ai/xhe-llm'
-import SessionTitleService from '@origin-ai/xhe-session-title'
-import UserQuestionService from '@origin-ai/xhe-user-questions'
-import type { Session, SessionId } from '@origin-ai/xhe-session'
-import type { RpcRequest } from '@origin-ai/xhe-host-apiproxy/api/rpc'
-import { RpcId } from '@origin-ai/xhe-host-apiproxy/api/rpc'
-import { createApiProxy } from '@origin-ai/xhe-host-apiproxy'
+import SessionStore from '@origin-ai/cf-session'
+import AgentRegistry from '@origin-ai/cf-agent'
+import type { Agent, AgentHandle, CreateAgentOptions } from '@origin-ai/cf-agent'
+import { createUserMessage } from '@origin-ai/cf-llm'
+import SessionTitleService from '@origin-ai/cf-session-title'
+import UserQuestionService from '@origin-ai/cf-user-questions'
+import type { Session, SessionId } from '@origin-ai/cf-session'
+import type { RpcRequest } from '@origin-ai/cf-host-apiproxy/api/rpc'
+import { RpcId } from '@origin-ai/cf-host-apiproxy/api/rpc'
+import { createApiProxy } from '@origin-ai/cf-host-apiproxy'
 
 const sid = (id: string): SessionId => id as SessionId
 

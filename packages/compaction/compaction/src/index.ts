@@ -4,12 +4,12 @@
  * {@link CompactionEngine}. This interface necessarily depends on session and LLM
  * vocabulary; the rationale is in the
  * [compaction Agent Note](../../../../.agents/notes/implemented/feature/2026-06-18-compaction-capability-seam.md).
- * @module @origin-ai/xhe-compaction
+ * @module @origin-ai/cf-compaction
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'
-import type { Session } from '@origin-ai/xhe-session'
-import type { CommandId } from '@origin-ai/xhe-commands/brand'
+import type { Session } from '@origin-ai/cf-session'
+import type { CommandId } from '@origin-ai/cf-commands/brand'
 import type { CompactionResult } from './types.ts'
 
 export type { CompactionResult } from './types.ts'

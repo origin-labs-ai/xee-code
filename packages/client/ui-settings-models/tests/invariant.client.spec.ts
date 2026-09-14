@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import * as ModelsInvariant from '@origin-ai/xhe-client-ui-settings-models/invariant'
-import InvariantRegistry from '@origin-ai/xhe-invariants'
+import * as ModelsInvariant from '@origin-ai/cf-client-ui-settings-models/invariant'
+import InvariantRegistry from '@origin-ai/cf-invariants'
 import { ModelsSection } from '../src/client/ModelsSection.tsx'
 
 describe('invariant companion', () => {
@@ -12,7 +12,7 @@ describe('invariant companion', () => {
   })
 
   it('node-half apply is a no-op host placeholder', async () => {
-    const { apply } = await import('@origin-ai/xhe-client-ui-settings-models')
+    const { apply } = await import('@origin-ai/cf-client-ui-settings-models')
     apply()
     expect(true).toBe(true) // reaching here without throw is the contract
   })

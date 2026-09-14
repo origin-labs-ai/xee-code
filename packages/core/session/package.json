@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-session",
+  "name": "@origin-ai/cf-session",
   "description": "Event-sourced session store for the Xee Harness Enhanced",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -41,20 +41,20 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-scope": "workspace:^",
-    "@origin-ai/xhe-typert-protocol": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-scope": "workspace:^",
+    "@origin-ai/cf-typert-protocol": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "devDependencies": {
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-scope": "workspace:^",
-    "@origin-ai/xhe-typert-protocol": "workspace:^",
-    "@origin-ai/xhe-typert-registry": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-scope": "workspace:^",
+    "@origin-ai/cf-typert-protocol": "workspace:^",
+    "@origin-ai/cf-typert-registry": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

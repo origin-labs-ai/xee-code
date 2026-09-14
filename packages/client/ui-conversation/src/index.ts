@@ -1,7 +1,7 @@
 /** Host registration for browser conversation preferences. */
 
 import type { Context } from '@deepseek-ai/cordis'
-import { settingsNamespace } from '@origin-ai/xhe-settings'
+import { settingsNamespace } from '@origin-ai/cf-settings'
 import { CONVERSATION_SETTINGS_NAMESPACE, ConversationSettingsSchema } from './submission-settings.ts'
 
 export {

@@ -1,15 +1,15 @@
 /**
  * Durable agent session-event vocabulary shared with type-only consumers.
  *
- * @module @origin-ai/xhe-agent/types
+ * @module @origin-ai/cf-agent/types
  */
 
-import type { UserMessage } from '@origin-ai/xhe-llm/types'
+import type { UserMessage } from '@origin-ai/cf-llm/types'
 
 /** One of the two ordered pending-message lists owned by an agent. */
 export type InboxTarget = 'next-turn' | 'next-step'
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     /**
      * One normalized mutation of an agent's durable pending-message lists.

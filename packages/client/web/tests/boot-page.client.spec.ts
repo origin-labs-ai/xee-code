@@ -35,11 +35,11 @@ describe('BootPage', () => {
 
   it('lists failed entries', () => {
     const { el, page } = mount()
-    page.setState('@origin-ai/xhe-client-ui-layout', 'failed')
+    page.setState('@origin-ai/cf-client-ui-layout', 'failed')
     page.setState('ok', 'active')
-    page.setState('@origin-ai/xhe-client-ui-tool', 'failed')
-    expect(el.textContent).toContain('@origin-ai/xhe-client-ui-layout')
-    expect(el.textContent).toContain('@origin-ai/xhe-client-ui-tool')
+    page.setState('@origin-ai/cf-client-ui-tool', 'failed')
+    expect(el.textContent).toContain('@origin-ai/cf-client-ui-layout')
+    expect(el.textContent).toContain('@origin-ai/cf-client-ui-tool')
     expect(el.textContent).not.toContain('ok')
     expect(el.textContent).not.toContain('Loading plugins…')
   })

@@ -5,15 +5,15 @@ import { createPortal } from 'react-dom'
 import {
   indexSubagentDescendants, type SessionId, type SessionListState, type SessionProjectionMap,
   type SessionSummary, type SubagentAddress, type SubagentCatalogSnapshot,
-} from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-runtime/client'
 import {
   IconChevronDownOutline14, IconChevronRightOutline14, IconRefreshOutline14, StateDot,
-} from '@origin-ai/xhe-client-ui-primitives'
-import type { PropsLocale, PropsRuntime, TranslateNS } from '@origin-ai/xhe-client-ui-slots'
+} from '@origin-ai/cf-client-ui-primitives'
+import type { PropsLocale, PropsRuntime, TranslateNS } from '@origin-ai/cf-client-ui-slots'
 import { NS } from './locales.ts'
-import type {} from '@origin-ai/xhe-client-ui-conversation/client'
-import type {} from '@origin-ai/xhe-subagent/client'
-import type {} from '@origin-ai/xhe-token-meter/client'
+import type {} from '@origin-ai/cf-client-ui-conversation/client'
+import type {} from '@origin-ai/cf-subagent/client'
+import type {} from '@origin-ai/cf-token-meter/client'
 import css from './SubagentHeaderLineage.module.css'
 
 type CatalogEntry = SubagentCatalogSnapshot['entries'][number]

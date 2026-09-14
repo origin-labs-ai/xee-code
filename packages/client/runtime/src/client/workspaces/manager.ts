@@ -2,8 +2,8 @@
 
 import type {
   HostFrame, IApiClient, RpcError, RpcRequest, RpcResult, SessionId, WorkspaceId, WorkspaceView,
-} from '@origin-ai/xhe-api-remotes/client'
-import { transportError } from '@origin-ai/xhe-host-apiproxy/api'
+} from '@origin-ai/cf-api-remotes/client'
+import { transportError } from '@origin-ai/cf-host-apiproxy/api'
 import { Notifier } from '../sessions/notifier.ts'
 import { Workspace, type WorkspaceCreateInput } from './workspace.ts'
 

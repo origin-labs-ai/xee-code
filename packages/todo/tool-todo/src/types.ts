@@ -5,14 +5,14 @@
  * for host consumers, `./client/types` (the browser half-entry's re-export)
  * for client aggregates — with zero content duplication.
  *
- * @module @origin-ai/xhe-tool-todo/types
+ * @module @origin-ai/cf-tool-todo/types
  */
 
-import type { TodoItem } from '@origin-ai/xhe-session/types'
+import type { TodoItem } from '@origin-ai/cf-session/types'
 
-export type { TodoItem } from '@origin-ai/xhe-session/types'
+export type { TodoItem } from '@origin-ai/cf-session/types'
 
-declare module '@origin-ai/xhe-session-projection/types' {
+declare module '@origin-ai/cf-session-projection/types' {
   interface SessionProjectionStateMap {
     todos: TodoItem[] | null
   }

@@ -1,11 +1,11 @@
-/** Package-owned hook invocation/result stream invariants. @module @origin-ai/xhe-hook-protocol/invariant */
+/** Package-owned hook invocation/result stream invariants. @module @origin-ai/cf-hook-protocol/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 import type {} from './types.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-hook-protocol'
+const PACKAGE_NAME = '@origin-ai/cf-hook-protocol'
 
 /** Cordis companion plugin name. */
 export const name = 'hook-protocol-invariant'

@@ -141,7 +141,7 @@ export { startup, DEFAULT_BEHAVIOR }
 // Plugin Metadata
 // ============================================================================
 
-export const name = '@origin-ai/xhe'
+export const name = '@origin-ai/cf'
 export const inject = ['commands', 'skills']
 
 // ============================================================================

@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { createScope, scopeOf } from '@origin-ai/xhe-scope'
-import type { Scope, ScopeKey } from '@origin-ai/xhe-scope'
-import SessionStore from '@origin-ai/xhe-session'
-import type { Session } from '@origin-ai/xhe-session'
+import { createScope, scopeOf } from '@origin-ai/cf-scope'
+import type { Scope, ScopeKey } from '@origin-ai/cf-scope'
+import SessionStore from '@origin-ai/cf-session'
+import type { Session } from '@origin-ai/cf-session'
 
 async function mount(): Promise<Context> {
   const ctx = new Context()

@@ -1,7 +1,7 @@
 /**
  * Compiler-independent Typert analysis model. TypeScript nodes and checker
  * objects are extraction inputs only; emitters consume this graph.
- * @module @origin-ai/xhe-typert-generator/model
+ * @module @origin-ai/cf-typert-generator/model
  */
 
 /** One independently compiled side of the workspace. */

@@ -7,12 +7,12 @@
  * infrastructure failures (spawn errors, aborts) surface as isError
  * results.
  *
- * @module @origin-ai/xhe-tool-pwsh/render
+ * @module @origin-ai/cf-tool-pwsh/render
  */
 
-import type { ShellProcessRead, ShellSandboxInfo, CollectedOutput } from '@origin-ai/xhe-shell'
-import type { SandboxMode } from '@origin-ai/xhe-sandbox'
-import { escalationHintMarker, sandboxDenialMarker } from '@origin-ai/xhe-sandbox'
+import type { ShellProcessRead, ShellSandboxInfo, CollectedOutput } from '@origin-ai/cf-shell'
+import type { SandboxMode } from '@origin-ai/cf-sandbox'
+import { escalationHintMarker, sandboxDenialMarker } from '@origin-ai/cf-sandbox'
 
 /* jscpd:ignore-start -- deliberate twin of xhe-tool-bash/render.ts (Agent Note). */
 

@@ -11,8 +11,8 @@ import * as ReactJsxRuntime from 'react/jsx-runtime'
 import * as ReactDom from 'react-dom'
 import * as ReactDomClient from 'react-dom/client'
 import * as Cordis from '@deepseek-ai/cordis'
-import * as UiSlots from '@origin-ai/xhe-client-ui-slots'
-import * as UiPrimitives from '@origin-ai/xhe-client-ui-primitives'
+import * as UiSlots from '@origin-ai/cf-client-ui-slots'
+import * as UiPrimitives from '@origin-ai/cf-client-ui-primitives'
 import type { PlatformModule } from './platform.ts'
 
 /**
@@ -29,7 +29,7 @@ export function getStaticModules(): Record<string, unknown> {
     'react-dom': ReactDom,
     'react-dom/client': ReactDomClient,
     '@deepseek-ai/cordis': Cordis,
-    '@origin-ai/xhe-client-ui-slots': UiSlots,
-    '@origin-ai/xhe-client-ui-primitives': UiPrimitives,
+    '@origin-ai/cf-client-ui-slots': UiSlots,
+    '@origin-ai/cf-client-ui-primitives': UiPrimitives,
   } satisfies Record<PlatformModule, unknown>
 }

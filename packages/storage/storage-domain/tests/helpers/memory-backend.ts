@@ -15,8 +15,8 @@
  * @module
  */
 
-import { StorageError } from '@origin-ai/xhe-storage'
-import type { KvFacet, KvUnit, KvUnitDescriptor, StorageBackend } from '@origin-ai/xhe-storage'
+import { StorageError } from '@origin-ai/cf-storage'
+import type { KvFacet, KvUnit, KvUnitDescriptor, StorageBackend } from '@origin-ai/cf-storage'
 
 /** One unit's medium: tables of records plus the global slot (`null` = never written). */
 export interface MemoryMedium {

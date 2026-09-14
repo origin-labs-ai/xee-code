@@ -1,7 +1,7 @@
 /**
  * Rendering and traversal over the compiler-independent TypeGraph. Emitters
  * use this module instead of reaching back into TypeScript AST nodes.
- * @module @origin-ai/xhe-typert-generator/renderer
+ * @module @origin-ai/cf-typert-generator/renderer
  */
 
 import { childTypeNodeIds } from './model.ts'

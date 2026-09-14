@@ -1,8 +1,8 @@
 /** State owner for the optional local settings-document action. */
 
-import type { IApiClient } from '@origin-ai/xhe-api-remotes/client'
-import { createSnapshotStore, type SnapshotStore } from '@origin-ai/xhe-client-runtime/client'
-import type { SettingsDescribeFace } from '@origin-ai/xhe-client-ui-settings/client'
+import type { IApiClient } from '@origin-ai/cf-api-remotes/client'
+import { createSnapshotStore, type SnapshotStore } from '@origin-ai/cf-client-runtime/client'
+import type { SettingsDescribeFace } from '@origin-ai/cf-client-ui-settings/client'
 
 /** Browser state of the Host-owned settings document. */
 export interface SettingsDocumentState {

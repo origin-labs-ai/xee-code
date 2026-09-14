@@ -4,12 +4,12 @@
  * `api-catalog.ts`. This module owns the join of the two plus presentation: which
  * lines a section prints, how compact the default report stays, and what an exact
  * `name` adds.
- * @module @origin-ai/xhe-tool-cordis/inspect
+ * @module @origin-ai/cf-tool-cordis/inspect
  */
 
 import type { Context, Fiber } from '@deepseek-ai/cordis'
-import type { ScopeKey } from '@origin-ai/xhe-scope'
-import type { Agent } from '@origin-ai/xhe-agent'
+import type { ScopeKey } from '@origin-ai/cf-scope'
+import type { Agent } from '@origin-ai/cf-agent'
 // Type-only: resolves `ctx.dynamicCordisRunner` (the registry this report reads).
 import type {} from '@deepseek-ai/cordis-host-runner'
 import { EVENT_API, INHERITED_CTX_API, SERVICE_API, TYPE_API } from './api-catalog.ts'

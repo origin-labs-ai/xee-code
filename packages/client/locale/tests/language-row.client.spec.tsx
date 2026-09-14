@@ -3,8 +3,8 @@
  * opens/closes, and selection drives setLocale. */
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
-import { createSnapshotStore, type SessionListState, type WorkspaceListState } from '@origin-ai/xhe-client-runtime/client'
-import { bindSnapshotSelector } from '@origin-ai/xhe-client-test-runtime'
+import { createSnapshotStore, type SessionListState, type WorkspaceListState } from '@origin-ai/cf-client-runtime/client'
+import { bindSnapshotSelector } from '@origin-ai/cf-client-test-runtime'
 import { LanguageRow } from '../src/client/LanguageRow.tsx'
 import type { LanguageRowComponentProps } from '../src/client/LanguageRow.tsx'
 import { createLanguageRowStore } from '../src/client/settings-store.ts'

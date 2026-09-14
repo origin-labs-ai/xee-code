@@ -641,7 +641,7 @@ import type {
   TypertRemoteScopeMap,
   TypertRemoteMap,
   TypertRemoteNamespaceMap,
-} from '@origin-ai/xhe-typert-protocol'
+} from '@origin-ai/cf-typert-protocol'
 import type { CreateGoalResult, RenameGoalResult } from '@fixture/remote/types'
 
 const contribution: TypertRemoteContribution = remote
@@ -669,7 +669,7 @@ void navigated
       composite: false,
       skipLibCheck: false,
       paths: {
-        '@origin-ai/xhe-typert-protocol': ['./typert-protocol.d.ts'],
+        '@origin-ai/cf-typert-protocol': ['./typert-protocol.d.ts'],
         '@fixture/domain/types': ['./packages/domain/src/types.ts'],
         '@fixture/remote/types': ['./packages/remote/src/types.ts'],
         '@fixture/remote/remote': ['./packages/remote/lib/typert.remote-client.d.ts'],
@@ -731,7 +731,7 @@ void navigated
 function assertRemoteConsumerWithoutImportHasNoNamespace(consumerRoot: string): void {
   const consumerPath = join(consumerRoot, 'consumer-without-remote.ts')
   writeFileSync(consumerPath, `
-import type { TypertRemoteNamespaceMap } from '@origin-ai/xhe-typert-protocol'
+import type { TypertRemoteNamespaceMap } from '@origin-ai/cf-typert-protocol'
 declare const ctx: { remote: TypertRemoteNamespaceMap }
 ctx.remote.goals.create('agent-1', { title: 'must not compile' })
 `)
@@ -742,7 +742,7 @@ ctx.remote.goals.create('agent-1', { title: 'must not compile' })
       composite: false,
       skipLibCheck: false,
       paths: {
-        '@origin-ai/xhe-typert-protocol': ['./typert-protocol.d.ts'],
+        '@origin-ai/cf-typert-protocol': ['./typert-protocol.d.ts'],
       },
     },
     files: ['./consumer-without-remote.ts'],

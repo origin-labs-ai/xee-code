@@ -1,13 +1,13 @@
 /** ui-subagent browser half: catalog actions and read-only composer routing. */
 import { Context } from '@deepseek-ai/cordis'
-import { stubSettingsScope } from '@origin-ai/xhe-client-test-runtime'
+import { stubSettingsScope } from '@origin-ai/cf-client-test-runtime'
 import { describe, expect, it } from 'vitest'
 import {
   SlotRegistry, type ConversationSnapshot, type SessionId, type SessionListState,
   type SessionSummary, type SubagentAddress,
-} from '@origin-ai/xhe-client-runtime/client'
-import type { ComposerChainProps } from '@origin-ai/xhe-client-ui-conversation/client'
-import { apply as applyLocale, inject as localeInject } from '@origin-ai/xhe-client-locale/client'
+} from '@origin-ai/cf-client-runtime/client'
+import type { ComposerChainProps } from '@origin-ai/cf-client-ui-conversation/client'
+import { apply as applyLocale, inject as localeInject } from '@origin-ai/cf-client-locale/client'
 import {
   SubagentHeaderLineage, type SubagentCatalogInjected,
 } from '../src/client/SubagentHeaderLineage.tsx'

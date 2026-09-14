@@ -7,9 +7,9 @@
 
 import type { z as zCore } from 'zod'
 type ZodIssue = zCore.core.$ZodIssue
-import type { Branded } from '@origin-ai/xhe-brand'
-import type { MessageId } from '@origin-ai/xhe-llm/brand'
-import type { SessionId } from '@origin-ai/xhe-session/types'
+import type { Branded } from '@origin-ai/cf-brand'
+import type { MessageId } from '@origin-ai/cf-llm/brand'
+import type { SessionId } from '@origin-ai/cf-session/types'
 
 /**
  * Message correlation id: the initiator mints it on a request; a response

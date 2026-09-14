@@ -1,21 +1,21 @@
 /**
  * Basic replay-aware compaction backend.
  *
- * @module @origin-ai/xhe-compaction-basic
+ * @module @origin-ai/cf-compaction-basic
  */
 
 import { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { CompactionEngine, ManualCompactionError } from '@origin-ai/xhe-compaction'
-import type { CompactionResult, CompactionTrigger } from '@origin-ai/xhe-compaction'
-import type { TokenMeter } from '@origin-ai/xhe-token-meter'
-import type { Session } from '@origin-ai/xhe-session'
-import { CONTEXT_WINDOW_EXCEEDED_CODE, assertNever } from '@origin-ai/xhe-llm'
-import type { LlmCallConfig } from '@origin-ai/xhe-llm'
-import type { Agent, PreStepDecision } from '@origin-ai/xhe-agent'
-import type { CommandId } from '@origin-ai/xhe-commands/brand'
+import { CompactionEngine, ManualCompactionError } from '@origin-ai/cf-compaction'
+import type { CompactionResult, CompactionTrigger } from '@origin-ai/cf-compaction'
+import type { TokenMeter } from '@origin-ai/cf-token-meter'
+import type { Session } from '@origin-ai/cf-session'
+import { CONTEXT_WINDOW_EXCEEDED_CODE, assertNever } from '@origin-ai/cf-llm'
+import type { LlmCallConfig } from '@origin-ai/cf-llm'
+import type { Agent, PreStepDecision } from '@origin-ai/cf-agent'
+import type { CommandId } from '@origin-ai/cf-commands/brand'
 // Type-only: makes the optional sibling service available to `ctx.get()`.
-import type {} from '@origin-ai/xhe-compaction-tool-result-pruner'
+import type {} from '@origin-ai/cf-compaction-tool-result-pruner'
 import {
   resolveCompactSpec,
   resolveConfig,

@@ -1,6 +1,6 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-client-runtime`.
- * @module @origin-ai/xhe-client-runtime/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-client-runtime`.
+ * @module @origin-ai/cf-client-runtime/invariant
  */
 
 /* jscpd:ignore-start */
@@ -9,10 +9,10 @@
  * in this compilation unit (intersection reads `never`) but consumers merge
  * keys in; the rule fires on the empty-map view, not on real redundancy. */
 import type { Context } from '@deepseek-ai/cordis'
-import type { SlotMap } from '@origin-ai/xhe-client-ui-slots'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { SlotMap } from '@origin-ai/cf-client-ui-slots'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-client-runtime'
+const PACKAGE_NAME = '@origin-ai/cf-client-runtime'
 
 /** Cordis companion plugin name. */
 export const name = 'client-runtime-invariant'

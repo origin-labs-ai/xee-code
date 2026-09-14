@@ -1,4 +1,4 @@
-# @origin-ai/xhe-shell-env
+# @origin-ai/cf-shell-env
 
 The tool-independent shell environment plugin: owns the `ctx.shellEnv` registry of trusted, per-execution `XHE_*` variables that the model-facing shell tools (`xhe-tool-bash`, `xhe-tool-pwsh`) collect into every shell call's environment. Built-in shell facts (`XHE_HOME`, `XHE_SHELL=1`, `XHE_SESSION_ID`) are owned by the registry itself; other plugins register additional enumerable facts with effect-scoped disposal, and duplicate ownership or undeclared runtime keys fail loudly.
 
@@ -8,20 +8,20 @@ The package root exports the Cordis plugin contract (`name`, `inject`, `Config`,
 
 ```yaml
 - id: shell-env
-  name: '@origin-ai/xhe-shell-env'
+  name: '@origin-ai/cf-shell-env'
   config:
     dshHome: C:\Users\me\.cf   # default: $XHE_HOME, then ~/.cf
 ```
 
 ## Managed environment
 
-Every foreground and background model shell call receives a newly collected trusted `XHE_*` environment. `XHE_HOME` is the absolute Harness home resolved by [`@origin-ai/xhe-home-paths`](../../util/home-paths/README.md) (`dshHome` config, then ambient `$XHE_HOME`, then `~/.cf`) and `XHE_SHELL=1` identifies the managed child. Agent calls additionally receive `XHE_SESSION_ID=agent.session.header.id`; when the active persistence seam locates a JSONL artifact they also receive `XHE_SESSION_JSONL=<absolute target path>`. The JSONL path is a location hint: it may not exist before the first flush or contain the current buffered turn, and it is not an authorization credential.
+Every foreground and background model shell call receives a newly collected trusted `XHE_*` environment. `XHE_HOME` is the absolute Harness home resolved by [`@origin-ai/cf-home-paths`](../../util/home-paths/README.md) (`dshHome` config, then ambient `$XHE_HOME`, then `~/.cf`) and `XHE_SHELL=1` identifies the managed child. Agent calls additionally receive `XHE_SESSION_ID=agent.session.header.id`; when the active persistence seam locates a JSONL artifact they also receive `XHE_SESSION_JSONL=<absolute target path>`. The JSONL path is a location hint: it may not exist before the first flush or contain the current buffered turn, and it is not an authorization credential.
 
 `ctx.shellEnv` owns collection. Other plugins can register an effect-scoped contributor with a stable name, declared keys/descriptions, and `resolve(execution: ToolExecution)`; duplicate ownership and undeclared runtime keys fail loudly, while `list()` enumerates declarations without executing providers. Harness built-ins reserve `XHE_HOME`, `XHE_SHELL`, and `XHE_SESSION_ID`; this plugin's persistence translator owns `XHE_SESSION_JSONL` by reading the backend-neutral `sessionPersistence.locate()` seam.
 
 ```ts
 import type { Context } from '@deepseek-ai/cordis'
-import type {} from '@origin-ai/xhe-shell-env'
+import type {} from '@origin-ai/cf-shell-env'
 
 export const inject = ['shellEnv']
 

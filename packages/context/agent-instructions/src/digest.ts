@@ -1,7 +1,7 @@
 /**
  * Content identity for workspace instruction duplicate suppression.
  *
- * @module @origin-ai/xhe-agent-instructions/digest
+ * @module @origin-ai/cf-agent-instructions/digest
  */
 
 import { createHash } from 'node:crypto'

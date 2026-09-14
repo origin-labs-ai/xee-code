@@ -6,11 +6,11 @@ import { mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import LlmRuntime, { createUserMessage, LlmAdapter  } from '@origin-ai/xhe-llm'
-import type { GenerateOptions, StreamChunk } from '@origin-ai/xhe-llm'
-import SessionStore, { SessionId } from '@origin-ai/xhe-session'
-import SessionTitleService from '@origin-ai/xhe-session-title'
-import * as providerPlugin from '@origin-ai/xhe-session-title-first-prompt-llm'
+import LlmRuntime, { createUserMessage, LlmAdapter  } from '@origin-ai/cf-llm'
+import type { GenerateOptions, StreamChunk } from '@origin-ai/cf-llm'
+import SessionStore, { SessionId } from '@origin-ai/cf-session'
+import SessionTitleService from '@origin-ai/cf-session-title'
+import * as providerPlugin from '@origin-ai/cf-session-title-first-prompt-llm'
 
 let root: string | undefined
 let context: Context | undefined
@@ -36,14 +36,14 @@ async function loadComposition(): Promise<Context> {
   root = await mkdtemp(join(tmpdir(), 'xhe-title-loader-'))
   const configPath = join(root, 'cordis.yml')
   await writeFile(configPath, [
-    "- name: '@origin-ai/xhe-llm'",
-    "- name: '@origin-ai/xhe-session'",
-    "- name: '@origin-ai/xhe-session-title'",
+    "- name: '@origin-ai/cf-llm'",
+    "- name: '@origin-ai/cf-session'",
+    "- name: '@origin-ai/cf-session-title'",
     '  config:',
     '    fallbackMaxWords: 5',
     '    fallbackMaxBytes: 40',
     '    maxTitleBytes: 80',
-    "- name: '@origin-ai/xhe-session-title-first-prompt-llm'",
+    "- name: '@origin-ai/cf-session-title-first-prompt-llm'",
     '  config:',
     '    targetWords: 5',
     '    targetCjkCharacters: 10',
@@ -60,10 +60,10 @@ async function loadComposition(): Promise<Context> {
   await context.plugin(Loader)
   context.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@origin-ai/xhe-llm', LlmRuntime],
-    ['@origin-ai/xhe-session', SessionStore],
-    ['@origin-ai/xhe-session-title', SessionTitleService],
-    ['@origin-ai/xhe-session-title-first-prompt-llm', providerPlugin],
+    ['@origin-ai/cf-llm', LlmRuntime],
+    ['@origin-ai/cf-session', SessionStore],
+    ['@origin-ai/cf-session-title', SessionTitleService],
+    ['@origin-ai/cf-session-title-first-prompt-llm', providerPlugin],
   ])
   context.loader.internal = {
     version: 'v2',

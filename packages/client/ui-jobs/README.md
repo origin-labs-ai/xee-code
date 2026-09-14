@@ -1,4 +1,4 @@
-# @origin-ai/xhe-client-ui-jobs
+# @origin-ai/cf-client-ui-jobs
 
 Web background-job feature owner: contributes one entry to `conversation.session.header.actions` listing the `ctx.jobs` records this session can see. The data arrives entirely through the `jobsBySession` list mirror that [`xhe-client-runtime`](../runtime/README.md) folds from `session/jobs` frames, so this package issues no RPC and holds no state beyond popover visibility.
 

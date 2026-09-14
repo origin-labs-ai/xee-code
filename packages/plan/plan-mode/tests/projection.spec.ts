@@ -12,16 +12,16 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import AgentRegistry from '@origin-ai/xhe-agent'
-import type { Agent } from '@origin-ai/xhe-agent'
-import SessionStore from '@origin-ai/xhe-session'
-import type { Session } from '@origin-ai/xhe-session'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
-import ToolRuntime from '@origin-ai/xhe-tools'
-import SessionProjectionRegistry from '@origin-ai/xhe-session-projection'
-import UserQuestionService from '@origin-ai/xhe-user-questions'
-import { CommandId } from '@origin-ai/xhe-commands/brand'
-import PlanModeController from '@origin-ai/xhe-plan-mode'
+import AgentRegistry from '@origin-ai/cf-agent'
+import type { Agent } from '@origin-ai/cf-agent'
+import SessionStore from '@origin-ai/cf-session'
+import type { Session } from '@origin-ai/cf-session'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
+import ToolRuntime from '@origin-ai/cf-tools'
+import SessionProjectionRegistry from '@origin-ai/cf-session-projection'
+import UserQuestionService from '@origin-ai/cf-user-questions'
+import { CommandId } from '@origin-ai/cf-commands/brand'
+import PlanModeController from '@origin-ai/cf-plan-mode'
 
 interface Bench {
   ctx: Context

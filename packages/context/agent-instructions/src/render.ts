@@ -1,7 +1,7 @@
 /**
  * Model-facing workspace instruction rendering within an explicit byte budget.
  *
- * @module @origin-ai/xhe-agent-instructions/render
+ * @module @origin-ai/cf-agent-instructions/render
  */
 
 import { basename, dirname } from 'node:path'

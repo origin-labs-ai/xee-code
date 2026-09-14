@@ -5,9 +5,9 @@
  * settings surface.
  */
 import { useState } from 'react'
-import type { PropsLocale, PropsRuntime, PropsStore } from '@origin-ai/xhe-client-ui-slots'
-import { IconChevronDownOutline14, Menu } from '@origin-ai/xhe-client-ui-primitives'
-import type {} from '@origin-ai/xhe-client-ui-settings/client'
+import type { PropsLocale, PropsRuntime, PropsStore } from '@origin-ai/cf-client-ui-slots'
+import { IconChevronDownOutline14, Menu } from '@origin-ai/cf-client-ui-primitives'
+import type {} from '@origin-ai/cf-client-ui-settings/client'
 import type { createLanguageRowStore } from './settings-store.ts'
 import css from './LanguageRow.module.css'
 

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import InvariantRegistry from '@origin-ai/xhe-invariants'
-import type { DomainChanged } from '@origin-ai/xhe-storage-domain'
+import InvariantRegistry from '@origin-ai/cf-invariants'
+import type { DomainChanged } from '@origin-ai/cf-storage-domain'
 import * as WorkspaceInvariant from '../src/invariant.ts'
 import { WorkspaceId } from '../src/index.ts'
 

@@ -1,7 +1,7 @@
 import { describe, expect, expectTypeOf, it } from 'vitest'
-import type { ShellExecRequest, ShellExecSpec, ShellExecutor, ShellRunResult } from '@origin-ai/xhe-shell'
-import { DEFAULT_HOOK_TIMEOUT_MS, runHook } from '@origin-ai/xhe-hook-protocol'
-import type { RunHookOptions } from '@origin-ai/xhe-hook-protocol'
+import type { ShellExecRequest, ShellExecSpec, ShellExecutor, ShellRunResult } from '@origin-ai/cf-shell'
+import { DEFAULT_HOOK_TIMEOUT_MS, runHook } from '@origin-ai/cf-hook-protocol'
+import type { RunHookOptions } from '@origin-ai/cf-hook-protocol'
 
 /**
  * A minimal stand-in for the bits of {@link ShellExecutor} that {@link runHook}

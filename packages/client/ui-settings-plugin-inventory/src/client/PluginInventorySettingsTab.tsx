@@ -1,10 +1,10 @@
 import { useEffect, useId, useMemo, useState, type ReactNode } from 'react'
-import type { PluginInventorySnapshot } from '@origin-ai/xhe-api-remotes/client'
+import type { PluginInventorySnapshot } from '@origin-ai/cf-api-remotes/client'
 import {
   IconChevronDownOutline14,
   IconSearchOutline16,
-} from '@origin-ai/xhe-client-ui-primitives'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@origin-ai/xhe-client-ui-slots'
+} from '@origin-ai/cf-client-ui-primitives'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@origin-ai/cf-client-ui-slots'
 import type { PluginInventoryLocaleKey } from './locales.ts'
 import css from './PluginInventorySettingsTab.module.css'
 

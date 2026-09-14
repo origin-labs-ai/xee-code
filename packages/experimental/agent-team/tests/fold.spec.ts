@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { SessionId } from '@origin-ai/xhe-session'
-import type { SessionEvent, SessionEventMap, SessionEventType } from '@origin-ai/xhe-session'
+import { SessionId } from '@origin-ai/cf-session'
+import type { SessionEvent, SessionEventMap, SessionEventType } from '@origin-ai/cf-session'
 import {
   applyTeamEvent,
   emptyTeamFoldState,

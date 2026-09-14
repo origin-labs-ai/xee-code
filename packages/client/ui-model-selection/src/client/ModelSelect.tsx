@@ -16,12 +16,12 @@ import {
   type KeyboardEvent, type FocusEvent,
 } from 'react'
 import clsx from 'clsx'
-import type { ModelReasoningEffort, ModelSelection } from '@origin-ai/xhe-api-remotes/client'
+import type { ModelReasoningEffort, ModelSelection } from '@origin-ai/cf-api-remotes/client'
 import {
   IconCheckOutline16, IconChevronDownOutline14, IconChevronRightOutline14,
   IconWarningOutline16, Toast,
-} from '@origin-ai/xhe-client-ui-primitives'
-import type { PropsLocale } from '@origin-ai/xhe-client-ui-slots'
+} from '@origin-ai/cf-client-ui-primitives'
+import type { PropsLocale } from '@origin-ai/cf-client-ui-slots'
 import type { ModelSelectInjected } from './slots.ts'
 import css from './ModelSelect.module.css'
 

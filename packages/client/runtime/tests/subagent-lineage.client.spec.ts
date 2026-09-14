@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import type { SessionId, SessionSummary } from '@origin-ai/xhe-client-runtime/client'
-import { indexSubagentDescendants } from '@origin-ai/xhe-client-runtime/client'
+import type { SessionId, SessionSummary } from '@origin-ai/cf-client-runtime/client'
+import { indexSubagentDescendants } from '@origin-ai/cf-client-runtime/client'
 
 const sid = (id: string) => id as SessionId
 

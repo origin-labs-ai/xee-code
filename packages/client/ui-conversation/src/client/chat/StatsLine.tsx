@@ -3,12 +3,12 @@
 // active conversation scrollport (see ConversationRoot data-conversation-scroll).
 
 import { Fragment, memo, useLayoutEffect, useMemo, useRef, useState } from 'react'
-import { Tooltip } from '@origin-ai/xhe-client-ui-primitives'
-import type { ConversationSnapshot, UseProjection } from '@origin-ai/xhe-client-runtime/client'
-import type { SnapshotSelectorHook } from '@origin-ai/xhe-client-ui-slots'
+import { Tooltip } from '@origin-ai/cf-client-ui-primitives'
+import type { ConversationSnapshot, UseProjection } from '@origin-ai/cf-client-runtime/client'
+import type { SnapshotSelectorHook } from '@origin-ai/cf-client-ui-slots'
 // Type-only: merges the sessionStats key into SessionProjectionMap for useProjection.
-import type {} from '@origin-ai/xhe-session-stats/client'
-import type { ContextPressureProjection, TokenUsageProjection } from '@origin-ai/xhe-token-meter/client'
+import type {} from '@origin-ai/cf-session-stats/client'
+import type { ContextPressureProjection, TokenUsageProjection } from '@origin-ai/cf-token-meter/client'
 import type { ComposerBarProps } from '../contract/slots.ts'
 import { formatTokensPerSecond } from './message-chrome.ts'
 import { assistantStepReading } from './turn-metrics.ts'

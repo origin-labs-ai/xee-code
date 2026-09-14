@@ -1,8 +1,8 @@
 /** Raster inspection: full decode at admission, header-only probe on verified reads. */
 
 import sharp, { type Sharp } from 'sharp'
-import { AttachmentError } from '@origin-ai/xhe-attachment'
-import type { ImageMediaType } from '@origin-ai/xhe-attachment'
+import { AttachmentError } from '@origin-ai/cf-attachment'
+import type { ImageMediaType } from '@origin-ai/cf-attachment'
 
 /** Decoded metadata from a supported image. */
 export interface DetectedImage {

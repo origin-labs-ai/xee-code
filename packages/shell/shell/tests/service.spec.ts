@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import { ShellExecutor } from '@origin-ai/xhe-shell'
-import type { ShellExecRequest, ShellExecSpec, ShellProcess, ShellProcessRead, ShellRunResult } from '@origin-ai/xhe-shell'
+import { ShellExecutor } from '@origin-ai/cf-shell'
+import type { ShellExecRequest, ShellExecSpec, ShellProcess, ShellProcessRead, ShellRunResult } from '@origin-ai/cf-shell'
 
 /**
  * Minimal concrete executor: canned foreground results, a hand-built process

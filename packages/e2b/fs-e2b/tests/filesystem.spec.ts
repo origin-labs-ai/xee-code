@@ -7,12 +7,12 @@ import {
   FileType,
   type EntryInfo,
   type Sandbox,
-} from '@origin-ai/xhe-e2b'
-import type E2BRuntime from '@origin-ai/xhe-e2b'
-import { FsTargetKey, FsVersion } from '@origin-ai/xhe-fs'
-import E2BFileSystem from '@origin-ai/xhe-fs-e2b'
+} from '@origin-ai/cf-e2b'
+import type E2BRuntime from '@origin-ai/cf-e2b'
+import { FsTargetKey, FsVersion } from '@origin-ai/cf-fs'
+import E2BFileSystem from '@origin-ai/cf-fs-e2b'
 import * as E2BFsInvariant from '../src/invariant.ts'
-import InvariantRegistry from '@origin-ai/xhe-invariants'
+import InvariantRegistry from '@origin-ai/cf-invariants'
 import { describe, expect, it, vi } from 'vitest'
 
 interface RemoteNode {

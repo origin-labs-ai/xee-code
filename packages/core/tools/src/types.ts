@@ -1,11 +1,11 @@
 /**
  * Durable Tool event vocabulary shared with type-only consumers.
  *
- * @module @origin-ai/xhe-tools/types
+ * @module @origin-ai/cf-tools/types
  */
 
-import type { CallId } from '@origin-ai/xhe-llm/brand'
-import type { ContentBlock } from '@origin-ai/xhe-llm/types'
+import type { CallId } from '@origin-ai/cf-llm/brand'
+import type { ContentBlock } from '@origin-ai/cf-llm/types'
 
 /** Payload recorded when one nested Code Mode Tool dispatch starts. */
 export interface CodeDispatchStartEventData {
@@ -22,7 +22,7 @@ export interface CodeDispatchEventData extends CodeDispatchStartEventData {
   content: ContentBlock[]
 }
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     /**
      * One sub-dispatch STARTING inside a `run_code` program: the parent

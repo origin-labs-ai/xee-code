@@ -1,4 +1,4 @@
-import type { TranslateNS } from '@origin-ai/xhe-client-ui-slots'
+import type { TranslateNS } from '@origin-ai/cf-client-ui-slots'
 import type { AttachmentRailLabels } from '../AttachmentRail.tsx'
 import type { DropOverlayLabels } from '../DropOverlay.tsx'
 import type { ImageLightboxLabels } from '../ImageLightbox.tsx'

@@ -6,12 +6,12 @@
  * cancelled error encoding, receipt checks — lives HERE, with the package
  * that consumes it.
  */
-import type { PropsLocale, PropsRuntime } from '@origin-ai/xhe-client-ui-slots'
+import type { PropsLocale, PropsRuntime } from '@origin-ai/cf-client-ui-slots'
 // Also pulls ui-conversation's SlotMap merge (the 'conversation.composer'
 // entry) into every program that sees this contract, so PropsRuntime resolves.
-import type {} from '@origin-ai/xhe-client-ui-conversation/client'
-import type { PendingWait } from '@origin-ai/xhe-client-runtime/client'
-import type { QuestionResponsePayload } from '@origin-ai/xhe-api-remotes/client'
+import type {} from '@origin-ai/cf-client-ui-conversation/client'
+import type { PendingWait } from '@origin-ai/cf-client-runtime/client'
+import type { QuestionResponsePayload } from '@origin-ai/cf-api-remotes/client'
 
 /** The pending question carrier the owner dispatches into the composer slot. */
 export type QuestionWait = PendingWait<'question'>

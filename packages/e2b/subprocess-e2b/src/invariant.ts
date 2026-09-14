@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-subprocess-e2b`.
- * @module @origin-ai/xhe-subprocess-e2b/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-subprocess-e2b`.
+ * @module @origin-ai/cf-subprocess-e2b/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-subprocess-e2b'
+const PACKAGE_NAME = '@origin-ai/cf-subprocess-e2b'
 
 /** Cordis companion plugin name. */
 export const name = 'subprocess-e2b-invariant'

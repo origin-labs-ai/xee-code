@@ -6,10 +6,10 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import Include from '@deepseek-ai/cordis-plugin-include'
-import type { Agent } from '@origin-ai/xhe-agent'
-import CommandRuntime from '@origin-ai/xhe-commands'
-import SessionStore, { SessionId } from '@origin-ai/xhe-session'
-import * as SessionLogDownload from '@origin-ai/xhe-session-log-export'
+import type { Agent } from '@origin-ai/cf-agent'
+import CommandRuntime from '@origin-ai/cf-commands'
+import SessionStore, { SessionId } from '@origin-ai/cf-session'
+import * as SessionLogDownload from '@origin-ai/cf-session-log-export'
 
 let root: string | undefined
 let context: Context | undefined
@@ -26,9 +26,9 @@ describe('session-log-download real Loader composition', () => {
     root = await mkdtemp(join(tmpdir(), 'xhe-session-export-loader-'))
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
-      "- name: '@origin-ai/xhe-session'",
-      "- name: '@origin-ai/xhe-commands'",
-      "- name: '@origin-ai/xhe-session-log-export'",
+      "- name: '@origin-ai/cf-session'",
+      "- name: '@origin-ai/cf-commands'",
+      "- name: '@origin-ai/cf-session-log-export'",
       '',
     ].join('\n'))
 
@@ -37,9 +37,9 @@ describe('session-log-download real Loader composition', () => {
     await context.plugin(Loader)
     context.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
-      ['@origin-ai/xhe-session', SessionStore],
-      ['@origin-ai/xhe-commands', CommandRuntime],
-      ['@origin-ai/xhe-session-log-export', SessionLogDownload],
+      ['@origin-ai/cf-session', SessionStore],
+      ['@origin-ai/cf-commands', CommandRuntime],
+      ['@origin-ai/cf-session-log-export', SessionLogDownload],
     ])
     context.loader.internal = {
       version: 'v2',

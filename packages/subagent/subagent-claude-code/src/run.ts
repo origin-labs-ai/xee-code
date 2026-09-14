@@ -3,7 +3,7 @@
  * real CLI process under the shared subprocess owner, map only strict SDK
  * success to completion, and dispose to whole-tree quiescence.
  *
- * @module @origin-ai/xhe-subagent-claude-code/run
+ * @module @origin-ai/cf-subagent-claude-code/run
  */
 
 import { randomUUID } from 'node:crypto'
@@ -15,8 +15,8 @@ import {
   type SDKResultMessage,
   type SpawnOptions,
 } from '@anthropic-ai/claude-agent-sdk'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import { SessionId } from '@origin-ai/xhe-session'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import { SessionId } from '@origin-ai/cf-session'
 import {
   settleRunResult,
   subprocessRunHandle,
@@ -24,13 +24,13 @@ import {
   type SubagentRun,
   type SubagentStartRequest,
   type SubagentStopReason,
-} from '@origin-ai/xhe-subagent'
+} from '@origin-ai/cf-subagent'
 import {
   scrubbedParentEnv,
   type SubprocessHandle,
   type SubprocessOutcome,
   type SubprocessSpawnSpec,
-} from '@origin-ai/xhe-subprocess'
+} from '@origin-ai/cf-subprocess'
 import {
   claudeSpawnSpec,
   ManagedClaudeCodeProcess,

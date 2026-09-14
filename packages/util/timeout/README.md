@@ -9,7 +9,7 @@ It is a **library, not a service or plugin**: no `ctx`, registers nothing, holds
 ## API
 
 ```ts
-import { clampTimeout, deadline, idleWatchdog, MAX_TIMER_DELAY_MS, timeoutOf, TimeoutReason } from '@origin-ai/xhe-timeout'
+import { clampTimeout, deadline, idleWatchdog, MAX_TIMER_DELAY_MS, timeoutOf, TimeoutReason } from '@origin-ai/cf-timeout'
 ```
 
 | Export | Role |
@@ -28,7 +28,7 @@ import { clampTimeout, deadline, idleWatchdog, MAX_TIMER_DELAY_MS, timeoutOf, Ti
 ## Usage shape
 
 ```ts
-import { deadline, timeoutOf } from '@origin-ai/xhe-timeout'
+import { deadline, timeoutOf } from '@origin-ai/cf-timeout'
 
 declare function runWork(options: { signal: AbortSignal }): Promise<unknown>
 

@@ -9,8 +9,8 @@ import { fileURLToPath } from 'node:url'
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import { canonicalPath } from '@origin-ai/xhe-sandbox'
-import type { SessionEvent } from '@origin-ai/xhe-session'
+import { canonicalPath } from '@origin-ai/cf-sandbox'
+import type { SessionEvent } from '@origin-ai/cf-session'
 import {
   assertFixtureInventory, fixtureUserPrompts, launchWebScaffold, recordFixture,
   watchConsole, webSnapshotMode, type WebScaffold,
@@ -41,7 +41,7 @@ function runtimeContexts(events: readonly SessionEvent[]): string[] {
   return events.flatMap((event) => {
     if (event.type !== 'user/message'
       || event.data.source.kind !== 'plugin'
-      || event.data.source.plugin !== '@origin-ai/xhe-system-prompt') return []
+      || event.data.source.plugin !== '@origin-ai/cf-system-prompt') return []
     return event.data.content.flatMap(block => block.type === 'text' ? [block.text] : [])
   })
 }

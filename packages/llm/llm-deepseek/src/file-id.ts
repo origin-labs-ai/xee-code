@@ -1,6 +1,6 @@
 /** DeepSeek Files API identifiers. @module xhe-llm-deepseek/file-id */
 
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 
 /** Opaque identifier returned by the DeepSeek Files API. */
 export type DeepSeekFileId = Branded<'DeepSeekFileId'>

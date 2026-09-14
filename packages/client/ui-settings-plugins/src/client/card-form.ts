@@ -13,8 +13,8 @@
  * override equal to the composition default is still an override.
  */
 
-import type { SettingsScope, SettingsScopeSnapshot } from '@origin-ai/xhe-client-runtime/client'
-import { createSnapshotStore, type SnapshotStore } from '@origin-ai/xhe-client-runtime/client'
+import type { SettingsScope, SettingsScopeSnapshot } from '@origin-ai/cf-client-runtime/client'
+import { createSnapshotStore, type SnapshotStore } from '@origin-ai/cf-client-runtime/client'
 
 /** The write one field's staged text performs when the card is saved. */
 export type FieldWrite =

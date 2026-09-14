@@ -5,7 +5,7 @@
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { SessionId } from '@origin-ai/xhe-session'
+import type { SessionId } from '@origin-ai/cf-session'
 
 /**
  * Reject every step of the stand-in parent. Each child settlement wakes its

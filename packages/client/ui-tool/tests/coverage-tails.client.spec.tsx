@@ -3,15 +3,15 @@
 
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render } from '@testing-library/react'
-import { createSnapshotStore } from '@origin-ai/xhe-client-runtime/client'
-import { bindSnapshotSelector } from '@origin-ai/xhe-client-test-runtime'
-import type { RunningToolCall, SessionId, SessionListState, ToolResultNode } from '@origin-ai/xhe-client-runtime/client'
-import { makeTranslate } from '@origin-ai/xhe-client-test-runtime'
-import { zh as commonZh } from '@origin-ai/xhe-client-locale/src/locales/zh.ts'
+import { createSnapshotStore } from '@origin-ai/cf-client-runtime/client'
+import { bindSnapshotSelector } from '@origin-ai/cf-client-test-runtime'
+import type { RunningToolCall, SessionId, SessionListState, ToolResultNode } from '@origin-ai/cf-client-runtime/client'
+import { makeTranslate } from '@origin-ai/cf-client-test-runtime'
+import { zh as commonZh } from '@origin-ai/cf-client-locale/src/locales/zh.ts'
 import { GenericToolCard, type GenericToolCardProps } from '../src/client/tool/toolviews/GenericToolCard.tsx'
 import { ToolRow } from '../src/client/tool/components/ToolRow.tsx'
 import { BashRow } from '../src/client/tool/toolviews/bash-sample.tsx'
-import { zh } from '@origin-ai/xhe-client-ui-conversation/src/client/locales.ts'
+import { zh } from '@origin-ai/cf-client-ui-conversation/src/client/locales.ts'
 
 type BashRowProps = Parameters<typeof BashRow>[0]
 

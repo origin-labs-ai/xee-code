@@ -32,7 +32,7 @@ One Service Definition can have multiple providers selected through `cordis.yml`
 
 ```yaml
 # Local execution
-- name: '@origin-ai/xhe-bash-local'
+- name: '@origin-ai/cf-bash-local'
 
 # Replace this row with another package that provides the same service.
 ```
@@ -90,7 +90,7 @@ export interface MyCapResult {
 ```ts ignore-check
 // packages/my-cap/my-cap-local/src/index.ts
 import type { Context } from '@deepseek-ai/cordis'
-import { MyCapService, type MyCapRequest, type MyCapResult } from '@origin-ai/xhe-my-cap'
+import { MyCapService, type MyCapRequest, type MyCapResult } from '@origin-ai/cf-my-cap'
 
 class MyCapLocal extends MyCapService {
   async execute(request: MyCapRequest): Promise<MyCapResult> {
@@ -111,7 +111,7 @@ export function apply(ctx: Context) {
 ```ts ignore-check
 // packages/my-cap/tool-my-cap/src/index.ts
 import type { Context } from '@deepseek-ai/cordis'
-import { defineTool } from '@origin-ai/xhe-tools'
+import { defineTool } from '@origin-ai/cf-tools'
 
 export const name = 'tool-my-cap'
 export const inject = ['tools', 'myCap']
@@ -138,8 +138,8 @@ export function apply(ctx: Context) {
 ### Compose them in cordis.yml
 
 ```yaml
-- name: '@origin-ai/xhe-my-cap-local'
-- name: '@origin-ai/xhe-tool-my-cap'
+- name: '@origin-ai/cf-my-cap-local'
+- name: '@origin-ai/cf-tool-my-cap'
 ```
 
 ## Design points

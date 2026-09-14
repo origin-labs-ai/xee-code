@@ -4,15 +4,15 @@
  * creation, flatten post-publication failures, and dispose to whole-tree
  * quiescence.
  *
- * @module @origin-ai/xhe-subagent-codex/run
+ * @module @origin-ai/cf-subagent-codex/run
  */
 
 import { randomUUID } from 'node:crypto'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import { dirname, resolve } from 'node:path'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import { SessionId } from '@origin-ai/xhe-session'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import { SessionId } from '@origin-ai/cf-session'
 import {
   settleRunResult,
   subprocessRunHandle,
@@ -20,12 +20,12 @@ import {
   type SubagentRun,
   type SubagentStartRequest,
   type SubagentStopReason,
-} from '@origin-ai/xhe-subagent'
+} from '@origin-ai/cf-subagent'
 import type {
   SubprocessHandle,
   SubprocessOutcome,
   SubprocessSpawnSpec,
-} from '@origin-ai/xhe-subprocess'
+} from '@origin-ai/cf-subprocess'
 import {
   CodexAppServerWire,
   type CodexWireFailureFacts,

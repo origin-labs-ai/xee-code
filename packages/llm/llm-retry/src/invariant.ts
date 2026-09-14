@@ -1,14 +1,14 @@
-/** Package-owned durable retry-event invariants. @module @origin-ai/xhe-llm-retry/invariant */
+/** Package-owned durable retry-event invariants. @module @origin-ai/cf-llm-retry/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type { LlmFailure } from '@origin-ai/xhe-llm'
-import { MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type { LlmFailure } from '@origin-ai/cf-llm'
+import { MAX_TIMER_DELAY_MS } from '@origin-ai/cf-timeout'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 import { providerForOpenStep } from './history.ts'
 import type {} from './index.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-llm-retry'
+const PACKAGE_NAME = '@origin-ai/cf-llm-retry'
 
 /** Cordis companion plugin name. */
 export const name = 'llm-retry-invariant'

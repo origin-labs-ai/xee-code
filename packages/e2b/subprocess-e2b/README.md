@@ -1,6 +1,6 @@
-# @origin-ai/xhe-subprocess-e2b
+# @origin-ai/cf-subprocess-e2b
 
-E2B implementation of the [`@origin-ai/xhe-subprocess`](../../subprocess/subprocess/README.md) seam. Load [`@origin-ai/xhe-e2b`](../e2b/README.md) first, then this service in place of `xhe-subprocess-local`. Existing Bash, PTY, and LSP consumers then execute in the shared remote sandbox without E2B-specific capability packages.
+E2B implementation of the [`@origin-ai/cf-subprocess`](../../subprocess/subprocess/README.md) seam. Load [`@origin-ai/cf-e2b`](../e2b/README.md) first, then this service in place of `xhe-subprocess-local`. Existing Bash, PTY, and LSP consumers then execute in the shared remote sandbox without E2B-specific capability packages.
 
 ## Configuration
 

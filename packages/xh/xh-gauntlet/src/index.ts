@@ -4,12 +4,12 @@
  * (acquisition / bar-freeze / conformance / regression / stop-gate +
  * user-override).
  *
- * @module @origin-ai/xhe-xh-gauntlet
+ * @module @origin-ai/cf-xh-gauntlet
  */
 
 import { createHash } from 'node:crypto'
 import { Service } from '@deepseek-ai/cordis'
-import type { Branded } from '@origin-ai/xhe-brand'
+import type { Branded } from '@origin-ai/cf-brand'
 
 // ---------------------------------------------------------------------------
 // Branded identities

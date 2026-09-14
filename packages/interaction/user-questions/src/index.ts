@@ -1,15 +1,15 @@
 /**
  * Service Definition for the user-questions capability seam (`ctx.userQuestions`): a UI-backed service for
  * pausing an agent tool call until the human answers a question. The model-
- * facing tool lives in `@origin-ai/xhe-tool-ask-user`; UI packages provide
+ * facing tool lives in `@origin-ai/cf-tool-ask-user`; UI packages provide
  * the single active provider.
  *
- * @module @origin-ai/xhe-user-questions
+ * @module @origin-ai/cf-user-questions
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'
-import type { Agent } from '@origin-ai/xhe-agent'
-import { HarnessError } from '@origin-ai/xhe-llm'
+import type { Agent } from '@origin-ai/cf-agent'
+import { HarnessError } from '@origin-ai/cf-llm'
 
 declare module '@deepseek-ai/cordis' {
   interface Context {

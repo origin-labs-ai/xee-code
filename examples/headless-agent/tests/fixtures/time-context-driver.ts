@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /** Test driver that sends two turns through one Headless Loader composition. */
 
-import { boot, resolveConfigPath } from '@origin-ai/xhe-app-boot'
-import { runFixtureTurn } from '@origin-ai/xhe-loader-smoke'
+import { boot, resolveConfigPath } from '@origin-ai/cf-app-boot'
+import { runFixtureTurn } from '@origin-ai/cf-loader-smoke'
 
 const configPath = process.argv[2]
 if (configPath === undefined) throw new Error('time-context driver requires a config path')

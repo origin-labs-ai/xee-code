@@ -6,7 +6,7 @@
  * restriction scheme hidden-console children die with STATUS_DLL_INIT_FAILED
  * (0xC0000142) — verified empirically, see win32-abi.ts. Stdio redirection is
  * pipe-based and unaffected; the child shares the host console.
- * @module @origin-ai/xhe-sandbox-windows-acl/spawn
+ * @module @origin-ai/cf-sandbox-windows-acl/spawn
  */
 
 import { allocPtrSlot, allocProcessInfo, allocStartupInfo, allocUint32, decodePtr, decodeProcessInfo, decodeUint32, encodeStartupInfo, isNullPtr, throwLastError, throwWin32 } from './ffi.ts'

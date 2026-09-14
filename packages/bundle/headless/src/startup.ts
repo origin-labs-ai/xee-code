@@ -2,12 +2,12 @@
  * The one-shot app's command-line provider: it parses the task positional and
  * `--help`, then publishes {@link HEADLESS_STARTUP_SERVICE}. The runner is an
  * ordinary consumer whose lazy config waits for that service.
- * @module @origin-ai/xhe-headless/startup
+ * @module @origin-ai/cf-headless/startup
  */
 
 import { Command } from 'commander'
 import type { Context } from '@deepseek-ai/cordis'
-import { parseCmdline } from '@origin-ai/xhe-cmdline'
+import { parseCmdline } from '@origin-ai/cf-cmdline'
 
 /** Stable Cordis plugin name. */
 export const name = 'headless-startup'

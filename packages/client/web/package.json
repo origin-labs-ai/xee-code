@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-client-web",
+  "name": "@origin-ai/cf-client-web",
   "description": "Web boot kernel: static module table, Cordis loader, framework-free boot page, and UI-renderer handoff",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -28,11 +28,11 @@
   "license": "MIT",
   "devDependencies": {
     "@deepseek-ai/cordis-plugin-loader": "workspace:^",
-    "@origin-ai/xhe-client-modules": "workspace:^",
-    "@origin-ai/xhe-client-ui-renderer": "workspace:^",
-    "@origin-ai/xhe-client-ui-primitives": "workspace:^",
-    "@origin-ai/xhe-client-ui-slots": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/cf-client-modules": "workspace:^",
+    "@origin-ai/cf-client-ui-renderer": "workspace:^",
+    "@origin-ai/cf-client-ui-primitives": "workspace:^",
+    "@origin-ai/cf-client-ui-slots": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
     "@types/react": "~18.3.1",
     "@types/react-dom": "~18.3.0",
     "@deepseek-ai/cordis": "workspace:^",
@@ -41,7 +41,7 @@
     "typescript": "^6.0.3"
   },
   "peerDependencies": {
-    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "files": [

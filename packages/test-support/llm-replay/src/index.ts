@@ -4,14 +4,14 @@
  * compaction calls, then binds fresh live sessions to parent/child scripts by
  * first-call order. Throw and hang cases require an explicit override because
  * a session log cannot reconstruct them alone.
- * @module @origin-ai/xhe-llm-replay
+ * @module @origin-ai/cf-llm-replay
  */
 
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { delimiter as pathDelimiter } from 'node:path'
 import type { Context } from '@deepseek-ai/cordis'
-import type {} from '@origin-ai/xhe-compaction'
-import { decodeStorageRecord, type SessionEvent } from '@origin-ai/xhe-session'
+import type {} from '@origin-ai/cf-compaction'
+import { decodeStorageRecord, type SessionEvent } from '@origin-ai/cf-session'
 import type {
   ContentBlock,
   GenerateOptions,
@@ -23,8 +23,8 @@ import type {
   RetryPolicyConfig,
   StreamChunk,
   TokenUsage,
-} from '@origin-ai/xhe-llm'
-import { LlmAdapter, LlmError, ReasoningEffortId, assertNever, resolveRetryPolicy } from '@origin-ai/xhe-llm'
+} from '@origin-ai/cf-llm'
+import { LlmAdapter, LlmError, ReasoningEffortId, assertNever, resolveRetryPolicy } from '@origin-ai/cf-llm'
 
 const PACKED_CHUNK_ROW_TYPES = new Set(['text-chunks', 'reasoning-chunks', 'tool-call-chunks'])
 

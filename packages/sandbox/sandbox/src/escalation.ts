@@ -1,6 +1,6 @@
 /**
  * The escalation vocabulary and choreography shared by every sandbox-enforcing
- * tool family (`@origin-ai/xhe-tool-bash`, `@origin-ai/xhe-tool-fs`): the
+ * tool family (`@origin-ai/cf-tool-bash`, `@origin-ai/cf-tool-fs`): the
  * strictly-wider ladder, the argument-pairing validation, the model-facing
  * denial/hint markers, and {@link approveEscalation} — the ordered fail-closed
  * sequence that resolves a `sandbox_permissions` request through a
@@ -16,7 +16,7 @@
  * @module xhe-sandbox/escalation
  */
 
-import { assertNever } from '@origin-ai/xhe-llm'
+import { assertNever } from '@origin-ai/cf-llm'
 import type { SandboxMode } from './index.ts'
 
 /**

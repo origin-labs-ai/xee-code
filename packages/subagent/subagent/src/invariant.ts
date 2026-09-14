@@ -1,10 +1,10 @@
-/** Package-owned subagent registry and lifecycle invariants. @module @origin-ai/xhe-subagent/invariant */
+/** Package-owned subagent registry and lifecycle invariants. @module @origin-ai/cf-subagent/invariant */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 import type { SubagentProvider, SubagentRunEndInfo, SubagentRunInfo } from './types.ts'
 
-const PACKAGE_NAME = '@origin-ai/xhe-subagent'
+const PACKAGE_NAME = '@origin-ai/cf-subagent'
 
 /** Cordis companion plugin name. */
 export const name = 'subagent-invariant'

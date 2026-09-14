@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import type { Config } from '@origin-ai/xhe-terminal-bash/src/config.ts'
-import { resolveConfig, validateConfig } from '@origin-ai/xhe-terminal-bash/src/config.ts'
+import type { Config } from '@origin-ai/cf-terminal-bash/src/config.ts'
+import { resolveConfig, validateConfig } from '@origin-ai/cf-terminal-bash/src/config.ts'
 
 function config(overrides: Partial<Config> = {}): Config {
   return {

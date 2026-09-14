@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-time-context",
+  "name": "@origin-ai/cf-time-context",
   "description": "Opt-in durable per-step context with the current time and elapsed time",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -35,21 +35,21 @@
     "@deepseek-ai/schemastery": "workspace:^"
   },
   "peerDependencies": {
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "devDependencies": {
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-agent-loop": "workspace:^",
-    "@origin-ai/xhe-agent-loop-testkit": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-loader-smoke": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-system-prompt": "workspace:^",
-    "@origin-ai/xhe-tools": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-agent-loop": "workspace:^",
+    "@origin-ai/cf-agent-loop-testkit": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-loader-smoke": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-system-prompt": "workspace:^",
+    "@origin-ai/cf-tools": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

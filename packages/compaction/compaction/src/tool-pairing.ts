@@ -2,10 +2,10 @@
  * Tool-pairing balance over a session surface. Compaction changes surface
  * positions, so safe cuts are derived from tool-call/result content in current
  * surface order rather than step markers.
- * @module @origin-ai/xhe-compaction/tool-pairing
+ * @module @origin-ai/cf-compaction/tool-pairing
  */
 
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
 
 /** Incremental balance state for one session surface generation. */
 interface BalanceCache {

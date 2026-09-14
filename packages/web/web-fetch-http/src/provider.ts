@@ -1,16 +1,16 @@
 /**
  * Safe HTTP(S) retrieval for `ctx.web`: validates URLs, follows only same-origin redirects,
  * enforces time and size limits, classifies and decodes text, and leaves presentation to
- * `@origin-ai/xhe-tool-web`. Requests carry no browser cookies or ambient credentials.
+ * `@origin-ai/cf-tool-web`. Requests carry no browser cookies or ambient credentials.
  *
  * Private-network and SSRF protection is not implemented; do not enable this provider where
  * it can reach sensitive internal targets.
- * @module @origin-ai/xhe-web-fetch-http/provider
+ * @module @origin-ai/cf-web-fetch-http/provider
  */
 
-import { WebError } from '@origin-ai/xhe-web'
-import type { WebFetchBody, WebFetchProvider, WebFetchRequest, WebFetchResult } from '@origin-ai/xhe-web'
-import { deadline, timeoutOf } from '@origin-ai/xhe-timeout'
+import { WebError } from '@origin-ai/cf-web'
+import type { WebFetchBody, WebFetchProvider, WebFetchRequest, WebFetchResult } from '@origin-ai/cf-web'
+import { deadline, timeoutOf } from '@origin-ai/cf-timeout'
 import { classifyContentType, decoderForCharset, isSameOrigin, parseCharset, validateFetchUrl } from './policy.ts'
 
 /** Resolved provider limits (the plugin's schemastery Config supplies defaults). */

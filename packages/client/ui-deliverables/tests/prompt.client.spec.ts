@@ -2,7 +2,7 @@
 
 import { Context } from '@deepseek-ai/cordis'
 import { afterEach, describe, expect, it } from 'vitest'
-import SystemPrompt from '@origin-ai/xhe-system-prompt'
+import SystemPrompt from '@origin-ai/cf-system-prompt'
 import { apply, inject } from '../src/index.ts'
 
 let ctx: Context | undefined

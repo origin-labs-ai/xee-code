@@ -1,22 +1,22 @@
 /**
  * Caller identity, workspace authorization, and visible lineage projection.
  *
- * @module @origin-ai/xhe-tool-session-query/workspace-access
+ * @module @origin-ai/cf-tool-session-query/workspace-access
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import { HarnessError } from '@origin-ai/xhe-llm'
+import { HarnessError } from '@origin-ai/cf-llm'
 import {
   SessionId,
   type SessionEvent,
   type SessionHeader,
   type SessionId as SessionIdValue,
-} from '@origin-ai/xhe-session'
+} from '@origin-ai/cf-session'
 import type {
   SessionLineageNode,
   SessionRecord,
-} from '@origin-ai/xhe-session-query'
-import type { ToolRunContext } from '@origin-ai/xhe-tools'
+} from '@origin-ai/cf-session-query'
+import type { ToolRunContext } from '@origin-ai/cf-tools'
 import { serviceBoundary } from './service-boundary.ts'
 
 interface Caller {

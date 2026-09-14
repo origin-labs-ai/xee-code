@@ -9,17 +9,17 @@
  * settings scope, which keeps them unaware of one another and of other tabs.
  */
 
-import type { ConnectionHandle } from '@origin-ai/xhe-client-connection/client'
+import type { ConnectionHandle } from '@origin-ai/cf-client-connection/client'
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
-import type {} from '@origin-ai/xhe-client-locale/client'
+import type {} from '@origin-ai/cf-client-locale/client'
 // Type-only: the settings shell's SlotMap merge (the 'settings.section' entry)
 // and the ctx.settingsScope Context merge. Cross-plugin collaboration goes
 // through the service, never a value import (client bundle purity gate).
-import type {} from '@origin-ai/xhe-client-ui-settings/client'
-import type { ClientContext } from '@origin-ai/xhe-client-runtime/client'
-import { resolveSlotLabel } from '@origin-ai/xhe-client-ui-slots'
+import type {} from '@origin-ai/cf-client-ui-settings/client'
+import type { ClientContext } from '@origin-ai/cf-client-runtime/client'
+import { resolveSlotLabel } from '@origin-ai/cf-client-ui-slots'
 // Type-only: the ctx.remote Context merge and the forwarded-event key face.
-import type {} from '@origin-ai/xhe-api-remotes/client'
+import type {} from '@origin-ai/cf-api-remotes/client'
 import { AgentLoopCard } from './AgentLoopCard.tsx'
 import { BashCard } from './BashCard.tsx'
 import { ConfigurablePluginsTab } from './ConfigurablePluginsTab.tsx'

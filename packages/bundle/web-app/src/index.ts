@@ -1,5 +1,5 @@
 /**
- * @origin-ai/xhe-web-app — the browser-surface bundle's runtime glue plugin
+ * @origin-ai/cf-web-app — the browser-surface bundle's runtime glue plugin
  * plus the bundle patch (`cordis.patch.yml`, declared by the `dsh.bundle.patch`
  * manifest field). The plugin owns the browser-surface glue: it resolves
  * the built frontend dist (workspace knowledge of this bundle, never user
@@ -8,7 +8,7 @@
  * variable, the URL line, and the default-browser handoff. App command-line
  * values arrive through the `webStartup` service expressions in the bundle
  * patch.
- * @module @origin-ai/xhe-web-app
+ * @module @origin-ai/cf-web-app
  */
 
 import { spawn, type ChildProcess } from 'node:child_process'
@@ -17,14 +17,14 @@ import { networkInterfaces } from 'node:os'
 import { fileURLToPath } from 'node:url'
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { addHarnessSourceSection } from '@origin-ai/xhe-app-boot'
-import * as FrontendStatic from '@origin-ai/xhe-host-frontend-static'
-import { launchEnvironmentOf } from '@origin-ai/xhe-launch-environment'
-import { scrubbedParentEnv } from '@origin-ai/xhe-subprocess'
+import { addHarnessSourceSection } from '@origin-ai/cf-app-boot'
+import * as FrontendStatic from '@origin-ai/cf-host-frontend-static'
+import { launchEnvironmentOf } from '@origin-ai/cf-launch-environment'
+import { scrubbedParentEnv } from '@origin-ai/cf-subprocess'
 import type {} from '@deepseek-ai/cordis-plugin-loader'
-import type {} from '@origin-ai/xhe-host-webserver'
-import type {} from '@origin-ai/xhe-system-prompt'
-import type {} from '@origin-ai/xhe-shell-env'
+import type {} from '@origin-ai/cf-host-webserver'
+import type {} from '@origin-ai/cf-system-prompt'
+import type {} from '@origin-ai/cf-shell-env'
 
 /** Stable Cordis plugin name. */
 export const name = 'web-app'
@@ -163,7 +163,7 @@ function localWebUrl(ctx: Context): string {
 function resolveDistIndex(): string {
   const require = createRequire(import.meta.url)
   try {
-    return require.resolve('@origin-ai/xhe-web-frontend/dist/index.html')
+    return require.resolve('@origin-ai/cf-web-frontend/dist/index.html')
   } catch {
     /* v8 ignore next 2 -- reachable only on a checkout without a built dist; the test tree builds it */
     throw new Error('web-app: frontend dist not built; run pnpm run build from the repository root first')

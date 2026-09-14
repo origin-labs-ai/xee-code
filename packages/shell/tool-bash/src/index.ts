@@ -5,25 +5,25 @@
  *
  * TODO(permissions): deployment policy belongs in `tools/pre-execute` and
  * sandboxing executors; see docs/architecture.md § Where new behavior goes.
- * @module @origin-ai/xhe-tool-bash
+ * @module @origin-ai/cf-tool-bash
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
 import { isAbsolute, resolve as resolvePath } from 'node:path'
-import { defineTool, TOOL_ABORTED } from '@origin-ai/xhe-tools'
-import type { GenericCallView, TerminalCallView, ToolExecution, ToolResult, ToolResultView } from '@origin-ai/xhe-tools'
-import { HarnessError } from '@origin-ai/xhe-llm'
-import type { Agent } from '@origin-ai/xhe-agent'
-import type {} from '@origin-ai/xhe-system-prompt'
-import type {} from '@origin-ai/xhe-jobs'
-import type {} from '@origin-ai/xhe-user-approval'
-import type {} from '@origin-ai/xhe-shell-env'
-import type { SandboxExecutionPolicy, SandboxMode } from '@origin-ai/xhe-sandbox'
-import { ESCALATION_TARGETS, approveEscalation, canonicalPath, validateEscalationArgs } from '@origin-ai/xhe-sandbox'
-import type { SandboxPolicyService } from '@origin-ai/xhe-sandbox-policy'
-import { XHE_ENV_PREFIX } from '@origin-ai/xhe-shell'
-import type { ShellRunResult } from '@origin-ai/xhe-shell'
+import { defineTool, TOOL_ABORTED } from '@origin-ai/cf-tools'
+import type { GenericCallView, TerminalCallView, ToolExecution, ToolResult, ToolResultView } from '@origin-ai/cf-tools'
+import { HarnessError } from '@origin-ai/cf-llm'
+import type { Agent } from '@origin-ai/cf-agent'
+import type {} from '@origin-ai/cf-system-prompt'
+import type {} from '@origin-ai/cf-jobs'
+import type {} from '@origin-ai/cf-user-approval'
+import type {} from '@origin-ai/cf-shell-env'
+import type { SandboxExecutionPolicy, SandboxMode } from '@origin-ai/cf-sandbox'
+import { ESCALATION_TARGETS, approveEscalation, canonicalPath, validateEscalationArgs } from '@origin-ai/cf-sandbox'
+import type { SandboxPolicyService } from '@origin-ai/cf-sandbox-policy'
+import { XHE_ENV_PREFIX } from '@origin-ai/cf-shell'
+import type { ShellRunResult } from '@origin-ai/cf-shell'
 import { processOutcome } from './background.ts'
 import { parseExitStatus, renderProcessRead, renderResult } from './render.ts'
 
@@ -353,7 +353,7 @@ export function apply(ctx: Context, config: Config = {}): void {
         }
         const jobs = ctx.get('jobs')
         if (jobs === undefined) {
-          throw new Error('background jobs unavailable: load @origin-ai/xhe-jobs and @origin-ai/xhe-tool-jobs')
+          throw new Error('background jobs unavailable: load @origin-ai/cf-jobs and @origin-ai/cf-tool-jobs')
         }
         // The caller owns cancellation until ctx.jobs commits detached ownership.
         if (exec.signal.aborted) {

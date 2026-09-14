@@ -15,7 +15,7 @@ interface CssModulePlugin {
 }
 
 /** A representative dynamic bundle using the shared client baseline. */
-const REQUESTING_PACKAGE = '@origin-ai/xhe-client-ui-conversation'
+const REQUESTING_PACKAGE = '@origin-ai/cf-client-ui-conversation'
 
 function clientConfigs(id = REQUESTING_PACKAGE) {
   return clientBundle(id, ['lib/types/index.js', 'lib/types/invariant.js'])(
@@ -25,7 +25,7 @@ function clientConfigs(id = REQUESTING_PACKAGE) {
 
 describe('client bundle build faces', () => {
   it('watches source in development and consumes emitted JavaScript in the Client build', () => {
-    const bundle = clientBundle('@origin-ai/xhe-client-test', ['lib/types/index.js'])
+    const bundle = clientBundle('@origin-ai/cf-client-test', ['lib/types/index.js'])
     const development = bundle({ env: {} }).find(config => config.platform === 'browser')
     const artifact = bundle({ env: { XHE_BUILD_FACE: 'client' } })
       .find(config => config.platform === 'browser')
@@ -63,78 +63,78 @@ describe('client bundle purity gate', () => {
   const resolveId = purityResolveId()
 
   it('leaves default externals and non-scoped specifiers alone', () => {
-    expect(resolveId('@origin-ai/xhe-client-ui-slots')).toBeNull()
-    expect(resolveId('@origin-ai/xhe-client-ui-primitives')).toBeNull()
-    expect(resolveId('@origin-ai/xhe-client-runtime/client')).toBeNull()
+    expect(resolveId('@origin-ai/cf-client-ui-slots')).toBeNull()
+    expect(resolveId('@origin-ai/cf-client-ui-primitives')).toBeNull()
+    expect(resolveId('@origin-ai/cf-client-runtime/client')).toBeNull()
     expect(resolveId('react')).toBeNull()
     expect(resolveId('zod')).toBeNull()
   })
 
   it('rejects the retired web-react platform package', () => {
-    expect(() => resolveId('@origin-ai/xhe-client-web-react')).toThrow(/purity/)
-    expect(() => resolveId('@origin-ai/xhe-client-web-react/store')).toThrow(/purity/)
+    expect(() => resolveId('@origin-ai/cf-client-web-react')).toThrow(/purity/)
+    expect(() => resolveId('@origin-ai/cf-client-web-react/store')).toThrow(/purity/)
   })
 
   it('lets inline-safe wire layers inline', () => {
-    expect(resolveId('@origin-ai/xhe-host-apiproxy/api')).toBeNull()
-    expect(resolveId('@origin-ai/xhe-session/surface')).toBeNull()
-    expect(resolveId('@origin-ai/xhe-brand')).toBeNull()
+    expect(resolveId('@origin-ai/cf-host-apiproxy/api')).toBeNull()
+    expect(resolveId('@origin-ai/cf-session/surface')).toBeNull()
+    expect(resolveId('@origin-ai/cf-brand')).toBeNull()
   })
 
   it('lets exact generated Remote contributions inline without admitting their package implementation', () => {
-    expect(resolveId('@origin-ai/xhe-goal/remote')).toBeNull()
-    expect(() => resolveId('@origin-ai/xhe-goal')).toThrow(/purity/)
-    expect(() => resolveId('@origin-ai/xhe-goal/client')).toThrow(/purity/)
-    expect(() => resolveId('@origin-ai/xhe-goal/remote/nested')).toThrow(/purity/)
+    expect(resolveId('@origin-ai/cf-goal/remote')).toBeNull()
+    expect(() => resolveId('@origin-ai/cf-goal')).toThrow(/purity/)
+    expect(() => resolveId('@origin-ai/cf-goal/client')).toThrow(/purity/)
+    expect(() => resolveId('@origin-ai/cf-goal/remote/nested')).toThrow(/purity/)
   })
 
   it('throws on any other @deepseek-ai leak', () => {
-    expect(() => resolveId('@origin-ai/xhe-agent')).toThrow(/purity/)
-    expect(() => resolveId('@origin-ai/xhe-client-web')).toThrow(/purity/)
+    expect(() => resolveId('@origin-ai/cf-agent')).toThrow(/purity/)
+    expect(() => resolveId('@origin-ai/cf-client-web')).toThrow(/purity/)
   })
 
   it('throws on cross-plugin value imports — bare plugin names and /client subpaths alike', () => {
-    expect(() => resolveId('@origin-ai/xhe-client-connection')).toThrow(/purity/)
-    expect(() => resolveId('@origin-ai/xhe-client-runtime')).toThrow(/purity/)
-    expect(() => resolveId('@origin-ai/xhe-client-ui-layout/client')).toThrow(/purity/)
+    expect(() => resolveId('@origin-ai/cf-client-connection')).toThrow(/purity/)
+    expect(() => resolveId('@origin-ai/cf-client-runtime')).toThrow(/purity/)
+    expect(() => resolveId('@origin-ai/cf-client-ui-layout/client')).toThrow(/purity/)
   })
 
   it('admits the parser-preloaded runtime for every dynamic bundle', () => {
-    expect(resolveId('@origin-ai/xhe-client-runtime/client')).toBeNull()
-    const withoutRequest = purityResolveId('@origin-ai/xhe-client-ui-goal')
-    expect(withoutRequest('@origin-ai/xhe-client-runtime/client')).toBeNull()
+    expect(resolveId('@origin-ai/cf-client-runtime/client')).toBeNull()
+    const withoutRequest = purityResolveId('@origin-ai/cf-client-ui-goal')
+    expect(withoutRequest('@origin-ai/cf-client-runtime/client')).toBeNull()
   })
 
   it('externalizes the baseline independently of each package manifest', () => {
     const requesting = clientConfigs()[0]?.deps as { neverBundle: (specifier: string) => boolean }
-    const plain = clientConfigs('@origin-ai/xhe-client-connection')[0]?.deps as {
+    const plain = clientConfigs('@origin-ai/cf-client-connection')[0]?.deps as {
       neverBundle: (specifier: string) => boolean
     }
 
     expect(requesting.neverBundle('react')).toBe(true)
     expect(requesting.neverBundle('zod')).toBe(false)
     expect(plain.neverBundle('react')).toBe(true)
-    expect(plain.neverBundle('@origin-ai/xhe-client-runtime/client')).toBe(true)
+    expect(plain.neverBundle('@origin-ai/cf-client-runtime/client')).toBe(true)
   })
 })
 
 describe('client bundle module requests', () => {
   it('requests what the declaration lists', () => {
-    const requests = requestedExternals('@origin-ai/xhe-client-fixture', {
-      external: ['react', 'react/jsx-runtime', '@origin-ai/xhe-client-ui-slots'],
+    const requests = requestedExternals('@origin-ai/cf-client-fixture', {
+      external: ['react', 'react/jsx-runtime', '@origin-ai/cf-client-ui-slots'],
     })
 
     expect([...requests].sort()).toEqual([
-      '@origin-ai/xhe-client-ui-slots', 'react', 'react/jsx-runtime',
+      '@origin-ai/cf-client-ui-slots', 'react', 'react/jsx-runtime',
     ])
   })
 
   it('requests nothing when the declaration is absent', () => {
-    expect(requestedExternals('@origin-ai/xhe-client-fixture', {}).size).toBe(0)
+    expect(requestedExternals('@origin-ai/cf-client-fixture', {}).size).toBe(0)
   })
 
   it('rejects a malformed declaration instead of reading past it', () => {
-    expect(() => requestedExternals('@origin-ai/xhe-client-fixture', { external: 'react' }))
+    expect(() => requestedExternals('@origin-ai/cf-client-fixture', { external: 'react' }))
       .toThrow(/dsh\.client\.external must be a string array/)
   })
 })
@@ -146,7 +146,7 @@ describe('client bundle debug artifacts', () => {
   })
 
   it('maps first-party sources to their repository package paths', () => {
-    const configs = clientConfigs('@origin-ai/xhe-client-ui-goal')
+    const configs = clientConfigs('@origin-ai/cf-client-ui-goal')
     const outputOptions = configs[0]?.outputOptions
     if (typeof outputOptions !== 'object' || outputOptions === null) throw new Error('client output options missing')
     const transform = outputOptions.sourcemapPathTransform
@@ -154,12 +154,12 @@ describe('client bundle debug artifacts', () => {
 
     const source = transform('../src/client/GoalBar.tsx', clientSourceMapPath('client/ui-goal'))
     expect(source).toBe('../../../packages/client/ui-goal/src/client/GoalBar.tsx')
-    const resolved = new URL(source, 'https://dsh.test/plugins/@origin-ai/xhe-client-ui-goal/client.js.map')
+    const resolved = new URL(source, 'https://dsh.test/plugins/@origin-ai/cf-client-ui-goal/client.js.map')
     expect(resolved.pathname).toBe('/packages/client/ui-goal/src/client/GoalBar.tsx')
   })
 
   it('maps dual-face host sources to the host package group', () => {
-    const configs = clientConfigs('@origin-ai/xhe-host-directory-picker-native')
+    const configs = clientConfigs('@origin-ai/cf-host-directory-picker-native')
     const outputOptions = configs[0]?.outputOptions
     if (typeof outputOptions !== 'object' || outputOptions === null) throw new Error('client output options missing')
     const transform = outputOptions.sourcemapPathTransform
@@ -170,7 +170,7 @@ describe('client bundle debug artifacts', () => {
   })
 
   it('maps inlined workspace sources to packages and leaves dependencies outside it unchanged', () => {
-    const configs = clientConfigs('@origin-ai/xhe-client-connection')
+    const configs = clientConfigs('@origin-ai/cf-client-connection')
     const outputOptions = configs[0]?.outputOptions
     if (typeof outputOptions !== 'object' || outputOptions === null) throw new Error('client output options missing')
     const transform = outputOptions.sourcemapPathTransform
@@ -179,7 +179,7 @@ describe('client bundle debug artifacts', () => {
     const sourceMapPath = clientSourceMapPath('client/connection')
     const workspaceSource = transform('../../../host/apiproxy/src/api/rpc.ts', sourceMapPath)
     expect(workspaceSource).toBe('../../../packages/host/apiproxy/src/api/rpc.ts')
-    const resolved = new URL(workspaceSource, 'https://dsh.test/plugins/@origin-ai/xhe-client-connection/client.js.map')
+    const resolved = new URL(workspaceSource, 'https://dsh.test/plugins/@origin-ai/cf-client-connection/client.js.map')
     expect(resolved.pathname).toBe('/packages/host/apiproxy/src/api/rpc.ts')
 
     const dependencySource = '../../../../node_modules/.pnpm/zod@4.4.3/node_modules/zod/index.js'

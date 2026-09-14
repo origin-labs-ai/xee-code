@@ -1,12 +1,12 @@
 import type {
   ChatConversationViewNode, ConversationLocation, ConversationNodeContext,
   ConversationNodeDefinition,
-} from '@origin-ai/xhe-client-runtime/client'
-import type { SessionId } from '@origin-ai/xhe-session/types'
+} from '@origin-ai/cf-client-runtime/client'
+import type { SessionId } from '@origin-ai/cf-session/types'
 import type {
   ToolWorkflowAgentEndData, ToolWorkflowAgentStartData,
-} from '@origin-ai/xhe-tool-workflow/types'
-import type { WorkflowAgentOutcome, WorkflowStopReason } from '@origin-ai/xhe-workflow/types'
+} from '@origin-ai/cf-tool-workflow/types'
+import type { WorkflowAgentOutcome, WorkflowStopReason } from '@origin-ai/cf-workflow/types'
 
 /** Status shown for a workflow, phase, or member. */
 export type WorkflowRunStatus = 'running' | 'completed' | 'failed' | 'cancelled' | 'interrupted'
@@ -34,7 +34,7 @@ export interface WorkflowRunChatData {
   readonly phases: readonly WorkflowRunPhaseData[]
 }
 
-declare module '@origin-ai/xhe-client-ui-conversation/client' {
+declare module '@origin-ai/cf-client-ui-conversation/client' {
   interface ChatNodeDataMap {
     /** Durable top-level workflow run and all members that actually started. */
     'workflow-run': WorkflowRunChatData

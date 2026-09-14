@@ -9,11 +9,11 @@
  */
 
 import { useEffect } from 'react'
-import type { SnapshotStore } from '@origin-ai/xhe-client-runtime/client'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@origin-ai/xhe-client-ui-slots'
-import { IconAgentPresetOutline16 } from '@origin-ai/xhe-client-ui-primitives'
+import type { SnapshotStore } from '@origin-ai/cf-client-runtime/client'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@origin-ai/cf-client-ui-slots'
+import { IconAgentPresetOutline16 } from '@origin-ai/cf-client-ui-primitives'
 // Type-only: pulls the ui-conversation SlotMap merge (the header actions).
-import type {} from '@origin-ai/xhe-client-ui-conversation/client'
+import type {} from '@origin-ai/cf-client-ui-conversation/client'
 import type { AgentPresetSettingsState } from './settings-store.ts'
 import { presetDisplayText } from './locales.ts'
 import css from './AgentPresetLabel.module.css'

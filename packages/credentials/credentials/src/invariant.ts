@@ -1,12 +1,12 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-credentials`.
- * @module @origin-ai/xhe-credentials/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-credentials`.
+ * @module @origin-ai/cf-credentials/invariant
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-credentials'
+const PACKAGE_NAME = '@origin-ai/cf-credentials'
 
 /** Cordis companion plugin name. */
 export const name = 'credentials-invariant'

@@ -1,10 +1,10 @@
-import { createUserMessage, createMessage } from '@origin-ai/xhe-llm'
+import { createUserMessage, createMessage } from '@origin-ai/cf-llm'
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import SessionStore, { SESSION_FORMAT_VERSION, SessionId } from '@origin-ai/xhe-session'
-import type { Session, SessionEvent, SessionHeader, SessionId as SessionIdType } from '@origin-ai/xhe-session'
-import SessionPersistence from '@origin-ai/xhe-session-persistence'
-import { type SessionQueryErrorCode } from '@origin-ai/xhe-session-query'
+import SessionStore, { SESSION_FORMAT_VERSION, SessionId } from '@origin-ai/cf-session'
+import type { Session, SessionEvent, SessionHeader, SessionId as SessionIdType } from '@origin-ai/cf-session'
+import SessionPersistence from '@origin-ai/cf-session-persistence'
+import { type SessionQueryErrorCode } from '@origin-ai/cf-session-query'
 import { TestSessionQueryEngine } from './test-service.ts'
 
 type MutableSessionHeader = { -readonly [K in keyof SessionHeader]: SessionHeader[K] }

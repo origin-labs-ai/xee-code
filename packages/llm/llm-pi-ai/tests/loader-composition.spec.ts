@@ -16,10 +16,10 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import Include from '@deepseek-ai/cordis-plugin-include'
-import LlmRuntime, { createMessage, createUserMessage } from '@origin-ai/xhe-llm'
-import LocalCredentialProvider from '@origin-ai/xhe-credentials-local'
-import FileSettingsProvider from '@origin-ai/xhe-settings-file'
-import * as LlmPiAi from '@origin-ai/xhe-llm-pi-ai'
+import LlmRuntime, { createMessage, createUserMessage } from '@origin-ai/cf-llm'
+import LocalCredentialProvider from '@origin-ai/cf-credentials-local'
+import FileSettingsProvider from '@origin-ai/cf-settings-file'
+import * as LlmPiAi from '@origin-ai/cf-llm-pi-ai'
 import { assemble } from './assemble.ts'
 import { closeMockServers, mockServer, textEvents } from './mock-server.ts'
 
@@ -56,17 +56,17 @@ async function loadComposition(): Promise<{ ctx: Context; settingsPath: string }
     '- id: llm',
     "  name: 'test-llm-service'",
     '- id: settings',
-    "  name: '@origin-ai/xhe-settings-file'",
+    "  name: '@origin-ai/cf-settings-file'",
     '  config:',
     `    path: ${JSON.stringify(settingsPath)}`,
     '    debounceMs: 10',
     '- id: credentials',
-    "  name: '@origin-ai/xhe-credentials-local'",
+    "  name: '@origin-ai/cf-credentials-local'",
     '  config:',
     `    path: ${JSON.stringify(join(root, '.credentials.yaml'))}`,
     '    debounceMs: 10',
     '- id: llm-pi-ai',
-    "  name: '@origin-ai/xhe-llm-pi-ai'",
+    "  name: '@origin-ai/cf-llm-pi-ai'",
     '',
   ].join('\n'))
 
@@ -77,9 +77,9 @@ async function loadComposition(): Promise<{ ctx: Context; settingsPath: string }
   ctx.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
     ['test-llm-service', LlmRuntime],
-    ['@origin-ai/xhe-settings-file', FileSettingsProvider],
-    ['@origin-ai/xhe-credentials-local', LocalCredentialProvider],
-    ['@origin-ai/xhe-llm-pi-ai', LlmPiAi],
+    ['@origin-ai/cf-settings-file', FileSettingsProvider],
+    ['@origin-ai/cf-credentials-local', LocalCredentialProvider],
+    ['@origin-ai/cf-llm-pi-ai', LlmPiAi],
   ])
   ctx.loader.internal = {
     version: 'v2',

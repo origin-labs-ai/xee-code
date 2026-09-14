@@ -1,17 +1,17 @@
 /**
  * Execution types for the bash executor seam. Background job semantics belong
- * to `@origin-ai/xhe-jobs`; this seam exposes only process handles. The
+ * to `@origin-ai/cf-jobs`; this seam exposes only process handles. The
  * managed-environment and captured-output vocabulary is owned by the
  * subprocess seam and re-exported here so bash consumers keep one import
  * root.
  * @module xhe-shell/types
  */
 
-import type { SandboxEnforcement, SandboxExecutionPolicy, SandboxMode } from '@origin-ai/xhe-sandbox'
-import type { CollectedOutput, DshEnvironment } from '@origin-ai/xhe-subprocess'
+import type { SandboxEnforcement, SandboxExecutionPolicy, SandboxMode } from '@origin-ai/cf-sandbox'
+import type { CollectedOutput, DshEnvironment } from '@origin-ai/cf-subprocess'
 
-export { XHE_ENV_PREFIX } from '@origin-ai/xhe-subprocess'
-export type { CollectedOutput, DshEnvironment, DshEnvironmentKey } from '@origin-ai/xhe-subprocess'
+export { XHE_ENV_PREFIX } from '@origin-ai/cf-subprocess'
+export type { CollectedOutput, DshEnvironment, DshEnvironmentKey } from '@origin-ai/cf-subprocess'
 
 /**
  * Sandbox facts for one run, present iff a sandboxing executor handled it.

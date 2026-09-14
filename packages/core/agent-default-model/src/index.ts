@@ -1,14 +1,14 @@
 /**
  * Default model selection for an Agent without a session-specific selection.
  *
- * @module @origin-ai/xhe-agent-default-model
+ * @module @origin-ai/cf-agent-default-model
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import type { ModelSelection } from '@origin-ai/xhe-agent'
-import { ReasoningEffortId } from '@origin-ai/xhe-llm'
-import { installSettingsSection, settingsNamespace } from '@origin-ai/xhe-settings'
+import type { ModelSelection } from '@origin-ai/cf-agent'
+import { ReasoningEffortId } from '@origin-ai/cf-llm'
+import { installSettingsSection, settingsNamespace } from '@origin-ai/cf-settings'
 
 declare module '@deepseek-ai/cordis' {
   interface Context {

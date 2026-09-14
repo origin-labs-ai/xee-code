@@ -2,15 +2,15 @@
  * Named wire types for the Xee Harness Enhanced SDK runtime protocol: the three
  * request/result pairs and the four server-to-client notification payloads
  * exchanged over the newline-delimited JSON-RPC stdio transport. The server
- * plugin (`@origin-ai/xhe-sdk-jsonrpc-server`) and SDK clients share these shapes;
+ * plugin (`@origin-ai/cf-sdk-jsonrpc-server`) and SDK clients share these shapes;
  * `serverInfo.name` stays the wire-stable `xhe-sdk-runtime`.
  *
- * @module @origin-ai/xhe-sdk-protocol/types
+ * @module @origin-ai/cf-sdk-protocol/types
  */
 
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import type { SessionEvent } from '@origin-ai/xhe-session'
-import type { SubagentStopReason } from '@origin-ai/xhe-subagent'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import type { SessionEvent } from '@origin-ai/cf-session'
+import type { SubagentStopReason } from '@origin-ai/cf-subagent'
 
 /** Parameters for the process-wide SDK handshake. */
 export interface InitializeParams {

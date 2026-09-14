@@ -7,8 +7,8 @@ import { memo, useEffect, useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
 import type {
   ModelRetryNode, TurnErrorNode, UserMessageNode,
-} from '@origin-ai/xhe-client-runtime/client'
-import { JsonBlock, MessageText, StateDot } from '@origin-ai/xhe-client-ui-primitives'
+} from '@origin-ai/cf-client-runtime/client'
+import { JsonBlock, MessageText, StateDot } from '@origin-ai/cf-client-ui-primitives'
 import type { ChatNodeOwnerProps, ChatNodeViewProps, ChatViewSlotProps } from '../contract/slots.ts'
 import { ReferenceIcon } from '../reference/ReferenceIcon.tsx'
 import { CompactionItem } from './CompactionItem.tsx'

@@ -2,13 +2,13 @@
 // history fold derive AssistantTiming from the same step/start -> first token
 // delta -> assistant/message sequence.
 
-import { isTokenDelta } from '@origin-ai/xhe-llm/message'
-import type { SessionEvent } from '@origin-ai/xhe-session/types'
+import { isTokenDelta } from '@origin-ai/cf-llm/message'
+import type { SessionEvent } from '@origin-ai/cf-session/types'
 import type { AssistantTiming } from './conversation.ts'
 
 // The first-token predicate lives beside the StreamChunk type in xhe-llm;
 // re-exported here so Chat Definitions keep their client-runtime import.
-export { isTokenDelta } from '@origin-ai/xhe-llm/message'
+export { isTokenDelta } from '@origin-ai/cf-llm/message'
 
 /** Pre-finalize timing boundaries for one assistant step (start + first token). */
 export interface AssistantStepMetadata {

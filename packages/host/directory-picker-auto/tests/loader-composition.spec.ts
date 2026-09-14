@@ -16,10 +16,10 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import Include from '@deepseek-ai/cordis-plugin-include'
-import HttpServer from '@origin-ai/xhe-host-webserver'
-import type { DirectoryPicker } from '@origin-ai/xhe-host-directory-picker'
-import BrowseDirectoryPicker from '@origin-ai/xhe-host-directory-picker-browse'
-import NativeDirectoryPicker from '@origin-ai/xhe-host-directory-picker-native'
+import HttpServer from '@origin-ai/cf-host-webserver'
+import type { DirectoryPicker } from '@origin-ai/cf-host-directory-picker'
+import BrowseDirectoryPicker from '@origin-ai/cf-host-directory-picker-browse'
+import NativeDirectoryPicker from '@origin-ai/cf-host-directory-picker-native'
 import * as DirectoryPickerAuto from '../src/index.ts'
 
 const renameControl = vi.hoisted(() => ({
@@ -45,11 +45,11 @@ vi.mock('node:fs/promises', async (importOriginal) => {
   }
 })
 
-const AUTO = '@origin-ai/xhe-host-directory-picker-auto'
-const NATIVE = '@origin-ai/xhe-host-directory-picker-native'
-const BROWSE = '@origin-ai/xhe-host-directory-picker-browse'
-const NATIVE_SURFACE = '@origin-ai/xhe-client-ui-directory-picker-native'
-const BROWSE_SURFACE = '@origin-ai/xhe-client-ui-directory-picker-browse'
+const AUTO = '@origin-ai/cf-host-directory-picker-auto'
+const NATIVE = '@origin-ai/cf-host-directory-picker-native'
+const BROWSE = '@origin-ai/cf-host-directory-picker-browse'
+const NATIVE_SURFACE = '@origin-ai/cf-client-ui-directory-picker-native'
+const BROWSE_SURFACE = '@origin-ai/cf-client-ui-directory-picker-browse'
 
 /**
  * Loader-visible stand-in for a client surface package: the surfaces belong to
@@ -95,7 +95,7 @@ async function loadComposition(
   root = await mkdtemp(join(tmpdir(), 'xhe-directory-picker-auto-'))
   const configPath = join(root, 'cordis.yml')
   await writeFile(configPath, [
-    "- name: '@origin-ai/xhe-host-webserver'",
+    "- name: '@origin-ai/cf-host-webserver'",
     '  config:',
     `    host: '${bindHost}'`,
     '    port: 0',
@@ -108,7 +108,7 @@ async function loadComposition(
   await context.plugin(Loader)
   context.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@origin-ai/xhe-host-webserver', HttpServer],
+    ['@origin-ai/cf-host-webserver', HttpServer],
     [AUTO, DirectoryPickerAuto],
     [NATIVE, NativeDirectoryPicker],
     [BROWSE, BrowseDirectoryPicker],

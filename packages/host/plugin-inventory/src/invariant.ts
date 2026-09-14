@@ -1,10 +1,10 @@
-/** Package-owned invariant companion. @module @origin-ai/xhe-host-plugin-inventory/invariant */
+/** Package-owned invariant companion. @module @origin-ai/cf-host-plugin-inventory/invariant */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-host-plugin-inventory'
+const PACKAGE_NAME = '@origin-ai/cf-host-plugin-inventory'
 
 /** Cordis companion plugin name. */
 export const name = 'host-plugin-inventory-invariant'

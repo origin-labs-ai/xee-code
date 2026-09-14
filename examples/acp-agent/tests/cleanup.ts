@@ -1,7 +1,7 @@
 /** Shared teardown for ACP example tests. */
 
 import { rm } from 'node:fs/promises'
-import type { LaunchedAcpTestAgent } from '@origin-ai/xhe-acp-snapshot'
+import type { LaunchedAcpTestAgent } from '@origin-ai/cf-acp-snapshot'
 
 /**
  * Close the test agent, then remove its workspace, attempting both operations

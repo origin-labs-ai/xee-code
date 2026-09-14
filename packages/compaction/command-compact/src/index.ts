@@ -1,11 +1,11 @@
 /**
  * Human-facing `/compact` command over the backend-independent compaction seam.
- * @module @origin-ai/xhe-command-compact
+ * @module @origin-ai/cf-command-compact
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import { ManualCompactionError } from '@origin-ai/xhe-compaction'
-import type { CommandInvocation, CommandResult } from '@origin-ai/xhe-commands'
+import { ManualCompactionError } from '@origin-ai/cf-compaction'
+import type { CommandInvocation, CommandResult } from '@origin-ai/cf-commands'
 
 export const name = 'command-compact'
 export const inject = ['commands', 'compaction']

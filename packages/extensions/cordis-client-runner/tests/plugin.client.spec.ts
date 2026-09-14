@@ -10,15 +10,15 @@
 
 import { Context } from '@deepseek-ai/cordis'
 import { describe, expect, it, vi } from 'vitest'
-import InvariantService from '@origin-ai/xhe-invariants'
+import InvariantService from '@origin-ai/cf-invariants'
 import type {
   ApprovalRequestId, CordisDynamicPackageId, CordisDynamicPluginId, CordisDynamicPluginRunId,
-} from '@origin-ai/xhe-api-remotes/client'
-import type { SessionId } from '@origin-ai/xhe-client-connection/client'
-import type { DynamicCordisInvokeResult } from '@origin-ai/xhe-api-remotes/client'
+} from '@origin-ai/cf-api-remotes/client'
+import type { SessionId } from '@origin-ai/cf-client-connection/client'
+import type { DynamicCordisInvokeResult } from '@origin-ai/cf-api-remotes/client'
 // Type-only: resolves `ctx.remote` and with it the `$on`/`$dispatch` surface.
-import type {} from '@origin-ai/xhe-api-gateway/client'
-import { SlotRegistry } from '@origin-ai/xhe-client-runtime/client'
+import type {} from '@origin-ai/cf-api-gateway/client'
+import { SlotRegistry } from '@origin-ai/cf-client-runtime/client'
 import * as NodeHalf from '../src/index.ts'
 import * as Invariant from '../src/invariant.ts'
 import * as ClientHalf from '../src/client/index.ts'

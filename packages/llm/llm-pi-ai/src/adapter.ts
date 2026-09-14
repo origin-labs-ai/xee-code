@@ -44,7 +44,7 @@ import {
   LlmAdapter,
   LlmError,
   ReasoningEffortId,
-} from '@origin-ai/xhe-llm'
+} from '@origin-ai/cf-llm'
 import type {
   GenerateOptions,
   LlmModelInfo,
@@ -54,9 +54,9 @@ import type {
   ReasoningEffortId as ReasoningEffortIdType,
   ResolvedRetryPolicy,
   StreamChunk,
-} from '@origin-ai/xhe-llm'
-import type { AttachmentStore } from '@origin-ai/xhe-attachment'
-import { idleWatchdog, timeoutOf } from '@origin-ai/xhe-timeout'
+} from '@origin-ai/cf-llm'
+import type { AttachmentStore } from '@origin-ai/cf-attachment'
+import { idleWatchdog, timeoutOf } from '@origin-ai/cf-timeout'
 import type { ResolvedPiAiProviderProfile } from './config.ts'
 import { toPiContext } from './context.ts'
 import { toStreamChunks } from './stream.ts'

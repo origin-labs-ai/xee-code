@@ -1,4 +1,4 @@
-# @origin-ai/xhe-anonymous-user-id
+# @origin-ai/cf-anonymous-user-id
 
 Shared anonymous identity for session telemetry, direct feedback acknowledgement, and DeepSeek provider requests. `getOrCreateAnonymousUserId()` returns a random UUID v4 scoped to one harness home, persisted as the bare line `$XHE_HOME/.anonymous-user-id` (`~/.cf/.anonymous-user-id` when `XHE_HOME` is unset). The OpenTelemetry backend reports it as Resource `user.id`; `/feedback` includes the same value in its acknowledgement; and `xhe-llm-deepseek` sends it as `x-xhe-user-id`, allowing the receiving systems to correlate records without independently generated identities.
 

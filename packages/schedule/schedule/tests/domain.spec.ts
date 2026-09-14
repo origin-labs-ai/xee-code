@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import type { SessionEvent } from '@origin-ai/xhe-session'
+import type { SessionEvent } from '@origin-ai/cf-session'
 import {
   ScheduleId,
   ScheduleInputError,

@@ -2,8 +2,8 @@
 
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, fireEvent, render, waitFor } from '@testing-library/react'
-import { AttachmentId } from '@origin-ai/xhe-attachment'
-import type { MessageImagesProps } from '@origin-ai/xhe-client-ui-conversation/client'
+import { AttachmentId } from '@origin-ai/cf-attachment'
+import type { MessageImagesProps } from '@origin-ai/cf-client-ui-conversation/client'
 import { ImageGallery, MessageImage } from '../src/MessageImage.tsx'
 import type { MessageImageLabels } from '../src/MessageImage.tsx'
 import { MessageImages } from '../src/client/MessageImages.tsx'

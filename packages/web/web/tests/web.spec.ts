@@ -7,7 +7,7 @@ import WebRuntime, {
   type WebSearchProvider,
   type WebSearchRequest,
   type WebSearchResult,
-} from '@origin-ai/xhe-web'
+} from '@origin-ai/cf-web'
 
 /** A scripted search provider for contract tests. */
 function makeSearchProvider(

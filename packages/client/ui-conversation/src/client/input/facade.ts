@@ -6,12 +6,12 @@
  * sink). Package-private; the hub alone constructs it and wires the scoped
  * event listeners onto it.
  */
-import type { ClientContext, ObservableSnapshot, SnapshotStore } from '@origin-ai/xhe-client-runtime/client'
-import { createSnapshotStore } from '@origin-ai/xhe-client-runtime/client'
+import type { ClientContext, ObservableSnapshot, SnapshotStore } from '@origin-ai/cf-client-runtime/client'
+import { createSnapshotStore } from '@origin-ai/cf-client-runtime/client'
 import type {
   ArbitrateKey, ArbitrateOutcome, CommandClaim, ConsumeTokenRequest, PickOutcome,
   ReferenceInsert, InputTriggerController, SubmitImageAttachment, SubmitOutcome, TokenSpan,
-} from '@origin-ai/xhe-client-ui-input-trigger/client'
+} from '@origin-ai/cf-client-ui-input-trigger/client'
 import type {
   DraftAttachmentId, EditRange, EditSelection, InputActions, InputEffect, InputNotice, InputState,
   PasteComponent, QueuedMessage, SessionInput, SubmitAttempt,

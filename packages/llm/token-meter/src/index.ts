@@ -1,17 +1,17 @@
 /**
  * Single replay-aware token-meter service for request and surface pressure.
  *
- * @module @origin-ai/xhe-token-meter
+ * @module @origin-ai/cf-token-meter
  */
 
 import { Context, Service } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { BlockAssembler, deepFreeze } from '@origin-ai/xhe-llm'
-import type { Message, TokenUsage } from '@origin-ai/xhe-llm'
-import type { EpochHeader, Session, SessionEvent } from '@origin-ai/xhe-session'
-import { canonicalHeader, headerEquals, isSurfaceEvent } from '@origin-ai/xhe-session'
+import { BlockAssembler, deepFreeze } from '@origin-ai/cf-llm'
+import type { Message, TokenUsage } from '@origin-ai/cf-llm'
+import type { EpochHeader, Session, SessionEvent } from '@origin-ai/cf-session'
+import { canonicalHeader, headerEquals, isSurfaceEvent } from '@origin-ai/cf-session'
 // Type-only: resolves the optional projection registry Context declaration.
-import type {} from '@origin-ai/xhe-session-projection'
+import type {} from '@origin-ai/cf-session-projection'
 import type {
   TokenMeasurement,
   TokenMeasurementBaseline,

@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-sdk-protocol`.
- * @module @origin-ai/xhe-sdk-protocol/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-sdk-protocol`.
+ * @module @origin-ai/cf-sdk-protocol/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-sdk-protocol'
+const PACKAGE_NAME = '@origin-ai/cf-sdk-protocol'
 
 /** Cordis companion plugin name. */
 export const name = 'sdk-protocol-invariant'

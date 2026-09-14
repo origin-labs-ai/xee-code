@@ -20,7 +20,7 @@ Names match the way the platform matches them: exactly on POSIX, case-insensitiv
 
 ```ts
 import type { Context } from '@deepseek-ai/cordis'
-import { launchEnvironmentOf } from '@origin-ai/xhe-launch-environment'
+import { launchEnvironmentOf } from '@origin-ai/cf-launch-environment'
 
 declare const ctx: Context
 const endpoint = launchEnvironmentOf(ctx).get('DEEPSEEK_BASE_URL')?.value

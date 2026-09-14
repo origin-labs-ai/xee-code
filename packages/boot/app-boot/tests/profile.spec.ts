@@ -59,15 +59,15 @@ describe('initProfile', () => {
   it('creates manifest, user patch layer, and pnpm workspace once, never overwriting', () => {
     const home = tmp()
     const dir = resolveProfileDir('tui', home)
-    initProfile(dir, ['@origin-ai/xhe-base'])
+    initProfile(dir, ['@origin-ai/cf-base'])
     const manifest = readProfileManifest('t', dir)
-    expect(manifest.dsh?.profile?.bundles).toEqual(['@origin-ai/xhe-base'])
+    expect(manifest.dsh?.profile?.bundles).toEqual(['@origin-ai/cf-base'])
     expect(readFileSync(join(dir, PROFILE_PATCH_FILENAME), 'utf8')).toContain('[]')
     expect(readFileSync(join(dir, 'pnpm-workspace.yaml'), 'utf8')).toContain('nodeLinker: hoisted')
     // Re-init keeps user edits.
     writeFileSync(join(dir, PROFILE_PATCH_FILENAME), '- id: x\n  config: {}\n')
     initProfile(dir, ['other'])
-    expect(readProfileManifest('t', dir).dsh?.profile?.bundles).toEqual(['@origin-ai/xhe-base'])
+    expect(readProfileManifest('t', dir).dsh?.profile?.bundles).toEqual(['@origin-ai/cf-base'])
     expect(readFileSync(join(dir, PROFILE_PATCH_FILENAME), 'utf8')).toContain('- id: x')
   })
 })
@@ -151,7 +151,7 @@ describe('loadProfile', () => {
     // The web template auto-initializes on first load. Bundle resolution
     // cannot be asserted to fail here: the source-plane test runner resolves
     // @deepseek-ai/* through tsconfig paths regardless of the staged anchor.
-    expect(PROFILE_TEMPLATES.web).toContain('@origin-ai/xhe-base')
+    expect(PROFILE_TEMPLATES.web).toContain('@origin-ai/cf-base')
     try {
       loadProfile('t', 'web', anchor, home)
     } catch {
@@ -163,28 +163,28 @@ describe('loadProfile', () => {
 
   it('normalizes only the exact installation-owned headless bundle tuple', () => {
     const anchor = stageInstallation({
-      '@origin-ai/xhe-base': { patch: '[]\n' },
-      '@origin-ai/xhe-web-app': { patch: '[]\n' },
-      '@origin-ai/xhe-headless': { patch: '[]\n' },
+      '@origin-ai/cf-base': { patch: '[]\n' },
+      '@origin-ai/cf-web-app': { patch: '[]\n' },
+      '@origin-ai/cf-headless': { patch: '[]\n' },
       'custom-bundle': { patch: '[]\n' },
     })
     const home = tmp()
     const stock = resolveProfileDir('headless', home)
     initProfile(stock, [
-      '@origin-ai/xhe-base', '@origin-ai/xhe-web-app', '@origin-ai/xhe-headless',
+      '@origin-ai/cf-base', '@origin-ai/cf-web-app', '@origin-ai/cf-headless',
     ])
     loadProfile('t', 'headless', anchor, home)
     expect(readProfileManifest('t', stock).dsh?.profile?.bundles)
-      .toEqual(['@origin-ai/xhe-base', '@origin-ai/xhe-headless'])
+      .toEqual(['@origin-ai/cf-base', '@origin-ai/cf-headless'])
 
     const customHome = tmp()
     const custom = resolveProfileDir('headless', customHome)
     initProfile(custom, [
-      '@origin-ai/xhe-base', '@origin-ai/xhe-web-app', '@origin-ai/xhe-headless', 'custom-bundle',
+      '@origin-ai/cf-base', '@origin-ai/cf-web-app', '@origin-ai/cf-headless', 'custom-bundle',
     ])
     loadProfile('t', 'headless', anchor, customHome)
     expect(readProfileManifest('t', custom).dsh?.profile?.bundles).toEqual([
-      '@origin-ai/xhe-base', '@origin-ai/xhe-web-app', '@origin-ai/xhe-headless', 'custom-bundle',
+      '@origin-ai/cf-base', '@origin-ai/cf-web-app', '@origin-ai/cf-headless', 'custom-bundle',
     ])
   })
 

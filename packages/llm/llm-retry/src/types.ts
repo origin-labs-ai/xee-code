@@ -1,9 +1,9 @@
-import type { LlmFailure } from '@origin-ai/xhe-llm/types'
+import type { LlmFailure } from '@origin-ai/cf-llm/types'
 import type { RetryId } from './brand.ts'
 
 export type { RetryId }
 
-declare module '@origin-ai/xhe-session/types' {
+declare module '@origin-ai/cf-session/types' {
   interface SessionEventMap {
     /** Durable, non-surface record of one provider-routed retry scheduled after a failed request attempt. */
     'llm/retry': LlmRetryEventData

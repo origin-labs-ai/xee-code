@@ -3,11 +3,11 @@
  * the one-shot background path uses Jobs; continuable children have no Task,
  * no per-message result, and no Task cancellation.
  *
- * @module @origin-ai/xhe-subagent/run-settlement
+ * @module @origin-ai/cf-subagent/run-settlement
  */
 
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import type { JobOutcome } from '@origin-ai/xhe-jobs'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import type { JobOutcome } from '@origin-ai/cf-jobs'
 import type { SubagentResult, SubagentRun } from './types.ts'
 
 /** Flatten a child's final output blocks to the task's final text. */

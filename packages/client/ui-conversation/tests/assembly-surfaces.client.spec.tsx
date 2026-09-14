@@ -3,11 +3,11 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, fireEvent, waitFor, within } from '@testing-library/react'
 import { useState } from 'react'
-import { LocaleRuntime } from '@origin-ai/xhe-client-locale/client'
-import type { ISession, SessionId } from '@origin-ai/xhe-client-runtime/client'
-import type { PropsRenderSlots } from '@origin-ai/xhe-client-ui-slots'
-import { SlotTestRuntime, usePinnedBrowserLanguages, stubSettingsScope } from '@origin-ai/xhe-client-test-runtime'
-import { apply, inject, type EmptyWorkspaceOwnerProps } from '@origin-ai/xhe-client-ui-conversation/client'
+import { LocaleRuntime } from '@origin-ai/cf-client-locale/client'
+import type { ISession, SessionId } from '@origin-ai/cf-client-runtime/client'
+import type { PropsRenderSlots } from '@origin-ai/cf-client-ui-slots'
+import { SlotTestRuntime, usePinnedBrowserLanguages, stubSettingsScope } from '@origin-ai/cf-client-test-runtime'
+import { apply, inject, type EmptyWorkspaceOwnerProps } from '@origin-ai/cf-client-ui-conversation/client'
 
 usePinnedBrowserLanguages('zh-CN')
 

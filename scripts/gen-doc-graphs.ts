@@ -8,9 +8,9 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve } from 'node:path'
 import ts from 'typescript'
-import { projectCordisCatalog } from '@origin-ai/xhe-typert-generator'
+import { projectCordisCatalog } from '@origin-ai/cf-typert-generator'
 import { CORDIS_CATALOG_POLICY } from './gen-cordis-catalog.ts'
-import type { EventEntry, ServiceEntry } from '@origin-ai/xhe-typert-generator'
+import type { EventEntry, ServiceEntry } from '@origin-ai/cf-typert-generator'
 import {
   collectPackageGraph,
   escapeMermaidLabel as escLabel,
@@ -755,10 +755,10 @@ type AppExample = typeof APP_EXAMPLES[number]
 function renderAppExpansion(lines: string[], appNode: string, pluginName: string): void {
   const agentCore = nodeId('bundle', 'agent_core')
   const jsonl = nodeId('bundle', 'jsonl')
-  lines.push(`  ${appNode} --> ${agentCore}["@origin-ai/xhe-agent-spine-demo"]`)
-  lines.push(`  ${appNode} --> ${jsonl}["@origin-ai/xhe-session-persistence-jsonl"]`)
-  if (pluginName === '@origin-ai/xhe-acp-demo') {
-    lines.push(`  ${appNode} --> ${nodeId('entrypoint', 'acp')}["@origin-ai/xhe-acp<br/>automation-only JSON-RPC stdio<br/>fresh sessions created by client"]`)
+  lines.push(`  ${appNode} --> ${agentCore}["@origin-ai/cf-agent-spine-demo"]`)
+  lines.push(`  ${appNode} --> ${jsonl}["@origin-ai/cf-session-persistence-jsonl"]`)
+  if (pluginName === '@origin-ai/cf-acp-demo') {
+    lines.push(`  ${appNode} --> ${nodeId('entrypoint', 'acp')}["@origin-ai/cf-acp<br/>automation-only JSON-RPC stdio<br/>fresh sessions created by client"]`)
   }
   lines.push(
     `  ${agentCore} --> ${nodeId('spine', 'llm')}["ctx.llm"]`,
@@ -783,7 +783,7 @@ function renderAppComposition(example: AppExample): string {
     const pluginNode = nodeId(`plugin_${example.id}`, plugin.id)
     lines.push(`  ${pluginNode}["${escLabel(plugin.id)}<br/>${escLabel(plugin.name)}"]`)
     lines.push(`  cfg --> ${pluginNode}`)
-    if (plugin.name === '@origin-ai/xhe-acp-demo') {
+    if (plugin.name === '@origin-ai/cf-acp-demo') {
       renderAppExpansion(lines, pluginNode, plugin.name)
     }
   }

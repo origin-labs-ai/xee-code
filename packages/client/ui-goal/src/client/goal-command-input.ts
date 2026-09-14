@@ -1,9 +1,9 @@
-import type { SessionEvent } from '@origin-ai/xhe-session/types'
-import type { CommandId } from '@origin-ai/xhe-commands/brand'
-import type {} from '@origin-ai/xhe-commands/types'
+import type { SessionEvent } from '@origin-ai/cf-session/types'
+import type { CommandId } from '@origin-ai/cf-commands/brand'
+import type {} from '@origin-ai/cf-commands/types'
 import type {
   ConversationNodeDefinition,
-} from '@origin-ai/xhe-client-runtime/client'
+} from '@origin-ai/cf-client-runtime/client'
 
 /** Goal-owned human command input projected independently of model messages. */
 export interface GoalCommandInputData {
@@ -12,7 +12,7 @@ export interface GoalCommandInputData {
   readonly time: number
 }
 
-declare module '@origin-ai/xhe-client-ui-conversation/client' {
+declare module '@origin-ai/cf-client-ui-conversation/client' {
   interface ChatNodeDataMap {
     /** Human-entered `/goal` command input. */
     'command-input': GoalCommandInputData

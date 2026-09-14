@@ -1,27 +1,27 @@
 # Minimal tool-pwsh composition: real app boot path, real pwsh executor, real
 # foreground + background tool calls; driven by the package's loader.spec.ts.
 - id: system-prompt
-  name: '@origin-ai/xhe-system-prompt'
+  name: '@origin-ai/cf-system-prompt'
 
 - id: tools
-  name: '@origin-ai/xhe-tools'
+  name: '@origin-ai/cf-tools'
 
 - id: subprocess
-  name: '@origin-ai/xhe-subprocess-local'
+  name: '@origin-ai/cf-subprocess-local'
 
 - id: bash
-  name: '@origin-ai/xhe-pwsh-local'
+  name: '@origin-ai/cf-pwsh-local'
   config:
     graceMs: 200
 
 - id: shell-env
-  name: '@origin-ai/xhe-shell-env'
+  name: '@origin-ai/cf-shell-env'
 
 - id: tasks
-  name: '@origin-ai/xhe-jobs-local'
+  name: '@origin-ai/cf-jobs-local'
 
 - id: tool-jobs
-  name: '@origin-ai/xhe-tool-jobs'
+  name: '@origin-ai/cf-tool-jobs'
 
 - id: tool-pwsh
-  name: '@origin-ai/xhe-tool-pwsh'
+  name: '@origin-ai/cf-tool-pwsh'

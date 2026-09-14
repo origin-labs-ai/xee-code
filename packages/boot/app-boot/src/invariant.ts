@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-app-boot`.
- * @module @origin-ai/xhe-app-boot/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-app-boot`.
+ * @module @origin-ai/cf-app-boot/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-app-boot'
+const PACKAGE_NAME = '@origin-ai/cf-app-boot'
 
 /** Cordis companion plugin name. */
 export const name = 'app-boot-invariant'

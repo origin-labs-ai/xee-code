@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-subagent",
+  "name": "@origin-ai/cf-subagent",
   "description": "Abstract subagent seam (ctx.subagents): named-provider registry for delegating to child agents",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -40,67 +40,67 @@
     "zod": "^4.4.3"
   },
   "peerDependencies": {
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-agent-presets": "workspace:^",
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-sandbox": "workspace:^",
-    "@origin-ai/xhe-sandbox-policy": "workspace:^",
-    "@origin-ai/xhe-scope": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-session-persistence": "workspace:^",
-    "@origin-ai/xhe-session-projection": "workspace:^",
-    "@origin-ai/xhe-session-projection-cache": "workspace:^",
-    "@origin-ai/xhe-jobs": "workspace:^",
-    "@origin-ai/xhe-tools": "workspace:^",
-    "@origin-ai/xhe-user-approval": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-agent-presets": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-sandbox": "workspace:^",
+    "@origin-ai/cf-sandbox-policy": "workspace:^",
+    "@origin-ai/cf-scope": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-session-persistence": "workspace:^",
+    "@origin-ai/cf-session-projection": "workspace:^",
+    "@origin-ai/cf-session-projection-cache": "workspace:^",
+    "@origin-ai/cf-jobs": "workspace:^",
+    "@origin-ai/cf-tools": "workspace:^",
+    "@origin-ai/cf-user-approval": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "peerDependenciesMeta": {
-    "@origin-ai/xhe-agent-presets": {
+    "@origin-ai/cf-agent-presets": {
       "optional": true
     },
-    "@origin-ai/xhe-sandbox": {
+    "@origin-ai/cf-sandbox": {
       "optional": true
     },
-    "@origin-ai/xhe-sandbox-policy": {
+    "@origin-ai/cf-sandbox-policy": {
       "optional": true
     },
-    "@origin-ai/xhe-session-persistence": {
+    "@origin-ai/cf-session-persistence": {
       "optional": true
     },
-    "@origin-ai/xhe-session-projection": {
+    "@origin-ai/cf-session-projection": {
       "optional": true
     },
-    "@origin-ai/xhe-session-projection-cache": {
+    "@origin-ai/cf-session-projection-cache": {
       "optional": true
     },
-    "@origin-ai/xhe-jobs": {
+    "@origin-ai/cf-jobs": {
       "optional": true
     },
-    "@origin-ai/xhe-user-approval": {
+    "@origin-ai/cf-user-approval": {
       "optional": true
     }
   },
   "devDependencies": {
-    "@origin-ai/xhe-agent": "workspace:^",
-    "@origin-ai/xhe-agent-presets": "workspace:^",
-    "@origin-ai/xhe-brand": "workspace:^",
-    "@origin-ai/xhe-invariants": "workspace:^",
-    "@origin-ai/xhe-llm": "workspace:^",
-    "@origin-ai/xhe-sandbox": "workspace:^",
-    "@origin-ai/xhe-sandbox-policy": "workspace:^",
-    "@origin-ai/xhe-scope": "workspace:^",
-    "@origin-ai/xhe-session": "workspace:^",
-    "@origin-ai/xhe-session-persistence": "workspace:^",
-    "@origin-ai/xhe-session-projection": "workspace:^",
-    "@origin-ai/xhe-session-projection-cache": "workspace:^",
-    "@origin-ai/xhe-storage": "workspace:^",
-    "@origin-ai/xhe-storage-domain": "workspace:^",
-    "@origin-ai/xhe-jobs": "workspace:^",
-    "@origin-ai/xhe-tools": "workspace:^",
-    "@origin-ai/xhe-user-approval": "workspace:^",
+    "@origin-ai/cf-agent": "workspace:^",
+    "@origin-ai/cf-agent-presets": "workspace:^",
+    "@origin-ai/cf-brand": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
+    "@origin-ai/cf-llm": "workspace:^",
+    "@origin-ai/cf-sandbox": "workspace:^",
+    "@origin-ai/cf-sandbox-policy": "workspace:^",
+    "@origin-ai/cf-scope": "workspace:^",
+    "@origin-ai/cf-session": "workspace:^",
+    "@origin-ai/cf-session-persistence": "workspace:^",
+    "@origin-ai/cf-session-projection": "workspace:^",
+    "@origin-ai/cf-session-projection-cache": "workspace:^",
+    "@origin-ai/cf-storage": "workspace:^",
+    "@origin-ai/cf-storage-domain": "workspace:^",
+    "@origin-ai/cf-jobs": "workspace:^",
+    "@origin-ai/cf-tools": "workspace:^",
+    "@origin-ai/cf-user-approval": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   }
 }

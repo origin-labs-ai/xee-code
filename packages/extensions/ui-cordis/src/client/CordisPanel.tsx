@@ -5,11 +5,11 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react'
 import {
   IconCheckOutline16, IconCloseOutline16, IconCordisPluginOutline14, IconPlayOutline16,
   IconStopFill16, IconTrashOutline16, Tooltip, useDismissOnOutsidePointer,
-} from '@origin-ai/xhe-client-ui-primitives'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@origin-ai/xhe-client-ui-slots'
-import type {} from '@origin-ai/xhe-client-ui-sidebar/client'
+} from '@origin-ai/cf-client-ui-primitives'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@origin-ai/cf-client-ui-slots'
+import type {} from '@origin-ai/cf-client-ui-sidebar/client'
 import type { CordisRunActivity } from '@deepseek-ai/cordis-client-runner/client'
-import type { SessionId } from '@origin-ai/xhe-client-connection/client'
+import type { SessionId } from '@origin-ai/cf-client-connection/client'
 import type { CordisInventoryRow } from './dynamic-port.ts'
 import type { CordisPanelFace } from './slots.ts'
 import type { CordisKey } from './locales.ts'

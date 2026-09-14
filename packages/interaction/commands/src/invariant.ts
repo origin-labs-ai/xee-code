@@ -1,14 +1,14 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-commands`:
+ * Package-owned invariant companion for `@origin-ai/cf-commands`:
  * command lifecycle events pair by commandId within one session log.
- * @module @origin-ai/xhe-commands/invariant
+ * @module @origin-ai/cf-commands/invariant
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { Session, SessionEvent } from '@origin-ai/xhe-session'
-import type { InvariantFailure, InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { Session, SessionEvent } from '@origin-ai/cf-session'
+import type { InvariantFailure, InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-commands'
+const PACKAGE_NAME = '@origin-ai/cf-commands'
 
 /** Cordis companion plugin name. */
 export const name = 'commands-invariant'

@@ -1,9 +1,9 @@
 /**
  * Bounded per-session write batching for the shared persistence coordinator.
- * @module @origin-ai/xhe-session-persistence/write-behind
+ * @module @origin-ai/cf-session-persistence/write-behind
  */
 
-import type { SessionEvent } from '@origin-ai/xhe-session'
+import type { SessionEvent } from '@origin-ai/cf-session'
 
 /** Dependencies and scheduling policy for one live session's write controller. */
 export interface SessionWriteBehindOptions {

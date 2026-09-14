@@ -10,12 +10,12 @@
     patches:
       - insert:
           - id: web
-            name: '@origin-ai/xhe-web'
+            name: '@origin-ai/cf-web'
           - id: web-fetch-http
-            name: '@origin-ai/xhe-web-fetch-http'
+            name: '@origin-ai/cf-web-fetch-http'
           - id: web-fetch-fixture
             name: './web-fetch-fixture-server.mjs'
           - id: tool-web
-            name: '@origin-ai/xhe-tool-web'
+            name: '@origin-ai/cf-tool-web'
             config:
               search: false

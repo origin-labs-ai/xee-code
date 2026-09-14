@@ -6,12 +6,12 @@
  * the storage-domain routing decides the medium (the shipped composition's
  * json backend lands it at `<root>/session_projcache.json`, beside
  * `workspace.json`).
- * @module @origin-ai/xhe-session-projection-cache/src/spec
+ * @module @origin-ai/cf-session-projection-cache/src/spec
  */
 
 import { z } from 'zod'
-import { SessionId } from '@origin-ai/xhe-session'
-import { defineDomain, domainTable } from '@origin-ai/xhe-storage-domain'
+import { SessionId } from '@origin-ai/cf-session'
+import { defineDomain, domainTable } from '@origin-ai/cf-storage-domain'
 
 /**
  * One persisted checkpoint row (the RFC's `(sessionId, key, ver, seq, val)`

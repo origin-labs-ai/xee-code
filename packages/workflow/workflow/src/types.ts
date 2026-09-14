@@ -3,11 +3,11 @@
  * consumes and produces, plus the fields in the `workflow/*` event payloads.
  * Types only (plus the id-brand factory), per the package convention.
  *
- * @module @origin-ai/xhe-workflow/types
+ * @module @origin-ai/cf-workflow/types
  */
 
-import type { Branded } from '@origin-ai/xhe-brand'
-import type { SessionId } from '@origin-ai/xhe-session/types'
+import type { Branded } from '@origin-ai/cf-brand'
+import type { SessionId } from '@origin-ai/cf-session/types'
 
 /** Identifies one workflow run. */
 export type WorkflowRunId = Branded<'WorkflowRunId'>

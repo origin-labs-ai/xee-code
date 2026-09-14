@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-file-reference-local`.
- * @module @origin-ai/xhe-file-reference-local/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-file-reference-local`.
+ * @module @origin-ai/cf-file-reference-local/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-file-reference-local'
+const PACKAGE_NAME = '@origin-ai/cf-file-reference-local'
 
 /** Cordis companion plugin name. */
 export const name = 'file-reference-local-invariant'

@@ -12,157 +12,157 @@ flowchart LR
   cfg --> plugin_dsh_base_timer
   plugin_dsh_base_hmr["hmr<br/>@deepseek-ai/cordis-plugin-hmr"]
   cfg --> plugin_dsh_base_hmr
-  plugin_dsh_base_llm["llm<br/>@origin-ai/xhe-llm"]
+  plugin_dsh_base_llm["llm<br/>@origin-ai/cf-llm"]
   cfg --> plugin_dsh_base_llm
-  plugin_dsh_base_session["session<br/>@origin-ai/xhe-session"]
+  plugin_dsh_base_session["session<br/>@origin-ai/cf-session"]
   cfg --> plugin_dsh_base_session
-  plugin_dsh_base_typert["typert<br/>@origin-ai/xhe-typert-registry"]
+  plugin_dsh_base_typert["typert<br/>@origin-ai/cf-typert-registry"]
   cfg --> plugin_dsh_base_typert
-  plugin_dsh_base_typert_loader["typert-loader<br/>@origin-ai/xhe-typert-loader"]
+  plugin_dsh_base_typert_loader["typert-loader<br/>@origin-ai/cf-typert-loader"]
   cfg --> plugin_dsh_base_typert_loader
-  plugin_dsh_base_typert_gateway["typert-gateway<br/>@origin-ai/xhe-api-gateway"]
+  plugin_dsh_base_typert_gateway["typert-gateway<br/>@origin-ai/cf-api-gateway"]
   cfg --> plugin_dsh_base_typert_gateway
-  plugin_dsh_base_session_title["session-title<br/>@origin-ai/xhe-session-title"]
+  plugin_dsh_base_session_title["session-title<br/>@origin-ai/cf-session-title"]
   cfg --> plugin_dsh_base_session_title
-  plugin_dsh_base_session_title_llm["session-title-llm<br/>@origin-ai/xhe-session-title-first-prompt-llm"]
+  plugin_dsh_base_session_title_llm["session-title-llm<br/>@origin-ai/cf-session-title-first-prompt-llm"]
   cfg --> plugin_dsh_base_session_title_llm
-  plugin_dsh_base_user_questions["user-questions<br/>@origin-ai/xhe-user-questions"]
+  plugin_dsh_base_user_questions["user-questions<br/>@origin-ai/cf-user-questions"]
   cfg --> plugin_dsh_base_user_questions
-  plugin_dsh_base_agent["agent<br/>@origin-ai/xhe-agent"]
+  plugin_dsh_base_agent["agent<br/>@origin-ai/cf-agent"]
   cfg --> plugin_dsh_base_agent
-  plugin_dsh_base_agent_default_model["agent-default-model<br/>@origin-ai/xhe-agent-default-model"]
+  plugin_dsh_base_agent_default_model["agent-default-model<br/>@origin-ai/cf-agent-default-model"]
   cfg --> plugin_dsh_base_agent_default_model
-  plugin_dsh_base_jobs["jobs<br/>@origin-ai/xhe-jobs-local"]
+  plugin_dsh_base_jobs["jobs<br/>@origin-ai/cf-jobs-local"]
   cfg --> plugin_dsh_base_jobs
-  plugin_dsh_base_llm_retry["llm-retry<br/>@origin-ai/xhe-llm-retry"]
+  plugin_dsh_base_llm_retry["llm-retry<br/>@origin-ai/cf-llm-retry"]
   cfg --> plugin_dsh_base_llm_retry
-  plugin_dsh_base_settings["settings<br/>@origin-ai/xhe-settings-file"]
+  plugin_dsh_base_settings["settings<br/>@origin-ai/cf-settings-file"]
   cfg --> plugin_dsh_base_settings
-  plugin_dsh_base_credentials["credentials<br/>@origin-ai/xhe-credentials-local"]
+  plugin_dsh_base_credentials["credentials<br/>@origin-ai/cf-credentials-local"]
   cfg --> plugin_dsh_base_credentials
-  plugin_dsh_base_llm_pi_ai["llm-pi-ai<br/>@origin-ai/xhe-llm-pi-ai"]
+  plugin_dsh_base_llm_pi_ai["llm-pi-ai<br/>@origin-ai/cf-llm-pi-ai"]
   cfg --> plugin_dsh_base_llm_pi_ai
-  plugin_dsh_base_session_persistence_jsonl["session-persistence-jsonl<br/>@origin-ai/xhe-session-persistence-jsonl"]
+  plugin_dsh_base_session_persistence_jsonl["session-persistence-jsonl<br/>@origin-ai/cf-session-persistence-jsonl"]
   cfg --> plugin_dsh_base_session_persistence_jsonl
-  plugin_dsh_base_attachment_local["attachment-local<br/>@origin-ai/xhe-attachment-local"]
+  plugin_dsh_base_attachment_local["attachment-local<br/>@origin-ai/cf-attachment-local"]
   cfg --> plugin_dsh_base_attachment_local
-  plugin_dsh_base_session_query_sqlite["session-query-sqlite<br/>@origin-ai/xhe-session-query-sqlite"]
+  plugin_dsh_base_session_query_sqlite["session-query-sqlite<br/>@origin-ai/cf-session-query-sqlite"]
   cfg --> plugin_dsh_base_session_query_sqlite
-  plugin_dsh_base_session_projection["session-projection<br/>@origin-ai/xhe-session-projection"]
+  plugin_dsh_base_session_projection["session-projection<br/>@origin-ai/cf-session-projection"]
   cfg --> plugin_dsh_base_session_projection
-  plugin_dsh_base_session_telemetry_otel["session-telemetry-otel<br/>@origin-ai/xhe-session-telemetry-otel"]
+  plugin_dsh_base_session_telemetry_otel["session-telemetry-otel<br/>@origin-ai/cf-session-telemetry-otel"]
   cfg --> plugin_dsh_base_session_telemetry_otel
-  plugin_dsh_base_subprocess["subprocess<br/>@origin-ai/xhe-subprocess-local"]
+  plugin_dsh_base_subprocess["subprocess<br/>@origin-ai/cf-subprocess-local"]
   cfg --> plugin_dsh_base_subprocess
-  plugin_dsh_base_sandbox["sandbox<br/>@origin-ai/xhe-sandbox-local"]
+  plugin_dsh_base_sandbox["sandbox<br/>@origin-ai/cf-sandbox-local"]
   cfg --> plugin_dsh_base_sandbox
-  plugin_dsh_base_sandbox_policy["sandbox-policy<br/>@origin-ai/xhe-sandbox-policy"]
+  plugin_dsh_base_sandbox_policy["sandbox-policy<br/>@origin-ai/cf-sandbox-policy"]
   cfg --> plugin_dsh_base_sandbox_policy
-  plugin_dsh_base_bash_sandbox["bash-sandbox<br/>@origin-ai/xhe-bash-sandbox"]
+  plugin_dsh_base_bash_sandbox["bash-sandbox<br/>@origin-ai/cf-bash-sandbox"]
   cfg --> plugin_dsh_base_bash_sandbox
-  plugin_dsh_base_pwsh_sandbox["pwsh-sandbox<br/>@origin-ai/xhe-pwsh-sandbox"]
+  plugin_dsh_base_pwsh_sandbox["pwsh-sandbox<br/>@origin-ai/cf-pwsh-sandbox"]
   cfg --> plugin_dsh_base_pwsh_sandbox
-  plugin_dsh_base_approval["approval<br/>@origin-ai/xhe-user-approval"]
+  plugin_dsh_base_approval["approval<br/>@origin-ai/cf-user-approval"]
   cfg --> plugin_dsh_base_approval
-  plugin_dsh_base_permission["permission<br/>@origin-ai/xhe-permission-presets"]
+  plugin_dsh_base_permission["permission<br/>@origin-ai/cf-permission-presets"]
   cfg --> plugin_dsh_base_permission
-  plugin_dsh_base_shell_env["shell-env<br/>@origin-ai/xhe-shell-env"]
+  plugin_dsh_base_shell_env["shell-env<br/>@origin-ai/cf-shell-env"]
   cfg --> plugin_dsh_base_shell_env
-  plugin_dsh_base_tool_bash["tool-bash<br/>@origin-ai/xhe-tool-bash"]
+  plugin_dsh_base_tool_bash["tool-bash<br/>@origin-ai/cf-tool-bash"]
   cfg --> plugin_dsh_base_tool_bash
-  plugin_dsh_base_tool_pwsh["tool-pwsh<br/>@origin-ai/xhe-tool-pwsh"]
+  plugin_dsh_base_tool_pwsh["tool-pwsh<br/>@origin-ai/cf-tool-pwsh"]
   cfg --> plugin_dsh_base_tool_pwsh
-  plugin_dsh_base_tool_jobs["tool-jobs<br/>@origin-ai/xhe-tool-jobs"]
+  plugin_dsh_base_tool_jobs["tool-jobs<br/>@origin-ai/cf-tool-jobs"]
   cfg --> plugin_dsh_base_tool_jobs
-  plugin_dsh_base_fs_observation_policy["fs-observation-policy<br/>@origin-ai/xhe-fs-observation-policy"]
+  plugin_dsh_base_fs_observation_policy["fs-observation-policy<br/>@origin-ai/cf-fs-observation-policy"]
   cfg --> plugin_dsh_base_fs_observation_policy
-  plugin_dsh_base_tool_fs["tool-fs<br/>@origin-ai/xhe-tool-fs"]
+  plugin_dsh_base_tool_fs["tool-fs<br/>@origin-ai/cf-tool-fs"]
   cfg --> plugin_dsh_base_tool_fs
-  plugin_dsh_base_tool_fs_search["tool-fs-search<br/>@origin-ai/xhe-tool-fs-search"]
+  plugin_dsh_base_tool_fs_search["tool-fs-search<br/>@origin-ai/cf-tool-fs-search"]
   cfg --> plugin_dsh_base_tool_fs_search
-  plugin_dsh_base_agent_instructions["agent-instructions<br/>@origin-ai/xhe-agent-instructions"]
+  plugin_dsh_base_agent_instructions["agent-instructions<br/>@origin-ai/cf-agent-instructions"]
   cfg --> plugin_dsh_base_agent_instructions
-  plugin_dsh_base_skill["skill<br/>@origin-ai/xhe-skill"]
+  plugin_dsh_base_skill["skill<br/>@origin-ai/cf-skill"]
   cfg --> plugin_dsh_base_skill
-  plugin_dsh_base_skill_filesystem["skill-filesystem<br/>@origin-ai/xhe-skill-filesystem"]
+  plugin_dsh_base_skill_filesystem["skill-filesystem<br/>@origin-ai/cf-skill-filesystem"]
   cfg --> plugin_dsh_base_skill_filesystem
-  plugin_dsh_base_skill_badge["skill-badge<br/>@origin-ai/xhe-skill-badge"]
+  plugin_dsh_base_skill_badge["skill-badge<br/>@origin-ai/cf-skill-badge"]
   cfg --> plugin_dsh_base_skill_badge
-  plugin_dsh_base_tool_skill["tool-skill<br/>@origin-ai/xhe-tool-skill"]
+  plugin_dsh_base_tool_skill["tool-skill<br/>@origin-ai/cf-tool-skill"]
   cfg --> plugin_dsh_base_tool_skill
-  plugin_dsh_base_commands["commands<br/>@origin-ai/xhe-commands"]
+  plugin_dsh_base_commands["commands<br/>@origin-ai/cf-commands"]
   cfg --> plugin_dsh_base_commands
-  plugin_dsh_base_command_feedback["command-feedback<br/>@origin-ai/xhe-command-feedback"]
+  plugin_dsh_base_command_feedback["command-feedback<br/>@origin-ai/cf-command-feedback"]
   cfg --> plugin_dsh_base_command_feedback
-  plugin_dsh_base_goal["goal<br/>@origin-ai/xhe-goal"]
+  plugin_dsh_base_goal["goal<br/>@origin-ai/cf-goal"]
   cfg --> plugin_dsh_base_goal
-  plugin_dsh_base_goal_round_driver["goal-round-driver<br/>@origin-ai/xhe-goal-round-driver"]
+  plugin_dsh_base_goal_round_driver["goal-round-driver<br/>@origin-ai/cf-goal-round-driver"]
   cfg --> plugin_dsh_base_goal_round_driver
-  plugin_dsh_base_command_goal["command-goal<br/>@origin-ai/xhe-command-goal"]
+  plugin_dsh_base_command_goal["command-goal<br/>@origin-ai/cf-command-goal"]
   cfg --> plugin_dsh_base_command_goal
-  plugin_dsh_base_plan_mode["plan-mode<br/>@origin-ai/xhe-plan-mode"]
+  plugin_dsh_base_plan_mode["plan-mode<br/>@origin-ai/cf-plan-mode"]
   cfg --> plugin_dsh_base_plan_mode
-  plugin_dsh_base_token_meter["token-meter<br/>@origin-ai/xhe-token-meter"]
+  plugin_dsh_base_token_meter["token-meter<br/>@origin-ai/cf-token-meter"]
   cfg --> plugin_dsh_base_token_meter
-  plugin_dsh_base_compaction_basic["compaction-basic<br/>@origin-ai/xhe-compaction-basic"]
+  plugin_dsh_base_compaction_basic["compaction-basic<br/>@origin-ai/cf-compaction-basic"]
   cfg --> plugin_dsh_base_compaction_basic
-  plugin_dsh_base_command_compact["command-compact<br/>@origin-ai/xhe-command-compact"]
+  plugin_dsh_base_command_compact["command-compact<br/>@origin-ai/cf-command-compact"]
   cfg --> plugin_dsh_base_command_compact
-  plugin_dsh_base_subagent["subagent<br/>@origin-ai/xhe-subagent"]
+  plugin_dsh_base_subagent["subagent<br/>@origin-ai/cf-subagent"]
   cfg --> plugin_dsh_base_subagent
-  plugin_dsh_base_subagent_spawn_in_process["subagent-spawn-in-process<br/>@origin-ai/xhe-subagent-spawn-in-process"]
+  plugin_dsh_base_subagent_spawn_in_process["subagent-spawn-in-process<br/>@origin-ai/cf-subagent-spawn-in-process"]
   cfg --> plugin_dsh_base_subagent_spawn_in_process
-  plugin_dsh_base_subagent_fork_in_process["subagent-fork-in-process<br/>@origin-ai/xhe-subagent-fork-in-process"]
+  plugin_dsh_base_subagent_fork_in_process["subagent-fork-in-process<br/>@origin-ai/cf-subagent-fork-in-process"]
   cfg --> plugin_dsh_base_subagent_fork_in_process
-  plugin_dsh_base_tool_subagent_control["tool-subagent-control<br/>@origin-ai/xhe-tool-subagent-control"]
+  plugin_dsh_base_tool_subagent_control["tool-subagent-control<br/>@origin-ai/cf-tool-subagent-control"]
   cfg --> plugin_dsh_base_tool_subagent_control
-  plugin_dsh_base_tool_subagent_list_agents["tool-subagent-list-agents<br/>@origin-ai/xhe-tool-subagent-control/list-agents"]
+  plugin_dsh_base_tool_subagent_list_agents["tool-subagent-list-agents<br/>@origin-ai/cf-tool-subagent-control/list-agents"]
   cfg --> plugin_dsh_base_tool_subagent_list_agents
-  plugin_dsh_base_tool_subagent["tool-subagent<br/>@origin-ai/xhe-tool-subagent"]
+  plugin_dsh_base_tool_subagent["tool-subagent<br/>@origin-ai/cf-tool-subagent"]
   cfg --> plugin_dsh_base_tool_subagent
-  plugin_dsh_base_tool_subagent_fork["tool-subagent-fork<br/>@origin-ai/xhe-tool-subagent"]
+  plugin_dsh_base_tool_subagent_fork["tool-subagent-fork<br/>@origin-ai/cf-tool-subagent"]
   cfg --> plugin_dsh_base_tool_subagent_fork
-  plugin_dsh_base_tool_subagent_report["tool-subagent-report<br/>@origin-ai/xhe-tool-subagent-report"]
+  plugin_dsh_base_tool_subagent_report["tool-subagent-report<br/>@origin-ai/cf-tool-subagent-report"]
   cfg --> plugin_dsh_base_tool_subagent_report
-  plugin_dsh_base_workflow_worker_thread["workflow-worker-thread<br/>@origin-ai/xhe-workflow-worker-thread"]
+  plugin_dsh_base_workflow_worker_thread["workflow-worker-thread<br/>@origin-ai/cf-workflow-worker-thread"]
   cfg --> plugin_dsh_base_workflow_worker_thread
-  plugin_dsh_base_tool_workflow["tool-workflow<br/>@origin-ai/xhe-tool-workflow"]
+  plugin_dsh_base_tool_workflow["tool-workflow<br/>@origin-ai/cf-tool-workflow"]
   cfg --> plugin_dsh_base_tool_workflow
-  plugin_dsh_base_timeout_policy["timeout-policy<br/>@origin-ai/xhe-tool-call-timeout-policy"]
+  plugin_dsh_base_timeout_policy["timeout-policy<br/>@origin-ai/cf-tool-call-timeout-policy"]
   cfg --> plugin_dsh_base_timeout_policy
-  plugin_dsh_base_spill_local["spill-local<br/>@origin-ai/xhe-spill-local"]
+  plugin_dsh_base_spill_local["spill-local<br/>@origin-ai/cf-spill-local"]
   cfg --> plugin_dsh_base_spill_local
-  plugin_dsh_base_spill_policy["spill-policy<br/>@origin-ai/xhe-spill-policy"]
+  plugin_dsh_base_spill_policy["spill-policy<br/>@origin-ai/cf-spill-policy"]
   cfg --> plugin_dsh_base_spill_policy
-  plugin_dsh_base_session_checkpoint_policy["session-checkpoint-policy<br/>@origin-ai/xhe-session-checkpoint-policy"]
+  plugin_dsh_base_session_checkpoint_policy["session-checkpoint-policy<br/>@origin-ai/cf-session-checkpoint-policy"]
   cfg --> plugin_dsh_base_session_checkpoint_policy
-  plugin_dsh_base_tool_result_pruner["tool-result-pruner<br/>@origin-ai/xhe-compaction-tool-result-pruner"]
+  plugin_dsh_base_tool_result_pruner["tool-result-pruner<br/>@origin-ai/cf-compaction-tool-result-pruner"]
   cfg --> plugin_dsh_base_tool_result_pruner
-  plugin_dsh_base_tool_todo["tool-todo<br/>@origin-ai/xhe-tool-todo"]
+  plugin_dsh_base_tool_todo["tool-todo<br/>@origin-ai/cf-tool-todo"]
   cfg --> plugin_dsh_base_tool_todo
-  plugin_dsh_base_tool_goal["tool-goal<br/>@origin-ai/xhe-tool-goal"]
+  plugin_dsh_base_tool_goal["tool-goal<br/>@origin-ai/cf-tool-goal"]
   cfg --> plugin_dsh_base_tool_goal
-  plugin_dsh_base_tool_ralph["tool-ralph<br/>@origin-ai/xhe-tool-ralph"]
+  plugin_dsh_base_tool_ralph["tool-ralph<br/>@origin-ai/cf-tool-ralph"]
   cfg --> plugin_dsh_base_tool_ralph
-  plugin_dsh_base_tool_str_replace_editor["tool-str-replace-editor<br/>@origin-ai/xhe-tool-str-replace-editor"]
+  plugin_dsh_base_tool_str_replace_editor["tool-str-replace-editor<br/>@origin-ai/cf-tool-str-replace-editor"]
   cfg --> plugin_dsh_base_tool_str_replace_editor
-  plugin_dsh_base_repeat_tool_reminder["repeat-tool-reminder<br/>@origin-ai/xhe-repeat-tool-reminder"]
+  plugin_dsh_base_repeat_tool_reminder["repeat-tool-reminder<br/>@origin-ai/cf-repeat-tool-reminder"]
   cfg --> plugin_dsh_base_repeat_tool_reminder
-  plugin_dsh_base_web["web<br/>@origin-ai/xhe-web"]
+  plugin_dsh_base_web["web<br/>@origin-ai/cf-web"]
   cfg --> plugin_dsh_base_web
-  plugin_dsh_base_web_search_deepseek["web-search-deepseek<br/>@origin-ai/xhe-web-search-deepseek"]
+  plugin_dsh_base_web_search_deepseek["web-search-deepseek<br/>@origin-ai/cf-web-search-deepseek"]
   cfg --> plugin_dsh_base_web_search_deepseek
-  plugin_dsh_base_tool_web["tool-web<br/>@origin-ai/xhe-tool-web"]
+  plugin_dsh_base_tool_web["tool-web<br/>@origin-ai/cf-tool-web"]
   cfg --> plugin_dsh_base_tool_web
-  plugin_dsh_base_tools["tools<br/>@origin-ai/xhe-tools"]
+  plugin_dsh_base_tools["tools<br/>@origin-ai/cf-tools"]
   cfg --> plugin_dsh_base_tools
-  plugin_dsh_base_system_prompt["system-prompt<br/>@origin-ai/xhe-system-prompt"]
+  plugin_dsh_base_system_prompt["system-prompt<br/>@origin-ai/cf-system-prompt"]
   cfg --> plugin_dsh_base_system_prompt
-  plugin_dsh_base_agent_loop["agent-loop<br/>@origin-ai/xhe-agent-loop"]
+  plugin_dsh_base_agent_loop["agent-loop<br/>@origin-ai/cf-agent-loop"]
   cfg --> plugin_dsh_base_agent_loop
-  plugin_dsh_base_fs_sandbox["fs-sandbox<br/>@origin-ai/xhe-fs-sandbox"]
+  plugin_dsh_base_fs_sandbox["fs-sandbox<br/>@origin-ai/cf-fs-sandbox"]
   cfg --> plugin_dsh_base_fs_sandbox
-  plugin_dsh_base_llm_deepseek["llm-deepseek<br/>@origin-ai/xhe-llm-deepseek"]
+  plugin_dsh_base_llm_deepseek["llm-deepseek<br/>@origin-ai/cf-llm-deepseek"]
   cfg --> plugin_dsh_base_llm_deepseek
 ```
 
@@ -170,82 +170,82 @@ flowchart LR
 | --- | --- |
 | `timer` | `@deepseek-ai/cordis-plugin-timer` |
 | `hmr` | `@deepseek-ai/cordis-plugin-hmr` |
-| `llm` | `@origin-ai/xhe-llm` |
-| `session` | `@origin-ai/xhe-session` |
-| `typert` | `@origin-ai/xhe-typert-registry` |
-| `typert-loader` | `@origin-ai/xhe-typert-loader` |
-| `typert-gateway` | `@origin-ai/xhe-api-gateway` |
-| `session-title` | `@origin-ai/xhe-session-title` |
-| `session-title-llm` | `@origin-ai/xhe-session-title-first-prompt-llm` |
-| `user-questions` | `@origin-ai/xhe-user-questions` |
-| `agent` | `@origin-ai/xhe-agent` |
-| `agent-default-model` | `@origin-ai/xhe-agent-default-model` |
-| `jobs` | `@origin-ai/xhe-jobs-local` |
-| `llm-retry` | `@origin-ai/xhe-llm-retry` |
-| `settings` | `@origin-ai/xhe-settings-file` |
-| `credentials` | `@origin-ai/xhe-credentials-local` |
-| `llm-pi-ai` | `@origin-ai/xhe-llm-pi-ai` |
-| `session-persistence-jsonl` | `@origin-ai/xhe-session-persistence-jsonl` |
-| `attachment-local` | `@origin-ai/xhe-attachment-local` |
-| `session-query-sqlite` | `@origin-ai/xhe-session-query-sqlite` |
-| `session-projection` | `@origin-ai/xhe-session-projection` |
-| `session-telemetry-otel` | `@origin-ai/xhe-session-telemetry-otel` |
-| `subprocess` | `@origin-ai/xhe-subprocess-local` |
-| `sandbox` | `@origin-ai/xhe-sandbox-local` |
-| `sandbox-policy` | `@origin-ai/xhe-sandbox-policy` |
-| `bash-sandbox` | `@origin-ai/xhe-bash-sandbox` |
-| `pwsh-sandbox` | `@origin-ai/xhe-pwsh-sandbox` |
-| `approval` | `@origin-ai/xhe-user-approval` |
-| `permission` | `@origin-ai/xhe-permission-presets` |
-| `shell-env` | `@origin-ai/xhe-shell-env` |
-| `tool-bash` | `@origin-ai/xhe-tool-bash` |
-| `tool-pwsh` | `@origin-ai/xhe-tool-pwsh` |
-| `tool-jobs` | `@origin-ai/xhe-tool-jobs` |
-| `fs-observation-policy` | `@origin-ai/xhe-fs-observation-policy` |
-| `tool-fs` | `@origin-ai/xhe-tool-fs` |
-| `tool-fs-search` | `@origin-ai/xhe-tool-fs-search` |
-| `agent-instructions` | `@origin-ai/xhe-agent-instructions` |
-| `skill` | `@origin-ai/xhe-skill` |
-| `skill-filesystem` | `@origin-ai/xhe-skill-filesystem` |
-| `skill-badge` | `@origin-ai/xhe-skill-badge` |
-| `tool-skill` | `@origin-ai/xhe-tool-skill` |
-| `commands` | `@origin-ai/xhe-commands` |
-| `command-feedback` | `@origin-ai/xhe-command-feedback` |
-| `goal` | `@origin-ai/xhe-goal` |
-| `goal-round-driver` | `@origin-ai/xhe-goal-round-driver` |
-| `command-goal` | `@origin-ai/xhe-command-goal` |
-| `plan-mode` | `@origin-ai/xhe-plan-mode` |
-| `token-meter` | `@origin-ai/xhe-token-meter` |
-| `compaction-basic` | `@origin-ai/xhe-compaction-basic` |
-| `command-compact` | `@origin-ai/xhe-command-compact` |
-| `subagent` | `@origin-ai/xhe-subagent` |
-| `subagent-spawn-in-process` | `@origin-ai/xhe-subagent-spawn-in-process` |
-| `subagent-fork-in-process` | `@origin-ai/xhe-subagent-fork-in-process` |
-| `tool-subagent-control` | `@origin-ai/xhe-tool-subagent-control` |
-| `tool-subagent-list-agents` | `@origin-ai/xhe-tool-subagent-control/list-agents` |
-| `tool-subagent` | `@origin-ai/xhe-tool-subagent` |
-| `tool-subagent-fork` | `@origin-ai/xhe-tool-subagent` |
-| `tool-subagent-report` | `@origin-ai/xhe-tool-subagent-report` |
-| `workflow-worker-thread` | `@origin-ai/xhe-workflow-worker-thread` |
-| `tool-workflow` | `@origin-ai/xhe-tool-workflow` |
-| `timeout-policy` | `@origin-ai/xhe-tool-call-timeout-policy` |
-| `spill-local` | `@origin-ai/xhe-spill-local` |
-| `spill-policy` | `@origin-ai/xhe-spill-policy` |
-| `session-checkpoint-policy` | `@origin-ai/xhe-session-checkpoint-policy` |
-| `tool-result-pruner` | `@origin-ai/xhe-compaction-tool-result-pruner` |
-| `tool-todo` | `@origin-ai/xhe-tool-todo` |
-| `tool-goal` | `@origin-ai/xhe-tool-goal` |
-| `tool-ralph` | `@origin-ai/xhe-tool-ralph` |
-| `tool-str-replace-editor` | `@origin-ai/xhe-tool-str-replace-editor` |
-| `repeat-tool-reminder` | `@origin-ai/xhe-repeat-tool-reminder` |
-| `web` | `@origin-ai/xhe-web` |
-| `web-search-deepseek` | `@origin-ai/xhe-web-search-deepseek` |
-| `tool-web` | `@origin-ai/xhe-tool-web` |
-| `tools` | `@origin-ai/xhe-tools` |
-| `system-prompt` | `@origin-ai/xhe-system-prompt` |
-| `agent-loop` | `@origin-ai/xhe-agent-loop` |
-| `fs-sandbox` | `@origin-ai/xhe-fs-sandbox` |
-| `llm-deepseek` | `@origin-ai/xhe-llm-deepseek` |
+| `llm` | `@origin-ai/cf-llm` |
+| `session` | `@origin-ai/cf-session` |
+| `typert` | `@origin-ai/cf-typert-registry` |
+| `typert-loader` | `@origin-ai/cf-typert-loader` |
+| `typert-gateway` | `@origin-ai/cf-api-gateway` |
+| `session-title` | `@origin-ai/cf-session-title` |
+| `session-title-llm` | `@origin-ai/cf-session-title-first-prompt-llm` |
+| `user-questions` | `@origin-ai/cf-user-questions` |
+| `agent` | `@origin-ai/cf-agent` |
+| `agent-default-model` | `@origin-ai/cf-agent-default-model` |
+| `jobs` | `@origin-ai/cf-jobs-local` |
+| `llm-retry` | `@origin-ai/cf-llm-retry` |
+| `settings` | `@origin-ai/cf-settings-file` |
+| `credentials` | `@origin-ai/cf-credentials-local` |
+| `llm-pi-ai` | `@origin-ai/cf-llm-pi-ai` |
+| `session-persistence-jsonl` | `@origin-ai/cf-session-persistence-jsonl` |
+| `attachment-local` | `@origin-ai/cf-attachment-local` |
+| `session-query-sqlite` | `@origin-ai/cf-session-query-sqlite` |
+| `session-projection` | `@origin-ai/cf-session-projection` |
+| `session-telemetry-otel` | `@origin-ai/cf-session-telemetry-otel` |
+| `subprocess` | `@origin-ai/cf-subprocess-local` |
+| `sandbox` | `@origin-ai/cf-sandbox-local` |
+| `sandbox-policy` | `@origin-ai/cf-sandbox-policy` |
+| `bash-sandbox` | `@origin-ai/cf-bash-sandbox` |
+| `pwsh-sandbox` | `@origin-ai/cf-pwsh-sandbox` |
+| `approval` | `@origin-ai/cf-user-approval` |
+| `permission` | `@origin-ai/cf-permission-presets` |
+| `shell-env` | `@origin-ai/cf-shell-env` |
+| `tool-bash` | `@origin-ai/cf-tool-bash` |
+| `tool-pwsh` | `@origin-ai/cf-tool-pwsh` |
+| `tool-jobs` | `@origin-ai/cf-tool-jobs` |
+| `fs-observation-policy` | `@origin-ai/cf-fs-observation-policy` |
+| `tool-fs` | `@origin-ai/cf-tool-fs` |
+| `tool-fs-search` | `@origin-ai/cf-tool-fs-search` |
+| `agent-instructions` | `@origin-ai/cf-agent-instructions` |
+| `skill` | `@origin-ai/cf-skill` |
+| `skill-filesystem` | `@origin-ai/cf-skill-filesystem` |
+| `skill-badge` | `@origin-ai/cf-skill-badge` |
+| `tool-skill` | `@origin-ai/cf-tool-skill` |
+| `commands` | `@origin-ai/cf-commands` |
+| `command-feedback` | `@origin-ai/cf-command-feedback` |
+| `goal` | `@origin-ai/cf-goal` |
+| `goal-round-driver` | `@origin-ai/cf-goal-round-driver` |
+| `command-goal` | `@origin-ai/cf-command-goal` |
+| `plan-mode` | `@origin-ai/cf-plan-mode` |
+| `token-meter` | `@origin-ai/cf-token-meter` |
+| `compaction-basic` | `@origin-ai/cf-compaction-basic` |
+| `command-compact` | `@origin-ai/cf-command-compact` |
+| `subagent` | `@origin-ai/cf-subagent` |
+| `subagent-spawn-in-process` | `@origin-ai/cf-subagent-spawn-in-process` |
+| `subagent-fork-in-process` | `@origin-ai/cf-subagent-fork-in-process` |
+| `tool-subagent-control` | `@origin-ai/cf-tool-subagent-control` |
+| `tool-subagent-list-agents` | `@origin-ai/cf-tool-subagent-control/list-agents` |
+| `tool-subagent` | `@origin-ai/cf-tool-subagent` |
+| `tool-subagent-fork` | `@origin-ai/cf-tool-subagent` |
+| `tool-subagent-report` | `@origin-ai/cf-tool-subagent-report` |
+| `workflow-worker-thread` | `@origin-ai/cf-workflow-worker-thread` |
+| `tool-workflow` | `@origin-ai/cf-tool-workflow` |
+| `timeout-policy` | `@origin-ai/cf-tool-call-timeout-policy` |
+| `spill-local` | `@origin-ai/cf-spill-local` |
+| `spill-policy` | `@origin-ai/cf-spill-policy` |
+| `session-checkpoint-policy` | `@origin-ai/cf-session-checkpoint-policy` |
+| `tool-result-pruner` | `@origin-ai/cf-compaction-tool-result-pruner` |
+| `tool-todo` | `@origin-ai/cf-tool-todo` |
+| `tool-goal` | `@origin-ai/cf-tool-goal` |
+| `tool-ralph` | `@origin-ai/cf-tool-ralph` |
+| `tool-str-replace-editor` | `@origin-ai/cf-tool-str-replace-editor` |
+| `repeat-tool-reminder` | `@origin-ai/cf-repeat-tool-reminder` |
+| `web` | `@origin-ai/cf-web` |
+| `web-search-deepseek` | `@origin-ai/cf-web-search-deepseek` |
+| `tool-web` | `@origin-ai/cf-tool-web` |
+| `tools` | `@origin-ai/cf-tools` |
+| `system-prompt` | `@origin-ai/cf-system-prompt` |
+| `agent-loop` | `@origin-ai/cf-agent-loop` |
+| `fs-sandbox` | `@origin-ai/cf-fs-sandbox` |
+| `llm-deepseek` | `@origin-ai/cf-llm-deepseek` |
 
 Source config: [`packages/bundle/base/cordis.patch.yml`](../../packages/bundle/base/cordis.patch.yml).
 

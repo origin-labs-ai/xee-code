@@ -7,9 +7,9 @@
  */
 
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import type { SessionEvent } from '@origin-ai/xhe-session/types'
-import type {} from '@origin-ai/xhe-commands/types'
-import type { SessionId } from '@origin-ai/xhe-api-remotes/client'
+import type { SessionEvent } from '@origin-ai/cf-session/types'
+import type {} from '@origin-ai/cf-commands/types'
+import type { SessionId } from '@origin-ai/cf-api-remotes/client'
 import { Session } from '../src/client/sessions/session.ts'
 import type {
   ChatConversationViewNode, ChatLocationNodeIndex, ChatNodeStore, ChatSnapshot,

@@ -1,13 +1,13 @@
 /**
- * Package-owned invariant companion for `@origin-ai/xhe-tool-lsp`.
- * @module @origin-ai/xhe-tool-lsp/invariant
+ * Package-owned invariant companion for `@origin-ai/cf-tool-lsp`.
+ * @module @origin-ai/cf-tool-lsp/invariant
  */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
-import type { InvariantInstaller } from '@origin-ai/xhe-invariants'
+import type { InvariantInstaller } from '@origin-ai/cf-invariants'
 
-const PACKAGE_NAME = '@origin-ai/xhe-tool-lsp'
+const PACKAGE_NAME = '@origin-ai/cf-tool-lsp'
 
 /** Cordis companion plugin name. */
 export const name = 'tool-lsp-invariant'

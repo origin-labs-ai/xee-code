@@ -4,11 +4,11 @@
  * Adapters expose one resolved policy per registered provider route; the
  * optional xhe-llm-retry plugin executes it on the agent's failed-step extension point.
  *
- * @module @origin-ai/xhe-llm/retry-policy
+ * @module @origin-ai/cf-llm/retry-policy
  */
 
 import z from '@deepseek-ai/schemastery'
-import { MAX_TIMER_DELAY_MS } from '@origin-ai/xhe-timeout'
+import { MAX_TIMER_DELAY_MS } from '@origin-ai/cf-timeout'
 import { EMPTY_RESPONSE_CODE } from './error.ts'
 
 const DEFAULT_MAX_RETRIES = 5

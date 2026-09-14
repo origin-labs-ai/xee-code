@@ -1,4 +1,4 @@
-# @origin-ai/xhe-goal-round-driver
+# @origin-ai/cf-goal-round-driver
 
 Same-session continuation driver for [`ctx.goals`](../goal/README.md). It turns an active, armed goal into sequential [goal rounds](../../../docs/glossary.md#goal-round) through the public `Agent` and session services; the [same-session driver Agent Note](../../../.agents/notes/implemented/feature/2026-07-19-same-session-goal-round-driver.md) owns the race and lifecycle rationale.
 
@@ -6,13 +6,13 @@ Same-session continuation driver for [`ctx.goals`](../goal/README.md). It turns 
 
 ```yaml
 - id: goal
-  name: '@origin-ai/xhe-goal'
+  name: '@origin-ai/cf-goal'
 
 - id: tool-goal
-  name: '@origin-ai/xhe-tool-goal'
+  name: '@origin-ai/cf-tool-goal'
 
 - id: goal-round-driver
-  name: '@origin-ai/xhe-goal-round-driver'
+  name: '@origin-ai/cf-goal-round-driver'
 ```
 
 The plugin has no tunable configuration. `maxGoalRounds` belongs to the goal definition, while the model-facing blocked threshold belongs to [`xhe-tool-goal`](../tool-goal/README.md); duplicating either value in the driver could produce divergent policy.

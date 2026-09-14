@@ -1,10 +1,10 @@
-# @origin-ai/xhe-workflow
+# @origin-ai/cf-workflow
 
 The workflow seam (`ctx.workflowEngine`) executes a model-written orchestration script that can fan out subagents. The seam defines the script, run, result, error, and event contracts; an engine decides how to isolate and execute the script.
 
-`@origin-ai/xhe-workflow-worker-thread` is the current engine and `@origin-ai/xhe-tool-workflow` is the model-facing consumer. A future process or sandbox engine can replace the implementation without changing the tool.
+`@origin-ai/cf-workflow-worker-thread` is the current engine and `@origin-ai/cf-tool-workflow` is the model-facing consumer. A future process or sandbox engine can replace the implementation without changing the tool.
 
-The package root is the Host face. The browser-safe `@origin-ai/xhe-workflow/types` subpath contains run identities, metadata, results, and observe-only lifecycle payloads without importing `Agent`, Cordis services, or Host context declarations; Host-only `WorkflowStartRequest` and `WorkflowRun` live behind the package root.
+The package root is the Host face. The browser-safe `@origin-ai/cf-workflow/types` subpath contains run identities, metadata, results, and observe-only lifecycle payloads without importing `Agent`, Cordis services, or Host context declarations; Host-only `WorkflowStartRequest` and `WorkflowRun` live behind the package root.
 
 ## Service and run contract
 

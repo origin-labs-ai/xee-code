@@ -16,13 +16,13 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import Loader from '@deepseek-ai/cordis-plugin-loader'
 import Include from '@deepseek-ai/cordis-plugin-include'
-import LlmRuntime from '@origin-ai/xhe-llm'
-import { credentialRef } from '@origin-ai/xhe-credentials'
-import LocalCredentialProvider from '@origin-ai/xhe-credentials-local'
-import { settingsNamespace } from '@origin-ai/xhe-settings'
-import FileSettingsProvider from '@origin-ai/xhe-settings-file'
-import { getOrCreateAnonymousUserId } from '@origin-ai/xhe-anonymous-user-id'
-import * as LlmDeepSeek from '@origin-ai/xhe-llm-deepseek'
+import LlmRuntime from '@origin-ai/cf-llm'
+import { credentialRef } from '@origin-ai/cf-credentials'
+import LocalCredentialProvider from '@origin-ai/cf-credentials-local'
+import { settingsNamespace } from '@origin-ai/cf-settings'
+import FileSettingsProvider from '@origin-ai/cf-settings-file'
+import { getOrCreateAnonymousUserId } from '@origin-ai/cf-anonymous-user-id'
+import * as LlmDeepSeek from '@origin-ai/cf-llm-deepseek'
 import { assemble } from './assemble.ts'
 import { closeMockServers, mockServer, textEvents } from './mock-server.ts'
 
@@ -63,19 +63,19 @@ async function loadComposition(
     ...options.withDynamic
       ? [
         '- id: settings',
-        "  name: '@origin-ai/xhe-settings-file'",
+        "  name: '@origin-ai/cf-settings-file'",
         '  config:',
         `    path: ${JSON.stringify(settingsPath)}`,
         '    debounceMs: 10',
         '- id: credentials',
-        "  name: '@origin-ai/xhe-credentials-local'",
+        "  name: '@origin-ai/cf-credentials-local'",
         '  config:',
         `    path: ${JSON.stringify(credentialsPath)}`,
         '    debounceMs: 10',
       ]
       : [],
     '- id: llm-deepseek',
-    "  name: '@origin-ai/xhe-llm-deepseek'",
+    "  name: '@origin-ai/cf-llm-deepseek'",
     '  config:',
     `    baseURL: ${JSON.stringify(options.baseURL)}`,
     '',
@@ -88,9 +88,9 @@ async function loadComposition(
   ctx.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
     ['test-llm-service', LlmRuntime],
-    ['@origin-ai/xhe-settings-file', FileSettingsProvider],
-    ['@origin-ai/xhe-credentials-local', LocalCredentialProvider],
-    ['@origin-ai/xhe-llm-deepseek', LlmDeepSeek],
+    ['@origin-ai/cf-settings-file', FileSettingsProvider],
+    ['@origin-ai/cf-credentials-local', LocalCredentialProvider],
+    ['@origin-ai/cf-llm-deepseek', LlmDeepSeek],
   ])
   ctx.loader.internal = {
     version: 'v2',

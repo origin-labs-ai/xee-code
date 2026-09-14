@@ -15,14 +15,14 @@ import { fileURLToPath } from 'node:url'
 import { promisify } from 'node:util'
 import { Context } from '@deepseek-ai/cordis'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import type { Agent } from '@origin-ai/xhe-agent'
-import SubagentRuntime from '@origin-ai/xhe-subagent'
+import type { Agent } from '@origin-ai/cf-agent'
+import SubagentRuntime from '@origin-ai/cf-subagent'
 import type {
   SubprocessHandle,
   SubprocessOutcome,
   SubprocessSpawnSpec,
-} from '@origin-ai/xhe-subprocess'
-import LocalSubprocessRuntime from '@origin-ai/xhe-subprocess-local'
+} from '@origin-ai/cf-subprocess'
+import LocalSubprocessRuntime from '@origin-ai/cf-subprocess-local'
 import * as codex from '../src/index.ts'
 import type { CodexPermissionMode } from '../src/run.ts'
 import {

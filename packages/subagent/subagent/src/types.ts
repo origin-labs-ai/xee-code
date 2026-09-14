@@ -6,14 +6,14 @@
  * continuation host in `./continuation.ts` — so this module stays the published
  * surface rather than a bag of everything type-shaped.
  *
- * @module @origin-ai/xhe-subagent/types
+ * @module @origin-ai/cf-subagent/types
  */
 
-import type { Agent, AgentOptions } from '@origin-ai/xhe-agent'
-import type { Branded } from '@origin-ai/xhe-brand'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import type { SessionEvent, SessionId } from '@origin-ai/xhe-session'
-import type { ObjectJsonSchema, ToolRestriction } from '@origin-ai/xhe-tools'
+import type { Agent, AgentOptions } from '@origin-ai/cf-agent'
+import type { Branded } from '@origin-ai/cf-brand'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import type { SessionEvent, SessionId } from '@origin-ai/cf-session'
+import type { ObjectJsonSchema, ToolRestriction } from '@origin-ai/cf-tools'
 import type { SubagentDescriptorData } from './descriptor.ts'
 
 /** Identifies one accepted subagent run across its lifecycle event pair. */

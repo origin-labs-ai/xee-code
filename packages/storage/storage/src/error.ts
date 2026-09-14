@@ -1,6 +1,6 @@
 /**
  * Error vocabulary for the storage hub and its backends.
- * @module @origin-ai/xhe-storage/src/error
+ * @module @origin-ai/cf-storage/src/error
  */
 
 /** Discriminant codes carried by every {@link StorageError}. */

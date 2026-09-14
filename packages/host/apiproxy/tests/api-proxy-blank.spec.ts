@@ -9,19 +9,19 @@
 
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
-import AgentRegistry from '@origin-ai/xhe-agent'
-import type { Agent } from '@origin-ai/xhe-agent'
-import SessionStore from '@origin-ai/xhe-session'
-import type { Session } from '@origin-ai/xhe-session'
-import UserQuestionService from '@origin-ai/xhe-user-questions'
-import { CommandId } from '@origin-ai/xhe-commands/brand'
+import AgentRegistry from '@origin-ai/cf-agent'
+import type { Agent } from '@origin-ai/cf-agent'
+import SessionStore from '@origin-ai/cf-session'
+import type { Session } from '@origin-ai/cf-session'
+import UserQuestionService from '@origin-ai/cf-user-questions'
+import { CommandId } from '@origin-ai/cf-commands/brand'
 // Side-effect type imports: the knob-event SessionEventMap merges.
-import type {} from '@origin-ai/xhe-permission-presets'
-import type {} from '@origin-ai/xhe-sandbox-policy'
-import type {} from '@origin-ai/xhe-user-approval'
-import type { ApiProxy, RpcRequest } from '@origin-ai/xhe-host-apiproxy/api'
-import { RpcId } from '@origin-ai/xhe-host-apiproxy/api/rpc'
-import { createApiProxy } from '@origin-ai/xhe-host-apiproxy'
+import type {} from '@origin-ai/cf-permission-presets'
+import type {} from '@origin-ai/cf-sandbox-policy'
+import type {} from '@origin-ai/cf-user-approval'
+import type { ApiProxy, RpcRequest } from '@origin-ai/cf-host-apiproxy/api'
+import { RpcId } from '@origin-ai/cf-host-apiproxy/api/rpc'
+import { createApiProxy } from '@origin-ai/cf-host-apiproxy'
 
 let nextRpc = 1
 function request<P>(payload: P): RpcRequest<P> {

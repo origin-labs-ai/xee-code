@@ -14,8 +14,8 @@ import {
   escalationHintMarker,
   sandboxDenialMarker,
   validateEscalationArgs,
-} from '@origin-ai/xhe-sandbox'
-import type { EscalationApprover, EscalationOutcome } from '@origin-ai/xhe-sandbox'
+} from '@origin-ai/cf-sandbox'
+import type { EscalationApprover, EscalationOutcome } from '@origin-ai/cf-sandbox'
 
 describe('the strictly-wider ladder', () => {
   it('read-only escalates to either wider mode; workspace-write only to full access', () => {

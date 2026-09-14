@@ -2,29 +2,29 @@
  * The model-facing `workflow` tool: run a JavaScript orchestration script that fans out
  * subagents, and return the script's final value. It owns the model-facing schema and run lifecycle; script
  * parsing, execution, caps, and cancellation live behind `ctx.workflowEngine`
- * (`@origin-ai/xhe-workflow`), so a hardened engine swaps in without touching what the model
+ * (`@origin-ai/cf-workflow`), so a hardened engine swaps in without touching what the model
  * sees. Execution awaits `run.result` and always disposes the run; non-completed reasons become tool
  * errors, and background collection remains deferred. Presentation is an args-only generic card
  * titled from `meta.name`. Explicit-ask usage guidance is registered as the tool's own prompt
  * section rather than deployment persona prose.
- * @module @origin-ai/xhe-tool-workflow
+ * @module @origin-ai/cf-tool-workflow
  */
 
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
-import { defineTool } from '@origin-ai/xhe-tools'
-import type { ToolCallView, ToolResultView } from '@origin-ai/xhe-tools'
-import type { ContentBlock } from '@origin-ai/xhe-llm'
-import type { JsonValue, Session, SessionEventMap } from '@origin-ai/xhe-session'
+import { defineTool } from '@origin-ai/cf-tools'
+import type { ToolCallView, ToolResultView } from '@origin-ai/cf-tools'
+import type { ContentBlock } from '@origin-ai/cf-llm'
+import type { JsonValue, Session, SessionEventMap } from '@origin-ai/cf-session'
 import type {
   WorkflowResult, WorkflowRun, WorkflowRunId, WorkflowStopReason,
-} from '@origin-ai/xhe-workflow'
+} from '@origin-ai/cf-workflow'
 import type {
   ToolWorkflowAgentEndData, ToolWorkflowAgentStartData,
   ToolWorkflowRunEndData, ToolWorkflowRunStartData,
 } from './types.ts'
 // Declaration merge only: makes ctx.systemPrompt visible for the section registration.
-import type {} from '@origin-ai/xhe-system-prompt'
+import type {} from '@origin-ai/cf-system-prompt'
 
 export const name = 'tool-workflow'
 export const inject = ['tools', 'workflowEngine', 'systemPrompt']

@@ -5,7 +5,7 @@
  * cannot ride the `xhe-subprocess` service — this module is the seam's
  * documented exception for SDK-managed transports.
  *
- * @module @origin-ai/xhe-sdk-client/dispose
+ * @module @origin-ai/cf-sdk-client/dispose
  */
 
 import type { ChildProcess } from 'node:child_process'

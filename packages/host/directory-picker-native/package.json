@@ -1,5 +1,5 @@
 {
-  "name": "@origin-ai/xhe-host-directory-picker-native",
+  "name": "@origin-ai/cf-host-directory-picker-native",
   "description": "Native-OS-chooser backend of the directory-picker seam for the Xee Harness Enhanced web GUI host",
   "version": "0.1.1-rc.2",
   "publishConfig": {
@@ -37,16 +37,16 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@origin-ai/xhe-host-directory-picker": "workspace:^",
-    "@origin-ai/xhe-native-command": "workspace:^",
+    "@origin-ai/cf-host-directory-picker": "workspace:^",
+    "@origin-ai/cf-native-command": "workspace:^",
     "koffi": "^3.1.0"
   },
   "peerDependencies": {
-    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^"
   },
   "devDependencies": {
-    "@origin-ai/xhe-invariants": "workspace:^",
+    "@origin-ai/cf-invariants": "workspace:^",
     "@deepseek-ai/cordis": "workspace:^",
     "tsx": "^4.19.2"
   }

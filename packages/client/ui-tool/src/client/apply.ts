@@ -1,7 +1,7 @@
 /** Register the Tool call tree, details renderer, and built-in atomic views. */
-import type { ConnectionHandle } from '@origin-ai/xhe-client-connection/client'
-import type { ClientContext } from '@origin-ai/xhe-client-runtime/client'
-import type {} from '@origin-ai/xhe-client-ui-conversation/client'
+import type { ConnectionHandle } from '@origin-ai/cf-client-connection/client'
+import type { ClientContext } from '@origin-ai/cf-client-runtime/client'
+import type {} from '@origin-ai/cf-client-ui-conversation/client'
 import { ToolCallTree } from './tool/ToolCallTree.tsx'
 import { ToolDetails } from './tool/ToolDetails.tsx'
 import { CONVERSATION_NS as NS } from './locale.ts'

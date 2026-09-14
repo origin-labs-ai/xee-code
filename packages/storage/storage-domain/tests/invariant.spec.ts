@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { Context } from '@deepseek-ai/cordis'
 import { z } from 'zod'
-import Storage from '@origin-ai/xhe-storage'
-import InvariantRegistry, { InvariantError } from '@origin-ai/xhe-invariants'
-import * as DomainInvariantCompanion from '@origin-ai/xhe-storage-domain/invariant'
+import Storage from '@origin-ai/cf-storage'
+import InvariantRegistry, { InvariantError } from '@origin-ai/cf-invariants'
+import * as DomainInvariantCompanion from '@origin-ai/cf-storage-domain/invariant'
 import { DomainFacility, defineDomain, domainTable } from '../src/index.ts'
 import type { DomainChanged } from '../src/events.ts'
 import { MemoryStorageBackend } from './helpers/memory-backend.ts'
@@ -31,7 +31,7 @@ async function setup() {
 
 const invariantViolation: unknown = expect.objectContaining<Partial<InvariantError>>({
   code: 'INVARIANT',
-  packageName: '@origin-ai/xhe-storage-domain',
+  packageName: '@origin-ai/cf-storage-domain',
 })
 
 describe('domain change-event invariants', () => {

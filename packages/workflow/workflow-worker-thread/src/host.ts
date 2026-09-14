@@ -3,7 +3,7 @@
  * cancellation-grace expiry owns settlement and closes message admission.
  * Pending starts share one abort signal; published children share idempotent
  * cleanup, and quiescence waits for both while synthesizing any missing end events.
- * @module @origin-ai/xhe-workflow-worker-thread/host
+ * @module @origin-ai/cf-workflow-worker-thread/host
  */
 
 import { tmpdir } from 'node:os'
@@ -11,12 +11,12 @@ import { Worker } from 'node:worker_threads'
 import type { WorkerOptions } from 'node:worker_threads'
 import { fileURLToPath } from 'node:url'
 import type { Context } from '@deepseek-ai/cordis'
-import type { Agent } from '@origin-ai/xhe-agent'
-import { assertNever } from '@origin-ai/xhe-llm'
-import { snapshotJsonValue } from '@origin-ai/xhe-session'
-import type SubagentRuntime from '@origin-ai/xhe-subagent'
-import type { SubagentRun } from '@origin-ai/xhe-subagent'
-import type { WorkflowAgentEndInfo, WorkflowAgentInfo, WorkflowMeta, WorkflowResult, WorkflowRun, WorkflowRunId } from '@origin-ai/xhe-workflow'
+import type { Agent } from '@origin-ai/cf-agent'
+import { assertNever } from '@origin-ai/cf-llm'
+import { snapshotJsonValue } from '@origin-ai/cf-session'
+import type SubagentRuntime from '@origin-ai/cf-subagent'
+import type { SubagentRun } from '@origin-ai/cf-subagent'
+import type { WorkflowAgentEndInfo, WorkflowAgentInfo, WorkflowMeta, WorkflowResult, WorkflowRun, WorkflowRunId } from '@origin-ai/cf-workflow'
 import { renderThrown } from './realm.ts'
 import type { ExecutionObserver } from './runtime.ts'
 import { HostToWorkerType, WorkerToHostType } from './protocol.ts'

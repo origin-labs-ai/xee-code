@@ -4,18 +4,18 @@
  * else references RequestPayload<'session.*'> / ResponseValue<'session.*'>.
  */
 
-import type { MessageId } from '@origin-ai/xhe-llm/brand'
-import type { AttachmentIdType, ImageAttachmentLimits, ImageAttachmentRef, ImageMediaType } from '@origin-ai/xhe-attachment'
-import type { ContentBlock } from '@origin-ai/xhe-llm/types'
-import type { SessionEvent, SessionId } from '@origin-ai/xhe-session/types'
+import type { MessageId } from '@origin-ai/cf-llm/brand'
+import type { AttachmentIdType, ImageAttachmentLimits, ImageAttachmentRef, ImageMediaType } from '@origin-ai/cf-attachment'
+import type { ContentBlock } from '@origin-ai/cf-llm/types'
+import type { SessionEvent, SessionId } from '@origin-ai/cf-session/types'
 // The pure-type outlet: api/ is browser-importable, and the package root's
 // cordis Context merge (via xhe-agent) must not enter client aggregates.
-import type { SessionProjectionMap } from '@origin-ai/xhe-session-projection/types'
+import type { SessionProjectionMap } from '@origin-ai/cf-session-projection/types'
 import type { RpcId, RpcRequest, RpcResponse } from './rpc.ts'
 import type { ToolEventView } from './events.ts'
 import type { WorkspaceId } from './workspace.ts'
 
-declare module '@origin-ai/xhe-session-projection/types' {
+declare module '@origin-ai/cf-session-projection/types' {
   interface SessionProjectionStateMap {
     sessionListMetadata: SessionListMetadata
     imageLimits: null
@@ -47,7 +47,7 @@ export interface SessionListMetadata {
   lastPromptAt: number | null
 }
 
-declare module '@origin-ai/xhe-llm' {
+declare module '@origin-ai/cf-llm' {
   interface MessageSourceMap {
     /**
      * The prompt's rpcId is passed through MessageSource into the `user/message` event

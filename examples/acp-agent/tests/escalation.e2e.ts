@@ -12,8 +12,8 @@ import {
   launchAcpTestAgent,
   type AgentUnderTest,
   type LaunchedAcpTestAgent,
-} from '@origin-ai/xhe-acp-snapshot'
-import { bwrapProfileArgs } from '@origin-ai/xhe-sandbox-local/src/profiles.ts'
+} from '@origin-ai/cf-acp-snapshot'
+import { bwrapProfileArgs } from '@origin-ai/cf-sandbox-local/src/profiles.ts'
 import { cleanupAcpExampleTest } from './cleanup.ts'
 
 /**

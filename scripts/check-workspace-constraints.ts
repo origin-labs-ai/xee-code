@@ -51,16 +51,16 @@ const publishedRepositoryUrl = 'git+https://github.com/deepseek-ai/xhe.git'
 /** Private packages that participate in workspace checks but not releases. */
 const experimentalPackageDirectory = /^packages\/experimental\/[^/]+$/
 /** npm namespace reserved for private experimental packages. */
-const experimentalPackageNamePrefix = '@origin-ai/xhe-experimental-'
+const experimentalPackageNamePrefix = '@origin-ai/cf-experimental-'
 /** Directories whose packages this repository publishes: one release member each. */
 const releaseMemberDirectory = /^(?:packages\/(?!experimental\/)[^/]+\/[^/]+|apps\/[^/]+|vendor\/[^/]+)$/
 
 const localArtifactDirs = new Set(['node_modules'])
 const appPackageFiles: Readonly<Record<string, readonly string[]>> = {
-  '@origin-ai/xhe': ['lib/*.js', 'config'],
+  '@origin-ai/cf': ['lib/*.js', 'config'],
   // The Web build emits sourcemaps for browser debugging; publishing them is
   // what the payload policy forbids, so the bundle ships without them.
-  '@origin-ai/xhe-web-frontend': ['dist', '!dist/**/*.map'],
+  '@origin-ai/cf-web-frontend': ['dist', '!dist/**/*.map'],
 }
 
 /** The subset of package.json fields this constraint check cares about. */
@@ -146,22 +146,22 @@ const packageFileExtras: Readonly<Record<string, readonly string[]>> = {
   // them through its own CSS pipeline, so the sheets are published artifacts.
   // The glob covers whichever sheets a package emits; sourcemaps stay
   // unpublished, as everywhere else in the repository.
-  '@origin-ai/xhe-client-ui-primitives': ['lib/**/*.css'],
-  '@origin-ai/xhe-client-web': ['lib/**/*.css'],
-  '@origin-ai/xhe-client-ui-theme': ['lib/styles'],
+  '@origin-ai/cf-client-ui-primitives': ['lib/**/*.css'],
+  '@origin-ai/cf-client-web': ['lib/**/*.css'],
+  '@origin-ai/cf-client-ui-theme': ['lib/styles'],
   // The CPython side ships as source .py files, published as-is rather than built.
-  '@origin-ai/xhe-code-runtime-python': ['py/**/*.py'],
+  '@origin-ai/cf-code-runtime-python': ['py/**/*.py'],
   // The Python runtime uses a distinct closed-resolution bin; the public CLI
   // keeps config-owned bare-package resolution through lib/bin.js.
-  '@origin-ai/xhe-sdk-jsonrpc-demo': ['lib/packaged-bin.js'],
+  '@origin-ai/cf-sdk-jsonrpc-demo': ['lib/packaged-bin.js'],
   // The argv-prefix runner entry ships beside the lib as its own bundle;
   // sandbox-local resolves it through the package's ./runner export. tsdown
   // also shares its generated FFI code through a hashed runtime chunk.
-  '@origin-ai/xhe-sandbox-windows-acl': ['lib/runner.js', 'lib/types-*.js'],
+  '@origin-ai/cf-sandbox-windows-acl': ['lib/runner.js', 'lib/types-*.js'],
   // SQLite loads every statement from immutable package resources at runtime.
-  '@origin-ai/xhe-session-persistence-sqlite': ['resources/sql/**/*.sql'],
-  '@origin-ai/xhe-skill-badge': ['assets'],
-  '@origin-ai/xhe-subprocess-local': ['scripts/ensure-spawn-helper.mjs'],
+  '@origin-ai/cf-session-persistence-sqlite': ['resources/sql/**/*.sql'],
+  '@origin-ai/cf-skill-badge': ['assets'],
+  '@origin-ai/cf-subprocess-local': ['scripts/ensure-spawn-helper.mjs'],
 }
 
 function sameStringList(actual: readonly string[] | undefined, expected: readonly string[]): boolean {
@@ -332,7 +332,7 @@ function checkWorkspace({ dir, manifest }: WorkspaceManifest): string[] {
     }
   }
 
-  if (dir.startsWith('packages/') && manifest.name?.startsWith('@origin-ai/xhe-')) {
+  if (dir.startsWith('packages/') && manifest.name?.startsWith('@origin-ai/cf-')) {
     const peer = manifest.peerDependencies?.['@deepseek-ai/cordis']
     const dev = manifest.devDependencies?.['@deepseek-ai/cordis']
 
